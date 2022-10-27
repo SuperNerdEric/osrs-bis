@@ -9,7 +9,7 @@ import {gearSets} from "./DataObjects/GearSets";
 
 function App() {
     const [targetMonster, setTargetMonster] = React.useState("Ba-Ba");
-    const [sortConfig, setSortConfig] = React.useState({ key: 'dps' as keyof Result, direction:'ascending'});;
+    const [sortConfig, setSortConfig] = React.useState({ key: 'dps' as keyof Result, direction:'descending'});;
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     const open = Boolean(anchorEl);
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
