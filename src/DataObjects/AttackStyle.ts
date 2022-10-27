@@ -2,6 +2,6 @@ export enum AttackStyle {
     Stab,
     Slash,
     Crush,
-    Ranged,
+    Rapid,
     Magic
 }

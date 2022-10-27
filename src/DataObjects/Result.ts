@@ -13,6 +13,8 @@ export class Result {
         const attackStyle = this.gearSet[0].style;
         if(attackStyle == AttackStyle.Stab || attackStyle == AttackStyle.Slash || attackStyle == AttackStyle.Crush) {
             this.calculateDPSMelee(attackStyle, 99, 99,26, 26,1.23, 1.2);
+        } else if(attackStyle == AttackStyle.Rapid) {
+            this.calculateDPSRanged(attackStyle, 99, 26,1.23, 1.2);
         }
 
     }
@@ -51,12 +53,12 @@ export class Result {
         } else if(attackStyle == AttackStyle.Crush) {
             styleDefenceBonus = this.targetMonster.crushDefence;
         }
-        let defenseRoll = (this.targetMonster.defenceLevel + 9) * (styleDefenceBonus + 64);
+        let defenceRoll = (this.targetMonster.defenceLevel + 9) * (styleDefenceBonus + 64);
 
-        if(attackRoll > defenseRoll) {
-            this.accuracy = 1 - ((defenseRoll + 2) / (2 * (attackRoll + 1)));
+        if(attackRoll > defenceRoll) {
+            this.accuracy = 1 - ((defenceRoll + 2) / (2 * (attackRoll + 1)));
         } else {
-            this.accuracy = attackRoll / (2 * (defenseRoll + 1));
+            this.accuracy = attackRoll / (2 * (defenceRoll + 1));
         }
 
         let damagePerHit = 0;
@@ -96,11 +98,56 @@ export class Result {
         maxHit += 320;
         maxHit = Math.floor(maxHit / 640);
 
-        let gearMultiplier = 1; //slayer helm, salve
+        let gearMultiplier = 1; //Todo: slayer helm, salve
 
         maxHit = Math.floor(maxHit * gearMultiplier);
 
         return maxHit;
+    }
+
+    private calculateDPSRanged(attackStyle: AttackStyle, rangedLevel: number, rangedLevelBoost: number, prayerStrengthMultiplier: number, prayerAttackMultiplier: number) {
+        let effectiveRangedStrength = Math.floor((rangedLevel + rangedLevelBoost) * prayerStrengthMultiplier);
+        effectiveRangedStrength += 8;
+
+        let equipmentRangedStrength = 0;
+        this.gearSet.forEach(item => {
+            equipmentRangedStrength += item.rangedStrength;
+        })
+
+        console.log("Equipment ranged strength: " + equipmentRangedStrength);
+
+        let gearMultiplier = 1; //Todo: slayer helm, salve
+        this.maxHit = Math.floor(0.5 + ((effectiveRangedStrength) * (equipmentRangedStrength + 64)) / 640);
+
+        let effectiveRangedAttack = Math.floor((rangedLevel + rangedLevelBoost) * prayerAttackMultiplier)
+        effectiveRangedAttack += 8;
+
+        let equipmentRangedAttack = 0;
+        this.gearSet.forEach(item => {
+            equipmentRangedAttack += item.ranged;
+        })
+
+        console.log("Equipment ranged attack: " + equipmentRangedAttack);
+
+        let attackRoll = Math.floor(effectiveRangedAttack * (equipmentRangedAttack + 64));
+
+        console.log("Attack Roll: " + attackRoll);
+
+        let defenceRoll = (this.targetMonster.defenceLevel + 9) * (this.targetMonster.rangedDefence + 64);
+
+        if(attackRoll > defenceRoll) {
+            this.accuracy = 1 - ((defenceRoll + 2) / (2 * (attackRoll + 1)));
+        } else {
+            this.accuracy = attackRoll / (2 * (defenceRoll + 1));
+        }
+
+        let damagePerHit = (this.maxHit * this.accuracy) / 2;
+
+        let speedSeconds = this.gearSet[0].speedSeconds;
+        if(attackStyle == AttackStyle.Rapid) {
+            speedSeconds -= 0.6;
+        }
+        this.dps = damagePerHit / speedSeconds;
     }
 }
 

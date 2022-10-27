@@ -203,3 +203,82 @@ item.crush = 30;
 item.magic = -6;
 item.strength = 75;
 items.set(item.name, item);
+
+item = new Item();
+item.name = "Toxic blowpipe";
+item.style = AttackStyle.Rapid;
+item.imagePath = './Images/Items/Toxic_blowpipe.png';
+item.wikiLink = "https://oldschool.runescape.wiki/w/Toxic_blowpipe#Charged"
+item.slot = Slot.MainHand; //Todo How to handle 2hs?
+item.speedSeconds = 1.8;
+item.ranged = 30;
+item.rangedStrength = 20;
+items.set(item.name, item);
+
+item = new Item();
+item.name = "Dragon dart";
+item.imagePath = './Images/Items/Dragon_dart.png';
+item.wikiLink = "https://oldschool.runescape.wiki/w/Dragon_dart"
+item.slot = Slot.Ammo;
+item.rangedStrength = 35;
+items.set(item.name, item);
+
+item = new Item();
+item.name = "Masori mask (f)";
+item.imagePath = './Images/Items/Masori_mask_f.png';
+item.wikiLink = "https://oldschool.runescape.wiki/w/Masori_mask_(f)"
+item.slot = Slot.Helm;
+item.magic = -1;
+item.ranged = 12;
+item.rangedStrength = 2;
+items.set(item.name, item);
+
+item = new Item();
+item.name = "Masori body (f)";
+item.imagePath = './Images/Items/Masori_body_f.png';
+item.wikiLink = "https://oldschool.runescape.wiki/w/Masori_body_(f)"
+item.slot = Slot.Chest;
+item.magic = -4;
+item.ranged = 43;
+item.rangedStrength = 4;
+items.set(item.name, item);
+
+item = new Item();
+item.name = "Masori chaps (f)";
+item.imagePath = './Images/Items/Masori_chaps_f.png';
+item.wikiLink = "https://oldschool.runescape.wiki/w/Masori_chaps_(f)"
+item.slot = Slot.Legs;
+item.magic = -2;
+item.ranged = 27;
+item.rangedStrength = 2;
+items.set(item.name, item);
+
+item = new Item();
+item.name = "Zaryte vambraces";
+item.imagePath = './Images/Items/Zaryte_vambraces.png';
+item.wikiLink = "https://oldschool.runescape.wiki/w/Zaryte_vambraces"
+item.slot = Slot.Gloves;
+item.stab = -8;
+item.slash = -8;
+item.crush = -8;
+item.ranged = 18;
+item.rangedStrength = 2;
+items.set(item.name, item);
+
+item = new Item();
+item.name = "Necklace of anguish";
+item.imagePath = './Images/Items/Necklace_of_anguish.png';
+item.wikiLink = "https://oldschool.runescape.wiki/w/Necklace_of_anguish"
+item.slot = Slot.Neck;
+item.ranged = 15;
+item.rangedStrength = 5;
+items.set(item.name, item);
+
+item = new Item();
+item.name = "Ava's assembler";
+item.imagePath = './Images/Items/Avas_assembler.png';
+item.wikiLink = "https://oldschool.runescape.wiki/w/Ava%27s_assembler"
+item.slot = Slot.Cape;
+item.ranged = 8;
+item.rangedStrength = 2;
+items.set(item.name, item);
