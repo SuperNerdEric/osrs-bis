@@ -32,6 +32,17 @@ function App() {
                     },
                 },
             },
+            MuiButton: {
+                styleOverrides: {
+                    // Name of the slot
+                    root: {
+                        // Some CSS
+                        backgroundColor: "black",
+                        color: "white",
+                        fontSize: '22px',
+                    },
+                },
+            },
         },
     });
 
@@ -84,6 +95,7 @@ function App() {
                         aria-haspopup="true"
                         aria-expanded={open ? 'true' : undefined}
                         onClick={handleClick}
+                        onMouseOver={handleClick}
                     >
                         Tombs of Amascut
                     </Button>
