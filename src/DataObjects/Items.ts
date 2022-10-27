@@ -282,3 +282,39 @@ item.slot = Slot.Cape;
 item.ranged = 8;
 item.rangedStrength = 2;
 items.set(item.name, item);
+
+item = new Item();
+item.name = "Armadyl helmet";
+item.imagePath = './Images/Items/Armadyl_helmet.png';
+item.wikiLink = "https://oldschool.runescape.wiki/w/Armadyl_helmet"
+item.slot = Slot.Helm;
+item.stab = -5;
+item.slash = -5;
+item.crush = -5;
+item.magic = -5;
+item.ranged = 10;
+items.set(item.name, item);
+
+item = new Item();
+item.name = "Armadyl chestplate";
+item.imagePath = './Images/Items/Armadyl_chestplate.png';
+item.wikiLink = "https://oldschool.runescape.wiki/w/Armadyl_chestplate"
+item.slot = Slot.Chest;
+item.stab = -7;
+item.slash = -7;
+item.crush = -7;
+item.magic = -15;
+item.ranged = 33;
+items.set(item.name, item);
+
+item = new Item();
+item.name = "Armadyl chainskirt";
+item.imagePath = './Images/Items/Armadyl_chainskirt.png';
+item.wikiLink = "https://oldschool.runescape.wiki/w/Armadyl_chainskirt"
+item.slot = Slot.Legs;
+item.stab = -6;
+item.slash = -6;
+item.crush = -6;
+item.magic = -10;
+item.ranged = 20;
+items.set(item.name, item);
