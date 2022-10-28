@@ -337,3 +337,16 @@ item.wikiLink = "https://oldschool.runescape.wiki/w/Dragon_arrow"
 item.slot = Slot.Ammo;
 item.rangedStrength = 60;
 items.set(item.name, item);
+
+item = new Item();
+item.name = "Barrows gloves";
+item.imagePath = './Images/Items/Barrows_gloves.png';
+item.wikiLink = "https://oldschool.runescape.wiki/w/Barrows_gloves"
+item.slot = Slot.Gloves;
+item.stab = 12;
+item.slash = 12;
+item.crush = 12;
+item.magic = 6;
+item.ranged = 12;
+item.strength = 12;
+items.set(item.name, item);
