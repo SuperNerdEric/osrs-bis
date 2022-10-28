@@ -178,7 +178,7 @@ function App() {
                         </tr>
 
                         {results.map(result => (
-                            <tr key={result.dps}>
+                            <tr>
                                 <td>
                                     {
                                         result.gearSet.map(item => (
