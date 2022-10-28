@@ -79,7 +79,7 @@ export class Result {
             // Original accuracy calculation before Jagex updated on October 31st, 2022
             // https://secure.runescape.com/m=news/a=97/tombs-of-amascut-drop-mechanics--osmumtens-fang?oldschool=1
             // reroll accuracy check
-            // this.accuracy = this.accuracy + (this.accuracy * (1 - this.accuracy));
+            // this.hitChance = this.hitChance + (this.hitChance * (1 - this.hitChance));
 
             // Two hitChances multiplied by each other. One is normal 1/2 ratio and second is 2/3 ratio
             // (x + 2) / ( 2 (y + 1)) * (2x + 3) / (3 * (y+1))
