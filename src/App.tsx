@@ -6,8 +6,16 @@ import {Result} from "./DataObjects/Result";
 import {TargetMonster} from "./DataObjects/TargetMonster";
 import {monsters} from "./DataObjects/Monsters";
 import {gearSets} from "./DataObjects/GearSets";
+import {DiscreteSliderMarks} from "./Slider";
 
 function App() {
+    const [invocationLevel, setInvocationLevel] = React.useState(300);
+
+    const handleChange = (event: Event, newValue: number | number[]) => {
+        console.log("Set invocation level: " + newValue);
+        setInvocationLevel(newValue as number);
+    };
+
     const [targetMonster, setTargetMonster] = React.useState("Ba-Ba");
     const [sortConfig, setSortConfig] = React.useState({ key: 'dps' as keyof Result, direction:'descending'});;
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -43,6 +51,19 @@ function App() {
                     },
                 },
             },
+            MuiSlider: {
+                styleOverrides: {
+                    // Name of the slot
+                    root: {
+                        // Some CSS
+                        color: "white",
+                        fontSize: '22px',
+                    },
+                    markLabel: {
+                        color: "white"
+                    }
+                },
+            },
         },
     });
 
@@ -53,7 +74,7 @@ function App() {
         result.gearSet = gearSet;
         console.log("GearSet: " + JSON.stringify(gearSet));
         result.targetMonster =  monsters.get(targetMonster) as TargetMonster;
-        result.calculateDPS();
+        result.calculateDPS(invocationLevel);
         console.log(result);
         results.push(result);
     })
@@ -84,6 +105,7 @@ function App() {
 
 
     console.log(monsters.get("Ba-Ba"));
+
 
     return (
         <ThemeProvider theme={theme}>
@@ -117,8 +139,9 @@ function App() {
                 <header className="App-header">
                     <h2>{targetMonster}</h2>
                     <img src={require(`${(monsters.get(targetMonster) as TargetMonster).imagePath}`)} width="auto" height="150" alt="logo"/>
+                    <DiscreteSliderMarks handleChange={handleChange}/>
                     <table style={Table}>
-                        <caption>0 Invocation - {(monsters.get(targetMonster) as TargetMonster).defenceLevel} Defence</caption>
+                        <caption>{invocationLevel} Invocation - {(monsters.get(targetMonster) as TargetMonster).defenceLevel} Defence</caption>
                         <thead>
                         <tr>
                             <th>Gear</th>

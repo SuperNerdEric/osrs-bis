@@ -9,17 +9,17 @@ export class Result {
     gearSet: Item[] = [];
     targetMonster: TargetMonster = new TargetMonster();
 
-    calculateDPS() {
+    calculateDPS(invocationLevel: number) {
         const attackStyle = this.gearSet[0].style;
         if(attackStyle == AttackStyle.Stab || attackStyle == AttackStyle.Slash || attackStyle == AttackStyle.Crush) {
-            this.calculateDPSMelee(attackStyle, 99, 99,26, 26,1.23, 1.2);
+            this.calculateDPSMelee(invocationLevel, attackStyle, 99, 99,26, 26,1.23, 1.2);
         } else if(attackStyle == AttackStyle.Rapid) {
-            this.calculateDPSRanged(attackStyle, 99, 26,1.23, 1.2);
+            this.calculateDPSRanged(invocationLevel, attackStyle, 99, 26,1.23, 1.2);
         }
 
     }
 
-    private calculateDPSMelee(attackStyle: AttackStyle, strengthLevel: number, attackLevel: number, strengthLevelBoost: number, attackLevelBoost: number, prayerStrengthMultiplier: number, prayerAttackMultiplier: number) {
+    private calculateDPSMelee(invocationLevel: number, attackStyle: AttackStyle, strengthLevel: number, attackLevel: number, strengthLevelBoost: number, attackLevelBoost: number, prayerStrengthMultiplier: number, prayerAttackMultiplier: number) {
         let effectiveStrengthLevel =  Math.floor((strengthLevel + strengthLevelBoost) * prayerStrengthMultiplier);
         effectiveStrengthLevel += 3; //aggressive attack style
         effectiveStrengthLevel += 8;
@@ -54,6 +54,8 @@ export class Result {
             styleDefenceBonus = this.targetMonster.crushDefence;
         }
         let defenceRoll = (this.targetMonster.defenceLevel + 9) * (styleDefenceBonus + 64);
+        defenceRoll = defenceRoll + Math.floor(defenceRoll * Math.floor(invocationLevel / 5) * 2)/100;
+
 
         if(attackRoll > defenceRoll) {
             this.accuracy = 1 - ((defenceRoll + 2) / (2 * (attackRoll + 1)));
@@ -105,7 +107,7 @@ export class Result {
         return maxHit;
     }
 
-    private calculateDPSRanged(attackStyle: AttackStyle, rangedLevel: number, rangedLevelBoost: number, prayerStrengthMultiplier: number, prayerAttackMultiplier: number) {
+    private calculateDPSRanged(invocationLevel: number, attackStyle: AttackStyle, rangedLevel: number, rangedLevelBoost: number, prayerStrengthMultiplier: number, prayerAttackMultiplier: number) {
         let effectiveRangedStrength = Math.floor((rangedLevel + rangedLevelBoost) * prayerStrengthMultiplier);
         effectiveRangedStrength += 8;
 
@@ -164,6 +166,7 @@ export class Result {
         console.log("Attack Roll: " + attackRoll);
 
         let defenceRoll = (this.targetMonster.defenceLevel + 9) * (this.targetMonster.rangedDefence + 64);
+        defenceRoll = defenceRoll + Math.floor(defenceRoll * Math.floor(invocationLevel / 5) * 2)/100;
 
         if(attackRoll > defenceRoll) {
             this.accuracy = 1 - ((defenceRoll + 2) / (2 * (attackRoll + 1)));
