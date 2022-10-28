@@ -72,7 +72,6 @@ function App() {
     gearSets.forEach(gearSet => {
         let result: Result = new Result();
         result.gearSet = gearSet;
-        console.log("GearSet: " + JSON.stringify(gearSet));
         result.targetMonster = monsters.get(targetMonster) as TargetMonster;
         result.calculateDPS(invocationLevel);
         console.log(result);
@@ -89,7 +88,7 @@ function App() {
 
 
     React.useMemo(() => {
-        console.log(`Sorting ${sortConfig.key} ${sortConfig.direction}`);
+        //console.log(`Sorting ${sortConfig.key} ${sortConfig.direction}`);
         results.sort((a, b) => {
             if (a[sortConfig.key] < b[sortConfig.key]) {
                 return sortConfig.direction === 'ascending' ? -1 : 1;

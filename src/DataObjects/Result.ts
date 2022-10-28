@@ -38,7 +38,7 @@ export class Result {
             } else if (attackStyle == AttackStyle.Crush) {
                 equipmentAttackBonus += item.crush;
             }
-        })
+        });
 
         let attackRoll = effectiveAttackLevel * (equipmentAttackBonus + 64);
         let gearMultiplier = 1; //slayer helm, salve
@@ -65,8 +65,6 @@ export class Result {
 
         let damagePerHit = 0;
         if (this.gearSet[0].name === "Scythe of vitur") {
-            //Include 3 hits in accuracy
-
             //Do 3 hits
             let damagePerHit1 = (this.maxHit * this.accuracy) / 2; //1st is 100% damage
             let damagePerHit2 = (Math.floor(this.maxHit / 2) * this.accuracy) / 2; //2nd is 50% damage
@@ -75,8 +73,19 @@ export class Result {
 
             this.maxHit = Math.floor(this.maxHit * 1.75);
         } else if (this.gearSet[0].name === "Osmumten's fang") {
-            //reroll accuracy check
-            this.accuracy = this.accuracy + (this.accuracy * (1 - this.accuracy));
+
+            // Original accuracy calculation before Jagex updated on October 31st, 2022
+            // https://secure.runescape.com/m=news/a=97/tombs-of-amascut-drop-mechanics--osmumtens-fang?oldschool=1
+            // reroll accuracy check
+            // this.accuracy = this.accuracy + (this.accuracy * (1 - this.accuracy));
+
+            // Two hitChances multiplied by each other. One is normal 1/2 ratio and second is 2/3 ratio
+            // (x + 2) / ( 2 (y + 1)) * (2x + 3) / (3 * (y+1))
+            if(attackRoll > defenceRoll) {
+                this.accuracy = 1 - ((defenceRoll + 2) * (2 * defenceRoll + 3)) / (6 * Math.pow(attackRoll + 1, 2));
+            } else {
+                this.accuracy = (6 * Math.pow(attackRoll + 1, 2) - (attackRoll + 2) * (2 * attackRoll + 3)) / (6 * (defenceRoll + 1) * (attackRoll + 1));
+            }
 
             //lower max hit without affecting dps
             damagePerHit = (this.maxHit * this.accuracy) / 2;
@@ -115,8 +124,6 @@ export class Result {
         this.gearSet.forEach(item => {
             equipmentRangedStrength += item.rangedStrength;
         })
-
-        console.log("Equipment ranged strength: " + equipmentRangedStrength);
 
         let gearMultiplier = 1; //Todo: slayer helm, salve
         let accuracyMultiplier = 1;
@@ -159,11 +166,7 @@ export class Result {
             equipmentRangedAttack += item.ranged;
         })
 
-        console.log("Equipment ranged attack: " + equipmentRangedAttack);
-
         let attackRoll = Math.floor(Math.floor(effectiveRangedAttack * (equipmentRangedAttack + 64)) * accuracyMultiplier);
-
-        console.log("Attack Roll: " + attackRoll);
 
         let defenceRoll = (this.targetMonster.defenceLevel + 9) * (this.targetMonster.rangedDefence + 64);
         defenceRoll = defenceRoll + Math.floor(defenceRoll * Math.floor(invocationLevel / 5) * 2) / 100;
