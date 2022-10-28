@@ -3,6 +3,8 @@
 A simple DPS Calc that comes with predefined gear set-ups so that you don't have to create your own along with common
 bosses/raids.
 
+Hosted on https://supernerderic.github.io/osrs-dps/
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
