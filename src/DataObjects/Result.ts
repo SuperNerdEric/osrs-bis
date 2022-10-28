@@ -126,13 +126,20 @@ export class Result {
             }
             console.log("Target magic: " + targetMagic);
 
-            accuracyMultiplier =  140 + (((10 * 3 * targetMagic)/10 - 10)/100) - Math.pow(((3*targetMagic)/10 - 100), 2) /100;
+            //accuracyMultiplier =  140 + (((10 * 3 * targetMagic)/10 - 10) / 100) - Math.pow(((3*targetMagic)/10 - 100), 2) / 100;
+            //Todo Other calcs seems to round down here? Not sure if correct though
+            accuracyMultiplier = 140 + Math.floor((3 * targetMagic - 10) / 100) - Math.floor(Math.pow(3 * targetMagic / 10 - 100, 2) / 100);
             if(accuracyMultiplier > 140) {
                 accuracyMultiplier = 140;
             }
+
+
             accuracyMultiplier /= 100;
+
             console.log("Twisted Bow Accuracy Multiplier: " + accuracyMultiplier);
             let damageMultiplier = 250 + (((10 * 3 * targetMagic)/10 - 14)/100) - Math.pow(((3*targetMagic)/10 - 140), 2) /100;
+            //Todo Other calcs seems to round down here? Not sure if correct though
+            damageMultiplier = 250 + Math.floor((3 * targetMagic - 14) / 100) - Math.floor(Math.pow(3 * targetMagic / 10 - 140, 2) / 100)
             if(damageMultiplier > 250) {
                 damageMultiplier = 250;
             }
@@ -140,7 +147,7 @@ export class Result {
             console.log("Twisted Bow Damage Multiplier: " + damageMultiplier);
         }
 
-        this.maxHit = Math.floor(0.5 + (((effectiveRangedStrength) * (equipmentRangedStrength + 64)) / 640) * gearMultiplier);
+        this.maxHit = Math.floor(Math.floor(0.5 + (((effectiveRangedStrength) * (equipmentRangedStrength + 64)) / 640)) * gearMultiplier);
 
         let effectiveRangedAttack = Math.floor((rangedLevel + rangedLevelBoost) * prayerAttackMultiplier)
         effectiveRangedAttack += 8;
@@ -152,7 +159,7 @@ export class Result {
 
         console.log("Equipment ranged attack: " + equipmentRangedAttack);
 
-        let attackRoll = Math.floor(effectiveRangedAttack * (equipmentRangedAttack + 64)) * accuracyMultiplier;
+        let attackRoll = Math.floor(Math.floor(effectiveRangedAttack * (equipmentRangedAttack + 64)) * accuracyMultiplier);
 
         console.log("Attack Roll: " + attackRoll);
 
