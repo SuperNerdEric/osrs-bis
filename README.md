@@ -1,6 +1,6 @@
 # OSRS DPS Calc
 
-A simple DPS Calc that comes with predefined gear set-ups so that you don't have to create your own as long with common
+A simple DPS Calc that comes with predefined gear set-ups so that you don't have to create your own along with common
 bosses/raids.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
