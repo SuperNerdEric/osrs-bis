@@ -318,3 +318,22 @@ item.crush = -6;
 item.magic = -10;
 item.ranged = 20;
 items.set(item.name, item);
+
+item = new Item();
+item.name = "Twisted bow";
+item.style = AttackStyle.Rapid;
+item.imagePath = './Images/Items/Twisted_bow.png';
+item.wikiLink = "https://oldschool.runescape.wiki/w/Twisted_bow"
+item.slot = Slot.MainHand; //Todo How to handle 2hs?
+item.speedSeconds = 3.6;
+item.ranged = 70;
+item.rangedStrength = 20;
+items.set(item.name, item);
+
+item = new Item();
+item.name = "Dragon arrow";
+item.imagePath = './Images/Items/Dragon_arrow.png';
+item.wikiLink = "https://oldschool.runescape.wiki/w/Dragon_arrow"
+item.slot = Slot.Ammo;
+item.rangedStrength = 60;
+items.set(item.name, item);

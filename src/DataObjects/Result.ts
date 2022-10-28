@@ -117,7 +117,30 @@ export class Result {
         console.log("Equipment ranged strength: " + equipmentRangedStrength);
 
         let gearMultiplier = 1; //Todo: slayer helm, salve
-        this.maxHit = Math.floor(0.5 + ((effectiveRangedStrength) * (equipmentRangedStrength + 64)) / 640);
+        let accuracyMultiplier = 1;
+        if(this.gearSet[0].name === "Twisted bow"){
+            let targetMagic = this.targetMonster.magicLevel;
+
+            if(this.targetMonster.magicAccuracy > targetMagic) {
+                targetMagic = this.targetMonster.magicAccuracy;
+            }
+            console.log("Target magic: " + targetMagic);
+
+            accuracyMultiplier =  140 + (((10 * 3 * targetMagic)/10 - 10)/100) - Math.pow(((3*targetMagic)/10 - 100), 2) /100;
+            if(accuracyMultiplier > 140) {
+                accuracyMultiplier = 140;
+            }
+            accuracyMultiplier /= 100;
+            console.log("Twisted Bow Accuracy Multiplier: " + accuracyMultiplier);
+            let damageMultiplier = 250 + (((10 * 3 * targetMagic)/10 - 14)/100) - Math.pow(((3*targetMagic)/10 - 140), 2) /100;
+            if(damageMultiplier > 250) {
+                damageMultiplier = 250;
+            }
+            gearMultiplier = damageMultiplier / 100;
+            console.log("Twisted Bow Damage Multiplier: " + damageMultiplier);
+        }
+
+        this.maxHit = Math.floor(0.5 + (((effectiveRangedStrength) * (equipmentRangedStrength + 64)) / 640) * gearMultiplier);
 
         let effectiveRangedAttack = Math.floor((rangedLevel + rangedLevelBoost) * prayerAttackMultiplier)
         effectiveRangedAttack += 8;
@@ -129,7 +152,7 @@ export class Result {
 
         console.log("Equipment ranged attack: " + equipmentRangedAttack);
 
-        let attackRoll = Math.floor(effectiveRangedAttack * (equipmentRangedAttack + 64));
+        let attackRoll = Math.floor(effectiveRangedAttack * (equipmentRangedAttack + 64)) * accuracyMultiplier;
 
         console.log("Attack Roll: " + attackRoll);
 
@@ -140,6 +163,8 @@ export class Result {
         } else {
             this.accuracy = attackRoll / (2 * (defenceRoll + 1));
         }
+
+        this.accuracy = this.accuracy;
 
         let damagePerHit = (this.maxHit * this.accuracy) / 2;
 
