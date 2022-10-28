@@ -11,31 +11,31 @@ export class Result {
 
     calculateDPS(invocationLevel: number) {
         const attackStyle = this.gearSet[0].style;
-        if(attackStyle == AttackStyle.Stab || attackStyle == AttackStyle.Slash || attackStyle == AttackStyle.Crush) {
-            this.calculateDPSMelee(invocationLevel, attackStyle, 99, 99,26, 26,1.23, 1.2);
-        } else if(attackStyle == AttackStyle.Rapid) {
-            this.calculateDPSRanged(invocationLevel, attackStyle, 99, 26,1.23, 1.2);
+        if (attackStyle == AttackStyle.Stab || attackStyle == AttackStyle.Slash || attackStyle == AttackStyle.Crush) {
+            this.calculateDPSMelee(invocationLevel, attackStyle, 99, 99, 26, 26, 1.23, 1.2);
+        } else if (attackStyle == AttackStyle.Rapid) {
+            this.calculateDPSRanged(invocationLevel, attackStyle, 99, 26, 1.23, 1.2);
         }
 
     }
 
     private calculateDPSMelee(invocationLevel: number, attackStyle: AttackStyle, strengthLevel: number, attackLevel: number, strengthLevelBoost: number, attackLevelBoost: number, prayerStrengthMultiplier: number, prayerAttackMultiplier: number) {
-        let effectiveStrengthLevel =  Math.floor((strengthLevel + strengthLevelBoost) * prayerStrengthMultiplier);
+        let effectiveStrengthLevel = Math.floor((strengthLevel + strengthLevelBoost) * prayerStrengthMultiplier);
         effectiveStrengthLevel += 3; //aggressive attack style
         effectiveStrengthLevel += 8;
 
         this.maxHit = this.calculateMaxHitMelee(effectiveStrengthLevel);
 
-        let effectiveAttackLevel =  Math.floor((attackLevel + attackLevelBoost) * prayerAttackMultiplier);
+        let effectiveAttackLevel = Math.floor((attackLevel + attackLevelBoost) * prayerAttackMultiplier);
         effectiveAttackLevel += 8;
 
         let equipmentAttackBonus = 0;
         this.gearSet.forEach(item => {
-            if(attackStyle == AttackStyle.Stab) {
+            if (attackStyle == AttackStyle.Stab) {
                 equipmentAttackBonus += item.stab;
-            } else if(attackStyle == AttackStyle.Slash) {
+            } else if (attackStyle == AttackStyle.Slash) {
                 equipmentAttackBonus += item.slash;
-            } else if(attackStyle == AttackStyle.Crush) {
+            } else if (attackStyle == AttackStyle.Crush) {
                 equipmentAttackBonus += item.crush;
             }
         })
@@ -46,25 +46,25 @@ export class Result {
         attackRoll = Math.floor(attackRoll * gearMultiplier);
 
         let styleDefenceBonus = 0;
-        if(attackStyle == AttackStyle.Stab) {
+        if (attackStyle == AttackStyle.Stab) {
             styleDefenceBonus = this.targetMonster.stabDefence;
-        } else if(attackStyle == AttackStyle.Slash) {
+        } else if (attackStyle == AttackStyle.Slash) {
             styleDefenceBonus = this.targetMonster.slashDefence;
-        } else if(attackStyle == AttackStyle.Crush) {
+        } else if (attackStyle == AttackStyle.Crush) {
             styleDefenceBonus = this.targetMonster.crushDefence;
         }
         let defenceRoll = (this.targetMonster.defenceLevel + 9) * (styleDefenceBonus + 64);
-        defenceRoll = defenceRoll + Math.floor(defenceRoll * Math.floor(invocationLevel / 5) * 2)/100;
+        defenceRoll = defenceRoll + Math.floor(defenceRoll * Math.floor(invocationLevel / 5) * 2) / 100;
 
 
-        if(attackRoll > defenceRoll) {
+        if (attackRoll > defenceRoll) {
             this.accuracy = 1 - ((defenceRoll + 2) / (2 * (attackRoll + 1)));
         } else {
             this.accuracy = attackRoll / (2 * (defenceRoll + 1));
         }
 
         let damagePerHit = 0;
-        if(this.gearSet[0].name === "Scythe of vitur"){
+        if (this.gearSet[0].name === "Scythe of vitur") {
             //Include 3 hits in accuracy
 
             //Do 3 hits
@@ -74,7 +74,7 @@ export class Result {
             damagePerHit = damagePerHit1 + damagePerHit2 + damagePerHit3;
 
             this.maxHit = Math.floor(this.maxHit * 1.75);
-        } else if(this.gearSet[0].name === "Osmumten's fang"){
+        } else if (this.gearSet[0].name === "Osmumten's fang") {
             //reroll accuracy check
             this.accuracy = this.accuracy + (this.accuracy * (1 - this.accuracy));
 
@@ -120,10 +120,10 @@ export class Result {
 
         let gearMultiplier = 1; //Todo: slayer helm, salve
         let accuracyMultiplier = 1;
-        if(this.gearSet[0].name === "Twisted bow"){
+        if (this.gearSet[0].name === "Twisted bow") {
             let targetMagic = this.targetMonster.magicLevel;
 
-            if(this.targetMonster.magicAccuracy > targetMagic) {
+            if (this.targetMonster.magicAccuracy > targetMagic) {
                 targetMagic = this.targetMonster.magicAccuracy;
             }
             console.log("Target magic: " + targetMagic);
@@ -131,7 +131,7 @@ export class Result {
             //accuracyMultiplier =  140 + (((10 * 3 * targetMagic)/10 - 10) / 100) - Math.pow(((3*targetMagic)/10 - 100), 2) / 100;
             //Todo Other calcs seems to round down here? Not sure if correct though
             accuracyMultiplier = 140 + Math.floor((3 * targetMagic - 10) / 100) - Math.floor(Math.pow(3 * targetMagic / 10 - 100, 2) / 100);
-            if(accuracyMultiplier > 140) {
+            if (accuracyMultiplier > 140) {
                 accuracyMultiplier = 140;
             }
 
@@ -139,10 +139,10 @@ export class Result {
             accuracyMultiplier /= 100;
 
             console.log("Twisted Bow Accuracy Multiplier: " + accuracyMultiplier);
-            let damageMultiplier = 250 + (((10 * 3 * targetMagic)/10 - 14)/100) - Math.pow(((3*targetMagic)/10 - 140), 2) /100;
+            let damageMultiplier = 250 + (((10 * 3 * targetMagic) / 10 - 14) / 100) - Math.pow(((3 * targetMagic) / 10 - 140), 2) / 100;
             //Todo Other calcs seems to round down here? Not sure if correct though
             damageMultiplier = 250 + Math.floor((3 * targetMagic - 14) / 100) - Math.floor(Math.pow(3 * targetMagic / 10 - 140, 2) / 100)
-            if(damageMultiplier > 250) {
+            if (damageMultiplier > 250) {
                 damageMultiplier = 250;
             }
             gearMultiplier = damageMultiplier / 100;
@@ -166,9 +166,9 @@ export class Result {
         console.log("Attack Roll: " + attackRoll);
 
         let defenceRoll = (this.targetMonster.defenceLevel + 9) * (this.targetMonster.rangedDefence + 64);
-        defenceRoll = defenceRoll + Math.floor(defenceRoll * Math.floor(invocationLevel / 5) * 2)/100;
+        defenceRoll = defenceRoll + Math.floor(defenceRoll * Math.floor(invocationLevel / 5) * 2) / 100;
 
-        if(attackRoll > defenceRoll) {
+        if (attackRoll > defenceRoll) {
             this.accuracy = 1 - ((defenceRoll + 2) / (2 * (attackRoll + 1)));
         } else {
             this.accuracy = attackRoll / (2 * (defenceRoll + 1));
@@ -179,7 +179,7 @@ export class Result {
         let damagePerHit = (this.maxHit * this.accuracy) / 2;
 
         let speedSeconds = this.gearSet[0].speedSeconds;
-        if(attackStyle == AttackStyle.Rapid) {
+        if (attackStyle == AttackStyle.Rapid) {
             speedSeconds -= 0.6;
         }
         this.dps = damagePerHit / speedSeconds;

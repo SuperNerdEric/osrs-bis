@@ -17,7 +17,7 @@ function App() {
     };
 
     const [targetMonster, setTargetMonster] = React.useState("Ba-Ba");
-    const [sortConfig, setSortConfig] = React.useState({ key: 'dps' as keyof Result, direction:'descending'});;
+    const [sortConfig, setSortConfig] = React.useState({key: 'dps' as keyof Result, direction: 'descending'});
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     const open = Boolean(anchorEl);
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -73,7 +73,7 @@ function App() {
         let result: Result = new Result();
         result.gearSet = gearSet;
         console.log("GearSet: " + JSON.stringify(gearSet));
-        result.targetMonster =  monsters.get(targetMonster) as TargetMonster;
+        result.targetMonster = monsters.get(targetMonster) as TargetMonster;
         result.calculateDPS(invocationLevel);
         console.log(result);
         results.push(result);
@@ -84,9 +84,8 @@ function App() {
         if (sortConfig.key === key && sortConfig.direction === 'ascending') {
             direction = 'descending';
         }
-        setSortConfig({ key, direction });
+        setSortConfig({key, direction});
     }
-
 
 
     React.useMemo(() => {
@@ -129,19 +128,47 @@ function App() {
                             'aria-labelledby': 'basic-button',
                         }}
                     >
-                        <MenuItem onClick={() => { handleClose(); setTargetMonster('Ba-Ba');}}>Ba-Ba</MenuItem>
-                        <MenuItem onClick={() => { handleClose(); setTargetMonster('Akkha');}}>Akkha</MenuItem>
-                        <MenuItem onClick={() => { handleClose(); setTargetMonster('Kephri');}}>Kephri</MenuItem>
-                        <MenuItem onClick={() => { handleClose(); setTargetMonster('Zebak');}}>Zebak</MenuItem>
-                        <MenuItem onClick={() => { handleClose(); setTargetMonster('Wardens P3');}}>Wardens P3</MenuItem>
+                        <MenuItem onClick={() => {
+                            handleClose();
+                            setTargetMonster('Ba-Ba');
+                        }}>
+                            Ba-Ba
+                        </MenuItem>
+                        <MenuItem onClick={() => {
+                            handleClose();
+                            setTargetMonster('Akkha');
+                        }}>
+                            Akkha
+                        </MenuItem>
+                        <MenuItem onClick={() => {
+                            handleClose();
+                            setTargetMonster('Kephri');
+                        }}>
+                            Kephri
+                        </MenuItem>
+                        <MenuItem onClick={() => {
+                            handleClose();
+                            setTargetMonster('Zebak');
+                        }}>
+                            Zebak
+                        </MenuItem>
+                        <MenuItem onClick={() => {
+                            handleClose();
+                            setTargetMonster('Wardens P3');
+                        }}>
+                            Wardens P3
+                        </MenuItem>
                     </Menu>
                 </div>
                 <header className="App-header">
                     <h2>{targetMonster}</h2>
-                    <img src={require(`${(monsters.get(targetMonster) as TargetMonster).imagePath}`)} width="auto" height="150" alt="logo"/>
+                    <img src={require(`${(monsters.get(targetMonster) as TargetMonster).imagePath}`)} width="auto"
+                         height="150" alt="logo"/>
                     <DiscreteSliderMarks handleChange={handleChange}/>
                     <table style={Table}>
-                        <caption>{invocationLevel} Invocation - {(monsters.get(targetMonster) as TargetMonster).defenceLevel} Defence</caption>
+                        <caption>{invocationLevel} Invocation
+                            - {(monsters.get(targetMonster) as TargetMonster).defenceLevel} Defence
+                        </caption>
                         <thead>
                         <tr>
                             <th>Gear</th>
@@ -157,7 +184,8 @@ function App() {
                                         result.gearSet.map(item => (
                                             <Tooltip title={item.name}>
                                                 <a href={item.wikiLink} target="_blank">
-                                                    <img src={require(`${item.imagePath}`)} width="50" height="50" alt="logo"/>
+                                                    <img src={require(`${item.imagePath}`)} width="50" height="50"
+                                                         alt="logo"/>
                                                 </a>
                                             </Tooltip>
                                         ))
