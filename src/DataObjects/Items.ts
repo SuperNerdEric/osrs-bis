@@ -367,8 +367,8 @@ item.style = AttackStyle.Magic;
 item.imagePath = './Images/Items/Sanguinesti_staff.png';
 item.wikiLink = "https://oldschool.runescape.wiki/w/Sanguinesti_staff#Charged";
 item.slot = Slot.MainHand;
-item.speedSeconds = 3;
-item.magic = 35;
+item.speedSeconds = 2.4;
+item.magic = 25;
 items.set(item.name, item);
 
 item = new Item();
@@ -409,7 +409,7 @@ items.set(item.name, item);
 
 item = new Item();
 item.name = "Tormented bracelet";
-item.imagePath = "./Images/Items/Ferocious_gloves.png";
+item.imagePath = "./Images/Items/Tormented_bracelet.png";
 item.wikiLink = "https://oldschool.runescape.wiki/w/Tormented_bracelet";
 item.slot = Slot.Gloves;
 item.magic = 10;
@@ -430,12 +430,8 @@ item.name = "Imbued zamorak cape";
 item.imagePath = "./Images/Items/Imbued_zamorak_cape.png";
 item.wikiLink = "https://oldschool.runescape.wiki/w/Imbued_zamorak_cape";
 item.slot = Slot.Cape;
-item.stab = 4;
-item.slash = 4;
-item.crush = 4;
-item.magic = 1;
-item.ranged = 1;
-item.strength = 8;
+item.magic = 15;
+item.mageStrength = 2;
 items.set(item.name, item);
 
 item = new Item();

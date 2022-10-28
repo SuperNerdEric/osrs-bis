@@ -173,7 +173,7 @@ function App() {
                             <th>Gear</th>
                             <th onClick={() => requestSort('dps')}>DPS</th>
                             <th onClick={() => requestSort('maxHit')}>Max Hit</th>
-                            <th onClick={() => requestSort('accuracy')}>Accuracy</th>
+                            <th onClick={() => requestSort('hitChance')}>Hit Chance</th>
                         </tr>
 
                         {results.map(result => (
@@ -192,7 +192,7 @@ function App() {
                                 </td>
                                 <td>{Math.round(result.dps * 100) / 100}</td>
                                 <td>{result.maxHit}</td>
-                                <td>{Math.round(result.accuracy * 100 * 100) / 100}%</td>
+                                <td>{Math.round(result.hitChance * 100 * 100) / 100}%</td>
                             </tr>
                         ))}
 
