@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/osrs-dps/static/css/main.26b767c8.css",
-    "main.js": "/osrs-dps/static/js/main.efa7cde8.js",
+    "main.js": "/osrs-dps/static/js/main.0938d3ab.js",
     "static/js/787.f7d32ca0.chunk.js": "/osrs-dps/static/js/787.f7d32ca0.chunk.js",
     "static/media/Fire_cape.png": "/osrs-dps/static/media/Fire_cape.9fa34a7e2c3fc7a55285.png",
     "static/media/Infernal_cape.png": "/osrs-dps/static/media/Infernal_cape.138db8766550a20565e9.png",
@@ -14,6 +14,7 @@
     "static/media/Kephri.png": "/osrs-dps/static/media/Kephri.41193c90191fd1068685.png",
     "static/media/Elidinis_ward_f.png": "/osrs-dps/static/media/Elidinis_ward_f.c829fefeca04da923076.png",
     "static/media/Akkha.png": "/osrs-dps/static/media/Akkha.358bbb844f4f47e1b989.png",
+    "static/media/Book_of_the_dead.png": "/osrs-dps/static/media/Book_of_the_dead.1a66f9e1b52a08dd5701.png",
     "static/media/Masori_mask_f.png": "/osrs-dps/static/media/Masori_mask_f.8f9ff382c998d5dbbb7a.png",
     "static/media/Bandos_tassets.png": "/osrs-dps/static/media/Bandos_tassets.3ba3f6db8c6bb541c9aa.png",
     "static/media/Zebak.png": "/osrs-dps/static/media/Zebak.71fd04da051b9e913cdc.png",
@@ -31,7 +32,11 @@
     "static/media/Torva_platebody.png": "/osrs-dps/static/media/Torva_platebody.952bdd3ba37a2f8220b7.png",
     "static/media/Ahrims_robeskirt.png": "/osrs-dps/static/media/Ahrims_robeskirt.5d0b9701bc0908070db3.png",
     "static/media/Dragon_dart.png": "/osrs-dps/static/media/Dragon_dart.8613e18291962c399fbe.png",
+    "static/media/Keris_partisan.png": "/osrs-dps/static/media/Keris_partisan.f2f00a1d890f74378e31.png",
+    "static/media/Keris_partisan_of_the_sun.png": "/osrs-dps/static/media/Keris_partisan_of_the_sun.86e36971be1ee07658ac.png",
+    "static/media/Keris_partisan_of_corruption.png": "/osrs-dps/static/media/Keris_partisan_of_corruption.4acc9d308736f75f3afb.png",
     "static/media/Dragon_arrow.png": "/osrs-dps/static/media/Dragon_arrow.17ff841c447cba53c701.png",
+    "static/media/Keris_partisan_of_breaching.png": "/osrs-dps/static/media/Keris_partisan_of_breaching.b8936fe41f06841b29a5.png",
     "static/media/Amulet_of_fury.png": "/osrs-dps/static/media/Amulet_of_fury.c29b610489d8a1c9cc91.png",
     "static/media/Imbued_zamorak_cape.png": "/osrs-dps/static/media/Imbued_zamorak_cape.1e9dfff5d18e4248f6bf.png",
     "static/media/Sanguinesti_staff.png": "/osrs-dps/static/media/Sanguinesti_staff.a15e0414b16bc465c270.png",
@@ -54,11 +59,11 @@
     "static/media/logo.svg": "/osrs-dps/static/media/logo.489fff331062edd8fa43.svg",
     "index.html": "/osrs-dps/index.html",
     "main.26b767c8.css.map": "/osrs-dps/static/css/main.26b767c8.css.map",
-    "main.efa7cde8.js.map": "/osrs-dps/static/js/main.efa7cde8.js.map",
+    "main.0938d3ab.js.map": "/osrs-dps/static/js/main.0938d3ab.js.map",
     "787.f7d32ca0.chunk.js.map": "/osrs-dps/static/js/787.f7d32ca0.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.26b767c8.css",
-    "static/js/main.efa7cde8.js"
+    "static/js/main.0938d3ab.js"
   ]
 }
