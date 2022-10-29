@@ -1,7 +1,7 @@
 {
   "name": "osrs-dps",
   "version": "0.1.0",
-  "homepage": "https://supernerderic.github.io/osrs-dps",
+  "homepage": "https://osrs-bis.com",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.10.4",
