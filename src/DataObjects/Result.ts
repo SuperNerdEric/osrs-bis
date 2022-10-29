@@ -43,7 +43,11 @@ export class Result {
         });
 
         let attackRoll = effectiveAttackLevel * (equipmentAttackBonus + 64);
-        let gearMultiplier = 1; //slayer helm, salve
+        let gearMultiplier = 1; //Todo slayer helm, salve
+
+        if(this.gearSet[0].name === "Keris partisan of breaching" && this.targetMonster.attribute == "Kalphite") {
+            gearMultiplier = 4 / 3;
+        }
 
         attackRoll = Math.floor(attackRoll * gearMultiplier);
 
@@ -92,6 +96,18 @@ export class Result {
             //lower max hit without affecting dps
             damagePerHit = (this.maxHit * this.hitChance) / 2;
             this.maxHit = Math.floor(this.maxHit * 0.85);
+        } else if(this.gearSet[0].name === "Keris partisan of breaching" && this.targetMonster.attribute == "Kalphite") {
+            this.maxHit = Math.floor(this.maxHit * 4 / 3);
+            damagePerHit = (this.maxHit * this.hitChance) / 2;
+
+            let procMax = this.maxHit * 3;
+
+
+            // 1/51 chance of dealing 3x damage
+            let pseudoMaxHit = 50/51 * this.maxHit + (1/51 * this.maxHit * 3);
+            damagePerHit = (pseudoMaxHit * this.hitChance) / 2;
+
+            console.log("Expected keris partisan hit: " + damagePerHit);
         } else {
             damagePerHit = (this.maxHit * this.hitChance) / 2;
         }

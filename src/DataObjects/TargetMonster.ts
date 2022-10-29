@@ -1,5 +1,6 @@
 export class TargetMonster {
     name: string = "";
+    attribute: string = "";
     imagePath: string = "";
     defenceLevel: number = 0;
     magicLevel: number = 0;

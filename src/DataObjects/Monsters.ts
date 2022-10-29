@@ -30,6 +30,7 @@ monsters.set(monster.name, monster);
 
 monster = new TargetMonster();
 monster.name = "Kephri";
+monster.attribute = "Kalphite";
 monster.imagePath = './Images/Monsters/Kephri.png';
 monster.defenceLevel = 80;
 monster.magicLevel = 125;
