@@ -97,7 +97,9 @@ export class Result {
             damagePerHit = (this.maxHit * this.hitChance) / 2;
             this.maxHit = Math.floor(this.maxHit * 0.85);
         } else if(this.gearSet[0].name === "Keris partisan of breaching" && this.targetMonster.attribute == "Kalphite") {
-            this.maxHit = Math.floor(this.maxHit * 4 / 3);
+
+            //Todo Is it 33% or 4/3?
+            this.maxHit = Math.floor(this.maxHit * 133 / 100);
             damagePerHit = (this.maxHit * this.hitChance) / 2;
 
             let procMax = this.maxHit * 3;
