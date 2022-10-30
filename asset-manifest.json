@@ -1,10 +1,12 @@
 {
   "files": {
-    "main.css": "/static/css/main.26b767c8.css",
-    "main.js": "/static/js/main.0f2ed869.js",
+    "main.css": "/static/css/main.0ed9a958.css",
+    "main.js": "/static/js/main.93939d49.js",
     "static/js/787.f7d32ca0.chunk.js": "/static/js/787.f7d32ca0.chunk.js",
     "static/media/Fire_cape.png": "/static/media/Fire_cape.9fa34a7e2c3fc7a55285.png",
     "static/media/Infernal_cape.png": "/static/media/Infernal_cape.138db8766550a20565e9.png",
+    "static/media/Kril_Tsutsaroth.png": "/static/media/Kril_Tsutsaroth.9b7a5de1c2edf8271414.png",
+    "static/media/Kreearra.png": "/static/media/Kreearra.ada5864a530ee243996c.png",
     "static/media/Ba-Ba.png": "/static/media/Ba-Ba.f5aa50a5f40b62158e0d.png",
     "static/media/Masori_body_f.png": "/static/media/Masori_body_f.6a7e218d564acd6122c7.png",
     "static/media/Avas_assembler.png": "/static/media/Avas_assembler.e0feeb140058bd7ed78f.png",
@@ -20,8 +22,10 @@
     "static/media/Zebak.png": "/static/media/Zebak.71fd04da051b9e913cdc.png",
     "static/media/Barrows_gloves.png": "/static/media/Barrows_gloves.af720174b38556bfc7e3.png",
     "static/media/Ancestral_robe_top.png": "/static/media/Ancestral_robe_top.ecf2f0a7898a1c285548.png",
+    "static/media/General_Graardor.png": "/static/media/General_Graardor.063fae576e8e34a0fd50.png",
     "static/media/Ancestral_hat.png": "/static/media/Ancestral_hat.57bf56e7e282c688d958.png",
     "static/media/Tumekens_Warden.png": "/static/media/Tumekens_Warden.cefd8a2d7bf6f89117aa.png",
+    "static/media/Commander_Zilyana.png": "/static/media/Commander_Zilyana.2ea3add785a509cef40b.png",
     "static/media/Toxic_blowpipe.png": "/static/media/Toxic_blowpipe.2482dacd0941a1ecf8ac.png",
     "static/media/Elidinis_Warden.png": "/static/media/Elidinis_Warden.301a3314a7806d59386b.png",
     "static/media/Masori_chaps_f.png": "/static/media/Masori_chaps_f.c6914cadaf45f783ea42.png",
@@ -58,12 +62,12 @@
     "static/media/Occult_necklace.png": "/static/media/Occult_necklace.b5467eee40dbe71845aa.png",
     "static/media/logo.svg": "/static/media/logo.489fff331062edd8fa43.svg",
     "index.html": "/index.html",
-    "main.26b767c8.css.map": "/static/css/main.26b767c8.css.map",
-    "main.0f2ed869.js.map": "/static/js/main.0f2ed869.js.map",
+    "main.0ed9a958.css.map": "/static/css/main.0ed9a958.css.map",
+    "main.93939d49.js.map": "/static/js/main.93939d49.js.map",
     "787.f7d32ca0.chunk.js.map": "/static/js/787.f7d32ca0.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.26b767c8.css",
-    "static/js/main.0f2ed869.js"
+    "static/css/main.0ed9a958.css",
+    "static/js/main.93939d49.js"
   ]
 }
