@@ -1,9 +1,11 @@
 import {TargetMonster} from "./TargetMonster";
+import {Raid} from "./Raid";
 
 export const monsters = new Map<string, TargetMonster>;
 
 let monster = new TargetMonster();
 monster.name = "Ba-Ba";
+monster.raid = Raid.TombsOfAmascut;
 monster.imagePath = './Images/Monsters/Ba-Ba.png';
 monster.defenceLevel = 80;
 monster.magicLevel = 100;
@@ -17,6 +19,7 @@ monsters.set(monster.name, monster);
 
 monster = new TargetMonster();
 monster.name = "Akkha";
+monster.raid = Raid.TombsOfAmascut;
 monster.imagePath = './Images/Monsters/Akkha.png';
 monster.defenceLevel = 80;
 monster.magicLevel = 100;
@@ -30,6 +33,7 @@ monsters.set(monster.name, monster);
 
 monster = new TargetMonster();
 monster.name = "Kephri";
+monster.raid = Raid.TombsOfAmascut;
 monster.attribute = "Kalphite";
 monster.imagePath = './Images/Monsters/Kephri.png';
 monster.defenceLevel = 80;
@@ -44,6 +48,7 @@ monsters.set(monster.name, monster);
 
 monster = new TargetMonster();
 monster.name = "Zebak";
+monster.raid = Raid.TombsOfAmascut;
 monster.imagePath = './Images/Monsters/Zebak.png';
 monster.defenceLevel = 70;
 monster.magicLevel = 100;
@@ -57,6 +62,7 @@ monsters.set(monster.name, monster);
 
 monster = new TargetMonster();
 monster.name = "Wardens P3";
+monster.raid = Raid.TombsOfAmascut;
 monster.imagePath = './Images/Monsters/Tumekens_Warden.png';
 monster.defenceLevel = 150;
 monster.magicLevel = 150;

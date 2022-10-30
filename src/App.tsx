@@ -9,6 +9,7 @@ import {gearSets} from "./DataObjects/GearSets";
 import {DiscreteSliderMarks} from "./Slider";
 import {TopBar} from "./TopBar";
 import {getTheme} from "./theme";
+import {Raid} from "./DataObjects/Raid";
 
 function App() {
     const [invocationLevel, setInvocationLevel] = React.useState(300);
@@ -27,7 +28,7 @@ function App() {
     const toaList = ["Ba-Ba","Akkha","Kephri","Zebak","Wardens P3"];
     const gwdList = ["Kree'arra (Armadyl)","General Graardor (Bandos)","Commander Zilyana (Saradomin)","K'ril Tsutsaroth (Zamorak)"];
 
-    const isToaBoss: boolean = toaList.indexOf(targetMonster) > -1;
+    const isToaBoss: boolean = (monsters.get(targetMonster) as TargetMonster).raid === Raid.TombsOfAmascut;
 
     let results: Result[] = [];
 

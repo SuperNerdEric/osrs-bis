@@ -1,5 +1,8 @@
+import {Raid} from "./Raid";
+
 export class TargetMonster {
     name: string = "";
+    raid: Raid = Raid.None;
     attribute: string = "";
     imagePath: string = "";
     defenceLevel: number = 0;

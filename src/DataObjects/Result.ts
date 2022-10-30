@@ -1,6 +1,7 @@
 import {TargetMonster} from "./TargetMonster";
 import {Item} from "./Item";
 import {AttackStyle} from "./AttackStyle";
+import {Raid} from "./Raid";
 
 export class Result {
     dps: number = 0;
@@ -45,7 +46,7 @@ export class Result {
         let attackRoll = effectiveAttackLevel * (equipmentAttackBonus + 64);
         let gearMultiplier = 1; //Todo slayer helm, salve
 
-        if(this.gearSet[0].name === "Keris partisan of breaching" && this.targetMonster.attribute == "Kalphite") {
+        if (this.gearSet[0].name === "Keris partisan of breaching" && this.targetMonster.attribute == "Kalphite") {
             gearMultiplier = 4 / 3;
         }
 
@@ -87,7 +88,7 @@ export class Result {
 
             // Two hitChances multiplied by each other. One is normal 1/2 ratio and second is 2/3 ratio
             // (x + 2) / ( 2 (y + 1)) * (2x + 3) / (3 * (y+1))
-            if(attackRoll > defenceRoll) {
+            if (attackRoll > defenceRoll) {
                 this.hitChance = 1 - ((defenceRoll + 2) * (2 * defenceRoll + 3)) / (6 * Math.pow(attackRoll + 1, 2));
             } else {
                 this.hitChance = (6 * Math.pow(attackRoll + 1, 2) - (attackRoll + 2) * (2 * attackRoll + 3)) / (6 * (defenceRoll + 1) * (attackRoll + 1));
@@ -96,7 +97,7 @@ export class Result {
             //lower max hit without affecting dps
             damagePerHit = (this.maxHit * this.hitChance) / 2;
             this.maxHit = Math.floor(this.maxHit * 0.85);
-        } else if(this.gearSet[0].name === "Keris partisan of breaching" && this.targetMonster.attribute == "Kalphite") {
+        } else if (this.gearSet[0].name === "Keris partisan of breaching" && this.targetMonster.attribute == "Kalphite") {
 
             //Todo Is it 33% or 4/3?
             this.maxHit = Math.floor(this.maxHit * 133 / 100);
@@ -106,7 +107,7 @@ export class Result {
 
 
             // 1/51 chance of dealing 3x damage
-            let pseudoMaxHit = 50/51 * this.maxHit + (1/51 * this.maxHit * 3);
+            let pseudoMaxHit = 50 / 51 * this.maxHit + (1 / 51 * this.maxHit * 3);
             damagePerHit = (pseudoMaxHit * this.hitChance) / 2;
 
             console.log("Expected keris partisan hit: " + damagePerHit);
@@ -220,24 +221,27 @@ export class Result {
         });
         console.log("Magic strength: " + equipmentMagicStrength);
 
-        if(this.gearSet[0].name == "Sanguinesti staff") {
+        if (this.gearSet[0].name == "Sanguinesti staff") {
             this.maxHit = Math.floor(boostedMagicLevel / 3) - 1;
             this.maxHit = Math.floor(this.maxHit * (1 + equipmentMagicStrength / 100));
 
             console.log("Sanguinesti Staff Max Hit: " + this.maxHit);
-        } else if(this.gearSet[0].name == "Tumeken's shadow") {
+        } else if (this.gearSet[0].name == "Tumeken's shadow") {
             this.maxHit = Math.floor(boostedMagicLevel / 3) + 1;
 
             //Caps at 100% magic strength
-            equipmentMagicStrength = Math.min(100, equipmentMagicStrength * 4); //inside toa
-            //equipmentMagicStrength = Math.min(100, equipmentMagicStrength * 3); //Todo outside toa
+            if (this.targetMonster.raid === Raid.TombsOfAmascut) {
+                equipmentMagicStrength = Math.min(100, equipmentMagicStrength * 4); //inside toa
+            } else {
+                equipmentMagicStrength = Math.min(100, equipmentMagicStrength * 3);
+            }
 
             this.maxHit = Math.floor(this.maxHit * (1 + equipmentMagicStrength / 100));
         }
 
         let effectiveMagicLevel = Math.floor(boostedMagicLevel * prayerAttackMultiplier);
 
-        if(attackStyle == AttackStyle.Magic) {
+        if (attackStyle == AttackStyle.Magic) {
             //Todo this is "accurate" magic only
             //Why is this +2 when the wiki says +3?
             effectiveMagicLevel += 2;
@@ -249,9 +253,12 @@ export class Result {
         this.gearSet.forEach(item => {
             equipmentMagicAttack += item.magic;
         });
-        if(this.gearSet[0].name == "Tumeken's shadow") {
-            equipmentMagicAttack *= 4; //inside toa
-            //equipmentMagicAttack *= 3; //Todo outside toa
+        if (this.gearSet[0].name == "Tumeken's shadow") {
+            if (this.targetMonster.raid === Raid.TombsOfAmascut) {
+                equipmentMagicAttack *= 4; //inside toa
+            } else {
+                equipmentMagicAttack *= 3;
+            }
         }
 
         let attackRoll = Math.floor(effectiveMagicLevel * (equipmentMagicAttack + 64));
