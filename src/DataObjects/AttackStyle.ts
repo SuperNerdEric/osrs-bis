@@ -1,7 +1,7 @@
 export enum AttackStyle {
-    Stab,
-    Slash,
-    Crush,
-    Rapid,
-    Magic
+    Stab="Stab",
+    Slash="Slash",
+    Crush="Crush",
+    Rapid="Rapid",
+    Magic="Magic"
 }

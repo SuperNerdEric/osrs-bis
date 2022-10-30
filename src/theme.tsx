@@ -10,6 +10,7 @@ export function getTheme() {
                         color: 'black',
                         fontSize: '22px',
                         border: '1px solid #dadde9',
+                        maxWidth: 'unset !important',
                     },
                 },
             },

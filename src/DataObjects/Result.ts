@@ -9,14 +9,24 @@ export class Result {
     hitChance: number = 0;
     gearSet: Item[] = [];
     targetMonster: TargetMonster = new TargetMonster();
+    /*
+        A list of steps that were used to calculate the DPS
+     */
+    reasoning: string[] = [];
+
+    private addReason(reason: string) {
+        this.reasoning.push(reason + "\n");
+    }
 
     calculateDPS(invocationLevel: number) {
         const attackStyle = this.gearSet[0].style;
         if (attackStyle == AttackStyle.Stab || attackStyle == AttackStyle.Slash || attackStyle == AttackStyle.Crush) {
             this.calculateDPSMelee(invocationLevel, attackStyle, 99, 99, 26, 26, 1.23, 1.2);
         } else if (attackStyle == AttackStyle.Rapid) {
+            this.addReason("Using ranged dps");
             this.calculateDPSRanged(invocationLevel, attackStyle, 99, 26, 1.23, 1.2);
         } else {
+            this.addReason("Using magic dps");
             this.calculateDPSMagic(invocationLevel, attackStyle, 99, 26, 1.25);
         }
 
@@ -24,13 +34,22 @@ export class Result {
 
     private calculateDPSMelee(invocationLevel: number, attackStyle: AttackStyle, strengthLevel: number, attackLevel: number, strengthLevelBoost: number, attackLevelBoost: number, prayerStrengthMultiplier: number, prayerAttackMultiplier: number) {
         let effectiveStrengthLevel = Math.floor((strengthLevel + strengthLevelBoost) * prayerStrengthMultiplier);
+        this.addReason("Effective strength level:");
+        this.addReason(`• Math.floor(${strengthLevel}+${strengthLevelBoost}) * ${prayerStrengthMultiplier} = ${effectiveStrengthLevel}`);
+        this.addReason("• Add 3 for aggressive attack style: " + effectiveStrengthLevel + " + 3 = " + Number(effectiveStrengthLevel+3));
         effectiveStrengthLevel += 3; //aggressive attack style
+        this.addReason("• Add 8: " + effectiveStrengthLevel + " + 8 = " + Number(effectiveStrengthLevel+8));
         effectiveStrengthLevel += 8;
 
+        this.addReason("");
         this.maxHit = this.calculateMaxHitMelee(effectiveStrengthLevel);
 
         let effectiveAttackLevel = Math.floor((attackLevel + attackLevelBoost) * prayerAttackMultiplier);
+        this.addReason("");
+        this.addReason("Effective attack level:");
+        this.addReason(`• Math.floor(${attackLevel}+${attackLevelBoost}) * ${prayerAttackMultiplier} = ${effectiveAttackLevel}`);
         effectiveAttackLevel += 8;
+        this.addReason("• Add 8: " + effectiveAttackLevel + " + 8 = " + Number(effectiveAttackLevel+8));
 
         let equipmentAttackBonus = 0;
         this.gearSet.forEach(item => {
@@ -43,14 +62,29 @@ export class Result {
             }
         });
 
+        this.addReason("");
+        this.addReason("Equipment bonus for attack style " + attackStyle + ":");
+        this.addReason("• " + equipmentAttackBonus);
+
+        this.addReason("");
+        this.addReason("Attack roll:");
         let attackRoll = effectiveAttackLevel * (equipmentAttackBonus + 64);
+        this.addReason("• " + effectiveAttackLevel + " * (" + equipmentAttackBonus + " + 64) = " + attackRoll);
         let gearMultiplier = 1; //Todo slayer helm, salve
+        this.addReason("");
+        this.addReason("Gear multiplier:");
 
         if (this.gearSet[0].name === "Keris partisan of breaching" && this.targetMonster.attribute == "Kalphite") {
-            gearMultiplier = 4 / 3;
+            this.addReason(" - Keris partisan of breaching");
+            //Todo Is it 33% or 4/3?
+            gearMultiplier = 1.33;
         }
+        this.addReason("• " + gearMultiplier);
 
+        this.addReason("");
+        this.addReason("Attack roll:");
         attackRoll = Math.floor(attackRoll * gearMultiplier);
+        this.addReason(`• Math.floor(${attackRoll} * ${gearMultiplier}) = ${attackRoll}`);
 
         let styleDefenceBonus = 0;
         if (attackStyle == AttackStyle.Stab) {
@@ -60,25 +94,62 @@ export class Result {
         } else if (attackStyle == AttackStyle.Crush) {
             styleDefenceBonus = this.targetMonster.crushDefence;
         }
+
+        this.addReason("");
+        this.addReason("Target defence for attack style " + attackStyle + ":");
+        this.addReason("• " + styleDefenceBonus);
+
+        this.addReason("");
+        this.addReason("Target defence level: ");
+        this.addReason("• " + this.targetMonster.defenceLevel);
+
+        this.addReason("");
+        this.addReason("Defence roll:");
         let defenceRoll = (this.targetMonster.defenceLevel + 9) * (styleDefenceBonus + 64);
-        defenceRoll = defenceRoll + Math.floor(defenceRoll * Math.floor(invocationLevel / 5) * 2) / 100;
+        this.addReason(`• (${this.targetMonster.defenceLevel} + 9) * (${styleDefenceBonus} + 64) = ${defenceRoll}`);
 
+        let invocationScaledDefenceRoll = defenceRoll + Math.floor(defenceRoll * Math.floor(invocationLevel / 5) * 2) / 100;
+        if(invocationLevel > 0){
+            this.addReason("");
+            this.addReason("Invocation scaling:");
+            this.addReason(`• ${defenceRoll} + Math.floor(${defenceRoll} * Math.floor(${invocationLevel} / 5) * 2) / 100 = ${invocationScaledDefenceRoll}`);
+            defenceRoll = invocationScaledDefenceRoll;
+        }
 
+        this.addReason("");
+        this.addReason("Hit chance:");
         if (attackRoll > defenceRoll) {
             this.hitChance = 1 - ((defenceRoll + 2) / (2 * (attackRoll + 1)));
+            this.addReason(`• 1 - ((${defenceRoll} + 2) / (2 * (${attackRoll} + 1))) = ${this.hitChance}`);
         } else {
             this.hitChance = attackRoll / (2 * (defenceRoll + 1));
+            this.addReason(`• ${attackRoll} / (2 * (${defenceRoll} + 1)) = ${this.hitChance}`);
         }
 
         let damagePerHit = 0;
         if (this.gearSet[0].name === "Scythe of vitur") {
+            this.addReason("");
+            this.addReason("Scythe of vitur:");
+
             //Do 3 hits
             let damagePerHit1 = (this.maxHit * this.hitChance) / 2; //1st is 100% damage
             let damagePerHit2 = (Math.floor(this.maxHit / 2) * this.hitChance) / 2; //2nd is 50% damage
             let damagePerHit3 = (Math.floor(this.maxHit / 4) * this.hitChance) / 2; //3rd is 25% damage
+            this.addReason(`• (${this.maxHit} * ${this.hitChance}) / 2 = ${damagePerHit1}`);
+            this.addReason(`• (Math.floor(${this.maxHit} / 2) * ${this.hitChance}) / 2 = ${damagePerHit2}`);
+            this.addReason(`•  (Math.floor(${this.maxHit} / 4) * ${this.hitChance}) / 2 = ${damagePerHit3}`);
+
             damagePerHit = damagePerHit1 + damagePerHit2 + damagePerHit3;
 
+            this.addReason("");
+            this.addReason("Damage per hit:");
+            this.addReason(`• ${damagePerHit1} + ${damagePerHit2} + ${damagePerHit3} = ${damagePerHit}`);
+
+            this.addReason("");
+            this.addReason("Scythe max hit:");
+            this.addReason(`• Math.floor(${this.maxHit} * 1.75) = ${Math.floor(this.maxHit * 1.75)}`);
             this.maxHit = Math.floor(this.maxHit * 1.75);
+
         } else if (this.gearSet[0].name === "Osmumten's fang") {
 
             // Original accuracy calculation before Jagex updated on October 31st, 2022
@@ -88,14 +159,27 @@ export class Result {
 
             // Two hitChances multiplied by each other. One is normal 1/2 ratio and second is 2/3 ratio
             // (x + 2) / ( 2 (y + 1)) * (2x + 3) / (3 * (y+1))
+
+            this.addReason("");
+            this.addReason("Osmumten's fang does 2 accuracy rolls which increases hit chance:");
             if (attackRoll > defenceRoll) {
                 this.hitChance = 1 - ((defenceRoll + 2) * (2 * defenceRoll + 3)) / (6 * Math.pow(attackRoll + 1, 2));
+                this.addReason(`•  1 - ((${defenceRoll} + 2) * (2 * ${defenceRoll} + 3)) / (6 * Math.pow(${attackRoll} + 1, 2)) = ${this.hitChance}`);
             } else {
                 this.hitChance = (6 * Math.pow(attackRoll + 1, 2) - (attackRoll + 2) * (2 * attackRoll + 3)) / (6 * (defenceRoll + 1) * (attackRoll + 1));
+                this.addReason(`•  (6 * Math.pow(${attackRoll} + 1, 2) - (${attackRoll} + 2) * (2 * ${attackRoll} + 3)) / (6 * (${defenceRoll} + 1) * (${attackRoll} + 1)) = ${this.hitChance}`);
             }
 
             //lower max hit without affecting dps
             damagePerHit = (this.maxHit * this.hitChance) / 2;
+
+            this.addReason("");
+            this.addReason("Damage per hit:");
+            this.addReason(`• (${this.maxHit} * ${this.hitChance}) / 2 = ${damagePerHit}`);
+
+            this.addReason("");
+            this.addReason("Osmumten's fang max hit (does not affect DPS as min hit is also raised):");
+            this.addReason(`• Math.floor(${this.maxHit} * 0.85) = ${Math.floor(this.maxHit * 0.85)}`);
             this.maxHit = Math.floor(this.maxHit * 0.85);
         } else if (this.gearSet[0].name === "Keris partisan of breaching" && this.targetMonster.attribute == "Kalphite") {
 
@@ -112,10 +196,15 @@ export class Result {
 
             console.log("Expected keris partisan hit: " + damagePerHit);
         } else {
+            this.addReason("");
+            this.addReason("Damage per hit:");
             damagePerHit = (this.maxHit * this.hitChance) / 2;
+            this.addReason(`• (${this.maxHit} * ${this.hitChance}) / 2 = ${damagePerHit}`);
         }
-        //console.log("Damage per hit: " + damagePerHit);
+        this.addReason("");
+        this.addReason("DPS:");
         this.dps = damagePerHit / this.gearSet[0].speedSeconds;
+        this.addReason(`• ${damagePerHit} / ${this.gearSet[0].speedSeconds} second swing timer = ${this.dps}`);
 
     }
 
@@ -126,8 +215,16 @@ export class Result {
             equipmentMeleeStrength += item.strength;
         })
 
+        this.addReason("Equipment melee strength:");
+        this.addReason("• " + equipmentMeleeStrength);
+        this.addReason("");
+
+        this.addReason("Max hit:");
         let maxHit = effectiveStrengthLevel * (equipmentMeleeStrength + 64);
+        this.addReason("• " + effectiveStrengthLevel + " * (" + equipmentMeleeStrength + "+" + "64) = " + maxHit);
+        this.addReason("• " + maxHit + " + 320 = " + Number(maxHit + 320));
         maxHit += 320;
+        this.addReason("• Math.floor(" + maxHit + "/640) = " + Math.floor(Number(maxHit / 640)));
         maxHit = Math.floor(maxHit / 640);
 
         let gearMultiplier = 1; //Todo: slayer helm, salve

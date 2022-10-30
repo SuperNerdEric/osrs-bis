@@ -10,6 +10,7 @@ import {DiscreteSliderMarks} from "./Slider";
 import {TopBar} from "./TopBar";
 import {getTheme} from "./theme";
 import {Raid} from "./DataObjects/Raid";
+import InfoIcon from "@mui/icons-material/Info";
 
 function App() {
     const [invocationLevel, setInvocationLevel] = React.useState(300);
@@ -25,8 +26,8 @@ function App() {
     console.log(Object.keys(Result));
     const theme = getTheme();
 
-    const toaList = ["Ba-Ba","Akkha","Kephri","Zebak","Wardens P3"];
-    const gwdList = ["Kree'arra (Armadyl)","General Graardor (Bandos)","Commander Zilyana (Saradomin)","K'ril Tsutsaroth (Zamorak)"];
+    const toaList = ["Ba-Ba", "Akkha", "Kephri", "Zebak", "Wardens P3"];
+    const gwdList = ["Kree'arra (Armadyl)", "General Graardor (Bandos)", "Commander Zilyana (Saradomin)", "K'ril Tsutsaroth (Zamorak)"];
 
     const isToaBoss: boolean = (monsters.get(targetMonster) as TargetMonster).raid === Raid.TombsOfAmascut;
 
@@ -36,7 +37,7 @@ function App() {
         let result: Result = new Result();
         result.gearSet = gearSet;
         result.targetMonster = monsters.get(targetMonster) as TargetMonster;
-        if(isToaBoss){
+        if (isToaBoss) {
             result.calculateDPS(invocationLevel);
         } else {
             result.calculateDPS(0);
@@ -75,12 +76,12 @@ function App() {
         <ThemeProvider theme={theme}>
             <div className="App">
                 <div className='rowC'>
-                <TopBar setTargetMonster={(targetMonster: string) => {
-                    setTargetMonster(targetMonster);
-                }} monsterList={toaList} sectionName={"Tombs of Amascut"}/>
-                <TopBar setTargetMonster={(targetMonster: string) => {
-                    setTargetMonster(targetMonster);
-                }} monsterList={gwdList} sectionName={"God Wars Dungeon"}/>
+                    <TopBar setTargetMonster={(targetMonster: string) => {
+                        setTargetMonster(targetMonster);
+                    }} monsterList={toaList} sectionName={"Tombs of Amascut"}/>
+                    <TopBar setTargetMonster={(targetMonster: string) => {
+                        setTargetMonster(targetMonster);
+                    }} monsterList={gwdList} sectionName={"God Wars Dungeon"}/>
                 </div>
                 <header className="App-header">
                     <h2>{targetMonster}</h2>
@@ -116,7 +117,17 @@ function App() {
                                         ))
                                     }
                                 </td>
-                                <td>{Math.round(result.dps * 100) / 100}</td>
+                                <td>
+                                    {Math.round(result.dps * 100) / 100}
+
+                                    {/*Debug only, for now....*/}
+                                    {/*
+                                        &nbsp;
+                                        <Tooltip title={<div style={{ whiteSpace: 'pre-line' }}>{result.reasoning}</div>}>
+                                            <InfoIcon/>
+                                        </Tooltip>
+                                    */}
+                                </td>
                                 <td>{result.maxHit}</td>
                                 <td>{Math.round(result.hitChance * 100 * 100) / 100}%</td>
                             </tr>
