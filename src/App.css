@@ -46,3 +46,11 @@ table, th, td {
         transform: rotate(360deg);
     }
 }
+
+.rowC {
+    margin: auto;
+    padding: 0px;
+
+    display:flex;
+    flex-direction:row;
+}

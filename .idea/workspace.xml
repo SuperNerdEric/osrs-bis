@@ -1,11 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4032619e-3942-4a56-9b4c-b729a2e7d785" name="Changes" comment="" />
+    <list default="true" id="4032619e-3942-4a56-9b4c-b729a2e7d785" name="Changes" comment="Lower">
+      <change afterPath="$PROJECT_DIR$/src/Images/Monsters/Commander_Zilyana.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Images/Monsters/General_Graardor.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Images/Monsters/Kreearra.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Images/Monsters/Kril_Tsutsaroth.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/TopBar.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/theme.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataObjects/Monsters.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataObjects/Monsters.ts" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="TypeScript File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -23,14 +41,58 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/Eric/WebstormProjects/osrs-dps",
+    "last_opened_file_path": "C:/Users/Eric/WebstormProjects/osrs-dps/src/Images/Monsters",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "run.code.analysis.last.selected.profile": "pProject Default",
     "ts.external.directory.path": "C:\\Users\\Eric\\WebstormProjects\\osrs-dps\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Eric\WebstormProjects\osrs-dps\src\Images\Monsters" />
+      <recent name="C:\Users\Eric\WebstormProjects\osrs-dps\src\Images\Items" />
+      <recent name="C:\Users\Eric\WebstormProjects\osrs-dps\public" />
+      <recent name="C:\Users\Eric\WebstormProjects\osrs-dps\src\Items" />
+      <recent name="C:\Users\Eric\WebstormProjects\osrs-dps\src\DataObjects" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Eric\WebstormProjects\osrs-dps\src\Images" />
+      <recent name="C:\Users\Eric\WebstormProjects\osrs-dps\src\DataObjects" />
+      <recent name="C:\Users\Eric\WebstormProjects\osrs-dps\src\Items" />
+    </key>
+    <key name="es6.move.members.recent.items">
+      <recent name="C:\Users\Eric\WebstormProjects\osrs-dps\src\Theme.tsx" />
+      <recent name="C:\Users\Eric\WebstormProjects\osrs-dps\src\TopBar.tsx" />
+      <recent name="C:\Users\Eric\WebstormProjects\osrs-dps\src\Slider.tsx" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JavaScript Debug.Debug">
+    <configuration name="Debug" type="JavascriptDebugType" uri="http://localhost:3000/">
+      <method v="2" />
+    </configuration>
+    <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="JavaScript Debug.Debug" />
+      <item itemvalue="npm.start" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.start" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -40,10 +102,245 @@
       <option name="presentableId" value="Default" />
       <updated>1666830017527</updated>
       <workItem from="1666830025314" duration="252000" />
+      <workItem from="1666830473459" duration="103011000" />
     </task>
+    <task id="LOCAL-00001" summary="Implement melee DPS calcs for Tombs of Amascut.">
+      <created>1666906409037</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1666906409037</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Update README.md">
+      <created>1666906526990</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1666906526990</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Update title and favicon.ico">
+      <created>1666907390594</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1666907390594</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Change default direction to descending.">
+      <created>1666907478245</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1666907478245</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Style dropdown menu.">
+      <created>1666908727712</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1666908727712</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Implement blowpipe ranged setup and dps calc.">
+      <created>1666913416270</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1666913416270</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Add armadyl blowpipe set.">
+      <created>1666914095988</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1666914095988</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Lower padding on table.">
+      <created>1666914255008</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1666914255008</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Include calc for Twisted bow.">
+      <created>1666922111276</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1666922111276</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Modify formula for Twisted bow.">
+      <created>1666930794216</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1666930794216</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Add Barrows gloves.">
+      <created>1666930810355</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1666930810355</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Remove unnecessary onClick.">
+      <created>1666930833419</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1666930833419</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Add invocation level slider.">
+      <created>1666933522608</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1666933522608</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Reformat code.">
+      <created>1666933897255</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1666933897255</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Add mage items and gearsets.">
+      <created>1666936214612</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1666936214612</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Update fang formula and cleanup.">
+      <created>1666988380039</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1666988380039</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Add magic DPS calculation.">
+      <created>1666994156558</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1666994156558</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Add gh-pages deploy.">
+      <created>1666994850268</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1666994850268</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Fix readme text.">
+      <created>1666995332083</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1666995332083</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Fix content meta tag.">
+      <created>1666995363733</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1666995363733</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Add link to host in README.md">
+      <created>1666995574649</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1666995574649</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Update commented out old accuracy check in case I ever want to turn in back on.">
+      <created>1666995897555</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1666995897555</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Add book of the dead and keris.">
+      <created>1667020801810</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1667020801810</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Change Keris max hit to be 33% increase instead of 4/3 to be consistent with other calcs.">
+      <created>1667080788247</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1667080788247</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Add CNAME file.">
+      <created>1667082503864</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1667082503864</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Change homepage.">
+      <created>1667083533539</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1667083533539</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Update README.md" />
+    <MESSAGE value="Update title and favicon.ico" />
+    <MESSAGE value="Change default direction to descending." />
+    <MESSAGE value="Style dropdown menu." />
+    <MESSAGE value="Implement blowpipe ranged setup and dps calc." />
+    <MESSAGE value="Add armadyl blowpipe set." />
+    <MESSAGE value="Lower padding on table." />
+    <MESSAGE value="Include calc for Twisted bow." />
+    <MESSAGE value="Modify formula for Twisted bow." />
+    <MESSAGE value="Add Barrows gloves." />
+    <MESSAGE value="Remove unnecessary onClick." />
+    <MESSAGE value="Add invocation level slider." />
+    <MESSAGE value="Reformat code." />
+    <MESSAGE value="Add mage items and gearsets." />
+    <MESSAGE value="Update fang formula and cleanup." />
+    <MESSAGE value="Add magic DPS calculation." />
+    <MESSAGE value="Add gh-pages deploy." />
+    <MESSAGE value="Fix readme text." />
+    <MESSAGE value="Fix content meta tag." />
+    <MESSAGE value="Add link to host in README.md" />
+    <MESSAGE value="Update commented out old accuracy check in case I ever want to turn in back on." />
+    <MESSAGE value="Add book of the dead and keris." />
+    <MESSAGE value="Change Keris max hit to be 33% increase instead of 4/3 to be consistent with other calcs." />
+    <MESSAGE value="Add CNAME file." />
+    <MESSAGE value="Change homepage." />
+    <option name="LAST_COMMIT_MESSAGE" value="Change homepage." />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/App.tsx</url>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/App.tsx</url>
+          <line>90</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/DataObjects/AttackStyle.ts</url>
+          <line>3</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
