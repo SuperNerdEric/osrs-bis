@@ -11,7 +11,7 @@ import {TopBar} from "./TopBar";
 import {getTheme} from "./theme";
 import {Raid} from "./DataObjects/Raid";
 import InfoIcon from "@mui/icons-material/Info";
-import {Player} from "./DataObjects/Player";
+import GitHubIcon from '@mui/icons-material/GitHub';
 
 function App() {
     const [invocationLevel, setInvocationLevel] = React.useState(300);
@@ -92,6 +92,16 @@ function App() {
                         setTargetMonster(targetMonster);
                     }} monsterList={gwdList} sectionName={"God Wars Dungeon"}/>
                 </div>
+                <a href="https://github.com/SuperNerdEric/osrs-dps" target="_blank">
+                <GitHubIcon style={{
+                    position: 'absolute',
+                    top: 0,
+                    right: 0,
+                    zIndex: 1,
+                    fontSize: 50,
+                    color: 'white'
+                }} ></GitHubIcon>
+                </a>
                 <header className="App-header">
                     <h2>{targetMonster}</h2>
                     <img src={require(`${(monsters.get(targetMonster) as TargetMonster).imagePath}`)} width="auto"
@@ -159,4 +169,3 @@ const Table = {
     border: 1,
     padding: 15,
 }
-
