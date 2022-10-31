@@ -15,6 +15,7 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import useUrlState from '@ahooksjs/use-url-state';
 import { Router, Route } from 'react-router';
 import { createBrowserHistory } from 'history';
+import {gwdMonsters, toaMonsters} from "./DataObjects/ToaMonsters";
 
 const history = createBrowserHistory();
 
@@ -88,12 +89,12 @@ function App() {
         <ThemeProvider theme={theme}>
             <div className="App">
                 <div className='rowC'>
-                    <TopBar setTargetMonster={(targetMonster: string) => {
-                        setUrlState({target : targetMonster});
-                    }} monsterList={toaList} sectionName={"Tombs of Amascut"}/>
-                    <TopBar setTargetMonster={(targetMonster: string) => {
-                        setUrlState({target : targetMonster, invocationLevel: undefined});
-                    }} monsterList={gwdList} sectionName={"God Wars Dungeon"}/>
+                    <TopBar setTargetMonster={(targetMonster: TargetMonster) => {
+                        setUrlState({target : targetMonster.name});
+                    }} monsterList={toaMonsters} sectionName={"Tombs of Amascut"}/>
+                    <TopBar setTargetMonster={(targetMonster: TargetMonster) => {
+                        setUrlState({target : targetMonster.shortName || targetMonster.name, invocationLevel: undefined});
+                    }} monsterList={gwdMonsters} sectionName={"God Wars Dungeon"}/>
                 </div>
                 <div style={{
                     position: 'absolute',
@@ -114,7 +115,7 @@ function App() {
                 </a>
                 </div>
                 <header className="App-header">
-                    <h2>{urlState.target}</h2>
+                    <h2>{(monsters.get(urlState.target) as TargetMonster).name}</h2>
                     <img src={require(`${(monsters.get(urlState.target) as TargetMonster).imagePath}`)} width="auto"
                          height="150" alt="logo"/>
                     {

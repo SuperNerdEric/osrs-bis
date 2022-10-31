@@ -2,6 +2,7 @@ import {Raid} from "./Raid";
 
 export class TargetMonster {
     name: string = "";
+    shortName: string = "";
     raid: Raid = Raid.None;
     attribute: string = "";
     imagePath: string = "";

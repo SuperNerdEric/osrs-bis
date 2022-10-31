@@ -1,7 +1,8 @@
 import React, {useState} from "react";
 import {Button, Menu, MenuItem} from "@mui/material";
+import {TargetMonster} from "./DataObjects/TargetMonster";
 
-export function TopBar(props: { setTargetMonster: (targetMonster: string) => void, monsterList: string[], sectionName: string }) {
+export function TopBar(props: { setTargetMonster: (targetMonster: TargetMonster) => void, monsterList: TargetMonster[], sectionName: string }) {
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     const [open, setOpen] = useState(false);
     const handleHover = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -31,7 +32,7 @@ export function TopBar(props: { setTargetMonster: (targetMonster: string) => voi
         setOpen(false);
     };
 
-    const handleSelectBoss = (targetMonster: string) => {
+    const handleSelectBoss = (targetMonster: TargetMonster) => {
         props.setTargetMonster(targetMonster)
         setAnchorEl(null);
         setOpen(false);
@@ -73,7 +74,7 @@ export function TopBar(props: { setTargetMonster: (targetMonster: string) => voi
         >
             {props.monsterList.map(result => (
                 <MenuItem onClick={() => handleSelectBoss(result)}>
-                    {result}
+                    {result.name}
                 </MenuItem>
             ))}
         </Menu>
