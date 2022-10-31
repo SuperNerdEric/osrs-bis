@@ -1,7 +1,7 @@
 import React from 'react';
 
 import './App.css';
-import {ThemeProvider, Tooltip} from "@mui/material";
+import {Stack, ThemeProvider, Tooltip, Typography} from "@mui/material";
 import {Result} from "./DataObjects/Result";
 import {TargetMonster} from "./DataObjects/TargetMonster";
 import {monsters} from "./DataObjects/Monsters";
@@ -92,16 +92,24 @@ function App() {
                         setTargetMonster(targetMonster);
                     }} monsterList={gwdList} sectionName={"God Wars Dungeon"}/>
                 </div>
-                <a href="https://github.com/SuperNerdEric/osrs-dps" target="_blank">
-                <GitHubIcon style={{
+                <div style={{
                     position: 'absolute',
                     top: 0,
-                    right: 0,
+                    right: 10,
                     zIndex: 1,
                     fontSize: 50,
-                    color: 'white'
-                }} ></GitHubIcon>
+                    color: 'white',
+                }}>
+                <a href="https://github.com/SuperNerdEric/osrs-dps" target="_blank" style={{ textDecoration: 'none' }}>
+                    <Stack direction="row" alignItems="center" gap={1}>
+                        <GitHubIcon style={{
+                            fontSize: 45,
+                            color: 'white'
+                        }}/>
+                        <Typography style={{color: 'white', fontSize: '35px'}}>GitHub</Typography>
+                    </Stack>
                 </a>
+                </div>
                 <header className="App-header">
                     <h2>{targetMonster}</h2>
                     <img src={require(`${(monsters.get(targetMonster) as TargetMonster).imagePath}`)} width="auto"

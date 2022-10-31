@@ -55,6 +55,7 @@ export function TopBar(props: { setTargetMonster: (targetMonster: string) => voi
             anchorEl={anchorEl}
             open={open}
             onClose={handleClose}
+            disableScrollLock={true} //Without this padding is added to the body which causes other items to shift https://stackoverflow.com/a/63527156
             MenuListProps={{
                 "aria-labelledby": "basic-button",
                 onMouseLeave: (e) => {
