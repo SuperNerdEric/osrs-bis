@@ -1,21 +1,20 @@
 import React from 'react';
 
 import './App.css';
-import {Stack, ThemeProvider, Tooltip, Typography} from "@mui/material";
+import {ThemeProvider, Tooltip} from "@mui/material";
 import {Result} from "./DataObjects/Result";
 import {TargetMonster} from "./DataObjects/TargetMonster";
 import {monsters} from "./DataObjects/Monsters";
 import {gearSets} from "./DataObjects/GearSets";
 import {DiscreteSliderMarks} from "./Slider";
-import {TopBar} from "./TopBar";
+import {TopBarItem} from "./TopBarItem";
 import {getTheme} from "./theme";
 import {Raid} from "./DataObjects/Raid";
-import InfoIcon from "@mui/icons-material/Info";
-import GitHubIcon from '@mui/icons-material/GitHub';
 import useUrlState from '@ahooksjs/use-url-state';
-import { Router, Route } from 'react-router';
-import { createBrowserHistory } from 'history';
+import {Route, Router} from 'react-router';
+import {createBrowserHistory} from 'history';
 import {gwdMonsters, toaMonsters} from "./DataObjects/ToaMonsters";
+import {GitHub} from "./GitHub";
 
 const history = createBrowserHistory();
 
@@ -30,9 +29,6 @@ function App() {
 
     console.log(Object.keys(Result));
     const theme = getTheme();
-
-    const toaList = ["Ba-Ba", "Akkha", "Kephri", "Zebak", "Wardens P3"];
-    const gwdList = ["Kree'arra (Armadyl)", "General Graardor (Bandos)", "Commander Zilyana (Saradomin)", "K'ril Tsutsaroth (Zamorak)"];
 
     const isToaBoss: boolean = (monsters.get(urlState.target) as TargetMonster).raid === Raid.TombsOfAmascut;
 
@@ -89,37 +85,24 @@ function App() {
         <ThemeProvider theme={theme}>
             <div className="App">
                 <div className='rowC'>
-                    <TopBar setTargetMonster={(targetMonster: TargetMonster) => {
-                        setUrlState({target : targetMonster.name});
+                    <TopBarItem setTargetMonster={(targetMonster: TargetMonster) => {
+                        setUrlState({target: targetMonster.name});
                     }} monsterList={toaMonsters} sectionName={"Tombs of Amascut"}/>
-                    <TopBar setTargetMonster={(targetMonster: TargetMonster) => {
-                        setUrlState({target : targetMonster.shortName || targetMonster.name, invocationLevel: undefined});
+                    <TopBarItem setTargetMonster={(targetMonster: TargetMonster) => {
+                        setUrlState({
+                            target: targetMonster.shortName || targetMonster.name,
+                            invocationLevel: undefined
+                        });
                     }} monsterList={gwdMonsters} sectionName={"God Wars Dungeon"}/>
                 </div>
-                <div style={{
-                    position: 'absolute',
-                    top: 0,
-                    right: 10,
-                    zIndex: 1,
-                    fontSize: 50,
-                    color: 'white',
-                }}>
-                <a href="https://github.com/SuperNerdEric/osrs-dps" target="_blank" style={{ textDecoration: 'none' }}>
-                    <Stack direction="row" alignItems="center" gap={1}>
-                        <GitHubIcon style={{
-                            fontSize: 45,
-                            color: 'white'
-                        }}/>
-                        <Typography style={{color: 'white', fontSize: '35px'}}>GitHub</Typography>
-                    </Stack>
-                </a>
-                </div>
+                <GitHub/>
                 <header className="App-header">
                     <h2>{(monsters.get(urlState.target) as TargetMonster).name}</h2>
                     <img src={require(`${(monsters.get(urlState.target) as TargetMonster).imagePath}`)} width="auto"
                          height="150" alt="logo"/>
                     {
-                        isToaBoss && <DiscreteSliderMarks defaultValue={urlState.invocationLevel} handleChange={handleChange}/>
+                        isToaBoss &&
+                        <DiscreteSliderMarks defaultValue={urlState.invocationLevel} handleChange={handleChange}/>
                     }
                     <table style={Table}>
                         <caption>

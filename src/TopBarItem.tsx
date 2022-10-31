@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import {Button, Menu, MenuItem} from "@mui/material";
 import {TargetMonster} from "./DataObjects/TargetMonster";
 
-export function TopBar(props: { setTargetMonster: (targetMonster: TargetMonster) => void, monsterList: TargetMonster[], sectionName: string }) {
+export function TopBarItem(props: { setTargetMonster: (targetMonster: TargetMonster) => void, monsterList: TargetMonster[], sectionName: string }) {
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     const [open, setOpen] = useState(false);
     const handleHover = (event: React.MouseEvent<HTMLButtonElement>) => {
