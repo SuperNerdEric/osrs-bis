@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.0ed9a958.css",
-    "main.js": "/static/js/main.20e954e8.js",
+    "main.js": "/static/js/main.52630d12.js",
     "static/js/787.f7d32ca0.chunk.js": "/static/js/787.f7d32ca0.chunk.js",
     "static/media/Fire_cape.png": "/static/media/Fire_cape.9fa34a7e2c3fc7a55285.png",
     "static/media/Infernal_cape.png": "/static/media/Infernal_cape.138db8766550a20565e9.png",
@@ -64,11 +64,11 @@
     "static/media/logo.svg": "/static/media/logo.489fff331062edd8fa43.svg",
     "index.html": "/index.html",
     "main.0ed9a958.css.map": "/static/css/main.0ed9a958.css.map",
-    "main.20e954e8.js.map": "/static/js/main.20e954e8.js.map",
+    "main.52630d12.js.map": "/static/js/main.52630d12.js.map",
     "787.f7d32ca0.chunk.js.map": "/static/js/787.f7d32ca0.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.0ed9a958.css",
-    "static/js/main.20e954e8.js"
+    "static/js/main.52630d12.js"
   ]
 }
