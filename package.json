@@ -4,6 +4,7 @@
   "homepage": "https://osrs-bis.com",
   "private": true,
   "dependencies": {
+    "@ahooksjs/use-url-state": "^3.5.0",
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
     "@mui/icons-material": "^5.10.9",
@@ -15,8 +16,11 @@
     "@types/node": "^16.18.2",
     "@types/react": "^18.0.23",
     "@types/react-dom": "^18.0.7",
+    "@types/react-router": "^5.1.19",
+    "ahooks": "^3.7.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-router": "^5.0.0",
     "react-scripts": "5.0.1",
     "typescript": "^4.8.4",
     "web-vitals": "^2.1.4"

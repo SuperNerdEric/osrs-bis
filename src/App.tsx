@@ -12,16 +12,19 @@ import {getTheme} from "./theme";
 import {Raid} from "./DataObjects/Raid";
 import InfoIcon from "@mui/icons-material/Info";
 import GitHubIcon from '@mui/icons-material/GitHub';
+import useUrlState from '@ahooksjs/use-url-state';
+import { Router, Route } from 'react-router';
+import { createBrowserHistory } from 'history';
+
+const history = createBrowserHistory();
 
 function App() {
-    const [invocationLevel, setInvocationLevel] = React.useState(300);
-
     const handleChange = (event: Event, newValue: number | number[]) => {
         console.log("Set invocation level: " + newValue);
-        setInvocationLevel(newValue as number);
+        setUrlState({ invocationLevel: newValue });
     };
 
-    const [targetMonster, setTargetMonster] = React.useState("Ba-Ba");
+    const [urlState, setUrlState] = useUrlState({ target: "Ba-Ba", invocationLevel: 300 });
     const [sortConfig, setSortConfig] = React.useState({key: 'dps' as keyof Result, direction: 'descending'});
 
     console.log(Object.keys(Result));
@@ -30,20 +33,20 @@ function App() {
     const toaList = ["Ba-Ba", "Akkha", "Kephri", "Zebak", "Wardens P3"];
     const gwdList = ["Kree'arra (Armadyl)", "General Graardor (Bandos)", "Commander Zilyana (Saradomin)", "K'ril Tsutsaroth (Zamorak)"];
 
-    const isToaBoss: boolean = (monsters.get(targetMonster) as TargetMonster).raid === Raid.TombsOfAmascut;
+    const isToaBoss: boolean = (monsters.get(urlState.target) as TargetMonster).raid === Raid.TombsOfAmascut;
 
     let results: Result[] = [];
 
     gearSets.forEach(gearSet => {
         let result: Result = new Result();
         result.gearSet = gearSet;
-        result.targetMonster = monsters.get(targetMonster) as TargetMonster;
+        result.targetMonster = monsters.get(urlState.target) as TargetMonster;
         if (isToaBoss) {
             result.player.attackLevelBoost = 26;
             result.player.strengthLevelBoost = 26;
             result.player.rangedLevelBoost = 26;
             result.player.magicLevelBoost = 26;
-            result.calculateDPS(invocationLevel);
+            result.calculateDPS(urlState.invocationLevel);
         } else {
             result.player.attackLevelBoost = 19;
             result.player.strengthLevelBoost = 19;
@@ -86,10 +89,10 @@ function App() {
             <div className="App">
                 <div className='rowC'>
                     <TopBar setTargetMonster={(targetMonster: string) => {
-                        setTargetMonster(targetMonster);
+                        setUrlState({target : targetMonster});
                     }} monsterList={toaList} sectionName={"Tombs of Amascut"}/>
                     <TopBar setTargetMonster={(targetMonster: string) => {
-                        setTargetMonster(targetMonster);
+                        setUrlState({target : targetMonster, invocationLevel: undefined});
                     }} monsterList={gwdList} sectionName={"God Wars Dungeon"}/>
                 </div>
                 <div style={{
@@ -111,16 +114,16 @@ function App() {
                 </a>
                 </div>
                 <header className="App-header">
-                    <h2>{targetMonster}</h2>
-                    <img src={require(`${(monsters.get(targetMonster) as TargetMonster).imagePath}`)} width="auto"
+                    <h2>{urlState.target}</h2>
+                    <img src={require(`${(monsters.get(urlState.target) as TargetMonster).imagePath}`)} width="auto"
                          height="150" alt="logo"/>
                     {
-                        isToaBoss && <DiscreteSliderMarks handleChange={handleChange}/>
+                        isToaBoss && <DiscreteSliderMarks defaultValue={urlState.invocationLevel} handleChange={handleChange}/>
                     }
                     <table style={Table}>
                         <caption>
-                            {isToaBoss && `${invocationLevel} Invocation - `}
-                            {(monsters.get(targetMonster) as TargetMonster).defenceLevel} Defence
+                            {isToaBoss && `${urlState.invocationLevel} Invocation - `}
+                            {(monsters.get(urlState.target) as TargetMonster).defenceLevel} Defence
                         </caption>
                         <thead>
                         <tr>
@@ -170,7 +173,14 @@ function App() {
     );
 }
 
-export default App;
+export default () => {
+    return (
+        <Router history={history}>
+            <Route component={App} />
+        </Router>
+    );
+};
+
 
 
 const Table = {

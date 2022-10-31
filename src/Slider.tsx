@@ -60,18 +60,18 @@ function valuetext(value: number) {
     return `${value} Invocation level`;
 }
 
-export function DiscreteSliderMarks({handleChange}: any) {
+export function DiscreteSliderMarks(props: { handleChange: any, defaultValue: number }) {
     return (
         <Box sx={{width: 1000}}>
             <Slider
                 aria-label="Custom marks"
-                defaultValue={300}
+                defaultValue={props.defaultValue}
                 getAriaValueText={valuetext}
                 step={5}
                 valueLabelDisplay="auto"
                 marks={marks}
                 max={600}
-                onChange={handleChange}
+                onChange={props.handleChange}
             />
         </Box>
     );
