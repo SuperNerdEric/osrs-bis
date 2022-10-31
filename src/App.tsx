@@ -11,6 +11,7 @@ import {TopBar} from "./TopBar";
 import {getTheme} from "./theme";
 import {Raid} from "./DataObjects/Raid";
 import InfoIcon from "@mui/icons-material/Info";
+import {Player} from "./DataObjects/Player";
 
 function App() {
     const [invocationLevel, setInvocationLevel] = React.useState(300);
@@ -38,8 +39,16 @@ function App() {
         result.gearSet = gearSet;
         result.targetMonster = monsters.get(targetMonster) as TargetMonster;
         if (isToaBoss) {
+            result.player.attackLevelBoost = 26;
+            result.player.strengthLevelBoost = 26;
+            result.player.rangedLevelBoost = 26;
+            result.player.magicLevelBoost = 26;
             result.calculateDPS(invocationLevel);
         } else {
+            result.player.attackLevelBoost = 19;
+            result.player.strengthLevelBoost = 19;
+            result.player.rangedLevelBoost = 13;
+            result.player.magicLevelBoost = 10; //imbued heart
             result.calculateDPS(0);
         }
         console.log(result);
@@ -118,7 +127,7 @@ function App() {
                                     }
                                 </td>
                                 <td>
-                                    {Math.round(result.dps * 100) / 100}
+                                    {Math.round(result.dps * 1000) / 1000}
 
                                     {/*Debug only, for now....*/}
                                     {/*

@@ -2,12 +2,14 @@ import {TargetMonster} from "./TargetMonster";
 import {Item} from "./Item";
 import {AttackStyle} from "./AttackStyle";
 import {Raid} from "./Raid";
+import {Player} from "./Player";
 
 export class Result {
     dps: number = 0;
     maxHit: number = 0;
     hitChance: number = 0;
     gearSet: Item[] = [];
+    player: Player = new Player();
     targetMonster: TargetMonster = new TargetMonster();
     /*
         A list of steps that were used to calculate the DPS
@@ -21,13 +23,13 @@ export class Result {
     calculateDPS(invocationLevel: number) {
         const attackStyle = this.gearSet[0].style;
         if (attackStyle == AttackStyle.Stab || attackStyle == AttackStyle.Slash || attackStyle == AttackStyle.Crush) {
-            this.calculateDPSMelee(invocationLevel, attackStyle, 99, 99, 26, 26, 1.23, 1.2);
+            this.calculateDPSMelee(invocationLevel, attackStyle, this.player.strengthLevel, this.player.attackLevel, this.player.strengthLevelBoost, this.player.attackLevelBoost, 1.23, 1.2);
         } else if (attackStyle == AttackStyle.Rapid) {
             this.addReason("Using ranged dps");
-            this.calculateDPSRanged(invocationLevel, attackStyle, 99, 26, 1.23, 1.2);
+            this.calculateDPSRanged(invocationLevel, attackStyle, this.player.rangedLevel, this.player.rangedLevelBoost, 1.23, 1.2);
         } else {
             this.addReason("Using magic dps");
-            this.calculateDPSMagic(invocationLevel, attackStyle, 99, 26, 1.25);
+            this.calculateDPSMagic(invocationLevel, attackStyle, this.player.magicLevel, this.player.magicLevelBoost, 1.25);
         }
 
     }
@@ -147,8 +149,8 @@ export class Result {
 
             this.addReason("");
             this.addReason("Scythe max hit:");
-            this.addReason(`• Math.floor(${this.maxHit} * 1.75) = ${Math.floor(this.maxHit * 1.75)}`);
-            this.maxHit = Math.floor(this.maxHit * 1.75);
+            this.addReason(`•  Math.floor(${this.maxHit}) + Math.floor(${this.maxHit} / 2) + Math.floor(${this.maxHit} / 4) = ${Math.floor(this.maxHit * 1.75)}`);
+            this.maxHit = Math.floor(this.maxHit) + Math.floor(this.maxHit / 2) + Math.floor(this.maxHit / 4);
 
         } else if (this.gearSet[0].name === "Osmumten's fang") {
 
@@ -251,7 +253,14 @@ export class Result {
             if (this.targetMonster.magicAccuracy > targetMagic) {
                 targetMagic = this.targetMonster.magicAccuracy;
             }
-            //console.log("Target magic: " + targetMagic);
+
+            //The Magic level or accuracy caps at 250 outside the Chambers of Xeric, and 350 within.
+            if (targetMagic > 350 && this.targetMonster.raid === Raid.ChambersOfXeric) {
+                targetMagic = 350;
+            } else if (targetMagic > 250) {
+                targetMagic = 250;
+            }
+
 
             //accuracyMultiplier =  140 + (((10 * 3 * targetMagic)/10 - 10) / 100) - Math.pow(((3*targetMagic)/10 - 100), 2) / 100;
             //Todo Other calcs seems to round down here? Not sure if correct though
