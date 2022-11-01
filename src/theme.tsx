@@ -34,7 +34,7 @@ export function getTheme() {
                         color: "white",
                         '&:hover': {
                             backgroundColor: 'grey',
-                        }
+                        },
                     },
                 },
             },
@@ -44,7 +44,8 @@ export function getTheme() {
                     root: {
                         // Some CSS
                         "& .MuiPaper-root": {
-                            backgroundColor: "black"
+                            backgroundColor: "black",
+                            minWidth: 175,
                         }
                     },
                 },
