@@ -16,7 +16,7 @@ export function TopBarItem(props: { setTargetMonster: (targetMonster: TargetMons
             const menuBoundary = {
                 left: menu.offsetLeft,
                 top: e.currentTarget.offsetTop + e.currentTarget.offsetHeight,
-                right: menu.offsetLeft + menu.offsetHeight,
+                right: menu.offsetLeft +  menu.offsetWidth,
                 bottom: menu.offsetTop + menu.offsetHeight
             };
             if (
