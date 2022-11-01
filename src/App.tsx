@@ -15,6 +15,7 @@ import {Route, Router} from 'react-router';
 import {createBrowserHistory} from 'history';
 import {gwdMonsters, toaMonsters} from "./DataObjects/ToaMonsters";
 import {GitHub} from "./GitHub";
+import InfoIcon from "@mui/icons-material/Info";
 
 const history = createBrowserHistory();
 

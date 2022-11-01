@@ -153,23 +153,29 @@ export class Result {
             this.maxHit = Math.floor(this.maxHit) + Math.floor(this.maxHit / 2) + Math.floor(this.maxHit / 4);
 
         } else if (this.gearSet[0].name === "Osmumten's fang") {
-
-            // Original accuracy calculation before Jagex updated on October 31st, 2022
-            // https://secure.runescape.com/m=news/a=97/tombs-of-amascut-drop-mechanics--osmumtens-fang?oldschool=1
-            // reroll accuracy check
-            // this.hitChance = this.hitChance + (this.hitChance * (1 - this.hitChance));
-
-            // Two hitChances multiplied by each other. One is normal 1/2 ratio and second is 2/3 ratio
-            // (x + 2) / ( 2 (y + 1)) * (2x + 3) / (3 * (y+1))
-
             this.addReason("");
             this.addReason("Osmumten's fang does 2 accuracy rolls which increases hit chance:");
-            if (attackRoll > defenceRoll) {
-                this.hitChance = 1 - ((defenceRoll + 2) * (2 * defenceRoll + 3)) / (6 * Math.pow(attackRoll + 1, 2));
-                this.addReason(`•  1 - ((${defenceRoll} + 2) * (2 * ${defenceRoll} + 3)) / (6 * Math.pow(${attackRoll} + 1, 2)) = ${this.hitChance}`);
+
+            //https://archive.ph/km46w
+            if (this.targetMonster.raid === Raid.TombsOfAmascut) {
+                // Original accuracy calculation before Jagex updated on October 31st, 2022
+                // https://secure.runescape.com/m=news/a=97/tombs-of-amascut-drop-mechanics--osmumtens-fang?oldschool=1
+                this.addReason(`• Inside ToA both the attack roll and defence roll are rerolled`);
+                this.addReason(`•  ${this.hitChance} + (${this.hitChance} * (1 - ${this.hitChance})) = ${this.hitChance + (this.hitChance * (1 - this.hitChance))}`);
+                this.hitChance = this.hitChance + (this.hitChance * (1 - this.hitChance));
+
             } else {
-                this.hitChance = (6 * Math.pow(attackRoll + 1, 2) - (attackRoll + 2) * (2 * attackRoll + 3)) / (6 * (defenceRoll + 1) * (attackRoll + 1));
-                this.addReason(`•  (6 * Math.pow(${attackRoll} + 1, 2) - (${attackRoll} + 2) * (2 * ${attackRoll} + 3)) / (6 * (${defenceRoll} + 1) * (${attackRoll} + 1)) = ${this.hitChance}`);
+                // Two hitChances multiplied by each other. One is normal 1/2 ratio and second is 2/3 ratio
+                // (x + 2) / ( 2 (y + 1)) * (2x + 3) / (3 * (y+1))
+
+                this.addReason(`• Outside ToA only the attack roll is rerolled`);
+                if (attackRoll > defenceRoll) {
+                    this.hitChance = 1 - ((defenceRoll + 2) * (2 * defenceRoll + 3)) / (6 * Math.pow(attackRoll + 1, 2));
+                    this.addReason(`•  1 - ((${defenceRoll} + 2) * (2 * ${defenceRoll} + 3)) / (6 * Math.pow(${attackRoll} + 1, 2)) = ${this.hitChance}`);
+                } else {
+                    this.hitChance = (6 * Math.pow(attackRoll + 1, 2) - (attackRoll + 2) * (2 * attackRoll + 3)) / (6 * (defenceRoll + 1) * (attackRoll + 1));
+                    this.addReason(`•  (6 * Math.pow(${attackRoll} + 1, 2) - (${attackRoll} + 2) * (2 * ${attackRoll} + 3)) / (6 * (${defenceRoll} + 1) * (${attackRoll} + 1)) = ${this.hitChance}`);
+                }
             }
 
             //lower max hit without affecting dps
