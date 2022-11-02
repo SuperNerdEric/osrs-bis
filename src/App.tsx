@@ -15,7 +15,7 @@ import {Route, Router} from 'react-router';
 import {createBrowserHistory} from 'history';
 import {gwdMonsters, toaMonsters} from "./DataObjects/ToaMonsters";
 import {GitHub} from "./GitHub";
-import InfoIcon from "@mui/icons-material/Info";
+import ReasonPopover from "./ReasonPopover";
 
 const history = createBrowserHistory();
 
@@ -116,6 +116,7 @@ function App() {
                             <th onClick={() => requestSort('dps')}>DPS</th>
                             <th onClick={() => requestSort('maxHit')}>Max Hit</th>
                             <th onClick={() => requestSort('hitChance')}>Hit Chance</th>
+                            {/*<th>Info</th>*/}
                         </tr>
 
                         {results.map(result => (
@@ -134,17 +135,12 @@ function App() {
                                 </td>
                                 <td>
                                     {Math.round(result.dps * 1000) / 1000}
-
-                                    {/*Debug only, for now....*/}
-                                    {/*
-                                        &nbsp;
-                                        <Tooltip title={<div style={{ whiteSpace: 'pre-line' }}>{result.reasoning}</div>}>
-                                            <InfoIcon/>
-                                        </Tooltip>
-                                    */}
                                 </td>
                                 <td>{result.maxHit}</td>
                                 <td>{Math.round(result.hitChance * 100 * 100) / 100}%</td>
+                                {/*<td>
+                                    <ReasonPopover reasoning={result.reasoning} />
+                                </td>*/}
                             </tr>
                         ))}
 
