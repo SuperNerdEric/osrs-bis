@@ -4,16 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4032619e-3942-4a56-9b4c-b729a2e7d785" name="Changes" comment="Create ReasonPopover.tsx">
-      <change afterPath="$PROJECT_DIR$/src/DefenceReduction.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DrawerMenu.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Images/Bandos_godsword_small.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Images/Dragon_warhammer_small.png" afterDir="false" />
+    <list default="true" id="4032619e-3942-4a56-9b4c-b729a2e7d785" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataObjects/Monsters.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataObjects/Monsters.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataObjects/Result.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataObjects/Result.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataObjects/TargetMonster.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataObjects/TargetMonster.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,8 +70,28 @@
       <recent name="C:\Users\Eric\WebstormProjects\osrs-dps\src\Slider.tsx" />
     </key>
   </component>
-  <component name="RunManager" selected="JavaScript Debug.Debug">
+  <component name="RunManager" selected="npm.deploy">
     <configuration name="Debug" type="JavascriptDebugType" uri="http://localhost:3000/">
+      <method v="2" />
+    </configuration>
+    <configuration name="deploy" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="deploy" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="predeploy" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="predeploy" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
       <method v="2" />
     </configuration>
     <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
@@ -91,12 +104,28 @@
       <envs />
       <method v="2" />
     </configuration>
+    <configuration name="updateBrowserList" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="updateBrowserList" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <list>
       <item itemvalue="JavaScript Debug.Debug" />
+      <item itemvalue="npm.deploy" />
+      <item itemvalue="npm.predeploy" />
+      <item itemvalue="npm.updateBrowserList" />
       <item itemvalue="npm.start" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.deploy" />
+        <item itemvalue="npm.predeploy" />
+        <item itemvalue="npm.updateBrowserList" />
         <item itemvalue="npm.start" />
       </list>
     </recent_temporary>
@@ -114,7 +143,7 @@
       <workItem from="1690615255868" duration="7000" />
       <workItem from="1690615273474" duration="49000" />
       <workItem from="1690681175668" duration="3474000" />
-      <workItem from="1690701178749" duration="3537000" />
+      <workItem from="1690701178749" duration="3751000" />
     </task>
     <task id="LOCAL-00001" summary="Implement melee DPS calcs for Tombs of Amascut.">
       <created>1666906409037</created>
@@ -396,7 +425,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667430451726</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="Add defence reduction. Also make more mobile friendly.">
+      <created>1690705654162</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1690705654162</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -450,7 +486,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Update fang formula and cleanup." />
     <MESSAGE value="Add magic DPS calculation." />
     <MESSAGE value="Add gh-pages deploy." />
     <MESSAGE value="Fix readme text." />
@@ -475,7 +510,8 @@
     <MESSAGE value="Fix dropdown menu boundary." />
     <MESSAGE value="Add minWidth for easier navigation." />
     <MESSAGE value="Create ReasonPopover.tsx" />
-    <option name="LAST_COMMIT_MESSAGE" value="Create ReasonPopover.tsx" />
+    <MESSAGE value="Add defence reduction. Also make more mobile friendly." />
+    <option name="LAST_COMMIT_MESSAGE" value="Add defence reduction. Also make more mobile friendly." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
