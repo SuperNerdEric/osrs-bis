@@ -47,7 +47,10 @@ export default function DefenceReduction(props: { bossName: string, defenceLevel
                     </Stack>
                     <Stack direction="row" alignItems="center" gap={2}>
                         <Button sx={buttonStyle}
-                                onClick={() => setLocalDefenceReduction(Math.max(localDefenceReduction - 1, 0))}>-</Button>
+                                onClick={() => {
+                                    setLocalDefenceReduction(Math.max(localDefenceReduction - 1, 0));
+                                    props.handleChange(localDefenceReduction);
+                                }}>-</Button>
                         <Tooltip open={tooltipOpen}
                                  title={`Max defence reduction for ${props.bossName} is ${props.maxReduction}`}
                                  onClose={() => setTooltipOpen(false)}
@@ -86,6 +89,7 @@ export default function DefenceReduction(props: { bossName: string, defenceLevel
                                     }, 3000);
                                 } else {
                                     setLocalDefenceReduction(localDefenceReduction + 1);
+                                    props.handleChange(localDefenceReduction);
                                 }
                             }}
                             onMouseLeave={() => setTooltipOpen(false)}
