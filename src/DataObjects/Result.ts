@@ -111,7 +111,7 @@ export class Result {
         let defenceRoll = (this.targetMonster.defenceLevel - this.defenceReduction + 9) * (styleDefenceBonus + 64);
         this.addReason(`• (${this.targetMonster.defenceLevel} - ${this.defenceReduction} + 9) * (${styleDefenceBonus} + 64) = ${defenceRoll}`);
 
-        let invocationScaledDefenceRoll = defenceRoll + Math.floor(defenceRoll * Math.floor(invocationLevel / 5) * 2) / 100;
+        const invocationScaledDefenceRoll = defenceRoll + Math.floor(defenceRoll * Math.floor(invocationLevel / 5) * 2) / 100;
         if(invocationLevel > 0){
             this.addReason("");
             this.addReason("Invocation scaling:");
@@ -135,9 +135,9 @@ export class Result {
             this.addReason("Scythe of vitur:");
 
             //Do 3 hits
-            let damagePerHit1 = (this.maxHit * this.hitChance) / 2; //1st is 100% damage
-            let damagePerHit2 = (Math.floor(this.maxHit / 2) * this.hitChance) / 2; //2nd is 50% damage
-            let damagePerHit3 = (Math.floor(this.maxHit / 4) * this.hitChance) / 2; //3rd is 25% damage
+            const damagePerHit1 = (this.maxHit * this.hitChance) / 2; //1st is 100% damage
+            const damagePerHit2 = (Math.floor(this.maxHit / 2) * this.hitChance) / 2; //2nd is 50% damage
+            const damagePerHit3 = (Math.floor(this.maxHit / 4) * this.hitChance) / 2; //3rd is 25% damage
             this.addReason(`• (${this.maxHit} * ${this.hitChance}) / 2 = ${damagePerHit1}`);
             this.addReason(`• (Math.floor(${this.maxHit} / 2) * ${this.hitChance}) / 2 = ${damagePerHit2}`);
             this.addReason(`•  (Math.floor(${this.maxHit} / 4) * ${this.hitChance}) / 2 = ${damagePerHit3}`);
@@ -196,11 +196,11 @@ export class Result {
             this.maxHit = Math.floor(this.maxHit * 133 / 100);
             damagePerHit = (this.maxHit * this.hitChance) / 2;
 
-            let procMax = this.maxHit * 3;
+            const procMax = this.maxHit * 3;
 
 
             // 1/51 chance of dealing 3x damage
-            let pseudoMaxHit = 50 / 51 * this.maxHit + (1 / 51 * this.maxHit * 3);
+            const pseudoMaxHit = 50 / 51 * this.maxHit + (1 / 51 * this.maxHit * 3);
             damagePerHit = (pseudoMaxHit * this.hitChance) / 2;
 
             console.log("Expected keris partisan hit: " + damagePerHit);
@@ -236,7 +236,7 @@ export class Result {
         this.addReason("• Math.floor(" + maxHit + "/640) = " + Math.floor(Number(maxHit / 640)));
         maxHit = Math.floor(maxHit / 640);
 
-        let gearMultiplier = 1; //Todo: slayer helm, salve
+        const gearMultiplier = 1; //Todo: slayer helm, salve
 
         maxHit = Math.floor(maxHit * gearMultiplier);
 
@@ -300,7 +300,7 @@ export class Result {
             equipmentRangedAttack += item.ranged;
         })
 
-        let attackRoll = Math.floor(Math.floor(effectiveRangedAttack * (equipmentRangedAttack + 64)) * accuracyMultiplier);
+        const attackRoll = Math.floor(Math.floor(effectiveRangedAttack * (equipmentRangedAttack + 64)) * accuracyMultiplier);
 
         let defenceRoll = (this.targetMonster.defenceLevel - this.defenceReduction + 9) * (this.targetMonster.rangedDefence + 64);
         defenceRoll = defenceRoll + Math.floor(defenceRoll * Math.floor(invocationLevel / 5) * 2) / 100;
@@ -311,9 +311,11 @@ export class Result {
             this.hitChance = attackRoll / (2 * (defenceRoll + 1));
         }
 
+        //Todo: What?
+        // eslint-disable-next-line no-self-assign
         this.hitChance = this.hitChance;
 
-        let damagePerHit = (this.maxHit * this.hitChance) / 2;
+        const damagePerHit = (this.maxHit * this.hitChance) / 2;
 
         let speedSeconds = this.gearSet[0].speedSeconds;
         if (attackStyle == AttackStyle.Rapid) {
@@ -323,7 +325,7 @@ export class Result {
     }
 
     private calculateDPSMagic(invocationLevel: number, attackStyle: AttackStyle, magicLevel: number, magicLevelBoost: number, prayerAttackMultiplier: number) {
-        let boostedMagicLevel = magicLevel + magicLevelBoost;
+        const boostedMagicLevel = magicLevel + magicLevelBoost;
 
         //Calculate max hit
         //Todo Assuming powered staff right now, need to check
@@ -374,7 +376,7 @@ export class Result {
             }
         }
 
-        let attackRoll = Math.floor(effectiveMagicLevel * (equipmentMagicAttack + 64));
+        const attackRoll = Math.floor(effectiveMagicLevel * (equipmentMagicAttack + 64));
 
         console.log("equipmentMagicAttack: " + equipmentMagicAttack);
         console.log("Magic attack roll: " + attackRoll);
@@ -390,7 +392,7 @@ export class Result {
             this.hitChance = attackRoll / (2 * (defenceRoll + 1));
         }
 
-        let damagePerHit = (this.maxHit * this.hitChance) / 2;
+        const damagePerHit = (this.maxHit * this.hitChance) / 2;
         this.dps = damagePerHit / this.gearSet[0].speedSeconds;
 
     }

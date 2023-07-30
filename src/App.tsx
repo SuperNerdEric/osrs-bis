@@ -19,27 +19,9 @@ import DefenceReduction from "./DefenceReduction";
 import {
     AppBar,
     Toolbar,
-    IconButton,
-    MenuItem,
-    MenuList,
-    Popper,
-    Typography,
     Grid,
     Box,
-    Drawer,
-    List,
-    ListItem,
-    ListItemIcon,
-    ListItemText,
-    Collapse,
-    Grow,
-    Paper,
-    ClickAwayListener,
 } from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
-import ExpandLess from '@mui/icons-material/ExpandLess';
-import ExpandMore from '@mui/icons-material/ExpandMore';
-import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 import DrawerMenu from "./DrawerMenu";
 
 
@@ -221,7 +203,7 @@ function App() {
                                     {
                                         result.gearSet.map(item => (
                                             <Tooltip title={item.name}>
-                                                <a href={item.wikiLink} target="_blank">
+                                                <a href={item.wikiLink} target="_blank" rel="noreferrer">
                                                     <img src={require(`${item.imagePath}`)} width="50" height="50"
                                                          alt="logo"/>
                                                 </a>
@@ -250,13 +232,15 @@ function App() {
     );
 }
 
-export default () => {
+const MainApp = () => {
     return (
         <Router history={history}>
             <Route component={App}/>
         </Router>
     );
 };
+
+export default MainApp;
 
 
 const Table = {

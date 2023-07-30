@@ -1,5 +1,3 @@
-import {Raid} from "./Raid";
-
 export class Player {
     attackLevel: number = 99;
     strengthLevel: number = 99;

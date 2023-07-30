@@ -11,7 +11,7 @@ export function GitHub() {
         fontSize: 50,
         color: "white",
     }}>
-        <a href="https://github.com/SuperNerdEric/osrs-dps" target="_blank" style={{textDecoration: "none"}}>
+        <a href="https://github.com/SuperNerdEric/osrs-dps" target="_blank" style={{textDecoration: "none"}} rel="noreferrer">
             <Stack direction="row" alignItems="center" gap={1}>
                 <GitHubIcon style={{
                     fontSize: 45,
