@@ -62,7 +62,7 @@ function valuetext(value: number) {
 
 export function DiscreteSliderMarks(props: { handleChange: any, defaultValue: number }) {
     return (
-        <Box sx={{width: 1000}}>
+        <Box sx={{width: "90%", maxWidth: "1000px", mx: "auto"}}>
             <Slider
                 aria-label="Custom marks"
                 defaultValue={props.defaultValue}
