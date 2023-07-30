@@ -7,6 +7,7 @@ export class TargetMonster {
     attribute: string = "";
     imagePath: string = "";
     defenceLevel: number = 0;
+    maxDefenceReduction: number = 0;
     magicLevel: number = 0;
     magicAccuracy: number = 0;
     stabDefence: number = 0;

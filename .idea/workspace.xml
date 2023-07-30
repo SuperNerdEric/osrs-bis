@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="4032619e-3942-4a56-9b4c-b729a2e7d785" name="Changes" comment="Lower">
-      <change afterPath="$PROJECT_DIR$/src/Images/Monsters/Commander_Zilyana.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Images/Monsters/General_Graardor.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Images/Monsters/Kreearra.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Images/Monsters/Kril_Tsutsaroth.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/TopBar.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/theme.tsx" afterDir="false" />
+    <list default="true" id="4032619e-3942-4a56-9b4c-b729a2e7d785" name="Changes" comment="Create ReasonPopover.tsx">
+      <change afterPath="$PROJECT_DIR$/src/DefenceReduction.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DrawerMenu.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Images/Bandos_godsword_small.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Images/Dragon_warhammer_small.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DataObjects/Monsters.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataObjects/Monsters.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataObjects/Result.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataObjects/Result.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataObjects/TargetMonster.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataObjects/TargetMonster.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,22 +43,27 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/Eric/WebstormProjects/osrs-dps/src/Images/Monsters",
+    "last_opened_file_path": "C:/Users/Eric/WebstormProjects/osrs-dps/src/Images",
     "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
+    "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.standard": "",
+    "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "settings.javascript.linters.eslint",
     "ts.external.directory.path": "C:\\Users\\Eric\\WebstormProjects\\osrs-dps\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Eric\WebstormProjects\osrs-dps\src\Images" />
+      <recent name="C:\Users\Eric\WebstormProjects\osrs-dps\src" />
+      <recent name="C:\Users\Eric\WebstormProjects\osrs-dps\src\DataObjects" />
       <recent name="C:\Users\Eric\WebstormProjects\osrs-dps\src\Images\Monsters" />
       <recent name="C:\Users\Eric\WebstormProjects\osrs-dps\src\Images\Items" />
-      <recent name="C:\Users\Eric\WebstormProjects\osrs-dps\public" />
-      <recent name="C:\Users\Eric\WebstormProjects\osrs-dps\src\Items" />
-      <recent name="C:\Users\Eric\WebstormProjects\osrs-dps\src\DataObjects" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Eric\WebstormProjects\osrs-dps\src\Images" />
@@ -64,6 +71,7 @@
       <recent name="C:\Users\Eric\WebstormProjects\osrs-dps\src\Items" />
     </key>
     <key name="es6.move.members.recent.items">
+      <recent name="C:\Users\Eric\WebstormProjects\osrs-dps\src\GitHub.tsx" />
       <recent name="C:\Users\Eric\WebstormProjects\osrs-dps\src\Theme.tsx" />
       <recent name="C:\Users\Eric\WebstormProjects\osrs-dps\src\TopBar.tsx" />
       <recent name="C:\Users\Eric\WebstormProjects\osrs-dps\src\Slider.tsx" />
@@ -102,7 +110,11 @@
       <option name="presentableId" value="Default" />
       <updated>1666830017527</updated>
       <workItem from="1666830025314" duration="252000" />
-      <workItem from="1666830473459" duration="103011000" />
+      <workItem from="1666830473459" duration="146977000" />
+      <workItem from="1690615255868" duration="7000" />
+      <workItem from="1690615273474" duration="49000" />
+      <workItem from="1690681175668" duration="3474000" />
+      <workItem from="1690701178749" duration="3537000" />
     </task>
     <task id="LOCAL-00001" summary="Implement melee DPS calcs for Tombs of Amascut.">
       <created>1666906409037</created>
@@ -286,27 +298,158 @@
       <option name="project" value="LOCAL" />
       <updated>1667083533539</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="Rework top bar and add GWD bosses.">
+      <created>1667160041863</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1667160041863</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Scale Tumeken's shadow correctly outside of ToA.">
+      <created>1667161163294</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1667161163294</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Add reasoning for DPS calculations.">
+      <created>1667167576933</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1667167576933</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Give correct stat boosts outside of ToA. Fix Twisted bow targetMagic cap. Fix Scythe of vitur max hit.">
+      <created>1667175191345</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1667175191345</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Add GitHub link.">
+      <created>1667176199205</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1667176199205</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Fix GitHub link.">
+      <created>1667178186689</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1667178186689</updated>
+    </task>
+    <task id="LOCAL-00033" summary="Add url state management.">
+      <created>1667183502911</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1667183502911</updated>
+    </task>
+    <task id="LOCAL-00034" summary="Create shortNames for URL.">
+      <created>1667185335984</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1667185335984</updated>
+    </task>
+    <task id="LOCAL-00035" summary="Pull out GitHub link to its own component. Rename TopBar to TopBarItem.">
+      <created>1667186035253</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1667186035253</updated>
+    </task>
+    <task id="LOCAL-00036" summary="Use different formula for Osmumten's fang depending on if inside ToA.">
+      <created>1667316938806</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1667316938806</updated>
+    </task>
+    <task id="LOCAL-00037" summary="Remove offhands from Tumeken's shadow set.">
+      <created>1667317169014</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1667317169014</updated>
+    </task>
+    <task id="LOCAL-00038" summary="Fix dropdown menu boundary.">
+      <created>1667319962416</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1667319962416</updated>
+    </task>
+    <task id="LOCAL-00039" summary="Add minWidth for easier navigation.">
+      <created>1667320831980</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1667320831980</updated>
+    </task>
+    <task id="LOCAL-00040" summary="Create ReasonPopover.tsx">
+      <created>1667430451726</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1667430451726</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+        <option value="Space.CommitStatus" />
+      </list>
+    </option>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="52086bcf-b2e9-4f9e-9b74-37d48baac41c">
+          <value>
+            <State>
+              <option name="SHOW_ONLY_AFFECTED_CHANGES" value="true" />
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="roots">
+                    <value>
+                      <list>
+                        <option value="$PROJECT_DIR$" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="OPEN_GENERIC_TABS">
+      <map>
+        <entry key="52086bcf-b2e9-4f9e-9b74-37d48baac41c" value="TOOL_WINDOW" />
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Update README.md" />
-    <MESSAGE value="Update title and favicon.ico" />
-    <MESSAGE value="Change default direction to descending." />
-    <MESSAGE value="Style dropdown menu." />
-    <MESSAGE value="Implement blowpipe ranged setup and dps calc." />
-    <MESSAGE value="Add armadyl blowpipe set." />
-    <MESSAGE value="Lower padding on table." />
-    <MESSAGE value="Include calc for Twisted bow." />
-    <MESSAGE value="Modify formula for Twisted bow." />
-    <MESSAGE value="Add Barrows gloves." />
-    <MESSAGE value="Remove unnecessary onClick." />
-    <MESSAGE value="Add invocation level slider." />
-    <MESSAGE value="Reformat code." />
-    <MESSAGE value="Add mage items and gearsets." />
     <MESSAGE value="Update fang formula and cleanup." />
     <MESSAGE value="Add magic DPS calculation." />
     <MESSAGE value="Add gh-pages deploy." />
@@ -318,27 +461,50 @@
     <MESSAGE value="Change Keris max hit to be 33% increase instead of 4/3 to be consistent with other calcs." />
     <MESSAGE value="Add CNAME file." />
     <MESSAGE value="Change homepage." />
-    <option name="LAST_COMMIT_MESSAGE" value="Change homepage." />
+    <MESSAGE value="Rework top bar and add GWD bosses." />
+    <MESSAGE value="Add reasoning for DPS calculations." />
+    <MESSAGE value="Give correct stat boosts outside of ToA. Fix Twisted bow targetMagic cap. Fix Scythe of vitur max hit." />
+    <MESSAGE value="Add GitHub link." />
+    <MESSAGE value="Scale Tumeken's shadow correctly outside of ToA." />
+    <MESSAGE value="Fix GitHub link." />
+    <MESSAGE value="Add url state management." />
+    <MESSAGE value="Create shortNames for URL." />
+    <MESSAGE value="Pull out GitHub link to its own component. Rename TopBar to TopBarItem." />
+    <MESSAGE value="Use different formula for Osmumten's fang depending on if inside ToA." />
+    <MESSAGE value="Remove offhands from Tumeken's shadow set." />
+    <MESSAGE value="Fix dropdown menu boundary." />
+    <MESSAGE value="Add minWidth for easier navigation." />
+    <MESSAGE value="Create ReasonPopover.tsx" />
+    <option name="LAST_COMMIT_MESSAGE" value="Create ReasonPopover.tsx" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/App.tsx</url>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/App.tsx</url>
-          <line>90</line>
-          <properties lambdaOrdinal="-1" />
+          <line>158</line>
           <option name="timeStamp" value="13" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/DataObjects/AttackStyle.ts</url>
           <line>3</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/DataObjects/Result.ts</url>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/GitHub.tsx</url>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/DefenceReduction.tsx</url>
+          <option name="timeStamp" value="18" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

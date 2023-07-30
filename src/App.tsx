@@ -1,7 +1,7 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 import './App.css';
-import {ThemeProvider, Tooltip} from "@mui/material";
+import {Hidden, ThemeProvider, Tooltip} from "@mui/material";
 import {Result} from "./DataObjects/Result";
 import {TargetMonster} from "./DataObjects/TargetMonster";
 import {monsters} from "./DataObjects/Monsters";
@@ -15,30 +15,86 @@ import {Route, Router} from 'react-router';
 import {createBrowserHistory} from 'history';
 import {gwdMonsters, toaMonsters} from "./DataObjects/ToaMonsters";
 import {GitHub} from "./GitHub";
-import ReasonPopover from "./ReasonPopover";
+import DefenceReduction from "./DefenceReduction";
+import {
+    AppBar,
+    Toolbar,
+    IconButton,
+    MenuItem,
+    MenuList,
+    Popper,
+    Typography,
+    Grid,
+    Box,
+    Drawer,
+    List,
+    ListItem,
+    ListItemIcon,
+    ListItemText,
+    Collapse,
+    Grow,
+    Paper,
+    ClickAwayListener,
+} from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
+import ExpandLess from '@mui/icons-material/ExpandLess';
+import ExpandMore from '@mui/icons-material/ExpandMore';
+import ArrowRightIcon from "@mui/icons-material/ArrowRight";
+import DrawerMenu from "./DrawerMenu";
+
 
 const history = createBrowserHistory();
 
 function App() {
+    const [defenceReduction, setDefenceReduction] = React.useState(0);
+
     const handleChange = (event: Event, newValue: number | number[]) => {
         console.log("Set invocation level: " + newValue);
-        setUrlState({ invocationLevel: newValue });
+        setUrlState({invocationLevel: newValue});
     };
 
-    const [urlState, setUrlState] = useUrlState({ target: "Ba-Ba", invocationLevel: 300 });
+    const handleDefenceReduction = (defenceReduction: number) => {
+        console.log("Set defence reduction: " + defenceReduction);
+        setDefenceReduction(defenceReduction);
+        setUrlState({defenceReduction: defenceReduction});
+    };
+
+    const [urlState, setUrlState] = useUrlState({target: "Ba-Ba", invocationLevel: 300, defenceReduction: 0});
     const [sortConfig, setSortConfig] = React.useState({key: 'dps' as keyof Result, direction: 'descending'});
+
+    const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+
+
+    const [open, setOpen] = useState(false);
+
+    const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+        setAnchorEl(event.currentTarget);
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setAnchorEl(null);
+        setOpen(false);
+    };
+
+    const [drawerOpen, setDrawerOpen] = useState(false);
+
+    const handleDrawerToggle = () => {
+        setDrawerOpen(!drawerOpen);
+    };
 
     console.log(Object.keys(Result));
     const theme = getTheme();
 
     const isToaBoss: boolean = (monsters.get(urlState.target) as TargetMonster).raid === Raid.TombsOfAmascut;
 
-    let results: Result[] = [];
+    const results: Result[] = [];
 
     gearSets.forEach(gearSet => {
-        let result: Result = new Result();
+        const result: Result = new Result();
         result.gearSet = gearSet;
         result.targetMonster = monsters.get(urlState.target) as TargetMonster;
+        result.defenceReduction = defenceReduction;
         if (isToaBoss) {
             result.player.attackLevelBoost = 26;
             result.player.strengthLevelBoost = 26;
@@ -82,20 +138,57 @@ function App() {
 
     console.log(monsters.get("Ba-Ba"));
 
+    const sections = [
+        {
+            name: 'Tombs of Amascut',
+            monsters: toaMonsters
+        },
+        {
+            name: 'God Wars Dungeon',
+            monsters: gwdMonsters,
+        },
+        // add more sections here
+    ];
+
     return (
         <ThemeProvider theme={theme}>
             <div className="App">
-                <div className='rowC'>
-                    <TopBarItem setTargetMonster={(targetMonster: TargetMonster) => {
-                        setUrlState({target: targetMonster.name});
-                    }} monsterList={toaMonsters} sectionName={"Tombs of Amascut"}/>
-                    <TopBarItem setTargetMonster={(targetMonster: TargetMonster) => {
-                        setUrlState({
-                            target: targetMonster.shortName || targetMonster.name,
-                            invocationLevel: undefined
-                        });
-                    }} monsterList={gwdMonsters} sectionName={"God Wars Dungeon"}/>
-                </div>
+                <AppBar position="static" style={{background: '#000'}}>
+                    <Toolbar>
+                        <Hidden smUp>
+                            <DrawerMenu sections={sections} setTargetMonster={(targetMonster: TargetMonster) => {
+                                setUrlState({
+                                    target: targetMonster.shortName || targetMonster.name,
+                                    invocationLevel: undefined,
+                                    defenceReduction: undefined,
+                                });
+                            }}/>
+                        </Hidden>
+                        <Hidden smDown>
+                            <Box display={{ xs: 'none', sm: 'block' }}>
+                                <Grid container spacing={2}>
+                                    <Grid item sm={5}>
+                                        <TopBarItem setTargetMonster={(targetMonster: TargetMonster) => {
+                                            setUrlState({target: targetMonster.name});
+                                        }} monsterList={toaMonsters} sectionName={"Tombs of Amascut"}/>
+                                    </Grid>
+                                    <Grid item sm={5}>
+                                        <TopBarItem setTargetMonster={(targetMonster: TargetMonster) => {
+                                            setUrlState({
+                                                target: targetMonster.shortName || targetMonster.name,
+                                                invocationLevel: undefined,
+                                                defenceReduction: undefined,
+                                            });
+                                        }} monsterList={gwdMonsters} sectionName={"God Wars Dungeon"}/>
+                                    </Grid>
+                                    <Grid item sm={2}>
+                                        <GitHub/>
+                                    </Grid>
+                                </Grid>
+                            </Box>
+                        </Hidden>
+                    </Toolbar>
+                </AppBar>
                 <GitHub/>
                 <header className="App-header">
                     <h2>{(monsters.get(urlState.target) as TargetMonster).name}</h2>
@@ -105,11 +198,14 @@ function App() {
                         isToaBoss &&
                         <DiscreteSliderMarks defaultValue={urlState.invocationLevel} handleChange={handleChange}/>
                     }
+                    <caption>
+                        {isToaBoss && `${urlState.invocationLevel} Invocation   `}
+                    </caption>
+                    <DefenceReduction bossName={urlState.target}
+                                      defenceLevel={(monsters.get(urlState.target) as TargetMonster).defenceLevel}
+                                      maxReduction={(monsters.get(urlState.target) as TargetMonster).maxDefenceReduction}
+                                      handleChange={handleDefenceReduction}/>
                     <table style={Table}>
-                        <caption>
-                            {isToaBoss && `${urlState.invocationLevel} Invocation - `}
-                            {(monsters.get(urlState.target) as TargetMonster).defenceLevel} Defence
-                        </caption>
                         <thead>
                         <tr>
                             <th>Gear</th>
@@ -157,11 +253,10 @@ function App() {
 export default () => {
     return (
         <Router history={history}>
-            <Route component={App} />
+            <Route component={App}/>
         </Router>
     );
 };
-
 
 
 const Table = {

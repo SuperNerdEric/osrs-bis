@@ -8,6 +8,7 @@ export class Result {
     dps: number = 0;
     maxHit: number = 0;
     hitChance: number = 0;
+    defenceReduction: number = 0;
     gearSet: Item[] = [];
     player: Player = new Player();
     targetMonster: TargetMonster = new TargetMonster();
@@ -103,12 +104,12 @@ export class Result {
 
         this.addReason("");
         this.addReason("Target defence level: ");
-        this.addReason("• " + this.targetMonster.defenceLevel);
+        this.addReason(`• ${this.targetMonster.defenceLevel} - ${this.defenceReduction} = ${this.targetMonster.defenceLevel - this.defenceReduction}`);
 
         this.addReason("");
         this.addReason("Defence roll:");
-        let defenceRoll = (this.targetMonster.defenceLevel + 9) * (styleDefenceBonus + 64);
-        this.addReason(`• (${this.targetMonster.defenceLevel} + 9) * (${styleDefenceBonus} + 64) = ${defenceRoll}`);
+        let defenceRoll = (this.targetMonster.defenceLevel - this.defenceReduction + 9) * (styleDefenceBonus + 64);
+        this.addReason(`• (${this.targetMonster.defenceLevel} - ${this.defenceReduction} + 9) * (${styleDefenceBonus} + 64) = ${defenceRoll}`);
 
         let invocationScaledDefenceRoll = defenceRoll + Math.floor(defenceRoll * Math.floor(invocationLevel / 5) * 2) / 100;
         if(invocationLevel > 0){
@@ -301,7 +302,7 @@ export class Result {
 
         let attackRoll = Math.floor(Math.floor(effectiveRangedAttack * (equipmentRangedAttack + 64)) * accuracyMultiplier);
 
-        let defenceRoll = (this.targetMonster.defenceLevel + 9) * (this.targetMonster.rangedDefence + 64);
+        let defenceRoll = (this.targetMonster.defenceLevel - this.defenceReduction + 9) * (this.targetMonster.rangedDefence + 64);
         defenceRoll = defenceRoll + Math.floor(defenceRoll * Math.floor(invocationLevel / 5) * 2) / 100;
 
         if (attackRoll > defenceRoll) {
