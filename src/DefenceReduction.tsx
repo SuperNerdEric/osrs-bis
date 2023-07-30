@@ -12,20 +12,43 @@ export default function DefenceReduction(props: { bossName: string, defenceLevel
     const [localDefenceReduction, setLocalDefenceReduction] = React.useState(props.maxReduction);
     const [tooltipOpen, setTooltipOpen] = React.useState<boolean>(false);
 
-    const handleTextFieldChange = (e: any) => {
-        let setValue: number = e.target.value;
-        if (setValue > props.maxReduction) {
-            setValue = props.maxReduction;
+    const adjustDefenceReduction = (adjustment: number) => {
+        const newValue = localDefenceReduction + adjustment;
+        setDefenceReduction(newValue);
+    };
+
+    const setDefenceReductionExact = (newValue: number) => {
+        setDefenceReduction(newValue);
+    };
+
+    const setDefenceReduction = (newValue: number) => {
+        if (newValue > props.maxReduction) {
+            newValue = props.maxReduction;
             setTooltipOpen(true);
+            setTimeout(() => {
+                setTooltipOpen(false);
+            }, 3000);
         }
-        if (setValue < 0) {
-            setValue = 0;
+        if (newValue < 0) {
+            newValue = 0;
         }
-        setLocalDefenceReduction(setValue);
+        setLocalDefenceReduction(newValue);
         if (isChecked) {
-            props.handleChange(setValue);
+            props.handleChange(newValue);
         }
     };
+
+    React.useEffect(() => {
+        if (isChecked) {
+            props.handleChange(localDefenceReduction);
+        }
+    }, [isChecked, localDefenceReduction, props]);
+
+    React.useEffect(() => {
+        if(localDefenceReduction > props.maxReduction) {
+            setLocalDefenceReduction(props.maxReduction);
+        }
+    }, [localDefenceReduction, props.maxReduction]);
 
     const theme = useTheme();
     const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
@@ -47,10 +70,7 @@ export default function DefenceReduction(props: { bossName: string, defenceLevel
                     </Stack>
                     <Stack direction="row" alignItems="center" gap={2}>
                         <Button sx={buttonStyle}
-                                onClick={() => {
-                                    setLocalDefenceReduction(Math.max(localDefenceReduction - 1, 0));
-                                    props.handleChange(localDefenceReduction);
-                                }}>-</Button>
+                                onClick={() => adjustDefenceReduction(-1)}>-</Button>
                         <Tooltip open={tooltipOpen}
                                  title={`Max defence reduction for ${props.bossName} is ${props.maxReduction}`}
                                  onClose={() => setTooltipOpen(false)}
@@ -62,8 +82,7 @@ export default function DefenceReduction(props: { bossName: string, defenceLevel
                                 color="warning"
                                 value={localDefenceReduction}
                                 defaultValue={localDefenceReduction}
-                                onChange={handleTextFieldChange}
-                                onInvalid={handleTextFieldChange}
+                                onChange={e => setDefenceReductionExact(Number(e.target.value))}
                                 InputProps={{
                                     style: {
                                         fontSize: 22,
@@ -81,17 +100,7 @@ export default function DefenceReduction(props: { bossName: string, defenceLevel
                         </Tooltip>
                         <Button
                             sx={buttonStyle}
-                            onClick={() => {
-                                if (localDefenceReduction >= props.maxReduction) {
-                                    setTooltipOpen(true);
-                                    setTimeout(() => {
-                                        setTooltipOpen(false);
-                                    }, 3000);
-                                } else {
-                                    setLocalDefenceReduction(localDefenceReduction + 1);
-                                    props.handleChange(localDefenceReduction);
-                                }
-                            }}
+                            onClick={() => adjustDefenceReduction(1)}
                             onMouseLeave={() => setTooltipOpen(false)}
                         >
                             +
@@ -128,7 +137,7 @@ export default function DefenceReduction(props: { bossName: string, defenceLevel
 const textFieldStyle = {
     color: "black",
     backgroundColor: "#d8ccb4",
-    width: 75,
+    width: 100,
     '& label.Mui-focused': {
         color: 'white',
     },
