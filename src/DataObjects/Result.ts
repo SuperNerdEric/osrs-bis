@@ -3,6 +3,7 @@ import {Item} from "./Item";
 import {AttackStyle} from "./AttackStyle";
 import {Raid} from "./Raid";
 import {Player} from "./Player";
+import { devLog } from './../utils';
 
 export class Result {
     dps: number = 0;
@@ -203,7 +204,7 @@ export class Result {
             const pseudoMaxHit = 50 / 51 * this.maxHit + (1 / 51 * this.maxHit * 3);
             damagePerHit = (pseudoMaxHit * this.hitChance) / 2;
 
-            console.log("Expected keris partisan hit: " + damagePerHit);
+            devLog("Expected keris partisan hit: " + damagePerHit);
         } else {
             this.addReason("");
             this.addReason("Damage per hit:");
@@ -279,7 +280,7 @@ export class Result {
 
             accuracyMultiplier /= 100;
 
-            //console.log("Twisted Bow Accuracy Multiplier: " + accuracyMultiplier);
+            //devLog("Twisted Bow Accuracy Multiplier: " + accuracyMultiplier);
             let damageMultiplier = 250 + (((10 * 3 * targetMagic) / 10 - 14) / 100) - Math.pow(((3 * targetMagic) / 10 - 140), 2) / 100;
             //Todo Other calcs seems to round down here? Not sure if correct though
             damageMultiplier = 250 + Math.floor((3 * targetMagic - 14) / 100) - Math.floor(Math.pow(3 * targetMagic / 10 - 140, 2) / 100)
@@ -287,7 +288,7 @@ export class Result {
                 damageMultiplier = 250;
             }
             gearMultiplier = damageMultiplier / 100;
-            //console.log("Twisted Bow Damage Multiplier: " + damageMultiplier);
+            //devLog("Twisted Bow Damage Multiplier: " + damageMultiplier);
         }
 
         this.maxHit = Math.floor(Math.floor(0.5 + (((effectiveRangedStrength) * (equipmentRangedStrength + 64)) / 640)) * gearMultiplier);
@@ -334,13 +335,13 @@ export class Result {
         this.gearSet.forEach(item => {
             equipmentMagicStrength += item.mageStrength;
         });
-        console.log("Magic strength: " + equipmentMagicStrength);
+        devLog("Magic strength: " + equipmentMagicStrength);
 
         if (this.gearSet[0].name == "Sanguinesti staff") {
             this.maxHit = Math.floor(boostedMagicLevel / 3) - 1;
             this.maxHit = Math.floor(this.maxHit * (1 + equipmentMagicStrength / 100));
 
-            console.log("Sanguinesti Staff Max Hit: " + this.maxHit);
+            devLog("Sanguinesti Staff Max Hit: " + this.maxHit);
         } else if (this.gearSet[0].name == "Tumeken's shadow") {
             this.maxHit = Math.floor(boostedMagicLevel / 3) + 1;
 
@@ -378,13 +379,13 @@ export class Result {
 
         const attackRoll = Math.floor(effectiveMagicLevel * (equipmentMagicAttack + 64));
 
-        console.log("equipmentMagicAttack: " + equipmentMagicAttack);
-        console.log("Magic attack roll: " + attackRoll);
+        devLog("equipmentMagicAttack: " + equipmentMagicAttack);
+        devLog("Magic attack roll: " + attackRoll);
 
         let defenceRoll = (9 + this.targetMonster.magicLevel) * (this.targetMonster.magicDefence + 64);
         defenceRoll = defenceRoll + Math.floor(defenceRoll * Math.floor(invocationLevel / 5) * 2) / 100;
 
-        console.log("Magic defence roll: " + defenceRoll);
+        devLog("Magic defence roll: " + defenceRoll);
 
         if (attackRoll > defenceRoll) {
             this.hitChance = 1 - ((defenceRoll + 2) / (2 * (attackRoll + 1)));

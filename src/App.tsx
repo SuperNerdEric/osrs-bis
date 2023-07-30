@@ -23,6 +23,7 @@ import {
     Box,
 } from '@mui/material';
 import DrawerMenu from "./DrawerMenu";
+import { devLog } from './utils';
 
 
 const history = createBrowserHistory();
@@ -31,12 +32,12 @@ function App() {
     const [defenceReduction, setDefenceReduction] = React.useState(0);
 
     const handleChange = (event: Event, newValue: number | number[]) => {
-        console.log("Set invocation level: " + newValue);
+        devLog("Set invocation level: " + newValue);
         setUrlState({invocationLevel: newValue});
     };
 
     const handleDefenceReduction = (defenceReduction: number) => {
-        console.log("Set defence reduction: " + defenceReduction);
+        devLog("Set defence reduction: " + defenceReduction);
         setDefenceReduction(defenceReduction);
         setUrlState({defenceReduction: defenceReduction});
     };
@@ -65,7 +66,7 @@ function App() {
         setDrawerOpen(!drawerOpen);
     };
 
-    console.log(Object.keys(Result));
+    devLog(Object.keys(Result));
     const theme = getTheme();
 
     const isToaBoss: boolean = (monsters.get(urlState.target) as TargetMonster).raid === Raid.TombsOfAmascut;
@@ -90,7 +91,7 @@ function App() {
             result.player.magicLevelBoost = 10; //imbued heart
             result.calculateDPS(0);
         }
-        console.log(result);
+        devLog(result);
         results.push(result);
     })
 
@@ -104,7 +105,7 @@ function App() {
 
 
     React.useMemo(() => {
-        //console.log(`Sorting ${sortConfig.key} ${sortConfig.direction}`);
+        //devLog(`Sorting ${sortConfig.key} ${sortConfig.direction}`);
         results.sort((a, b) => {
             if (a[sortConfig.key] < b[sortConfig.key]) {
                 return sortConfig.direction === 'ascending' ? -1 : 1;
@@ -118,7 +119,7 @@ function App() {
     }, [results, sortConfig]);
 
 
-    console.log(monsters.get("Ba-Ba"));
+    devLog(monsters.get("Ba-Ba"));
 
     const sections = [
         {
