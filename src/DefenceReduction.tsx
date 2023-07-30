@@ -10,6 +10,7 @@ import { useTheme } from '@mui/material/styles';
 export default function DefenceReduction(props: { bossName: string, defenceLevel: number, maxReduction: number, handleChange: any }) {
     const [isChecked, setIsChecked] = React.useState<boolean>(false);
     const [localDefenceReduction, setLocalDefenceReduction] = React.useState(props.maxReduction);
+    const [localDefenceReductionString, setLocalDefenceReductionString] = React.useState(String(props.maxReduction));
     const [tooltipOpen, setTooltipOpen] = React.useState<boolean>(false);
 
     const adjustDefenceReduction = (adjustment: number) => {
@@ -17,8 +18,13 @@ export default function DefenceReduction(props: { bossName: string, defenceLevel
         setDefenceReduction(newValue);
     };
 
-    const setDefenceReductionExact = (newValue: number) => {
-        setDefenceReduction(newValue);
+    const setDefenceReductionExact = (newValue: string) => {
+        if(newValue === "") {
+            setLocalDefenceReductionString("");
+            setLocalDefenceReduction(0);
+        } else {
+            setDefenceReduction(Number(newValue));
+        }
     };
 
     const setDefenceReduction = (newValue: number) => {
@@ -33,6 +39,8 @@ export default function DefenceReduction(props: { bossName: string, defenceLevel
             newValue = 0;
         }
         setLocalDefenceReduction(newValue);
+        setLocalDefenceReductionString(String(newValue));
+
         if (isChecked) {
             props.handleChange(newValue);
         }
@@ -47,6 +55,7 @@ export default function DefenceReduction(props: { bossName: string, defenceLevel
     React.useEffect(() => {
         if(localDefenceReduction > props.maxReduction) {
             setLocalDefenceReduction(props.maxReduction);
+            setLocalDefenceReductionString(String(props.maxReduction));
         }
     }, [localDefenceReduction, props.maxReduction]);
 
@@ -80,9 +89,9 @@ export default function DefenceReduction(props: { bossName: string, defenceLevel
                                 id="outlined-number"
                                 type="number"
                                 color="warning"
-                                value={localDefenceReduction}
+                                value={localDefenceReductionString}
                                 defaultValue={localDefenceReduction}
-                                onChange={e => setDefenceReductionExact(Number(e.target.value))}
+                                onChange={e => setDefenceReductionExact(e.target.value)}
                                 InputProps={{
                                     style: {
                                         fontSize: 22,
