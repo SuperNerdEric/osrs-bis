@@ -64,10 +64,14 @@ export default function DefenceReduction(props: { bossName: string, defenceLevel
                     onClick={() => {
                         if (localDefenceReduction >= props.maxReduction) {
                             setTooltipOpen(true);
+                            setTimeout(() => {
+                                setTooltipOpen(false);
+                            }, 3000);
                         } else {
                             setLocalDefenceReduction(localDefenceReduction + 1);
                         }
                     }}
+                    onMouseLeave={() => setTooltipOpen(false)}
                 >
                     +
                 </Button>
