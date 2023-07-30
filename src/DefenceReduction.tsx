@@ -47,17 +47,14 @@ export default function DefenceReduction(props: { bossName: string, defenceLevel
     };
 
     React.useEffect(() => {
-        if (isChecked) {
-            props.handleChange(localDefenceReduction);
-        }
-    }, [isChecked, localDefenceReduction, props]);
-
-    React.useEffect(() => {
         if(localDefenceReduction > props.maxReduction) {
             setLocalDefenceReduction(props.maxReduction);
             setLocalDefenceReductionText(String(props.maxReduction));
         }
-    }, [localDefenceReduction, props.maxReduction]);
+        if (isChecked) {
+            props.handleChange(localDefenceReduction);
+        }
+    }, [localDefenceReduction, props.maxReduction, isChecked]);
 
     const theme = useTheme();
     const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
