@@ -1,16 +1,18 @@
 import * as React from 'react';
-import {Checkbox, Stack, TextField, Tooltip} from "@mui/material";
+import {Checkbox, Stack, TextField, Tooltip, Button, Typography} from "@mui/material";
 import bandosGodsword from './Images/Bandos_godsword_small.png';
 import dragonWarhammer from './Images/Dragon_warhammer_small.png';
 
 export default function DefenceReduction(props: { bossName: string, defenceLevel: number, maxReduction: number, handleChange: any }) {
     const [isChecked, setIsChecked] = React.useState<boolean>(false);
     const [localDefenceReduction, setLocalDefenceReduction] = React.useState(props.maxReduction);
+    const [tooltipOpen, setTooltipOpen] = React.useState<boolean>(false);
 
     const handleTextFieldChange = (e: any) => {
         let setValue: number = e.target.value;
         if (setValue > props.maxReduction) {
             setValue = props.maxReduction;
+            setTooltipOpen(true);
         }
         if (setValue < 0) {
             setValue = 0;
@@ -25,12 +27,14 @@ export default function DefenceReduction(props: { bossName: string, defenceLevel
         <div>
             <Stack key={`${props.bossName}-stack`} direction="row" alignItems="center" gap={2}>
                 {props.defenceLevel - (isChecked ? localDefenceReduction : 0)}/{props.defenceLevel} Defence
-                <img src={bandosGodsword} width="auto"
-                     height="45" alt="logo"/>
-                <img src={dragonWarhammer} width="auto"
-                     height="45" alt="logo"/>
-                <Tooltip key={`${props.bossName}-tooltip`}
-                         title={`Max defence reduction for ${props.bossName} is ${props.maxReduction}`}>
+                <img src={bandosGodsword} width="auto" height="45" alt="logo"/>
+                <img src={dragonWarhammer} width="auto" height="45" alt="logo"/>
+                <Button sx={buttonStyle}
+                        onClick={() => setLocalDefenceReduction(Math.max(localDefenceReduction - 1, 0))}>-</Button>
+                <Tooltip open={tooltipOpen}
+                         title={`Max defence reduction for ${props.bossName} is ${props.maxReduction}`}
+                         onClose={() => setTooltipOpen(false)}
+                         onOpen={() => setTooltipOpen(true)}>
                     <TextField
                         key={`${props.bossName}-textfield`}
                         id="outlined-number"
@@ -48,7 +52,6 @@ export default function DefenceReduction(props: { bossName: string, defenceLevel
                                 min: 0,
                                 max: props.maxReduction,
                             },
-
                         }}
                         InputLabelProps={{
                             shrink: true,
@@ -56,6 +59,18 @@ export default function DefenceReduction(props: { bossName: string, defenceLevel
                         sx={textFieldStyle}
                     />
                 </Tooltip>
+                <Button
+                    sx={buttonStyle}
+                    onClick={() => {
+                        if (localDefenceReduction >= props.maxReduction) {
+                            setTooltipOpen(true);
+                        } else {
+                            setLocalDefenceReduction(localDefenceReduction + 1);
+                        }
+                    }}
+                >
+                    +
+                </Button>
                 <Tooltip title="Lower Defence">
                     <Checkbox
                         checked={isChecked}
@@ -75,7 +90,6 @@ export default function DefenceReduction(props: { bossName: string, defenceLevel
                             '& .MuiSvgIcon-root': {
                                 fontSize: 50
                             }
-
                         }}
                     />
                 </Tooltip>
@@ -105,4 +119,13 @@ const textFieldStyle = {
             borderColor: 'white',
         },
     },
+}
+
+const buttonStyle = {
+    color: "black",
+    backgroundColor: '#d8ccb4',
+    '&:hover': {
+        backgroundColor: 'white',
+        color: 'black',
+    }
 }
