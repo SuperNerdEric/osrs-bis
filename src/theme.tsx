@@ -5,8 +5,8 @@ export function getTheme() {
         breakpoints: {
             values: {
                 xs: 0,
-                sm: 820,
-                md: 960,
+                sm: 1000,
+                md: 1080,
                 lg: 1280,
                 xl: 1920,
             },

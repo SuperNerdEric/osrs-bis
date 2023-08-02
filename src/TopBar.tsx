@@ -4,18 +4,13 @@ import {TargetMonster} from "./DataObjects/TargetMonster";
 import {TopBarItem} from "./TopBarItem";
 import DrawerMenu from "./DrawerMenu";
 import {GitHub} from "./GitHub";
-
-interface Section {
-    name: string,
-    monsters: TargetMonster[],
-}
+import {sections} from "./DataObjects/MonsterSections";
 
 interface TopBarProps {
-    sections: Section[],
     setUrlState: (state: any) => void,
 }
 
-const TopBar: React.FC<TopBarProps> = ({sections, setUrlState}) => {
+const TopBar: React.FC<TopBarProps> = ({setUrlState}) => {
     return (
         <AppBar position="static" style={{background: '#000'}}>
             <Toolbar>

@@ -12,7 +12,6 @@ import {Raid} from "./DataObjects/Raid";
 import useUrlState from '@ahooksjs/use-url-state';
 import {Route, Router} from 'react-router';
 import {createBrowserHistory} from 'history';
-import {gwdMonsters, toaMonsters} from "./DataObjects/ToaMonsters";
 import DefenceReduction from "./DefenceReduction";
 import {devLog} from './utils';
 import TopBar from "./TopBar";
@@ -36,27 +35,6 @@ function App() {
 
     const [urlState, setUrlState] = useUrlState({target: "Ba-Ba", invocationLevel: 300, defenceReduction: 0});
     const [sortConfig, setSortConfig] = React.useState({key: 'dps' as keyof Result, direction: 'descending'});
-
-    const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-
-
-    const [open, setOpen] = useState(false);
-
-    const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-        setAnchorEl(event.currentTarget);
-        setOpen(true);
-    };
-
-    const handleClose = () => {
-        setAnchorEl(null);
-        setOpen(false);
-    };
-
-    const [drawerOpen, setDrawerOpen] = useState(false);
-
-    const handleDrawerToggle = () => {
-        setDrawerOpen(!drawerOpen);
-    };
 
     devLog(Object.keys(Result));
     const theme = getTheme();
@@ -110,22 +88,10 @@ function App() {
         return results;
     }, [results, sortConfig]);
 
-    const sections = [
-        {
-            name: 'Tombs of Amascut',
-            monsters: toaMonsters
-        },
-        {
-            name: 'God Wars Dungeon',
-            monsters: gwdMonsters,
-        },
-        // add more sections here
-    ];
-
     return (
         <ThemeProvider theme={theme}>
             <div className="App">
-                <TopBar sections={sections} setUrlState={setUrlState}/>
+                <TopBar setUrlState={setUrlState}/>
                 <header className="App-header">
                     <h2>{(monsters.get(urlState.target) as TargetMonster).name}</h2>
                     <img src={require(`${(monsters.get(urlState.target) as TargetMonster).imagePath}`)} width="auto"
