@@ -1,29 +1,21 @@
 import React, {useState} from 'react';
 
 import './App.css';
-import {Hidden, ThemeProvider, Tooltip} from "@mui/material";
+import {ThemeProvider, Tooltip} from "@mui/material";
 import {Result} from "./DataObjects/Result";
 import {TargetMonster} from "./DataObjects/TargetMonster";
 import {monsters} from "./DataObjects/Monsters";
 import {gearSets} from "./DataObjects/GearSets";
 import {DiscreteSliderMarks} from "./Slider";
-import {TopBarItem} from "./TopBarItem";
 import {getTheme} from "./theme";
 import {Raid} from "./DataObjects/Raid";
 import useUrlState from '@ahooksjs/use-url-state';
 import {Route, Router} from 'react-router';
 import {createBrowserHistory} from 'history';
 import {gwdMonsters, toaMonsters} from "./DataObjects/ToaMonsters";
-import {GitHub} from "./GitHub";
 import DefenceReduction from "./DefenceReduction";
-import {
-    AppBar,
-    Toolbar,
-    Grid,
-    Box,
-} from '@mui/material';
-import DrawerMenu from "./DrawerMenu";
-import { devLog } from './utils';
+import {devLog} from './utils';
+import TopBar from "./TopBar";
 
 
 const history = createBrowserHistory();
@@ -118,9 +110,6 @@ function App() {
         return results;
     }, [results, sortConfig]);
 
-
-    devLog(monsters.get("Ba-Ba"));
-
     const sections = [
         {
             name: 'Tombs of Amascut',
@@ -136,43 +125,7 @@ function App() {
     return (
         <ThemeProvider theme={theme}>
             <div className="App">
-                <AppBar position="static" style={{background: '#000'}}>
-                    <Toolbar>
-                        <Hidden smUp>
-                            <DrawerMenu sections={sections} setTargetMonster={(targetMonster: TargetMonster) => {
-                                setUrlState({
-                                    target: targetMonster.shortName || targetMonster.name,
-                                    invocationLevel: undefined,
-                                    defenceReduction: undefined,
-                                });
-                            }}/>
-                        </Hidden>
-                        <Hidden smDown>
-                            <Box display={{ xs: 'none', sm: 'block' }}>
-                                <Grid container spacing={2}>
-                                    <Grid item sm={5}>
-                                        <TopBarItem setTargetMonster={(targetMonster: TargetMonster) => {
-                                            setUrlState({target: targetMonster.name});
-                                        }} monsterList={toaMonsters} sectionName={"Tombs of Amascut"}/>
-                                    </Grid>
-                                    <Grid item sm={5}>
-                                        <TopBarItem setTargetMonster={(targetMonster: TargetMonster) => {
-                                            setUrlState({
-                                                target: targetMonster.shortName || targetMonster.name,
-                                                invocationLevel: undefined,
-                                                defenceReduction: undefined,
-                                            });
-                                        }} monsterList={gwdMonsters} sectionName={"God Wars Dungeon"}/>
-                                    </Grid>
-                                    <Grid item sm={2}>
-                                        <GitHub/>
-                                    </Grid>
-                                </Grid>
-                            </Box>
-                        </Hidden>
-                    </Toolbar>
-                </AppBar>
-                <GitHub/>
+                <TopBar sections={sections} setUrlState={setUrlState}/>
                 <header className="App-header">
                     <h2>{(monsters.get(urlState.target) as TargetMonster).name}</h2>
                     <img src={require(`${(monsters.get(urlState.target) as TargetMonster).imagePath}`)} width="auto"

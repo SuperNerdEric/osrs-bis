@@ -2,6 +2,15 @@ import {createTheme} from "@mui/material";
 
 export function getTheme() {
     return createTheme({
+        breakpoints: {
+            values: {
+                xs: 0,
+                sm: 820,
+                md: 960,
+                lg: 1280,
+                xl: 1920,
+            },
+        },
         components: {
             MuiTooltip: {
                 styleOverrides: {

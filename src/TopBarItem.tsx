@@ -38,7 +38,6 @@ export function TopBarItem(props: { setTargetMonster: (targetMonster: TargetMons
         setOpen(false);
     };
 
-
     return <div>
         <Button
             id="basic-button"
@@ -47,7 +46,10 @@ export function TopBarItem(props: { setTargetMonster: (targetMonster: TargetMons
             aria-expanded={open ? "true" : undefined}
             onMouseOver={handleHover}
             onMouseLeave={handleClose}
-            style={{ zIndex: 1301 }}
+            sx={{
+                fontSize: "25px",
+                zIndex: 1301,
+            }}
         >
             {props.sectionName}
         </Button>
