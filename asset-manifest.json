@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.0ed9a958.css",
-    "main.js": "/static/js/main.1f5b2956.js",
+    "main.js": "/static/js/main.f49986f4.js",
     "static/js/787.f7d32ca0.chunk.js": "/static/js/787.f7d32ca0.chunk.js",
     "static/media/Fire_cape.png": "/static/media/Fire_cape.9fa34a7e2c3fc7a55285.png",
     "static/media/Infernal_cape.png": "/static/media/Infernal_cape.138db8766550a20565e9.png",
@@ -67,14 +67,13 @@
     "static/media/Necklace_of_anguish.png": "/static/media/Necklace_of_anguish.4470235995de2cfe5144.png",
     "static/media/Zamorakian_hasta.png": "/static/media/Zamorakian_hasta.7d1ba1a324e0025170dc.png",
     "static/media/Occult_necklace.png": "/static/media/Occult_necklace.b5467eee40dbe71845aa.png",
-    "static/media/logo.svg": "/static/media/logo.426278726f90c57aa805.svg",
     "index.html": "/index.html",
     "main.0ed9a958.css.map": "/static/css/main.0ed9a958.css.map",
-    "main.1f5b2956.js.map": "/static/js/main.1f5b2956.js.map",
+    "main.f49986f4.js.map": "/static/js/main.f49986f4.js.map",
     "787.f7d32ca0.chunk.js.map": "/static/js/787.f7d32ca0.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.0ed9a958.css",
-    "static/js/main.1f5b2956.js"
+    "static/js/main.f49986f4.js"
   ]
 }
