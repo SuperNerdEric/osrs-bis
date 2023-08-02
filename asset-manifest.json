@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.0ed9a958.css",
-    "main.js": "/static/js/main.831bc5d6.js",
+    "main.js": "/static/js/main.606a89b7.js",
     "static/js/787.f7d32ca0.chunk.js": "/static/js/787.f7d32ca0.chunk.js",
     "static/media/Fire_cape.png": "/static/media/Fire_cape.9fa34a7e2c3fc7a55285.png",
     "static/media/Infernal_cape.png": "/static/media/Infernal_cape.138db8766550a20565e9.png",
@@ -43,13 +43,19 @@
     "static/media/Keris_partisan_of_breaching.png": "/static/media/Keris_partisan_of_breaching.b8936fe41f06841b29a5.png",
     "static/media/Amulet_of_fury.png": "/static/media/Amulet_of_fury.c29b610489d8a1c9cc91.png",
     "static/media/Imbued_zamorak_cape.png": "/static/media/Imbued_zamorak_cape.1e9dfff5d18e4248f6bf.png",
+    "static/media/Torag_the_Corrupted.png": "/static/media/Torag_the_Corrupted.f00d8ab4c5c920c3100e.png",
     "static/media/Sanguinesti_staff.png": "/static/media/Sanguinesti_staff.a15e0414b16bc465c270.png",
     "static/media/Avernic_defender.png": "/static/media/Avernic_defender.39c68f769ce3d7519708.png",
+    "static/media/Karil_the_Tainted.png": "/static/media/Karil_the_Tainted.152cbab1ceeecb93f8aa.png",
     "static/media/Tormented_bracelet.png": "/static/media/Tormented_bracelet.fe9d9f26167104d4a383.png",
+    "static/media/Dharok_the_Wretched.png": "/static/media/Dharok_the_Wretched.4b1650c4e10390f541ac.png",
     "static/media/Armadyl_chestplate.png": "/static/media/Armadyl_chestplate.5ddc92efadeead7bd22b.png",
+    "static/media/Verac_the_Defiled.png": "/static/media/Verac_the_Defiled.3f7d0eae06a80bd00dd1.png",
     "static/media/Torva_full_helm.png": "/static/media/Torva_full_helm.cbc4f31d8857b20dc985.png",
     "static/media/Armadyl_chainskirt.png": "/static/media/Armadyl_chainskirt.deffb8411ecc15057d3e.png",
     "static/media/Armadyl_helmet.png": "/static/media/Armadyl_helmet.0b1995b2a9703b40aeb2.png",
+    "static/media/Ahrim_the_Blighted.png": "/static/media/Ahrim_the_Blighted.ab4bcdb22f5acb833c99.png",
+    "static/media/Guthan_the_Infested.png": "/static/media/Guthan_the_Infested.2768f199e75f907b577e.png",
     "static/media/Torva_platelegs.png": "/static/media/Torva_platelegs.ccf92a8381c5b9a004d2.png",
     "static/media/Zaryte_vambraces.png": "/static/media/Zaryte_vambraces.8bb2db3d88927064ca02.png",
     "static/media/Amulet_of_torture.png": "/static/media/Amulet_of_torture.86be3e26709fd8216c6b.png",
@@ -64,11 +70,11 @@
     "static/media/logo.svg": "/static/media/logo.426278726f90c57aa805.svg",
     "index.html": "/index.html",
     "main.0ed9a958.css.map": "/static/css/main.0ed9a958.css.map",
-    "main.831bc5d6.js.map": "/static/js/main.831bc5d6.js.map",
+    "main.606a89b7.js.map": "/static/js/main.606a89b7.js.map",
     "787.f7d32ca0.chunk.js.map": "/static/js/787.f7d32ca0.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.0ed9a958.css",
-    "static/js/main.831bc5d6.js"
+    "static/js/main.606a89b7.js"
   ]
 }
