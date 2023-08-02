@@ -176,7 +176,7 @@ function App() {
                 <header className="App-header">
                     <h2>{(monsters.get(urlState.target) as TargetMonster).name}</h2>
                     <img src={require(`${(monsters.get(urlState.target) as TargetMonster).imagePath}`)} width="auto"
-                         height="150" alt="logo"/>
+                         height="150" alt={urlState.target}/>
                     {
                         isToaBoss &&
                         <DiscreteSliderMarks defaultValue={urlState.invocationLevel} handleChange={handleChange}/>
@@ -206,7 +206,7 @@ function App() {
                                             <Tooltip title={item.name}>
                                                 <a href={item.wikiLink} target="_blank" rel="noreferrer">
                                                     <img src={require(`${item.imagePath}`)} width="50" height="50"
-                                                         alt="logo"/>
+                                                         alt={item.name}/>
                                                 </a>
                                             </Tooltip>
                                         ))
