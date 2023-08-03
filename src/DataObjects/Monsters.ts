@@ -34,6 +34,21 @@ monster.rangedDefence = 60;
 monsters.set(monster.name, monster);
 
 monster = new TargetMonster();
+monster.name = "Akkha's Shadow";
+monster.raid = Raid.TombsOfAmascut;
+monster.imagePath = './Images/Monsters/Akkhas_Shadow.png';
+monster.defenceLevel = 30;
+monster.maxDefenceReduction = 20;
+monster.magicLevel = 100;
+monster.magicAccuracy = 115;
+monster.stabDefence = 60;
+monster.slashDefence = 120;
+monster.crushDefence = 120;
+monster.magicDefence = 10;
+monster.rangedDefence = 60;
+monsters.set(monster.name, monster);
+
+monster = new TargetMonster();
 monster.name = "Kephri";
 monster.raid = Raid.TombsOfAmascut;
 monster.attribute = "Kalphite";
