@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.ea161f04.css",
-    "main.js": "/static/js/main.a9a2689d.js",
+    "main.js": "/static/js/main.75947144.js",
     "static/js/787.f7d32ca0.chunk.js": "/static/js/787.f7d32ca0.chunk.js",
     "static/media/Duke_Sucellus.png": "/static/media/Duke_Sucellus.20671a0f119b769958f1.png",
     "static/media/Fire_cape.png": "/static/media/Fire_cape.9fa34a7e2c3fc7a55285.png",
@@ -27,6 +27,7 @@
     "static/media/Akkha.png": "/static/media/Akkha.358bbb844f4f47e1b989.png",
     "static/media/Book_of_the_dead.png": "/static/media/Book_of_the_dead.1a66f9e1b52a08dd5701.png",
     "static/media/Masori_mask_f.png": "/static/media/Masori_mask_f.8f9ff382c998d5dbbb7a.png",
+    "static/media/Akkhas_Shadow.png": "/static/media/Akkhas_Shadow.b84da613019b8ec189e1.png",
     "static/media/Bandos_tassets.png": "/static/media/Bandos_tassets.3ba3f6db8c6bb541c9aa.png",
     "static/media/Zebak.png": "/static/media/Zebak.71fd04da051b9e913cdc.png",
     "static/media/Corporeal_Beast.png": "/static/media/Corporeal_Beast.c817c0e297c859d7ec20.png",
@@ -129,11 +130,11 @@
     "static/media/Occult_necklace.png": "/static/media/Occult_necklace.b5467eee40dbe71845aa.png",
     "index.html": "/index.html",
     "main.ea161f04.css.map": "/static/css/main.ea161f04.css.map",
-    "main.a9a2689d.js.map": "/static/js/main.a9a2689d.js.map",
+    "main.75947144.js.map": "/static/js/main.75947144.js.map",
     "787.f7d32ca0.chunk.js.map": "/static/js/787.f7d32ca0.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.ea161f04.css",
-    "static/js/main.a9a2689d.js"
+    "static/js/main.75947144.js"
   ]
 }
