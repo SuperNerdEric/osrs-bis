@@ -36,7 +36,7 @@ function App() {
     return (
         <ThemeProvider theme={theme}>
             <div className="App">
-                <TopBar setUrlState={setUrlState}/>
+                <TopBar urlState={urlState} setUrlState={setUrlState}/>
                 <MainContent
                     target={urlState.target}
                     invocationLevel={urlState.invocationLevel}

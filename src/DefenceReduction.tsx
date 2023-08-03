@@ -8,9 +8,8 @@ import { useTheme } from '@mui/material/styles';
 
 
 export default function DefenceReduction(props: { bossName: string, defenceLevel: number, maxReduction: number, handleChange: any }) {
-    const [isChecked, setIsChecked] = React.useState<boolean>(false);
-    const [localDefenceReduction, setLocalDefenceReduction] = React.useState(props.maxReduction);
-    const [localDefenceReductionText, setLocalDefenceReductionText] = React.useState(String(props.maxReduction));
+    const [localDefenceReduction, setLocalDefenceReduction] = React.useState(0);
+    const [localDefenceReductionText, setLocalDefenceReductionText] = React.useState(String(0));
     const [tooltipOpen, setTooltipOpen] = React.useState<boolean>(false);
 
     const adjustDefenceReduction = (adjustment: number) => {
@@ -41,9 +40,8 @@ export default function DefenceReduction(props: { bossName: string, defenceLevel
         setLocalDefenceReduction(newValue);
         setLocalDefenceReductionText(String(newValue));
 
-        if (isChecked) {
-            props.handleChange(newValue);
-        }
+
+        props.handleChange(newValue);
     };
 
     React.useEffect(() => {
@@ -51,10 +49,8 @@ export default function DefenceReduction(props: { bossName: string, defenceLevel
             setLocalDefenceReduction(props.maxReduction);
             setLocalDefenceReductionText(String(props.maxReduction));
         }
-        if (isChecked) {
-            props.handleChange(localDefenceReduction);
-        }
-    }, [localDefenceReduction, props.maxReduction, isChecked]);
+        props.handleChange(localDefenceReduction);
+    }, [localDefenceReduction, props.maxReduction]);
 
     const theme = useTheme();
     const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
@@ -70,7 +66,7 @@ export default function DefenceReduction(props: { bossName: string, defenceLevel
                     justifyContent="center"
                 >
                     <Stack direction="row" alignItems="center" gap={2}>
-                        {props.defenceLevel - (isChecked ? localDefenceReduction : 0)}/{props.defenceLevel} Defence
+                        {props.defenceLevel - localDefenceReduction}/{props.defenceLevel} Defence
                         <img src={bandosGodsword} width="auto" height="45" alt="logo"/>
                         <img src={dragonWarhammer} width="auto" height="45" alt="logo"/>
                     </Stack>
@@ -111,28 +107,6 @@ export default function DefenceReduction(props: { bossName: string, defenceLevel
                         >
                             +
                         </Button>
-                        <Tooltip title="Lower Defence">
-                            <Checkbox
-                                checked={isChecked}
-                                onChange={e => {
-                                    if (e.target.checked) {
-                                        props.handleChange(localDefenceReduction);
-                                    } else {
-                                        props.handleChange(0);
-                                    }
-                                    setIsChecked(e.target.checked)
-                                }}
-                                sx={{
-                                    color: "#d8ccb4",
-                                    '&.Mui-checked': {
-                                        color: '#d8ccb4',
-                                    },
-                                    '& .MuiSvgIcon-root': {
-                                        fontSize: 50
-                                    }
-                                }}
-                            />
-                        </Tooltip>
                     </Stack>
                 </Stack>
             </Container>

@@ -5,12 +5,14 @@ import {TopBarItem} from "./TopBarItem";
 import DrawerMenu from "./DrawerMenu";
 import {GitHub} from "./GitHub";
 import {sections} from "./DataObjects/MonsterSections";
+import {Raid} from "./DataObjects/Raid";
 
 interface TopBarProps {
+    urlState: any,
     setUrlState: (state: any) => void,
 }
 
-const TopBar: React.FC<TopBarProps> = ({setUrlState}) => {
+const TopBar: React.FC<TopBarProps> = ({urlState, setUrlState}) => {
     return (
         <header>
             <AppBar position="static" style={{background: '#000'}}>
@@ -19,8 +21,8 @@ const TopBar: React.FC<TopBarProps> = ({setUrlState}) => {
                         <DrawerMenu sections={sections} setTargetMonster={(targetMonster: TargetMonster) => {
                             setUrlState({
                                 target: targetMonster.shortName || targetMonster.name,
-                                invocationLevel: undefined,
-                                defenceReduction: undefined,
+                                invocationLevel: targetMonster.raid === Raid.TombsOfAmascut ? urlState.invocationLevel : undefined,
+                                defenceReduction: urlState.defenceReduction,
                             });
                         }}/>
                     </Hidden>
@@ -32,8 +34,8 @@ const TopBar: React.FC<TopBarProps> = ({setUrlState}) => {
                                         <TopBarItem setTargetMonster={(targetMonster: TargetMonster) => {
                                             setUrlState({
                                                 target: targetMonster.shortName || targetMonster.name,
-                                                invocationLevel: undefined,
-                                                defenceReduction: undefined,
+                                                invocationLevel: targetMonster.raid === Raid.TombsOfAmascut ? urlState.invocationLevel : undefined,
+                                                defenceReduction: urlState.defenceReduction,
                                             });
                                         }} monsterList={section.monsters} sectionName={section.name}/>
                                     </Grid>
