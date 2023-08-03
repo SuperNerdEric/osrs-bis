@@ -12,37 +12,39 @@ interface TopBarProps {
 
 const TopBar: React.FC<TopBarProps> = ({setUrlState}) => {
     return (
-        <AppBar position="static" style={{background: '#000'}}>
-            <Toolbar>
-                <Hidden smUp>
-                    <DrawerMenu sections={sections} setTargetMonster={(targetMonster: TargetMonster) => {
-                        setUrlState({
-                            target: targetMonster.shortName || targetMonster.name,
-                            invocationLevel: undefined,
-                            defenceReduction: undefined,
-                        });
-                    }}/>
-                </Hidden>
-                <Hidden smDown>
-                    <Box display={{xs: 'none', sm: 'block'}}>
-                        <Grid container spacing={2}>
-                            {sections.map((section, index) => (
-                                <Grid item key={index}>
-                                    <TopBarItem setTargetMonster={(targetMonster: TargetMonster) => {
-                                        setUrlState({
-                                            target: targetMonster.shortName || targetMonster.name,
-                                            invocationLevel: undefined,
-                                            defenceReduction: undefined,
-                                        });
-                                    }} monsterList={section.monsters} sectionName={section.name}/>
-                                </Grid>
-                            ))}
-                            <GitHub/>
-                        </Grid>
-                    </Box>
-                </Hidden>
-            </Toolbar>
-        </AppBar>
+        <header>
+            <AppBar position="static" style={{background: '#000'}}>
+                <Toolbar>
+                    <Hidden smUp>
+                        <DrawerMenu sections={sections} setTargetMonster={(targetMonster: TargetMonster) => {
+                            setUrlState({
+                                target: targetMonster.shortName || targetMonster.name,
+                                invocationLevel: undefined,
+                                defenceReduction: undefined,
+                            });
+                        }}/>
+                    </Hidden>
+                    <Hidden smDown>
+                        <Box display={{xs: 'none', sm: 'block'}}>
+                            <Grid container spacing={2}>
+                                {sections.map((section, index) => (
+                                    <Grid item key={index}>
+                                        <TopBarItem setTargetMonster={(targetMonster: TargetMonster) => {
+                                            setUrlState({
+                                                target: targetMonster.shortName || targetMonster.name,
+                                                invocationLevel: undefined,
+                                                defenceReduction: undefined,
+                                            });
+                                        }} monsterList={section.monsters} sectionName={section.name}/>
+                                    </Grid>
+                                ))}
+                                <GitHub/>
+                            </Grid>
+                        </Box>
+                    </Hidden>
+                </Toolbar>
+            </AppBar>
+        </header>
     );
 };
 
