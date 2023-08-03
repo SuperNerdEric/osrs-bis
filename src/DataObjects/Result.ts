@@ -256,11 +256,7 @@ export class Result {
         let gearMultiplier = 1; //Todo: slayer helm, salve
         let accuracyMultiplier = 1;
         if (this.gearSet[0].name === "Twisted bow") {
-            let targetMagic = this.targetMonster.magicLevel;
-
-            if (this.targetMonster.magicAccuracy > targetMagic) {
-                targetMagic = this.targetMonster.magicAccuracy;
-            }
+            let targetMagic = Math.max(this.targetMonster.magicLevel, this.targetMonster.magicAccuracy);
 
             //The Magic level or accuracy caps at 250 outside the Chambers of Xeric, and 350 within.
             if (targetMagic > 350 && this.targetMonster.raid === Raid.ChambersOfXeric) {
