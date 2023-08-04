@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.ea161f04.css",
-    "main.js": "/static/js/main.75947144.js",
+    "main.js": "/static/js/main.160e659d.js",
     "static/js/787.f7d32ca0.chunk.js": "/static/js/787.f7d32ca0.chunk.js",
     "static/media/Duke_Sucellus.png": "/static/media/Duke_Sucellus.20671a0f119b769958f1.png",
     "static/media/Fire_cape.png": "/static/media/Fire_cape.9fa34a7e2c3fc7a55285.png",
@@ -46,6 +46,7 @@
     "static/media/Commander_Zilyana.png": "/static/media/Commander_Zilyana.2ea3add785a509cef40b.png",
     "static/media/Toxic_blowpipe.png": "/static/media/Toxic_blowpipe.2482dacd0941a1ecf8ac.png",
     "static/media/Vanguard_(melee).png": "/static/media/Vanguard_(melee).2ad3addc1bb9d1b10ea4.png",
+    "static/media/Slayer_helmet_(i).png": "/static/media/Slayer_helmet_(i).06372caee3fbc0430b21.png",
     "static/media/Vardorvis.png": "/static/media/Vardorvis.615391021efb1f675d59.png",
     "static/media/Elidinis_Warden.png": "/static/media/Elidinis_Warden.301a3314a7806d59386b.png",
     "static/media/Masori_chaps_f.png": "/static/media/Masori_chaps_f.c6914cadaf45f783ea42.png",
@@ -109,6 +110,7 @@
     "static/media/Dagannoth_Prime.png": "/static/media/Dagannoth_Prime.7adb74410f3b11c1280f.png",
     "static/media/Armadyl_helmet.png": "/static/media/Armadyl_helmet.0b1995b2a9703b40aeb2.png",
     "static/media/Ahrim_the_Blighted.png": "/static/media/Ahrim_the_Blighted.ab4bcdb22f5acb833c99.png",
+    "static/media/Bronze_arrow.png": "/static/media/Bronze_arrow.3e109cbce20c3895c3e3.png",
     "static/media/Giant_Mole.png": "/static/media/Giant_Mole.4e2c990f8bd0b94cb2bb.png",
     "static/media/Guthan_the_Infested.png": "/static/media/Guthan_the_Infested.2768f199e75f907b577e.png",
     "static/media/Dagannoth_Supreme.png": "/static/media/Dagannoth_Supreme.99d5c2ed8f8bcbb04bae.png",
@@ -130,11 +132,11 @@
     "static/media/Occult_necklace.png": "/static/media/Occult_necklace.b5467eee40dbe71845aa.png",
     "index.html": "/index.html",
     "main.ea161f04.css.map": "/static/css/main.ea161f04.css.map",
-    "main.75947144.js.map": "/static/js/main.75947144.js.map",
+    "main.160e659d.js.map": "/static/js/main.160e659d.js.map",
     "787.f7d32ca0.chunk.js.map": "/static/js/787.f7d32ca0.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.ea161f04.css",
-    "static/js/main.75947144.js"
+    "static/js/main.160e659d.js"
   ]
 }
