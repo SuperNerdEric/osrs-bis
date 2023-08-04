@@ -4,6 +4,7 @@ export class TargetMonster {
     name: string = "";
     shortName: string = "";
     raid: Raid = Raid.None;
+    slayerMonster: boolean = false;
     attribute: string = "";
     imagePath: string = "";
     defenceLevel: number = 0;

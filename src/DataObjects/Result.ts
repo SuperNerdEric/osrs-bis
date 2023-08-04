@@ -10,6 +10,7 @@ export class Result {
     maxHit: number = 0;
     hitChance: number = 0;
     defenceReduction: number = 0;
+    onTask: boolean = false;
     gearSet: Item[] = [];
     player: Player = new Player();
     targetMonster: TargetMonster = new TargetMonster();
@@ -74,7 +75,7 @@ export class Result {
         this.addReason("Attack roll:");
         let attackRoll = effectiveAttackLevel * (equipmentAttackBonus + 64);
         this.addReason("• " + effectiveAttackLevel + " * (" + equipmentAttackBonus + " + 64) = " + attackRoll);
-        let gearMultiplier = 1; //Todo slayer helm, salve
+        let gearMultiplier = 1; //Todo salve
         this.addReason("");
         this.addReason("Gear multiplier:");
 
@@ -83,6 +84,14 @@ export class Result {
             //Todo Is it 33% or 4/3?
             gearMultiplier = 1.33;
         }
+
+        const slayerHelmetPresent = this.gearSet.some(item => item.name === "Slayer helmet (i)");
+
+        devLog("On task:" + this.onTask);
+        if (slayerHelmetPresent && this.onTask) {
+            gearMultiplier = 7/6;
+        }
+
         this.addReason("• " + gearMultiplier);
 
         this.addReason("");
@@ -189,8 +198,10 @@ export class Result {
 
             this.addReason("");
             this.addReason("Osmumten's fang max hit (does not affect DPS as min hit is also raised):");
-            this.addReason(`• Math.floor(${this.maxHit} * 0.85) = ${Math.floor(this.maxHit * 0.85)}`);
-            this.maxHit = Math.floor(this.maxHit * 0.85);
+            const minHit = Math.floor(this.maxHit * 0.15);
+            this.addReason(`• Minhit: Math.floor(${this.maxHit} * 0.15) = ${minHit}`);
+            this.maxHit = this.maxHit - minHit;
+            this.addReason(`• Maxhit: ${this.maxHit} - ${minHit}) = ${this.maxHit}`);
         } else if (this.gearSet[0].name === "Keris partisan of breaching" && this.targetMonster.attribute == "Kalphite") {
 
             //Todo Is it 33% or 4/3?
@@ -237,7 +248,13 @@ export class Result {
         this.addReason("• Math.floor(" + maxHit + "/640) = " + Math.floor(Number(maxHit / 640)));
         maxHit = Math.floor(maxHit / 640);
 
-        const gearMultiplier = 1; //Todo: slayer helm, salve
+        let gearMultiplier = 1; //Todo: slayer helm, salve
+
+        const slayerHelmetPresent = this.gearSet.some(item => item.name === "Slayer helmet (i)");
+
+        if (slayerHelmetPresent && this.onTask) {
+            gearMultiplier = 7/6;
+        }
 
         maxHit = Math.floor(maxHit * gearMultiplier);
 
@@ -253,8 +270,12 @@ export class Result {
             equipmentRangedStrength += item.rangedStrength;
         })
 
-        let gearMultiplier = 1; //Todo: slayer helm, salve
-        let accuracyMultiplier = 1;
+        let gearMultiplier = 1;
+        let tbowModifier = 1;
+
+        let accuracyGearMultiplier = 1;
+        let tbowAccuracyGearModifier = 1;
+
         if (this.gearSet[0].name === "Twisted bow") {
             let targetMagic = Math.max(this.targetMonster.magicLevel, this.targetMonster.magicAccuracy);
 
@@ -265,29 +286,34 @@ export class Result {
                 targetMagic = 250;
             }
 
-
-            //accuracyMultiplier =  140 + (((10 * 3 * targetMagic)/10 - 10) / 100) - Math.pow(((3*targetMagic)/10 - 100), 2) / 100;
-            //Todo Other calcs seems to round down here? Not sure if correct though
-            accuracyMultiplier = 140 + Math.floor((3 * targetMagic - 10) / 100) - Math.floor(Math.pow(3 * targetMagic / 10 - 100, 2) / 100);
-            if (accuracyMultiplier > 140) {
-                accuracyMultiplier = 140;
+            tbowAccuracyGearModifier = 140 + Math.floor((3 * targetMagic - 10) / 100) - Math.floor(Math.pow(3 * targetMagic / 10 - 100, 2) / 100);
+            if (tbowAccuracyGearModifier > 140) {
+                tbowAccuracyGearModifier = 140;
             }
 
 
-            accuracyMultiplier /= 100;
+            tbowAccuracyGearModifier /= 100;
 
-            //devLog("Twisted Bow Accuracy Multiplier: " + accuracyMultiplier);
-            let damageMultiplier = 250 + (((10 * 3 * targetMagic) / 10 - 14) / 100) - Math.pow(((3 * targetMagic) / 10 - 140), 2) / 100;
-            //Todo Other calcs seems to round down here? Not sure if correct though
-            damageMultiplier = 250 + Math.floor((3 * targetMagic - 14) / 100) - Math.floor(Math.pow(3 * targetMagic / 10 - 140, 2) / 100)
+            let damageMultiplier = 250 + Math.floor((3 * targetMagic - 14) / 100) - Math.floor(Math.pow(3 * targetMagic / 10 - 140, 2) / 100)
             if (damageMultiplier > 250) {
                 damageMultiplier = 250;
             }
-            gearMultiplier = damageMultiplier / 100;
+            tbowModifier = damageMultiplier / 100;
             //devLog("Twisted Bow Damage Multiplier: " + damageMultiplier);
         }
 
-        this.maxHit = Math.floor(Math.floor(0.5 + (((effectiveRangedStrength) * (equipmentRangedStrength + 64)) / 640)) * gearMultiplier);
+        const slayerHelmetPresent = this.gearSet.some(item => item.name === "Slayer helmet (i)");
+
+        if (slayerHelmetPresent && this.onTask) {
+            gearMultiplier = gearMultiplier * 1.15;
+            accuracyGearMultiplier = accuracyGearMultiplier * 1.15
+        }
+
+        this.maxHit = Math.floor(0.5 + (((effectiveRangedStrength) * (equipmentRangedStrength + 64)) / 640));
+
+        //Must be applied in this order according to Tbow.test.ts
+        this.maxHit = Math.floor(this.maxHit * gearMultiplier);
+        this.maxHit = Math.floor(this.maxHit * tbowModifier);
 
         let effectiveRangedAttack = Math.floor((rangedLevel + rangedLevelBoost) * prayerAttackMultiplier)
         effectiveRangedAttack += 8;
@@ -297,7 +323,11 @@ export class Result {
             equipmentRangedAttack += item.ranged;
         })
 
-        const attackRoll = Math.floor(Math.floor(effectiveRangedAttack * (equipmentRangedAttack + 64)) * accuracyMultiplier);
+        let attackRoll = Math.floor(effectiveRangedAttack * (equipmentRangedAttack + 64));
+
+        //Assuming it must be applied in this order similarly to maxHit according to Tbow.test.ts
+        attackRoll = Math.floor(attackRoll * accuracyGearMultiplier);
+        attackRoll = Math.floor(attackRoll * tbowAccuracyGearModifier);
 
         let defenceRoll = (this.targetMonster.defenceLevel - this.defenceReduction + 9) * (this.targetMonster.rangedDefence + 64);
         defenceRoll = defenceRoll + Math.floor(defenceRoll * Math.floor(invocationLevel / 5) * 2) / 100;
@@ -332,6 +362,18 @@ export class Result {
             equipmentMagicStrength += item.mageStrength;
         });
         devLog("Magic strength: " + equipmentMagicStrength);
+
+        let gearMultiplier = 1; //Todo salve
+        let accuracyGearMultiplier = 1; //Todo salve
+
+        const slayerHelmetPresent = this.gearSet.some(item => item.name === "Slayer helmet (i)");
+
+        if (slayerHelmetPresent && this.onTask) {
+            gearMultiplier = gearMultiplier * 1.15;
+            accuracyGearMultiplier = accuracyGearMultiplier * 1.15
+        }
+
+
 
         if (this.gearSet[0].name == "Sanguinesti staff") {
             this.maxHit = Math.floor(boostedMagicLevel / 3) - 1;
@@ -373,7 +415,10 @@ export class Result {
             }
         }
 
-        const attackRoll = Math.floor(effectiveMagicLevel * (equipmentMagicAttack + 64));
+        let attackRoll = Math.floor(effectiveMagicLevel * (equipmentMagicAttack + 64));
+        attackRoll = Math.floor(attackRoll * accuracyGearMultiplier);
+
+        this.maxHit = Math.floor(this.maxHit * gearMultiplier);
 
         devLog("equipmentMagicAttack: " + equipmentMagicAttack);
         devLog("Magic attack roll: " + attackRoll);

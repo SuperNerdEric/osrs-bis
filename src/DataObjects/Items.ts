@@ -339,6 +339,14 @@ item.rangedStrength = 60;
 items.set(item.name, item);
 
 item = new Item();
+item.name = "Bronze arrow";
+item.imagePath = './Images/Items/Bronze_arrow.png';
+item.wikiLink = "https://oldschool.runescape.wiki/w/Bronze_arrow";
+item.slot = Slot.Ammo;
+item.rangedStrength = 7;
+items.set(item.name, item);
+
+item = new Item();
 item.name = "Barrows gloves";
 item.imagePath = './Images/Items/Barrows_gloves.png';
 item.wikiLink = "https://oldschool.runescape.wiki/w/Barrows_gloves";
@@ -508,4 +516,13 @@ item.stab = 58;
 item.slash = -2;
 item.crush = 57;
 item.strength = 45;
+items.set(item.name, item);
+
+item = new Item();
+item.name = "Slayer helmet (i)";
+item.imagePath = "./Images/Items/Slayer_helmet_(i).png";
+item.wikiLink = "https://oldschool.runescape.wiki/w/Slayer_helmet_(i)";
+item.slot = Slot.Helm;
+item.magic = 3;
+item.ranged = 3;
 items.set(item.name, item);

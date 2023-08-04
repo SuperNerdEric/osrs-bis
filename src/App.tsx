@@ -16,6 +16,7 @@ const history = createBrowserHistory();
 
 function App() {
     const [defenceReduction, setDefenceReduction] = React.useState(0);
+    const [onTask, setOnTask] = React.useState(false);
 
     const handleChange = (event: Event, newValue: number | number[]) => {
         devLog("Set invocation level: " + newValue);
@@ -28,7 +29,13 @@ function App() {
         setUrlState({defenceReduction: defenceReduction});
     };
 
-    const [urlState, setUrlState] = useUrlState({target: "Ba-Ba", invocationLevel: 300, defenceReduction: 0});
+    const handleOnTask = (event: any) => {
+        devLog("Set on task: " + event.target.checked);
+        setOnTask(event.target.checked);
+        setUrlState({onTask: String(event.target.checked)});
+    };
+
+    const [urlState, setUrlState] = useUrlState({target: "Ba-Ba", invocationLevel: 300, defenceReduction: 0, onTask: "false"});
 
     devLog(Object.keys(Result));
     const theme = getTheme();
@@ -43,6 +50,8 @@ function App() {
                     handleChange={handleChange}
                     defenceReduction={defenceReduction}
                     handleDefenceReduction={handleDefenceReduction}
+                    onTask={onTask}
+                    handleOnTask={handleOnTask}
                 />
             </div>
         </ThemeProvider>

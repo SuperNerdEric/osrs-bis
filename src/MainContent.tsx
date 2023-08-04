@@ -8,6 +8,7 @@ import DefenceReduction from "./DefenceReduction";
 import { devLog } from './utils';
 import React, {useEffect, useMemo, useState} from 'react';
 import {Raid} from "./DataObjects/Raid";
+import OnTaskCheck from "./OnTaskCheck";
 
 const Table = {
     border: 1,
@@ -20,6 +21,8 @@ interface MainContentProps {
     handleChange: (event: Event, newValue: number | number[]) => void;
     defenceReduction: number;
     handleDefenceReduction: (defenceReduction: number) => void;
+    onTask: boolean;
+    handleOnTask: (onTask: boolean) => void;
 }
 
 const MainContent: React.FC<MainContentProps> = ({
@@ -28,6 +31,8 @@ const MainContent: React.FC<MainContentProps> = ({
                                                      handleChange,
                                                      defenceReduction,
                                                      handleDefenceReduction,
+                                                     onTask,
+                                                     handleOnTask
                                                  }) => {
 
     const [results, setResults] = useState<Result[]>([]);
@@ -64,6 +69,7 @@ const MainContent: React.FC<MainContentProps> = ({
             result.gearSet = gearSet;
             result.targetMonster = monsters.get(target) as TargetMonster;
             result.defenceReduction = defenceReduction;
+            result.onTask = onTask;
             if (isToaBoss) {
                 result.player.attackLevelBoost = 26;
                 result.player.strengthLevelBoost = 26;
@@ -74,7 +80,7 @@ const MainContent: React.FC<MainContentProps> = ({
                 result.player.attackLevelBoost = 19;
                 result.player.strengthLevelBoost = 19;
                 result.player.rangedLevelBoost = 13;
-                result.player.magicLevelBoost = 10; //imbued heart
+                result.player.magicLevelBoost = 13; //saturated heart
                 result.calculateDPS(0);
             }
             devLog(result);
@@ -82,7 +88,9 @@ const MainContent: React.FC<MainContentProps> = ({
         })
 
         setResults(results);
-    }, [target, invocationLevel, defenceReduction]);
+    }, [target, invocationLevel, defenceReduction, onTask]);
+
+    const isSlayerMonster: boolean = (monsters.get(target) as TargetMonster).slayerMonster;
 
     return (
         <main className="App-main">
@@ -100,6 +108,7 @@ const MainContent: React.FC<MainContentProps> = ({
                               defenceLevel={(monsters.get(target) as TargetMonster).defenceLevel}
                               maxReduction={(monsters.get(target) as TargetMonster).maxDefenceReduction}
                               handleChange={handleDefenceReduction}/>
+            {isSlayerMonster && <OnTaskCheck onTask={onTask} handleOnTask={handleOnTask}/>}
             <table style={Table}>
                 <thead>
                 <tr>

@@ -8,6 +8,7 @@ monster.name = "Ba-Ba";
 monster.raid = Raid.TombsOfAmascut;
 monster.imagePath = './Images/Monsters/Ba-Ba.png';
 monster.defenceLevel = 80;
+//https://archive.ph/31H2d
 monster.maxDefenceReduction = 20;
 monster.magicLevel = 100;
 monster.magicAccuracy = 0;
@@ -96,6 +97,7 @@ monsters.set(monster.name, monster);
 
 monster = new TargetMonster();
 monster.name = "Kree'arra (Armadyl)";
+monster.slayerMonster = true;
 monster.shortName = "Armadyl";
 monster.imagePath = './Images/Monsters/Kreearra.png';
 monster.defenceLevel = 260;
@@ -141,6 +143,7 @@ monsters.set(monster.shortName, monster);
 
 monster = new TargetMonster();
 monster.name = "K'ril Tsutsaroth (Zamorak)";
+monster.slayerMonster = true;
 monster.shortName = "Zamorak";
 monster.imagePath = './Images/Monsters/Kril_Tsutsaroth.png';
 monster.defenceLevel = 270;
@@ -531,3 +534,19 @@ monster.crushDefence = 200;
 monster.magicDefence = 50;
 monster.rangedDefence = 200;
 monsters.set(monster.shortName, monster);
+
+
+monster = new TargetMonster();
+monster.name = "Undead Combat Dummy";
+monster.raid = Raid.None;
+monster.imagePath = './Images/Monsters/Great_Olm.png';
+monster.defenceLevel = 1;
+monster.maxDefenceReduction = 1;
+monster.magicLevel = 1;
+monster.magicAccuracy = 999;
+monster.stabDefence = 0;
+monster.slashDefence = 0;
+monster.crushDefence = 0;
+monster.magicDefence = 0;
+monster.rangedDefence = 0;
+monsters.set(monster.name, monster);
