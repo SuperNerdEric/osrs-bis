@@ -5,8 +5,7 @@ export class TargetMonster {
     shortName: string = "";
     raid: Raid = Raid.None;
     slayerMonster: boolean = false;
-    kalphite: boolean = false;
-    attribute: string = "";
+    isKalphite: boolean = false;
     imagePath: string = "";
     defenceLevel: number = 0;
     maxDefenceReduction: number = 0;

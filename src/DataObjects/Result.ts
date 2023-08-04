@@ -77,13 +77,15 @@ export class Result {
         let attackRoll = effectiveAttackLevel * (equipmentAttackBonus + 64);
         this.addReason("• " + effectiveAttackLevel + " * (" + equipmentAttackBonus + " + 64) = " + attackRoll);
         let gearMultiplier = 1; //Todo salve
+        let kerisAccuracyMultiplier = 1;
         this.addReason("");
         this.addReason("Gear multiplier:");
 
-        if (this.gearSet.items[0].name === "Keris partisan of breaching" && this.targetMonster.attribute == "Kalphite") {
+        if (this.gearSet.items[0].name.includes("Keris partisan of breaching") && this.targetMonster.isKalphite) {
             this.addReason(" - Keris partisan of breaching");
-            //Todo Is it 33% or 4/3?
-            gearMultiplier = 1.33;
+            //Only breaching partisan gets accuracy bonus
+            //https://archive.ph/6gN9c assuming accuracy is same as damage
+            kerisAccuracyMultiplier = 1.33;
         }
 
         const slayerHelmetPresent = this.gearSet.items.some(item => item.name === "Slayer helmet (i)");
@@ -98,6 +100,8 @@ export class Result {
         this.addReason("");
         this.addReason("Attack roll:");
         attackRoll = Math.floor(attackRoll * gearMultiplier);
+        attackRoll = Math.floor(attackRoll * kerisAccuracyMultiplier);
+
         this.addReason(`• Math.floor(${attackRoll} * ${gearMultiplier}) = ${attackRoll}`);
 
         let styleDefenceBonus = 0;
@@ -203,18 +207,17 @@ export class Result {
             this.addReason(`• Minhit: Math.floor(${this.maxHit} * 0.15) = ${minHit}`);
             this.maxHit = this.maxHit - minHit;
             this.addReason(`• Maxhit: ${this.maxHit} - ${minHit}) = ${this.maxHit}`);
-        } else if (this.gearSet.items[0].name === "Keris partisan of breaching" && this.targetMonster.attribute == "Kalphite") {
+        } else if (this.gearSet.items[0].name.includes("Keris partisan") && this.targetMonster.isKalphite) {
 
-            //Todo Is it 33% or 4/3?
-            this.maxHit = Math.floor(this.maxHit * 133 / 100);
-            damagePerHit = (this.maxHit * this.hitChance) / 2;
+            //https://archive.ph/6gN9c
+            const baseMaxHit = Math.floor(this.maxHit * 133 / 100);
 
-            const procMax = this.maxHit * 3;
-
+            this.maxHit = baseMaxHit * 3;
 
             // 1/51 chance of dealing 3x damage
-            const pseudoMaxHit = 50 / 51 * this.maxHit + (1 / 51 * this.maxHit * 3);
-            damagePerHit = (pseudoMaxHit * this.hitChance) / 2;
+            // Which means our max hit isn't always the same, so we use an average
+            const averageMaxHit = 50 / 51 * baseMaxHit + (1 / 51 * this.maxHit);
+            damagePerHit = (averageMaxHit * this.hitChance) / 2;
 
             devLog("Expected keris partisan hit: " + damagePerHit);
         } else {

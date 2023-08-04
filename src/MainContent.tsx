@@ -6,7 +6,7 @@ import {GearSet, gearSets, GearSetType} from "./DataObjects/GearSets";
 import { DiscreteSliderMarks } from "./Slider";
 import DefenceReduction from "./DefenceReduction";
 import { devLog } from './utils';
-import React, {useEffect, useMemo, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Raid} from "./DataObjects/Raid";
 import OnTaskCheck from "./OnTaskCheck";
 
@@ -70,7 +70,7 @@ const MainContent: React.FC<MainContentProps> = ({
             shownGearSets.push(...slayerGearSets);
         }
 
-        if((monsters.get(target) as TargetMonster).kalphite) {
+        if((monsters.get(target) as TargetMonster).isKalphite) {
             const slayerGearSets = gearSets.filter(gearSet => gearSet.types.includes(GearSetType.Kalphites));
             shownGearSets.push(...slayerGearSets);
         }

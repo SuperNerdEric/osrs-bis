@@ -229,5 +229,116 @@ describe('Result class', () => {
         });
     });
 
+    describe('with Twisted bow in CoX', () => {
+        beforeEach(() => {
+            result.gearSet = createGearSet([GearSetType.General],["Twisted bow", "Dragon arrow", "Masori mask (f)", "Masori body (f)", "Masori chaps (f)", "Zaryte vambraces", "Necklace of anguish", "Ava's assembler"]);
+            result.targetMonster = monsters.get("Olm (Head)") as TargetMonster;
+        });
+
+        test('should calculate DPS correctly', () => {
+            result.calculateDPS(0);
+            expect(result.dps).toBeCloseTo(10.557); //Matches fruitdeeps
+        });
+
+        test('should calculate maxHit correctly', () => {
+            result.calculateDPS(0);
+            expect(result.maxHit).toBe(77); //Matches fruitdeeps
+        });
+
+        test('should calculate hitChance correctly', () => {
+            result.calculateDPS(0);
+            expect(result.hitChance).toBeCloseTo(0.8226); //Matches fruitdeeps
+        });
+    });
+
+    describe('with Scythe on large monster', () => {
+        beforeEach(() => {
+            result.gearSet = createGearSet([GearSetType.General],["Scythe of vitur", "Torva full helm", "Torva platebody", "Torva platelegs", "Ferocious gloves", "Primordial boots", "Amulet of torture", "Infernal cape"]);
+            result.targetMonster = monsters.get("Bloat") as TargetMonster;
+        });
+
+        test('should calculate DPS correctly', () => {
+            result.calculateDPS(0);
+            expect(result.dps).toBeCloseTo(11.534); //Matches fruitdeeps
+        });
+
+        test('should calculate maxHit correctly', () => {
+            result.calculateDPS(0);
+            expect(result.maxHit).toBe(81); //Matches fruitdeeps
+        });
+
+        test('should calculate hitChance correctly', () => {
+            result.calculateDPS(0);
+            expect(result.hitChance).toBeCloseTo(0.8544); //Matches fruitdeeps
+        });
+    });
+
+    describe('with Keris partisan on kalphite', () => {
+        beforeEach(() => {
+            result.gearSet = createGearSet([GearSetType.General],["Keris partisan", "Avernic defender", "Torva full helm", "Torva platebody", "Torva platelegs", "Ferocious gloves", "Primordial boots", "Amulet of torture", "Infernal cape"]);
+            result.targetMonster = monsters.get("KQ") as TargetMonster;
+        });
+
+        test('should calculate DPS correctly', () => {
+            result.calculateDPS(0);
+            expect(result.dps).toBeCloseTo(4.760); //Higher than fruitdeeps because their max hit is too low for proc
+        });
+
+        test('should calculate maxHit correctly', () => {
+            result.calculateDPS(0);
+            expect(result.maxHit).toBe(165); //Tested in game hitting 55 without proc and then 165 with proc
+        });
+
+        test('should calculate hitChance correctly', () => {
+            result.calculateDPS(0);
+            expect(result.hitChance).toBeCloseTo(0.3997); //Matches fruitdeeps
+        });
+    });
+
+    describe('with Keris partisan of breaching on kalphite', () => {
+        beforeEach(() => {
+            result.gearSet = createGearSet([GearSetType.General],["Keris partisan of breaching", "Avernic defender", "Torva full helm", "Torva platebody", "Torva platelegs", "Ferocious gloves", "Primordial boots", "Amulet of torture", "Infernal cape"]);
+            result.targetMonster = monsters.get("KQ") as TargetMonster;
+        });
+
+        test('should calculate DPS correctly', () => {
+            result.calculateDPS(0);
+            expect(result.dps).toBeCloseTo(6.308); //Higher than fruitdeeps because their max hit is too low for proc
+        });
+
+        test('should calculate maxHit correctly', () => {
+            result.calculateDPS(0);
+            expect(result.maxHit).toBe(165); //Tested in game hitting 55 without proc and then 165 with proc
+        });
+
+        test('should calculate hitChance correctly', () => {
+            result.calculateDPS(0);
+            expect(result.hitChance).toBeCloseTo(0.5309); //Matches fruitdeeps
+        });
+    });
+
+    describe('with Keris partisan of breaching on kalphite slayer task', () => {
+        beforeEach(() => {
+            result.gearSet = createGearSet([GearSetType.General],["Keris partisan of breaching", "Avernic defender", "Slayer helmet (i)", "Torva platebody", "Torva platelegs", "Ferocious gloves", "Primordial boots", "Amulet of torture", "Infernal cape"]);
+            result.targetMonster = monsters.get("KQ") as TargetMonster;
+            result.onTask = true;
+        });
+
+        test('should calculate DPS correctly', () => {
+            result.calculateDPS(0);
+            expect(result.dps).toBeCloseTo(7.883); //Higher than fruitdeeps because their max hit is too low for proc
+        });
+
+        test('should calculate maxHit correctly', () => {
+            result.calculateDPS(0);
+            expect(result.maxHit).toBe(183); //Tripled fruitdeeps
+        });
+
+        test('should calculate hitChance correctly', () => {
+            result.calculateDPS(0);
+            expect(result.hitChance).toBeCloseTo(0.5979); //Matches fruitdeeps
+        });
+    });
+
 });
 

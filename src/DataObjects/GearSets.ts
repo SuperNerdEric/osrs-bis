@@ -45,3 +45,4 @@ createGearSet([GearSetType.Kalphites],["Keris partisan", "Avernic defender", "To
 createGearSet([GearSetType.Kalphites],["Keris partisan", "Avernic defender", "Neitiznot faceguard", "Bandos chestplate", "Bandos tassets", "Ferocious gloves", "Primordial boots", "Amulet of torture", "Fire cape"]);
 createGearSet([GearSetType.Kalphites],["Keris partisan of breaching", "Avernic defender", "Torva full helm", "Torva platebody", "Torva platelegs", "Ferocious gloves", "Primordial boots", "Amulet of torture", "Infernal cape"]);
 createGearSet([GearSetType.Kalphites],["Keris partisan of breaching", "Avernic defender", "Neitiznot faceguard", "Bandos chestplate", "Bandos tassets", "Ferocious gloves", "Primordial boots", "Amulet of torture", "Fire cape"]);
+createGearSet([GearSetType.Slayer],["Keris partisan of breaching", "Avernic defender", "Slayer helmet (i)", "Torva platebody", "Torva platelegs", "Ferocious gloves", "Primordial boots", "Amulet of torture", "Infernal cape"]);
