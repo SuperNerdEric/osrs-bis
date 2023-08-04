@@ -2,7 +2,7 @@ import { Tooltip } from "@mui/material";
 import { Result } from "./DataObjects/Result";
 import { TargetMonster } from "./DataObjects/TargetMonster";
 import { monsters } from "./DataObjects/Monsters";
-import { gearSets } from "./DataObjects/GearSets";
+import {GearSet, gearSets, GearSetType} from "./DataObjects/GearSets";
 import { DiscreteSliderMarks } from "./Slider";
 import DefenceReduction from "./DefenceReduction";
 import { devLog } from './utils';
@@ -64,9 +64,24 @@ const MainContent: React.FC<MainContentProps> = ({
     useEffect(() => {
         const results: Result[] = [];
 
-        gearSets.forEach(gearSet => {
+        const shownGearSets: GearSet[] = [];
+        if((monsters.get(target) as TargetMonster).slayerMonster) {
+            const slayerGearSets = gearSets.filter(gearSet => gearSet.types.includes(GearSetType.Slayer));
+            shownGearSets.push(...slayerGearSets);
+        }
+
+        if((monsters.get(target) as TargetMonster).kalphite) {
+            const slayerGearSets = gearSets.filter(gearSet => gearSet.types.includes(GearSetType.Kalphites));
+            shownGearSets.push(...slayerGearSets);
+        }
+
+        const generalGearSets = gearSets.filter(gearSet => gearSet.types.includes(GearSetType.General));
+        shownGearSets.push(...generalGearSets);
+
+
+        shownGearSets.forEach(gearSet => {
             const result: Result = new Result();
-            result.gearSet = gearSet;
+                result.gearSet = gearSet;
             result.targetMonster = monsters.get(target) as TargetMonster;
             result.defenceReduction = defenceReduction;
             result.onTask = onTask;
@@ -123,7 +138,7 @@ const MainContent: React.FC<MainContentProps> = ({
                     <tr>
                         <td>
                             {
-                                result.gearSet.map(item => (
+                                result.gearSet.items.map(item => (
                                     <Tooltip title={item.name}>
                                         <a href={item.wikiLink} target="_blank" rel="noreferrer">
                                             <img src={require(`${item.imagePath}`)} width="50" height="50"

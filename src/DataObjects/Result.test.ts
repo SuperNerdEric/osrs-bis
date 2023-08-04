@@ -1,7 +1,7 @@
 import { Result } from './Result';
 import { TargetMonster } from './TargetMonster';
 import { Player } from './Player';
-import {createGearSet} from "./GearSets";
+import {createGearSet, GearSetType} from "./GearSets";
 import {monsters} from "./Monsters";
 
 describe('Result class', () => {
@@ -19,7 +19,7 @@ describe('Result class', () => {
 
     describe('with melee gear set including Slayer helmet (i) and onTask is false', () => {
         beforeEach(() => {
-            result.gearSet = createGearSet(["Osmumten's fang", "Avernic defender", "Slayer helmet (i)", "Torva platebody", "Torva platelegs", "Ferocious gloves", "Primordial boots", "Amulet of torture", "Infernal cape"]);
+            result.gearSet = createGearSet([GearSetType.General], ["Osmumten's fang", "Avernic defender", "Slayer helmet (i)", "Torva platebody", "Torva platelegs", "Ferocious gloves", "Primordial boots", "Amulet of torture", "Infernal cape"]);
             result.onTask = false;
         });
 
@@ -41,7 +41,7 @@ describe('Result class', () => {
 
     describe('with melee gear set including Slayer helmet (i) and onTask is true', () => {
         beforeEach(() => {
-            result.gearSet = createGearSet(["Osmumten's fang", "Avernic defender", "Slayer helmet (i)", "Torva platebody", "Torva platelegs", "Ferocious gloves", "Primordial boots", "Amulet of torture", "Infernal cape"]);
+            result.gearSet = createGearSet([GearSetType.General],["Osmumten's fang", "Avernic defender", "Slayer helmet (i)", "Torva platebody", "Torva platelegs", "Ferocious gloves", "Primordial boots", "Amulet of torture", "Infernal cape"]);
             result.onTask = true;
         });
 
@@ -63,7 +63,7 @@ describe('Result class', () => {
 
     describe('with ranged gear set including Slayer helmet (i) and onTask is false', () => {
         beforeEach(() => {
-            result.gearSet = createGearSet(["Twisted bow", "Dragon arrow", "Slayer helmet (i)", "Masori body (f)", "Masori chaps (f)", "Zaryte vambraces", "Necklace of anguish", "Ava's assembler"]);
+            result.gearSet = createGearSet([GearSetType.General],["Twisted bow", "Dragon arrow", "Slayer helmet (i)", "Masori body (f)", "Masori chaps (f)", "Zaryte vambraces", "Necklace of anguish", "Ava's assembler"]);
             result.onTask = false;
         });
 
@@ -85,7 +85,7 @@ describe('Result class', () => {
 
     describe('with ranged gear set including Slayer helmet (i) and onTask is true', () => {
         beforeEach(() => {
-            result.gearSet = createGearSet(["Twisted bow", "Dragon arrow", "Slayer helmet (i)", "Masori body (f)", "Masori chaps (f)", "Zaryte vambraces", "Necklace of anguish", "Ava's assembler"]);
+            result.gearSet = createGearSet([GearSetType.General],["Twisted bow", "Dragon arrow", "Slayer helmet (i)", "Masori body (f)", "Masori chaps (f)", "Zaryte vambraces", "Necklace of anguish", "Ava's assembler"]);
             result.onTask = true;
         });
 
@@ -112,7 +112,7 @@ describe('Result class', () => {
         });
 
         test('should calculate maxHit correctly', () => {
-            result.gearSet = createGearSet(["Twisted bow", "Bronze arrow", "Slayer helmet (i)", "Masori body (f)"]); //31 Ranged strength found with Tbow.test.ts
+            result.gearSet = createGearSet([GearSetType.General],["Twisted bow", "Bronze arrow", "Slayer helmet (i)", "Masori body (f)"]); //31 Ranged strength found with Tbow.test.ts
             result.targetMonster = monsters.get("Undead Combat Dummy") as TargetMonster;
             result.calculateDPS(0);
             expect(result.maxHit).toBe(53); //Tested in game
@@ -121,7 +121,7 @@ describe('Result class', () => {
 
     describe('with mage gear set including Slayer helmet (i) and onTask is false', () => {
         beforeEach(() => {
-            result.gearSet = createGearSet(["Sanguinesti staff", "Elidinis' ward (f)", "Slayer helmet (i)", "Ancestral robe top", "Ancestral robe bottom", "Tormented bracelet", "Occult necklace", "Imbued zamorak cape"])
+            result.gearSet = createGearSet([GearSetType.General],["Sanguinesti staff", "Elidinis' ward (f)", "Slayer helmet (i)", "Ancestral robe top", "Ancestral robe bottom", "Tormented bracelet", "Occult necklace", "Imbued zamorak cape"])
             result.onTask = false;
         });
 
@@ -143,7 +143,7 @@ describe('Result class', () => {
 
     describe('with mage gear set including Slayer helmet (i) and onTask is true', () => {
         beforeEach(() => {
-            result.gearSet = createGearSet(["Sanguinesti staff", "Elidinis' ward (f)", "Slayer helmet (i)", "Ancestral robe top", "Ancestral robe bottom", "Tormented bracelet", "Occult necklace", "Imbued zamorak cape"])
+            result.gearSet = createGearSet([GearSetType.General],["Sanguinesti staff", "Elidinis' ward (f)", "Slayer helmet (i)", "Ancestral robe top", "Ancestral robe bottom", "Tormented bracelet", "Occult necklace", "Imbued zamorak cape"])
             result.onTask = true;
         });
 
@@ -165,7 +165,7 @@ describe('Result class', () => {
 
     describe('with Tumekens shadow mage gear set including Slayer helmet (i) and onTask is false', () => {
         beforeEach(() => {
-            result.gearSet = createGearSet(["Tumeken's shadow", "Slayer helmet (i)", "Ancestral robe top", "Ancestral robe bottom", "Tormented bracelet", "Occult necklace", "Imbued zamorak cape"])
+            result.gearSet = createGearSet([GearSetType.General],["Tumeken's shadow", "Slayer helmet (i)", "Ancestral robe top", "Ancestral robe bottom", "Tormented bracelet", "Occult necklace", "Imbued zamorak cape"])
             result.onTask = false;
         });
 
@@ -187,7 +187,7 @@ describe('Result class', () => {
 
     describe('with Tumekens shadow mage gear set including Slayer helmet (i) and onTask is true', () => {
         beforeEach(() => {
-            result.gearSet = createGearSet(["Tumeken's shadow", "Slayer helmet (i)", "Ancestral robe top", "Ancestral robe bottom", "Tormented bracelet", "Occult necklace", "Imbued zamorak cape"])
+            result.gearSet = createGearSet([GearSetType.General],["Tumeken's shadow", "Slayer helmet (i)", "Ancestral robe top", "Ancestral robe bottom", "Tormented bracelet", "Occult necklace", "Imbued zamorak cape"])
             result.onTask = true;
         });
 
@@ -209,7 +209,7 @@ describe('Result class', () => {
 
     describe('with Tumekens shadow in ToA mage gear set', () => {
         beforeEach(() => {
-            result.gearSet = createGearSet(["Tumeken's shadow", "Ancestral hat", "Ancestral robe top", "Ancestral robe bottom", "Tormented bracelet", "Occult necklace", "Imbued zamorak cape"])
+            result.gearSet = createGearSet([GearSetType.General],["Tumeken's shadow", "Ancestral hat", "Ancestral robe top", "Ancestral robe bottom", "Tormented bracelet", "Occult necklace", "Imbued zamorak cape"])
             result.targetMonster = monsters.get("Zebak") as TargetMonster;
         });
 

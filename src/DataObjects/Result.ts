@@ -4,6 +4,7 @@ import {AttackStyle} from "./AttackStyle";
 import {Raid} from "./Raid";
 import {Player} from "./Player";
 import { devLog } from './../utils';
+import {GearSet, GearSetType} from "./GearSets";
 
 export class Result {
     dps: number = 0;
@@ -11,7 +12,7 @@ export class Result {
     hitChance: number = 0;
     defenceReduction: number = 0;
     onTask: boolean = false;
-    gearSet: Item[] = [];
+    gearSet: GearSet = {types: [GearSetType.General], items: []};
     player: Player = new Player();
     targetMonster: TargetMonster = new TargetMonster();
     /*
@@ -24,7 +25,7 @@ export class Result {
     }
 
     calculateDPS(invocationLevel: number) {
-        const attackStyle = this.gearSet[0].style;
+        const attackStyle = this.gearSet.items[0].style;
         if (attackStyle == AttackStyle.Stab || attackStyle == AttackStyle.Slash || attackStyle == AttackStyle.Crush) {
             this.calculateDPSMelee(invocationLevel, attackStyle, this.player.strengthLevel, this.player.attackLevel, this.player.strengthLevelBoost, this.player.attackLevelBoost, 1.23, 1.2);
         } else if (attackStyle == AttackStyle.Rapid) {
@@ -57,7 +58,7 @@ export class Result {
         this.addReason("• Add 8: " + effectiveAttackLevel + " + 8 = " + Number(effectiveAttackLevel+8));
 
         let equipmentAttackBonus = 0;
-        this.gearSet.forEach(item => {
+        this.gearSet.items.forEach(item => {
             if (attackStyle == AttackStyle.Stab) {
                 equipmentAttackBonus += item.stab;
             } else if (attackStyle == AttackStyle.Slash) {
@@ -79,13 +80,13 @@ export class Result {
         this.addReason("");
         this.addReason("Gear multiplier:");
 
-        if (this.gearSet[0].name === "Keris partisan of breaching" && this.targetMonster.attribute == "Kalphite") {
+        if (this.gearSet.items[0].name === "Keris partisan of breaching" && this.targetMonster.attribute == "Kalphite") {
             this.addReason(" - Keris partisan of breaching");
             //Todo Is it 33% or 4/3?
             gearMultiplier = 1.33;
         }
 
-        const slayerHelmetPresent = this.gearSet.some(item => item.name === "Slayer helmet (i)");
+        const slayerHelmetPresent = this.gearSet.items.some(item => item.name === "Slayer helmet (i)");
 
         devLog("On task:" + this.onTask);
         if (slayerHelmetPresent && this.onTask) {
@@ -140,7 +141,7 @@ export class Result {
         }
 
         let damagePerHit = 0;
-        if (this.gearSet[0].name === "Scythe of vitur") {
+        if (this.gearSet.items[0].name === "Scythe of vitur") {
             this.addReason("");
             this.addReason("Scythe of vitur:");
 
@@ -163,7 +164,7 @@ export class Result {
             this.addReason(`•  Math.floor(${this.maxHit}) + Math.floor(${this.maxHit} / 2) + Math.floor(${this.maxHit} / 4) = ${Math.floor(this.maxHit * 1.75)}`);
             this.maxHit = Math.floor(this.maxHit) + Math.floor(this.maxHit / 2) + Math.floor(this.maxHit / 4);
 
-        } else if (this.gearSet[0].name === "Osmumten's fang") {
+        } else if (this.gearSet.items[0].name === "Osmumten's fang") {
             this.addReason("");
             this.addReason("Osmumten's fang does 2 accuracy rolls which increases hit chance:");
 
@@ -202,7 +203,7 @@ export class Result {
             this.addReason(`• Minhit: Math.floor(${this.maxHit} * 0.15) = ${minHit}`);
             this.maxHit = this.maxHit - minHit;
             this.addReason(`• Maxhit: ${this.maxHit} - ${minHit}) = ${this.maxHit}`);
-        } else if (this.gearSet[0].name === "Keris partisan of breaching" && this.targetMonster.attribute == "Kalphite") {
+        } else if (this.gearSet.items[0].name === "Keris partisan of breaching" && this.targetMonster.attribute == "Kalphite") {
 
             //Todo Is it 33% or 4/3?
             this.maxHit = Math.floor(this.maxHit * 133 / 100);
@@ -224,15 +225,15 @@ export class Result {
         }
         this.addReason("");
         this.addReason("DPS:");
-        this.dps = damagePerHit / this.gearSet[0].speedSeconds;
-        this.addReason(`• ${damagePerHit} / ${this.gearSet[0].speedSeconds} second swing timer = ${this.dps}`);
+        this.dps = damagePerHit / this.gearSet.items[0].speedSeconds;
+        this.addReason(`• ${damagePerHit} / ${this.gearSet.items[0].speedSeconds} second swing timer = ${this.dps}`);
 
     }
 
     private calculateMaxHitMelee(effectiveStrengthLevel: number): number {
         let equipmentMeleeStrength = 0;
 
-        this.gearSet.forEach(item => {
+        this.gearSet.items.forEach(item => {
             equipmentMeleeStrength += item.strength;
         })
 
@@ -250,7 +251,7 @@ export class Result {
 
         let gearMultiplier = 1; //Todo: slayer helm, salve
 
-        const slayerHelmetPresent = this.gearSet.some(item => item.name === "Slayer helmet (i)");
+        const slayerHelmetPresent = this.gearSet.items.some(item => item.name === "Slayer helmet (i)");
 
         if (slayerHelmetPresent && this.onTask) {
             gearMultiplier = 7/6;
@@ -266,7 +267,7 @@ export class Result {
         effectiveRangedStrength += 8;
 
         let equipmentRangedStrength = 0;
-        this.gearSet.forEach(item => {
+        this.gearSet.items.forEach(item => {
             equipmentRangedStrength += item.rangedStrength;
         })
 
@@ -276,7 +277,7 @@ export class Result {
         let accuracyGearMultiplier = 1;
         let tbowAccuracyGearModifier = 1;
 
-        if (this.gearSet[0].name === "Twisted bow") {
+        if (this.gearSet.items[0].name === "Twisted bow") {
             let targetMagic = Math.max(this.targetMonster.magicLevel, this.targetMonster.magicAccuracy);
 
             //The Magic level or accuracy caps at 250 outside the Chambers of Xeric, and 350 within.
@@ -302,7 +303,7 @@ export class Result {
             //devLog("Twisted Bow Damage Multiplier: " + damageMultiplier);
         }
 
-        const slayerHelmetPresent = this.gearSet.some(item => item.name === "Slayer helmet (i)");
+        const slayerHelmetPresent = this.gearSet.items.some(item => item.name === "Slayer helmet (i)");
 
         if (slayerHelmetPresent && this.onTask) {
             gearMultiplier = gearMultiplier * 1.15;
@@ -319,7 +320,7 @@ export class Result {
         effectiveRangedAttack += 8;
 
         let equipmentRangedAttack = 0;
-        this.gearSet.forEach(item => {
+        this.gearSet.items.forEach(item => {
             equipmentRangedAttack += item.ranged;
         })
 
@@ -344,7 +345,7 @@ export class Result {
 
         const damagePerHit = (this.maxHit * this.hitChance) / 2;
 
-        let speedSeconds = this.gearSet[0].speedSeconds;
+        let speedSeconds = this.gearSet.items[0].speedSeconds;
         if (attackStyle == AttackStyle.Rapid) {
             speedSeconds -= 0.6;
         }
@@ -358,7 +359,7 @@ export class Result {
         //Todo Assuming powered staff right now, need to check
 
         let equipmentMagicStrength = 0;
-        this.gearSet.forEach(item => {
+        this.gearSet.items.forEach(item => {
             equipmentMagicStrength += item.mageStrength;
         });
         devLog("Magic strength: " + equipmentMagicStrength);
@@ -366,7 +367,7 @@ export class Result {
         let gearMultiplier = 1; //Todo salve
         let accuracyGearMultiplier = 1; //Todo salve
 
-        const slayerHelmetPresent = this.gearSet.some(item => item.name === "Slayer helmet (i)");
+        const slayerHelmetPresent = this.gearSet.items.some(item => item.name === "Slayer helmet (i)");
 
         if (slayerHelmetPresent && this.onTask) {
             gearMultiplier = gearMultiplier * 1.15;
@@ -375,12 +376,12 @@ export class Result {
 
 
 
-        if (this.gearSet[0].name == "Sanguinesti staff") {
+        if (this.gearSet.items[0].name == "Sanguinesti staff") {
             this.maxHit = Math.floor(boostedMagicLevel / 3) - 1;
             this.maxHit = Math.floor(this.maxHit * (1 + equipmentMagicStrength / 100));
 
             devLog("Sanguinesti Staff Max Hit: " + this.maxHit);
-        } else if (this.gearSet[0].name == "Tumeken's shadow") {
+        } else if (this.gearSet.items[0].name == "Tumeken's shadow") {
             this.maxHit = Math.floor(boostedMagicLevel / 3) + 1;
 
             //Caps at 100% magic strength
@@ -404,10 +405,10 @@ export class Result {
         effectiveMagicLevel += 9;
 
         let equipmentMagicAttack = 0;
-        this.gearSet.forEach(item => {
+        this.gearSet.items.forEach(item => {
             equipmentMagicAttack += item.magic;
         });
-        if (this.gearSet[0].name == "Tumeken's shadow") {
+        if (this.gearSet.items[0].name == "Tumeken's shadow") {
             if (this.targetMonster.raid === Raid.TombsOfAmascut) {
                 equipmentMagicAttack *= 4; //inside toa
             } else {
@@ -435,7 +436,7 @@ export class Result {
         }
 
         const damagePerHit = (this.maxHit * this.hitChance) / 2;
-        this.dps = damagePerHit / this.gearSet[0].speedSeconds;
+        this.dps = damagePerHit / this.gearSet.items[0].speedSeconds;
 
     }
 }
