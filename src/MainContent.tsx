@@ -154,7 +154,7 @@ const MainContent: React.FC<MainContentProps> = ({
 
                 {results.map(result => (
                     <tr>
-                        <td style={Table.td}>
+                        <td>
                             {result.gearSet.combatStyle}
                         </td>
                         <td>
