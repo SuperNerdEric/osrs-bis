@@ -119,7 +119,7 @@ const MainContent: React.FC<MainContentProps> = ({
         };
     }, []);
 
-    const imageSize = Math.max(25, Math.min(50, windowWidth / 20));
+    const imageSize = Math.max(20, Math.min(50, windowWidth / 20));
 
 
     const isSlayerMonster: boolean = (monsters.get(target) as TargetMonster).slayerMonster;
