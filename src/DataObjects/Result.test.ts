@@ -342,5 +342,28 @@ describe('Result class', () => {
         });
     });
 
+    describe('with Keris partisan of breaching on kalphite slayer task on pound combat style', () => {
+        beforeEach(() => {
+            result.gearSet = createGearSet([GearSetType.Slayer], "Keris partisan of breaching", CombatStyle.Pound, ["Avernic defender", "Slayer helmet (i)", "Torva platebody", "Torva platelegs", "Ferocious gloves", "Primordial boots", "Amulet of torture", "Infernal cape"]);
+            result.targetMonster = monsters.get("KQ") as TargetMonster;
+            result.onTask = true;
+        });
+
+        test('should calculate DPS correctly', () => {
+            result.calculateDPS(0);
+            expect(result.dps).toBeCloseTo(9.695); //Higher than fruitdeeps because their max hit is too low for proc
+        });
+
+        test('should calculate maxHit correctly', () => {
+            result.calculateDPS(0);
+            expect(result.maxHit).toBe(183); //Tripled fruitdeeps
+        });
+
+        test('should calculate hitChance correctly', () => {
+            result.calculateDPS(0);
+            expect(result.hitChance).toBeCloseTo(0.7348); //Matches fruitdeeps
+        });
+    });
+
 });
 

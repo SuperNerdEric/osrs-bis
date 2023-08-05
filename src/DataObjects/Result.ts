@@ -1,5 +1,5 @@
 import {TargetMonster} from "./TargetMonster";
-import {Item, StyleType, WeaponStyle} from "./Item";
+import {StyleType, WeaponStyle} from "./Item";
 import {Raid} from "./Raid";
 import {Player} from "./Player";
 import {devLog} from './../utils';
@@ -30,7 +30,7 @@ export class Result {
     calculateDPS(invocationLevel: number) {
         const attackStyle = this.gearSet.styleType;
         if (attackStyle == StyleType.Stab || attackStyle == StyleType.Slash || attackStyle == StyleType.Crush) {
-            this.calculateDPSMelee(invocationLevel, attackStyle, this.player.strengthLevel, this.player.attackLevel, this.player.strengthLevelBoost, this.player.attackLevelBoost, 1.23, 1.2);
+            this.calculateDPSMelee(invocationLevel, this.gearSet.weaponStyle, attackStyle, this.player.strengthLevel, this.player.attackLevel, this.player.strengthLevelBoost, this.player.attackLevelBoost, 1.23, 1.2);
         } else if (attackStyle == StyleType.Ranged) {
             this.addReason("Using ranged dps");
             this.calculateDPSRanged(invocationLevel, this.gearSet.weaponStyle, attackStyle, this.player.rangedLevel, this.player.rangedLevelBoost, 1.23, 1.2);
@@ -41,12 +41,15 @@ export class Result {
 
     }
 
-    private calculateDPSMelee(invocationLevel: number, attackStyle: StyleType, strengthLevel: number, attackLevel: number, strengthLevelBoost: number, attackLevelBoost: number, prayerStrengthMultiplier: number, prayerAttackMultiplier: number) {
+    private calculateDPSMelee(invocationLevel: number, weaponStyle: WeaponStyle, attackStyle: StyleType, strengthLevel: number, attackLevel: number, strengthLevelBoost: number, attackLevelBoost: number, prayerStrengthMultiplier: number, prayerAttackMultiplier: number) {
         let effectiveStrengthLevel = Math.floor((strengthLevel + strengthLevelBoost) * prayerStrengthMultiplier);
         this.addReason("Effective strength level:");
         this.addReason(`• Math.floor(${strengthLevel}+${strengthLevelBoost}) * ${prayerStrengthMultiplier} = ${effectiveStrengthLevel}`);
-        this.addReason("• Add 3 for aggressive attack style: " + effectiveStrengthLevel + " + 3 = " + Number(effectiveStrengthLevel + 3));
-        effectiveStrengthLevel += 3; //aggressive attack style
+
+        if (weaponStyle == WeaponStyle.Aggressive) {
+            this.addReason("• Add 3 for aggressive attack style: " + effectiveStrengthLevel + " + 3 = " + Number(effectiveStrengthLevel + 3));
+            effectiveStrengthLevel += 3; //aggressive attack style
+        }
         this.addReason("• Add 8: " + effectiveStrengthLevel + " + 8 = " + Number(effectiveStrengthLevel + 8));
         effectiveStrengthLevel += 8;
 
