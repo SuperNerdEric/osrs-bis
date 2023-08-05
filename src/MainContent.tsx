@@ -12,7 +12,13 @@ import OnTaskCheck from "./OnTaskCheck";
 
 const Table = {
     border: 1,
-    padding: 15,
+    padding: 25,
+    th: {
+        padding: '0 15px',
+    },
+    td: {
+        padding: '0 15px',
+    },
 }
 
 interface MainContentProps {
@@ -38,6 +44,7 @@ const MainContent: React.FC<MainContentProps> = ({
     const [results, setResults] = useState<Result[]>([]);
     const isToaBoss: boolean = (monsters.get(target) as TargetMonster).raid === Raid.TombsOfAmascut;
     const [sortConfig, setSortConfig] = React.useState({key: 'dps' as keyof Result, direction: 'descending'});
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
     const requestSort = (key: keyof Result) => {
         let direction = 'ascending';
@@ -104,6 +111,17 @@ const MainContent: React.FC<MainContentProps> = ({
         setResults(results);
     }, [target, invocationLevel, defenceReduction, onTask]);
 
+    useEffect(() => {
+        const handleResize = () => setWindowWidth(window.innerWidth);
+        window.addEventListener('resize', handleResize);
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+
+    const imageSize = Math.max(25, Math.min(50, windowWidth / 20));
+
+
     const isSlayerMonster: boolean = (monsters.get(target) as TargetMonster).slayerMonster;
 
     return (
@@ -126,6 +144,7 @@ const MainContent: React.FC<MainContentProps> = ({
             <table style={Table}>
                 <thead>
                 <tr>
+                    <th>Style</th>
                     <th>Gear</th>
                     <th onClick={() => requestSort('dps')}>DPS</th>
                     <th onClick={() => requestSort('maxHit')}>Max Hit</th>
@@ -135,11 +154,14 @@ const MainContent: React.FC<MainContentProps> = ({
 
                 {results.map(result => (
                     <tr>
+                        <td style={Table.td}>
+                            {result.gearSet.combatStyle}
+                        </td>
                         <td>
                             {
                                 <Tooltip title={result.gearSet.weapon.name}>
                                     <a href={result.gearSet.weapon.wikiLink} target="_blank" rel="noreferrer">
-                                        <img src={require(`${result.gearSet.weapon.imagePath}`)} width="50" height="50"
+                                        <img src={require(`${result.gearSet.weapon.imagePath}`)} style={{width: `${imageSize}px`, height: `${imageSize}px`}}
                                              alt={result.gearSet.weapon.name}/>
                                     </a>
                                 </Tooltip>
@@ -148,7 +170,7 @@ const MainContent: React.FC<MainContentProps> = ({
                                 result.gearSet.items.map(item => (
                                     <Tooltip title={item.name}>
                                         <a href={item.wikiLink} target="_blank" rel="noreferrer">
-                                            <img src={require(`${item.imagePath}`)} width="50" height="50"
+                                            <img src={require(`${item.imagePath}`)} style={{width: `${imageSize}px`, height: `${imageSize}px`}}
                                                  alt={item.name}/>
                                         </a>
                                     </Tooltip>
