@@ -1,6 +1,5 @@
 import {TargetMonster} from './TargetMonster';
 import {Player} from './Player';
-import {AttackStyle} from "./AttackStyle";
 
 export class TbowTest {
     maxHitMethod1: number = 0;
@@ -8,7 +7,7 @@ export class TbowTest {
     maxHitMethod3: number = 0;
     player: Player = new Player();
 
-    calculateMaxHitRanged(equipmentRangedStrength: number, invocationLevel: number, attackStyle: AttackStyle, rangedLevel: number, rangedLevelBoost: number, prayerStrengthMultiplier: number) {
+    calculateMaxHitRanged(equipmentRangedStrength: number, invocationLevel: number, rangedLevel: number, rangedLevelBoost: number, prayerStrengthMultiplier: number) {
         let effectiveRangedStrength = Math.floor((rangedLevel + rangedLevelBoost) * prayerStrengthMultiplier);
         effectiveRangedStrength += 8;
 
@@ -34,7 +33,7 @@ describe('calculateMaxHitRanged test', () => {
         for(let i = 27; i <= 95; i++) {
             equipmentRangedStrength = i;
 
-            instance.calculateMaxHitRanged(equipmentRangedStrength,0, AttackStyle.Rapid, 99, 13, 1.23);
+            instance.calculateMaxHitRanged(equipmentRangedStrength,0, 99, 13, 1.23);
 
             maxHitMethod1 = instance.maxHitMethod1;
             maxHitMethod2 = instance.maxHitMethod2;
@@ -59,7 +58,7 @@ describe('calculateMaxHitRanged test', () => {
         for(let i = 27; i <= 95; i++) {
             equipmentRangedStrength = i;
 
-            instance.calculateMaxHitRanged(equipmentRangedStrength,0, AttackStyle.Rapid, 99, 13, 1.23);
+            instance.calculateMaxHitRanged(equipmentRangedStrength,0, 99, 13, 1.23);
 
             maxHitMethod1 = instance.maxHitMethod1;
             maxHitMethod3 = instance.maxHitMethod3;

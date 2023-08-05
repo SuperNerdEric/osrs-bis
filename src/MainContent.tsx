@@ -80,8 +80,7 @@ const MainContent: React.FC<MainContentProps> = ({
 
 
         shownGearSets.forEach(gearSet => {
-            const result: Result = new Result();
-                result.gearSet = gearSet;
+            const result: Result = new Result(gearSet);
             result.targetMonster = monsters.get(target) as TargetMonster;
             result.defenceReduction = defenceReduction;
             result.onTask = onTask;
@@ -137,6 +136,14 @@ const MainContent: React.FC<MainContentProps> = ({
                 {results.map(result => (
                     <tr>
                         <td>
+                            {
+                                <Tooltip title={result.gearSet.weapon.name}>
+                                    <a href={result.gearSet.weapon.wikiLink} target="_blank" rel="noreferrer">
+                                        <img src={require(`${result.gearSet.weapon.imagePath}`)} width="50" height="50"
+                                             alt={result.gearSet.weapon.name}/>
+                                    </a>
+                                </Tooltip>
+                            }
                             {
                                 result.gearSet.items.map(item => (
                                     <Tooltip title={item.name}>
