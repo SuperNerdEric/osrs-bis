@@ -1,3 +1,5 @@
+import {ItemName} from "./ItemName";
+
 export enum Slot {
     MainHand,
     OffHand,
@@ -241,7 +243,7 @@ export const WeaponCategoryOptions: { [category in WeaponCategory]?: AttackOptio
 
 
 export class Item {
-    name: string = "";
+    name: ItemName;
     imagePath: string = "";
     wikiLink: string = "";
     slot: Slot = Slot.Undefined;
@@ -253,6 +255,10 @@ export class Item {
     strength: number = 0;
     rangedStrength: number = 0;
     mageStrength: number = 0;
+
+    constructor(itemName: ItemName) {
+        this.name = itemName;
+    }
 }
 
 export class Weapon extends Item {

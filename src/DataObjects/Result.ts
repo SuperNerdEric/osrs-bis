@@ -4,6 +4,7 @@ import {Raid} from "./Raid";
 import {Player} from "./Player";
 import {devLog} from './../utils';
 import {GearSet} from "./GearSets";
+import {ItemName} from "./ItemName";
 
 export class Result {
     dps: number = 0;
@@ -95,14 +96,14 @@ export class Result {
         this.addReason("");
         this.addReason("Gear multiplier:");
 
-        if (this.gearSet.weapon.name.includes("Keris partisan of breaching") && this.targetMonster.isKalphite) {
+        if (this.gearSet.weapon.name === ItemName.KerisPartisanOfBreaching && this.targetMonster.isKalphite) {
             this.addReason(" - Keris partisan of breaching");
             //Only breaching partisan gets accuracy bonus
             //https://archive.ph/6gN9c assuming accuracy is same as damage
             kerisAccuracyMultiplier = 1.33;
         }
 
-        const slayerHelmetPresent = this.gearSet.items.some(item => item.name === "Slayer helmet (i)");
+        const slayerHelmetPresent = this.gearSet.items.some(item => item.name === ItemName.SlayerHelmetI);
 
         devLog("On task:" + this.onTask);
         if (slayerHelmetPresent && this.onTask) {
@@ -159,7 +160,7 @@ export class Result {
         }
 
         let damagePerHit = 0;
-        if (this.gearSet.weapon.name === "Scythe of vitur") {
+        if (this.gearSet.weapon.name === ItemName.ScytheOfVitur) {
             this.addReason("");
             this.addReason("Scythe of vitur:");
 
@@ -182,7 +183,7 @@ export class Result {
             this.addReason(`•  Math.floor(${this.maxHit}) + Math.floor(${this.maxHit} / 2) + Math.floor(${this.maxHit} / 4) = ${Math.floor(this.maxHit * 1.75)}`);
             this.maxHit = Math.floor(this.maxHit) + Math.floor(this.maxHit / 2) + Math.floor(this.maxHit / 4);
 
-        } else if (this.gearSet.weapon.name === "Osmumten's fang") {
+        } else if (this.gearSet.weapon.name === ItemName.OsmumtensFang) {
             this.addReason("");
             this.addReason("Osmumten's fang does 2 accuracy rolls which increases hit chance:");
 
@@ -270,7 +271,7 @@ export class Result {
 
         let gearMultiplier = 1; //Todo: slayer helm, salve
 
-        const slayerHelmetPresent = this.gearSet.items.some(item => item.name === "Slayer helmet (i)");
+        const slayerHelmetPresent = this.gearSet.items.some(item => item.name === ItemName.SlayerHelmetI);
 
         if (slayerHelmetPresent && this.onTask) {
             gearMultiplier = 7 / 6;
@@ -297,7 +298,7 @@ export class Result {
         let accuracyGearMultiplier = 1;
         let tbowAccuracyGearModifier = 1;
 
-        if (this.gearSet.weapon.name === "Twisted bow") {
+        if (this.gearSet.weapon.name === ItemName.TwistedBow) {
             let targetMagic = Math.max(this.targetMonster.magicLevel, this.targetMonster.magicAccuracy);
 
             //The Magic level or accuracy caps at 250 outside the Chambers of Xeric, and 350 within.
@@ -323,7 +324,7 @@ export class Result {
             //devLog("Twisted Bow Damage Multiplier: " + damageMultiplier);
         }
 
-        const slayerHelmetPresent = this.gearSet.items.some(item => item.name === "Slayer helmet (i)");
+        const slayerHelmetPresent = this.gearSet.items.some(item => item.name === ItemName.SlayerHelmetI);
 
         if (slayerHelmetPresent && this.onTask) {
             gearMultiplier = gearMultiplier * 1.15;
@@ -390,7 +391,7 @@ export class Result {
         let gearMultiplier = 1; //Todo salve
         let accuracyGearMultiplier = 1; //Todo salve
 
-        const slayerHelmetPresent = this.gearSet.items.some(item => item.name === "Slayer helmet (i)");
+        const slayerHelmetPresent = this.gearSet.items.some(item => item.name === ItemName.SlayerHelmetI);
 
         if (slayerHelmetPresent && this.onTask) {
             gearMultiplier = gearMultiplier * 1.15;
@@ -398,12 +399,12 @@ export class Result {
         }
 
 
-        if (this.gearSet.weapon.name == "Sanguinesti staff") {
+        if (this.gearSet.weapon.name == ItemName.SanguinestiStaff) {
             this.maxHit = Math.floor(boostedMagicLevel / 3) - 1;
             this.maxHit = Math.floor(this.maxHit * (1 + equipmentMagicStrength / 100));
 
             devLog("Sanguinesti Staff Max Hit: " + this.maxHit);
-        } else if (this.gearSet.weapon.name == "Tumeken's shadow") {
+        } else if (this.gearSet.weapon.name == ItemName.TumekensShadow) {
             this.maxHit = Math.floor(boostedMagicLevel / 3) + 1;
 
             //Caps at 100% magic strength
@@ -432,7 +433,7 @@ export class Result {
         });
         equipmentMagicAttack += this.gearSet.weapon.magic;
 
-        if (this.gearSet.weapon.name == "Tumeken's shadow") {
+        if (this.gearSet.weapon.name == ItemName.TumekensShadow) {
             if (this.targetMonster.raid === Raid.TombsOfAmascut) {
                 equipmentMagicAttack *= 4; //inside toa
             } else {

@@ -4,6 +4,7 @@ import { Player } from './Player';
 import {createGearSet, GearSetType} from "./GearSets";
 import {monsters} from "./Monsters";
 import {CombatStyle} from "./Item";
+import { ItemName } from './ItemName';
 
 describe('Result class', () => {
     let result: Result;
@@ -21,7 +22,16 @@ describe('Result class', () => {
 
     describe('with melee gear set including Slayer helmet (i) and onTask is false', () => {
         beforeEach(() => {
-            result.gearSet = createGearSet([GearSetType.General], "Osmumten's fang", CombatStyle.Lunge, ["Avernic defender", "Slayer helmet (i)", "Torva platebody", "Torva platelegs", "Ferocious gloves", "Primordial boots", "Amulet of torture", "Infernal cape"]);
+            result.gearSet = createGearSet([GearSetType.General], ItemName.OsmumtensFang, CombatStyle.Lunge, [
+                ItemName.AvernicDefender,
+                ItemName.SlayerHelmetI,
+                ItemName.TorvaPlatebody,
+                ItemName.TorvaPlatelegs,
+                ItemName.FerociousGloves,
+                ItemName.PrimordialBoots,
+                ItemName.AmuletOfTorture,
+                ItemName.InfernalCape
+            ]);
             result.onTask = false;
         });
 
@@ -43,7 +53,16 @@ describe('Result class', () => {
 
     describe('with melee gear set including Slayer helmet (i) and onTask is true', () => {
         beforeEach(() => {
-            result.gearSet = createGearSet([GearSetType.General], "Osmumten's fang", CombatStyle.Lunge, ["Avernic defender", "Slayer helmet (i)", "Torva platebody", "Torva platelegs", "Ferocious gloves", "Primordial boots", "Amulet of torture", "Infernal cape"]);
+            result.gearSet = createGearSet([GearSetType.General], ItemName.OsmumtensFang, CombatStyle.Lunge, [
+                ItemName.AvernicDefender,
+                ItemName.SlayerHelmetI,
+                ItemName.TorvaPlatebody,
+                ItemName.TorvaPlatelegs,
+                ItemName.FerociousGloves,
+                ItemName.PrimordialBoots,
+                ItemName.AmuletOfTorture,
+                ItemName.InfernalCape
+            ]);
             result.onTask = true;
         });
 
@@ -65,7 +84,15 @@ describe('Result class', () => {
 
     describe('with ranged gear set including Slayer helmet (i) and onTask is false', () => {
         beforeEach(() => {
-            result.gearSet = createGearSet([GearSetType.General], "Twisted bow", CombatStyle.Rapid, ["Dragon arrow", "Slayer helmet (i)", "Masori body (f)", "Masori chaps (f)", "Zaryte vambraces", "Necklace of anguish", "Ava's assembler"]);
+            result.gearSet = createGearSet([GearSetType.General], ItemName.TwistedBow, CombatStyle.Rapid, [
+                ItemName.DragonArrow,
+                ItemName.SlayerHelmetI,
+                ItemName.MasoriBodyF,
+                ItemName.MasoriChapsF,
+                ItemName.ZaryteVambraces,
+                ItemName.NecklaceOfAnguish,
+                ItemName.AvasAssembler
+            ]);
             result.onTask = false;
         });
 
@@ -87,7 +114,15 @@ describe('Result class', () => {
 
     describe('with ranged gear set including Slayer helmet (i) and onTask is true', () => {
         beforeEach(() => {
-            result.gearSet = createGearSet([GearSetType.General], "Twisted bow", CombatStyle.Rapid, ["Dragon arrow", "Slayer helmet (i)", "Masori body (f)", "Masori chaps (f)", "Zaryte vambraces", "Necklace of anguish", "Ava's assembler"]);
+            result.gearSet = createGearSet([GearSetType.General], ItemName.TwistedBow, CombatStyle.Rapid, [
+                ItemName.DragonArrow,
+                ItemName.SlayerHelmetI,
+                ItemName.MasoriBodyF,
+                ItemName.MasoriChapsF,
+                ItemName.ZaryteVambraces,
+                ItemName.NecklaceOfAnguish,
+                ItemName.AvasAssembler
+            ]);
             result.onTask = true;
         });
 
@@ -114,7 +149,11 @@ describe('Result class', () => {
         });
 
         test('should calculate maxHit correctly', () => {
-            result.gearSet = createGearSet([GearSetType.General], "Twisted bow", CombatStyle.Rapid, ["Bronze arrow", "Slayer helmet (i)", "Masori body (f)"]); //31 Ranged strength found with Tbow.test.ts
+            result.gearSet = createGearSet([GearSetType.General], ItemName.TwistedBow, CombatStyle.Rapid, [
+                ItemName.BronzeArrow,
+                ItemName.SlayerHelmetI,
+                ItemName.MasoriBodyF
+            ]);
             result.targetMonster = monsters.get("Undead Combat Dummy") as TargetMonster;
             result.calculateDPS(0);
             expect(result.maxHit).toBe(53); //Tested in game
@@ -123,7 +162,15 @@ describe('Result class', () => {
 
     describe('with mage gear set including Slayer helmet (i) and onTask is false', () => {
         beforeEach(() => {
-            result.gearSet = createGearSet([GearSetType.General], "Sanguinesti staff", CombatStyle.Accurate, ["Elidinis' ward (f)", "Slayer helmet (i)", "Ancestral robe top", "Ancestral robe bottom", "Tormented bracelet", "Occult necklace", "Imbued zamorak cape"]);
+            result.gearSet = createGearSet([GearSetType.General], ItemName.SanguinestiStaff, CombatStyle.Accurate, [
+                ItemName.ElidinisWardF,
+                ItemName.SlayerHelmetI,
+                ItemName.AncestralRobeTop,
+                ItemName.AncestralRobeBottom,
+                ItemName.TormentedBracelet,
+                ItemName.OccultNecklace,
+                ItemName.ImbuedZamorakCape
+            ]);
             result.onTask = false;
         });
 
@@ -145,7 +192,15 @@ describe('Result class', () => {
 
     describe('with mage gear set including Slayer helmet (i) and onTask is true', () => {
         beforeEach(() => {
-            result.gearSet = createGearSet([GearSetType.General], "Sanguinesti staff", CombatStyle.Accurate, ["Elidinis' ward (f)", "Slayer helmet (i)", "Ancestral robe top", "Ancestral robe bottom", "Tormented bracelet", "Occult necklace", "Imbued zamorak cape"]);
+            result.gearSet = createGearSet([GearSetType.General], ItemName.SanguinestiStaff, CombatStyle.Accurate, [
+                ItemName.ElidinisWardF,
+                ItemName.SlayerHelmetI,
+                ItemName.AncestralRobeTop,
+                ItemName.AncestralRobeBottom,
+                ItemName.TormentedBracelet,
+                ItemName.OccultNecklace,
+                ItemName.ImbuedZamorakCape
+            ]);
             result.onTask = true;
         });
 
@@ -167,7 +222,14 @@ describe('Result class', () => {
 
     describe('with Tumekens shadow mage gear set including Slayer helmet (i) and onTask is false', () => {
         beforeEach(() => {
-            result.gearSet = createGearSet([GearSetType.General], "Tumeken's shadow", CombatStyle.Accurate, ["Slayer helmet (i)", "Ancestral robe top", "Ancestral robe bottom", "Tormented bracelet", "Occult necklace", "Imbued zamorak cape"]);
+            result.gearSet = createGearSet([GearSetType.General], ItemName.TumekensShadow, CombatStyle.Accurate, [
+                ItemName.SlayerHelmetI,
+                ItemName.AncestralRobeTop,
+                ItemName.AncestralRobeBottom,
+                ItemName.TormentedBracelet,
+                ItemName.OccultNecklace,
+                ItemName.ImbuedZamorakCape
+            ]);
             result.onTask = false;
         });
 
@@ -189,7 +251,14 @@ describe('Result class', () => {
 
     describe('with Tumekens shadow mage gear set including Slayer helmet (i) and onTask is true', () => {
         beforeEach(() => {
-            result.gearSet = createGearSet([GearSetType.General], "Tumeken's shadow", CombatStyle.Accurate, ["Slayer helmet (i)", "Ancestral robe top", "Ancestral robe bottom", "Tormented bracelet", "Occult necklace", "Imbued zamorak cape"]);
+            result.gearSet = createGearSet([GearSetType.General], ItemName.TumekensShadow, CombatStyle.Accurate, [
+                ItemName.SlayerHelmetI,
+                ItemName.AncestralRobeTop,
+                ItemName.AncestralRobeBottom,
+                ItemName.TormentedBracelet,
+                ItemName.OccultNecklace,
+                ItemName.ImbuedZamorakCape
+            ]);
             result.onTask = true;
         });
 
@@ -211,7 +280,14 @@ describe('Result class', () => {
 
     describe('with Tumekens shadow in ToA mage gear set', () => {
         beforeEach(() => {
-            result.gearSet = createGearSet([GearSetType.General], "Tumeken's shadow", CombatStyle.Accurate, ["Ancestral hat", "Ancestral robe top", "Ancestral robe bottom", "Tormented bracelet", "Occult necklace", "Imbued zamorak cape"]);
+            result.gearSet = createGearSet([GearSetType.General], ItemName.TumekensShadow, CombatStyle.Accurate, [
+                ItemName.AncestralHat,
+                ItemName.AncestralRobeTop,
+                ItemName.AncestralRobeBottom,
+                ItemName.TormentedBracelet,
+                ItemName.OccultNecklace,
+                ItemName.ImbuedZamorakCape
+            ]);
             result.targetMonster = monsters.get("Zebak") as TargetMonster;
         });
 
@@ -233,7 +309,15 @@ describe('Result class', () => {
 
     describe('with Twisted bow in CoX', () => {
         beforeEach(() => {
-            result.gearSet = createGearSet([GearSetType.General], "Twisted bow", CombatStyle.Rapid, ["Dragon arrow", "Masori mask (f)", "Masori body (f)", "Masori chaps (f)", "Zaryte vambraces", "Necklace of anguish", "Ava's assembler"]);
+            result.gearSet = createGearSet([GearSetType.General], ItemName.TwistedBow, CombatStyle.Rapid, [
+                ItemName.DragonArrow,
+                ItemName.MasoriMaskF,
+                ItemName.MasoriBodyF,
+                ItemName.MasoriChapsF,
+                ItemName.ZaryteVambraces,
+                ItemName.NecklaceOfAnguish,
+                ItemName.AvasAssembler
+            ]);
             result.targetMonster = monsters.get("Olm (Head)") as TargetMonster;
         });
 
@@ -255,7 +339,15 @@ describe('Result class', () => {
 
     describe('with Scythe on large monster', () => {
         beforeEach(() => {
-            result.gearSet = createGearSet([GearSetType.General], "Scythe of vitur", CombatStyle.Chop, ["Torva full helm", "Torva platebody", "Torva platelegs", "Ferocious gloves", "Primordial boots", "Amulet of torture", "Infernal cape"]);
+            result.gearSet = createGearSet([GearSetType.General], ItemName.ScytheOfVitur, CombatStyle.Chop, [
+                ItemName.TorvaFullHelm,
+                ItemName.TorvaPlatebody,
+                ItemName.TorvaPlatelegs,
+                ItemName.FerociousGloves,
+                ItemName.PrimordialBoots,
+                ItemName.AmuletOfTorture,
+                ItemName.InfernalCape
+            ]);
             result.targetMonster = monsters.get("Bloat") as TargetMonster;
         });
 
@@ -277,7 +369,16 @@ describe('Result class', () => {
 
     describe('with Keris partisan on kalphite', () => {
         beforeEach(() => {
-            result.gearSet = createGearSet([GearSetType.General], "Keris partisan", CombatStyle.Lunge, ["Avernic defender", "Torva full helm", "Torva platebody", "Torva platelegs", "Ferocious gloves", "Primordial boots", "Amulet of torture", "Infernal cape"]);
+            result.gearSet = createGearSet([GearSetType.General], ItemName.KerisPartisan, CombatStyle.Lunge, [
+                ItemName.AvernicDefender,
+                ItemName.TorvaFullHelm,
+                ItemName.TorvaPlatebody,
+                ItemName.TorvaPlatelegs,
+                ItemName.FerociousGloves,
+                ItemName.PrimordialBoots,
+                ItemName.AmuletOfTorture,
+                ItemName.InfernalCape
+            ]);
             result.targetMonster = monsters.get("KQ") as TargetMonster;
         });
 
@@ -299,7 +400,16 @@ describe('Result class', () => {
 
     describe('with Keris partisan of breaching on kalphite', () => {
         beforeEach(() => {
-            result.gearSet = createGearSet([GearSetType.General], "Keris partisan of breaching", CombatStyle.Lunge, ["Avernic defender", "Torva full helm", "Torva platebody", "Torva platelegs", "Ferocious gloves", "Primordial boots", "Amulet of torture", "Infernal cape"]);
+            result.gearSet = createGearSet([GearSetType.General], ItemName.KerisPartisanOfBreaching, CombatStyle.Lunge, [
+                ItemName.AvernicDefender,
+                ItemName.TorvaFullHelm,
+                ItemName.TorvaPlatebody,
+                ItemName.TorvaPlatelegs,
+                ItemName.FerociousGloves,
+                ItemName.PrimordialBoots,
+                ItemName.AmuletOfTorture,
+                ItemName.InfernalCape
+            ]);
             result.targetMonster = monsters.get("KQ") as TargetMonster;
         });
 
@@ -321,7 +431,16 @@ describe('Result class', () => {
 
     describe('with Keris partisan of breaching on kalphite slayer task', () => {
         beforeEach(() => {
-            result.gearSet = createGearSet([GearSetType.General], "Keris partisan of breaching", CombatStyle.Lunge, ["Avernic defender", "Slayer helmet (i)", "Torva platebody", "Torva platelegs", "Ferocious gloves", "Primordial boots", "Amulet of torture", "Infernal cape"]);
+            result.gearSet = createGearSet([GearSetType.General], ItemName.KerisPartisanOfBreaching, CombatStyle.Lunge, [
+                ItemName.AvernicDefender,
+                ItemName.SlayerHelmetI,
+                ItemName.TorvaPlatebody,
+                ItemName.TorvaPlatelegs,
+                ItemName.FerociousGloves,
+                ItemName.PrimordialBoots,
+                ItemName.AmuletOfTorture,
+                ItemName.InfernalCape
+            ]);
             result.targetMonster = monsters.get("KQ") as TargetMonster;
             result.onTask = true;
         });
@@ -344,7 +463,16 @@ describe('Result class', () => {
 
     describe('with Keris partisan of breaching on kalphite slayer task on pound combat style', () => {
         beforeEach(() => {
-            result.gearSet = createGearSet([GearSetType.Slayer], "Keris partisan of breaching", CombatStyle.Pound, ["Avernic defender", "Slayer helmet (i)", "Torva platebody", "Torva platelegs", "Ferocious gloves", "Primordial boots", "Amulet of torture", "Infernal cape"]);
+            result.gearSet = createGearSet([GearSetType.Slayer], ItemName.KerisPartisanOfBreaching, CombatStyle.Pound, [
+                ItemName.AvernicDefender,
+                ItemName.SlayerHelmetI,
+                ItemName.TorvaPlatebody,
+                ItemName.TorvaPlatelegs,
+                ItemName.FerociousGloves,
+                ItemName.PrimordialBoots,
+                ItemName.AmuletOfTorture,
+                ItemName.InfernalCape
+            ]);
             result.targetMonster = monsters.get("KQ") as TargetMonster;
             result.onTask = true;
         });

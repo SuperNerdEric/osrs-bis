@@ -1,5 +1,6 @@
 import {CombatStyle, Item, StyleType, Weapon, WeaponCategoryOptions, WeaponStyle} from "./Item";
 import {items} from "./Items";
+import {ItemName} from "./ItemName";
 
 export enum GearSetType {
     General,
@@ -19,7 +20,7 @@ export interface GearSet {
 export const gearSets: GearSet[] = [];
 
 
-export function createGearSet(gearSetTypes: GearSetType[], weaponName: string, combatStyle: CombatStyle, otherItemNames: string[]): GearSet {
+export function createGearSet(gearSetTypes: GearSetType[], weaponName: ItemName, combatStyle: CombatStyle, otherItemNames: ItemName[]): GearSet {
     const weapon = items.get(weaponName);
     if (weapon instanceof Weapon) {
         let styleType: StyleType | undefined;
@@ -27,7 +28,7 @@ export function createGearSet(gearSetTypes: GearSetType[], weaponName: string, c
 
         // If the weapon category is present in WeaponCategoryOptions
         const weaponOptions = WeaponCategoryOptions[weapon.category];
-        
+
         if (weaponOptions) {
             // Look for the selected CombatStyle in the weapon's options
             const matchingOption = weaponOptions.find(option => option.combatStyle === combatStyle);
@@ -57,29 +58,250 @@ export function createGearSet(gearSetTypes: GearSetType[], weaponName: string, c
     }
 }
 
+createGearSet([GearSetType.General], ItemName.OsmumtensFang, CombatStyle.Lunge, [
+    ItemName.AvernicDefender,
+    ItemName.TorvaFullHelm,
+    ItemName.TorvaPlatebody,
+    ItemName.TorvaPlatelegs,
+    ItemName.FerociousGloves,
+    ItemName.PrimordialBoots,
+    ItemName.AmuletOfTorture,
+    ItemName.InfernalCape
+]);
 
+createGearSet([GearSetType.General], ItemName.OsmumtensFang, CombatStyle.Lunge, [
+    ItemName.AvernicDefender,
+    ItemName.NeitiznotFaceguard,
+    ItemName.BandosChestplate,
+    ItemName.BandosTassets,
+    ItemName.FerociousGloves,
+    ItemName.PrimordialBoots,
+    ItemName.AmuletOfFury,
+    ItemName.FireCape
+]);
 
-createGearSet([GearSetType.General], "Osmumten's fang", CombatStyle.Lunge, ["Avernic defender", "Torva full helm", "Torva platebody", "Torva platelegs", "Ferocious gloves", "Primordial boots", "Amulet of torture", "Infernal cape"]);
-createGearSet([GearSetType.General], "Osmumten's fang", CombatStyle.Lunge, ["Avernic defender", "Neitiznot faceguard", "Bandos chestplate", "Bandos tassets", "Ferocious gloves", "Primordial boots", "Amulet of fury", "Fire cape"]);
-createGearSet([GearSetType.Slayer], "Osmumten's fang", CombatStyle.Lunge, ["Avernic defender", "Slayer helmet (i)", "Torva platebody", "Torva platelegs", "Ferocious gloves", "Primordial boots", "Amulet of torture", "Infernal cape"]);
-createGearSet([GearSetType.General], "Ghrazi rapier", CombatStyle.Lunge, ["Avernic defender", "Torva full helm", "Torva platebody", "Torva platelegs", "Ferocious gloves", "Primordial boots", "Amulet of torture", "Infernal cape"]);
-createGearSet([GearSetType.General], "Zamorakian hasta", CombatStyle.Lunge, ["Avernic defender", "Torva full helm", "Torva platebody", "Torva platelegs", "Ferocious gloves", "Primordial boots", "Amulet of torture", "Infernal cape"]);
-createGearSet([GearSetType.General], "Zamorakian hasta", CombatStyle.Lunge, ["Avernic defender", "Neitiznot faceguard", "Bandos chestplate", "Bandos tassets", "Ferocious gloves", "Primordial boots", "Amulet of fury", "Fire cape"]);
-createGearSet([GearSetType.General], "Scythe of vitur", CombatStyle.Chop, ["Torva full helm", "Torva platebody", "Torva platelegs", "Ferocious gloves", "Primordial boots", "Amulet of torture", "Infernal cape"]);
-createGearSet([GearSetType.General], "Scythe of vitur", CombatStyle.Chop, ["Neitiznot faceguard", "Bandos chestplate", "Bandos tassets", "Ferocious gloves", "Primordial boots", "Amulet of fury", "Fire cape"]);
-createGearSet([GearSetType.General], "Toxic blowpipe", CombatStyle.Rapid, ["Dragon dart", "Masori mask (f)", "Masori body (f)", "Masori chaps (f)", "Zaryte vambraces", "Necklace of anguish", "Ava's assembler"]);
-createGearSet([GearSetType.General], "Toxic blowpipe", CombatStyle.Rapid, ["Dragon dart", "Armadyl helmet", "Armadyl chestplate", "Armadyl chainskirt", "Zaryte vambraces", "Necklace of anguish", "Ava's assembler"]);
-createGearSet([GearSetType.Slayer], "Twisted bow", CombatStyle.Rapid, ["Dragon arrow", "Slayer helmet (i)", "Masori body (f)", "Masori chaps (f)", "Zaryte vambraces", "Necklace of anguish", "Ava's assembler"]);
-createGearSet([GearSetType.General], "Twisted bow", CombatStyle.Rapid, ["Dragon arrow", "Masori mask (f)", "Masori body (f)", "Masori chaps (f)", "Zaryte vambraces", "Necklace of anguish", "Ava's assembler"]);
-createGearSet([GearSetType.General], "Twisted bow", CombatStyle.Rapid, ["Dragon arrow", "Armadyl helmet", "Armadyl chestplate", "Armadyl chainskirt", "Zaryte vambraces", "Necklace of anguish", "Ava's assembler"]);
-createGearSet([GearSetType.Slayer], "Tumeken's shadow", CombatStyle.Accurate, ["Slayer helmet (i)", "Ancestral robe top", "Ancestral robe bottom", "Tormented bracelet", "Occult necklace", "Imbued zamorak cape"]);
-createGearSet([GearSetType.General], "Tumeken's shadow", CombatStyle.Accurate, ["Ancestral hat", "Ancestral robe top", "Ancestral robe bottom", "Tormented bracelet", "Occult necklace", "Imbued zamorak cape"]);
-createGearSet([GearSetType.General], "Sanguinesti staff", CombatStyle.Accurate, ["Elidinis' ward (f)", "Ancestral hat", "Ancestral robe top", "Ancestral robe bottom", "Tormented bracelet", "Occult necklace", "Imbued zamorak cape"]);
-createGearSet([GearSetType.General], "Sanguinesti staff", CombatStyle.Accurate, ["Book of the dead", "Ahrim's robetop", "Ahrim's robeskirt", "Tormented bracelet", "Occult necklace", "Imbued zamorak cape"]);
-createGearSet([GearSetType.General], "Sanguinesti staff", CombatStyle.Accurate, ["Elidinis' ward (f)", "Ahrim's robetop", "Ahrim's robeskirt", "Tormented bracelet", "Occult necklace", "Imbued zamorak cape"]);
-createGearSet([GearSetType.Kalphites], "Keris partisan", CombatStyle.Lunge, ["Avernic defender", "Torva full helm", "Torva platebody", "Torva platelegs", "Ferocious gloves", "Primordial boots", "Amulet of torture", "Infernal cape"]);
-createGearSet([GearSetType.Kalphites], "Keris partisan", CombatStyle.Lunge, ["Avernic defender", "Neitiznot faceguard", "Bandos chestplate", "Bandos tassets", "Ferocious gloves", "Primordial boots", "Amulet of torture", "Fire cape"]);
-createGearSet([GearSetType.Kalphites], "Keris partisan of breaching", CombatStyle.Lunge, ["Avernic defender", "Torva full helm", "Torva platebody", "Torva platelegs", "Ferocious gloves", "Primordial boots", "Amulet of torture", "Infernal cape"]);
-createGearSet([GearSetType.Kalphites], "Keris partisan of breaching", CombatStyle.Lunge, ["Avernic defender", "Neitiznot faceguard", "Bandos chestplate", "Bandos tassets", "Ferocious gloves", "Primordial boots", "Amulet of torture", "Fire cape"]);
-createGearSet([GearSetType.Slayer], "Keris partisan of breaching", CombatStyle.Lunge, ["Avernic defender", "Slayer helmet (i)", "Torva platebody", "Torva platelegs", "Ferocious gloves", "Primordial boots", "Amulet of torture", "Infernal cape"]);
-createGearSet([GearSetType.Slayer], "Keris partisan of breaching", CombatStyle.Pound, ["Avernic defender", "Slayer helmet (i)", "Torva platebody", "Torva platelegs", "Ferocious gloves", "Primordial boots", "Amulet of torture", "Infernal cape"]);
+createGearSet([GearSetType.Slayer], ItemName.OsmumtensFang, CombatStyle.Lunge, [
+    ItemName.AvernicDefender,
+    ItemName.SlayerHelmetI,
+    ItemName.TorvaPlatebody,
+    ItemName.TorvaPlatelegs,
+    ItemName.FerociousGloves,
+    ItemName.PrimordialBoots,
+    ItemName.AmuletOfTorture,
+    ItemName.InfernalCape
+]);
+
+createGearSet([GearSetType.General], ItemName.GhraziRapier, CombatStyle.Lunge, [
+    ItemName.AvernicDefender,
+    ItemName.TorvaFullHelm,
+    ItemName.TorvaPlatebody,
+    ItemName.TorvaPlatelegs,
+    ItemName.FerociousGloves,
+    ItemName.PrimordialBoots,
+    ItemName.AmuletOfTorture,
+    ItemName.InfernalCape
+]);
+
+createGearSet([GearSetType.General], ItemName.ZamorakianHasta, CombatStyle.Lunge, [
+    ItemName.AvernicDefender,
+    ItemName.TorvaFullHelm,
+    ItemName.TorvaPlatebody,
+    ItemName.TorvaPlatelegs,
+    ItemName.FerociousGloves,
+    ItemName.PrimordialBoots,
+    ItemName.AmuletOfTorture,
+    ItemName.InfernalCape
+]);
+
+createGearSet([GearSetType.General], ItemName.ZamorakianHasta, CombatStyle.Lunge, [
+    ItemName.AvernicDefender,
+    ItemName.NeitiznotFaceguard,
+    ItemName.BandosChestplate,
+    ItemName.BandosTassets,
+    ItemName.FerociousGloves,
+    ItemName.PrimordialBoots,
+    ItemName.AmuletOfFury,
+    ItemName.FireCape
+]);
+
+createGearSet([GearSetType.General], ItemName.ScytheOfVitur, CombatStyle.Chop, [
+    ItemName.TorvaFullHelm,
+    ItemName.TorvaPlatebody,
+    ItemName.TorvaPlatelegs,
+    ItemName.FerociousGloves,
+    ItemName.PrimordialBoots,
+    ItemName.AmuletOfTorture,
+    ItemName.InfernalCape
+]);
+
+createGearSet([GearSetType.General], ItemName.ScytheOfVitur, CombatStyle.Chop, [
+    ItemName.NeitiznotFaceguard,
+    ItemName.BandosChestplate,
+    ItemName.BandosTassets,
+    ItemName.FerociousGloves,
+    ItemName.PrimordialBoots,
+    ItemName.AmuletOfFury,
+    ItemName.FireCape
+]);
+
+createGearSet([GearSetType.General], ItemName.ToxicBlowpipe, CombatStyle.Rapid, [
+    ItemName.DragonDart,
+    ItemName.MasoriMaskF,
+    ItemName.MasoriBodyF,
+    ItemName.MasoriChapsF,
+    ItemName.ZaryteVambraces,
+    ItemName.NecklaceOfAnguish,
+    ItemName.AvasAssembler
+]);
+
+createGearSet([GearSetType.General], ItemName.ToxicBlowpipe, CombatStyle.Rapid, [
+    ItemName.DragonDart,
+    ItemName.ArmadylHelmet,
+    ItemName.ArmadylChestplate,
+    ItemName.ArmadylChainskirt,
+    ItemName.ZaryteVambraces,
+    ItemName.NecklaceOfAnguish,
+    ItemName.AvasAssembler
+]);
+
+createGearSet([GearSetType.Slayer], ItemName.TwistedBow, CombatStyle.Rapid, [
+    ItemName.DragonArrow,
+    ItemName.SlayerHelmetI,
+    ItemName.MasoriBodyF,
+    ItemName.MasoriChapsF,
+    ItemName.ZaryteVambraces,
+    ItemName.NecklaceOfAnguish,
+    ItemName.AvasAssembler
+]);
+
+createGearSet([GearSetType.General], ItemName.TwistedBow, CombatStyle.Rapid, [
+    ItemName.DragonArrow,
+    ItemName.MasoriMaskF,
+    ItemName.MasoriBodyF,
+    ItemName.MasoriChapsF,
+    ItemName.ZaryteVambraces,
+    ItemName.NecklaceOfAnguish,
+    ItemName.AvasAssembler
+]);
+
+createGearSet([GearSetType.General], ItemName.TwistedBow, CombatStyle.Rapid, [
+    ItemName.DragonArrow,
+    ItemName.ArmadylHelmet,
+    ItemName.ArmadylChestplate,
+    ItemName.ArmadylChainskirt,
+    ItemName.ZaryteVambraces,
+    ItemName.NecklaceOfAnguish,
+    ItemName.AvasAssembler
+]);
+
+createGearSet([GearSetType.Slayer], ItemName.TumekensShadow, CombatStyle.Accurate, [
+    ItemName.SlayerHelmetI,
+    ItemName.AncestralRobeTop,
+    ItemName.AncestralRobeBottom,
+    ItemName.TormentedBracelet,
+    ItemName.OccultNecklace,
+    ItemName.ImbuedZamorakCape
+]);
+
+createGearSet([GearSetType.General], ItemName.TumekensShadow, CombatStyle.Accurate, [
+    ItemName.AncestralHat,
+    ItemName.AncestralRobeTop,
+    ItemName.AncestralRobeBottom,
+    ItemName.TormentedBracelet,
+    ItemName.OccultNecklace,
+    ItemName.ImbuedZamorakCape
+]);
+
+createGearSet([GearSetType.General], ItemName.SanguinestiStaff, CombatStyle.Accurate, [
+    ItemName.ElidinisWardF,
+    ItemName.AncestralHat,
+    ItemName.AncestralRobeTop,
+    ItemName.AncestralRobeBottom,
+    ItemName.TormentedBracelet,
+    ItemName.OccultNecklace,
+    ItemName.ImbuedZamorakCape
+]);
+
+createGearSet([GearSetType.General], ItemName.SanguinestiStaff, CombatStyle.Accurate, [
+    ItemName.BookOfTheDead,
+    ItemName.AhrimsRobetop,
+    ItemName.AhrimsRobeskirt,
+    ItemName.TormentedBracelet,
+    ItemName.OccultNecklace,
+    ItemName.ImbuedZamorakCape
+]);
+
+createGearSet([GearSetType.General], ItemName.SanguinestiStaff, CombatStyle.Accurate, [
+    ItemName.ElidinisWardF,
+    ItemName.AhrimsRobetop,
+    ItemName.AhrimsRobeskirt,
+    ItemName.TormentedBracelet,
+    ItemName.OccultNecklace,
+    ItemName.ImbuedZamorakCape
+]);
+
+createGearSet([GearSetType.Kalphites], ItemName.KerisPartisan, CombatStyle.Lunge, [
+    ItemName.AvernicDefender,
+    ItemName.TorvaFullHelm,
+    ItemName.TorvaPlatebody,
+    ItemName.TorvaPlatelegs,
+    ItemName.FerociousGloves,
+    ItemName.PrimordialBoots,
+    ItemName.AmuletOfTorture,
+    ItemName.InfernalCape
+]);
+
+createGearSet([GearSetType.Kalphites], ItemName.KerisPartisan, CombatStyle.Lunge, [
+    ItemName.AvernicDefender,
+    ItemName.NeitiznotFaceguard,
+    ItemName.BandosChestplate,
+    ItemName.BandosTassets,
+    ItemName.FerociousGloves,
+    ItemName.PrimordialBoots,
+    ItemName.AmuletOfTorture,
+    ItemName.FireCape
+]);
+
+createGearSet([GearSetType.Kalphites], ItemName.KerisPartisanOfBreaching, CombatStyle.Lunge, [
+    ItemName.AvernicDefender,
+    ItemName.TorvaFullHelm,
+    ItemName.TorvaPlatebody,
+    ItemName.TorvaPlatelegs,
+    ItemName.FerociousGloves,
+    ItemName.PrimordialBoots,
+    ItemName.AmuletOfTorture,
+    ItemName.InfernalCape
+]);
+
+createGearSet([GearSetType.Kalphites], ItemName.KerisPartisanOfBreaching, CombatStyle.Lunge, [
+    ItemName.AvernicDefender,
+    ItemName.NeitiznotFaceguard,
+    ItemName.BandosChestplate,
+    ItemName.BandosTassets,
+    ItemName.FerociousGloves,
+    ItemName.PrimordialBoots,
+    ItemName.AmuletOfTorture,
+    ItemName.FireCape
+]);
+
+createGearSet([GearSetType.Slayer], ItemName.KerisPartisanOfBreaching, CombatStyle.Lunge, [
+    ItemName.AvernicDefender,
+    ItemName.SlayerHelmetI,
+    ItemName.TorvaPlatebody,
+    ItemName.TorvaPlatelegs,
+    ItemName.FerociousGloves,
+    ItemName.PrimordialBoots,
+    ItemName.AmuletOfTorture,
+    ItemName.InfernalCape
+]);
+
+createGearSet([GearSetType.Slayer], ItemName.KerisPartisanOfBreaching, CombatStyle.Pound, [
+    ItemName.AvernicDefender,
+    ItemName.SlayerHelmetI,
+    ItemName.TorvaPlatebody,
+    ItemName.TorvaPlatelegs,
+    ItemName.FerociousGloves,
+    ItemName.PrimordialBoots,
+    ItemName.AmuletOfTorture,
+    ItemName.InfernalCape
+]);
