@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.ea161f04.css",
-    "main.js": "/static/js/main.b15d20c7.js",
+    "main.js": "/static/js/main.c9e3835c.js",
     "static/js/787.f7d32ca0.chunk.js": "/static/js/787.f7d32ca0.chunk.js",
     "static/media/Duke_Sucellus.png": "/static/media/Duke_Sucellus.20671a0f119b769958f1.png",
     "static/media/Fire_cape.png": "/static/media/Fire_cape.9fa34a7e2c3fc7a55285.png",
@@ -136,11 +136,11 @@
     "static/media/Occult_necklace.png": "/static/media/Occult_necklace.b5467eee40dbe71845aa.png",
     "index.html": "/index.html",
     "main.ea161f04.css.map": "/static/css/main.ea161f04.css.map",
-    "main.b15d20c7.js.map": "/static/js/main.b15d20c7.js.map",
+    "main.c9e3835c.js.map": "/static/js/main.c9e3835c.js.map",
     "787.f7d32ca0.chunk.js.map": "/static/js/787.f7d32ca0.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.ea161f04.css",
-    "static/js/main.b15d20c7.js"
+    "static/js/main.c9e3835c.js"
   ]
 }
