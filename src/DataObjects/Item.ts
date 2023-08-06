@@ -101,6 +101,20 @@ export interface AttackOption {
     weaponStyle: WeaponStyle;
 }
 
+export enum CombatClass {
+    Melee = 'Melee',
+    Ranged = 'Ranged',
+    Magic = 'Magic',
+}
+
+export const StyleToCombatClass: { [key in StyleType]: CombatClass } = {
+    [StyleType.Stab]: CombatClass.Melee,
+    [StyleType.Slash]: CombatClass.Melee,
+    [StyleType.Crush]: CombatClass.Melee,
+    [StyleType.Ranged]: CombatClass.Ranged,
+    [StyleType.Magic]: CombatClass.Magic,
+};
+
 //https://oldschool.runescape.wiki/w/Weapons/Types
 export const WeaponCategoryOptions: { [category in WeaponCategory]?: AttackOption[] } = {
     [WeaponCategory.Axe]: [

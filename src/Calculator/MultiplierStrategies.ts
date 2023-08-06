@@ -1,7 +1,7 @@
 import {Calculator} from "./Calculator";
 import {ItemName} from "../DataObjects/ItemName";
 import {Raid} from "../DataObjects/Raid";
-import {StyleType} from "../DataObjects/Item";
+import {CombatClass, StyleToCombatClass, StyleType} from "../DataObjects/Item";
 
 export abstract class MultiplierStrategy {
     protected result: Calculator;
@@ -27,18 +27,42 @@ export class SlayerHelmetMultiplierStrategy extends MultiplierStrategy {
     }
 }
 
+const SalveMultiplierTable = {
+    [ItemName.SalveAmulet]: {
+        [CombatClass.Melee]: 7 / 6,
+        [CombatClass.Ranged]: 1,
+        [CombatClass.Magic]: 1
+    },
+    [ItemName.SalveAmuletE]: {
+        [CombatClass.Melee]: 1.20,
+        [CombatClass.Ranged]: 1,
+        [CombatClass.Magic]: 1
+    },
+    [ItemName.SalveAmuletI]: {
+        [CombatClass.Melee]: 7 / 6,
+        [CombatClass.Ranged]: 7 / 6,
+        [CombatClass.Magic]: 1.15
+    },
+    [ItemName.SalveAmuletEI]: {
+        [CombatClass.Melee]: 1.20,
+        [CombatClass.Ranged]: 1.20,
+        [CombatClass.Magic]: 1.20
+    },
+};
+
+type SalveName = keyof typeof SalveMultiplierTable;
+
+
 export class SalveAmuletMultiplierStrategy extends MultiplierStrategy {
     calculateMultiplier(): number {
-        const salveAmuletPresent = this.result.gearSet.items.some(item => [ItemName.SalveAmulet, ItemName.SalveAmuletI].includes(item.name));
-        const salveAmuletEPresent = this.result.gearSet.items.some(item => [ItemName.SalveAmuletE, ItemName.SalveAmuletEI].includes(item.name));
+        const salve = this.result.gearSet.items.find(item => Object.keys(SalveMultiplierTable).includes(item.name));
 
-        if (salveAmuletPresent && this.result.targetMonster.isUndead) {
-            return 7 / 6;
-        } else if (salveAmuletEPresent && this.result.targetMonster.isUndead) {
-            return 1.20;
+        if (!salve) {
+            return 1;
         }
 
-        return 1;
+        const combatClass = StyleToCombatClass[this.result.gearSet.styleType];
+        return SalveMultiplierTable[salve.name as SalveName][combatClass];
     }
 }
 
