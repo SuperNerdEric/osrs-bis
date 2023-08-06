@@ -1,5 +1,5 @@
 import { Tooltip } from "@mui/material";
-import { Result } from "./DataObjects/Result";
+import { Calculator } from "./Calculator/Calculator";
 import { TargetMonster } from "./DataObjects/TargetMonster";
 import { monsters } from "./DataObjects/Monsters";
 import {GearSet, gearSets, GearSetType} from "./DataObjects/GearSets";
@@ -41,12 +41,12 @@ const MainContent: React.FC<MainContentProps> = ({
                                                      handleOnTask
                                                  }) => {
 
-    const [results, setResults] = useState<Result[]>([]);
+    const [results, setResults] = useState<Calculator[]>([]);
     const isToaBoss: boolean = (monsters.get(target) as TargetMonster).raid === Raid.TombsOfAmascut;
-    const [sortConfig, setSortConfig] = React.useState({key: 'dps' as keyof Result, direction: 'descending'});
+    const [sortConfig, setSortConfig] = React.useState({key: 'dps' as keyof Calculator, direction: 'descending'});
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
-    const requestSort = (key: keyof Result) => {
+    const requestSort = (key: keyof Calculator) => {
         let direction = 'ascending';
         if (sortConfig.key === key && sortConfig.direction === 'ascending') {
             direction = 'descending';
@@ -69,7 +69,7 @@ const MainContent: React.FC<MainContentProps> = ({
     }, [results, sortConfig]);
 
     useEffect(() => {
-        const results: Result[] = [];
+        const results: Calculator[] = [];
 
         const shownGearSets: GearSet[] = [];
         if((monsters.get(target) as TargetMonster).slayerMonster) {
@@ -88,7 +88,7 @@ const MainContent: React.FC<MainContentProps> = ({
 
         shownGearSets.forEach(gearSet => {
             gearSet.setRaid((monsters.get(target) as TargetMonster).raid);
-            const result: Result = new Result(gearSet);
+            const result: Calculator = new Calculator(gearSet);
             result.targetMonster = monsters.get(target) as TargetMonster;
             result.defenceReduction = defenceReduction;
             result.onTask = onTask;

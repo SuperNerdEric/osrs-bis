@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 
 import './App.css';
 import {ThemeProvider, Tooltip} from "@mui/material";
-import {Result} from "./DataObjects/Result";
+import {Calculator} from "./Calculator/Calculator";
 import {getTheme} from "./theme";
 import useUrlState from '@ahooksjs/use-url-state';
 import {Route, Router} from 'react-router';
@@ -37,7 +37,7 @@ function App() {
 
     const [urlState, setUrlState] = useUrlState({target: "Ba-Ba", invocationLevel: 300, defenceReduction: 0, onTask: "false"});
 
-    devLog(Object.keys(Result));
+    devLog(Object.keys(Calculator));
     const theme = getTheme();
 
     return (

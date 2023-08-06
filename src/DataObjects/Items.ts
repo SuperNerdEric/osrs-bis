@@ -531,3 +531,10 @@ createItem(ItemName.SalveAmuletEI, {
     slot: Slot.Neck,
 });
 
+createItem(ItemName.BerserkerRingI, {
+    imagePath: "./Images/Items/Berserker_ring_(i).png",
+    wikiLink: "https://oldschool.runescape.wiki/w/Berserker_ring_(i)",
+    strength: 8,
+    slot: Slot.Neck,
+});
+

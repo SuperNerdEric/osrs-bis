@@ -51,5 +51,7 @@ export enum ItemName {
     SalveAmulet = "Salve amulet",
     SalveAmuletE = "Salve amulet (e)",
     SalveAmuletI = "Salve amulet(i)",
-    SalveAmuletEI = "Salve amulet(ei)"
+    SalveAmuletEI = "Salve amulet(ei)",
+    BerserkerRing = "Berserker ring",
+    BerserkerRingI = "Berserker ring (i)"
 }

@@ -1,18 +1,18 @@
-import {Result} from './Result';
-import {TargetMonster} from './TargetMonster';
-import {Player} from './Player';
-import {GearSet, GearSetType} from "./GearSets";
-import {monsters} from "./Monsters";
-import {CombatStyle} from "./Item";
-import {ItemName} from './ItemName';
-import {Raid} from "./Raid";
+import {Calculator} from './Calculator';
+import {TargetMonster} from '../DataObjects/TargetMonster';
+import {Player} from '../DataObjects/Player';
+import {GearSet, GearSetType} from "../DataObjects/GearSets";
+import {monsters} from "../DataObjects/Monsters";
+import {CombatStyle} from "../DataObjects/Item";
+import {ItemName} from '../DataObjects/ItemName';
+import {Raid} from "../DataObjects/Raid";
 
-describe('Result class', () => {
-    let result: Result;
+describe('Calculator class', () => {
+    let result: Calculator;
 
     beforeEach(() => {
         // @ts-ignore
-        result = new Result();
+        result = new Calculator();
         result.player = new Player();
         result.player.attackLevelBoost = 19;
         result.player.strengthLevelBoost = 19;
@@ -336,6 +336,35 @@ describe('Result class', () => {
         test('should calculate hitChance correctly', () => {
             result.calculateDPS(300);
             expect(result.hitChance).toBeCloseTo(0.6571); //Matches fruitdeeps
+        });
+    });
+
+    describe('with Tumekens shadow against Verzik', () => {
+        beforeEach(() => {
+            result.gearSet = new GearSet([GearSetType.General], ItemName.TumekensShadow, CombatStyle.Accurate, [
+                ItemName.AncestralHat,
+                ItemName.AncestralRobeTop,
+                ItemName.AncestralRobeBottom,
+                ItemName.TormentedBracelet,
+                ItemName.OccultNecklace,
+                ItemName.ImbuedZamorakCape,
+            ]);
+            result.targetMonster = monsters.get("Verzik P2") as TargetMonster;
+        });
+
+        test('should calculate DPS correctly', () => {
+            result.calculateDPS(0);
+            expect(result.dps).toBeCloseTo(6.378); //Matches Bitterkoekje
+        });
+
+        test('should calculate maxHit correctly', () => {
+            result.calculateDPS(0);
+            expect(result.maxHit).toBe(62); //Matches fruitdeeps and Bitterkoekje
+        });
+
+        test('should calculate hitChance correctly', () => {
+            result.calculateDPS(0);
+            expect(result.hitChance).toBeCloseTo(0.6172); //Matches Bitterkoekje
         });
     });
 
