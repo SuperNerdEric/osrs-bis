@@ -1,5 +1,6 @@
 import {TargetMonster} from "./TargetMonster";
 import {Raid} from "./Raid";
+import {StyleType} from "./Item";
 
 export const monsters = new Map<string, TargetMonster>;
 
@@ -12,11 +13,13 @@ monster.defenceLevel = 80;
 monster.maxDefenceReduction = 20;
 monster.magicLevel = 100;
 monster.magicAccuracy = 0;
-monster.stabDefence = 80;
-monster.slashDefence = 160;
-monster.crushDefence = 240;
-monster.magicDefence = 280;
-monster.rangedDefence = 200;
+monster.defenceStats = {
+    [StyleType.Stab]: 80,
+    [StyleType.Slash]: 160,
+    [StyleType.Crush]: 240,
+    [StyleType.Magic]: 280,
+    [StyleType.Ranged]: 200,
+};
 monsters.set(monster.name, monster);
 
 monster = new TargetMonster();
@@ -27,11 +30,13 @@ monster.defenceLevel = 80;
 monster.maxDefenceReduction = 20;
 monster.magicLevel = 100;
 monster.magicAccuracy = 115;
-monster.stabDefence = 60;
-monster.slashDefence = 120;
-monster.crushDefence = 120;
-monster.magicDefence = 10;
-monster.rangedDefence = 60;
+monster.defenceStats = {
+    [StyleType.Stab]: 60,
+    [StyleType.Slash]: 120,
+    [StyleType.Crush]: 120,
+    [StyleType.Magic]: 10,
+    [StyleType.Ranged]: 60,
+};
 monsters.set(monster.name, monster);
 
 monster = new TargetMonster();
@@ -42,11 +47,13 @@ monster.defenceLevel = 30;
 monster.maxDefenceReduction = 20;
 monster.magicLevel = 100;
 monster.magicAccuracy = 115;
-monster.stabDefence = 60;
-monster.slashDefence = 120;
-monster.crushDefence = 120;
-monster.magicDefence = 10;
-monster.rangedDefence = 60;
+monster.defenceStats = {
+    [StyleType.Stab]: 60,
+    [StyleType.Slash]: 120,
+    [StyleType.Crush]: 120,
+    [StyleType.Magic]: 10,
+    [StyleType.Ranged]: 60,
+};
 monsters.set(monster.name, monster);
 
 monster = new TargetMonster();
@@ -58,11 +65,13 @@ monster.defenceLevel = 80;
 monster.maxDefenceReduction = 20;
 monster.magicLevel = 125;
 monster.magicAccuracy = 125;
-monster.stabDefence = 60;
-monster.slashDefence = 300;
-monster.crushDefence = 100;
-monster.magicDefence = 200;
-monster.rangedDefence = 300;
+monster.defenceStats = {
+    [StyleType.Stab]: 60,
+    [StyleType.Slash]: 300,
+    [StyleType.Crush]: 100,
+    [StyleType.Magic]: 200,
+    [StyleType.Ranged]: 300,
+};
 monsters.set(monster.name, monster);
 
 monster = new TargetMonster();
@@ -73,11 +82,13 @@ monster.defenceLevel = 70;
 monster.maxDefenceReduction = 20;
 monster.magicLevel = 100;
 monster.magicAccuracy = 215;
-monster.stabDefence = 160;
-monster.slashDefence = 160;
-monster.crushDefence = 260;
-monster.magicDefence = 200;
-monster.rangedDefence = 110;
+monster.defenceStats = {
+    [StyleType.Stab]: 160,
+    [StyleType.Slash]: 160,
+    [StyleType.Crush]: 260,
+    [StyleType.Magic]: 200,
+    [StyleType.Ranged]: 110,
+};
 monsters.set(monster.name, monster);
 
 monster = new TargetMonster();
@@ -88,11 +99,13 @@ monster.defenceLevel = 150;
 monster.maxDefenceReduction = 30;
 monster.magicLevel = 150;
 monster.magicAccuracy = 230;
-monster.stabDefence = 40;
-monster.slashDefence = 40;
-monster.crushDefence = 20;
-monster.magicDefence = 20;
-monster.rangedDefence = 20;
+monster.defenceStats = {
+    [StyleType.Stab]: 40,
+    [StyleType.Slash]: 40,
+    [StyleType.Crush]: 20,
+    [StyleType.Magic]: 20,
+    [StyleType.Ranged]: 20
+};
 monsters.set(monster.name, monster);
 
 monster = new TargetMonster();
@@ -104,11 +117,13 @@ monster.defenceLevel = 260;
 monster.maxDefenceReduction = 260;
 monster.magicLevel = 200;
 monster.magicAccuracy = 0;
-monster.stabDefence = 180;
-monster.slashDefence = 180;
-monster.crushDefence = 180;
-monster.magicDefence = 200;
-monster.rangedDefence = 200;
+monster.defenceStats = {
+    [StyleType.Stab]: 180,
+    [StyleType.Slash]: 180,
+    [StyleType.Crush]: 180,
+    [StyleType.Magic]: 200,
+    [StyleType.Ranged]: 200
+};
 monsters.set(monster.shortName, monster);
 
 monster = new TargetMonster();
@@ -119,11 +134,13 @@ monster.defenceLevel = 250;
 monster.maxDefenceReduction = 250;
 monster.magicLevel = 80;
 monster.magicAccuracy = 0;
-monster.stabDefence = 90;
-monster.slashDefence = 90;
-monster.crushDefence = 90;
-monster.magicDefence = 298;
-monster.rangedDefence = 90;
+monster.defenceStats = {
+    [StyleType.Stab]: 90,
+    [StyleType.Slash]: 90,
+    [StyleType.Crush]: 90,
+    [StyleType.Magic]: 298,
+    [StyleType.Ranged]: 90
+};
 monsters.set(monster.shortName, monster);
 
 monster = new TargetMonster();
@@ -134,11 +151,13 @@ monster.defenceLevel = 300;
 monster.maxDefenceReduction = 300;
 monster.magicLevel = 300;
 monster.magicAccuracy = 200;
-monster.stabDefence = 100;
-monster.slashDefence = 100;
-monster.crushDefence = 100;
-monster.magicDefence = 100;
-monster.rangedDefence = 100;
+monster.defenceStats = {
+    [StyleType.Stab]: 100,
+    [StyleType.Slash]: 100,
+    [StyleType.Crush]: 100,
+    [StyleType.Magic]: 100,
+    [StyleType.Ranged]: 100
+};
 monsters.set(monster.shortName, monster);
 
 monster = new TargetMonster();
@@ -150,11 +169,13 @@ monster.defenceLevel = 270;
 monster.maxDefenceReduction = 270;
 monster.magicLevel = 200;
 monster.magicAccuracy = 0;
-monster.stabDefence = 80;
-monster.slashDefence = 80;
-monster.crushDefence = 80;
-monster.magicDefence = 130;
-monster.rangedDefence = 80;
+monster.defenceStats = {
+    [StyleType.Stab]: 80,
+    [StyleType.Slash]: 80,
+    [StyleType.Crush]: 80,
+    [StyleType.Magic]: 130,
+    [StyleType.Ranged]: 80
+};
 monsters.set(monster.shortName, monster);
 
 monster = new TargetMonster();
@@ -165,11 +186,13 @@ monster.defenceLevel = 100;
 monster.maxDefenceReduction = 100;
 monster.magicLevel = 100;
 monster.magicAccuracy = 73;
-monster.stabDefence = 103;
-monster.slashDefence = 85;
-monster.crushDefence = 117;
-monster.magicDefence = 73;
-monster.rangedDefence = 0;
+monster.defenceStats = {
+    [StyleType.Stab]: 103,
+    [StyleType.Slash]: 85,
+    [StyleType.Crush]: 117,
+    [StyleType.Magic]: 73,
+    [StyleType.Ranged]: 0
+};
 monsters.set(monster.shortName, monster);
 
 monster = new TargetMonster();
@@ -180,11 +203,13 @@ monster.defenceLevel = 100;
 monster.maxDefenceReduction = 100;
 monster.magicLevel = 1;
 monster.magicAccuracy = -58;
-monster.stabDefence = 252;
-monster.slashDefence = 250;
-monster.crushDefence = 244;
-monster.magicDefence = -11;
-monster.rangedDefence = 249;
+monster.defenceStats = {
+    [StyleType.Stab]: 252,
+    [StyleType.Slash]: 250,
+    [StyleType.Crush]: 244,
+    [StyleType.Magic]: -11,
+    [StyleType.Ranged]: 249
+};
 monsters.set(monster.shortName, monster);
 
 monster = new TargetMonster();
@@ -195,11 +220,13 @@ monster.defenceLevel = 100;
 monster.maxDefenceReduction = 100;
 monster.magicLevel = 1;
 monster.magicAccuracy = -50;
-monster.stabDefence = 259;
-monster.slashDefence = 257;
-monster.crushDefence = 241;
-monster.magicDefence = -11;
-monster.rangedDefence = 250;
+monster.defenceStats = {
+    [StyleType.Stab]: 259,
+    [StyleType.Slash]: 257,
+    [StyleType.Crush]: 241,
+    [StyleType.Magic]: -11,
+    [StyleType.Ranged]: 250
+};
 monsters.set(monster.shortName, monster);
 
 monster = new TargetMonster();
@@ -210,11 +237,13 @@ monster.defenceLevel = 100;
 monster.maxDefenceReduction = 100;
 monster.magicLevel = 1;
 monster.magicAccuracy = -26;
-monster.stabDefence = 79;
-monster.slashDefence = 71;
-monster.crushDefence = 90;
-monster.magicDefence = 106;
-monster.rangedDefence = 100;
+monster.defenceStats = {
+    [StyleType.Stab]: 79,
+    [StyleType.Slash]: 71,
+    [StyleType.Crush]: 90,
+    [StyleType.Magic]: 106,
+    [StyleType.Ranged]: 100
+};
 monsters.set(monster.shortName, monster);
 
 monster = new TargetMonster();
@@ -225,11 +254,13 @@ monster.defenceLevel = 100;
 monster.maxDefenceReduction = 100;
 monster.magicLevel = 1;
 monster.magicAccuracy = -33;
-monster.stabDefence = 221;
-monster.slashDefence = 235;
-monster.crushDefence = 222;
-monster.magicDefence = 0;
-monster.rangedDefence = 221;
+monster.defenceStats = {
+    [StyleType.Stab]: 221,
+    [StyleType.Slash]: 235,
+    [StyleType.Crush]: 222,
+    [StyleType.Magic]: 0,
+    [StyleType.Ranged]: 221
+};
 monsters.set(monster.shortName, monster);
 
 monster = new TargetMonster();
@@ -240,11 +271,13 @@ monster.defenceLevel = 100;
 monster.maxDefenceReduction = 100;
 monster.magicLevel = 1;
 monster.magicAccuracy = -42;
-monster.stabDefence = 227;
-monster.slashDefence = 230;
-monster.crushDefence = 221;
-monster.magicDefence = 0;
-monster.rangedDefence = 225;
+monster.defenceStats = {
+    [StyleType.Stab]: 227,
+    [StyleType.Slash]: 230,
+    [StyleType.Crush]: 221,
+    [StyleType.Magic]: 0,
+    [StyleType.Ranged]: 225
+};
 monsters.set(monster.shortName, monster);
 
 monster = new TargetMonster();
@@ -255,11 +288,13 @@ monster.defenceLevel = 310;
 monster.maxDefenceReduction = 310;
 monster.magicLevel = 350;
 monster.magicAccuracy = 0;
-monster.stabDefence = 25;
-monster.slashDefence = 200;
-monster.crushDefence = 100;
-monster.magicDefence = 150;
-monster.rangedDefence = 230;
+monster.defenceStats = {
+    [StyleType.Stab]: 25,
+    [StyleType.Slash]: 200,
+    [StyleType.Crush]: 100,
+    [StyleType.Magic]: 150,
+    [StyleType.Ranged]: 230
+};
 monsters.set(monster.shortName, monster);
 
 monster = new TargetMonster();
@@ -270,11 +305,13 @@ monster.defenceLevel = 200;
 monster.maxDefenceReduction = 200;
 monster.magicLevel = 350;
 monster.magicAccuracy = 300;
-monster.stabDefence = 0;
-monster.slashDefence = 0;
-monster.crushDefence = 0;
-monster.magicDefence = 0;
-monster.rangedDefence = 0;
+monster.defenceStats = {
+    [StyleType.Stab]: 0,
+    [StyleType.Slash]: 0,
+    [StyleType.Crush]: 0,
+    [StyleType.Magic]: 0,
+    [StyleType.Ranged]: 0
+};
 monsters.set(monster.shortName, monster);
 
 monster = new TargetMonster();
@@ -286,11 +323,13 @@ monster.defenceLevel = 100;
 monster.maxDefenceReduction = 100;
 monster.magicLevel = 150;
 monster.magicAccuracy = 0;
-monster.stabDefence = 40;
-monster.slashDefence = 20;
-monster.crushDefence = 40;
-monster.magicDefence = 600;
-monster.rangedDefence = 800;
+monster.defenceStats = {
+    [StyleType.Stab]: 40,
+    [StyleType.Slash]: 20,
+    [StyleType.Crush]: 40,
+    [StyleType.Magic]: 600,
+    [StyleType.Ranged]: 800
+};
 monsters.set(monster.shortName, monster);
 
 monster = new TargetMonster();
@@ -301,11 +340,13 @@ monster.defenceLevel = 50;
 monster.maxDefenceReduction = 50;
 monster.magicLevel = 50;
 monster.magicAccuracy = 600;
-monster.stabDefence = 0;
-monster.slashDefence = 0;
-monster.crushDefence = 0;
-monster.magicDefence = 0;
-monster.rangedDefence = 0;
+monster.defenceStats = {
+    [StyleType.Stab]: 0,
+    [StyleType.Slash]: 0,
+    [StyleType.Crush]: 0,
+    [StyleType.Magic]: 0,
+    [StyleType.Ranged]: 0
+};
 monsters.set(monster.shortName, monster);
 
 monster = new TargetMonster();
@@ -316,11 +357,13 @@ monster.defenceLevel = 200;
 monster.maxDefenceReduction = 200;
 monster.magicLevel = 250;
 monster.magicAccuracy = -10;
-monster.stabDefence = 70;
-monster.slashDefence = 70;
-monster.crushDefence = 70;
-monster.magicDefence = 30;
-monster.rangedDefence = 150;
+monster.defenceStats = {
+    [StyleType.Stab]: 70,
+    [StyleType.Slash]: 70,
+    [StyleType.Crush]: 70,
+    [StyleType.Magic]: 30,
+    [StyleType.Ranged]: 150
+};
 monsters.set(monster.shortName, monster);
 
 monster = new TargetMonster();
@@ -330,11 +373,13 @@ monster.defenceLevel = 250;
 monster.maxDefenceReduction = 250;
 monster.magicLevel = 220;
 monster.magicAccuracy = 0;
-monster.stabDefence = 0;
-monster.slashDefence = 0;
-monster.crushDefence = 0;
-monster.magicDefence = 0;
-monster.rangedDefence = 160;
+monster.defenceStats = {
+    [StyleType.Stab]: 0,
+    [StyleType.Slash]: 0,
+    [StyleType.Crush]: 0,
+    [StyleType.Magic]: 0,
+    [StyleType.Ranged]: 160
+};
 monsters.set(monster.name, monster);
 
 monster = new TargetMonster();
@@ -345,11 +390,13 @@ monster.defenceLevel = 200;
 monster.maxDefenceReduction = 200;
 monster.magicLevel = 400;
 monster.magicAccuracy = 80;
-monster.stabDefence = 100;
-monster.slashDefence = 60;
-monster.crushDefence = 100;
-monster.magicDefence = 70;
-monster.rangedDefence = 250;
+monster.defenceStats = {
+    [StyleType.Stab]: 100,
+    [StyleType.Slash]: 60,
+    [StyleType.Crush]: 100,
+    [StyleType.Magic]: 70,
+    [StyleType.Ranged]: 250
+};
 monsters.set(monster.shortName, monster);
 
 monster = new TargetMonster();
@@ -360,11 +407,13 @@ monster.defenceLevel = 150;
 monster.maxDefenceReduction = 150;
 monster.magicLevel = 300;
 monster.magicAccuracy = 80;
-monster.stabDefence = 70;
-monster.slashDefence = 30;
-monster.crushDefence = 70;
-monster.magicDefence = 100;
-monster.rangedDefence = 230;
+monster.defenceStats = {
+    [StyleType.Stab]: 70,
+    [StyleType.Slash]: 30,
+    [StyleType.Crush]: 70,
+    [StyleType.Magic]: 100,
+    [StyleType.Ranged]: 230
+};
 monsters.set(monster.shortName, monster);
 
 monster = new TargetMonster();
@@ -375,11 +424,13 @@ monster.defenceLevel = 205;
 monster.maxDefenceReduction = 205;
 monster.magicLevel = 205;
 monster.magicAccuracy = 0;
-monster.stabDefence = 155;
-monster.slashDefence = 165;
-monster.crushDefence = 105;
-monster.magicDefence = 0;
-monster.rangedDefence = 0;
+monster.defenceStats = {
+    [StyleType.Stab]: 155,
+    [StyleType.Slash]: 165,
+    [StyleType.Crush]: 105,
+    [StyleType.Magic]: 0,
+    [StyleType.Ranged]: 0
+};
 monsters.set(monster.name, monster);
 
 monster = new TargetMonster();
@@ -390,11 +441,13 @@ monster.defenceLevel = 160;
 monster.maxDefenceReduction = 160;
 monster.magicLevel = 150;
 monster.magicAccuracy = 40;
-monster.stabDefence = 315;
-monster.slashDefence = 340;
-monster.crushDefence = 400;
-monster.magicDefence = 110;
-monster.rangedDefence = 50;
+monster.defenceStats = {
+    [StyleType.Stab]: 315,
+    [StyleType.Slash]: 340,
+    [StyleType.Crush]: 400,
+    [StyleType.Magic]: 110,
+    [StyleType.Ranged]: 50
+};
 monsters.set(monster.name, monster);
 
 monster = new TargetMonster();
@@ -405,11 +458,13 @@ monster.defenceLevel = 160;
 monster.maxDefenceReduction = 160;
 monster.magicLevel = 150;
 monster.magicAccuracy = 0;
-monster.stabDefence = 150;
-monster.slashDefence = 150;
-monster.crushDefence = 150;
-monster.magicDefence = 20;
-monster.rangedDefence = 400;
+monster.defenceStats = {
+    [StyleType.Stab]: 150,
+    [StyleType.Slash]: 150,
+    [StyleType.Crush]: 150,
+    [StyleType.Magic]: 20,
+    [StyleType.Ranged]: 400
+};
 monsters.set(monster.name, monster);
 
 monster = new TargetMonster();
@@ -420,11 +475,13 @@ monster.defenceLevel = 160;
 monster.maxDefenceReduction = 160;
 monster.magicLevel = 150;
 monster.magicAccuracy = 0;
-monster.stabDefence = 55;
-monster.slashDefence = 60;
-monster.crushDefence = 100;
-monster.magicDefence = 400;
-monster.rangedDefence = 300;
+monster.defenceStats = {
+    [StyleType.Stab]: 55,
+    [StyleType.Slash]: 60,
+    [StyleType.Crush]: 100,
+    [StyleType.Magic]: 400,
+    [StyleType.Ranged]: 300
+};
 monsters.set(monster.name, monster);
 
 monster = new TargetMonster();
@@ -435,11 +492,13 @@ monster.defenceLevel = 88;
 monster.maxDefenceReduction = 88;
 monster.magicLevel = 88;
 monster.magicAccuracy = 0;
-monster.stabDefence = 0;
-monster.slashDefence = 0;
-monster.crushDefence = 0;
-monster.magicDefence = 70;
-monster.rangedDefence = 60;
+monster.defenceStats = {
+    [StyleType.Stab]: 0,
+    [StyleType.Slash]: 0,
+    [StyleType.Crush]: 0,
+    [StyleType.Magic]: 70,
+    [StyleType.Ranged]: 60
+};
 monsters.set(monster.name, monster);
 
 monster = new TargetMonster();
@@ -451,11 +510,13 @@ monster.defenceLevel = 175;
 monster.maxDefenceReduction = 175;
 monster.magicLevel = 230;
 monster.magicAccuracy = 0;
-monster.stabDefence = 170;
-monster.slashDefence = 190;
-monster.crushDefence = 50;
-monster.magicDefence = 400;
-monster.rangedDefence = 60;
+monster.defenceStats = {
+    [StyleType.Stab]: 170,
+    [StyleType.Slash]: 190,
+    [StyleType.Crush]: 50,
+    [StyleType.Magic]: 400,
+    [StyleType.Ranged]: 60
+};
 monsters.set(monster.shortName, monster);
 
 monster = new TargetMonster();
@@ -466,11 +527,13 @@ monster.defenceLevel = 138;
 monster.maxDefenceReduction = 138;
 monster.magicLevel = 1;
 monster.magicAccuracy = 0;
-monster.stabDefence = -5;
-monster.slashDefence = 72;
-monster.crushDefence = 50;
-monster.magicDefence = 60;
-monster.rangedDefence = 0;
+monster.defenceStats = {
+    [StyleType.Stab]: -5,
+    [StyleType.Slash]: 72,
+    [StyleType.Crush]: 50,
+    [StyleType.Magic]: 60,
+    [StyleType.Ranged]: 0
+};
 monsters.set(monster.name, monster);
 
 monster = new TargetMonster();
@@ -481,11 +544,13 @@ monster.defenceLevel = 220;
 monster.maxDefenceReduction = 220;
 monster.magicLevel = 250;
 monster.magicAccuracy = 0;
-monster.stabDefence = -5;
-monster.slashDefence = -5;
-monster.crushDefence = 82;
-monster.magicDefence = 60;
-monster.rangedDefence = 75;
+monster.defenceStats = {
+    [StyleType.Stab]: -5,
+    [StyleType.Slash]: -5,
+    [StyleType.Crush]: 82,
+    [StyleType.Magic]: 60,
+    [StyleType.Ranged]: 75
+};
 monsters.set(monster.name, monster);
 
 monster = new TargetMonster();
@@ -497,11 +562,13 @@ monster.defenceLevel = 150;
 monster.maxDefenceReduction = 150;
 monster.magicLevel = 250;
 monster.magicAccuracy = 60;
-monster.stabDefence = 200;
-monster.slashDefence = 200;
-monster.crushDefence = 200;
-monster.magicDefence = 200;
-monster.rangedDefence = 50;
+monster.defenceStats = {
+    [StyleType.Stab]: 200,
+    [StyleType.Slash]: 200,
+    [StyleType.Crush]: 200,
+    [StyleType.Magic]: 200,
+    [StyleType.Ranged]: 50
+};
 monsters.set(monster.shortName, monster);
 
 monster = new TargetMonster();
@@ -513,11 +580,13 @@ monster.defenceLevel = 175;
 monster.maxDefenceReduction = 175;
 monster.magicLevel = 175;
 monster.magicAccuracy = 60;
-monster.stabDefence = 50;
-monster.slashDefence = 50;
-monster.crushDefence = 50;
-monster.magicDefence = 200;
-monster.rangedDefence = 200;
+monster.defenceStats = {
+    [StyleType.Stab]: 50,
+    [StyleType.Slash]: 50,
+    [StyleType.Crush]: 50,
+    [StyleType.Magic]: 200,
+    [StyleType.Ranged]: 200
+};
 monsters.set(monster.shortName, monster);
 
 monster = new TargetMonster();
@@ -529,11 +598,13 @@ monster.defenceLevel = 175;
 monster.maxDefenceReduction = 175;
 monster.magicLevel = 87;
 monster.magicAccuracy = 60;
-monster.stabDefence = 200;
-monster.slashDefence = 200;
-monster.crushDefence = 200;
-monster.magicDefence = 50;
-monster.rangedDefence = 200;
+monster.defenceStats = {
+    [StyleType.Stab]: 200,
+    [StyleType.Slash]: 200,
+    [StyleType.Crush]: 200,
+    [StyleType.Magic]: 50,
+    [StyleType.Ranged]: 200
+};
 monsters.set(monster.shortName, monster);
 
 
@@ -545,11 +616,13 @@ monster.defenceLevel = 1;
 monster.maxDefenceReduction = 1;
 monster.magicLevel = 1;
 monster.magicAccuracy = 999;
-monster.stabDefence = 0;
-monster.slashDefence = 0;
-monster.crushDefence = 0;
-monster.magicDefence = 0;
-monster.rangedDefence = 0;
+monster.defenceStats = {
+    [StyleType.Stab]: 0,
+    [StyleType.Slash]: 0,
+    [StyleType.Crush]: 0,
+    [StyleType.Magic]: 0,
+    [StyleType.Ranged]: 0
+};
 monsters.set(monster.name, monster);
 
 monster = new TargetMonster();
@@ -563,11 +636,13 @@ monster.defenceLevel = 300;
 monster.maxDefenceReduction = 300;
 monster.magicLevel = 150;
 monster.magicAccuracy = 0;
-monster.stabDefence = 50;
-monster.slashDefence = 50;
-monster.crushDefence = 10;
-monster.magicDefence = 100;
-monster.rangedDefence = 100;
+monster.defenceStats = {
+    [StyleType.Stab]: 50,
+    [StyleType.Slash]: 50,
+    [StyleType.Crush]: 10,
+    [StyleType.Magic]: 100,
+    [StyleType.Ranged]: 100
+};
 monsters.set(monster.shortName, monster);
 
 monster = new TargetMonster();
@@ -581,9 +656,11 @@ monster.defenceLevel = 300;
 monster.maxDefenceReduction = 300;
 monster.magicLevel = 150;
 monster.magicAccuracy = 0;
-monster.stabDefence = 100;
-monster.slashDefence = 100;
-monster.crushDefence = 100;
-monster.magicDefence = 10;
-monster.rangedDefence = 10;
+monster.defenceStats = {
+    [StyleType.Stab]: 100,
+    [StyleType.Slash]: 100,
+    [StyleType.Crush]: 100,
+    [StyleType.Magic]: 10,
+    [StyleType.Ranged]: 10
+};
 monsters.set(monster.shortName, monster);

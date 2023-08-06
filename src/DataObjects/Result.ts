@@ -249,30 +249,13 @@ export class Result {
                 break;
         }
 
-        const styleDefenceBonus = this.getStyleDefenceBonus(attackStyle);
+        const styleDefenceBonus = this.targetMonster.defenceStats[attackStyle];
         let defenceRoll = baseDefence * (styleDefenceBonus + 64);
         const invocationScaledDefenceRoll = defenceRoll + Math.floor(defenceRoll * Math.floor(invocationLevel / 5) * 2) / 100;
         if (invocationLevel > 0) {
             defenceRoll = invocationScaledDefenceRoll;
         }
         return defenceRoll;
-    }
-
-    private getStyleDefenceBonus(attackStyle: StyleType): number {
-        switch (attackStyle) {
-            case StyleType.Stab:
-                return this.targetMonster.stabDefence;
-            case StyleType.Slash:
-                return this.targetMonster.slashDefence;
-            case StyleType.Crush:
-                return this.targetMonster.crushDefence;
-            case StyleType.Magic:
-                return this.targetMonster.magicDefence;
-            case StyleType.Ranged:
-                return this.targetMonster.rangedDefence;
-            default:
-                throw new Error(`Unsupported attack style: ${attackStyle}`);
-        }
     }
 
     private calculateHitChance(attackRoll: number, defenceRoll: number) {
@@ -352,4 +335,3 @@ export class Result {
         return this.averageDamagePerHit / weaponSpeed;
     }
 }
-

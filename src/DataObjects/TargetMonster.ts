@@ -1,3 +1,4 @@
+import {StyleType} from "./Item";
 import {Raid} from "./Raid";
 
 export class TargetMonster {
@@ -12,9 +13,20 @@ export class TargetMonster {
     maxDefenceReduction: number = 0;
     magicLevel: number = 0;
     magicAccuracy: number = 0;
-    stabDefence: number = 0;
-    slashDefence: number = 0;
-    crushDefence: number = 0;
-    magicDefence: number = 0;
-    rangedDefence: number = 0;
+    defenceStats: MonsterDefenceStats = {
+        [StyleType.Stab]: 0,
+        [StyleType.Slash]: 0,
+        [StyleType.Crush]: 0,
+        [StyleType.Magic]: 0,
+        [StyleType.Ranged]: 0,
+    };
+
+}
+
+interface MonsterDefenceStats {
+    [StyleType.Stab]: number;
+    [StyleType.Slash]: number;
+    [StyleType.Crush]: number;
+    [StyleType.Magic]: number;
+    [StyleType.Ranged]: number;
 }
