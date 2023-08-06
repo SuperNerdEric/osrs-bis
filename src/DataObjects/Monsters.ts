@@ -280,6 +280,7 @@ monsters.set(monster.shortName, monster);
 monster = new TargetMonster();
 monster.name = "Pestilent Bloat";
 monster.shortName = "Bloat";
+monster.isUndead = true;
 monster.imagePath = './Images/Monsters/Pestilent_Bloat.png';
 monster.defenceLevel = 100;
 monster.maxDefenceReduction = 100;

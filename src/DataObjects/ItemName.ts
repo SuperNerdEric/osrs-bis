@@ -47,5 +47,9 @@ export enum ItemName {
     KerisPartisanOfCorruption = "Keris partisan of corruption",
     KerisPartisanOfTheSun = "Keris partisan of the sun",
     KerisPartisanOfBreaching = "Keris partisan of breaching",
-    SlayerHelmetI = "Slayer helmet (i)"
+    SlayerHelmetI = "Slayer helmet (i)",
+    SalveAmulet = "Salve amulet",
+    SalveAmuletE = "Salve amulet (e)",
+    SalveAmuletI = "Salve amulet(i)",
+    SalveAmuletEI = "Salve amulet(ei)"
 }

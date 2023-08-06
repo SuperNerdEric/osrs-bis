@@ -506,3 +506,28 @@ createItem(ItemName.SlayerHelmetI, {
     magic: 3,
     ranged: 3,
 });
+
+createItem(ItemName.SalveAmulet, {
+    imagePath: "./Images/Items/Salve_amulet.png",
+    wikiLink: "https://oldschool.runescape.wiki/w/Salve_amulet",
+    slot: Slot.Neck,
+});
+
+createItem(ItemName.SalveAmuletE, {
+    imagePath: "./Images/Items/Salve_amulet_(e).png",
+    wikiLink: "https://oldschool.runescape.wiki/w/Salve_amulet_(e)",
+    slot: Slot.Neck,
+});
+
+createItem(ItemName.SalveAmuletI, {
+    imagePath: "./Images/Items/Salve_amulet(i).png",
+    wikiLink: "https://oldschool.runescape.wiki/w/Salve_amulet(i)",
+    slot: Slot.Neck,
+});
+
+createItem(ItemName.SalveAmuletEI, {
+    imagePath: "./Images/Items/Salve_amulet(ei).png",
+    wikiLink: "https://oldschool.runescape.wiki/w/Salve_amulet(ei)",
+    slot: Slot.Neck,
+});
+

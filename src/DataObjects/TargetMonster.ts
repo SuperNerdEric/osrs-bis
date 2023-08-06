@@ -6,6 +6,7 @@ export class TargetMonster {
     raid: Raid = Raid.None;
     slayerMonster: boolean = false;
     isKalphite: boolean = false;
+    isUndead: boolean = false;
     imagePath: string = "";
     defenceLevel: number = 0;
     maxDefenceReduction: number = 0;

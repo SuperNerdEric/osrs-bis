@@ -14,6 +14,8 @@ export interface GearSet {
     combatStyle: CombatStyle,
     styleType: StyleType;
     weaponStyle: WeaponStyle;
+    styleTypeBonus: number;
+    styleStrength: number;
     items: Item[]
 }
 
@@ -40,14 +42,40 @@ export function createGearSet(gearSetTypes: GearSetType[], weaponName: ItemName,
         }
 
         if (styleType && weaponStyle) {
+            const gearItems = [weapon, ...otherItemNames.map(name => items.get(name) as Item)];
+
+            // @ts-ignore
+            const styleTypeBonus = gearItems.reduce((total: number, item: Item) => total + (item[styleType.toLowerCase() as "stab" | "slash" | "crush" | "magic" | "ranged"]), 0);
+
+            // Determine the strength attribute to be summed up based on the style type
+            let strengthAttribute: "strength" | "rangedStrength" | "mageStrength";
+            switch (styleType) {
+                case StyleType.Stab:
+                case StyleType.Slash:
+                case StyleType.Crush:
+                    strengthAttribute = "strength";
+                    break;
+                case StyleType.Ranged:
+                    strengthAttribute = "rangedStrength";
+                    break;
+                case StyleType.Magic:
+                    strengthAttribute = "mageStrength";
+                    break;
+            }
+
+            const styleStrength = gearItems.reduce((total: number, item: Item) => total + item[strengthAttribute], 0);
+
             const gearSet: GearSet = {
                 types: gearSetTypes,
                 combatStyle: combatStyle,
                 styleType: styleType,
                 weapon: weapon,
                 weaponStyle: weaponStyle,
-                items: otherItemNames.map(name => items.get(name) as Item)
+                items: otherItemNames.map(name => items.get(name) as Item),
+                styleTypeBonus: styleTypeBonus,
+                styleStrength: styleStrength,
             };
+
             gearSets.push(gearSet);
             return gearSet;
         } else {

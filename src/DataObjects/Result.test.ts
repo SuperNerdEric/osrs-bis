@@ -20,6 +20,37 @@ describe('Result class', () => {
         result.targetMonster = monsters.get("Armadyl") as TargetMonster;
     });
 
+    describe('with Osmumtens fang in ToA melee gear set', () => {
+        beforeEach(() => {
+            result.gearSet = createGearSet([GearSetType.General], ItemName.OsmumtensFang, CombatStyle.Lunge, [
+                ItemName.AvernicDefender,
+                ItemName.TorvaFullHelm,
+                ItemName.TorvaPlatebody,
+                ItemName.TorvaPlatelegs,
+                ItemName.FerociousGloves,
+                ItemName.PrimordialBoots,
+                ItemName.AmuletOfTorture,
+                ItemName.InfernalCape
+            ]);
+            result.targetMonster = monsters.get("Ba-Ba") as TargetMonster;
+        });
+
+        test('should calculate DPS correctly', () => {
+            result.calculateDPS(300);
+            expect(result.dps).toBeCloseTo(7.833);  //Matches fruitdeeps
+        });
+
+        test('should calculate maxHit correctly', () => {
+            result.calculateDPS(300);
+            expect(result.maxHit).toBe(48);  //Matches fruitdeeps
+        });
+
+        test('should calculate hitChance correctly', () => {
+            result.calculateDPS(300);
+            expect(result.hitChance).toBeCloseTo(0.8393);  //Matches fruitdeeps
+        });
+    });
+
     describe('with melee gear set including Slayer helmet (i) and onTask is false', () => {
         beforeEach(() => {
             result.gearSet = createGearSet([GearSetType.General], ItemName.OsmumtensFang, CombatStyle.Lunge, [
@@ -492,6 +523,69 @@ describe('Result class', () => {
             expect(result.hitChance).toBeCloseTo(0.7348); //Matches fruitdeeps
         });
     });
+
+    describe('with melee gear set including Salve amulet and undead is true', () => {
+        beforeEach(() => {
+            result.gearSet = createGearSet([GearSetType.General], ItemName.GhraziRapier, CombatStyle.Lunge, [
+                ItemName.AvernicDefender,
+                ItemName.TorvaFullHelm,
+                ItemName.TorvaPlatebody,
+                ItemName.TorvaPlatelegs,
+                ItemName.FerociousGloves,
+                ItemName.PrimordialBoots,
+                ItemName.SalveAmulet,
+                ItemName.InfernalCape
+            ]);
+            result.targetMonster = monsters.get("Bloat") as TargetMonster;
+        });
+
+        test('should calculate DPS correctly', () => {
+            result.calculateDPS(0);
+            expect(result.dps).toBeCloseTo(10.207); //Matches fruitdeeps
+        });
+
+        test('should calculate maxHit correctly', () => {
+            result.calculateDPS(0);
+            expect(result.maxHit).toBe(58); //Matches fruitdeeps
+        });
+
+        test('should calculate hitChance correctly', () => {
+            result.calculateDPS(0);
+            expect(result.hitChance).toBeCloseTo(0.8447); //Matches fruitdeeps
+        });
+    });
+
+    describe('with melee gear set including Salve amulet (e) and undead is true', () => {
+        beforeEach(() => {
+            result.gearSet = createGearSet([GearSetType.General], ItemName.GhraziRapier, CombatStyle.Lunge, [
+                ItemName.AvernicDefender,
+                ItemName.TorvaFullHelm,
+                ItemName.TorvaPlatebody,
+                ItemName.TorvaPlatelegs,
+                ItemName.FerociousGloves,
+                ItemName.PrimordialBoots,
+                ItemName.SalveAmuletE,
+                ItemName.InfernalCape
+            ]);
+            result.targetMonster = monsters.get("Bloat") as TargetMonster;
+        });
+
+        test('should calculate DPS correctly', () => {
+            result.calculateDPS(0);
+            expect(result.dps).toBeCloseTo(10.613); //Matches fruitdeeps
+        });
+
+        test('should calculate maxHit correctly', () => {
+            result.calculateDPS(0);
+            expect(result.maxHit).toBe(60); //Matches fruitdeeps
+        });
+
+        test('should calculate hitChance correctly', () => {
+            result.calculateDPS(0);
+            expect(result.hitChance).toBeCloseTo(0.8490); //Matches fruitdeeps
+        });
+    });
+
 
 });
 
