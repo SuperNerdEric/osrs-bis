@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.ea161f04.css",
-    "main.js": "/static/js/main.a4018e47.js",
+    "main.js": "/static/js/main.b15d20c7.js",
     "static/js/787.f7d32ca0.chunk.js": "/static/js/787.f7d32ca0.chunk.js",
     "static/media/Duke_Sucellus.png": "/static/media/Duke_Sucellus.20671a0f119b769958f1.png",
     "static/media/Fire_cape.png": "/static/media/Fire_cape.9fa34a7e2c3fc7a55285.png",
@@ -107,13 +107,17 @@
     "static/media/Armadyl_chainskirt.png": "/static/media/Armadyl_chainskirt.deffb8411ecc15057d3e.png",
     "static/media/King_Black_Dragon.png": "/static/media/King_Black_Dragon.297c51eb11336ccab531.png",
     "static/media/Xarpus.png": "/static/media/Xarpus.187c054102bbd79e2d29.png",
+    "static/media/Salve_amulet_(e).png": "/static/media/Salve_amulet_(e).ec817d0bdad28595d0af.png",
     "static/media/Dagannoth_Prime.png": "/static/media/Dagannoth_Prime.7adb74410f3b11c1280f.png",
     "static/media/Armadyl_helmet.png": "/static/media/Armadyl_helmet.0b1995b2a9703b40aeb2.png",
     "static/media/Ahrim_the_Blighted.png": "/static/media/Ahrim_the_Blighted.ab4bcdb22f5acb833c99.png",
     "static/media/Bronze_arrow.png": "/static/media/Bronze_arrow.3e109cbce20c3895c3e3.png",
+    "static/media/Salve_amulet(ei).png": "/static/media/Salve_amulet(ei).7398bb58aebb7c588699.png",
     "static/media/Giant_Mole.png": "/static/media/Giant_Mole.4e2c990f8bd0b94cb2bb.png",
     "static/media/Guthan_the_Infested.png": "/static/media/Guthan_the_Infested.2768f199e75f907b577e.png",
     "static/media/Dagannoth_Supreme.png": "/static/media/Dagannoth_Supreme.99d5c2ed8f8bcbb04bae.png",
+    "static/media/Salve_amulet(i).png": "/static/media/Salve_amulet(i).247ef231cd13ca9275a1.png",
+    "static/media/Salve_amulet.png": "/static/media/Salve_amulet.247ef231cd13ca9275a1.png",
     "static/media/Torva_platelegs.png": "/static/media/Torva_platelegs.ccf92a8381c5b9a004d2.png",
     "static/media/Zaryte_vambraces.png": "/static/media/Zaryte_vambraces.8bb2db3d88927064ca02.png",
     "static/media/Amulet_of_torture.png": "/static/media/Amulet_of_torture.86be3e26709fd8216c6b.png",
@@ -132,11 +136,11 @@
     "static/media/Occult_necklace.png": "/static/media/Occult_necklace.b5467eee40dbe71845aa.png",
     "index.html": "/index.html",
     "main.ea161f04.css.map": "/static/css/main.ea161f04.css.map",
-    "main.a4018e47.js.map": "/static/js/main.a4018e47.js.map",
+    "main.b15d20c7.js.map": "/static/js/main.b15d20c7.js.map",
     "787.f7d32ca0.chunk.js.map": "/static/js/787.f7d32ca0.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.ea161f04.css",
-    "static/js/main.a4018e47.js"
+    "static/js/main.b15d20c7.js"
   ]
 }
