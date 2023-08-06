@@ -87,6 +87,7 @@ const MainContent: React.FC<MainContentProps> = ({
 
 
         shownGearSets.forEach(gearSet => {
+            gearSet.setRaid((monsters.get(target) as TargetMonster).raid);
             const result: Result = new Result(gearSet);
             result.targetMonster = monsters.get(target) as TargetMonster;
             result.defenceReduction = defenceReduction;

@@ -209,26 +209,13 @@ export class Result {
                 maxHit = Math.floor(0.5 + (effectiveLevel * (this.gearSet.styleStrength + 64)) / 640);
                 break;
             case StyleType.Magic:
-                //Have to define another or else it's no longer idempotent
-                // eslint-disable-next-line no-case-declarations
-                let equipmentMagicStrength = this.gearSet.styleStrength
-
                 //Todo make this effective level
                 maxHit = Math.floor((this.player.magicLevel + this.player.magicLevelBoost) / 3) - 1;
 
                 if (this.gearSet.weapon.name == ItemName.TumekensShadow) {
                     maxHit = Math.floor((this.player.magicLevel + this.player.magicLevelBoost) / 3) + 1;
-
-                    //Caps at 100% magic strength
-                    //Todo add this to createGearSet
-                    if (this.targetMonster.raid === Raid.TombsOfAmascut) {
-                        equipmentMagicStrength = Math.min(100, this.gearSet.styleStrength * 4); //inside toa
-                    } else {
-                        equipmentMagicStrength = Math.min(100, this.gearSet.styleStrength * 3);
-                    }
-
                 }
-                maxHit = Math.floor(maxHit * (1 + equipmentMagicStrength / 100));
+                maxHit = Math.floor(maxHit * (1 + this.gearSet.styleStrength / 100));
                 break;
             default:
                 throw new Error(`Unsupported attack style: ${attackStyle}`);
@@ -242,18 +229,7 @@ export class Result {
     }
 
     private calculateAttackRoll(effectiveAttackLevel: number, gearAccuracyMultipliers: number[]) {
-        //Have to define another or else it's no longer idempotent
-        let equipmentStyleTypeBonus = this.gearSet.styleTypeBonus
-
-        if (this.gearSet.weapon.name == ItemName.TumekensShadow) {
-            if (this.targetMonster.raid === Raid.TombsOfAmascut) {
-                equipmentStyleTypeBonus *= 4; //inside toa
-            } else {
-                equipmentStyleTypeBonus *= 3;
-            }
-        }
-
-        let attackRoll = effectiveAttackLevel * (equipmentStyleTypeBonus + 64);
+        let attackRoll = effectiveAttackLevel * (this.gearSet.styleTypeBonus + 64);
 
         for (const gearMultiplier of gearAccuracyMultipliers) {
             attackRoll = Math.floor(attackRoll * gearMultiplier);
