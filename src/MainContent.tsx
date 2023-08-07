@@ -72,7 +72,7 @@ const MainContent: React.FC<MainContentProps> = ({
         const results: Calculator[] = [];
 
         const shownGearSets: GearSet[] = [];
-        if((monsters.get(target) as TargetMonster).slayerMonster) {
+        if((monsters.get(target) as TargetMonster).slayerMonster && onTask) {
             const slayerGearSets = gearSets.filter(gearSet => gearSet.types.includes(GearSetType.Slayer));
             shownGearSets.push(...slayerGearSets);
         }
