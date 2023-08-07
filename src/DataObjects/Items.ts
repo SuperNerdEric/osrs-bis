@@ -535,6 +535,53 @@ createItem(ItemName.BerserkerRingI, {
     imagePath: "./Images/Items/Berserker_ring_(i).png",
     wikiLink: "https://oldschool.runescape.wiki/w/Berserker_ring_(i)",
     strength: 8,
-    slot: Slot.Neck,
+    slot: Slot.Ring,
 });
 
+createItem(ItemName.VoidMeleeHelm, {
+    imagePath: "./Images/Items/Void_melee_helm.png",
+    wikiLink: "https://oldschool.runescape.wiki/w/Void_melee_helm",
+    slot: Slot.Helm,
+});
+
+createItem(ItemName.VoidRangerHelm, {
+    imagePath: "./Images/Items/Void_melee_helm.png",
+    wikiLink: "https://oldschool.runescape.wiki/w/Void_ranger_helm",
+    slot: Slot.Helm,
+});
+
+createItem(ItemName.VoidMageHelm, {
+    imagePath: "./Images/Items/Void_mage_helm.png",
+    wikiLink: "https://oldschool.runescape.wiki/w/Void_mage_helm",
+    slot: Slot.Helm,
+});
+
+createItem(ItemName.VoidKnightTop, {
+    imagePath: "./Images/Items/Void_knight_top.png",
+    wikiLink: "https://oldschool.runescape.wiki/w/Void_knight_top",
+    slot: Slot.Chest,
+});
+
+createItem(ItemName.VoidKnightRobe, {
+    imagePath: "./Images/Items/Void_knight_robe.png",
+    wikiLink: "https://oldschool.runescape.wiki/w/Void_knight_robe",
+    slot: Slot.Legs,
+});
+
+createItem(ItemName.VoidKnightGloves, {
+    imagePath: "./Images/Items/Void_knight_gloves.png",
+    wikiLink: "https://oldschool.runescape.wiki/w/Void_knight_gloves",
+    slot: Slot.Gloves,
+});
+
+createItem(ItemName.EliteVoidTop, {
+    imagePath: "./Images/Items/Elite_void_top.png",
+    wikiLink: "https://oldschool.runescape.wiki/w/Elite_void_top",
+    slot: Slot.Chest,
+});
+
+createItem(ItemName.EliteVoidRobe, {
+    imagePath: "./Images/Items/Elite_void_robe.png",
+    wikiLink: "https://oldschool.runescape.wiki/w/Elite_void_robe",
+    slot: Slot.Chest,
+});

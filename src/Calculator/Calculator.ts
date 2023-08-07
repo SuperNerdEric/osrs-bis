@@ -10,12 +10,15 @@ import {
     ScytheOfViturStrategy
 } from "./DamagePerHitStrategies";
 import {DefaultHitChanceStrategy, OsmumtensFangHitChanceStrategy} from "./HitChanceStrategies";
+import {KerisMultiplierStrategy,} from "./MultiplierStrategies/KerisMultiplierStrategy";
+import {SlayerHelmetMultiplierStrategy} from "./MultiplierStrategies/SlayerHelmetMultiplierStrategy";
+import {SalveAmuletMultiplierStrategy} from "./MultiplierStrategies/SalveAmuletMultiplierStrategy";
 import {
-    KerisMultiplierStrategy,
-    TwistedBowStrengthMultiplierStrategy,
-    SalveAmuletMultiplierStrategy,
-    SlayerHelmetMultiplierStrategy, TwistedBowAccuracyMultiplierStrategy
-} from "./MultiplierStrategies";
+    TwistedBowAccuracyMultiplierStrategy,
+    TwistedBowStrengthMultiplierStrategy
+} from "./MultiplierStrategies/TwistedBowMultiplierStrategy";
+import {VoidKnightMultiplierStrategy} from "./MultiplierStrategies/VoidKnightMultiplierStrategy";
+import {MultiplierType} from "./MultiplierStrategies/AbstractMultiplierStrategy";
 
 export class Calculator {
     dps: number = 0;
@@ -70,21 +73,34 @@ export class Calculator {
             effectiveLevel = Math.floor((this.player.magicLevel + this.player.magicLevelBoost) * 1.25) + 8;
         }
 
+        //According to sources void boosts effective strength level, not our max hit
+        const voidMultiplier = new VoidKnightMultiplierStrategy(this).calculateMultiplier(MultiplierType.Damage);
+        effectiveLevel = Math.floor(effectiveLevel * voidMultiplier);
+
         return effectiveLevel;
     }
 
     private calculateEffectiveAttackLevel(attackStyle: StyleType) {
         let effectiveLevel;
 
+        //According to sources void boosts effective attack level, not our attack roll
+        const voidMultiplier = new VoidKnightMultiplierStrategy(this).calculateMultiplier(MultiplierType.Accuracy);
+
         if (attackStyle === StyleType.Stab || attackStyle === StyleType.Slash || attackStyle === StyleType.Crush) {
             effectiveLevel = Math.floor((this.player.attackLevel + this.player.attackLevelBoost) * 1.2) + 8;
+            effectiveLevel = Math.floor(effectiveLevel * voidMultiplier);
         } else if (attackStyle === StyleType.Ranged) {
             effectiveLevel = Math.floor((this.player.rangedLevel + this.player.rangedLevelBoost) * 1.2) + 8;
+            effectiveLevel = Math.floor(effectiveLevel * voidMultiplier);
         } else {
-            effectiveLevel = Math.floor((this.player.magicLevel + this.player.magicLevelBoost) * 1.25) + 9;
+            effectiveLevel = Math.floor((this.player.magicLevel + this.player.magicLevelBoost) * 1.25);
+            effectiveLevel = Math.floor(effectiveLevel * voidMultiplier);
+
             if (this.gearSet.weaponStyle === WeaponStyle.Accurate) {
                 effectiveLevel += 2;
             }
+
+            effectiveLevel += 9;
         }
 
         return effectiveLevel;

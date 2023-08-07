@@ -53,5 +53,13 @@ export enum ItemName {
     SalveAmuletI = "Salve amulet(i)",
     SalveAmuletEI = "Salve amulet(ei)",
     BerserkerRing = "Berserker ring",
-    BerserkerRingI = "Berserker ring (i)"
+    BerserkerRingI = "Berserker ring (i)",
+    VoidMeleeHelm = "Void melee helm",
+    VoidRangerHelm = "Void ranger helm",
+    VoidMageHelm = "Void mage helm",
+    VoidKnightTop = "Void knight top",
+    VoidKnightRobe = "Void knight robe",
+    VoidKnightGloves = "Void knight gloves",
+    EliteVoidTop = "Elite void top",
+    EliteVoidRobe = "Elite void robe",
 }

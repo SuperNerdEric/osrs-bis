@@ -616,6 +616,153 @@ describe('Calculator class', () => {
         });
     });
 
+    describe('with melee void', () => {
+        beforeEach(() => {
+            result.gearSet = new GearSet([GearSetType.General], ItemName.GhraziRapier, CombatStyle.Lunge, [
+                ItemName.AvernicDefender,
+                ItemName.VoidMeleeHelm,
+                ItemName.VoidKnightTop,
+                ItemName.VoidKnightRobe,
+                ItemName.VoidKnightGloves,
+                ItemName.PrimordialBoots,
+                ItemName.AmuletOfTorture,
+                ItemName.InfernalCape
+            ]);
+            result.targetMonster = monsters.get("Bloat") as TargetMonster;
+        });
 
+        test('should calculate DPS correctly', () => {
+            result.calculateDPS(0);
+            expect(result.dps).toBeCloseTo(8.510); //Matches fruitdeeps
+        });
+
+        test('should calculate maxHit correctly', () => {
+            result.calculateDPS(0);
+            expect(result.maxHit).toBe(49); //Matches fruitdeeps
+        });
+
+        test('should calculate hitChance correctly', () => {
+            result.calculateDPS(0);
+            expect(result.hitChance).toBeCloseTo(0.8336); //Matches fruitdeeps
+        });
+    });
+
+    describe('with ranged void', () => {
+        beforeEach(() => {
+            result.gearSet = new GearSet([GearSetType.General], ItemName.TwistedBow, CombatStyle.Rapid, [
+                ItemName.DragonArrow,
+                ItemName.VoidRangerHelm,
+                ItemName.VoidKnightTop,
+                ItemName.VoidKnightRobe,
+                ItemName.VoidKnightGloves,
+                ItemName.NecklaceOfAnguish,
+                ItemName.AvasAssembler
+            ]);
+            result.targetMonster = monsters.get("Bloat") as TargetMonster;
+        });
+
+        test('should calculate DPS correctly', () => {
+            result.calculateDPS(0);
+            expect(result.dps).toBeCloseTo(1.532); //Matches fruitdeeps
+        });
+
+        test('should calculate maxHit correctly', () => {
+            result.calculateDPS(0);
+            expect(result.maxHit).toBe(62); //Matches fruitdeeps
+        });
+
+        test('should calculate hitChance correctly', () => {
+            result.calculateDPS(0);
+            expect(result.hitChance).toBeCloseTo(0.1482); //Matches fruitdeeps
+        });
+    });
+
+    describe('with ranged elite void', () => {
+        beforeEach(() => {
+            result.gearSet = new GearSet([GearSetType.General], ItemName.TwistedBow, CombatStyle.Rapid, [
+                ItemName.DragonArrow,
+                ItemName.VoidRangerHelm,
+                ItemName.EliteVoidTop,
+                ItemName.EliteVoidRobe,
+                ItemName.VoidKnightGloves,
+                ItemName.NecklaceOfAnguish,
+                ItemName.AvasAssembler
+            ]);
+            result.targetMonster = monsters.get("Bloat") as TargetMonster;
+        });
+
+        test('should calculate DPS correctly', () => {
+            result.calculateDPS(0);
+            expect(result.dps).toBeCloseTo(1.532); //Matches fruitdeeps
+        });
+
+        test('should calculate maxHit correctly', () => {
+            result.calculateDPS(0);
+            expect(result.maxHit).toBe(62); //Matches fruitdeeps
+        });
+
+        test('should calculate hitChance correctly', () => {
+            result.calculateDPS(0);
+            expect(result.hitChance).toBeCloseTo(0.1482); //Matches fruitdeeps
+        });
+    });
+
+    describe('with mage void', () => {
+        beforeEach(() => {
+            result.gearSet = new GearSet([GearSetType.General], ItemName.SanguinestiStaff, CombatStyle.Accurate, [
+                ItemName.VoidMageHelm,
+                ItemName.VoidKnightTop,
+                ItemName.VoidKnightRobe,
+                ItemName.VoidKnightGloves,
+                ItemName.OccultNecklace,
+                ItemName.ImbuedZamorakCape
+            ]);
+            result.targetMonster = monsters.get("Bloat") as TargetMonster;
+        });
+
+        test('should calculate DPS correctly', () => {
+            result.calculateDPS(0);
+            expect(result.dps).toBeCloseTo(0.928); //Matches fruitdeeps
+        });
+
+        test('should calculate maxHit correctly', () => {
+            result.calculateDPS(0);
+            expect(result.maxHit).toBe(39); //Matches fruitdeeps
+        });
+
+        test('should calculate hitChance correctly', () => {
+            result.calculateDPS(0);
+            expect(result.hitChance).toBeCloseTo(0.1143); //Matches fruitdeeps
+        });
+    });
+
+    describe('with elite mage void', () => {
+        beforeEach(() => {
+            result.gearSet = new GearSet([GearSetType.General], ItemName.SanguinestiStaff, CombatStyle.Accurate, [
+                ItemName.VoidMageHelm,
+                ItemName.EliteVoidTop,
+                ItemName.EliteVoidRobe,
+                ItemName.VoidKnightGloves,
+                ItemName.OccultNecklace,
+                ItemName.ImbuedZamorakCape
+            ]);
+            result.targetMonster = monsters.get("Bloat") as TargetMonster;
+        });
+
+        test('should calculate DPS correctly', () => {
+            result.calculateDPS(0);
+            expect(result.dps).toBeCloseTo(0.9522); //Matches fruitdeeps
+        });
+
+        test('should calculate maxHit correctly', () => {
+            result.calculateDPS(0);
+            expect(result.maxHit).toBe(40); //Matches Bitterkoekje and tested in game
+        });
+
+        test('should calculate hitChance correctly', () => {
+            result.calculateDPS(0);
+            expect(result.hitChance).toBeCloseTo(0.1143); //Matches fruitdeeps
+        });
+    });
 });
 

@@ -95,9 +95,19 @@ export class GearSet {
                 break;
         }
 
-        const styleStrength = gearItems.reduce((total: number, item: Item) => total + item[strengthAttribute], 0);
+        let styleStrength = gearItems.reduce((total: number, item: Item) => total + item[strengthAttribute], 0);
+
+        if (this.applyEliteVoidMageBonus(gearItems)) {
+            styleStrength += 2.5;
+        }
         return styleStrength;
     }
+
+    private applyEliteVoidMageBonus(gearItems: (Weapon | Item)[]): boolean {
+        const requiredItems = [ItemName.VoidMageHelm, ItemName.EliteVoidTop, ItemName.EliteVoidRobe, ItemName.VoidKnightGloves];
+        return requiredItems.every(requiredItem => gearItems.some(gearItem => gearItem.name === requiredItem));
+    }
+
 
     //This must be idempotent or re-renders will keep increasing the value
     setRaid(raid: Raid) {
