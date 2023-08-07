@@ -3,6 +3,7 @@ import {ItemName} from "./ItemName";
 export enum Slot {
     MainHand,
     OffHand,
+    TwoHand,
     Ammo,
     Helm,
     Chest,

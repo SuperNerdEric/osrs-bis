@@ -664,3 +664,79 @@ monster.defenceStats = {
     [StyleType.Ranged]: 10
 };
 monsters.set(monster.shortName, monster);
+
+monster = new TargetMonster();
+monster.name = "The Whisperer";
+monster.shortName = "Whisperer";
+monster.raid = Raid.None;
+monster.slayerMonster = true;
+monster.imagePath = './Images/Monsters/The_Whisperer.png';
+monster.defenceLevel = 250;
+monster.maxDefenceReduction = 250;
+monster.magicLevel = 180;
+monster.magicAccuracy = 190;
+monster.defenceStats = {
+    [StyleType.Stab]: 180,
+    [StyleType.Slash]: 300,
+    [StyleType.Crush]: 220,
+    [StyleType.Magic]: 10,
+    [StyleType.Ranged]: 300
+};
+monsters.set(monster.shortName, monster);
+
+monster = new TargetMonster();
+monster.name = "Vardorvis";
+monster.shortName = "Vardorvis";
+monster.raid = Raid.None;
+monster.slayerMonster = true;
+monster.imagePath = './Images/Monsters/Vardorvis.png';
+monster.defenceLevel = 215;
+monster.maxDefenceReduction = 215;
+monster.magicLevel = 215;
+monster.magicAccuracy = 0;
+monster.defenceStats = {
+    [StyleType.Stab]: 215,
+    [StyleType.Slash]: 65,
+    [StyleType.Crush]: 85,
+    [StyleType.Magic]: 580,
+    [StyleType.Ranged]: 580
+};
+monsters.set(monster.shortName, monster);
+
+monster = new TargetMonster();
+monster.name = "The Leviathan";
+monster.shortName = "Leviathan";
+monster.raid = Raid.None;
+monster.slayerMonster = true;
+monster.imagePath = './Images/Monsters/The_Leviathan.png';
+monster.defenceLevel = 250;
+monster.maxDefenceReduction = 250;
+monster.magicLevel = 160;
+monster.magicAccuracy = 160;
+monster.defenceStats = {
+    [StyleType.Stab]: 260,
+    [StyleType.Slash]: 190,
+    [StyleType.Crush]: 230,
+    [StyleType.Magic]: 280,
+    [StyleType.Ranged]: 50
+};
+monsters.set(monster.shortName, monster);
+
+monster = new TargetMonster();
+monster.name = "Duke Sucellus";
+monster.shortName = "Duke Sucellus";
+monster.raid = Raid.None;
+monster.slayerMonster = true;
+monster.imagePath = './Images/Monsters/Duke_Sucellus.png';
+monster.defenceLevel = 275;
+monster.maxDefenceReduction = 275;
+monster.magicLevel = 310;
+monster.magicAccuracy = 150;
+monster.defenceStats = {
+    [StyleType.Stab]: 255,
+    [StyleType.Slash]: 65,
+    [StyleType.Crush]: 190,
+    [StyleType.Magic]: 440,
+    [StyleType.Ranged]: 320
+};
+monsters.set(monster.shortName, monster);

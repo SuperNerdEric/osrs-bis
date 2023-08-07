@@ -392,3 +392,177 @@ new GearSet([GearSetType.Slayer], ItemName.KerisPartisanOfBreaching, CombatStyle
     ItemName.AmuletOfTorture,
     ItemName.InfernalCape
 ]);
+
+new GearSet([GearSetType.General], ItemName.OsmumtensFang, CombatStyle.Lunge, [
+    ItemName.AvernicDefender,
+    ItemName.VoidMeleeHelm,
+    ItemName.EliteVoidTop,
+    ItemName.EliteVoidRobe,
+    ItemName.VoidKnightGloves,
+    ItemName.PrimordialBoots,
+    ItemName.AmuletOfTorture,
+    ItemName.InfernalCape
+]);
+
+new GearSet([GearSetType.General], ItemName.GhraziRapier, CombatStyle.Lunge, [
+    ItemName.AvernicDefender,
+    ItemName.VoidMeleeHelm,
+    ItemName.EliteVoidTop,
+    ItemName.EliteVoidRobe,
+    ItemName.VoidKnightGloves,
+    ItemName.PrimordialBoots,
+    ItemName.AmuletOfTorture,
+    ItemName.InfernalCape
+]);
+
+new GearSet([GearSetType.General], ItemName.ScytheOfVitur, CombatStyle.Chop, [
+    ItemName.VoidMeleeHelm,
+    ItemName.EliteVoidTop,
+    ItemName.EliteVoidRobe,
+    ItemName.VoidKnightGloves,
+    ItemName.PrimordialBoots,
+    ItemName.AmuletOfTorture,
+    ItemName.InfernalCape
+]);
+
+new GearSet([GearSetType.General], ItemName.ToxicBlowpipe, CombatStyle.Rapid, [
+    ItemName.DragonDart,
+    ItemName.VoidRangerHelm,
+    ItemName.EliteVoidTop,
+    ItemName.EliteVoidRobe,
+    ItemName.VoidKnightGloves,
+    ItemName.NecklaceOfAnguish,
+    ItemName.AvasAssembler
+]);
+
+new GearSet([GearSetType.General], ItemName.TwistedBow, CombatStyle.Rapid, [
+    ItemName.DragonArrow,
+    ItemName.VoidRangerHelm,
+    ItemName.EliteVoidTop,
+    ItemName.EliteVoidRobe,
+    ItemName.VoidKnightGloves,
+    ItemName.NecklaceOfAnguish,
+    ItemName.AvasAssembler
+]);
+
+new GearSet([GearSetType.General], ItemName.SanguinestiStaff, CombatStyle.Accurate, [
+    ItemName.ElidinisWardF,
+    ItemName.VoidMageHelm,
+    ItemName.EliteVoidTop,
+    ItemName.EliteVoidRobe,
+    ItemName.VoidKnightGloves,
+    ItemName.OccultNecklace,
+    ItemName.ImbuedZamorakCape
+]);
+
+new GearSet([GearSetType.General], ItemName.ScytheOfVitur, CombatStyle.Chop, [
+    ItemName.TorvaFullHelm,
+    ItemName.TorvaPlatebody,
+    ItemName.TorvaPlatelegs,
+    ItemName.FerociousGloves,
+    ItemName.PrimordialBoots,
+    ItemName.AmuletOfTorture,
+    ItemName.InfernalCape,
+    ItemName.UltorRing
+]);
+
+new GearSet([GearSetType.General], ItemName.ScytheOfVitur, CombatStyle.Chop, [
+    ItemName.TorvaFullHelm,
+    ItemName.TorvaPlatebody,
+    ItemName.TorvaPlatelegs,
+    ItemName.FerociousGloves,
+    ItemName.PrimordialBoots,
+    ItemName.AmuletOfTorture,
+    ItemName.InfernalCape,
+    ItemName.BellatorRing
+]);
+
+new GearSet([GearSetType.Slayer], ItemName.ScytheOfVitur, CombatStyle.Chop, [
+    ItemName.SlayerHelmetI,
+    ItemName.TorvaPlatebody,
+    ItemName.TorvaPlatelegs,
+    ItemName.FerociousGloves,
+    ItemName.PrimordialBoots,
+    ItemName.AmuletOfTorture,
+    ItemName.InfernalCape,
+    ItemName.BellatorRing
+]);
+
+new GearSet([GearSetType.General], ItemName.TumekensShadow, CombatStyle.Accurate, [
+    ItemName.AncestralHat,
+    ItemName.AncestralRobeTop,
+    ItemName.AncestralRobeBottom,
+    ItemName.TormentedBracelet,
+    ItemName.OccultNecklace,
+    ItemName.ImbuedZamorakCape,
+    ItemName.MagusRing
+]);
+
+new GearSet([GearSetType.General], ItemName.OsmumtensFang, CombatStyle.Lunge, [
+    ItemName.AvernicDefender,
+    ItemName.TorvaFullHelm,
+    ItemName.TorvaPlatebody,
+    ItemName.TorvaPlatelegs,
+    ItemName.FerociousGloves,
+    ItemName.PrimordialBoots,
+    ItemName.AmuletOfTorture,
+    ItemName.InfernalCape,
+    ItemName.UltorRing
+]);
+
+
+new GearSet([GearSetType.General], ItemName.SoulreaperAxe, CombatStyle.Hack, [
+    ItemName.TorvaFullHelm,
+    ItemName.TorvaPlatebody,
+    ItemName.TorvaPlatelegs,
+    ItemName.FerociousGloves,
+    ItemName.PrimordialBoots,
+    ItemName.AmuletOfTorture,
+    ItemName.InfernalCape,
+    ItemName.UltorRing
+]);
+
+new GearSet([GearSetType.General], ItemName.SoulreaperAxe, CombatStyle.Smash, [
+    ItemName.TorvaFullHelm,
+    ItemName.TorvaPlatebody,
+    ItemName.TorvaPlatelegs,
+    ItemName.FerociousGloves,
+    ItemName.PrimordialBoots,
+    ItemName.AmuletOfTorture,
+    ItemName.InfernalCape,
+    ItemName.UltorRing
+]);
+
+new GearSet([GearSetType.Slayer], ItemName.SoulreaperAxe, CombatStyle.Hack, [
+    ItemName.SlayerHelmetI,
+    ItemName.TorvaPlatebody,
+    ItemName.TorvaPlatelegs,
+    ItemName.FerociousGloves,
+    ItemName.PrimordialBoots,
+    ItemName.AmuletOfTorture,
+    ItemName.InfernalCape,
+    ItemName.UltorRing
+]);
+
+new GearSet([GearSetType.General], ItemName.SoulreaperAxe, CombatStyle.Smash, [
+    ItemName.TorvaFullHelm,
+    ItemName.TorvaPlatebody,
+    ItemName.TorvaPlatelegs,
+    ItemName.FerociousGloves,
+    ItemName.PrimordialBoots,
+    ItemName.AmuletOfTorture,
+    ItemName.InfernalCape,
+    ItemName.BellatorRing
+]);
+
+new GearSet([GearSetType.General], ItemName.OsmumtensFang, CombatStyle.Slash, [
+    ItemName.AvernicDefender,
+    ItemName.TorvaFullHelm,
+    ItemName.TorvaPlatebody,
+    ItemName.TorvaPlatelegs,
+    ItemName.FerociousGloves,
+    ItemName.PrimordialBoots,
+    ItemName.AmuletOfTorture,
+    ItemName.InfernalCape,
+    ItemName.UltorRing
+]);

@@ -62,4 +62,9 @@ export enum ItemName {
     VoidKnightGloves = "Void knight gloves",
     EliteVoidTop = "Elite void top",
     EliteVoidRobe = "Elite void robe",
+    UltorRing = "Ultor ring",
+    BellatorRing = "Bellator ring",
+    MagusRing = "Magus ring",
+    VenatorRing = "Venator ring",
+    SoulreaperAxe = "Soulreaper axe",
 }

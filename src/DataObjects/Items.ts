@@ -66,24 +66,6 @@ createItem(ItemName.TorvaPlatelegs, {
     strength: 4,
 });
 
-createItem(ItemName.TorvaPlatebody, {
-    imagePath: "./Images/Items/Torva_platebody.png",
-    wikiLink: "https://oldschool.runescape.wiki/w/Torva_platebody#Restored",
-    slot: Slot.Chest,
-    magic: -18,
-    ranged: -14,
-    strength: 6,
-});
-
-createItem(ItemName.TorvaPlatelegs, {
-    imagePath: "./Images/Items/Torva_platelegs.png",
-    wikiLink: "https://oldschool.runescape.wiki/w/Torva_platelegs#Restored",
-    slot: Slot.Legs,
-    magic: -24,
-    ranged: -11,
-    strength: 4,
-});
-
 createItem(ItemName.FerociousGloves, {
     imagePath: "./Images/Items/Ferocious_gloves.png",
     wikiLink: "https://oldschool.runescape.wiki/w/Ferocious_gloves",
@@ -207,7 +189,7 @@ createWeapon(ItemName.ScytheOfVitur, {
     category: WeaponCategory.Scythe,
     imagePath: './Images/Items/Scythe_of_vitur.png',
     wikiLink: "https://oldschool.runescape.wiki/w/Scythe_of_vitur#Charged",
-    slot: Slot.MainHand,
+    slot: Slot.TwoHand,
     speedSeconds: 3,
     stab: 70,
     slash: 110,
@@ -220,7 +202,7 @@ createWeapon(ItemName.ToxicBlowpipe, {
     category: WeaponCategory.Thrown,
     imagePath: './Images/Items/Toxic_blowpipe.png',
     wikiLink: "https://oldschool.runescape.wiki/w/Toxic_blowpipe#Charged",
-    slot: Slot.MainHand,
+    slot: Slot.TwoHand,
     speedSeconds: 1.8,
     ranged: 30,
     rangedStrength: 20,
@@ -324,7 +306,7 @@ createWeapon(ItemName.TwistedBow, {
     category: WeaponCategory.Bow,
     imagePath: './Images/Items/Twisted_bow.png',
     wikiLink: "https://oldschool.runescape.wiki/w/Twisted_bow",
-    slot: Slot.MainHand,
+    slot: Slot.TwoHand,
     speedSeconds: 3.6,
     ranged: 70,
     rangedStrength: 20,
@@ -360,7 +342,7 @@ createWeapon(ItemName.TumekensShadow, {
     category: WeaponCategory.PoweredStaff,
     imagePath: './Images/Items/Tumekens_shadow.png',
     wikiLink: "https://oldschool.runescape.wiki/w/Tumeken%27s_shadow",
-    slot: Slot.MainHand,
+    slot: Slot.TwoHand,
     speedSeconds: 3,
     magic: 35,
 });
@@ -584,4 +566,47 @@ createItem(ItemName.EliteVoidRobe, {
     imagePath: "./Images/Items/Elite_void_robe.png",
     wikiLink: "https://oldschool.runescape.wiki/w/Elite_void_robe",
     slot: Slot.Chest,
+});
+
+createItem(ItemName.UltorRing, {
+    imagePath: "./Images/Items/Ultor_ring.png",
+    wikiLink: "https://oldschool.runescape.wiki/w/Ultor_ring",
+    strength: 12,
+    slot: Slot.Ring,
+});
+
+createItem(ItemName.BellatorRing, {
+    imagePath: "./Images/Items/Bellator_ring.png",
+    wikiLink: "https://oldschool.runescape.wiki/w/Bellator_ring",
+    slash: 20,
+    strength: 6,
+    slot: Slot.Ring,
+});
+
+createItem(ItemName.MagusRing, {
+    imagePath: "./Images/Items/Magus_ring.png",
+    wikiLink: "https://oldschool.runescape.wiki/w/Magus_ring",
+    magic: 15,
+    mageStrength: 2,
+    slot: Slot.Ring,
+});
+
+createItem(ItemName.VenatorRing, {
+    imagePath: "./Images/Items/Venator_ring.png",
+    wikiLink: "https://oldschool.runescape.wiki/w/Venator_ring",
+    ranged: 10,
+    rangedStrength: 2,
+    slot: Slot.Ring,
+});
+
+createWeapon(ItemName.SoulreaperAxe, {
+    category: WeaponCategory.Axe,
+    imagePath: "./Images/Items/Soulreaper_axe.png",
+    wikiLink: "https://oldschool.runescape.wiki/w/Soulreaper_axe",
+    slot: Slot.TwoHand,
+    speedSeconds: 3,
+    stab: 28,
+    slash: 134,
+    crush: 66,
+    strength: 121,
 });

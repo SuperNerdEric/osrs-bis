@@ -32,7 +32,7 @@ export class SalveAmuletMultiplierStrategy extends AbstractMultiplierStrategy {
     calculateMultiplier(): number {
         const salve = this.result.gearSet.items.find(item => Object.keys(SalveMultiplierTable).includes(item.name));
 
-        if (!salve) {
+        if (!salve || !this.result.targetMonster.isUndead) {
             return 1;
         }
 

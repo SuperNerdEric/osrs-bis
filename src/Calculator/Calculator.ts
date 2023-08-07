@@ -19,6 +19,7 @@ import {
 } from "./MultiplierStrategies/TwistedBowMultiplierStrategy";
 import {VoidKnightMultiplierStrategy} from "./MultiplierStrategies/VoidKnightMultiplierStrategy";
 import {MultiplierType} from "./MultiplierStrategies/AbstractMultiplierStrategy";
+import {SoulreaperMultiplierStrategy} from "./MultiplierStrategies/SoulreaperMultiplierStrategy";
 
 export class Calculator {
     dps: number = 0;
@@ -63,7 +64,9 @@ export class Calculator {
         let effectiveLevel;
 
         if (attackStyle === StyleType.Stab || attackStyle === StyleType.Slash || attackStyle === StyleType.Crush) {
-            effectiveLevel = Math.floor((this.player.strengthLevel + this.player.strengthLevelBoost) * 1.23) + 8;
+            const soulReaperMultiplier = new SoulreaperMultiplierStrategy(this).calculateMultiplier();
+
+            effectiveLevel = Math.floor((this.player.strengthLevel + this.player.strengthLevelBoost) * (1.23 + soulReaperMultiplier)) + 8;
             if (this.gearSet.weaponStyle === WeaponStyle.Aggressive) {
                 effectiveLevel += 3;
             }
