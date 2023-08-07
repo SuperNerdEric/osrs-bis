@@ -566,3 +566,15 @@ new GearSet([GearSetType.General], ItemName.OsmumtensFang, CombatStyle.Slash, [
     ItemName.InfernalCape,
     ItemName.UltorRing
 ]);
+
+new GearSet([GearSetType.General], ItemName.OsmumtensFang, CombatStyle.Slash, [
+    ItemName.AvernicDefender,
+    ItemName.TorvaFullHelm,
+    ItemName.TorvaPlatebody,
+    ItemName.TorvaPlatelegs,
+    ItemName.FerociousGloves,
+    ItemName.PrimordialBoots,
+    ItemName.AmuletOfTorture,
+    ItemName.InfernalCape,
+    ItemName.BellatorRing
+]);
