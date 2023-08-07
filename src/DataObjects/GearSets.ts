@@ -393,6 +393,30 @@ new GearSet([GearSetType.Slayer], ItemName.KerisPartisanOfBreaching, CombatStyle
     ItemName.InfernalCape
 ]);
 
+new GearSet([GearSetType.Slayer], ItemName.KerisPartisanOfBreaching, CombatStyle.Pound, [
+    ItemName.AvernicDefender,
+    ItemName.SlayerHelmetI,
+    ItemName.TorvaPlatebody,
+    ItemName.TorvaPlatelegs,
+    ItemName.FerociousGloves,
+    ItemName.PrimordialBoots,
+    ItemName.AmuletOfTorture,
+    ItemName.InfernalCape,
+    ItemName.BellatorRing
+]);
+
+new GearSet([GearSetType.Slayer], ItemName.KerisPartisanOfBreaching, CombatStyle.Pound, [
+    ItemName.AvernicDefender,
+    ItemName.SlayerHelmetI,
+    ItemName.TorvaPlatebody,
+    ItemName.TorvaPlatelegs,
+    ItemName.FerociousGloves,
+    ItemName.PrimordialBoots,
+    ItemName.AmuletOfTorture,
+    ItemName.InfernalCape,
+    ItemName.UltorRing
+]);
+
 new GearSet([GearSetType.General], ItemName.OsmumtensFang, CombatStyle.Lunge, [
     ItemName.AvernicDefender,
     ItemName.VoidMeleeHelm,
@@ -577,4 +601,58 @@ new GearSet([GearSetType.General], ItemName.OsmumtensFang, CombatStyle.Slash, [
     ItemName.AmuletOfTorture,
     ItemName.InfernalCape,
     ItemName.BellatorRing
+]);
+
+new GearSet([GearSetType.Slayer], ItemName.OsmumtensFang, CombatStyle.Slash, [
+    ItemName.AvernicDefender,
+    ItemName.SlayerHelmetI,
+    ItemName.TorvaPlatebody,
+    ItemName.TorvaPlatelegs,
+    ItemName.FerociousGloves,
+    ItemName.PrimordialBoots,
+    ItemName.AmuletOfTorture,
+    ItemName.InfernalCape,
+    ItemName.BellatorRing
+]);
+
+new GearSet([GearSetType.Slayer], ItemName.ToxicBlowpipe, CombatStyle.Rapid, [
+    ItemName.DragonDart,
+    ItemName.SlayerHelmetI,
+    ItemName.MasoriBodyF,
+    ItemName.MasoriChapsF,
+    ItemName.ZaryteVambraces,
+    ItemName.NecklaceOfAnguish,
+    ItemName.AvasAssembler,
+    ItemName.VenatorRing
+]);
+
+new GearSet([GearSetType.General], ItemName.ToxicBlowpipe, CombatStyle.Rapid, [
+    ItemName.DragonDart,
+    ItemName.MasoriMaskF,
+    ItemName.MasoriBodyF,
+    ItemName.MasoriChapsF,
+    ItemName.ZaryteVambraces,
+    ItemName.NecklaceOfAnguish,
+    ItemName.VenatorRing
+]);
+
+new GearSet([GearSetType.General], ItemName.TwistedBow, CombatStyle.Rapid, [
+    ItemName.DragonArrow,
+    ItemName.MasoriMaskF,
+    ItemName.MasoriBodyF,
+    ItemName.MasoriChapsF,
+    ItemName.ZaryteVambraces,
+    ItemName.NecklaceOfAnguish,
+    ItemName.AvasAssembler,
+    ItemName.VenatorRing
+]);
+
+new GearSet([GearSetType.Slayer], ItemName.TumekensShadow, CombatStyle.Accurate, [
+    ItemName.SlayerHelmetI,
+    ItemName.AncestralRobeTop,
+    ItemName.AncestralRobeBottom,
+    ItemName.TormentedBracelet,
+    ItemName.OccultNecklace,
+    ItemName.ImbuedZamorakCape,
+    ItemName.MagusRing
 ]);
