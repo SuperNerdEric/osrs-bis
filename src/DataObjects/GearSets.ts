@@ -1,13 +1,17 @@
-import {CombatStyle, Item, StyleType, Weapon, WeaponCategoryOptions, WeaponStyle} from "./Item";
+import {CombatStyle, Item, Slot, StyleType, Weapon, WeaponCategoryOptions, WeaponStyle} from "./Item";
 import {items} from "./Items";
 import {ItemName} from "./ItemName";
 import {Raid} from "./Raid";
+import {generateRangedGearSets} from "./GearSets/RangedGearSets";
+import {generateMeleeGearSets} from "./GearSets/MeleeGearSets";
 
 export enum GearSetType {
     General,
     Slayer,
     Kalphites,
-    Demon
+    Demon,
+    Draconic,
+    Undead
 }
 
 export class GearSet {
@@ -50,6 +54,8 @@ export class GearSet {
                 this.weapon = weapon;
                 this.weaponStyle = weaponStyle;
                 this.items = otherItemNames.map(name => items.get(name) as Item);
+                this.items.sort((a, b) => a.slot - b.slot);
+
                 this.styleTypeBonus = styleTypeBonus;
                 this.styleStrength = styleStrength;
 
@@ -134,154 +140,6 @@ export class GearSet {
 
 export const gearSets: GearSet[] = [];
 
-new GearSet([GearSetType.General], ItemName.OsmumtensFang, CombatStyle.Lunge, [
-    ItemName.AvernicDefender,
-    ItemName.TorvaFullHelm,
-    ItemName.TorvaPlatebody,
-    ItemName.TorvaPlatelegs,
-    ItemName.FerociousGloves,
-    ItemName.PrimordialBoots,
-    ItemName.AmuletOfTorture,
-    ItemName.InfernalCape
-]);
-
-new GearSet([GearSetType.General], ItemName.OsmumtensFang, CombatStyle.Slash, [
-    ItemName.AvernicDefender,
-    ItemName.TorvaFullHelm,
-    ItemName.TorvaPlatebody,
-    ItemName.TorvaPlatelegs,
-    ItemName.FerociousGloves,
-    ItemName.PrimordialBoots,
-    ItemName.AmuletOfTorture,
-    ItemName.InfernalCape,
-    ItemName.BerserkerRingI
-]);
-
-new GearSet([GearSetType.General], ItemName.OsmumtensFang, CombatStyle.Lunge, [
-    ItemName.AvernicDefender,
-    ItemName.NeitiznotFaceguard,
-    ItemName.BandosChestplate,
-    ItemName.BandosTassets,
-    ItemName.FerociousGloves,
-    ItemName.PrimordialBoots,
-    ItemName.AmuletOfFury,
-    ItemName.FireCape
-]);
-
-new GearSet([GearSetType.Slayer], ItemName.OsmumtensFang, CombatStyle.Lunge, [
-    ItemName.AvernicDefender,
-    ItemName.SlayerHelmetI,
-    ItemName.TorvaPlatebody,
-    ItemName.TorvaPlatelegs,
-    ItemName.FerociousGloves,
-    ItemName.PrimordialBoots,
-    ItemName.AmuletOfTorture,
-    ItemName.InfernalCape
-]);
-
-new GearSet([GearSetType.General], ItemName.GhraziRapier, CombatStyle.Lunge, [
-    ItemName.AvernicDefender,
-    ItemName.TorvaFullHelm,
-    ItemName.TorvaPlatebody,
-    ItemName.TorvaPlatelegs,
-    ItemName.FerociousGloves,
-    ItemName.PrimordialBoots,
-    ItemName.AmuletOfTorture,
-    ItemName.InfernalCape
-]);
-
-new GearSet([GearSetType.General], ItemName.ZamorakianHasta, CombatStyle.Lunge, [
-    ItemName.AvernicDefender,
-    ItemName.TorvaFullHelm,
-    ItemName.TorvaPlatebody,
-    ItemName.TorvaPlatelegs,
-    ItemName.FerociousGloves,
-    ItemName.PrimordialBoots,
-    ItemName.AmuletOfTorture,
-    ItemName.InfernalCape
-]);
-
-new GearSet([GearSetType.General], ItemName.ZamorakianHasta, CombatStyle.Lunge, [
-    ItemName.AvernicDefender,
-    ItemName.NeitiznotFaceguard,
-    ItemName.BandosChestplate,
-    ItemName.BandosTassets,
-    ItemName.FerociousGloves,
-    ItemName.PrimordialBoots,
-    ItemName.AmuletOfFury,
-    ItemName.FireCape
-]);
-
-new GearSet([GearSetType.General], ItemName.ScytheOfVitur, CombatStyle.Chop, [
-    ItemName.TorvaFullHelm,
-    ItemName.TorvaPlatebody,
-    ItemName.TorvaPlatelegs,
-    ItemName.FerociousGloves,
-    ItemName.PrimordialBoots,
-    ItemName.AmuletOfTorture,
-    ItemName.InfernalCape
-]);
-
-new GearSet([GearSetType.General], ItemName.ScytheOfVitur, CombatStyle.Chop, [
-    ItemName.NeitiznotFaceguard,
-    ItemName.BandosChestplate,
-    ItemName.BandosTassets,
-    ItemName.FerociousGloves,
-    ItemName.PrimordialBoots,
-    ItemName.AmuletOfFury,
-    ItemName.FireCape
-]);
-
-new GearSet([GearSetType.General], ItemName.ToxicBlowpipe, CombatStyle.Rapid, [
-    ItemName.DragonDart,
-    ItemName.MasoriMaskF,
-    ItemName.MasoriBodyF,
-    ItemName.MasoriChapsF,
-    ItemName.ZaryteVambraces,
-    ItemName.NecklaceOfAnguish,
-    ItemName.AvasAssembler
-]);
-
-new GearSet([GearSetType.General], ItemName.ToxicBlowpipe, CombatStyle.Rapid, [
-    ItemName.DragonDart,
-    ItemName.ArmadylHelmet,
-    ItemName.ArmadylChestplate,
-    ItemName.ArmadylChainskirt,
-    ItemName.ZaryteVambraces,
-    ItemName.NecklaceOfAnguish,
-    ItemName.AvasAssembler
-]);
-
-new GearSet([GearSetType.Slayer], ItemName.TwistedBow, CombatStyle.Rapid, [
-    ItemName.DragonArrow,
-    ItemName.SlayerHelmetI,
-    ItemName.MasoriBodyF,
-    ItemName.MasoriChapsF,
-    ItemName.ZaryteVambraces,
-    ItemName.NecklaceOfAnguish,
-    ItemName.AvasAssembler
-]);
-
-new GearSet([GearSetType.General], ItemName.TwistedBow, CombatStyle.Rapid, [
-    ItemName.DragonArrow,
-    ItemName.MasoriMaskF,
-    ItemName.MasoriBodyF,
-    ItemName.MasoriChapsF,
-    ItemName.ZaryteVambraces,
-    ItemName.NecklaceOfAnguish,
-    ItemName.AvasAssembler
-]);
-
-new GearSet([GearSetType.General], ItemName.TwistedBow, CombatStyle.Rapid, [
-    ItemName.DragonArrow,
-    ItemName.ArmadylHelmet,
-    ItemName.ArmadylChestplate,
-    ItemName.ArmadylChainskirt,
-    ItemName.ZaryteVambraces,
-    ItemName.NecklaceOfAnguish,
-    ItemName.AvasAssembler
-]);
-
 new GearSet([GearSetType.Slayer], ItemName.TumekensShadow, CombatStyle.Accurate, [
     ItemName.SlayerHelmetI,
     ItemName.AncestralRobeTop,
@@ -328,148 +186,6 @@ new GearSet([GearSetType.General], ItemName.SanguinestiStaff, CombatStyle.Accura
     ItemName.ImbuedZamorakCape
 ]);
 
-new GearSet([GearSetType.Kalphites], ItemName.KerisPartisan, CombatStyle.Lunge, [
-    ItemName.AvernicDefender,
-    ItemName.TorvaFullHelm,
-    ItemName.TorvaPlatebody,
-    ItemName.TorvaPlatelegs,
-    ItemName.FerociousGloves,
-    ItemName.PrimordialBoots,
-    ItemName.AmuletOfTorture,
-    ItemName.InfernalCape
-]);
-
-new GearSet([GearSetType.Kalphites], ItemName.KerisPartisan, CombatStyle.Lunge, [
-    ItemName.AvernicDefender,
-    ItemName.NeitiznotFaceguard,
-    ItemName.BandosChestplate,
-    ItemName.BandosTassets,
-    ItemName.FerociousGloves,
-    ItemName.PrimordialBoots,
-    ItemName.AmuletOfTorture,
-    ItemName.FireCape
-]);
-
-new GearSet([GearSetType.Kalphites], ItemName.KerisPartisanOfBreaching, CombatStyle.Lunge, [
-    ItemName.AvernicDefender,
-    ItemName.TorvaFullHelm,
-    ItemName.TorvaPlatebody,
-    ItemName.TorvaPlatelegs,
-    ItemName.FerociousGloves,
-    ItemName.PrimordialBoots,
-    ItemName.AmuletOfTorture,
-    ItemName.InfernalCape
-]);
-
-new GearSet([GearSetType.Kalphites], ItemName.KerisPartisanOfBreaching, CombatStyle.Lunge, [
-    ItemName.AvernicDefender,
-    ItemName.NeitiznotFaceguard,
-    ItemName.BandosChestplate,
-    ItemName.BandosTassets,
-    ItemName.FerociousGloves,
-    ItemName.PrimordialBoots,
-    ItemName.AmuletOfTorture,
-    ItemName.FireCape
-]);
-
-new GearSet([GearSetType.Slayer], ItemName.KerisPartisanOfBreaching, CombatStyle.Lunge, [
-    ItemName.AvernicDefender,
-    ItemName.SlayerHelmetI,
-    ItemName.TorvaPlatebody,
-    ItemName.TorvaPlatelegs,
-    ItemName.FerociousGloves,
-    ItemName.PrimordialBoots,
-    ItemName.AmuletOfTorture,
-    ItemName.InfernalCape
-]);
-
-new GearSet([GearSetType.Slayer], ItemName.KerisPartisanOfBreaching, CombatStyle.Pound, [
-    ItemName.AvernicDefender,
-    ItemName.SlayerHelmetI,
-    ItemName.TorvaPlatebody,
-    ItemName.TorvaPlatelegs,
-    ItemName.FerociousGloves,
-    ItemName.PrimordialBoots,
-    ItemName.AmuletOfTorture,
-    ItemName.InfernalCape
-]);
-
-new GearSet([GearSetType.Slayer], ItemName.KerisPartisanOfBreaching, CombatStyle.Pound, [
-    ItemName.AvernicDefender,
-    ItemName.SlayerHelmetI,
-    ItemName.TorvaPlatebody,
-    ItemName.TorvaPlatelegs,
-    ItemName.FerociousGloves,
-    ItemName.PrimordialBoots,
-    ItemName.AmuletOfTorture,
-    ItemName.InfernalCape,
-    ItemName.BellatorRing
-]);
-
-new GearSet([GearSetType.Slayer], ItemName.KerisPartisanOfBreaching, CombatStyle.Pound, [
-    ItemName.AvernicDefender,
-    ItemName.SlayerHelmetI,
-    ItemName.TorvaPlatebody,
-    ItemName.TorvaPlatelegs,
-    ItemName.FerociousGloves,
-    ItemName.PrimordialBoots,
-    ItemName.AmuletOfTorture,
-    ItemName.InfernalCape,
-    ItemName.UltorRing
-]);
-
-new GearSet([GearSetType.General], ItemName.OsmumtensFang, CombatStyle.Lunge, [
-    ItemName.AvernicDefender,
-    ItemName.VoidMeleeHelm,
-    ItemName.EliteVoidTop,
-    ItemName.EliteVoidRobe,
-    ItemName.VoidKnightGloves,
-    ItemName.PrimordialBoots,
-    ItemName.AmuletOfTorture,
-    ItemName.InfernalCape
-]);
-
-new GearSet([GearSetType.General], ItemName.GhraziRapier, CombatStyle.Lunge, [
-    ItemName.AvernicDefender,
-    ItemName.VoidMeleeHelm,
-    ItemName.EliteVoidTop,
-    ItemName.EliteVoidRobe,
-    ItemName.VoidKnightGloves,
-    ItemName.PrimordialBoots,
-    ItemName.AmuletOfTorture,
-    ItemName.InfernalCape
-]);
-
-new GearSet([GearSetType.General], ItemName.ScytheOfVitur, CombatStyle.Chop, [
-    ItemName.VoidMeleeHelm,
-    ItemName.EliteVoidTop,
-    ItemName.EliteVoidRobe,
-    ItemName.VoidKnightGloves,
-    ItemName.PrimordialBoots,
-    ItemName.AmuletOfTorture,
-    ItemName.InfernalCape
-]);
-
-new GearSet([GearSetType.General], ItemName.ToxicBlowpipe, CombatStyle.Rapid, [
-    ItemName.DragonDart,
-    ItemName.VoidRangerHelm,
-    ItemName.EliteVoidTop,
-    ItemName.EliteVoidRobe,
-    ItemName.VoidKnightGloves,
-    ItemName.NecklaceOfAnguish,
-    ItemName.AvasAssembler
-]);
-
-new GearSet([GearSetType.General], ItemName.TwistedBow, CombatStyle.Rapid, [
-    ItemName.DragonArrow,
-    ItemName.VoidRangerHelm,
-    ItemName.EliteVoidTop,
-    ItemName.EliteVoidRobe,
-    ItemName.VoidKnightGloves,
-    ItemName.NecklaceOfAnguish,
-    ItemName.AvasAssembler
-]);
-
 new GearSet([GearSetType.General], ItemName.SanguinestiStaff, CombatStyle.Accurate, [
     ItemName.ElidinisWardF,
     ItemName.VoidMageHelm,
@@ -478,39 +194,6 @@ new GearSet([GearSetType.General], ItemName.SanguinestiStaff, CombatStyle.Accura
     ItemName.VoidKnightGloves,
     ItemName.OccultNecklace,
     ItemName.ImbuedZamorakCape
-]);
-
-new GearSet([GearSetType.General], ItemName.ScytheOfVitur, CombatStyle.Chop, [
-    ItemName.TorvaFullHelm,
-    ItemName.TorvaPlatebody,
-    ItemName.TorvaPlatelegs,
-    ItemName.FerociousGloves,
-    ItemName.PrimordialBoots,
-    ItemName.AmuletOfTorture,
-    ItemName.InfernalCape,
-    ItemName.UltorRing
-]);
-
-new GearSet([GearSetType.General], ItemName.ScytheOfVitur, CombatStyle.Chop, [
-    ItemName.TorvaFullHelm,
-    ItemName.TorvaPlatebody,
-    ItemName.TorvaPlatelegs,
-    ItemName.FerociousGloves,
-    ItemName.PrimordialBoots,
-    ItemName.AmuletOfTorture,
-    ItemName.InfernalCape,
-    ItemName.BellatorRing
-]);
-
-new GearSet([GearSetType.Slayer], ItemName.ScytheOfVitur, CombatStyle.Chop, [
-    ItemName.SlayerHelmetI,
-    ItemName.TorvaPlatebody,
-    ItemName.TorvaPlatelegs,
-    ItemName.FerociousGloves,
-    ItemName.PrimordialBoots,
-    ItemName.AmuletOfTorture,
-    ItemName.InfernalCape,
-    ItemName.BellatorRing
 ]);
 
 new GearSet([GearSetType.General], ItemName.TumekensShadow, CombatStyle.Accurate, [
@@ -523,197 +206,22 @@ new GearSet([GearSetType.General], ItemName.TumekensShadow, CombatStyle.Accurate
     ItemName.MagusRing
 ]);
 
-new GearSet([GearSetType.General], ItemName.OsmumtensFang, CombatStyle.Lunge, [
-    ItemName.AvernicDefender,
-    ItemName.TorvaFullHelm,
-    ItemName.TorvaPlatebody,
-    ItemName.TorvaPlatelegs,
-    ItemName.FerociousGloves,
-    ItemName.PrimordialBoots,
-    ItemName.AmuletOfTorture,
-    ItemName.InfernalCape,
-    ItemName.UltorRing
-]);
+generateRangedGearSets();
+generateMeleeGearSets();
 
+gearSets.map(gearSet => {
+    // Create a new array of item names, excluding the existing amulet
+    const newItemNames = gearSet.items.map(item => item.name).filter(name => items.get(name)?.slot !== Slot.Neck);
 
-new GearSet([GearSetType.General], ItemName.SoulreaperAxe, CombatStyle.Hack, [
-    ItemName.TorvaFullHelm,
-    ItemName.TorvaPlatebody,
-    ItemName.TorvaPlatelegs,
-    ItemName.FerociousGloves,
-    ItemName.PrimordialBoots,
-    ItemName.AmuletOfTorture,
-    ItemName.InfernalCape,
-    ItemName.UltorRing
-]);
+    // Add the SalveAmuletEI
+    newItemNames.push(ItemName.SalveAmuletEI);
 
-new GearSet([GearSetType.General], ItemName.SoulreaperAxe, CombatStyle.Smash, [
-    ItemName.TorvaFullHelm,
-    ItemName.TorvaPlatebody,
-    ItemName.TorvaPlatelegs,
-    ItemName.FerociousGloves,
-    ItemName.PrimordialBoots,
-    ItemName.AmuletOfTorture,
-    ItemName.InfernalCape,
-    ItemName.UltorRing
-]);
+    // Use the existing gear set's properties for the new GearSet, but replace the items
+    return new GearSet([GearSetType.Undead], gearSet.weapon.name, gearSet.combatStyle, newItemNames, gearSet.raid);
+});
 
-new GearSet([GearSetType.Slayer], ItemName.SoulreaperAxe, CombatStyle.Hack, [
-    ItemName.SlayerHelmetI,
-    ItemName.TorvaPlatebody,
-    ItemName.TorvaPlatelegs,
-    ItemName.FerociousGloves,
-    ItemName.PrimordialBoots,
-    ItemName.AmuletOfTorture,
-    ItemName.InfernalCape,
-    ItemName.UltorRing
-]);
-
-new GearSet([GearSetType.General], ItemName.SoulreaperAxe, CombatStyle.Smash, [
-    ItemName.TorvaFullHelm,
-    ItemName.TorvaPlatebody,
-    ItemName.TorvaPlatelegs,
-    ItemName.FerociousGloves,
-    ItemName.PrimordialBoots,
-    ItemName.AmuletOfTorture,
-    ItemName.InfernalCape,
-    ItemName.BellatorRing
-]);
-
-new GearSet([GearSetType.General], ItemName.OsmumtensFang, CombatStyle.Slash, [
-    ItemName.AvernicDefender,
-    ItemName.TorvaFullHelm,
-    ItemName.TorvaPlatebody,
-    ItemName.TorvaPlatelegs,
-    ItemName.FerociousGloves,
-    ItemName.PrimordialBoots,
-    ItemName.AmuletOfTorture,
-    ItemName.InfernalCape,
-    ItemName.UltorRing
-]);
-
-new GearSet([GearSetType.General], ItemName.OsmumtensFang, CombatStyle.Slash, [
-    ItemName.AvernicDefender,
-    ItemName.TorvaFullHelm,
-    ItemName.TorvaPlatebody,
-    ItemName.TorvaPlatelegs,
-    ItemName.FerociousGloves,
-    ItemName.PrimordialBoots,
-    ItemName.AmuletOfTorture,
-    ItemName.InfernalCape,
-    ItemName.BellatorRing
-]);
-
-new GearSet([GearSetType.Slayer], ItemName.OsmumtensFang, CombatStyle.Slash, [
-    ItemName.AvernicDefender,
-    ItemName.SlayerHelmetI,
-    ItemName.TorvaPlatebody,
-    ItemName.TorvaPlatelegs,
-    ItemName.FerociousGloves,
-    ItemName.PrimordialBoots,
-    ItemName.AmuletOfTorture,
-    ItemName.InfernalCape,
-    ItemName.BellatorRing
-]);
-
-new GearSet([GearSetType.Slayer], ItemName.ToxicBlowpipe, CombatStyle.Rapid, [
-    ItemName.DragonDart,
-    ItemName.SlayerHelmetI,
-    ItemName.MasoriBodyF,
-    ItemName.MasoriChapsF,
-    ItemName.ZaryteVambraces,
-    ItemName.NecklaceOfAnguish,
-    ItemName.AvasAssembler,
-    ItemName.VenatorRing
-]);
-
-new GearSet([GearSetType.General], ItemName.ToxicBlowpipe, CombatStyle.Rapid, [
-    ItemName.DragonDart,
-    ItemName.MasoriMaskF,
-    ItemName.MasoriBodyF,
-    ItemName.MasoriChapsF,
-    ItemName.ZaryteVambraces,
-    ItemName.NecklaceOfAnguish,
-    ItemName.VenatorRing
-]);
-
-new GearSet([GearSetType.General], ItemName.TwistedBow, CombatStyle.Rapid, [
-    ItemName.DragonArrow,
-    ItemName.MasoriMaskF,
-    ItemName.MasoriBodyF,
-    ItemName.MasoriChapsF,
-    ItemName.ZaryteVambraces,
-    ItemName.NecklaceOfAnguish,
-    ItemName.AvasAssembler,
-    ItemName.VenatorRing
-]);
-
-new GearSet([GearSetType.Slayer], ItemName.TumekensShadow, CombatStyle.Accurate, [
-    ItemName.SlayerHelmetI,
-    ItemName.AncestralRobeTop,
-    ItemName.AncestralRobeBottom,
-    ItemName.TormentedBracelet,
-    ItemName.OccultNecklace,
-    ItemName.ImbuedZamorakCape,
-    ItemName.MagusRing
-]);
-
-new GearSet([GearSetType.Demon], ItemName.Arclight, CombatStyle.Slash, [
-    ItemName.AvernicDefender,
-    ItemName.TorvaFullHelm,
-    ItemName.TorvaPlatebody,
-    ItemName.TorvaPlatelegs,
-    ItemName.FerociousGloves,
-    ItemName.PrimordialBoots,
-    ItemName.AmuletOfTorture,
-    ItemName.InfernalCape,
-    ItemName.BerserkerRingI
-]);
-
-new GearSet([GearSetType.Demon], ItemName.Arclight, CombatStyle.Slash, [
-    ItemName.AvernicDefender,
-    ItemName.TorvaFullHelm,
-    ItemName.TorvaPlatebody,
-    ItemName.TorvaPlatelegs,
-    ItemName.FerociousGloves,
-    ItemName.PrimordialBoots,
-    ItemName.AmuletOfTorture,
-    ItemName.InfernalCape,
-    ItemName.BellatorRing
-]);
-
-new GearSet([GearSetType.Demon], ItemName.Arclight, CombatStyle.Slash, [
-    ItemName.AvernicDefender,
-    ItemName.TorvaFullHelm,
-    ItemName.TorvaPlatebody,
-    ItemName.TorvaPlatelegs,
-    ItemName.FerociousGloves,
-    ItemName.PrimordialBoots,
-    ItemName.AmuletOfTorture,
-    ItemName.InfernalCape,
-    ItemName.UltorRing
-]);
-
-new GearSet([GearSetType.Demon], ItemName.Arclight, CombatStyle.Slash, [
-    ItemName.AvernicDefender,
-    ItemName.NeitiznotFaceguard,
-    ItemName.BandosChestplate,
-    ItemName.BandosTassets,
-    ItemName.FerociousGloves,
-    ItemName.PrimordialBoots,
-    ItemName.AmuletOfTorture,
-    ItemName.InfernalCape,
-    ItemName.UltorRing
-]);
-
-new GearSet([GearSetType.Slayer], ItemName.Arclight, CombatStyle.Slash, [
-    ItemName.AvernicDefender,
-    ItemName.SlayerHelmetI,
-    ItemName.TorvaPlatebody,
-    ItemName.TorvaPlatelegs,
-    ItemName.FerociousGloves,
-    ItemName.PrimordialBoots,
-    ItemName.AmuletOfTorture,
-    ItemName.InfernalCape,
-    ItemName.UltorRing
-]);
+gearSets.map(gearSet => {
+    const newItemNames = gearSet.items.map(item => item.name).filter(name => items.get(name)?.slot !== Slot.Helm);
+    newItemNames.push(ItemName.SlayerHelmetI);
+    return new GearSet([GearSetType.Slayer], gearSet.weapon.name, gearSet.combatStyle, newItemNames, gearSet.raid);
+});

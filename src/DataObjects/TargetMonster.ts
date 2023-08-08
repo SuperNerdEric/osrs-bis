@@ -9,6 +9,7 @@ export class TargetMonster {
     isKalphite: boolean = false;
     isUndead: boolean = false;
     isDemon: boolean = false;
+    isDraconic: boolean = false;
     imagePath: string = "";
     defenceLevel: number = 0;
     maxDefenceReduction: number = 0;

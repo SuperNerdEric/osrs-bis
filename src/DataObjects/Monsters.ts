@@ -557,6 +557,7 @@ monsters.set(monster.name, monster);
 monster = new TargetMonster();
 monster.name = "Great Olm (Head)";
 monster.shortName = "Olm (Head)";
+monster.isDraconic = true;
 monster.raid = Raid.ChambersOfXeric;
 monster.imagePath = './Images/Monsters/Great_Olm.png';
 monster.defenceLevel = 150;
@@ -575,6 +576,7 @@ monsters.set(monster.shortName, monster);
 monster = new TargetMonster();
 monster.name = "Great Olm (Left Claw)";
 monster.shortName = "Olm (Left Claw)";
+monster.isDraconic = true;
 monster.raid = Raid.ChambersOfXeric;
 monster.imagePath = './Images/Monsters/Great_Olm.png';
 monster.defenceLevel = 175;
@@ -593,6 +595,7 @@ monsters.set(monster.shortName, monster);
 monster = new TargetMonster();
 monster.name = "Great Olm (Right Claw)";
 monster.shortName = "Olm (Right Claw)";
+monster.isDraconic = true;
 monster.raid = Raid.ChambersOfXeric;
 monster.imagePath = './Images/Monsters/Great_Olm.png';
 monster.defenceLevel = 175;
@@ -742,3 +745,23 @@ monster.defenceStats = {
     [StyleType.Ranged]: 320
 };
 monsters.set(monster.shortName, monster);
+
+monster = new TargetMonster();
+monster.name = "Vorkath";
+monster.isDraconic = true;
+monster.isUndead = true;
+monster.raid = Raid.None;
+monster.slayerMonster = true;
+monster.imagePath = './Images/Monsters/Vorkath.png';
+monster.defenceLevel = 214;
+monster.maxDefenceReduction = 214;
+monster.magicLevel = 150;
+monster.magicAccuracy = 150;
+monster.defenceStats = {
+    [StyleType.Stab]: 26,
+    [StyleType.Slash]: 108,
+    [StyleType.Crush]: 108,
+    [StyleType.Magic]: 240,
+    [StyleType.Ranged]: 26
+};
+monsters.set(monster.name, monster);

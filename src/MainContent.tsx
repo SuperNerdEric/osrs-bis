@@ -5,7 +5,6 @@ import { monsters } from "./DataObjects/Monsters";
 import {GearSet, gearSets, GearSetType} from "./DataObjects/GearSets";
 import { DiscreteSliderMarks } from "./Slider";
 import DefenceReduction from "./DefenceReduction";
-import { devLog } from './utils';
 import React, {useEffect, useState} from 'react';
 import {Raid} from "./DataObjects/Raid";
 import OnTaskCheck from "./OnTaskCheck";
@@ -71,11 +70,9 @@ const MainContent: React.FC<MainContentProps> = ({
     useEffect(() => {
         const results: Calculator[] = [];
 
+        console.log("Gearsets length: " + gearSets.length);
+
         const shownGearSets: GearSet[] = [];
-        if((monsters.get(target) as TargetMonster).slayerMonster && onTask) {
-            const slayerGearSets = gearSets.filter(gearSet => gearSet.types.includes(GearSetType.Slayer));
-            shownGearSets.push(...slayerGearSets);
-        }
 
         if((monsters.get(target) as TargetMonster).isKalphite) {
             const slayerGearSets = gearSets.filter(gearSet => gearSet.types.includes(GearSetType.Kalphites));
@@ -85,6 +82,21 @@ const MainContent: React.FC<MainContentProps> = ({
         if((monsters.get(target) as TargetMonster).isDemon) {
             const slayerGearSets = gearSets.filter(gearSet => gearSet.types.includes(GearSetType.Demon));
             shownGearSets.push(...slayerGearSets);
+        }
+
+        if((monsters.get(target) as TargetMonster).isDraconic) {
+            const slayerGearSets = gearSets.filter(gearSet => gearSet.types.includes(GearSetType.Draconic));
+            shownGearSets.push(...slayerGearSets);
+        }
+
+        if((monsters.get(target) as TargetMonster).isUndead) {
+            const slayerGearSets = gearSets.filter(gearSet => gearSet.types.includes(GearSetType.Undead));
+            shownGearSets.push(...slayerGearSets);
+        } else {
+            if((monsters.get(target) as TargetMonster).slayerMonster && onTask) {
+                const slayerGearSets = gearSets.filter(gearSet => gearSet.types.includes(GearSetType.Slayer));
+                shownGearSets.push(...slayerGearSets);
+            }
         }
 
         const generalGearSets = gearSets.filter(gearSet => gearSet.types.includes(GearSetType.General));
@@ -110,7 +122,6 @@ const MainContent: React.FC<MainContentProps> = ({
                 result.player.magicLevelBoost = 13; //saturated heart
                 result.calculateDPS(0);
             }
-            devLog(result);
             results.push(result);
         })
 

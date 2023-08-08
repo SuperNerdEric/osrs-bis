@@ -19,7 +19,7 @@ export const sections = [
     new MonsterSection("Forgotten Four", ["Whisperer", "Vardorvis", "Leviathan", "Duke Sucellus"]),
     new MonsterSection("God Wars Dungeon", ["Armadyl", "Bandos", "Saradomin", "Zamorak"]),
     new MonsterSection("Barrows", ["Ahrim", "Dharok", "Guthan", "Karil", "Torag", "Verac"]),
-    new MonsterSection("Other Bosses", ["Corp", "KQ", "KQ (P2)"])
+    new MonsterSection("Other Bosses", ["Corp", "KQ", "KQ (P2)", "Vorkath"])
 ];
 
 

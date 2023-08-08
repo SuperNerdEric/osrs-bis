@@ -827,5 +827,68 @@ describe('Calculator class', () => {
             expect(result.hitChance).toBeCloseTo(0.5954); //Matches Bitterkoekje
         });
     });
+
+    describe('with dragon hunter lance against dragon', () => {
+        beforeEach(() => {
+            result.gearSet = new GearSet([GearSetType.General], ItemName.DragonHunterLance, CombatStyle.Lunge, [
+                ItemName.AvernicDefender,
+                ItemName.TorvaFullHelm,
+                ItemName.TorvaPlatebody,
+                ItemName.TorvaPlatelegs,
+                ItemName.FerociousGloves,
+                ItemName.PrimordialBoots,
+                ItemName.AmuletOfTorture,
+                ItemName.InfernalCape
+            ]);
+            result.targetMonster = monsters.get("Olm (Left Claw)") as TargetMonster;
+        });
+
+        test('should calculate DPS correctly', () => {
+            result.calculateDPS(0);
+            expect(result.dps).toBeCloseTo(8.519); //Matches Bitterkoekje
+        });
+
+        test('should calculate maxHit correctly', () => {
+            result.calculateDPS(0);
+            expect(result.maxHit).toBe(56); //Matches Bitterkoekje
+        });
+
+        test('should calculate hitChance correctly', () => {
+            result.calculateDPS(0);
+            expect(result.hitChance).toBeCloseTo(0.7302); //Matches Bitterkoekje
+        });
+    });
+
+    describe('with dragon hunter lance and salve against undead dragon', () => {
+        beforeEach(() => {
+            result.gearSet = new GearSet([GearSetType.General], ItemName.DragonHunterLance, CombatStyle.Lunge, [
+                ItemName.AvernicDefender,
+                ItemName.TorvaFullHelm,
+                ItemName.TorvaPlatebody,
+                ItemName.TorvaPlatelegs,
+                ItemName.FerociousGloves,
+                ItemName.PrimordialBoots,
+                ItemName.SalveAmuletEI,
+                ItemName.InfernalCape,
+                ItemName.UltorRing
+            ]);
+            result.targetMonster = monsters.get("Vorkath") as TargetMonster;
+        });
+
+        test('should calculate DPS correctly', () => {
+            result.calculateDPS(0);
+            expect(result.dps).toBeCloseTo(10.892); //Matches Bitterkoekje
+        });
+
+        test('should calculate maxHit correctly', () => {
+            result.calculateDPS(0);
+            expect(result.maxHit).toBe(68); //Matches Bitterkoekje
+        });
+
+        test('should calculate hitChance correctly', () => {
+            result.calculateDPS(0);
+            expect(result.hitChance).toBeCloseTo(0.7688); //Matches Bitterkoekje
+        });
+    });
 });
 

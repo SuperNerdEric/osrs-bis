@@ -21,6 +21,7 @@ import {VoidKnightMultiplierStrategy} from "./MultiplierStrategies/VoidKnightMul
 import {MultiplierType} from "./MultiplierStrategies/AbstractMultiplierStrategy";
 import {SoulreaperMultiplierStrategy} from "./MultiplierStrategies/SoulreaperMultiplierStrategy";
 import {ArclightMultiplierStrategy} from "./MultiplierStrategies/ArclightMultiplierStrategy";
+import {DragonHunterLanceMultiplierStrategy} from "./MultiplierStrategies/DragonHunterLanceMultiplierStrategy";
 
 export class Calculator {
     dps: number = 0;
@@ -70,6 +71,8 @@ export class Calculator {
             effectiveLevel = Math.floor((this.player.strengthLevel + this.player.strengthLevelBoost) * (1.23 + soulReaperMultiplier)) + 8;
             if (this.gearSet.weaponStyle === WeaponStyle.Aggressive) {
                 effectiveLevel += 3;
+            } else if (this.gearSet.weaponStyle === WeaponStyle.Controlled) {
+                effectiveLevel += 1;
             }
         } else if (attackStyle === StyleType.Ranged) {
             effectiveLevel = Math.floor((this.player.rangedLevel + this.player.rangedLevelBoost) * 1.23) + 8;
@@ -91,7 +94,13 @@ export class Calculator {
         const voidMultiplier = new VoidKnightMultiplierStrategy(this).calculateMultiplier(MultiplierType.Accuracy);
 
         if (attackStyle === StyleType.Stab || attackStyle === StyleType.Slash || attackStyle === StyleType.Crush) {
-            effectiveLevel = Math.floor((this.player.attackLevel + this.player.attackLevelBoost) * 1.2) + 8;
+            effectiveLevel = Math.floor((this.player.attackLevel + this.player.attackLevelBoost) * 1.2);
+            if (this.gearSet.weaponStyle === WeaponStyle.Accurate) {
+                effectiveLevel += 3;
+            } else if (this.gearSet.weaponStyle === WeaponStyle.Controlled) {
+                effectiveLevel += 1;
+            }
+            effectiveLevel += 8;
             effectiveLevel = Math.floor(effectiveLevel * voidMultiplier);
         } else if (attackStyle === StyleType.Ranged) {
             effectiveLevel = Math.floor((this.player.rangedLevel + this.player.rangedLevelBoost) * 1.2) + 8;
@@ -114,11 +123,13 @@ export class Calculator {
         const slayerMultiplier = new SlayerHelmetMultiplierStrategy(this).calculateMultiplier();
         const salveMultiplier = new SalveAmuletMultiplierStrategy(this).calculateMultiplier();
         const arcLightMultiplier = new ArclightMultiplierStrategy(this).calculateMultiplier();
+        const dragonHunterLanceMultiplier = new DragonHunterLanceMultiplierStrategy(this).calculateMultiplier();
 
         const gearMultipliers = [
             Math.max(slayerMultiplier, salveMultiplier),
             new TwistedBowStrengthMultiplierStrategy(this).calculateMultiplier(),
-            arcLightMultiplier
+            arcLightMultiplier,
+            dragonHunterLanceMultiplier
         ];
 
         return gearMultipliers;
@@ -128,12 +139,14 @@ export class Calculator {
         const slayerMultiplier = new SlayerHelmetMultiplierStrategy(this).calculateMultiplier();
         const salveMultiplier = new SalveAmuletMultiplierStrategy(this).calculateMultiplier();
         const arcLightMultiplier = new ArclightMultiplierStrategy(this).calculateMultiplier();
+        const dragonHunterLanceMultiplier = new DragonHunterLanceMultiplierStrategy(this).calculateMultiplier();
 
         const gearMultipliers = [
             Math.max(slayerMultiplier, salveMultiplier),
             new KerisMultiplierStrategy(this).calculateMultiplier(),
             new TwistedBowAccuracyMultiplierStrategy(this).calculateMultiplier(),
-            arcLightMultiplier
+            arcLightMultiplier,
+            dragonHunterLanceMultiplier
         ];
 
         return gearMultipliers;

@@ -17,7 +17,7 @@ function createItem(name: ItemName, values: Partial<Item>) {
 
 createWeapon(ItemName.OsmumtensFang, {
     category: WeaponCategory.StabSword,
-    imagePath: './Images/Items/Osmumtens_fang.png',
+    imagePath: './Images/Items/Osmumtens_fang.webp',
     wikiLink: "https://oldschool.runescape.wiki/w/Osmumten%27s_fang",
     slot: Slot.MainHand,
     speedSeconds: 3,
@@ -28,7 +28,7 @@ createWeapon(ItemName.OsmumtensFang, {
 });
 
 createItem(ItemName.AvernicDefender, {
-    imagePath: "./Images/Items/Avernic_defender.png",
+    imagePath: "./Images/Items/Avernic_defender.webp",
     wikiLink: "https://oldschool.runescape.wiki/w/Avernic_defender",
     slot: Slot.OffHand,
     stab: 30,
@@ -40,7 +40,7 @@ createItem(ItemName.AvernicDefender, {
 });
 
 createItem(ItemName.TorvaFullHelm, {
-    imagePath: "./Images/Items/Torva_full_helm.png",
+    imagePath: "./Images/Items/Torva_full_helm.webp",
     wikiLink: "https://oldschool.runescape.wiki/w/Torva_full_helm#Restored",
     slot: Slot.Helm,
     magic: -5,
@@ -49,7 +49,7 @@ createItem(ItemName.TorvaFullHelm, {
 });
 
 createItem(ItemName.TorvaPlatebody, {
-    imagePath: "./Images/Items/Torva_platebody.png",
+    imagePath: "./Images/Items/Torva_platebody.webp",
     wikiLink: "https://oldschool.runescape.wiki/w/Torva_platebody#Restored",
     slot: Slot.Chest,
     magic: -18,
@@ -58,7 +58,7 @@ createItem(ItemName.TorvaPlatebody, {
 });
 
 createItem(ItemName.TorvaPlatelegs, {
-    imagePath: "./Images/Items/Torva_platelegs.png",
+    imagePath: "./Images/Items/Torva_platelegs.webp",
     wikiLink: "https://oldschool.runescape.wiki/w/Torva_platelegs#Restored",
     slot: Slot.Legs,
     magic: -24,
@@ -67,7 +67,7 @@ createItem(ItemName.TorvaPlatelegs, {
 });
 
 createItem(ItemName.FerociousGloves, {
-    imagePath: "./Images/Items/Ferocious_gloves.png",
+    imagePath: "./Images/Items/Ferocious_gloves.webp",
     wikiLink: "https://oldschool.runescape.wiki/w/Ferocious_gloves",
     slot: Slot.Gloves,
     stab: 16,
@@ -79,7 +79,7 @@ createItem(ItemName.FerociousGloves, {
 });
 
 createItem(ItemName.PrimordialBoots, {
-    imagePath: "./Images/Items/Primordial_boots.png",
+    imagePath: "./Images/Items/Primordial_boots.webp",
     wikiLink: "https://oldschool.runescape.wiki/w/Primordial_boots",
     slot: Slot.Boots,
     stab: 2,
@@ -91,7 +91,7 @@ createItem(ItemName.PrimordialBoots, {
 });
 
 createItem(ItemName.AmuletOfTorture, {
-    imagePath: "./Images/Items/Amulet_of_torture.png",
+    imagePath: "./Images/Items/Amulet_of_torture.webp",
     wikiLink: "https://oldschool.runescape.wiki/w/Amulet_of_torture",
     slot: Slot.Neck,
     stab: 15,
@@ -101,7 +101,7 @@ createItem(ItemName.AmuletOfTorture, {
 });
 
 createItem(ItemName.InfernalCape, {
-    imagePath: "./Images/Items/Infernal_cape.png",
+    imagePath: "./Images/Items/Infernal_cape.webp",
     wikiLink: "https://oldschool.runescape.wiki/w/Infernal_cape",
     slot: Slot.Cape,
     stab: 4,
@@ -113,14 +113,14 @@ createItem(ItemName.InfernalCape, {
 });
 
 createItem(ItemName.NeitiznotFaceguard, {
-    imagePath: "./Images/Items/Neitiznot_faceguard.png",
+    imagePath: "./Images/Items/Neitiznot_faceguard.webp",
     wikiLink: "https://oldschool.runescape.wiki/w/Neitiznot_faceguard",
     slot: Slot.Helm,
     strength: 6,
 });
 
 createItem(ItemName.BandosChestplate, {
-    imagePath: "./Images/Items/Bandos_chestplate.png",
+    imagePath: "./Images/Items/Bandos_chestplate.webp",
     wikiLink: "https://oldschool.runescape.wiki/w/Bandos_chestplate",
     slot: Slot.Chest,
     magic: -15,
@@ -129,7 +129,7 @@ createItem(ItemName.BandosChestplate, {
 });
 
 createItem(ItemName.BandosTassets, {
-    imagePath: "./Images/Items/Bandos_tassets.png",
+    imagePath: "./Images/Items/Bandos_tassets.webp",
     wikiLink: "https://oldschool.runescape.wiki/w/Bandos_tassets",
     slot: Slot.Legs,
     magic: -21,
@@ -138,7 +138,7 @@ createItem(ItemName.BandosTassets, {
 });
 
 createItem(ItemName.FireCape, {
-    imagePath: "./Images/Items/Fire_cape.png",
+    imagePath: "./Images/Items/Fire_cape.webp",
     wikiLink: "https://oldschool.runescape.wiki/w/Fire_cape",
     slot: Slot.Cape,
     stab: 1,
@@ -150,7 +150,7 @@ createItem(ItemName.FireCape, {
 });
 
 createItem(ItemName.AmuletOfFury, {
-    imagePath: "./Images/Items/Amulet_of_fury.png",
+    imagePath: "./Images/Items/Amulet_of_fury.webp",
     wikiLink: "https://oldschool.runescape.wiki/w/Amulet_of_fury",
     slot: Slot.Neck,
     stab: 10,
@@ -163,7 +163,7 @@ createItem(ItemName.AmuletOfFury, {
 
 createWeapon(ItemName.GhraziRapier, {
     category: WeaponCategory.StabSword,
-    imagePath: './Images/Items/Ghrazi_rapier.png',
+    imagePath: './Images/Items/Ghrazi_rapier.webp',
     wikiLink: "https://oldschool.runescape.wiki/w/Ghrazi_rapier",
     slot: Slot.MainHand,
     speedSeconds: 2.4,
@@ -175,7 +175,7 @@ createWeapon(ItemName.GhraziRapier, {
 
 createWeapon(ItemName.ZamorakianHasta, {
     category: WeaponCategory.Spear,
-    imagePath: './Images/Items/Zamorakian_hasta.png',
+    imagePath: './Images/Items/Zamorakian_hasta.webp',
     wikiLink: "https://oldschool.runescape.wiki/w/Zamorakian_hasta",
     slot: Slot.MainHand,
     speedSeconds: 2.4,
@@ -187,7 +187,7 @@ createWeapon(ItemName.ZamorakianHasta, {
 
 createWeapon(ItemName.ScytheOfVitur, {
     category: WeaponCategory.Scythe,
-    imagePath: './Images/Items/Scythe_of_vitur.png',
+    imagePath: './Images/Items/Scythe_of_vitur.webp',
     wikiLink: "https://oldschool.runescape.wiki/w/Scythe_of_vitur#Charged",
     slot: Slot.TwoHand,
     speedSeconds: 3,
@@ -200,7 +200,7 @@ createWeapon(ItemName.ScytheOfVitur, {
 
 createWeapon(ItemName.ToxicBlowpipe, {
     category: WeaponCategory.Thrown,
-    imagePath: './Images/Items/Toxic_blowpipe.png',
+    imagePath: './Images/Items/Toxic_blowpipe.webp',
     wikiLink: "https://oldschool.runescape.wiki/w/Toxic_blowpipe#Charged",
     slot: Slot.TwoHand,
     speedSeconds: 1.8,
@@ -209,14 +209,14 @@ createWeapon(ItemName.ToxicBlowpipe, {
 });
 
 createItem(ItemName.DragonDart, {
-    imagePath: './Images/Items/Dragon_dart.png',
+    imagePath: './Images/Items/Dragon_dart.webp',
     wikiLink: "https://oldschool.runescape.wiki/w/Dragon_dart",
     slot: Slot.Ammo,
     rangedStrength: 35,
 });
 
 createItem(ItemName.MasoriMaskF, {
-    imagePath: './Images/Items/Masori_mask_f.png',
+    imagePath: './Images/Items/Masori_mask_f.webp',
     wikiLink: "https://oldschool.runescape.wiki/w/Masori_mask_(f)",
     slot: Slot.Helm,
     magic: -1,
@@ -225,7 +225,7 @@ createItem(ItemName.MasoriMaskF, {
 });
 
 createItem(ItemName.MasoriBodyF, {
-    imagePath: './Images/Items/Masori_body_f.png',
+    imagePath: './Images/Items/Masori_body_f.webp',
     wikiLink: "https://oldschool.runescape.wiki/w/Masori_body_(f)",
     slot: Slot.Chest,
     magic: -4,
@@ -234,7 +234,7 @@ createItem(ItemName.MasoriBodyF, {
 });
 
 createItem(ItemName.MasoriChapsF, {
-    imagePath: './Images/Items/Masori_chaps_f.png',
+    imagePath: './Images/Items/Masori_chaps_f.webp',
     wikiLink: "https://oldschool.runescape.wiki/w/Masori_chaps_(f)",
     slot: Slot.Legs,
     magic: -2,
@@ -243,7 +243,7 @@ createItem(ItemName.MasoriChapsF, {
 });
 
 createItem(ItemName.ZaryteVambraces, {
-    imagePath: './Images/Items/Zaryte_vambraces.png',
+    imagePath: './Images/Items/Zaryte_vambraces.webp',
     wikiLink: "https://oldschool.runescape.wiki/w/Zaryte_vambraces",
     slot: Slot.Gloves,
     stab: -8,
@@ -254,7 +254,7 @@ createItem(ItemName.ZaryteVambraces, {
 });
 
 createItem(ItemName.NecklaceOfAnguish, {
-    imagePath: './Images/Items/Necklace_of_anguish.png',
+    imagePath: './Images/Items/Necklace_of_anguish.webp',
     wikiLink: "https://oldschool.runescape.wiki/w/Necklace_of_anguish",
     slot: Slot.Neck,
     ranged: 15,
@@ -262,7 +262,7 @@ createItem(ItemName.NecklaceOfAnguish, {
 });
 
 createItem(ItemName.AvasAssembler, {
-    imagePath: './Images/Items/Avas_assembler.png',
+    imagePath: './Images/Items/Avas_assembler.webp',
     wikiLink: "https://oldschool.runescape.wiki/w/Ava%27s_assembler",
     slot: Slot.Cape,
     ranged: 8,
@@ -270,7 +270,7 @@ createItem(ItemName.AvasAssembler, {
 });
 
 createItem(ItemName.ArmadylHelmet, {
-    imagePath: './Images/Items/Armadyl_helmet.png',
+    imagePath: './Images/Items/Armadyl_helmet.webp',
     wikiLink: "https://oldschool.runescape.wiki/w/Armadyl_helmet",
     slot: Slot.Helm,
     stab: -5,
@@ -281,7 +281,7 @@ createItem(ItemName.ArmadylHelmet, {
 });
 
 createItem(ItemName.ArmadylChestplate, {
-    imagePath: './Images/Items/Armadyl_chestplate.png',
+    imagePath: './Images/Items/Armadyl_chestplate.webp',
     wikiLink: "https://oldschool.runescape.wiki/w/Armadyl_chestplate",
     slot: Slot.Chest,
     stab: -7,
@@ -292,7 +292,7 @@ createItem(ItemName.ArmadylChestplate, {
 });
 
 createItem(ItemName.ArmadylChainskirt, {
-    imagePath: './Images/Items/Armadyl_chainskirt.png',
+    imagePath: './Images/Items/Armadyl_chainskirt.webp',
     wikiLink: "https://oldschool.runescape.wiki/w/Armadyl_chainskirt",
     slot: Slot.Legs,
     stab: -6,
@@ -304,7 +304,7 @@ createItem(ItemName.ArmadylChainskirt, {
 
 createWeapon(ItemName.TwistedBow, {
     category: WeaponCategory.Bow,
-    imagePath: './Images/Items/Twisted_bow.png',
+    imagePath: './Images/Items/Twisted_bow.webp',
     wikiLink: "https://oldschool.runescape.wiki/w/Twisted_bow",
     slot: Slot.TwoHand,
     speedSeconds: 3.6,
@@ -313,21 +313,21 @@ createWeapon(ItemName.TwistedBow, {
 });
 
 createItem(ItemName.DragonArrow, {
-    imagePath: './Images/Items/Dragon_arrow.png',
+    imagePath: './Images/Items/Dragon_arrow.webp',
     wikiLink: "https://oldschool.runescape.wiki/w/Dragon_arrow",
     slot: Slot.Ammo,
     rangedStrength: 60,
 });
 
 createItem(ItemName.BronzeArrow, {
-    imagePath: './Images/Items/Bronze_arrow.png',
+    imagePath: './Images/Items/Bronze_arrow.webp',
     wikiLink: "https://oldschool.runescape.wiki/w/Bronze_arrow",
     slot: Slot.Ammo,
     rangedStrength: 7,
 });
 
 createItem(ItemName.BarrowsGloves, {
-    imagePath: './Images/Items/Barrows_gloves.png',
+    imagePath: './Images/Items/Barrows_gloves.webp',
     wikiLink: "https://oldschool.runescape.wiki/w/Barrows_gloves",
     slot: Slot.Gloves,
     stab: 12,
@@ -340,7 +340,7 @@ createItem(ItemName.BarrowsGloves, {
 
 createWeapon(ItemName.TumekensShadow, {
     category: WeaponCategory.PoweredStaff,
-    imagePath: './Images/Items/Tumekens_shadow.png',
+    imagePath: './Images/Items/Tumekens_shadow.webp',
     wikiLink: "https://oldschool.runescape.wiki/w/Tumeken%27s_shadow",
     slot: Slot.TwoHand,
     speedSeconds: 3,
@@ -349,7 +349,7 @@ createWeapon(ItemName.TumekensShadow, {
 
 createWeapon(ItemName.SanguinestiStaff, {
     category: WeaponCategory.PoweredStaff,
-    imagePath: './Images/Items/Sanguinesti_staff.png',
+    imagePath: './Images/Items/Sanguinesti_staff.webp',
     wikiLink: "https://oldschool.runescape.wiki/w/Sanguinesti_staff#Charged",
     slot: Slot.MainHand,
     speedSeconds: 2.4,
@@ -357,7 +357,7 @@ createWeapon(ItemName.SanguinestiStaff, {
 });
 
 createItem(ItemName.ElidinisWardF, {
-    imagePath: './Images/Items/Elidinis_ward_f.png',
+    imagePath: './Images/Items/Elidinis_ward_f.webp',
     wikiLink: "https://oldschool.runescape.wiki/w/Elidinis%27_ward_(f)",
     slot: Slot.OffHand,
     magic: 25,
@@ -365,7 +365,7 @@ createItem(ItemName.ElidinisWardF, {
 });
 
 createItem(ItemName.AncestralHat, {
-    imagePath: "./Images/Items/Ancestral_hat.png",
+    imagePath: "./Images/Items/Ancestral_hat.webp",
     wikiLink: "https://oldschool.runescape.wiki/w/Ancestral_hat",
     slot: Slot.Helm,
     magic: 8,
@@ -373,7 +373,7 @@ createItem(ItemName.AncestralHat, {
 });
 
 createItem(ItemName.AncestralRobeTop, {
-    imagePath: "./Images/Items/Ancestral_robe_top.png",
+    imagePath: "./Images/Items/Ancestral_robe_top.webp",
     wikiLink: "https://oldschool.runescape.wiki/w/Ancestral_robe_top",
     slot: Slot.Chest,
     magic: 35,
@@ -381,7 +381,7 @@ createItem(ItemName.AncestralRobeTop, {
 });
 
 createItem(ItemName.AncestralRobeBottom, {
-    imagePath: "./Images/Items/Ancestral_robe_bottom.png",
+    imagePath: "./Images/Items/Ancestral_robe_bottom.webp",
     wikiLink: "https://oldschool.runescape.wiki/w/Ancestral_robe_bottom",
     slot: Slot.Legs,
     magic: 26,
@@ -389,7 +389,7 @@ createItem(ItemName.AncestralRobeBottom, {
 });
 
 createItem(ItemName.TormentedBracelet, {
-    imagePath: "./Images/Items/Tormented_bracelet.png",
+    imagePath: "./Images/Items/Tormented_bracelet.webp",
     wikiLink: "https://oldschool.runescape.wiki/w/Tormented_bracelet",
     slot: Slot.Gloves,
     magic: 10,
@@ -397,7 +397,7 @@ createItem(ItemName.TormentedBracelet, {
 });
 
 createItem(ItemName.OccultNecklace, {
-    imagePath: "./Images/Items/Occult_necklace.png",
+    imagePath: "./Images/Items/Occult_necklace.webp",
     wikiLink: "https://oldschool.runescape.wiki/w/Occult_necklace",
     slot: Slot.Neck,
     magic: 12,
@@ -405,7 +405,7 @@ createItem(ItemName.OccultNecklace, {
 });
 
 createItem(ItemName.ImbuedZamorakCape, {
-    imagePath: "./Images/Items/Imbued_zamorak_cape.png",
+    imagePath: "./Images/Items/Imbued_zamorak_cape.webp",
     wikiLink: "https://oldschool.runescape.wiki/w/Imbued_zamorak_cape",
     slot: Slot.Cape,
     magic: 15,
@@ -413,21 +413,21 @@ createItem(ItemName.ImbuedZamorakCape, {
 });
 
 createItem(ItemName.AhrimsRobetop, {
-    imagePath: "./Images/Items/Ahrims_robetop.png",
+    imagePath: "./Images/Items/Ahrims_robetop.webp",
     wikiLink: "https://oldschool.runescape.wiki/w/Ahrim%27s_robetop",
     slot: Slot.Chest,
     magic: 30,
 });
 
 createItem(ItemName.AhrimsRobeskirt, {
-    imagePath: "./Images/Items/Ahrims_robeskirt.png",
+    imagePath: "./Images/Items/Ahrims_robeskirt.webp",
     wikiLink: "https://oldschool.runescape.wiki/w/Ahrim%27s_robeskirt",
     slot: Slot.Legs,
     magic: 22,
 });
 
 createItem(ItemName.BookOfTheDead, {
-    imagePath: './Images/Items/Book_of_the_dead.png',
+    imagePath: './Images/Items/Book_of_the_dead.webp',
     wikiLink: "https://oldschool.runescape.wiki/w/Book_of_the_dead",
     slot: Slot.OffHand,
     magic: 6,
@@ -435,7 +435,7 @@ createItem(ItemName.BookOfTheDead, {
 
 createWeapon(ItemName.KerisPartisan, {
     category: WeaponCategory.Partisan,
-    imagePath: './Images/Items/Keris_partisan.png',
+    imagePath: './Images/Items/Keris_partisan.webp',
     wikiLink: "https://oldschool.runescape.wiki/w/Keris_partisan",
     slot: Slot.MainHand,
     speedSeconds: 2.4,
@@ -447,7 +447,7 @@ createWeapon(ItemName.KerisPartisan, {
 
 createWeapon(ItemName.KerisPartisanOfCorruption, {
     category: WeaponCategory.Partisan,
-    imagePath: './Images/Items/Keris_partisan_of_corruption.png',
+    imagePath: './Images/Items/Keris_partisan_of_corruption.webp',
     wikiLink: "https://oldschool.runescape.wiki/w/Keris_partisan_of_corruption",
     slot: Slot.MainHand,
     speedSeconds: 2.4,
@@ -459,7 +459,7 @@ createWeapon(ItemName.KerisPartisanOfCorruption, {
 
 createWeapon(ItemName.KerisPartisanOfTheSun, {
     category: WeaponCategory.Partisan,
-    imagePath: './Images/Items/Keris_partisan_of_the_sun.png',
+    imagePath: './Images/Items/Keris_partisan_of_the_sun.webp',
     wikiLink: "https://oldschool.runescape.wiki/w/Keris_partisan_of_the_sun",
     slot: Slot.MainHand,
     speedSeconds: 2.4,
@@ -471,7 +471,7 @@ createWeapon(ItemName.KerisPartisanOfTheSun, {
 
 createWeapon(ItemName.KerisPartisanOfBreaching, {
     category: WeaponCategory.Partisan,
-    imagePath: './Images/Items/Keris_partisan_of_breaching.png',
+    imagePath: './Images/Items/Keris_partisan_of_breaching.webp',
     wikiLink: "https://oldschool.runescape.wiki/w/Keris_partisan_of_breaching",
     slot: Slot.MainHand,
     speedSeconds: 2.4,
@@ -482,7 +482,7 @@ createWeapon(ItemName.KerisPartisanOfBreaching, {
 });
 
 createItem(ItemName.SlayerHelmetI, {
-    imagePath: "./Images/Items/Slayer_helmet_(i).png",
+    imagePath: "./Images/Items/Slayer_helmet_(i).webp",
     wikiLink: "https://oldschool.runescape.wiki/w/Slayer_helmet_(i)",
     slot: Slot.Helm,
     magic: 3,
@@ -490,93 +490,93 @@ createItem(ItemName.SlayerHelmetI, {
 });
 
 createItem(ItemName.SalveAmulet, {
-    imagePath: "./Images/Items/Salve_amulet.png",
+    imagePath: "./Images/Items/Salve_amulet.webp",
     wikiLink: "https://oldschool.runescape.wiki/w/Salve_amulet",
     slot: Slot.Neck,
 });
 
 createItem(ItemName.SalveAmuletE, {
-    imagePath: "./Images/Items/Salve_amulet_(e).png",
+    imagePath: "./Images/Items/Salve_amulet_(e).webp",
     wikiLink: "https://oldschool.runescape.wiki/w/Salve_amulet_(e)",
     slot: Slot.Neck,
 });
 
 createItem(ItemName.SalveAmuletI, {
-    imagePath: "./Images/Items/Salve_amulet(i).png",
+    imagePath: "./Images/Items/Salve_amulet(i).webp",
     wikiLink: "https://oldschool.runescape.wiki/w/Salve_amulet(i)",
     slot: Slot.Neck,
 });
 
 createItem(ItemName.SalveAmuletEI, {
-    imagePath: "./Images/Items/Salve_amulet(ei).png",
+    imagePath: "./Images/Items/Salve_amulet(ei).webp",
     wikiLink: "https://oldschool.runescape.wiki/w/Salve_amulet(ei)",
     slot: Slot.Neck,
 });
 
 createItem(ItemName.BerserkerRingI, {
-    imagePath: "./Images/Items/Berserker_ring_(i).png",
+    imagePath: "./Images/Items/Berserker_ring_(i).webp",
     wikiLink: "https://oldschool.runescape.wiki/w/Berserker_ring_(i)",
     strength: 8,
     slot: Slot.Ring,
 });
 
 createItem(ItemName.VoidMeleeHelm, {
-    imagePath: "./Images/Items/Void_melee_helm.png",
+    imagePath: "./Images/Items/Void_melee_helm.webp",
     wikiLink: "https://oldschool.runescape.wiki/w/Void_melee_helm",
     slot: Slot.Helm,
 });
 
 createItem(ItemName.VoidRangerHelm, {
-    imagePath: "./Images/Items/Void_melee_helm.png",
+    imagePath: "./Images/Items/Void_melee_helm.webp",
     wikiLink: "https://oldschool.runescape.wiki/w/Void_ranger_helm",
     slot: Slot.Helm,
 });
 
 createItem(ItemName.VoidMageHelm, {
-    imagePath: "./Images/Items/Void_mage_helm.png",
+    imagePath: "./Images/Items/Void_mage_helm.webp",
     wikiLink: "https://oldschool.runescape.wiki/w/Void_mage_helm",
     slot: Slot.Helm,
 });
 
 createItem(ItemName.VoidKnightTop, {
-    imagePath: "./Images/Items/Void_knight_top.png",
+    imagePath: "./Images/Items/Void_knight_top.webp",
     wikiLink: "https://oldschool.runescape.wiki/w/Void_knight_top",
     slot: Slot.Chest,
 });
 
 createItem(ItemName.VoidKnightRobe, {
-    imagePath: "./Images/Items/Void_knight_robe.png",
+    imagePath: "./Images/Items/Void_knight_robe.webp",
     wikiLink: "https://oldschool.runescape.wiki/w/Void_knight_robe",
     slot: Slot.Legs,
 });
 
 createItem(ItemName.VoidKnightGloves, {
-    imagePath: "./Images/Items/Void_knight_gloves.png",
+    imagePath: "./Images/Items/Void_knight_gloves.webp",
     wikiLink: "https://oldschool.runescape.wiki/w/Void_knight_gloves",
     slot: Slot.Gloves,
 });
 
 createItem(ItemName.EliteVoidTop, {
-    imagePath: "./Images/Items/Elite_void_top.png",
+    imagePath: "./Images/Items/Elite_void_top.webp",
     wikiLink: "https://oldschool.runescape.wiki/w/Elite_void_top",
     slot: Slot.Chest,
 });
 
 createItem(ItemName.EliteVoidRobe, {
-    imagePath: "./Images/Items/Elite_void_robe.png",
+    imagePath: "./Images/Items/Elite_void_robe.webp",
     wikiLink: "https://oldschool.runescape.wiki/w/Elite_void_robe",
     slot: Slot.Chest,
 });
 
 createItem(ItemName.UltorRing, {
-    imagePath: "./Images/Items/Ultor_ring.png",
+    imagePath: "./Images/Items/Ultor_ring.webp",
     wikiLink: "https://oldschool.runescape.wiki/w/Ultor_ring",
     strength: 12,
     slot: Slot.Ring,
 });
 
 createItem(ItemName.BellatorRing, {
-    imagePath: "./Images/Items/Bellator_ring.png",
+    imagePath: "./Images/Items/Bellator_ring.webp",
     wikiLink: "https://oldschool.runescape.wiki/w/Bellator_ring",
     slash: 20,
     strength: 6,
@@ -584,7 +584,7 @@ createItem(ItemName.BellatorRing, {
 });
 
 createItem(ItemName.MagusRing, {
-    imagePath: "./Images/Items/Magus_ring.png",
+    imagePath: "./Images/Items/Magus_ring.webp",
     wikiLink: "https://oldschool.runescape.wiki/w/Magus_ring",
     magic: 15,
     mageStrength: 2,
@@ -592,7 +592,7 @@ createItem(ItemName.MagusRing, {
 });
 
 createItem(ItemName.VenatorRing, {
-    imagePath: "./Images/Items/Venator_ring.png",
+    imagePath: "./Images/Items/Venator_ring.webp",
     wikiLink: "https://oldschool.runescape.wiki/w/Venator_ring",
     ranged: 10,
     rangedStrength: 2,
@@ -601,7 +601,7 @@ createItem(ItemName.VenatorRing, {
 
 createWeapon(ItemName.SoulreaperAxe, {
     category: WeaponCategory.Axe,
-    imagePath: "./Images/Items/Soulreaper_axe.png",
+    imagePath: "./Images/Items/Soulreaper_axe.webp",
     wikiLink: "https://oldschool.runescape.wiki/w/Soulreaper_axe",
     slot: Slot.TwoHand,
     speedSeconds: 3,
@@ -613,7 +613,7 @@ createWeapon(ItemName.SoulreaperAxe, {
 
 createWeapon(ItemName.Arclight, {
     category: WeaponCategory.SlashSword,
-    imagePath: "./Images/Items/Arclight.png",
+    imagePath: "./Images/Items/Arclight.webp",
     wikiLink: "https://oldschool.runescape.wiki/w/Arclight",
     slot: Slot.TwoHand,
     speedSeconds: 2.4,
@@ -621,4 +621,16 @@ createWeapon(ItemName.Arclight, {
     slash: 38,
     crush: 0,
     strength: 8,
+});
+
+createWeapon(ItemName.DragonHunterLance, {
+    category: WeaponCategory.Spear,
+    imagePath: "./Images/Items/Dragon_hunter_lance.webp",
+    wikiLink: "https://oldschool.runescape.wiki/w/Dragon_hunter_lance",
+    slot: Slot.MainHand,
+    speedSeconds: 2.4,
+    stab: 85,
+    slash: 65,
+    crush: 65,
+    strength: 70,
 });
