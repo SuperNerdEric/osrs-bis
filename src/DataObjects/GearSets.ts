@@ -209,12 +209,21 @@ new GearSet([GearSetType.General], ItemName.TumekensShadow, CombatStyle.Accurate
 generateRangedGearSets();
 generateMeleeGearSets();
 
+const uniqueGearSets = new Set<string>();
 gearSets.map(gearSet => {
     // Create a new array of item names, excluding the existing amulet
     const newItemNames = gearSet.items.map(item => item.name).filter(name => items.get(name)?.slot !== Slot.Neck);
 
     // Add the SalveAmuletEI
     newItemNames.push(ItemName.SalveAmuletEI);
+
+
+    const newGearSetStr = [gearSet.weapon.name, gearSet.combatStyle, ...newItemNames.sort()].join();
+    if (uniqueGearSets.has(newGearSetStr)) {
+        return;
+    } else {
+        uniqueGearSets.add(newGearSetStr);
+    }
 
     // Use the existing gear set's properties for the new GearSet, but replace the items
     return new GearSet([GearSetType.Undead], gearSet.weapon.name, gearSet.combatStyle, newItemNames, gearSet.raid);
