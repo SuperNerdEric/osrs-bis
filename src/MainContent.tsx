@@ -1,24 +1,15 @@
-import { Tooltip } from "@mui/material";
-import { Calculator } from "./Calculator/Calculator";
-import { TargetMonster } from "./DataObjects/TargetMonster";
-import { monsters } from "./DataObjects/Monsters";
+import {Tooltip} from "@mui/material";
+import {Calculator} from "./Calculator/Calculator";
+import {TargetMonster} from "./DataObjects/TargetMonster";
+import {monsters} from "./DataObjects/Monsters";
 import {GearSet, gearSets, GearSetType} from "./DataObjects/GearSets";
-import { DiscreteSliderMarks } from "./Slider";
+import {DiscreteSliderMarks} from "./Slider";
 import DefenceReduction from "./DefenceReduction";
 import React, {useEffect, useState} from 'react';
 import {Raid} from "./DataObjects/Raid";
 import OnTaskCheck from "./OnTaskCheck";
-
-const Table = {
-    border: 1,
-    padding: 25,
-    th: {
-        padding: '0 15px',
-    },
-    td: {
-        padding: '0 15px',
-    },
-}
+import {GearTable} from "./Table";
+import {ColumnDef} from "@tanstack/react-table";
 
 interface MainContentProps {
     target: string;
@@ -42,61 +33,37 @@ const MainContent: React.FC<MainContentProps> = ({
 
     const [results, setResults] = useState<Calculator[]>([]);
     const isToaBoss: boolean = (monsters.get(target) as TargetMonster).raid === Raid.TombsOfAmascut;
-    const [sortConfig, setSortConfig] = React.useState({key: 'dps' as keyof Calculator, direction: 'descending'});
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
-    const requestSort = (key: keyof Calculator) => {
-        let direction = 'ascending';
-        if (sortConfig.key === key && sortConfig.direction === 'ascending') {
-            direction = 'descending';
-        }
-        setSortConfig({key, direction});
-    }
-
-    React.useMemo(() => {
-        //devLog(`Sorting ${sortConfig.key} ${sortConfig.direction}`);
-        results.sort((a, b) => {
-            if (a[sortConfig.key] < b[sortConfig.key]) {
-                return sortConfig.direction === 'ascending' ? -1 : 1;
-            }
-            if (a[sortConfig.key] > b[sortConfig.key]) {
-                return sortConfig.direction === 'ascending' ? 1 : -1;
-            }
-            return 0;
-        });
-        return results;
-    }, [results, sortConfig]);
 
     useEffect(() => {
         const results: Calculator[] = [];
 
-        console.log("Gearsets length: " + gearSets.length);
-
         const shownGearSets: GearSet[] = [];
 
-        if((monsters.get(target) as TargetMonster).isKalphite) {
+        if ((monsters.get(target) as TargetMonster).isKalphite) {
             const slayerGearSets = gearSets.filter(gearSet => gearSet.types.includes(GearSetType.Kalphites));
             shownGearSets.push(...slayerGearSets);
         }
 
-        if((monsters.get(target) as TargetMonster).isDemon) {
+        if ((monsters.get(target) as TargetMonster).isDemon) {
             const slayerGearSets = gearSets.filter(gearSet => gearSet.types.includes(GearSetType.Demon));
             shownGearSets.push(...slayerGearSets);
         }
 
-        if((monsters.get(target) as TargetMonster).isDraconic) {
+        if ((monsters.get(target) as TargetMonster).isDraconic) {
             const slayerGearSets = gearSets.filter(gearSet => gearSet.types.includes(GearSetType.Draconic));
             shownGearSets.push(...slayerGearSets);
         }
 
-        if((monsters.get(target) as TargetMonster).isUndead) {
+        if ((monsters.get(target) as TargetMonster).isUndead) {
             const slayerGearSets = gearSets.filter(gearSet => gearSet.types.includes(GearSetType.Undead));
             shownGearSets.push(...slayerGearSets);
-        } else {
-            if((monsters.get(target) as TargetMonster).slayerMonster && onTask) {
-                const slayerGearSets = gearSets.filter(gearSet => gearSet.types.includes(GearSetType.Slayer));
-                shownGearSets.push(...slayerGearSets);
-            }
+        }
+
+        if ((monsters.get(target) as TargetMonster).slayerMonster && onTask) {
+            const slayerGearSets = gearSets.filter(gearSet => gearSet.types.includes(GearSetType.Slayer));
+            shownGearSets.push(...slayerGearSets);
         }
 
         const generalGearSets = gearSets.filter(gearSet => gearSet.types.includes(GearSetType.General));
@@ -128,6 +95,74 @@ const MainContent: React.FC<MainContentProps> = ({
         setResults(results);
     }, [target, invocationLevel, defenceReduction, onTask]);
 
+
+    const columns = React.useMemo<ColumnDef<Calculator>[]>(
+        () => [
+            {
+                header: () => <span>Style</span>,
+                accessorKey: 'combatStyle',
+                id: 'combatStyle',
+                accessorFn: row => row.gearSet.combatStyle,
+                cell: info => info.getValue(),
+            },
+            {
+                header: () => <span>Gear</span>,
+                accessorKey: 'gear',
+                accessorFn: row => {
+                    return (
+                        <div>
+                            {
+                                <Tooltip title={row.gearSet.weapon.name}>
+                                    <a href={row.gearSet.weapon.wikiLink} target="_blank" rel="noreferrer">
+                                        <img src={require(`${row.gearSet.weapon.imagePath}`)}
+                                             style={{width: `${imageSize}px`, height: `${imageSize}px`}}
+                                             alt={row.gearSet.weapon.name}/>
+                                    </a>
+                                </Tooltip>
+                            }
+                            {
+                                row.gearSet.items.map(item => (
+                                    <Tooltip title={item.name}>
+                                        <a href={item.wikiLink} target="_blank" rel="noreferrer">
+                                            <img src={require(`${item.imagePath}`)}
+                                                 style={{width: `${imageSize}px`, height: `${imageSize}px`}}
+                                                 alt={item.name}/>
+                                        </a>
+                                    </Tooltip>
+                                ))
+                            }
+                        </div>
+                    )
+                },
+                id: 'gear',
+                cell: info => info.getValue(),
+            },
+            {
+                header: () => <span>DPS</span>,
+                accessorKey: 'dps',
+                accessorFn: row => (Math.round(row.dps * 1000) / 1000),
+                id: 'dps',
+                cell: info => info.getValue(),
+            },
+            {
+                header: () => <span>Max Hit</span>,
+                accessorKey: 'maxHit',
+                accessorFn: row => row.maxHit,
+                id: 'maxHit',
+                cell: info => info.getValue(),
+            },
+            {
+                header: () => <span>Hit Chance</span>,
+                accessorKey: 'hitChance',
+                accessorFn: row => `${Math.round(row.hitChance * 100 * 100) / 100}%`,
+                id: 'hitChance',
+                cell: info => info.getValue(),
+            },
+        ],
+        []
+    )
+
+
     useEffect(() => {
         const handleResize = () => setWindowWidth(window.innerWidth);
         window.addEventListener('resize', handleResize);
@@ -158,57 +193,7 @@ const MainContent: React.FC<MainContentProps> = ({
                               maxReduction={(monsters.get(target) as TargetMonster).maxDefenceReduction}
                               handleChange={handleDefenceReduction}/>
             {isSlayerMonster && <OnTaskCheck onTask={onTask} handleOnTask={handleOnTask}/>}
-            <table style={Table}>
-                <thead>
-                <tr>
-                    <th>Style</th>
-                    <th>Gear</th>
-                    <th onClick={() => requestSort('dps')}>DPS</th>
-                    <th onClick={() => requestSort('maxHit')}>Max Hit</th>
-                    <th onClick={() => requestSort('hitChance')}>Hit Chance</th>
-                    {/*<th>Info</th>*/}
-                </tr>
-
-                {results.map(result => (
-                    <tr>
-                        <td>
-                            {result.gearSet.combatStyle}
-                        </td>
-                        <td>
-                            {
-                                <Tooltip title={result.gearSet.weapon.name}>
-                                    <a href={result.gearSet.weapon.wikiLink} target="_blank" rel="noreferrer">
-                                        <img src={require(`${result.gearSet.weapon.imagePath}`)} style={{width: `${imageSize}px`, height: `${imageSize}px`}}
-                                             alt={result.gearSet.weapon.name}/>
-                                    </a>
-                                </Tooltip>
-                            }
-                            {
-                                result.gearSet.items.map(item => (
-                                    <Tooltip title={item.name}>
-                                        <a href={item.wikiLink} target="_blank" rel="noreferrer">
-                                            <img src={require(`${item.imagePath}`)} style={{width: `${imageSize}px`, height: `${imageSize}px`}}
-                                                 alt={item.name}/>
-                                        </a>
-                                    </Tooltip>
-                                ))
-                            }
-                        </td>
-                        <td>
-                            {Math.round(result.dps * 1000) / 1000}
-                        </td>
-                        <td>{result.maxHit}</td>
-                        <td>{Math.round(result.hitChance * 100 * 100) / 100}%</td>
-                        {/*<td>
-                            <ReasonPopover reasoning={result.reasoning} />
-                        </td>*/}
-                    </tr>
-                ))}
-
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
+            <GearTable data={results} columns={columns}/>
         </main>
     )
 }

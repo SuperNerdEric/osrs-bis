@@ -220,7 +220,9 @@ gearSets.map(gearSet => {
     return new GearSet([GearSetType.Undead], gearSet.weapon.name, gearSet.combatStyle, newItemNames, gearSet.raid);
 });
 
-gearSets.map(gearSet => {
+const gearSetsWithoutSalve = gearSets.filter(gearSet => !gearSet.items.some(item => item.name.includes(ItemName.SalveAmuletEI)));
+
+gearSetsWithoutSalve.map(gearSet => {
     const newItemNames = gearSet.items.map(item => item.name).filter(name => items.get(name)?.slot !== Slot.Helm);
     newItemNames.push(ItemName.SlayerHelmetI);
     return new GearSet([GearSetType.Slayer], gearSet.weapon.name, gearSet.combatStyle, newItemNames, gearSet.raid);

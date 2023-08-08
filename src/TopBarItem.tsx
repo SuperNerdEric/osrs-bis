@@ -8,6 +8,7 @@ export function TopBarItem(props: { setTargetMonster: (targetMonster: TargetMons
     const handleHover = (event: React.MouseEvent<HTMLButtonElement>) => {
         setAnchorEl(event.currentTarget);
         setOpen(true);
+        event.currentTarget.focus();
     };
     const handleClose = (e: any) => {
         if (e.currentTarget.localName !== "ul") {
