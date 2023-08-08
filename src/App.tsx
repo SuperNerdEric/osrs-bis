@@ -37,7 +37,6 @@ function App() {
 
     const [urlState, setUrlState] = useUrlState({target: "Ba-Ba", invocationLevel: 300, defenceReduction: 0, onTask: "false"});
 
-    devLog(Object.keys(Calculator));
     const theme = getTheme();
 
     return (
