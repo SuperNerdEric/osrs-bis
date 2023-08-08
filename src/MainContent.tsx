@@ -1,24 +1,15 @@
-import { Tooltip } from "@mui/material";
-import { Calculator } from "./Calculator/Calculator";
-import { TargetMonster } from "./DataObjects/TargetMonster";
-import { monsters } from "./DataObjects/Monsters";
+import {Tooltip} from "@mui/material";
+import {Calculator} from "./Calculator/Calculator";
+import {TargetMonster} from "./DataObjects/TargetMonster";
+import {monsters} from "./DataObjects/Monsters";
 import {GearSet, gearSets, GearSetType} from "./DataObjects/GearSets";
-import { DiscreteSliderMarks } from "./Slider";
+import {DiscreteSliderMarks} from "./Slider";
 import DefenceReduction from "./DefenceReduction";
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {Raid} from "./DataObjects/Raid";
 import OnTaskCheck from "./OnTaskCheck";
-
-const Table = {
-    border: 1,
-    padding: 25,
-    th: {
-        padding: '0 15px',
-    },
-    td: {
-        padding: '0 15px',
-    },
-}
+import {VariableSizeGrid} from 'react-window';
+import AutoSizer from 'react-virtualized-auto-sizer';
 
 interface MainContentProps {
     target: string;
@@ -74,29 +65,29 @@ const MainContent: React.FC<MainContentProps> = ({
 
         const shownGearSets: GearSet[] = [];
 
-        if((monsters.get(target) as TargetMonster).isKalphite) {
+        if ((monsters.get(target) as TargetMonster).isKalphite) {
             const slayerGearSets = gearSets.filter(gearSet => gearSet.types.includes(GearSetType.Kalphites));
             shownGearSets.push(...slayerGearSets);
         }
 
-        if((monsters.get(target) as TargetMonster).isDemon) {
+        if ((monsters.get(target) as TargetMonster).isDemon) {
             const slayerGearSets = gearSets.filter(gearSet => gearSet.types.includes(GearSetType.Demon));
             shownGearSets.push(...slayerGearSets);
         }
 
-        if((monsters.get(target) as TargetMonster).isDraconic) {
+        if ((monsters.get(target) as TargetMonster).isDraconic) {
             const slayerGearSets = gearSets.filter(gearSet => gearSet.types.includes(GearSetType.Draconic));
             shownGearSets.push(...slayerGearSets);
         }
 
-        if((monsters.get(target) as TargetMonster).isUndead) {
+        if ((monsters.get(target) as TargetMonster).isUndead) {
             const slayerGearSets = gearSets.filter(gearSet => gearSet.types.includes(GearSetType.Undead));
             shownGearSets.push(...slayerGearSets);
-        } else {
-            if((monsters.get(target) as TargetMonster).slayerMonster && onTask) {
-                const slayerGearSets = gearSets.filter(gearSet => gearSet.types.includes(GearSetType.Slayer));
-                shownGearSets.push(...slayerGearSets);
-            }
+        }
+
+        if ((monsters.get(target) as TargetMonster).slayerMonster && onTask) {
+            const slayerGearSets = gearSets.filter(gearSet => gearSet.types.includes(GearSetType.Slayer));
+            shownGearSets.push(...slayerGearSets);
         }
 
         const generalGearSets = gearSets.filter(gearSet => gearSet.types.includes(GearSetType.General));
@@ -137,7 +128,9 @@ const MainContent: React.FC<MainContentProps> = ({
     }, []);
 
     const imageSize = Math.max(20, Math.min(50, windowWidth / 20));
+    const columnWidthPercentages = [0.15, 0.45, 0.15, 0.10, 0.15];
 
+    const gridRef = useRef<VariableSizeGrid>(null);
 
     const isSlayerMonster: boolean = (monsters.get(target) as TargetMonster).slayerMonster;
 
@@ -158,7 +151,68 @@ const MainContent: React.FC<MainContentProps> = ({
                               maxReduction={(monsters.get(target) as TargetMonster).maxDefenceReduction}
                               handleChange={handleDefenceReduction}/>
             {isSlayerMonster && <OnTaskCheck onTask={onTask} handleOnTask={handleOnTask}/>}
-            <table style={Table}>
+            <div className="myGrid">
+                <AutoSizer>
+                    {({height, width}: { height: number; width: number }) => {
+                        return (
+                            <VariableSizeGrid
+                                ref={gridRef}
+                                columnCount={5}
+                                columnWidth={(index) => columnWidthPercentages[index] * width - 5}
+                                height={height}
+                                rowCount={results.length}
+                                rowHeight={(index) => 80}
+                                width={width}
+                            >
+                                {({columnIndex, rowIndex, style}) => {
+                                    const result = results[rowIndex];
+
+                                    const cellStyle = {...style, border: '1px solid white', display: 'flex', justifyContent: "center", alignItems: "center"};
+                                    switch (columnIndex) {
+                                        case 0: // Combat style column
+                                            return <div style={cellStyle}>{result.gearSet.combatStyle}</div>;
+                                        case 1: // Gear column
+                                            return (
+                                                <div style={cellStyle}>
+                                                    <Tooltip title={result.gearSet.weapon.name}>
+                                                        <a href={result.gearSet.weapon.wikiLink} target="_blank" rel="noreferrer">
+                                                            <img src={require(`${result.gearSet.weapon.imagePath}`)} style={{width: `${imageSize}px`, height: `${imageSize}px`}} alt={result.gearSet.weapon.name}/>
+                                                        </a>
+                                                    </Tooltip>
+                                                    {result.gearSet.items.map(item => (
+                                                        <Tooltip title={item.name}>
+                                                            <a href={item.wikiLink} target="_blank" rel="noreferrer">
+                                                                <img src={require(`${item.imagePath}`)} style={{width: `${imageSize}px`, height: `${imageSize}px`}} alt={item.name}/>
+                                                            </a>
+                                                        </Tooltip>
+                                                    ))}
+                                                </div>
+                                            );
+                                            break;
+                                        case 2: // DPS column
+                                            return (
+                                                <div style={cellStyle}>
+                                                    {Math.round(result.dps * 1000) / 1000}
+                                                </div>
+                                            );
+                                        case 3: // Max Hit column
+                                            return <div style={cellStyle}>{result.maxHit}</div>;
+                                        case 4: // Hit Chance column
+                                            return (
+                                                <div style={cellStyle}>
+                                                    {Math.round(result.hitChance * 100 * 100) / 100}%
+                                                </div>
+                                            );
+                                        default:
+                                            return null;
+                                    }
+                                }}
+                            </VariableSizeGrid>
+                        );
+                    }}
+                </AutoSizer>
+            </div>
+            {/*            <table style={Table}>
                 <thead>
                 <tr>
                     <th>Style</th>
@@ -166,7 +220,7 @@ const MainContent: React.FC<MainContentProps> = ({
                     <th onClick={() => requestSort('dps')}>DPS</th>
                     <th onClick={() => requestSort('maxHit')}>Max Hit</th>
                     <th onClick={() => requestSort('hitChance')}>Hit Chance</th>
-                    {/*<th>Info</th>*/}
+                    <th>Info</th>
                 </tr>
 
                 {results.map(result => (
@@ -199,16 +253,13 @@ const MainContent: React.FC<MainContentProps> = ({
                         </td>
                         <td>{result.maxHit}</td>
                         <td>{Math.round(result.hitChance * 100 * 100) / 100}%</td>
-                        {/*<td>
-                            <ReasonPopover reasoning={result.reasoning} />
-                        </td>*/}
                     </tr>
                 ))}
 
                 </thead>
                 <tbody>
                 </tbody>
-            </table>
+            </table>*/}
         </main>
     )
 }
