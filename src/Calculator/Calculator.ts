@@ -20,6 +20,7 @@ import {
 import {VoidKnightMultiplierStrategy} from "./MultiplierStrategies/VoidKnightMultiplierStrategy";
 import {MultiplierType} from "./MultiplierStrategies/AbstractMultiplierStrategy";
 import {SoulreaperMultiplierStrategy} from "./MultiplierStrategies/SoulreaperMultiplierStrategy";
+import {ArclightMultiplierStrategy} from "./MultiplierStrategies/ArclightMultiplierStrategy";
 
 export class Calculator {
     dps: number = 0;
@@ -112,10 +113,12 @@ export class Calculator {
     private getGearStrengthMultipliers(): number[] {
         const slayerMultiplier = new SlayerHelmetMultiplierStrategy(this).calculateMultiplier();
         const salveMultiplier = new SalveAmuletMultiplierStrategy(this).calculateMultiplier();
+        const arcLightMultiplier = new ArclightMultiplierStrategy(this).calculateMultiplier();
 
         const gearMultipliers = [
             Math.max(slayerMultiplier, salveMultiplier),
-            new TwistedBowStrengthMultiplierStrategy(this).calculateMultiplier()
+            new TwistedBowStrengthMultiplierStrategy(this).calculateMultiplier(),
+            arcLightMultiplier
         ];
 
         return gearMultipliers;
@@ -124,11 +127,13 @@ export class Calculator {
     private getGearAccuracyMultipliers(): number[] {
         const slayerMultiplier = new SlayerHelmetMultiplierStrategy(this).calculateMultiplier();
         const salveMultiplier = new SalveAmuletMultiplierStrategy(this).calculateMultiplier();
+        const arcLightMultiplier = new ArclightMultiplierStrategy(this).calculateMultiplier();
 
         const gearMultipliers = [
             Math.max(slayerMultiplier, salveMultiplier),
             new KerisMultiplierStrategy(this).calculateMultiplier(),
-            new TwistedBowAccuracyMultiplierStrategy(this).calculateMultiplier()
+            new TwistedBowAccuracyMultiplierStrategy(this).calculateMultiplier(),
+            arcLightMultiplier
         ];
 
         return gearMultipliers;

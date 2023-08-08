@@ -764,5 +764,68 @@ describe('Calculator class', () => {
             expect(result.hitChance).toBeCloseTo(0.1143); //Matches fruitdeeps
         });
     });
+
+    describe('with arclight against demon', () => {
+        beforeEach(() => {
+            result.gearSet = new GearSet([GearSetType.Demon], ItemName.Arclight, CombatStyle.Slash, [
+                ItemName.AvernicDefender,
+                ItemName.TorvaFullHelm,
+                ItemName.TorvaPlatebody,
+                ItemName.TorvaPlatelegs,
+                ItemName.FerociousGloves,
+                ItemName.PrimordialBoots,
+                ItemName.AmuletOfTorture,
+                ItemName.InfernalCape
+            ]);
+            result.targetMonster = monsters.get("Zamorak") as TargetMonster;
+        });
+
+        test('should calculate DPS correctly', () => {
+            result.calculateDPS(0);
+            expect(result.dps).toBeCloseTo(6.159); //Matches Bitterkoekje
+        });
+
+        test('should calculate maxHit correctly', () => {
+            result.calculateDPS(0);
+            expect(result.maxHit).toBe(56); //Matches Bitterkoekje
+        });
+
+        test('should calculate hitChance correctly', () => {
+            result.calculateDPS(0);
+            expect(result.hitChance).toBeCloseTo(0.5279); //Matches Bitterkoekje
+        });
+    });
+
+    describe('with arclight and slayer helmet against demon on task', () => {
+        beforeEach(() => {
+            result.gearSet = new GearSet([GearSetType.Demon], ItemName.Arclight, CombatStyle.Slash, [
+                ItemName.AvernicDefender,
+                ItemName.SlayerHelmetI,
+                ItemName.TorvaPlatebody,
+                ItemName.TorvaPlatelegs,
+                ItemName.FerociousGloves,
+                ItemName.PrimordialBoots,
+                ItemName.AmuletOfTorture,
+                ItemName.InfernalCape
+            ]);
+            result.targetMonster = monsters.get("Zamorak") as TargetMonster;
+            result.onTask = true;
+        });
+
+        test('should calculate DPS correctly', () => {
+            result.calculateDPS(0);
+            expect(result.dps).toBeCloseTo(7.567); //Matches Bitterkoekje
+        });
+
+        test('should calculate maxHit correctly', () => {
+            result.calculateDPS(0);
+            expect(result.maxHit).toBe(61); //Matches Bitterkoekje
+        });
+
+        test('should calculate hitChance correctly', () => {
+            result.calculateDPS(0);
+            expect(result.hitChance).toBeCloseTo(0.5954); //Matches Bitterkoekje
+        });
+    });
 });
 

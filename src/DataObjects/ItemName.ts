@@ -67,4 +67,5 @@ export enum ItemName {
     MagusRing = "Magus ring",
     VenatorRing = "Venator ring",
     SoulreaperAxe = "Soulreaper axe",
+    Arclight = "Arclight"
 }

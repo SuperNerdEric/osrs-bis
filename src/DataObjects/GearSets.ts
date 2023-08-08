@@ -6,7 +6,8 @@ import {Raid} from "./Raid";
 export enum GearSetType {
     General,
     Slayer,
-    Kalphites
+    Kalphites,
+    Demon
 }
 
 export class GearSet {
@@ -655,4 +656,64 @@ new GearSet([GearSetType.Slayer], ItemName.TumekensShadow, CombatStyle.Accurate,
     ItemName.OccultNecklace,
     ItemName.ImbuedZamorakCape,
     ItemName.MagusRing
+]);
+
+new GearSet([GearSetType.Demon], ItemName.Arclight, CombatStyle.Slash, [
+    ItemName.AvernicDefender,
+    ItemName.TorvaFullHelm,
+    ItemName.TorvaPlatebody,
+    ItemName.TorvaPlatelegs,
+    ItemName.FerociousGloves,
+    ItemName.PrimordialBoots,
+    ItemName.AmuletOfTorture,
+    ItemName.InfernalCape,
+    ItemName.BerserkerRingI
+]);
+
+new GearSet([GearSetType.Demon], ItemName.Arclight, CombatStyle.Slash, [
+    ItemName.AvernicDefender,
+    ItemName.TorvaFullHelm,
+    ItemName.TorvaPlatebody,
+    ItemName.TorvaPlatelegs,
+    ItemName.FerociousGloves,
+    ItemName.PrimordialBoots,
+    ItemName.AmuletOfTorture,
+    ItemName.InfernalCape,
+    ItemName.BellatorRing
+]);
+
+new GearSet([GearSetType.Demon], ItemName.Arclight, CombatStyle.Slash, [
+    ItemName.AvernicDefender,
+    ItemName.TorvaFullHelm,
+    ItemName.TorvaPlatebody,
+    ItemName.TorvaPlatelegs,
+    ItemName.FerociousGloves,
+    ItemName.PrimordialBoots,
+    ItemName.AmuletOfTorture,
+    ItemName.InfernalCape,
+    ItemName.UltorRing
+]);
+
+new GearSet([GearSetType.Demon], ItemName.Arclight, CombatStyle.Slash, [
+    ItemName.AvernicDefender,
+    ItemName.NeitiznotFaceguard,
+    ItemName.BandosChestplate,
+    ItemName.BandosTassets,
+    ItemName.FerociousGloves,
+    ItemName.PrimordialBoots,
+    ItemName.AmuletOfTorture,
+    ItemName.InfernalCape,
+    ItemName.UltorRing
+]);
+
+new GearSet([GearSetType.Slayer], ItemName.Arclight, CombatStyle.Slash, [
+    ItemName.AvernicDefender,
+    ItemName.SlayerHelmetI,
+    ItemName.TorvaPlatebody,
+    ItemName.TorvaPlatelegs,
+    ItemName.FerociousGloves,
+    ItemName.PrimordialBoots,
+    ItemName.AmuletOfTorture,
+    ItemName.InfernalCape,
+    ItemName.UltorRing
 ]);

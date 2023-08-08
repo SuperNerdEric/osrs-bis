@@ -82,6 +82,11 @@ const MainContent: React.FC<MainContentProps> = ({
             shownGearSets.push(...slayerGearSets);
         }
 
+        if((monsters.get(target) as TargetMonster).isDemon) {
+            const slayerGearSets = gearSets.filter(gearSet => gearSet.types.includes(GearSetType.Demon));
+            shownGearSets.push(...slayerGearSets);
+        }
+
         const generalGearSets = gearSets.filter(gearSet => gearSet.types.includes(GearSetType.General));
         shownGearSets.push(...generalGearSets);
 

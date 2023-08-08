@@ -610,3 +610,15 @@ createWeapon(ItemName.SoulreaperAxe, {
     crush: 66,
     strength: 121,
 });
+
+createWeapon(ItemName.Arclight, {
+    category: WeaponCategory.SlashSword,
+    imagePath: "./Images/Items/Arclight.png",
+    wikiLink: "https://oldschool.runescape.wiki/w/Arclight",
+    slot: Slot.TwoHand,
+    speedSeconds: 2.4,
+    stab: 10,
+    slash: 38,
+    crush: 0,
+    strength: 8,
+});
