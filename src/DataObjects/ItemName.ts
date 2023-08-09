@@ -68,5 +68,10 @@ export enum ItemName {
     VenatorRing = "Venator ring",
     SoulreaperAxe = "Soulreaper axe",
     Arclight = "Arclight",
-    DragonHunterLance = "Dragon hunter lance"
+    DragonHunterLance = "Dragon hunter lance",
+    InquisitorsGreatHelm = "Inquisitor's great helm",
+    InquisitorsHauberk = "Inquisitor's hauberk",
+    InquisitorsPlateskirt = "Inquisitor's plateskirt",
+    InquisitorsMace = "Inquisitor's mace",
+    AbyssalBludgeon = "Abyssal bludgeon",
 }

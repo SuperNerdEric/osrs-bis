@@ -9,6 +9,7 @@ export function generateMeleeGearSets(){
         );
 
     let meleeBase: ItemName[][] = [
+        [ItemName.InquisitorsGreatHelm, ItemName.InquisitorsHauberk, ItemName.InquisitorsPlateskirt, ItemName.FerociousGloves, ItemName.PrimordialBoots],
         [ItemName.TorvaFullHelm, ItemName.TorvaPlatebody, ItemName.TorvaPlatelegs, ItemName.FerociousGloves, ItemName.PrimordialBoots],
         [ItemName.NeitiznotFaceguard, ItemName.BandosChestplate, ItemName.BandosTassets, ItemName.FerociousGloves, ItemName.PrimordialBoots],
         [ItemName.VoidMeleeHelm, ItemName.EliteVoidTop, ItemName.EliteVoidRobe, ItemName.VoidKnightGloves, ItemName.PrimordialBoots],
@@ -32,9 +33,14 @@ export function generateMeleeGearSets(){
         new GearSet([GearSetType.General], ItemName.GhraziRapier, CombatStyle.Stab, [...base, ItemName.AvernicDefender]);
         new GearSet([GearSetType.General], ItemName.ZamorakianHasta, CombatStyle.Lunge, [...base, ItemName.AvernicDefender]);
 
+        new GearSet([GearSetType.General], ItemName.AbyssalBludgeon, CombatStyle.Pound, base);
+        new GearSet([GearSetType.General], ItemName.InquisitorsMace, CombatStyle.Pound, [...base, ItemName.AvernicDefender]);
+        new GearSet([GearSetType.General], ItemName.InquisitorsMace, CombatStyle.Pummel, [...base, ItemName.AvernicDefender]);
 
         new GearSet([GearSetType.Kalphites], ItemName.KerisPartisan, CombatStyle.Lunge, [...base, ItemName.AvernicDefender]);
+        new GearSet([GearSetType.Kalphites], ItemName.KerisPartisan, CombatStyle.Pound, [...base, ItemName.AvernicDefender]);
         new GearSet([GearSetType.Kalphites], ItemName.KerisPartisanOfBreaching, CombatStyle.Lunge, [...base, ItemName.AvernicDefender]);
+        new GearSet([GearSetType.Kalphites], ItemName.KerisPartisanOfBreaching, CombatStyle.Pound, [...base, ItemName.AvernicDefender]);
 
         new GearSet([GearSetType.Demon], ItemName.Arclight, CombatStyle.Lunge, [...base, ItemName.AvernicDefender]);
         new GearSet([GearSetType.Demon], ItemName.Arclight, CombatStyle.Slash, [...base, ItemName.AvernicDefender]);

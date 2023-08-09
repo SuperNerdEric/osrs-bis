@@ -890,5 +890,102 @@ describe('Calculator class', () => {
             expect(result.hitChance).toBeCloseTo(0.7688); //Matches Bitterkoekje
         });
     });
+
+    describe('with inquisitors against kq', () => {
+        beforeEach(() => {
+            result.gearSet = new GearSet([GearSetType.General], ItemName.InquisitorsMace, CombatStyle.Pummel, [
+                ItemName.AvernicDefender,
+                ItemName.InquisitorsGreatHelm,
+                ItemName.InquisitorsHauberk,
+                ItemName.InquisitorsPlateskirt,
+                ItemName.FerociousGloves,
+                ItemName.PrimordialBoots,
+                ItemName.AmuletOfTorture,
+                ItemName.InfernalCape,
+                ItemName.UltorRing
+            ]);
+            result.targetMonster = monsters.get("KQ") as TargetMonster;
+        });
+
+        test('should calculate DPS correctly', () => {
+            result.calculateDPS(0);
+            expect(result.dps).toBeCloseTo(8.107); //Matches Bitterkoekje
+        });
+
+        test('should calculate maxHit correctly', () => {
+            result.calculateDPS(0);
+            expect(result.maxHit).toBe(55); //Matches Bitterkoekje
+        });
+
+        test('should calculate hitChance correctly', () => {
+            result.calculateDPS(0);
+            expect(result.hitChance).toBeCloseTo(0.7076); //Matches Bitterkoekje
+        });
+    });
+
+
+    describe('with 2 piece inquisitors against kq', () => {
+        beforeEach(() => {
+            result.gearSet = new GearSet([GearSetType.General], ItemName.InquisitorsMace, CombatStyle.Pummel, [
+                ItemName.AvernicDefender,
+                ItemName.TorvaFullHelm,
+                ItemName.InquisitorsHauberk,
+                ItemName.InquisitorsPlateskirt,
+                ItemName.FerociousGloves,
+                ItemName.PrimordialBoots,
+                ItemName.AmuletOfTorture,
+                ItemName.InfernalCape,
+                ItemName.UltorRing
+            ]);
+            result.targetMonster = monsters.get("KQ") as TargetMonster;
+        });
+
+        test('should calculate DPS correctly', () => {
+            result.calculateDPS(0);
+            expect(result.dps).toBeCloseTo(7.948); //Matches Bitterkoekje
+        });
+
+        test('should calculate maxHit correctly', () => {
+            result.calculateDPS(0);
+            expect(result.maxHit).toBe(55); //Matches Bitterkoekje
+        });
+
+        test('should calculate hitChance correctly', () => {
+            result.calculateDPS(0);
+            expect(result.hitChance).toBeCloseTo(0.6936); //Matches Bitterkoekje
+        });
+    });
+
+    describe('with inquisitors stab against kq', () => {
+        beforeEach(() => {
+            result.gearSet = new GearSet([GearSetType.General], ItemName.InquisitorsMace, CombatStyle.Spike, [
+                ItemName.AvernicDefender,
+                ItemName.InquisitorsGreatHelm,
+                ItemName.InquisitorsHauberk,
+                ItemName.InquisitorsPlateskirt,
+                ItemName.FerociousGloves,
+                ItemName.PrimordialBoots,
+                ItemName.AmuletOfTorture,
+                ItemName.InfernalCape,
+                ItemName.UltorRing
+            ]);
+            result.targetMonster = monsters.get("KQ") as TargetMonster;
+        });
+
+        test('should calculate DPS correctly', () => {
+            result.calculateDPS(0);
+            expect(result.dps).toBeCloseTo(4.114); //Matches Bitterkoekje
+        });
+
+        test('should calculate maxHit correctly', () => {
+            result.calculateDPS(0);
+            expect(result.maxHit).toBe(53); //Matches Bitterkoekje
+        });
+
+        test('should calculate hitChance correctly', () => {
+            result.calculateDPS(0);
+            expect(result.hitChance).toBeCloseTo(0.3726); //Matches Bitterkoekje
+        });
+    });
 });
 

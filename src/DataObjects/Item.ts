@@ -37,6 +37,7 @@ export enum WeaponCategory {
     Scythe = "Scythe",
     SlashSword = "SlashSword",
     Spear = "Spear",
+    Spiked = "Spiked",
     Staff = "Staff",
     StabSword = "StabSword",
     Thrown = "Thrown",
@@ -221,6 +222,12 @@ export const WeaponCategoryOptions: { [category in WeaponCategory]?: AttackOptio
         {combatStyle: CombatStyle.Swipe, styleType: StyleType.Slash, weaponStyle: WeaponStyle.Controlled},
         {combatStyle: CombatStyle.Pound, styleType: StyleType.Crush, weaponStyle: WeaponStyle.Controlled},
         {combatStyle: CombatStyle.Block, styleType: StyleType.Stab, weaponStyle: WeaponStyle.Defensive},
+    ],
+    [WeaponCategory.Spiked]: [
+        {combatStyle: CombatStyle.Pound, styleType: StyleType.Crush, weaponStyle: WeaponStyle.Accurate},
+        {combatStyle: CombatStyle.Pummel, styleType: StyleType.Crush, weaponStyle: WeaponStyle.Aggressive},
+        {combatStyle: CombatStyle.Spike, styleType: StyleType.Stab, weaponStyle: WeaponStyle.Controlled},
+        {combatStyle: CombatStyle.Block, styleType: StyleType.Crush, weaponStyle: WeaponStyle.Defensive},
     ],
     [WeaponCategory.StabSword]: [
         {combatStyle: CombatStyle.Stab, styleType: StyleType.Stab, weaponStyle: WeaponStyle.Accurate},

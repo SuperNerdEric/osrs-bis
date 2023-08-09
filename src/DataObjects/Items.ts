@@ -634,3 +634,63 @@ createWeapon(ItemName.DragonHunterLance, {
     crush: 65,
     strength: 70,
 });
+
+createWeapon(ItemName.InquisitorsMace, {
+    category: WeaponCategory.Spiked,
+    imagePath: "./Images/Items/Inquisitors_mace.webp",
+    wikiLink: "https://oldschool.runescape.wiki/w/Inquisitor%27s_mace",
+    slot: Slot.MainHand,
+    speedSeconds: 2.4,
+    stab: 52,
+    slash: -4,
+    crush: 95,
+    strength: 89,
+});
+
+createWeapon(ItemName.AbyssalBludgeon, {
+    category: WeaponCategory.Bludgeon,
+    imagePath: "./Images/Items/Abyssal_bludgeon.webp",
+    wikiLink: "https://oldschool.runescape.wiki/w/Abyssal_bludgeon",
+    slot: Slot.TwoHand,
+    speedSeconds: 2.4,
+    stab: 0,
+    slash: 0,
+    crush: 102,
+    strength: 85,
+});
+
+createItem(ItemName.InquisitorsGreatHelm, {
+    imagePath: "./Images/Items/Inquisitors_great_helm.webp",
+    wikiLink: "https://oldschool.runescape.wiki/w/Inquisitor%27s_great_helm",
+    stab: -2,
+    slash: -2,
+    crush: 8,
+    magic: -5,
+    ranged: -5,
+    strength: 4,
+    slot: Slot.Helm,
+});
+
+createItem(ItemName.InquisitorsHauberk, {
+    imagePath: "./Images/Items/Inquisitors_hauberk.webp",
+    wikiLink: "https://oldschool.runescape.wiki/w/Inquisitor%27s_hauberk",
+    stab: -3,
+    slash: -3,
+    crush: 12,
+    magic: -11,
+    ranged: -10,
+    strength: 4,
+    slot: Slot.Chest,
+});
+
+createItem(ItemName.InquisitorsPlateskirt, {
+    imagePath: "./Images/Items/Inquisitors_plateskirt.webp",
+    wikiLink: "https://oldschool.runescape.wiki/w/Inquisitor%27s_plateskirt",
+    stab: -3,
+    slash: -3,
+    crush: 12,
+    magic: -9,
+    ranged: -5,
+    strength: 2,
+    slot: Slot.Legs,
+});

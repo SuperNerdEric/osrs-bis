@@ -22,6 +22,7 @@ import {MultiplierType} from "./MultiplierStrategies/AbstractMultiplierStrategy"
 import {SoulreaperMultiplierStrategy} from "./MultiplierStrategies/SoulreaperMultiplierStrategy";
 import {ArclightMultiplierStrategy} from "./MultiplierStrategies/ArclightMultiplierStrategy";
 import {DragonHunterLanceMultiplierStrategy} from "./MultiplierStrategies/DragonHunterLanceMultiplierStrategy";
+import {InquisitorsMultiplierStrategy} from "./MultiplierStrategies/InquisitorsMultiplierStrategy";
 
 export class Calculator {
     dps: number = 0;
@@ -124,12 +125,14 @@ export class Calculator {
         const salveMultiplier = new SalveAmuletMultiplierStrategy(this).calculateMultiplier();
         const arcLightMultiplier = new ArclightMultiplierStrategy(this).calculateMultiplier();
         const dragonHunterLanceMultiplier = new DragonHunterLanceMultiplierStrategy(this).calculateMultiplier();
+        const inquisitorsMultiplier = new InquisitorsMultiplierStrategy(this).calculateMultiplier();
 
         const gearMultipliers = [
             Math.max(slayerMultiplier, salveMultiplier),
             new TwistedBowStrengthMultiplierStrategy(this).calculateMultiplier(),
             arcLightMultiplier,
-            dragonHunterLanceMultiplier
+            dragonHunterLanceMultiplier,
+            inquisitorsMultiplier
         ];
 
         return gearMultipliers;
@@ -140,13 +143,15 @@ export class Calculator {
         const salveMultiplier = new SalveAmuletMultiplierStrategy(this).calculateMultiplier();
         const arcLightMultiplier = new ArclightMultiplierStrategy(this).calculateMultiplier();
         const dragonHunterLanceMultiplier = new DragonHunterLanceMultiplierStrategy(this).calculateMultiplier();
+        const inquisitorsMultiplier = new InquisitorsMultiplierStrategy(this).calculateMultiplier();
 
         const gearMultipliers = [
             Math.max(slayerMultiplier, salveMultiplier),
             new KerisMultiplierStrategy(this).calculateMultiplier(),
             new TwistedBowAccuracyMultiplierStrategy(this).calculateMultiplier(),
             arcLightMultiplier,
-            dragonHunterLanceMultiplier
+            dragonHunterLanceMultiplier,
+            inquisitorsMultiplier
         ];
 
         return gearMultipliers;
