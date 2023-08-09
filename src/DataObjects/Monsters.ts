@@ -765,3 +765,60 @@ monster.defenceStats = {
     [StyleType.Ranged]: 26
 };
 monsters.set(monster.name, monster);
+
+monster = new TargetMonster();
+monster.name = "Dagannoth Rex";
+monster.shortName = "Rex";
+monster.raid = Raid.None;
+monster.slayerMonster = true;
+monster.imagePath = './Images/Monsters/Dagannoth_Rex.png';
+monster.defenceLevel = 255;
+monster.maxDefenceReduction = 255;
+monster.magicLevel = 0;
+monster.magicAccuracy = 0;
+monster.defenceStats = {
+    [StyleType.Stab]: 255,
+    [StyleType.Slash]: 255,
+    [StyleType.Crush]: 255,
+    [StyleType.Magic]: 10,
+    [StyleType.Ranged]: 255
+};
+monsters.set(monster.shortName, monster);
+
+monster = new TargetMonster();
+monster.name = "Dagannoth Prime";
+monster.shortName = "Prime";
+monster.raid = Raid.None;
+monster.slayerMonster = true;
+monster.imagePath = './Images/Monsters/Dagannoth_Prime.png';
+monster.defenceLevel = 255;
+monster.maxDefenceReduction = 255;
+monster.magicLevel = 255;
+monster.magicAccuracy = 0;
+monster.defenceStats = {
+    [StyleType.Stab]: 255,
+    [StyleType.Slash]: 255,
+    [StyleType.Crush]: 255,
+    [StyleType.Magic]: 255,
+    [StyleType.Ranged]: 10
+};
+monsters.set(monster.shortName, monster);
+
+monster = new TargetMonster();
+monster.name = "Dagannoth Supreme";
+monster.shortName = "Supreme";
+monster.raid = Raid.None;
+monster.slayerMonster = true;
+monster.imagePath = './Images/Monsters/Dagannoth_Supreme.png';
+monster.defenceLevel = 128;
+monster.maxDefenceReduction = 128;
+monster.magicLevel = 255;
+monster.magicAccuracy = 0;
+monster.defenceStats = {
+    [StyleType.Stab]: 10,
+    [StyleType.Slash]: 10,
+    [StyleType.Crush]: 10,
+    [StyleType.Magic]: 255,
+    [StyleType.Ranged]: 550
+};
+monsters.set(monster.shortName, monster);

@@ -18,6 +18,7 @@ export const sections = [
     new MonsterSection("Tombs of Amascut", ["Ba-Ba", "Akkha", "Akkha's Shadow", "Kephri", "Zebak", "Wardens P3"]),
     new MonsterSection("Forgotten Four", ["Whisperer", "Vardorvis", "Leviathan", "Duke Sucellus"]),
     new MonsterSection("God Wars Dungeon", ["Armadyl", "Bandos", "Saradomin", "Zamorak"]),
+    new MonsterSection("Dagannoth Kings", ["Rex", "Prime", "Supreme"]),
     new MonsterSection("Barrows", ["Ahrim", "Dharok", "Guthan", "Karil", "Torag", "Verac"]),
     new MonsterSection("Other Bosses", ["Corp", "KQ", "KQ (P2)", "Vorkath"])
 ];
