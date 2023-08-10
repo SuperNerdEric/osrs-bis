@@ -23,6 +23,7 @@ import {SoulreaperMultiplierStrategy} from "./MultiplierStrategies/SoulreaperMul
 import {ArclightMultiplierStrategy} from "./MultiplierStrategies/ArclightMultiplierStrategy";
 import {DragonHunterLanceMultiplierStrategy} from "./MultiplierStrategies/DragonHunterLanceMultiplierStrategy";
 import {InquisitorsMultiplierStrategy} from "./MultiplierStrategies/InquisitorsMultiplierStrategy";
+import {CorporealBeastMultiplierStrategy} from "./MultiplierStrategies/CorporealBeastMultiplierStrategy";
 
 export class Calculator {
     dps: number = 0;
@@ -126,13 +127,15 @@ export class Calculator {
         const arcLightMultiplier = new ArclightMultiplierStrategy(this).calculateMultiplier();
         const dragonHunterLanceMultiplier = new DragonHunterLanceMultiplierStrategy(this).calculateMultiplier();
         const inquisitorsMultiplier = new InquisitorsMultiplierStrategy(this).calculateMultiplier();
+        const corporealBeastMultiplier = new CorporealBeastMultiplierStrategy(this).calculateMultiplier();
 
         const gearMultipliers = [
             Math.max(slayerMultiplier, salveMultiplier),
             new TwistedBowStrengthMultiplierStrategy(this).calculateMultiplier(),
             arcLightMultiplier,
             dragonHunterLanceMultiplier,
-            inquisitorsMultiplier
+            inquisitorsMultiplier,
+            corporealBeastMultiplier
         ];
 
         return gearMultipliers;
