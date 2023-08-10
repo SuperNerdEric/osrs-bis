@@ -195,7 +195,11 @@ export class Calculator {
     private calculateDefenceRoll(invocationLevel: number, attackStyle: StyleType): number {
         let baseDefence: number;
         if (attackStyle === StyleType.Magic) {
-            baseDefence = 9 + this.targetMonster.magicLevel;
+            if (this.targetMonster.name === "Verzik Vitur P2" || this.targetMonster.name === "Verzik Vitur P3") {
+                baseDefence = 9 + this.targetMonster.defenceLevel;
+            } else {
+                baseDefence = 9 + this.targetMonster.magicLevel;
+            }
         } else {
             baseDefence = this.targetMonster.defenceLevel - this.defenceReduction + 9;
         }
