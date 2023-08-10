@@ -348,23 +348,24 @@ describe('Calculator class', () => {
                 ItemName.TormentedBracelet,
                 ItemName.OccultNecklace,
                 ItemName.ImbuedZamorakCape,
+                ItemName.MagusRing
             ]);
             result.targetMonster = monsters.get("Verzik P2") as TargetMonster;
         });
 
         test('should calculate DPS correctly', () => {
             result.calculateDPS(0);
-            expect(result.dps).toBeCloseTo(6.378); //Matches Bitterkoekje
+            expect(result.dps).toBeCloseTo(8.7566); //Matches fruitdeeps and Bitterkoekje
         });
 
         test('should calculate maxHit correctly', () => {
             result.calculateDPS(0);
-            expect(result.maxHit).toBe(62); //Matches fruitdeeps and Bitterkoekje
+            expect(result.maxHit).toBe(64); //Matches fruitdeeps and Bitterkoekje
         });
 
         test('should calculate hitChance correctly', () => {
             result.calculateDPS(0);
-            expect(result.hitChance).toBeCloseTo(0.6172); //Matches Bitterkoekje
+            expect(result.hitChance).toBeCloseTo(0.8209); //Matches fruitdeeps and Bitterkoekje
         });
     });
 
@@ -377,7 +378,7 @@ describe('Calculator class', () => {
                 ItemName.MasoriChapsF,
                 ItemName.ZaryteVambraces,
                 ItemName.NecklaceOfAnguish,
-                ItemName.AvasAssembler
+                ItemName.AvasAssembler,
             ]);
             result.targetMonster = monsters.get("Olm (Head)") as TargetMonster;
         });
