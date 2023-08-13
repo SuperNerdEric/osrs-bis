@@ -1,6 +1,10 @@
 import {ItemName} from "../../DataObjects/ItemName";
 import {AbstractMultiplierStrategy} from "./AbstractMultiplierStrategy";
-import {StyleType, WeaponCategory, WeaponCategoryOptions} from "../../DataObjects/Item";
+import {
+    StyleType,
+    WeaponCategory,
+    WeaponCategoryOptions
+} from "../../DataObjects/Item";
 
 export class CorporealBeastMultiplierStrategy extends AbstractMultiplierStrategy {
     calculateMultiplier(): number {
@@ -20,6 +24,10 @@ export class CorporealBeastMultiplierStrategy extends AbstractMultiplierStrategy
             if (matchingStyle?.styleType === StyleType.Stab) {
                 return 1;
             }
+        }
+
+        if (this.result.gearSet.styleType === StyleType.Magic) {
+            return 1;
         }
 
         return 0.5;

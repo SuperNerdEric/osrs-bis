@@ -986,6 +986,38 @@ describe('Calculator class', () => {
         });
     });
 
+    describe('with dragon hunter crossbow and salve against undead dragon', () => {
+        beforeEach(() => {
+            result.gearSet = new GearSet([GearSetType.General], ItemName.DragonHunterCrossbow, CombatStyle.Rapid, [
+                ItemName.DiamondDragonBoltsE,
+                ItemName.TwistedBuckler,
+                ItemName.MasoriMaskF,
+                ItemName.MasoriBodyF,
+                ItemName.MasoriChapsF,
+                ItemName.ZaryteVambraces,
+                ItemName.SalveAmuletEI,
+                ItemName.AvasAssembler,
+            ]);
+            result.targetMonster = monsters.get("Vorkath") as TargetMonster;
+        });
+
+        test('should calculate DPS correctly', () => {
+            result.calculateDPS(0);
+            expect(result.dps).toBeCloseTo(10.199); //Matches Bitterkoekje
+        });
+
+        test('should calculate maxHit correctly', () => {
+            result.calculateDPS(0);
+            expect(result.maxHit).toBe(80); //Matches Bitterkoekje
+        });
+
+        test('should calculate hitChance correctly', () => {
+            result.calculateDPS(0);
+            expect(result.baseHitChance).toBeCloseTo(0.8410); //Matches Bitterkoekje
+            expect(result.hitChance).toBeCloseTo(0.8585); //Matches fruitdeeps
+        });
+    });
+
     describe('with inquisitors against kq', () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General], ItemName.InquisitorsMace, CombatStyle.Pummel, [
@@ -1229,7 +1261,6 @@ describe('Calculator class', () => {
 
         test('should calculate maxHit correctly', () => {
             result.calculateDPS(0);
-            //Todo ruby dragon bolts are hitting 0 in some cases but dps is right
             expect(result.maxHit).toBe(51); //Matches Bitterkoekje
         });
 
@@ -1261,7 +1292,6 @@ describe('Calculator class', () => {
 
         test('should calculate maxHit correctly', () => {
             result.calculateDPS(0);
-            //Todo ruby dragon bolts are hitting 0 in some cases but dps is right
             expect(result.maxHit).toBe(57); //Matches Bitterkoekje
         });
 
