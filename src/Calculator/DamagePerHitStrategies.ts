@@ -135,6 +135,11 @@ export class RubyBoltEnchantedStrategy extends DamagePerHitStrategy {
         } else {
             procMaxHit = Math.min(Math.floor(this.result.targetMonster.currentHitpoints * 0.2), 100);
         }
+
+        if (this.result.targetMonster.name === "Corporeal Beast") {
+            procMaxHit = procMaxHit * 0.5;
+        }
+
         this.result.maxHit = procMaxHit;
 
         // This is because it either misses (0) or hits max
