@@ -17,7 +17,7 @@ export const sections = [
     new MonsterSection("Theatre of Blood", ["Maiden", "Bloat", "Nylo", "Sote", "Xarpus", "Verzik P2", "Verzik P3"]),
     new MonsterSection("Tombs of Amascut", ["Ba-Ba", "Akkha", "Akkha's Shadow", "Kephri", "Zebak", "Wardens P3"]),
     new MonsterSection("Forgotten Four", ["Whisperer", "Vardorvis", "Leviathan", "Duke Sucellus"]),
-    new MonsterSection("God Wars Dungeon", ["Armadyl", "Bandos", "Saradomin", "Zamorak"]),
+    new MonsterSection("God Wars Dungeon", ["Armadyl", "Bandos", "Saradomin", "Zamorak", "Nex"]),
     new MonsterSection("Dagannoth Kings", ["Rex", "Prime", "Supreme"]),
     new MonsterSection("Barrows", ["Ahrim", "Dharok", "Guthan", "Karil", "Torag", "Verac"]),
     new MonsterSection("Other Bosses", ["Corp", "KQ", "KQ (P2)", "Vorkath"])

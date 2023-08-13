@@ -200,6 +200,24 @@ monster.defenceStats = {
 monsters.set(monster.shortName, monster);
 
 monster = new TargetMonster();
+monster.name = "Nex";
+monster.size = "3x3";
+monster.currentHitpoints = 3400;
+monster.imagePath = './Images/Monsters/Nex.png';
+monster.defenceLevel = 260;
+monster.maxDefenceReduction = 10;
+monster.magicLevel = 230;
+monster.magicAccuracy = 100;
+monster.defenceStats = {
+    [StyleType.Stab]: 40,
+    [StyleType.Slash]: 140,
+    [StyleType.Crush]: 60,
+    [StyleType.Magic]: 300,
+    [StyleType.Ranged]: 190
+};
+monsters.set(monster.name, monster);
+
+monster = new TargetMonster();
 monster.name = "Ahrim the Blighted";
 monster.size = "1x1";
 monster.shortName = "Ahrim";
