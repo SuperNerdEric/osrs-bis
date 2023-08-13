@@ -26,11 +26,24 @@ export function generateRangedGearSets(){
     })
 
     rangedBase.forEach(base => {
+        const rangedBoots = [null, ItemName.PegasianBoots];
+        rangedBoots.forEach(boots => {
+            if(boots) {
+                const newSet = [...base];
+                newSet.push(boots);
+                rangedBase.push(newSet);
+            }
+        })
+    })
+
+    rangedBase.forEach(base => {
         new GearSet([GearSetType.General], ItemName.ToxicBlowpipe, CombatStyle.Rapid, [...base, ItemName.DragonDart]);
         new GearSet([GearSetType.General], ItemName.TwistedBow, CombatStyle.Rapid, [...base, ItemName.DragonArrow]);
         new GearSet([GearSetType.General], ItemName.ArmadylCrossbow, CombatStyle.Rapid, [...base, ItemName.TwistedBuckler, ItemName.RubyDragonBoltsE]);
         new GearSet([GearSetType.General], ItemName.ArmadylCrossbow, CombatStyle.Rapid, [...base, ItemName.TwistedBuckler, ItemName.DiamondDragonBoltsE]);
         new GearSet([GearSetType.General], ItemName.ZaryteCrossbow, CombatStyle.Rapid, [...base, ItemName.TwistedBuckler, ItemName.RubyDragonBoltsE]);
         new GearSet([GearSetType.General], ItemName.ZaryteCrossbow, CombatStyle.Rapid, [...base, ItemName.TwistedBuckler, ItemName.DiamondDragonBoltsE]);
+        new GearSet([GearSetType.General], ItemName.DragonHunterCrossbow, CombatStyle.Rapid, [...base, ItemName.TwistedBuckler, ItemName.RubyDragonBoltsE]);
+        new GearSet([GearSetType.General], ItemName.DragonHunterCrossbow, CombatStyle.Rapid, [...base, ItemName.TwistedBuckler, ItemName.DiamondDragonBoltsE]);
     })
 }
