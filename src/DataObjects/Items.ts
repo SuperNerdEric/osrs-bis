@@ -806,3 +806,12 @@ createItem(ItemName.OnyxDragonBoltsE, {
     rangedStrength: 122,
     slot: Slot.Ammo,
 });
+
+createWeapon(ItemName.DragonHunterCrossbow, {
+    category: WeaponCategory.Crossbow,
+    imagePath: "./Images/ItemsOld/Dragon_hunter_crossbow.png",
+    wikiLink: "https://oldschool.runescape.wiki/w/Dragon_hunter_crossbow",
+    slot: Slot.MainHand,
+    speedSeconds: 3.6,
+    ranged: 95,
+});

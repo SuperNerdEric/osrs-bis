@@ -4,8 +4,9 @@ import {Player} from "../DataObjects/Player";
 import {GearSet} from "../DataObjects/GearSets";
 import {ItemName} from "../DataObjects/ItemName";
 import {
-    BoltEnchantedStrategy, DamagePerHitStrategy,
-    DefaultStrategy, DiamondBoltEnchantedStrategy,
+    BoltEnchantedStrategy,
+    DamagePerHitStrategy,
+    DefaultStrategy,
     KerisPartisanStrategy,
     OsmumtensFangStrategy,
     ScytheOfViturStrategy
@@ -29,6 +30,7 @@ import {ArclightMultiplierStrategy} from "./MultiplierStrategies/ArclightMultipl
 import {DragonHunterLanceMultiplierStrategy} from "./MultiplierStrategies/DragonHunterLanceMultiplierStrategy";
 import {InquisitorsMultiplierStrategy} from "./MultiplierStrategies/InquisitorsMultiplierStrategy";
 import {CorporealBeastMultiplierStrategy} from "./MultiplierStrategies/CorporealBeastMultiplierStrategy";
+import {DragonHunterCrossbowMultiplierStrategy} from "./MultiplierStrategies/DragonHunterCrossbowMultiplierStrategy";
 
 export class Calculator {
     dps: number = 0;
@@ -147,6 +149,7 @@ export class Calculator {
         const salveMultiplier = new SalveAmuletMultiplierStrategy(this).calculateMultiplier();
         const arcLightMultiplier = new ArclightMultiplierStrategy(this).calculateMultiplier();
         const dragonHunterLanceMultiplier = new DragonHunterLanceMultiplierStrategy(this).calculateMultiplier();
+        const dragonHunterCrossbowMultiplier = new DragonHunterCrossbowMultiplierStrategy(this).calculateMultiplier(MultiplierType.Damage);
         const inquisitorsMultiplier = new InquisitorsMultiplierStrategy(this).calculateMultiplier();
         const corporealBeastMultiplier = new CorporealBeastMultiplierStrategy(this).calculateMultiplier();
 
@@ -155,6 +158,7 @@ export class Calculator {
             new TwistedBowStrengthMultiplierStrategy(this).calculateMultiplier(),
             arcLightMultiplier,
             dragonHunterLanceMultiplier,
+            dragonHunterCrossbowMultiplier,
             inquisitorsMultiplier,
             corporealBeastMultiplier,
         ];
@@ -167,6 +171,7 @@ export class Calculator {
         const salveMultiplier = new SalveAmuletMultiplierStrategy(this).calculateMultiplier();
         const arcLightMultiplier = new ArclightMultiplierStrategy(this).calculateMultiplier();
         const dragonHunterLanceMultiplier = new DragonHunterLanceMultiplierStrategy(this).calculateMultiplier();
+        const dragonHunterCrossbowMultiplier = new DragonHunterCrossbowMultiplierStrategy(this).calculateMultiplier(MultiplierType.Accuracy);
         const inquisitorsMultiplier = new InquisitorsMultiplierStrategy(this).calculateMultiplier();
 
         const gearMultipliers = [
@@ -175,6 +180,7 @@ export class Calculator {
             new TwistedBowAccuracyMultiplierStrategy(this).calculateMultiplier(),
             arcLightMultiplier,
             dragonHunterLanceMultiplier,
+            dragonHunterCrossbowMultiplier,
             inquisitorsMultiplier,
         ];
 
