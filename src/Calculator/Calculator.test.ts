@@ -52,6 +52,37 @@ describe('Calculator class', () => {
         });
     });
 
+    describe('with Osmumtens fang against bloat', () => {
+        beforeEach(() => {
+            result.gearSet = new GearSet([GearSetType.General], ItemName.OsmumtensFang, CombatStyle.Lunge, [
+                ItemName.AvernicDefender,
+                ItemName.TorvaFullHelm,
+                ItemName.TorvaPlatebody,
+                ItemName.TorvaPlatelegs,
+                ItemName.FerociousGloves,
+                ItemName.PrimordialBoots,
+                ItemName.AmuletOfTorture,
+                ItemName.InfernalCape
+            ]);
+            result.targetMonster = monsters.get("Bloat") as TargetMonster;
+        });
+
+        test('should calculate DPS correctly', () => {
+            result.calculateDPS(0);
+            expect(result.dps).toBeCloseTo(9.010);  //Matches fruitdeeps
+        });
+
+        test('should calculate maxHit correctly', () => {
+            result.calculateDPS(0);
+            expect(result.maxHit).toBe(48);  //Matches fruitdeeps
+        });
+
+        test('should calculate hitChance correctly', () => {
+            result.calculateDPS(0);
+            expect(result.hitChance).toBeCloseTo(0.9653);  //Matches fruitdeeps
+        });
+    });
+
     describe('with melee gear set including Slayer helmet (i) and onTask is false', () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General], ItemName.OsmumtensFang, CombatStyle.Lunge, [
@@ -428,6 +459,69 @@ describe('Calculator class', () => {
             expect(result.hitChance).toBeCloseTo(0.8544); //Matches fruitdeeps
         });
     });
+
+    describe('with Scythe on medium monster', () => {
+        beforeEach(() => {
+            result.gearSet = new GearSet([GearSetType.General], ItemName.ScytheOfVitur, CombatStyle.Chop, [
+                ItemName.TorvaFullHelm,
+                ItemName.TorvaPlatebody,
+                ItemName.TorvaPlatelegs,
+                ItemName.FerociousGloves,
+                ItemName.PrimordialBoots,
+                ItemName.AmuletOfTorture,
+                ItemName.InfernalCape,
+                ItemName.BellatorRing
+            ]);
+            result.targetMonster = monsters.get("Vardorvis") as TargetMonster;
+        });
+
+        test('should calculate DPS correctly', () => {
+            result.calculateDPS(0);
+            expect(result.dps).toBeCloseTo(7.059); //Matches Bitterkoekje
+        });
+
+        test('should calculate maxHit correctly', () => {
+            result.calculateDPS(0);
+            expect(result.maxHit).toBe(73); //Matches Bitterkoekje
+        });
+
+        test('should calculate hitChance correctly', () => {
+            result.calculateDPS(0);
+            expect(result.hitChance).toBeCloseTo(0.5802); //Matches Bitterkoekje
+        });
+    });
+
+    describe('with Scythe on small monster', () => {
+        beforeEach(() => {
+            result.gearSet = new GearSet([GearSetType.General], ItemName.ScytheOfVitur, CombatStyle.Chop, [
+                ItemName.TorvaFullHelm,
+                ItemName.TorvaPlatebody,
+                ItemName.TorvaPlatelegs,
+                ItemName.FerociousGloves,
+                ItemName.PrimordialBoots,
+                ItemName.AmuletOfTorture,
+                ItemName.InfernalCape,
+                ItemName.BellatorRing
+            ]);
+            result.targetMonster = monsters.get("Karil") as TargetMonster;
+        });
+
+        test('should calculate DPS correctly', () => {
+            result.calculateDPS(0);
+            expect(result.dps).toBeCloseTo(6.42); //Matches Bitterkoekje
+        });
+
+        test('should calculate maxHit correctly', () => {
+            result.calculateDPS(0);
+            expect(result.maxHit).toBe(49); //Matches Bitterkoekje
+        });
+
+        test('should calculate hitChance correctly', () => {
+            result.calculateDPS(0);
+            expect(result.hitChance).toBeCloseTo(0.7862); //Matches Bitterkoekje
+        });
+    });
+
 
     describe('with Keris partisan on kalphite', () => {
         beforeEach(() => {
@@ -986,6 +1080,225 @@ describe('Calculator class', () => {
         test('should calculate hitChance correctly', () => {
             result.calculateDPS(0);
             expect(result.hitChance).toBeCloseTo(0.3726); //Matches Bitterkoekje
+        });
+    });
+
+    describe('with armadyl crossbow on rapid', () => {
+        beforeEach(() => {
+            result.gearSet = new GearSet([GearSetType.General], ItemName.ArmadylCrossbow, CombatStyle.Rapid, [
+                ItemName.DragonBolts,
+                ItemName.TwistedBuckler,
+                ItemName.MasoriMaskF,
+                ItemName.MasoriBodyF,
+                ItemName.MasoriChapsF,
+                ItemName.ZaryteVambraces,
+                ItemName.PegasianBoots,
+                ItemName.NecklaceOfAnguish,
+                ItemName.AvasAssembler,
+            ]);
+        });
+
+        test('should calculate DPS correctly', () => {
+            result.calculateDPS(0);
+            expect(result.dps).toBeCloseTo(2.535); //Matches Bitterkoekje
+        });
+
+        test('should calculate maxHit correctly', () => {
+            result.calculateDPS(0);
+            expect(result.maxHit).toBe(48); //Matches Bitterkoekje
+        });
+
+        test('should calculate hitChance correctly', () => {
+            result.calculateDPS(0);
+            expect(result.hitChance).toBeCloseTo(0.3169); //Matches Bitterkoekje
+        });
+    });
+
+    describe('with armadyl crossbow on accurate', () => {
+        beforeEach(() => {
+            result.gearSet = new GearSet([GearSetType.General], ItemName.ArmadylCrossbow, CombatStyle.Accurate, [
+                ItemName.DragonBolts,
+                ItemName.TwistedBuckler,
+                ItemName.MasoriMaskF,
+                ItemName.MasoriBodyF,
+                ItemName.MasoriChapsF,
+                ItemName.ZaryteVambraces,
+                ItemName.PegasianBoots,
+                ItemName.NecklaceOfAnguish,
+                ItemName.AvasAssembler,
+            ]);
+        });
+
+        test('should calculate DPS correctly', () => {
+            result.calculateDPS(0);
+            expect(result.dps).toBeCloseTo(2.202); //Matches Bitterkoekje
+        });
+
+        test('should calculate maxHit correctly', () => {
+            result.calculateDPS(0);
+            expect(result.maxHit).toBe(49); //Matches Bitterkoekje
+        });
+
+        test('should calculate hitChance correctly', () => {
+            result.calculateDPS(0);
+            expect(result.hitChance).toBeCloseTo(0.3236); //Matches Bitterkoekje
+        });
+    });
+
+    describe('with armadyl crossbow with Diamond Dragon Bolts (e) on rapid', () => {
+        beforeEach(() => {
+            result.gearSet = new GearSet([GearSetType.General], ItemName.ArmadylCrossbow, CombatStyle.Rapid, [
+                ItemName.DiamondDragonBoltsE,
+                ItemName.TwistedBuckler,
+                ItemName.MasoriMaskF,
+                ItemName.MasoriBodyF,
+                ItemName.MasoriChapsF,
+                ItemName.ZaryteVambraces,
+                ItemName.PegasianBoots,
+                ItemName.NecklaceOfAnguish,
+                ItemName.AvasAssembler,
+            ]);
+        });
+
+        test('should calculate DPS correctly', () => {
+            result.calculateDPS(0);
+            expect(result.dps).toBeCloseTo(3.265); //Matches Bitterkoekje
+        });
+
+        test('should calculate maxHit correctly', () => {
+            result.calculateDPS(0);
+            expect(result.maxHit).toBe(55); //Matches Bitterkoekje
+        });
+
+        test('should calculate hitChance correctly', () => {
+            result.calculateDPS(0);
+            expect(result.hitChance).toBeCloseTo(0.3921); //Matches Fruitdeeps (with proc)
+        });
+    });
+
+    describe('with armadyl crossbow with Diamond Dragon Bolts (e) on accurate', () => {
+        beforeEach(() => {
+            result.gearSet = new GearSet([GearSetType.General], ItemName.ArmadylCrossbow, CombatStyle.Accurate, [
+                ItemName.DiamondDragonBoltsE,
+                ItemName.TwistedBuckler,
+                ItemName.MasoriMaskF,
+                ItemName.MasoriBodyF,
+                ItemName.MasoriChapsF,
+                ItemName.ZaryteVambraces,
+                ItemName.PegasianBoots,
+                ItemName.NecklaceOfAnguish,
+                ItemName.AvasAssembler,
+            ]);
+        });
+
+        test('should calculate DPS correctly', () => {
+            result.calculateDPS(0);
+            expect(result.dps).toBeCloseTo(2.816); //Matches Bitterkoekje
+        });
+
+        test('should calculate maxHit correctly', () => {
+            result.calculateDPS(0);
+            expect(result.maxHit).toBe(56); //Matches Bitterkoekje
+        });
+
+        test('should calculate hitChance correctly', () => {
+            result.calculateDPS(0);
+            expect(result.hitChance).toBeCloseTo(0.3980); //Matches Fruitdeeps (with proc)
+        });
+    });
+
+    describe('with armadyl crossbow with Ruby Dragon Bolts (e) on rapid', () => {
+        beforeEach(() => {
+            result.gearSet = new GearSet([GearSetType.General], ItemName.ArmadylCrossbow, CombatStyle.Rapid, [
+                ItemName.RubyDragonBoltsE,
+                ItemName.TwistedBuckler,
+                ItemName.MasoriMaskF,
+                ItemName.MasoriBodyF,
+                ItemName.MasoriChapsF,
+                ItemName.ZaryteVambraces,
+                ItemName.PegasianBoots,
+                ItemName.NecklaceOfAnguish,
+                ItemName.AvasAssembler,
+            ]);
+        });
+
+        test('should calculate DPS correctly', () => {
+            result.calculateDPS(0);
+            expect(result.dps).toBeCloseTo(3.490); //Matches Bitterkoekje
+        });
+
+        test('should calculate maxHit correctly', () => {
+            result.calculateDPS(0);
+            //Todo ruby dragon bolts are hitting 0 in some cases but dps is right
+            expect(result.maxHit).toBe(51); //Matches Bitterkoekje
+        });
+
+        test('should calculate hitChance correctly', () => {
+            result.calculateDPS(0);
+            expect(result.hitChance).toBeCloseTo(0.3620); //Matches Fruitdeeps (with proc)
+        });
+    });
+
+    describe('with armadyl crossbow with Onyx Dragon Bolts (e) on rapid', () => {
+        beforeEach(() => {
+            result.gearSet = new GearSet([GearSetType.General], ItemName.ArmadylCrossbow, CombatStyle.Rapid, [
+                ItemName.OnyxDragonBoltsE,
+                ItemName.TwistedBuckler,
+                ItemName.MasoriMaskF,
+                ItemName.MasoriBodyF,
+                ItemName.MasoriChapsF,
+                ItemName.ZaryteVambraces,
+                ItemName.PegasianBoots,
+                ItemName.NecklaceOfAnguish,
+                ItemName.AvasAssembler,
+            ]);
+        });
+
+        test('should calculate DPS correctly', () => {
+            result.calculateDPS(0);
+            expect(result.dps).toBeCloseTo(2.593); //Matches Bitterkoekje
+        });
+
+        test('should calculate maxHit correctly', () => {
+            result.calculateDPS(0);
+            //Todo ruby dragon bolts are hitting 0 in some cases but dps is right
+            expect(result.maxHit).toBe(57); //Matches Bitterkoekje
+        });
+
+        test('should calculate hitChance correctly', () => {
+            result.calculateDPS(0);
+            expect(result.hitChance).toBeCloseTo(0.3169); //Matches Bitterkoekje
+        });
+    });
+
+    describe('with zaryte crossbow with Onyx Dragon Bolts (e) on rapid', () => {
+        beforeEach(() => {
+            result.gearSet = new GearSet([GearSetType.General], ItemName.ZaryteCrossbow, CombatStyle.Rapid, [
+                ItemName.OnyxDragonBoltsE,
+                ItemName.TwistedBuckler,
+                ItemName.MasoriMaskF,
+                ItemName.MasoriBodyF,
+                ItemName.MasoriChapsF,
+                ItemName.ZaryteVambraces,
+                ItemName.PegasianBoots,
+                ItemName.NecklaceOfAnguish,
+                ItemName.AvasAssembler,
+            ]);
+        });
+
+        test('should calculate DPS correctly', () => {
+            result.calculateDPS(0);
+            expect(result.dps).toBeCloseTo(2.68); //Matches Bitterkoekje
+        });
+
+        test('should calculate maxHit correctly', () => {
+            result.calculateDPS(0);
+            expect(result.maxHit).toBe(58); //Matches Bitterkoekje
+        });
+
+        test('should calculate hitChance correctly', () => {
+            result.calculateDPS(0);
+            expect(result.hitChance).toBeCloseTo(0.3269); //Matches Bitterkoekje
         });
     });
 });

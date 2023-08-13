@@ -28,5 +28,9 @@ export function generateRangedGearSets(){
     rangedBase.forEach(base => {
         new GearSet([GearSetType.General], ItemName.ToxicBlowpipe, CombatStyle.Rapid, [...base, ItemName.DragonDart]);
         new GearSet([GearSetType.General], ItemName.TwistedBow, CombatStyle.Rapid, [...base, ItemName.DragonArrow]);
+        new GearSet([GearSetType.General], ItemName.ArmadylCrossbow, CombatStyle.Rapid, [...base, ItemName.TwistedBuckler, ItemName.RubyDragonBoltsE]);
+        new GearSet([GearSetType.General], ItemName.ArmadylCrossbow, CombatStyle.Rapid, [...base, ItemName.TwistedBuckler, ItemName.DiamondDragonBoltsE]);
+        new GearSet([GearSetType.General], ItemName.ZaryteCrossbow, CombatStyle.Rapid, [...base, ItemName.TwistedBuckler, ItemName.RubyDragonBoltsE]);
+        new GearSet([GearSetType.General], ItemName.ZaryteCrossbow, CombatStyle.Rapid, [...base, ItemName.TwistedBuckler, ItemName.DiamondDragonBoltsE]);
     })
 }

@@ -1,5 +1,8 @@
-import { Calculator } from "./Calculator";
+import {Calculator} from "./Calculator";
 import {Raid} from "../DataObjects/Raid";
+import {ItemName} from "../DataObjects/ItemName";
+import {Slot} from "../DataObjects/Item";
+import {getBoltActivationRate} from "./DamagePerHitStrategies";
 
 abstract class HitChanceStrategy {
     protected result: Calculator;
@@ -27,10 +30,33 @@ export class OsmumtensFangHitChanceStrategy extends HitChanceStrategy {
     }
 }
 
+export class DiamondBoltHitChanceStrategy extends HitChanceStrategy {
+    calculate(attackRoll: number, defenceRoll: number): number {
+        const bolt = this.result.gearSet.items.find(item => item.slot === Slot.Ammo && item.name.includes('bolt'));
+        if (!bolt || ![ItemName.DiamondBoltsE, ItemName.DiamondDragonBoltsE, ItemName.RubyBoltsE, ItemName.RubyDragonBoltsE].includes(bolt.name)) {
+            return new DefaultHitChanceStrategy(this.result).calculate(attackRoll, defenceRoll);
+        }
+
+        const activationPercent = getBoltActivationRate(bolt.name, true);
+
+        const activationRate = activationPercent / 100;
+        const nonActivationRate = 1 - activationRate;
+
+        this.result.baseHitChance = new DefaultHitChanceStrategy(this.result).calculate(attackRoll, defenceRoll);
+
+        const overallHitChance = (nonActivationRate * this.result.baseHitChance) + activationRate;
+
+        return overallHitChance;
+    }
+}
+
+
 export class DefaultHitChanceStrategy extends HitChanceStrategy {
-    calculate(attackRoll: number, defenceRoll: number) {
-        return attackRoll > defenceRoll
-            ? 1 - ((defenceRoll + 2) / (2 * (attackRoll + 1)))
-            : attackRoll / (2 * (defenceRoll + 1));
+    calculate(attackRoll: number, defenceRoll: number): number {
+        if (attackRoll > defenceRoll) {
+            return 1 - ((defenceRoll + 2) / (2 * (attackRoll + 1)));
+        } else {
+            return attackRoll / (2 * (defenceRoll + 1));
+        }
     }
 }

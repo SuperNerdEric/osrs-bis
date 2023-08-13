@@ -1,15 +1,20 @@
 import {TargetMonster} from "../DataObjects/TargetMonster";
-import {StyleType, WeaponStyle} from "../DataObjects/Item";
+import {Slot, StyleType, WeaponStyle} from "../DataObjects/Item";
 import {Player} from "../DataObjects/Player";
 import {GearSet} from "../DataObjects/GearSets";
 import {ItemName} from "../DataObjects/ItemName";
 import {
-    DefaultStrategy,
+    BoltEnchantedStrategy, DamagePerHitStrategy,
+    DefaultStrategy, DiamondBoltEnchantedStrategy,
     KerisPartisanStrategy,
     OsmumtensFangStrategy,
     ScytheOfViturStrategy
 } from "./DamagePerHitStrategies";
-import {DefaultHitChanceStrategy, OsmumtensFangHitChanceStrategy} from "./HitChanceStrategies";
+import {
+    DefaultHitChanceStrategy,
+    DiamondBoltHitChanceStrategy,
+    OsmumtensFangHitChanceStrategy
+} from "./HitChanceStrategies";
 import {KerisMultiplierStrategy,} from "./MultiplierStrategies/KerisMultiplierStrategy";
 import {SlayerHelmetMultiplierStrategy} from "./MultiplierStrategies/SlayerHelmetMultiplierStrategy";
 import {SalveAmuletMultiplierStrategy} from "./MultiplierStrategies/SalveAmuletMultiplierStrategy";
@@ -29,6 +34,7 @@ export class Calculator {
     dps: number = 0;
     maxHit: number = 0;
     averageDamagePerHit: number = 0;
+    baseHitChance: number = 0;
     hitChance: number = 0;
     defenceReduction: number = 0;
     onTask: boolean = false;
@@ -62,6 +68,15 @@ export class Calculator {
         }
         this.dps = this.calculateDps(weaponSpeed);
 
+        console.log("Attack style: " + attackStyle);
+        console.log("Effective strength level: " + effectiveStrengthLevel);
+        console.log("Effective attack level: " + effectiveAttackLevel);
+        console.log("Gear Style Strength: " + this.gearSet.styleStrength);
+        console.log("Gear Strength Multipliers: " + JSON.stringify(gearStrengthMultipliers, null, 2));
+        console.log("Gear Accuracy Multipliers: " + JSON.stringify(gearAccuracyMultipliers, null, 2));
+        console.log("Attack roll: " + attackRoll);
+        console.log("Defence roll: " + defenceRoll);
+        console.log("Weapon speed seconds: " + weaponSpeed);
     }
 
     private calculateEffectiveStrengthLevel(attackStyle: StyleType) {
@@ -78,6 +93,9 @@ export class Calculator {
             }
         } else if (attackStyle === StyleType.Ranged) {
             effectiveLevel = Math.floor((this.player.rangedLevel + this.player.rangedLevelBoost) * 1.23) + 8;
+            if (this.gearSet.weaponStyle === WeaponStyle.Accurate) {
+                effectiveLevel += 3;
+            }
         } else {
             effectiveLevel = Math.floor((this.player.magicLevel + this.player.magicLevelBoost) * 1.25) + 8;
         }
@@ -106,6 +124,9 @@ export class Calculator {
             effectiveLevel = Math.floor(effectiveLevel * voidMultiplier);
         } else if (attackStyle === StyleType.Ranged) {
             effectiveLevel = Math.floor((this.player.rangedLevel + this.player.rangedLevelBoost) * 1.2) + 8;
+            if (this.gearSet.weaponStyle === WeaponStyle.Accurate) {
+                effectiveLevel += 3;
+            }
             effectiveLevel = Math.floor(effectiveLevel * voidMultiplier);
         } else {
             effectiveLevel = Math.floor((this.player.magicLevel + this.player.magicLevelBoost) * 1.25);
@@ -135,7 +156,7 @@ export class Calculator {
             arcLightMultiplier,
             dragonHunterLanceMultiplier,
             inquisitorsMultiplier,
-            corporealBeastMultiplier
+            corporealBeastMultiplier,
         ];
 
         return gearMultipliers;
@@ -154,7 +175,7 @@ export class Calculator {
             new TwistedBowAccuracyMultiplierStrategy(this).calculateMultiplier(),
             arcLightMultiplier,
             dragonHunterLanceMultiplier,
-            inquisitorsMultiplier
+            inquisitorsMultiplier,
         ];
 
         return gearMultipliers;
@@ -215,8 +236,11 @@ export class Calculator {
 
     private calculateHitChance(attackRoll: number, defenceRoll: number) {
         let strategy;
+        const bolt = this.gearSet.items.find(item => item.slot === Slot.Ammo && item.name.includes('bolt'));
         if (this.gearSet.weapon.name === ItemName.OsmumtensFang) {
             strategy = new OsmumtensFangHitChanceStrategy(this);
+        } else if (bolt) {
+            strategy = new DiamondBoltHitChanceStrategy(this);
         } else {
             strategy = new DefaultHitChanceStrategy(this);
         }
@@ -224,13 +248,16 @@ export class Calculator {
     }
 
     private calculateDamagePerHit() {
-        let strategy;
+        let strategy: DamagePerHitStrategy;
+        const bolt = this.gearSet.items.find(item => item.slot === Slot.Ammo && item.name.includes('bolt'));
         if (this.gearSet.weapon.name === ItemName.ScytheOfVitur) {
             strategy = new ScytheOfViturStrategy(this);
         } else if (this.gearSet.weapon.name === ItemName.OsmumtensFang) {
             strategy = new OsmumtensFangStrategy(this);
         } else if (this.gearSet.weapon.name.includes("Keris partisan")) {
             strategy = new KerisPartisanStrategy(this);
+        } else if (bolt) {
+            strategy = new BoltEnchantedStrategy(this);
         } else {
             strategy = new DefaultStrategy(this);
         }

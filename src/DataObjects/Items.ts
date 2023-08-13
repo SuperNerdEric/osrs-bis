@@ -694,3 +694,115 @@ createItem(ItemName.InquisitorsPlateskirt, {
     strength: 2,
     slot: Slot.Legs,
 });
+
+createWeapon(ItemName.DragonCrossbow, {
+    category: WeaponCategory.Crossbow,
+    imagePath: "./Images/ItemsOld/Dragon_crossbow.png",
+    wikiLink: "https://oldschool.runescape.wiki/w/Dragon_crossbow",
+    stab: 0,
+    slash: 0,
+    crush: 0,
+    magic: 0,
+    ranged: 94,
+    speedSeconds: 3.6,
+    slot: Slot.MainHand,
+});
+
+createWeapon(ItemName.ArmadylCrossbow, {
+    category: WeaponCategory.Crossbow,
+    imagePath: "./Images/ItemsOld/Armadyl_crossbow.png",
+    wikiLink: "https://oldschool.runescape.wiki/w/Armadyl_crossbow",
+    stab: 0,
+    slash: 0,
+    crush: 0,
+    magic: 0,
+    ranged: 100,
+    speedSeconds: 3.6,
+    slot: Slot.MainHand,
+});
+
+createWeapon(ItemName.ZaryteCrossbow, {
+    category: WeaponCategory.Crossbow,
+    imagePath: "./Images/ItemsOld/Zaryte_crossbow.png",
+    wikiLink: "https://oldschool.runescape.wiki/w/Zaryte_crossbow",
+    stab: 0,
+    slash: 0,
+    crush: 0,
+    magic: 0,
+    ranged: 110,
+    speedSeconds: 3.6,
+    slot: Slot.MainHand,
+});
+
+createItem(ItemName.TwistedBuckler, {
+    imagePath: "./Images/ItemsOld/Twisted_buckler.png",
+    wikiLink: "https://oldschool.runescape.wiki/w/Twisted_buckler",
+    stab: -7,
+    slash: -8,
+    crush: -7,
+    magic: -10,
+    ranged: 18,
+    rangedStrength: 10,
+    slot: Slot.OffHand,
+});
+
+createItem(ItemName.PegasianBoots, {
+    imagePath: "./Images/ItemsOld/Pegasian_boots.png",
+    wikiLink: "https://oldschool.runescape.wiki/w/Pegasian_boots",
+    stab: 0,
+    slash: 0,
+    crush: 0,
+    magic: -12,
+    ranged: 12,
+    slot: Slot.Boots,
+});
+
+createItem(ItemName.DragonBolts, {
+    imagePath: "./Images/ItemsOld/Dragon_bolts.png",
+    wikiLink: "https://oldschool.runescape.wiki/w/Dragon_bolts",
+    rangedStrength: 122,
+    slot: Slot.Ammo,
+});
+
+createItem(ItemName.DiamondBoltsE, {
+    imagePath: "./Images/ItemsOld/Diamond_bolts_(e).png",
+    wikiLink: "https://oldschool.runescape.wiki/w/Diamond_bolts_(e)",
+    rangedStrength: 105,
+    slot: Slot.Ammo,
+});
+
+
+createItem(ItemName.DiamondDragonBoltsE, {
+    imagePath: "./Images/ItemsOld/Diamond_dragon_bolts_(e).png",
+    wikiLink: "https://oldschool.runescape.wiki/w/Diamond_dragon_bolts_(e)",
+    rangedStrength: 122,
+    slot: Slot.Ammo,
+});
+
+createItem(ItemName.RubyBoltsE, {
+    imagePath: "./Images/ItemsOld/Ruby_bolts_(e).png",
+    wikiLink: "https://oldschool.runescape.wiki/w/Ruby_bolts_(e)",
+    rangedStrength: 103,
+    slot: Slot.Ammo,
+});
+
+createItem(ItemName.RubyDragonBoltsE, {
+    imagePath: "./Images/ItemsOld/Ruby_dragon_bolts_(e).png",
+    wikiLink: "https://oldschool.runescape.wiki/w/Ruby_dragon_bolts_(e)",
+    rangedStrength: 122,
+    slot: Slot.Ammo,
+});
+
+createItem(ItemName.OnyxBoltsE, {
+    imagePath: "./Images/ItemsOld/Onyx_bolts_(e).png",
+    wikiLink: "https://oldschool.runescape.wiki/w/Onyx_bolts_(e)",
+    rangedStrength: 120,
+    slot: Slot.Ammo,
+});
+
+createItem(ItemName.OnyxDragonBoltsE, {
+    imagePath: "./Images/ItemsOld/Onyx_dragon_bolts_(e).png",
+    wikiLink: "https://oldschool.runescape.wiki/w/Onyx_dragon_bolts_(e)",
+    rangedStrength: 122,
+    slot: Slot.Ammo,
+});
