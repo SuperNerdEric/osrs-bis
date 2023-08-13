@@ -102,6 +102,26 @@ monster.defenceStats = {
 monsters.set(monster.name, monster);
 
 monster = new TargetMonster();
+monster.name = "Obelisk";
+monster.raid = Raid.TombsOfAmascut
+monster.size = "3x3";
+monster.imagePath = './Images/Monsters/Obelisk_(Tombs_of_Amascut,_phase_1).png';
+monster.currentHitpoints = 260;
+monster.defenceLevel = 100;
+monster.maxDefenceReduction = 40;
+monster.magicLevel = 100;
+monster.magicAccuracy = 0;
+monster.defenceStats = {
+    [StyleType.Stab]: 70,
+    [StyleType.Slash]: 70,
+    [StyleType.Crush]: 70,
+    [StyleType.Magic]: 50,
+    [StyleType.Ranged]: 60
+};
+monsters.set(monster.name, monster);
+
+
+monster = new TargetMonster();
 monster.name = "Wardens P3";
 monster.raid = Raid.TombsOfAmascut
 monster.size = "5x5";

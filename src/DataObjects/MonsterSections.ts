@@ -15,7 +15,7 @@ export class MonsterSection {
 export const sections = [
     new MonsterSection("Chambers of Xeric", ["Tekton", "Vanguard (Magic)", "Vanguard (Melee)", "Vanguard (Ranged)", "Vespula", "Vasa", "Muttadile (Small)", "Muttadile (Large)", "Olm (Right Claw)", "Olm (Left Claw)", "Olm (Head)"]),
     new MonsterSection("Theatre of Blood", ["Maiden", "Bloat", "Nylo", "Sote", "Xarpus", "Verzik P2", "Verzik P3"]),
-    new MonsterSection("Tombs of Amascut", ["Ba-Ba", "Akkha", "Akkha's Shadow", "Kephri", "Zebak", "Wardens P3"]),
+    new MonsterSection("Tombs of Amascut", ["Ba-Ba", "Akkha", "Akkha's Shadow", "Kephri", "Zebak", "Obelisk", "Wardens P3"]),
     new MonsterSection("Forgotten Four", ["Whisperer", "Vardorvis", "Leviathan", "Duke Sucellus"]),
     new MonsterSection("God Wars Dungeon", ["Armadyl", "Bandos", "Saradomin", "Zamorak", "Nex"]),
     new MonsterSection("Dagannoth Kings", ["Rex", "Prime", "Supreme"]),
