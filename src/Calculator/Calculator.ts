@@ -69,16 +69,6 @@ export class Calculator {
             weaponSpeed -= 0.6;
         }
         this.dps = this.calculateDps(weaponSpeed);
-
-        console.log("Attack style: " + attackStyle);
-        console.log("Effective strength level: " + effectiveStrengthLevel);
-        console.log("Effective attack level: " + effectiveAttackLevel);
-        console.log("Gear Style Strength: " + this.gearSet.styleStrength);
-        console.log("Gear Strength Multipliers: " + JSON.stringify(gearStrengthMultipliers, null, 2));
-        console.log("Gear Accuracy Multipliers: " + JSON.stringify(gearAccuracyMultipliers, null, 2));
-        console.log("Attack roll: " + attackRoll);
-        console.log("Defence roll: " + defenceRoll);
-        console.log("Weapon speed seconds: " + weaponSpeed);
     }
 
     private calculateEffectiveStrengthLevel(attackStyle: StyleType) {
