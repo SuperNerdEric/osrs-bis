@@ -723,7 +723,7 @@ monsters.set(monster.shortName, monster);
 monster = new TargetMonster();
 monster.name = "Undead Combat Dummy";
 monster.raid = Raid.None;
-monster.imagePath = './Images/Monsters/Great_Olm.png';
+monster.imagePath = './Images/Monsters/Undead_combat_dummy.png';
 monster.currentHitpoints = 9999;
 monster.defenceLevel = 1;
 monster.maxDefenceReduction = 1;
