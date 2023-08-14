@@ -144,3 +144,21 @@ table {
     background-color: grey;
 }
 
+.monsterItem {
+    padding: 4px 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.monsterItem:hover {
+    background-color: white;
+}
+
+.monsterName {
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.monsterSearch {
+    margin-bottom: 15px;
+}

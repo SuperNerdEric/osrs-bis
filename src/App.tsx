@@ -10,6 +10,8 @@ import {createBrowserHistory} from 'history';
 import {devLog} from './utils';
 import TopBar from "./TopBar";
 import MainContent from "./MainContent";
+import {TargetMonster} from "./DataObjects/TargetMonster";
+import {Raid} from "./DataObjects/Raid";
 
 
 const history = createBrowserHistory();
@@ -35,7 +37,12 @@ function App() {
         setUrlState({onTask: String(event.target.checked)});
     };
 
-    const [urlState, setUrlState] = useUrlState({target: "Ba-Ba", invocationLevel: 300, defenceReduction: 0, onTask: "false"});
+    const [urlState, setUrlState] = useUrlState({
+        target: "Ba-Ba",
+        invocationLevel: 300,
+        defenceReduction: 0,
+        onTask: "false"
+    });
 
     const theme = getTheme();
 
@@ -51,7 +58,14 @@ function App() {
                     handleDefenceReduction={handleDefenceReduction}
                     onTask={onTask}
                     handleOnTask={handleOnTask}
-                />
+
+                    setTargetMonster={(targetMonster: TargetMonster) => {
+                        setUrlState({
+                            target: targetMonster.shortName || targetMonster.name,
+                            invocationLevel: targetMonster.raid === Raid.TombsOfAmascut ? urlState.invocationLevel : undefined,
+                            defenceReduction: urlState.defenceReduction,
+                        });
+                    }}/>
             </div>
         </ThemeProvider>
     );

@@ -10,6 +10,7 @@ import {Raid} from "./DataObjects/Raid";
 import OnTaskCheck from "./OnTaskCheck";
 import {GearTable} from "./Table";
 import {ColumnDef} from "@tanstack/react-table";
+import MonsterSearch from "./MonsterSearch";
 
 interface MainContentProps {
     target: string;
@@ -19,6 +20,7 @@ interface MainContentProps {
     handleDefenceReduction: (defenceReduction: number) => void;
     onTask: boolean;
     handleOnTask: (onTask: boolean) => void;
+    setTargetMonster: (monster: TargetMonster) => void;
 }
 
 const MainContent: React.FC<MainContentProps> = ({
@@ -28,13 +30,18 @@ const MainContent: React.FC<MainContentProps> = ({
                                                      defenceReduction,
                                                      handleDefenceReduction,
                                                      onTask,
-                                                     handleOnTask
+                                                     handleOnTask,
+                                                     setTargetMonster
                                                  }) => {
 
     const [results, setResults] = useState<Calculator[]>([]);
     const isToaBoss: boolean = (monsters.get(target) as TargetMonster).raid === Raid.TombsOfAmascut;
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
+
+    const handleMonsterSelect = (monster: TargetMonster) => {
+        setTargetMonster(monster);
+    };
 
     useEffect(() => {
         const results: Calculator[] = [];
@@ -178,7 +185,10 @@ const MainContent: React.FC<MainContentProps> = ({
 
     return (
         <main className="App-main">
-            <h2>{(monsters.get(target) as TargetMonster).name}</h2>
+            <h2 className="monsterName">{(monsters.get(target) as TargetMonster).name}</h2>
+            <div className="monsterSearch">
+                <MonsterSearch onSelect={handleMonsterSelect} />
+            </div>
             <img src={require(`${(monsters.get(target) as TargetMonster).imagePath}`)} width="auto"
                  height="150" alt={target}/>
             {
