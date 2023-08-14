@@ -48,7 +48,7 @@ export class Calculator {
         this.gearSet = gearSet;
     }
 
-    calculateDPS(invocationLevel: number) {
+    calculateDPS(invocationLevel: number = 0) {
         const attackStyle = this.gearSet.styleType;
 
         const effectiveStrengthLevel = this.calculateEffectiveStrengthLevel(this.gearSet.styleType);

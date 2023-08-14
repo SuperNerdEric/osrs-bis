@@ -34,20 +34,18 @@ describe('Calculator class', () => {
                 ItemName.InfernalCape
             ]);
             result.targetMonster = monsters.get("Ba-Ba") as TargetMonster;
+            result.calculateDPS(300);
         });
 
         test('should calculate DPS correctly', () => {
-            result.calculateDPS(300);
             expect(result.dps).toBeCloseTo(7.833);  //Matches fruitdeeps
         });
 
         test('should calculate maxHit correctly', () => {
-            result.calculateDPS(300);
             expect(result.maxHit).toBe(48);  //Matches fruitdeeps
         });
 
         test('should calculate hitChance correctly', () => {
-            result.calculateDPS(300);
             expect(result.hitChance).toBeCloseTo(0.8393);  //Matches fruitdeeps
         });
     });
@@ -65,20 +63,18 @@ describe('Calculator class', () => {
                 ItemName.InfernalCape
             ]);
             result.targetMonster = monsters.get("Bloat") as TargetMonster;
+            result.calculateDPS();
         });
 
         test('should calculate DPS correctly', () => {
-            result.calculateDPS(0);
             expect(result.dps).toBeCloseTo(9.010);  //Matches fruitdeeps
         });
 
         test('should calculate maxHit correctly', () => {
-            result.calculateDPS(0);
             expect(result.maxHit).toBe(48);  //Matches fruitdeeps
         });
 
         test('should calculate hitChance correctly', () => {
-            result.calculateDPS(0);
             expect(result.hitChance).toBeCloseTo(0.9653);  //Matches fruitdeeps
         });
     });
@@ -96,20 +92,18 @@ describe('Calculator class', () => {
                 ItemName.InfernalCape
             ]);
             result.onTask = false;
+            result.calculateDPS();
         });
 
         test('should calculate DPS correctly', () => {
-            result.calculateDPS(0);
             expect(result.dps).toBeCloseTo(3.214);
         });
 
         test('should calculate maxHit correctly', () => {
-            result.calculateDPS(0);
             expect(result.maxHit).toBe(46); //Tested in game
         });
 
         test('should calculate hitChance correctly', () => {
-            result.calculateDPS(0);
             expect(result.hitChance).toBeCloseTo(0.3572);
         });
     });
@@ -127,20 +121,18 @@ describe('Calculator class', () => {
                 ItemName.InfernalCape
             ]);
             result.onTask = true;
+            result.calculateDPS();
         });
 
         test('should calculate DPS correctly', () => {
-            result.calculateDPS(0);
             expect(result.dps).toBeCloseTo(4.375);
         });
 
         test('should calculate maxHit correctly', () => {
-            result.calculateDPS(0);
             expect(result.maxHit).toBe(54); //Tested in game
         });
 
         test('should calculate hitChance correctly', () => {
-            result.calculateDPS(0);
             expect(result.hitChance).toBeCloseTo(0.4167);
         });
     });
@@ -157,20 +149,18 @@ describe('Calculator class', () => {
                 ItemName.AvasAssembler
             ]);
             result.onTask = false;
+            result.calculateDPS();
         });
 
         test('should calculate DPS correctly', () => {
-            result.calculateDPS(0);
             expect(result.dps).toBeCloseTo(3.625); //Matches fruitdeeps
         });
 
         test('should calculate maxHit correctly', () => {
-            result.calculateDPS(0);
             expect(result.maxHit).toBe(68); //Matches fruitdeeps
         });
 
         test('should calculate hitChance correctly', () => {
-            result.calculateDPS(0);
             expect(result.hitChance).toBeCloseTo(0.3198); //Matches fruitdeeps
         });
     });
@@ -187,38 +177,35 @@ describe('Calculator class', () => {
                 ItemName.AvasAssembler
             ]);
             result.onTask = true;
+            result.calculateDPS();
         });
 
         test('should calculate DPS correctly', () => {
-            result.calculateDPS(0);
             expect(result.dps).toBeCloseTo(4.782); //Matches fruitdeeps
         });
 
         test('should calculate maxHit correctly', () => {
-            result.calculateDPS(0);
             expect(result.maxHit).toBe(78); //Matches fruitdeeps
         });
 
         test('should calculate hitChance correctly', () => {
-            result.calculateDPS(0);
             expect(result.hitChance).toBeCloseTo(0.3678); //Matches fruitdeeps
         });
     });
 
     describe('tbow slayer dummy test', () => {
         beforeEach(() => {
-            result.targetMonster = monsters.get("Undead Combat Dummy") as TargetMonster;
-            result.onTask = true;
-        });
-
-        test('should calculate maxHit correctly', () => {
             result.gearSet = new GearSet([GearSetType.General], ItemName.TwistedBow, CombatStyle.Rapid, [
                 ItemName.BronzeArrow,
                 ItemName.SlayerHelmetI,
                 ItemName.MasoriBodyF
             ]);
             result.targetMonster = monsters.get("Undead Combat Dummy") as TargetMonster;
-            result.calculateDPS(0);
+            result.onTask = true;
+            result.calculateDPS();
+        });
+
+        test('should calculate maxHit correctly', () => {
             expect(result.maxHit).toBe(53); //Tested in game
         });
     });
@@ -235,20 +222,18 @@ describe('Calculator class', () => {
                 ItemName.ImbuedZamorakCape
             ]);
             result.onTask = false;
+            result.calculateDPS();
         });
 
         test('should calculate DPS correctly', () => {
-            result.calculateDPS(0);
             expect(result.dps).toBeCloseTo(2.625); //Matches fruitdeeps
         });
 
         test('should calculate maxHit correctly', () => {
-            result.calculateDPS(0);
             expect(result.maxHit).toBe(44); //Matches fruitdeeps
         });
 
         test('should calculate hitChance correctly', () => {
-            result.calculateDPS(0);
             expect(result.hitChance).toBeCloseTo(0.2864); //Matches fruitdeeps
         });
     });
@@ -265,20 +250,18 @@ describe('Calculator class', () => {
                 ItemName.ImbuedZamorakCape
             ]);
             result.onTask = true;
+            result.calculateDPS();
         });
 
         test('should calculate DPS correctly', () => {
-            result.calculateDPS(0);
             expect(result.dps).toBeCloseTo(3.431); //Matches fruitdeeps
         });
 
         test('should calculate maxHit correctly', () => {
-            result.calculateDPS(0);
             expect(result.maxHit).toBe(50); //Matches fruitdeeps
         });
 
         test('should calculate hitChance correctly', () => {
-            result.calculateDPS(0);
             expect(result.hitChance).toBeCloseTo(0.3293); //Matches fruitdeeps
         });
     });
@@ -294,20 +277,18 @@ describe('Calculator class', () => {
                 ItemName.ImbuedZamorakCape
             ]);
             result.onTask = false;
+            result.calculateDPS();
         });
 
         test('should calculate DPS correctly', () => {
-            result.calculateDPS(0);
             expect(result.dps).toBeCloseTo(6.024); //Matches fruitdeeps
         });
 
         test('should calculate maxHit correctly', () => {
-            result.calculateDPS(0);
             expect(result.maxHit).toBe(60); //Matches fruitdeeps
         });
 
         test('should calculate hitChance correctly', () => {
-            result.calculateDPS(0);
             expect(result.hitChance).toBeCloseTo(0.6024); //Matches fruitdeeps
         });
     });
@@ -323,20 +304,18 @@ describe('Calculator class', () => {
                 ItemName.ImbuedZamorakCape
             ]);
             result.onTask = true;
+            result.calculateDPS();
         });
 
         test('should calculate DPS correctly', () => {
-            result.calculateDPS(0);
             expect(result.dps).toBeCloseTo(7.524); //Matches fruitdeeps
         });
 
         test('should calculate maxHit correctly', () => {
-            result.calculateDPS(0);
             expect(result.maxHit).toBe(69); //Matches fruitdeeps
         });
 
         test('should calculate hitChance correctly', () => {
-            result.calculateDPS(0);
             expect(result.hitChance).toBeCloseTo(0.6524); //Matches fruitdeeps
         });
     });
@@ -352,20 +331,18 @@ describe('Calculator class', () => {
                 ItemName.ImbuedZamorakCape,
             ], Raid.TombsOfAmascut);
             result.targetMonster = monsters.get("Zebak") as TargetMonster;
+            result.calculateDPS(300);
         });
 
         test('should calculate DPS correctly', () => {
-            result.calculateDPS(300);
             expect(result.dps).toBeCloseTo(7.776); //Matches fruitdeeps
         });
 
         test('should calculate maxHit correctly', () => {
-            result.calculateDPS(300);
             expect(result.maxHit).toBe(71); //Matches fruitdeeps
         });
 
         test('should calculate hitChance correctly', () => {
-            result.calculateDPS(300);
             expect(result.hitChance).toBeCloseTo(0.6571); //Matches fruitdeeps
         });
     });
@@ -382,20 +359,18 @@ describe('Calculator class', () => {
                 ItemName.MagusRing
             ]);
             result.targetMonster = monsters.get("Verzik P2") as TargetMonster;
+            result.calculateDPS();
         });
 
         test('should calculate DPS correctly', () => {
-            result.calculateDPS(0);
             expect(result.dps).toBeCloseTo(8.7566); //Matches fruitdeeps and Bitterkoekje
         });
 
         test('should calculate maxHit correctly', () => {
-            result.calculateDPS(0);
             expect(result.maxHit).toBe(64); //Matches fruitdeeps and Bitterkoekje
         });
 
         test('should calculate hitChance correctly', () => {
-            result.calculateDPS(0);
             expect(result.hitChance).toBeCloseTo(0.8209); //Matches fruitdeeps and Bitterkoekje
         });
     });
@@ -412,20 +387,18 @@ describe('Calculator class', () => {
                 ItemName.AvasAssembler,
             ]);
             result.targetMonster = monsters.get("Olm (Head)") as TargetMonster;
+            result.calculateDPS();
         });
 
         test('should calculate DPS correctly', () => {
-            result.calculateDPS(0);
             expect(result.dps).toBeCloseTo(10.557); //Matches fruitdeeps
         });
 
         test('should calculate maxHit correctly', () => {
-            result.calculateDPS(0);
             expect(result.maxHit).toBe(77); //Matches fruitdeeps
         });
 
         test('should calculate hitChance correctly', () => {
-            result.calculateDPS(0);
             expect(result.hitChance).toBeCloseTo(0.8226); //Matches fruitdeeps
         });
     });
@@ -442,20 +415,18 @@ describe('Calculator class', () => {
                 ItemName.InfernalCape
             ]);
             result.targetMonster = monsters.get("Bloat") as TargetMonster;
+            result.calculateDPS();
         });
 
         test('should calculate DPS correctly', () => {
-            result.calculateDPS(0);
             expect(result.dps).toBeCloseTo(11.534); //Matches fruitdeeps
         });
 
         test('should calculate maxHit correctly', () => {
-            result.calculateDPS(0);
             expect(result.maxHit).toBe(81); //Matches fruitdeeps
         });
 
         test('should calculate hitChance correctly', () => {
-            result.calculateDPS(0);
             expect(result.hitChance).toBeCloseTo(0.8544); //Matches fruitdeeps
         });
     });
@@ -473,20 +444,18 @@ describe('Calculator class', () => {
                 ItemName.BellatorRing
             ]);
             result.targetMonster = monsters.get("Vardorvis") as TargetMonster;
+            result.calculateDPS();
         });
 
         test('should calculate DPS correctly', () => {
-            result.calculateDPS(0);
             expect(result.dps).toBeCloseTo(7.059); //Matches Bitterkoekje
         });
 
         test('should calculate maxHit correctly', () => {
-            result.calculateDPS(0);
             expect(result.maxHit).toBe(73); //Matches Bitterkoekje
         });
 
         test('should calculate hitChance correctly', () => {
-            result.calculateDPS(0);
             expect(result.hitChance).toBeCloseTo(0.5802); //Matches Bitterkoekje
         });
     });
@@ -504,20 +473,18 @@ describe('Calculator class', () => {
                 ItemName.BellatorRing
             ]);
             result.targetMonster = monsters.get("Karil") as TargetMonster;
+            result.calculateDPS();
         });
 
         test('should calculate DPS correctly', () => {
-            result.calculateDPS(0);
             expect(result.dps).toBeCloseTo(6.42); //Matches Bitterkoekje
         });
 
         test('should calculate maxHit correctly', () => {
-            result.calculateDPS(0);
             expect(result.maxHit).toBe(49); //Matches Bitterkoekje
         });
 
         test('should calculate hitChance correctly', () => {
-            result.calculateDPS(0);
             expect(result.hitChance).toBeCloseTo(0.7862); //Matches Bitterkoekje
         });
     });
@@ -536,20 +503,18 @@ describe('Calculator class', () => {
                 ItemName.InfernalCape
             ]);
             result.targetMonster = monsters.get("KQ") as TargetMonster;
+            result.calculateDPS();
         });
 
         test('should calculate DPS correctly', () => {
-            result.calculateDPS(0);
             expect(result.dps).toBeCloseTo(4.760); //Higher than fruitdeeps because their max hit is too low for proc
         });
 
         test('should calculate maxHit correctly', () => {
-            result.calculateDPS(0);
             expect(result.maxHit).toBe(165); //Tested in game hitting 55 without proc and then 165 with proc
         });
 
         test('should calculate hitChance correctly', () => {
-            result.calculateDPS(0);
             expect(result.hitChance).toBeCloseTo(0.3997); //Matches fruitdeeps
         });
     });
@@ -567,20 +532,18 @@ describe('Calculator class', () => {
                 ItemName.InfernalCape
             ]);
             result.targetMonster = monsters.get("KQ") as TargetMonster;
+            result.calculateDPS();
         });
 
         test('should calculate DPS correctly', () => {
-            result.calculateDPS(0);
             expect(result.dps).toBeCloseTo(6.308); //Higher than fruitdeeps because their max hit is too low for proc
         });
 
         test('should calculate maxHit correctly', () => {
-            result.calculateDPS(0);
             expect(result.maxHit).toBe(165); //Tested in game hitting 55 without proc and then 165 with proc
         });
 
         test('should calculate hitChance correctly', () => {
-            result.calculateDPS(0);
             expect(result.hitChance).toBeCloseTo(0.5309); //Matches fruitdeeps
         });
     });
@@ -599,20 +562,18 @@ describe('Calculator class', () => {
             ]);
             result.targetMonster = monsters.get("KQ") as TargetMonster;
             result.onTask = true;
+            result.calculateDPS();
         });
 
         test('should calculate DPS correctly', () => {
-            result.calculateDPS(0);
             expect(result.dps).toBeCloseTo(7.883); //Higher than fruitdeeps because their max hit is too low for proc
         });
 
         test('should calculate maxHit correctly', () => {
-            result.calculateDPS(0);
             expect(result.maxHit).toBe(183); //Tripled fruitdeeps
         });
 
         test('should calculate hitChance correctly', () => {
-            result.calculateDPS(0);
             expect(result.hitChance).toBeCloseTo(0.5979); //Matches fruitdeeps
         });
     });
@@ -631,20 +592,18 @@ describe('Calculator class', () => {
             ]);
             result.targetMonster = monsters.get("KQ") as TargetMonster;
             result.onTask = true;
+            result.calculateDPS();
         });
 
         test('should calculate DPS correctly', () => {
-            result.calculateDPS(0);
             expect(result.dps).toBeCloseTo(9.695); //Higher than fruitdeeps because their max hit is too low for proc
         });
 
         test('should calculate maxHit correctly', () => {
-            result.calculateDPS(0);
             expect(result.maxHit).toBe(183); //Tripled fruitdeeps
         });
 
         test('should calculate hitChance correctly', () => {
-            result.calculateDPS(0);
             expect(result.hitChance).toBeCloseTo(0.7348); //Matches fruitdeeps
         });
     });
@@ -662,20 +621,18 @@ describe('Calculator class', () => {
                 ItemName.InfernalCape
             ]);
             result.targetMonster = monsters.get("Bloat") as TargetMonster;
+            result.calculateDPS();
         });
 
         test('should calculate DPS correctly', () => {
-            result.calculateDPS(0);
             expect(result.dps).toBeCloseTo(10.207); //Matches fruitdeeps
         });
 
         test('should calculate maxHit correctly', () => {
-            result.calculateDPS(0);
             expect(result.maxHit).toBe(58); //Matches fruitdeeps
         });
 
         test('should calculate hitChance correctly', () => {
-            result.calculateDPS(0);
             expect(result.hitChance).toBeCloseTo(0.8447); //Matches fruitdeeps
         });
     });
@@ -693,20 +650,18 @@ describe('Calculator class', () => {
                 ItemName.InfernalCape
             ]);
             result.targetMonster = monsters.get("Bloat") as TargetMonster;
+            result.calculateDPS();
         });
 
         test('should calculate DPS correctly', () => {
-            result.calculateDPS(0);
             expect(result.dps).toBeCloseTo(10.613); //Matches fruitdeeps
         });
 
         test('should calculate maxHit correctly', () => {
-            result.calculateDPS(0);
             expect(result.maxHit).toBe(60); //Matches fruitdeeps
         });
 
         test('should calculate hitChance correctly', () => {
-            result.calculateDPS(0);
             expect(result.hitChance).toBeCloseTo(0.8490); //Matches fruitdeeps
         });
     });
@@ -724,20 +679,18 @@ describe('Calculator class', () => {
                 ItemName.InfernalCape
             ]);
             result.targetMonster = monsters.get("Bloat") as TargetMonster;
+            result.calculateDPS();
         });
 
         test('should calculate DPS correctly', () => {
-            result.calculateDPS(0);
             expect(result.dps).toBeCloseTo(8.510); //Matches fruitdeeps
         });
 
         test('should calculate maxHit correctly', () => {
-            result.calculateDPS(0);
             expect(result.maxHit).toBe(49); //Matches fruitdeeps
         });
 
         test('should calculate hitChance correctly', () => {
-            result.calculateDPS(0);
             expect(result.hitChance).toBeCloseTo(0.8336); //Matches fruitdeeps
         });
     });
@@ -754,20 +707,18 @@ describe('Calculator class', () => {
                 ItemName.AvasAssembler
             ]);
             result.targetMonster = monsters.get("Bloat") as TargetMonster;
+            result.calculateDPS();
         });
 
         test('should calculate DPS correctly', () => {
-            result.calculateDPS(0);
             expect(result.dps).toBeCloseTo(1.532); //Matches fruitdeeps
         });
 
         test('should calculate maxHit correctly', () => {
-            result.calculateDPS(0);
             expect(result.maxHit).toBe(62); //Matches fruitdeeps
         });
 
         test('should calculate hitChance correctly', () => {
-            result.calculateDPS(0);
             expect(result.hitChance).toBeCloseTo(0.1482); //Matches fruitdeeps
         });
     });
@@ -784,20 +735,18 @@ describe('Calculator class', () => {
                 ItemName.AvasAssembler
             ]);
             result.targetMonster = monsters.get("Bloat") as TargetMonster;
+            result.calculateDPS();
         });
 
         test('should calculate DPS correctly', () => {
-            result.calculateDPS(0);
             expect(result.dps).toBeCloseTo(1.532); //Matches fruitdeeps
         });
 
         test('should calculate maxHit correctly', () => {
-            result.calculateDPS(0);
             expect(result.maxHit).toBe(62); //Matches fruitdeeps
         });
 
         test('should calculate hitChance correctly', () => {
-            result.calculateDPS(0);
             expect(result.hitChance).toBeCloseTo(0.1482); //Matches fruitdeeps
         });
     });
@@ -813,20 +762,18 @@ describe('Calculator class', () => {
                 ItemName.ImbuedZamorakCape
             ]);
             result.targetMonster = monsters.get("Bloat") as TargetMonster;
+            result.calculateDPS();
         });
 
         test('should calculate DPS correctly', () => {
-            result.calculateDPS(0);
             expect(result.dps).toBeCloseTo(0.928); //Matches fruitdeeps
         });
 
         test('should calculate maxHit correctly', () => {
-            result.calculateDPS(0);
             expect(result.maxHit).toBe(39); //Matches fruitdeeps
         });
 
         test('should calculate hitChance correctly', () => {
-            result.calculateDPS(0);
             expect(result.hitChance).toBeCloseTo(0.1143); //Matches fruitdeeps
         });
     });
@@ -842,20 +789,18 @@ describe('Calculator class', () => {
                 ItemName.ImbuedZamorakCape
             ]);
             result.targetMonster = monsters.get("Bloat") as TargetMonster;
+            result.calculateDPS();
         });
 
         test('should calculate DPS correctly', () => {
-            result.calculateDPS(0);
             expect(result.dps).toBeCloseTo(0.9522); //Matches fruitdeeps
         });
 
         test('should calculate maxHit correctly', () => {
-            result.calculateDPS(0);
             expect(result.maxHit).toBe(40); //Matches Bitterkoekje and tested in game
         });
 
         test('should calculate hitChance correctly', () => {
-            result.calculateDPS(0);
             expect(result.hitChance).toBeCloseTo(0.1143); //Matches fruitdeeps
         });
     });
@@ -873,20 +818,18 @@ describe('Calculator class', () => {
                 ItemName.InfernalCape
             ]);
             result.targetMonster = monsters.get("Zamorak") as TargetMonster;
+            result.calculateDPS();
         });
 
         test('should calculate DPS correctly', () => {
-            result.calculateDPS(0);
             expect(result.dps).toBeCloseTo(6.159); //Matches Bitterkoekje
         });
 
         test('should calculate maxHit correctly', () => {
-            result.calculateDPS(0);
             expect(result.maxHit).toBe(56); //Matches Bitterkoekje
         });
 
         test('should calculate hitChance correctly', () => {
-            result.calculateDPS(0);
             expect(result.hitChance).toBeCloseTo(0.5279); //Matches Bitterkoekje
         });
     });
@@ -905,20 +848,18 @@ describe('Calculator class', () => {
             ]);
             result.targetMonster = monsters.get("Zamorak") as TargetMonster;
             result.onTask = true;
+            result.calculateDPS();
         });
 
         test('should calculate DPS correctly', () => {
-            result.calculateDPS(0);
             expect(result.dps).toBeCloseTo(7.567); //Matches Bitterkoekje
         });
 
         test('should calculate maxHit correctly', () => {
-            result.calculateDPS(0);
             expect(result.maxHit).toBe(61); //Matches Bitterkoekje
         });
 
         test('should calculate hitChance correctly', () => {
-            result.calculateDPS(0);
             expect(result.hitChance).toBeCloseTo(0.5954); //Matches Bitterkoekje
         });
     });
@@ -936,20 +877,18 @@ describe('Calculator class', () => {
                 ItemName.InfernalCape
             ]);
             result.targetMonster = monsters.get("Olm (Left Claw)") as TargetMonster;
+            result.calculateDPS();
         });
 
         test('should calculate DPS correctly', () => {
-            result.calculateDPS(0);
             expect(result.dps).toBeCloseTo(8.519); //Matches Bitterkoekje
         });
 
         test('should calculate maxHit correctly', () => {
-            result.calculateDPS(0);
             expect(result.maxHit).toBe(56); //Matches Bitterkoekje
         });
 
         test('should calculate hitChance correctly', () => {
-            result.calculateDPS(0);
             expect(result.hitChance).toBeCloseTo(0.7302); //Matches Bitterkoekje
         });
     });
@@ -968,20 +907,18 @@ describe('Calculator class', () => {
                 ItemName.UltorRing
             ]);
             result.targetMonster = monsters.get("Vorkath") as TargetMonster;
+            result.calculateDPS();
         });
 
         test('should calculate DPS correctly', () => {
-            result.calculateDPS(0);
             expect(result.dps).toBeCloseTo(10.892); //Matches Bitterkoekje
         });
 
         test('should calculate maxHit correctly', () => {
-            result.calculateDPS(0);
             expect(result.maxHit).toBe(68); //Matches Bitterkoekje
         });
 
         test('should calculate hitChance correctly', () => {
-            result.calculateDPS(0);
             expect(result.hitChance).toBeCloseTo(0.7688); //Matches Bitterkoekje
         });
     });
@@ -999,20 +936,18 @@ describe('Calculator class', () => {
                 ItemName.AvasAssembler,
             ]);
             result.targetMonster = monsters.get("Vorkath") as TargetMonster;
+            result.calculateDPS();
         });
 
         test('should calculate DPS correctly', () => {
-            result.calculateDPS(0);
             expect(result.dps).toBeCloseTo(10.199); //Matches Bitterkoekje
         });
 
         test('should calculate maxHit correctly', () => {
-            result.calculateDPS(0);
             expect(result.maxHit).toBe(80); //Matches Bitterkoekje
         });
 
         test('should calculate hitChance correctly', () => {
-            result.calculateDPS(0);
             expect(result.baseHitChance).toBeCloseTo(0.8410); //Matches Bitterkoekje
             expect(result.hitChance).toBeCloseTo(0.8585); //Matches fruitdeeps
         });
@@ -1032,20 +967,18 @@ describe('Calculator class', () => {
                 ItemName.UltorRing
             ]);
             result.targetMonster = monsters.get("KQ") as TargetMonster;
+            result.calculateDPS();
         });
 
         test('should calculate DPS correctly', () => {
-            result.calculateDPS(0);
             expect(result.dps).toBeCloseTo(8.107); //Matches Bitterkoekje
         });
 
         test('should calculate maxHit correctly', () => {
-            result.calculateDPS(0);
             expect(result.maxHit).toBe(55); //Matches Bitterkoekje
         });
 
         test('should calculate hitChance correctly', () => {
-            result.calculateDPS(0);
             expect(result.hitChance).toBeCloseTo(0.7076); //Matches Bitterkoekje
         });
     });
@@ -1065,20 +998,18 @@ describe('Calculator class', () => {
                 ItemName.UltorRing
             ]);
             result.targetMonster = monsters.get("KQ") as TargetMonster;
+            result.calculateDPS();
         });
 
         test('should calculate DPS correctly', () => {
-            result.calculateDPS(0);
             expect(result.dps).toBeCloseTo(7.948); //Matches Bitterkoekje
         });
 
         test('should calculate maxHit correctly', () => {
-            result.calculateDPS(0);
             expect(result.maxHit).toBe(55); //Matches Bitterkoekje
         });
 
         test('should calculate hitChance correctly', () => {
-            result.calculateDPS(0);
             expect(result.hitChance).toBeCloseTo(0.6936); //Matches Bitterkoekje
         });
     });
@@ -1097,20 +1028,18 @@ describe('Calculator class', () => {
                 ItemName.UltorRing
             ]);
             result.targetMonster = monsters.get("KQ") as TargetMonster;
+            result.calculateDPS();
         });
 
         test('should calculate DPS correctly', () => {
-            result.calculateDPS(0);
             expect(result.dps).toBeCloseTo(4.114); //Matches Bitterkoekje
         });
 
         test('should calculate maxHit correctly', () => {
-            result.calculateDPS(0);
             expect(result.maxHit).toBe(53); //Matches Bitterkoekje
         });
 
         test('should calculate hitChance correctly', () => {
-            result.calculateDPS(0);
             expect(result.hitChance).toBeCloseTo(0.3726); //Matches Bitterkoekje
         });
     });
@@ -1128,20 +1057,18 @@ describe('Calculator class', () => {
                 ItemName.NecklaceOfAnguish,
                 ItemName.AvasAssembler,
             ]);
+            result.calculateDPS();
         });
 
         test('should calculate DPS correctly', () => {
-            result.calculateDPS(0);
             expect(result.dps).toBeCloseTo(2.535); //Matches Bitterkoekje
         });
 
         test('should calculate maxHit correctly', () => {
-            result.calculateDPS(0);
             expect(result.maxHit).toBe(48); //Matches Bitterkoekje
         });
 
         test('should calculate hitChance correctly', () => {
-            result.calculateDPS(0);
             expect(result.hitChance).toBeCloseTo(0.3169); //Matches Bitterkoekje
         });
     });
@@ -1159,20 +1086,18 @@ describe('Calculator class', () => {
                 ItemName.NecklaceOfAnguish,
                 ItemName.AvasAssembler,
             ]);
+            result.calculateDPS();
         });
 
         test('should calculate DPS correctly', () => {
-            result.calculateDPS(0);
             expect(result.dps).toBeCloseTo(2.202); //Matches Bitterkoekje
         });
 
         test('should calculate maxHit correctly', () => {
-            result.calculateDPS(0);
             expect(result.maxHit).toBe(49); //Matches Bitterkoekje
         });
 
         test('should calculate hitChance correctly', () => {
-            result.calculateDPS(0);
             expect(result.hitChance).toBeCloseTo(0.3236); //Matches Bitterkoekje
         });
     });
@@ -1190,20 +1115,18 @@ describe('Calculator class', () => {
                 ItemName.NecklaceOfAnguish,
                 ItemName.AvasAssembler,
             ]);
+            result.calculateDPS();
         });
 
         test('should calculate DPS correctly', () => {
-            result.calculateDPS(0);
             expect(result.dps).toBeCloseTo(3.265); //Matches Bitterkoekje
         });
 
         test('should calculate maxHit correctly', () => {
-            result.calculateDPS(0);
             expect(result.maxHit).toBe(55); //Matches Bitterkoekje
         });
 
         test('should calculate hitChance correctly', () => {
-            result.calculateDPS(0);
             expect(result.hitChance).toBeCloseTo(0.3921); //Matches Fruitdeeps (with proc)
         });
     });
@@ -1221,20 +1144,18 @@ describe('Calculator class', () => {
                 ItemName.NecklaceOfAnguish,
                 ItemName.AvasAssembler,
             ]);
+            result.calculateDPS();
         });
 
         test('should calculate DPS correctly', () => {
-            result.calculateDPS(0);
             expect(result.dps).toBeCloseTo(2.816); //Matches Bitterkoekje
         });
 
         test('should calculate maxHit correctly', () => {
-            result.calculateDPS(0);
             expect(result.maxHit).toBe(56); //Matches Bitterkoekje
         });
 
         test('should calculate hitChance correctly', () => {
-            result.calculateDPS(0);
             expect(result.hitChance).toBeCloseTo(0.3980); //Matches Fruitdeeps (with proc)
         });
     });
@@ -1252,20 +1173,18 @@ describe('Calculator class', () => {
                 ItemName.NecklaceOfAnguish,
                 ItemName.AvasAssembler,
             ]);
+            result.calculateDPS();
         });
 
         test('should calculate DPS correctly', () => {
-            result.calculateDPS(0);
             expect(result.dps).toBeCloseTo(3.490); //Matches Bitterkoekje
         });
 
         test('should calculate maxHit correctly', () => {
-            result.calculateDPS(0);
             expect(result.maxHit).toBe(51); //Matches Bitterkoekje
         });
 
         test('should calculate hitChance correctly', () => {
-            result.calculateDPS(0);
             expect(result.hitChance).toBeCloseTo(0.3620); //Matches Fruitdeeps (with proc)
         });
     });
@@ -1283,20 +1202,18 @@ describe('Calculator class', () => {
                 ItemName.NecklaceOfAnguish,
                 ItemName.AvasAssembler,
             ]);
+            result.calculateDPS();
         });
 
         test('should calculate DPS correctly', () => {
-            result.calculateDPS(0);
             expect(result.dps).toBeCloseTo(2.593); //Matches Bitterkoekje
         });
 
         test('should calculate maxHit correctly', () => {
-            result.calculateDPS(0);
             expect(result.maxHit).toBe(57); //Matches Bitterkoekje
         });
 
         test('should calculate hitChance correctly', () => {
-            result.calculateDPS(0);
             expect(result.hitChance).toBeCloseTo(0.3169); //Matches Bitterkoekje
         });
     });
@@ -1314,20 +1231,18 @@ describe('Calculator class', () => {
                 ItemName.NecklaceOfAnguish,
                 ItemName.AvasAssembler,
             ]);
+            result.calculateDPS();
         });
 
         test('should calculate DPS correctly', () => {
-            result.calculateDPS(0);
             expect(result.dps).toBeCloseTo(2.68); //Matches Bitterkoekje
         });
 
         test('should calculate maxHit correctly', () => {
-            result.calculateDPS(0);
             expect(result.maxHit).toBe(58); //Matches Bitterkoekje
         });
 
         test('should calculate hitChance correctly', () => {
-            result.calculateDPS(0);
             expect(result.hitChance).toBeCloseTo(0.3269); //Matches Bitterkoekje
         });
     });
@@ -1345,20 +1260,18 @@ describe('Calculator class', () => {
                 ItemName.NecklaceOfAnguish,
                 ItemName.AvasAssembler,
             ]);
+            result.calculateDPS();
         });
 
         test('should calculate DPS correctly', () => {
-            result.calculateDPS(0);
             expect(result.dps).toBeCloseTo(3.427); //Matches Bitterkoekje
         });
 
         test('should calculate maxHit correctly', () => {
-            result.calculateDPS(0);
             expect(result.maxHit).toBe(60); //Matches Bitterkoekje
         });
 
         test('should calculate hitChance correctly', () => {
-            result.calculateDPS(0);
             expect(result.baseHitChance).toBeCloseTo(0.3269) //Matches Bitterkoekje
             expect(result.hitChance).toBeCloseTo(0.401);
         });
