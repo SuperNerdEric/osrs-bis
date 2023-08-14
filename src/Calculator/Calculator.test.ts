@@ -1331,5 +1331,37 @@ describe('Calculator class', () => {
             expect(result.hitChance).toBeCloseTo(0.3269); //Matches Bitterkoekje
         });
     });
+
+    describe('with zaryte crossbow with Diamond Dragon Bolts (e) on rapid', () => {
+        beforeEach(() => {
+            result.gearSet = new GearSet([GearSetType.General], ItemName.ZaryteCrossbow, CombatStyle.Rapid, [
+                ItemName.DiamondDragonBoltsE,
+                ItemName.TwistedBuckler,
+                ItemName.MasoriMaskF,
+                ItemName.MasoriBodyF,
+                ItemName.MasoriChapsF,
+                ItemName.ZaryteVambraces,
+                ItemName.PegasianBoots,
+                ItemName.NecklaceOfAnguish,
+                ItemName.AvasAssembler,
+            ]);
+        });
+
+        test('should calculate DPS correctly', () => {
+            result.calculateDPS(0);
+            expect(result.dps).toBeCloseTo(3.427); //Matches Bitterkoekje
+        });
+
+        test('should calculate maxHit correctly', () => {
+            result.calculateDPS(0);
+            expect(result.maxHit).toBe(60); //Matches Bitterkoekje
+        });
+
+        test('should calculate hitChance correctly', () => {
+            result.calculateDPS(0);
+            expect(result.baseHitChance).toBeCloseTo(0.3269) //Matches Bitterkoekje
+            expect(result.hitChance).toBeCloseTo(0.401);
+        });
+    });
 });
 
