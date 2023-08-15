@@ -158,7 +158,18 @@ const MainContent: React.FC<MainContentProps> = ({
             {
                 header: () => <span>DPS</span>,
                 accessorKey: 'dps',
-                accessorFn: row => (Math.round(row.dps * 1000) / 1000),
+                accessorFn: row => {
+                    return (
+                        <Tooltip title={
+                            <div>
+                                <div>Average damage per hit: {Math.round(row.averageDamagePerHit * 1000) / 1000}</div>
+                                <div>Attack interval: {row.attackInterval} seconds</div>
+                            </div>
+                        }>
+                            <div>{Math.round(row.dps * 1000) / 1000}</div>
+                        </Tooltip>
+                    )
+                },
                 id: 'dps',
                 cell: info => info.getValue(),
             },
@@ -172,7 +183,18 @@ const MainContent: React.FC<MainContentProps> = ({
             {
                 header: () => <span>Hit Chance</span>,
                 accessorKey: 'hitChance',
-                accessorFn: row => `${Math.round(row.hitChance * 100 * 100) / 100}%`,
+                accessorFn: row => {
+                    return (
+                        <Tooltip title={
+                            <div>
+                                <div>Max attack roll: {row.attackRoll.toLocaleString()}</div>
+                                <div>Max defence roll: {row.defenceRoll.toLocaleString()}</div>
+                            </div>
+                        }>
+                            <div>{Math.round(row.hitChance * 100 * 100) / 100}%</div>
+                        </Tooltip>
+                    )
+                },
                 id: 'hitChance',
                 cell: info => info.getValue(),
             },

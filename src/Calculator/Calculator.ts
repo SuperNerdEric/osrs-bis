@@ -37,10 +37,13 @@ import {CrystalEquipmentMultiplierStrategy} from "./MultiplierStrategies/Crystal
 export class Calculator {
     dps: number = 0;
     maxHit: number = 0;
+    attackRoll: number = 0;
+    defenceRoll: number = 0;
     averageDamagePerHit: number = 0;
     baseHitChance: number = 0;
     hitChance: number = 0;
     defenceReduction: number = 0;
+    attackInterval: number = 0;
     gearSet: GearSet;
     player: Player = new Player();
     targetMonster: TargetMonster = new TargetMonster();
@@ -59,20 +62,20 @@ export class Calculator {
         this.maxHit = this.calculateMaxHit(effectiveStrengthLevel, gearStrengthMultipliers, this.gearSet.styleType);
 
         const gearAccuracyMultipliers = this.getGearAccuracyMultipliers();
-        const attackRoll = this.calculateAttackRoll(effectiveAttackLevel, gearAccuracyMultipliers);
-        const defenceRoll = this.calculateDefenceRoll(invocationLevel, attackStyle);
+        this.attackRoll = this.calculateAttackRoll(effectiveAttackLevel, gearAccuracyMultipliers);
+        this.defenceRoll = this.calculateDefenceRoll(invocationLevel, attackStyle);
 
-        this.hitChance = this.calculateHitChance(attackRoll, defenceRoll);
+        this.hitChance = this.calculateHitChance(this.attackRoll, this.defenceRoll);
 
         new TektonMultiplierStrategy(this).calculateMultiplier();
         this.averageDamagePerHit = this.calculateDamagePerHit();
 
-        let weaponSpeed = this.gearSet.weapon.speedSeconds;
+        this.attackInterval = this.gearSet.weapon.speedSeconds;
         if (this.gearSet.weaponStyle === WeaponStyle.Rapid) {
-            weaponSpeed -= 0.6;
+            this.attackInterval -= 0.6;
         }
 
-        this.dps = this.calculateDps(weaponSpeed);
+        this.dps = this.calculateDps(this.attackInterval);
     }
 
     private calculateEffectiveStrengthLevel(attackStyle: StyleType) {
@@ -238,9 +241,11 @@ export class Calculator {
 
         const styleDefenceBonus = this.targetMonster.defenceStats[attackStyle];
         let defenceRoll = baseDefence * (styleDefenceBonus + 64);
-        const invocationScaledDefenceRoll = defenceRoll + Math.floor(defenceRoll * Math.floor(invocationLevel / 5) * 2) / 100;
+
         if (invocationLevel > 0) {
-            defenceRoll = invocationScaledDefenceRoll;
+            // For every 5 raid levels, it increases by 2%
+            const multiplier = 1 + (invocationLevel / 5) * 0.02;
+            defenceRoll = Math.floor(defenceRoll * multiplier);
         }
         return defenceRoll;
     }
