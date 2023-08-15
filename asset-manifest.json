@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.b16102b7.css",
-    "main.js": "/static/js/main.b7345f21.js",
+    "main.css": "/static/css/main.8a8a8332.css",
+    "main.js": "/static/js/main.e31da8f8.js",
     "static/js/787.f7d32ca0.chunk.js": "/static/js/787.f7d32ca0.chunk.js",
     "static/media/Duke_Sucellus.png": "/static/media/Duke_Sucellus.20671a0f119b769958f1.png",
     "static/media/Fire_cape.png": "/static/media/Fire_cape.9fa34a7e2c3fc7a55285.png",
@@ -179,6 +179,7 @@
     "static/media/Necklace_of_anguish.png": "/static/media/Necklace_of_anguish.4470235995de2cfe5144.png",
     "static/media/Zamorakian_hasta.png": "/static/media/Zamorakian_hasta.7d1ba1a324e0025170dc.png",
     "static/media/Void_knight_gloves.png": "/static/media/Void_knight_gloves.005f394158de6ff9a09a.png",
+    "static/media/Achievement_Diaries.png": "/static/media/Achievement_Diaries.c01cff90b13b79f3f9f4.png",
     "static/media/Occult_necklace.png": "/static/media/Occult_necklace.b5467eee40dbe71845aa.png",
     "static/media/Elidinis_ward_f.webp": "/static/media/Elidinis_ward_f.431bb50d4f5171350b7e.webp",
     "static/media/Dragon_arrow.webp": "/static/media/Dragon_arrow.81c66cda0eca85308296.webp",
@@ -256,12 +257,12 @@
     "static/media/Void_knight_robe.webp": "/static/media/Void_knight_robe.e46393a4f5a26ca7786e.webp",
     "static/media/Zamorakian_hasta.webp": "/static/media/Zamorakian_hasta.be62bb7cec7ec3005a5e.webp",
     "index.html": "/index.html",
-    "main.b16102b7.css.map": "/static/css/main.b16102b7.css.map",
-    "main.b7345f21.js.map": "/static/js/main.b7345f21.js.map",
+    "main.8a8a8332.css.map": "/static/css/main.8a8a8332.css.map",
+    "main.e31da8f8.js.map": "/static/js/main.e31da8f8.js.map",
     "787.f7d32ca0.chunk.js.map": "/static/js/787.f7d32ca0.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.b16102b7.css",
-    "static/js/main.b7345f21.js"
+    "static/css/main.8a8a8332.css",
+    "static/js/main.e31da8f8.js"
   ]
 }
