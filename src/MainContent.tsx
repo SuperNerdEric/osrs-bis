@@ -114,7 +114,13 @@ const MainContent: React.FC<MainContentProps> = ({
                 header: () => <span>Style</span>,
                 accessorKey: 'combatStyle',
                 id: 'combatStyle',
-                accessorFn: row => row.gearSet.combatStyle,
+                accessorFn: row => {
+                    return (
+                        <Tooltip title={`${row.gearSet.weaponStyle} - ${row.gearSet.styleType}`}>
+                            <div>{row.gearSet.combatStyle}</div>
+                        </Tooltip>
+                    )
+                },
                 cell: info => info.getValue(),
             },
             {
