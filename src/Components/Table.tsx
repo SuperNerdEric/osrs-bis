@@ -12,7 +12,7 @@ import {
 import {Calculator} from "../Calculator/Calculator";
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-import {Stack} from "@mui/material";
+import {Stack, styled} from "@mui/material";
 import IconButton from '@mui/material/IconButton';
 import FirstPageIcon from '@mui/icons-material/FirstPage';
 import LastPageIcon from '@mui/icons-material/LastPage';
@@ -23,6 +23,24 @@ interface GearTableProps {
     data: Calculator[];
     columns: any;
 }
+
+const StyledIconButton = styled(IconButton)`
+  color: black;
+  background-color: #d8ccb4;
+  padding: 8px;
+  border: 1px solid #ccc;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: white;
+    color: black;
+  }
+
+  &:disabled {
+    color: #888;
+    background-color: #ccc;
+  }
+`;
 
 export function GearTable({data, columns}: GearTableProps) {
     type SortKey = 'dps' | 'maxHit' | 'hitChance';
@@ -118,20 +136,21 @@ export function GearTable({data, columns}: GearTableProps) {
                 </tbody>
             </table>
             <div className="h-2"/>
-            <Stack direction="column" alignItems="center" justifyContent="center" gap={1}  sx={{ marginBottom: '40px'}}>
+            <Stack direction="column" alignItems="center" justifyContent="center" gap={1} sx={{marginBottom: '40px'}}>
                 <Stack direction="row" alignItems="center" justifyContent="center" gap={1}>
-                    <IconButton onClick={() => table.setPageIndex(0)} disabled={!table.getCanPreviousPage()}>
-                        <FirstPageIcon />
-                    </IconButton>
-                    <IconButton onClick={() => table.previousPage()} disabled={!table.getCanPreviousPage()}>
-                        <NavigateBeforeIcon />
-                    </IconButton>
-                    <IconButton onClick={() => table.nextPage()} disabled={!table.getCanNextPage()}>
-                        <NavigateNextIcon />
-                    </IconButton>
-                    <IconButton onClick={() => table.setPageIndex(table.getPageCount() - 1)} disabled={!table.getCanNextPage()}>
-                        <LastPageIcon />
-                    </IconButton>
+                    <StyledIconButton onClick={() => table.setPageIndex(0)} disabled={!table.getCanPreviousPage()}>
+                        <FirstPageIcon/>
+                    </StyledIconButton>
+                    <StyledIconButton onClick={() => table.previousPage()} disabled={!table.getCanPreviousPage()}>
+                        <NavigateBeforeIcon/>
+                    </StyledIconButton>
+                    <StyledIconButton onClick={() => table.nextPage()} disabled={!table.getCanNextPage()}>
+                        <NavigateNextIcon/>
+                    </StyledIconButton>
+                    <StyledIconButton onClick={() => table.setPageIndex(table.getPageCount() - 1)}
+                                      disabled={!table.getCanNextPage()}>
+                        <LastPageIcon/>
+                    </StyledIconButton>
                 </Stack>
                 <Stack direction="row" alignItems="center" justifyContent="center" gap={1}>
                     <div>Page</div>
