@@ -1036,3 +1036,25 @@ monster.defenceStats = {
     [StyleType.Ranged]: 50
 };
 monsters.set(monster.name, monster);
+
+monster = new TargetMonster();
+monster.name = "King Black Dragon";
+monster.shortName = "KBD";
+monster.size = "5x5";
+monster.raid = Raid.None;
+monster.slayerMonster = true;
+monster.isDraconic = true;
+monster.imagePath = './Images/Monsters/King_Black_Dragon.png';
+monster.currentHitpoints = 240;
+monster.defenceLevel = 240;
+monster.maxDefenceReduction = 240;
+monster.magicLevel = 240;
+monster.magicAccuracy = 0;
+monster.defenceStats = {
+    [StyleType.Stab]: 70,
+    [StyleType.Slash]: 90,
+    [StyleType.Crush]: 90,
+    [StyleType.Magic]: 80,
+    [StyleType.Ranged]: 70
+};
+monsters.set(monster.shortName, monster);
