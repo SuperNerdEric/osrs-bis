@@ -4,6 +4,7 @@ import {ItemName} from "./ItemName";
 import {Raid} from "./Raid";
 import {generateRangedGearSets} from "./GearSets/RangedGearSets";
 import {generateMeleeGearSets} from "./GearSets/MeleeGearSets";
+import {generateMageGearsets} from "./GearSets/MageGearSets";
 
 export enum GearSetType {
     General,
@@ -140,72 +141,7 @@ export class GearSet {
 
 export const gearSets: GearSet[] = [];
 
-new GearSet([GearSetType.Slayer], ItemName.TumekensShadow, CombatStyle.Accurate, [
-    ItemName.SlayerHelmetI,
-    ItemName.AncestralRobeTop,
-    ItemName.AncestralRobeBottom,
-    ItemName.TormentedBracelet,
-    ItemName.OccultNecklace,
-    ItemName.ImbuedZamorakCape
-]);
-
-new GearSet([GearSetType.General], ItemName.TumekensShadow, CombatStyle.Accurate, [
-    ItemName.AncestralHat,
-    ItemName.AncestralRobeTop,
-    ItemName.AncestralRobeBottom,
-    ItemName.TormentedBracelet,
-    ItemName.OccultNecklace,
-    ItemName.ImbuedZamorakCape
-]);
-
-new GearSet([GearSetType.General], ItemName.SanguinestiStaff, CombatStyle.Accurate, [
-    ItemName.ElidinisWardF,
-    ItemName.AncestralHat,
-    ItemName.AncestralRobeTop,
-    ItemName.AncestralRobeBottom,
-    ItemName.TormentedBracelet,
-    ItemName.OccultNecklace,
-    ItemName.ImbuedZamorakCape
-]);
-
-new GearSet([GearSetType.General], ItemName.SanguinestiStaff, CombatStyle.Accurate, [
-    ItemName.BookOfTheDead,
-    ItemName.AhrimsRobetop,
-    ItemName.AhrimsRobeskirt,
-    ItemName.TormentedBracelet,
-    ItemName.OccultNecklace,
-    ItemName.ImbuedZamorakCape
-]);
-
-new GearSet([GearSetType.General], ItemName.SanguinestiStaff, CombatStyle.Accurate, [
-    ItemName.ElidinisWardF,
-    ItemName.AhrimsRobetop,
-    ItemName.AhrimsRobeskirt,
-    ItemName.TormentedBracelet,
-    ItemName.OccultNecklace,
-    ItemName.ImbuedZamorakCape
-]);
-
-new GearSet([GearSetType.General], ItemName.SanguinestiStaff, CombatStyle.Accurate, [
-    ItemName.ElidinisWardF,
-    ItemName.VoidMageHelm,
-    ItemName.EliteVoidTop,
-    ItemName.EliteVoidRobe,
-    ItemName.VoidKnightGloves,
-    ItemName.OccultNecklace,
-    ItemName.ImbuedZamorakCape
-]);
-
-new GearSet([GearSetType.General], ItemName.TumekensShadow, CombatStyle.Accurate, [
-    ItemName.AncestralHat,
-    ItemName.AncestralRobeTop,
-    ItemName.AncestralRobeBottom,
-    ItemName.TormentedBracelet,
-    ItemName.OccultNecklace,
-    ItemName.ImbuedZamorakCape,
-    ItemName.MagusRing
-]);
-
+generateMageGearsets();
 generateRangedGearSets();
 generateMeleeGearSets();
 

@@ -412,6 +412,14 @@ createItem(ItemName.ImbuedZamorakCape, {
     mageStrength: 2,
 });
 
+createItem(ItemName.AhrimsHood, {
+    imagePath: "./Images/ItemsOld/Ahrims_hood.png",
+    wikiLink: "https://oldschool.runescape.wiki/w/Ahrim%27s_hood",
+    slot: Slot.Helm,
+    magic: 6,
+    ranged: -2,
+});
+
 createItem(ItemName.AhrimsRobetop, {
     imagePath: "./Images/Items/Ahrims_robetop.webp",
     wikiLink: "https://oldschool.runescape.wiki/w/Ahrim%27s_robetop",
@@ -424,6 +432,13 @@ createItem(ItemName.AhrimsRobeskirt, {
     wikiLink: "https://oldschool.runescape.wiki/w/Ahrim%27s_robeskirt",
     slot: Slot.Legs,
     magic: 22,
+});
+
+createItem(ItemName.EternalBoots, {
+    imagePath: "./Images/ItemsOld/Eternal_boots.png",
+    wikiLink: "https://oldschool.runescape.wiki/w/Eternal_boots",
+    slot: Slot.Boots,
+    magic: 8,
 });
 
 createItem(ItemName.BookOfTheDead, {
