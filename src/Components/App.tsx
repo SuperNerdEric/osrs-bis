@@ -46,7 +46,13 @@ function App() {
     return (
         <ThemeProvider theme={theme}>
             <div className="App">
-                <TopBar urlState={urlState} setUrlState={setUrlState}/>
+                <TopBar urlState={urlState} setUrlState={setUrlState} setTargetMonster={(targetMonster: TargetMonster) => {
+                    setUrlState({
+                        target: targetMonster.shortName || targetMonster.name,
+                        invocationLevel: targetMonster.raid === Raid.TombsOfAmascut ? urlState.invocationLevel : undefined,
+                        defenceReduction: urlState.defenceReduction,
+                    });
+                }}/>
                 <MainContent
                     target={urlState.target}
                     invocationLevel={urlState.invocationLevel}

@@ -16,9 +16,9 @@ export function GitHub() {
                         fontSize: 45,
                         color: "white"
                     }}/>
-                    <Hidden smDown>
+{/*                    <Hidden smDown>
                         <Typography style={{color: "white", fontSize: "35px"}}>GitHub</Typography>
-                    </Hidden>
+                    </Hidden>*/}
                 </Stack>
             </a>
         </div>

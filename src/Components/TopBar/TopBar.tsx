@@ -1,18 +1,20 @@
 import React from 'react';
-import {Hidden, Grid, Box, AppBar, Toolbar} from "@mui/material";
+import {Hidden, Grid, Box, AppBar, Toolbar, Stack} from "@mui/material";
 import {TargetMonster} from "../../DataObjects/TargetMonster";
 import TopBarItem from "./TopBarItem";
 import DrawerMenu from "./DrawerMenu";
 import {GitHub} from "./GitHub";
 import {sections} from "../../DataObjects/MonsterSections";
 import {Raid} from "../../DataObjects/Raid";
+import MonsterSearch from "../MonsterSearch";
 
 interface TopBarProps {
     urlState: any,
     setUrlState: (state: any) => void,
+    setTargetMonster: (monster: TargetMonster) => void;
 }
 
-const TopBar: React.FC<TopBarProps> = ({urlState, setUrlState}) => {
+const TopBar: React.FC<TopBarProps> = ({urlState, setUrlState, setTargetMonster}) => {
     return (
         <header>
             <AppBar position="static" style={{background: '#000'}}>
@@ -27,14 +29,19 @@ const TopBar: React.FC<TopBarProps> = ({urlState, setUrlState}) => {
                                 });
                             }}/>
                             <div>
-                                <GitHub/>
+                                <Stack direction="row" alignItems="center" gap={4}>
+                                    <div className="monsterSearch">
+                                        <MonsterSearch onSelect={setTargetMonster} />
+                                    </div>
+                                    <GitHub/>
+                                </Stack>
                             </div>
                         </div>
                     </Hidden>
                     <Hidden smDown>
-                        <Box display={{xs: 'none', sm: 'block'}} width="100%" height="100%">
-                            <div style={{display: 'flex'}}>
-                                <Grid container spacing={2} style={{flexGrow: 1}}>
+                        <Box display={{ xs: 'none', sm: 'block' }} width="100%" height="100%" position="relative">
+                            <div style={{ display: 'flex', flexDirection: 'row', height: '100%' }}>
+                                <Grid container spacing={2} style={{ flexGrow: 1 }}>
                                     {sections.map((section, index) => (
                                         <Grid item key={index}>
                                             <TopBarItem setTargetMonster={(targetMonster: TargetMonster) => {
@@ -47,10 +54,16 @@ const TopBar: React.FC<TopBarProps> = ({urlState, setUrlState}) => {
                                         </Grid>
                                     ))}
                                 </Grid>
-                                <div>
-                                    <GitHub/>
+                                <div style={{ marginTop: '5px' }}>
+                                    <Stack direction="row" alignItems="center" gap={4}>
+                                        <div className="monsterSearch">
+                                            <MonsterSearch onSelect={setTargetMonster} />
+                                        </div>
+                                        <GitHub/>
+                                    </Stack>
                                 </div>
                             </div>
+
                         </Box>
                     </Hidden>
                 </Toolbar>

@@ -87,7 +87,7 @@ export default function DefenceReduction(props: { bossName: string, defenceLevel
                                 onChange={e => setDefenceReductionExact(e.target.value)}
                                 InputProps={{
                                     style: {
-                                        fontSize: 22,
+                                        fontSize: 16,
                                     },
                                     inputProps: {
                                         min: 0,
@@ -117,7 +117,7 @@ export default function DefenceReduction(props: { bossName: string, defenceLevel
 const textFieldStyle = {
     color: "black",
     backgroundColor: "#d8ccb4",
-    width: 100,
+    width: 75,
     '& label.Mui-focused': {
         color: 'white',
     },

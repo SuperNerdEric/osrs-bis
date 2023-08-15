@@ -191,9 +191,6 @@ const MainContent: React.FC<MainContentProps> = ({
     return (
         <main className="App-main">
             <h2 className="monsterName">{(monsters.get(target) as TargetMonster).name}</h2>
-            <div className="monsterSearch">
-                <MonsterSearch onSelect={handleMonsterSelect} />
-            </div>
             <img src={require(`${(monsters.get(target) as TargetMonster).imagePath}`)} width="auto"
                  height="150" alt={target}/>
             {
