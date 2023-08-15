@@ -37,7 +37,7 @@ export class DiamondBoltHitChanceStrategy extends HitChanceStrategy {
             return new DefaultHitChanceStrategy(this.result).calculate(attackRoll, defenceRoll);
         }
 
-        const activationPercent = getBoltActivationRate(bolt.name, true);
+        const activationPercent = getBoltActivationRate(bolt.name, this.result.player.kandarinHardDiaryComplete);
 
         const activationRate = activationPercent / 100;
         const nonActivationRate = 1 - activationRate;

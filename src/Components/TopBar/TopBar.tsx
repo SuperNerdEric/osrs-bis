@@ -1,11 +1,11 @@
 import React from 'react';
 import {Hidden, Grid, Box, AppBar, Toolbar} from "@mui/material";
-import {TargetMonster} from "./DataObjects/TargetMonster";
+import {TargetMonster} from "../../DataObjects/TargetMonster";
 import TopBarItem from "./TopBarItem";
 import DrawerMenu from "./DrawerMenu";
 import {GitHub} from "./GitHub";
-import {sections} from "./DataObjects/MonsterSections";
-import {Raid} from "./DataObjects/Raid";
+import {sections} from "../../DataObjects/MonsterSections";
+import {Raid} from "../../DataObjects/Raid";
 
 interface TopBarProps {
     urlState: any,

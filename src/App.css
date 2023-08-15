@@ -162,3 +162,13 @@ table {
 .monsterSearch {
     margin-bottom: 15px;
 }
+
+.configurationPanel {
+    margin-top: 15px;
+}
+
+.parent {
+    display: flex;
+    justify-content: center;  /* Horizontal centering */
+    align-items: center;      /* Vertical centering (if needed) */
+}

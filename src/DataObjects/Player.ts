@@ -1,11 +1,36 @@
-export class Player {
-    attackLevel: number = 99;
-    strengthLevel: number = 99;
-    rangedLevel: number = 99;
-    magicLevel: number = 99;
+export interface SkillSet {
+    level: number;
+    boost: number;
+}
 
-    attackLevelBoost: number = 0;
-    strengthLevelBoost: number = 0;
-    rangedLevelBoost: number = 0;
-    magicLevelBoost: number = 0;
+export class Player {
+    skills: {
+        attack: SkillSet;
+        strength: SkillSet;
+        ranged: SkillSet;
+        magic: SkillSet;
+    };
+
+    onTask: boolean = false;
+    kandarinHardDiaryComplete: boolean = true;
+    prayers: {
+        piety: boolean;
+        rigour: boolean;
+        augury: boolean;
+    };
+
+    constructor() {
+        this.skills = {
+            attack: { level: 99, boost: 0 },
+            strength: { level: 99, boost: 0 },
+            ranged: { level: 99, boost: 0 },
+            magic: { level: 99, boost: 0 },
+        };
+
+        this.prayers = {
+            piety: true,
+            rigour: true,
+            augury: true,
+        };
+    }
 }

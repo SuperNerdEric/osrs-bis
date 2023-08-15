@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {Checkbox, Stack, TextField, Tooltip, Button, Typography, Grid, Container} from "@mui/material";
-import bandosGodsword from './Images/Bandos_godsword_small.png';
-import dragonWarhammer from './Images/Dragon_warhammer_small.png';
+import bandosGodsword from '../../Images/Bandos_godsword_small.png';
+import dragonWarhammer from '../../Images/Dragon_warhammer_small.png';
 import {useMediaQuery} from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import "./App.css";
-import {TargetMonster} from "./DataObjects/TargetMonster";
+import "../../App.css";
+import {TargetMonster} from "../../DataObjects/TargetMonster";
 import {Button} from "@mui/material";
 
 interface TopBarProps {

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useState } from 'react';
 import { Box, Drawer, List, ListItem, ListItemText, IconButton, Collapse } from '@mui/material';
 import { Menu as MenuIcon, ExpandLess, ExpandMore } from '@mui/icons-material';
-import { TargetMonster } from "./DataObjects/TargetMonster";
+import { TargetMonster } from "../../DataObjects/TargetMonster";
 
 type Section = {
     name: string;

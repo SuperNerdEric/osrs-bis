@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { monsters } from './DataObjects/Monsters';
-import { TargetMonster } from "./DataObjects/TargetMonster";
+import { monsters } from '../DataObjects/Monsters';
+import { TargetMonster } from "../DataObjects/TargetMonster";
 
 interface MonsterSearchProps {
     onSelect: (monster: TargetMonster) => void;

@@ -14,10 +14,10 @@ describe('Calculator class', () => {
         // @ts-ignore
         result = new Calculator();
         result.player = new Player();
-        result.player.attackLevelBoost = 19;
-        result.player.strengthLevelBoost = 19;
-        result.player.rangedLevelBoost = 13;
-        result.player.magicLevelBoost = 10; //imbued heart
+        result.player.skills.attack.boost = 19;
+        result.player.skills.strength.boost = 19;
+        result.player.skills.ranged.boost = 13;
+        result.player.skills.magic.boost = 10; //imbued heart
         result.targetMonster = monsters.get("Armadyl") as TargetMonster;
     });
 
@@ -91,7 +91,7 @@ describe('Calculator class', () => {
                 ItemName.AmuletOfTorture,
                 ItemName.InfernalCape
             ]);
-            result.onTask = false;
+            result.player.onTask = false;
             result.calculateDPS();
         });
 
@@ -120,7 +120,7 @@ describe('Calculator class', () => {
                 ItemName.AmuletOfTorture,
                 ItemName.InfernalCape
             ]);
-            result.onTask = true;
+            result.player.onTask = true;
             result.calculateDPS();
         });
 
@@ -148,7 +148,7 @@ describe('Calculator class', () => {
                 ItemName.NecklaceOfAnguish,
                 ItemName.AvasAssembler
             ]);
-            result.onTask = false;
+            result.player.onTask = false;
             result.calculateDPS();
         });
 
@@ -176,7 +176,7 @@ describe('Calculator class', () => {
                 ItemName.NecklaceOfAnguish,
                 ItemName.AvasAssembler
             ]);
-            result.onTask = true;
+            result.player.onTask = true;
             result.calculateDPS();
         });
 
@@ -201,7 +201,7 @@ describe('Calculator class', () => {
                 ItemName.MasoriBodyF
             ]);
             result.targetMonster = monsters.get("Undead Combat Dummy") as TargetMonster;
-            result.onTask = true;
+            result.player.onTask = true;
             result.calculateDPS();
         });
 
@@ -221,7 +221,7 @@ describe('Calculator class', () => {
                 ItemName.OccultNecklace,
                 ItemName.ImbuedZamorakCape
             ]);
-            result.onTask = false;
+            result.player.onTask = false;
             result.calculateDPS();
         });
 
@@ -249,7 +249,7 @@ describe('Calculator class', () => {
                 ItemName.OccultNecklace,
                 ItemName.ImbuedZamorakCape
             ]);
-            result.onTask = true;
+            result.player.onTask = true;
             result.calculateDPS();
         });
 
@@ -276,7 +276,7 @@ describe('Calculator class', () => {
                 ItemName.OccultNecklace,
                 ItemName.ImbuedZamorakCape
             ]);
-            result.onTask = false;
+            result.player.onTask = false;
             result.calculateDPS();
         });
 
@@ -303,7 +303,7 @@ describe('Calculator class', () => {
                 ItemName.OccultNecklace,
                 ItemName.ImbuedZamorakCape
             ]);
-            result.onTask = true;
+            result.player.onTask = true;
             result.calculateDPS();
         });
 
@@ -561,7 +561,7 @@ describe('Calculator class', () => {
                 ItemName.InfernalCape
             ]);
             result.targetMonster = monsters.get("KQ") as TargetMonster;
-            result.onTask = true;
+            result.player.onTask = true;
             result.calculateDPS();
         });
 
@@ -591,7 +591,7 @@ describe('Calculator class', () => {
                 ItemName.InfernalCape
             ]);
             result.targetMonster = monsters.get("KQ") as TargetMonster;
-            result.onTask = true;
+            result.player.onTask = true;
             result.calculateDPS();
         });
 
@@ -847,7 +847,7 @@ describe('Calculator class', () => {
                 ItemName.InfernalCape
             ]);
             result.targetMonster = monsters.get("Zamorak") as TargetMonster;
-            result.onTask = true;
+            result.player.onTask = true;
             result.calculateDPS();
         });
 
@@ -1239,7 +1239,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate maxHit correctly', () => {
-            expect(result.maxHit).toBe(58); //Matches Bitterkoekje
+            expect(result.maxHit).toBe(63); //Tested in game
         });
 
         test('should calculate hitChance correctly', () => {

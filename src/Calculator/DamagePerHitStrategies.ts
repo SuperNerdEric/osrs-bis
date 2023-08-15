@@ -92,13 +92,13 @@ export class DiamondBoltEnchantedStrategy extends DamagePerHitStrategy {
             return defaultStrategy.calculate();
         }
 
-        const activationPercent = getBoltActivationRate(bolt.name, true);
+        const activationPercent = getBoltActivationRate(bolt.name, this.result.player.kandarinHardDiaryComplete);
 
         const baseMaxHit = this.result.maxHit;
         const baseAverageDamagePerHit = this.result.calculateAverageDamagePerHit(baseMaxHit, this.result.baseHitChance);
 
         if (this.result.gearSet.weapon.name === ItemName.ZaryteCrossbow) {
-            this.result.maxHit = Math.floor(baseMaxHit * 1.25);
+            this.result.maxHit = Math.floor(baseMaxHit * 1.265);
         } else {
             this.result.maxHit = Math.floor(baseMaxHit * 1.15);
         }
@@ -123,7 +123,7 @@ export class RubyBoltEnchantedStrategy extends DamagePerHitStrategy {
             return defaultStrategy.calculate();
         }
 
-        const activationPercent = getBoltActivationRate(bolt.name, true);
+        const activationPercent = getBoltActivationRate(bolt.name, this.result.player.kandarinHardDiaryComplete);
 
         const baseMaxHit = this.result.maxHit;
         const baseAverageDamagePerHit = this.result.calculateAverageDamagePerHit(baseMaxHit, this.result.baseHitChance);
@@ -162,13 +162,13 @@ export class OnyxBoltEnchantedStrategy extends DamagePerHitStrategy {
             return defaultStrategy.calculate();
         }
 
-        const activationPercent = getBoltActivationRate(bolt.name, true);
+        const activationPercent = getBoltActivationRate(bolt.name, this.result.player.kandarinHardDiaryComplete);
         const baseMaxHit = this.result.maxHit;
         const baseAverageDamagePerHit = this.result.calculateAverageDamagePerHit(baseMaxHit, this.result.hitChance);
 
         let damageMultiplier = 1.20;
         if (this.result.gearSet.weapon.name === ItemName.ZaryteCrossbow) {
-            damageMultiplier = 1.22;
+            damageMultiplier = 1.32;
         }
 
         const procMaxHit = Math.floor(baseMaxHit * damageMultiplier);

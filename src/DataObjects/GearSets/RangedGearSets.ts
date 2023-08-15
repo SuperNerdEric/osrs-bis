@@ -43,7 +43,10 @@ export function generateRangedGearSets(){
         new GearSet([GearSetType.General], ItemName.ArmadylCrossbow, CombatStyle.Rapid, [...base, ItemName.TwistedBuckler, ItemName.DiamondDragonBoltsE]);
         new GearSet([GearSetType.General], ItemName.ZaryteCrossbow, CombatStyle.Rapid, [...base, ItemName.TwistedBuckler, ItemName.RubyDragonBoltsE]);
         new GearSet([GearSetType.General], ItemName.ZaryteCrossbow, CombatStyle.Rapid, [...base, ItemName.TwistedBuckler, ItemName.DiamondDragonBoltsE]);
+        new GearSet([GearSetType.General], ItemName.ZaryteCrossbow, CombatStyle.Rapid, [...base, ItemName.TwistedBuckler, ItemName.OnyxDragonBoltsE]);
         new GearSet([GearSetType.General], ItemName.DragonHunterCrossbow, CombatStyle.Rapid, [...base, ItemName.TwistedBuckler, ItemName.RubyDragonBoltsE]);
         new GearSet([GearSetType.General], ItemName.DragonHunterCrossbow, CombatStyle.Rapid, [...base, ItemName.TwistedBuckler, ItemName.DiamondDragonBoltsE]);
+        new GearSet([GearSetType.General], ItemName.DragonHunterCrossbow, CombatStyle.Rapid, [...base, ItemName.TwistedBuckler, ItemName.OnyxDragonBoltsE]);
     })
+
 }

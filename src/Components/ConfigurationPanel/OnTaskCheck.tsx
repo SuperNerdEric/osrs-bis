@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {Checkbox, FormControlLabel, Stack} from '@mui/material';
-import slayerIcon from './Images/Slayer_icon.png';
+import slayerIcon from '../../Images/Skills/Slayer_icon.png';
 
 
 const OnTaskCheck = (props: { onTask: boolean, handleOnTask: any }) => {

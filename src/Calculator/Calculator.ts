@@ -39,7 +39,6 @@ export class Calculator {
     baseHitChance: number = 0;
     hitChance: number = 0;
     defenceReduction: number = 0;
-    onTask: boolean = false;
     gearSet: GearSet;
     player: Player = new Player();
     targetMonster: TargetMonster = new TargetMonster();
@@ -74,23 +73,28 @@ export class Calculator {
     private calculateEffectiveStrengthLevel(attackStyle: StyleType) {
         let effectiveLevel;
 
+        const prayerBoostMelee = this.player.prayers.piety ? 1.23 : 1;
+        const prayerBoostRanged = this.player.prayers.rigour ? 1.23 : 1;
+        const prayerBoostMage = this.player.prayers.augury ? 1.25 : 1;
+
         if (attackStyle === StyleType.Stab || attackStyle === StyleType.Slash || attackStyle === StyleType.Crush) {
             const soulReaperMultiplier = new SoulreaperMultiplierStrategy(this).calculateMultiplier();
 
-            effectiveLevel = Math.floor((this.player.strengthLevel + this.player.strengthLevelBoost) * (1.23 + soulReaperMultiplier)) + 8;
+            effectiveLevel = Math.floor((this.player.skills.strength.level + this.player.skills.strength.boost) * (prayerBoostMelee + soulReaperMultiplier)) + 8;
             if (this.gearSet.weaponStyle === WeaponStyle.Aggressive) {
                 effectiveLevel += 3;
             } else if (this.gearSet.weaponStyle === WeaponStyle.Controlled) {
                 effectiveLevel += 1;
             }
         } else if (attackStyle === StyleType.Ranged) {
-            effectiveLevel = Math.floor((this.player.rangedLevel + this.player.rangedLevelBoost) * 1.23) + 8;
+            effectiveLevel = Math.floor((this.player.skills.ranged.level + this.player.skills.ranged.boost) * prayerBoostRanged) + 8;
             if (this.gearSet.weaponStyle === WeaponStyle.Accurate) {
                 effectiveLevel += 3;
             }
         } else {
-            effectiveLevel = Math.floor((this.player.magicLevel + this.player.magicLevelBoost) * 1.25) + 8;
+            effectiveLevel = Math.floor((this.player.skills.magic.level + this.player.skills.magic.boost) * prayerBoostMage) + 8;
         }
+
 
         //According to sources void boosts effective strength level, not our max hit
         const voidMultiplier = new VoidKnightMultiplierStrategy(this).calculateMultiplier(MultiplierType.Damage);
@@ -102,11 +106,15 @@ export class Calculator {
     private calculateEffectiveAttackLevel(attackStyle: StyleType) {
         let effectiveLevel;
 
-        //According to sources void boosts effective attack level, not our attack roll
+        const prayerBoostMelee = this.player.prayers.piety ? 1.2 : 1;
+        const prayerBoostRanged = this.player.prayers.rigour ? 1.2 : 1;
+        const prayerBoostMage = this.player.prayers.augury ? 1.25 : 1;
+
+        // According to sources void boosts effective attack level, not our attack roll
         const voidMultiplier = new VoidKnightMultiplierStrategy(this).calculateMultiplier(MultiplierType.Accuracy);
 
         if (attackStyle === StyleType.Stab || attackStyle === StyleType.Slash || attackStyle === StyleType.Crush) {
-            effectiveLevel = Math.floor((this.player.attackLevel + this.player.attackLevelBoost) * 1.2);
+            effectiveLevel = Math.floor((this.player.skills.attack.level + this.player.skills.attack.boost) * prayerBoostMelee);
             if (this.gearSet.weaponStyle === WeaponStyle.Accurate) {
                 effectiveLevel += 3;
             } else if (this.gearSet.weaponStyle === WeaponStyle.Controlled) {
@@ -115,19 +123,17 @@ export class Calculator {
             effectiveLevel += 8;
             effectiveLevel = Math.floor(effectiveLevel * voidMultiplier);
         } else if (attackStyle === StyleType.Ranged) {
-            effectiveLevel = Math.floor((this.player.rangedLevel + this.player.rangedLevelBoost) * 1.2) + 8;
+            effectiveLevel = Math.floor((this.player.skills.ranged.level + this.player.skills.ranged.boost) * prayerBoostRanged) + 8;
             if (this.gearSet.weaponStyle === WeaponStyle.Accurate) {
                 effectiveLevel += 3;
             }
             effectiveLevel = Math.floor(effectiveLevel * voidMultiplier);
         } else {
-            effectiveLevel = Math.floor((this.player.magicLevel + this.player.magicLevelBoost) * 1.25);
+            effectiveLevel = Math.floor((this.player.skills.magic.level + this.player.skills.magic.boost) * prayerBoostMage);
             effectiveLevel = Math.floor(effectiveLevel * voidMultiplier);
-
             if (this.gearSet.weaponStyle === WeaponStyle.Accurate) {
                 effectiveLevel += 2;
             }
-
             effectiveLevel += 9;
         }
 
@@ -183,7 +189,7 @@ export class Calculator {
         if ([StyleType.Stab, StyleType.Slash, StyleType.Crush, StyleType.Ranged].includes(attackStyle)) {
             maxHit = Math.floor(0.5 + (effectiveLevel * (this.gearSet.styleStrength + 64)) / 640);
         } else {
-            maxHit = Math.floor((this.player.magicLevel + this.player.magicLevelBoost) / 3) - 1;
+            maxHit = Math.floor((this.player.skills.magic.level + this.player.skills.magic.boost) / 3) - 1;
 
             if (this.gearSet.weapon.name == ItemName.TumekensShadow) {
                 maxHit += 2;

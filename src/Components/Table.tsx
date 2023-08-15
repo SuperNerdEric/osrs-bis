@@ -1,6 +1,6 @@
 import React from 'react'
 
-import './index.css'
+import '../index.css'
 
 import {
     useReactTable,
@@ -9,7 +9,7 @@ import {
     getPaginationRowModel,
     flexRender,
 } from '@tanstack/react-table'
-import {Calculator} from "./Calculator/Calculator";
+import {Calculator} from "../Calculator/Calculator";
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import {Stack} from "@mui/material";

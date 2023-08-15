@@ -17,8 +17,8 @@ export function getTheme() {
                     tooltip: {
                         backgroundColor: '#d8ccb4',
                         color: 'black',
-                        fontSize: '22px',
-                        border: '1px solid #dadde9',
+                        fontSize: '18px',
+                        border: '3px solid black',
                         maxWidth: 'unset !important',
                     },
                 },

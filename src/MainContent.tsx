@@ -3,14 +3,16 @@ import {Calculator} from "./Calculator/Calculator";
 import {TargetMonster} from "./DataObjects/TargetMonster";
 import {monsters} from "./DataObjects/Monsters";
 import {GearSet, gearSets, GearSetType} from "./DataObjects/GearSets";
-import {DiscreteSliderMarks} from "./Slider";
-import DefenceReduction from "./DefenceReduction";
+import {DiscreteSliderMarks} from "./Components/Slider";
+import DefenceReduction from "./Components/ConfigurationPanel/DefenceReduction";
 import React, {useEffect, useState} from 'react';
 import {Raid} from "./DataObjects/Raid";
-import OnTaskCheck from "./OnTaskCheck";
-import {GearTable} from "./Table";
+import OnTaskCheck from "./Components/ConfigurationPanel/OnTaskCheck";
+import {GearTable} from "./Components/Table";
 import {ColumnDef} from "@tanstack/react-table";
-import MonsterSearch from "./MonsterSearch";
+import MonsterSearch from "./Components/MonsterSearch";
+import ConfigurationPanel from "./Components/ConfigurationPanel/ConfigurationPanel";
+import {Player} from "./DataObjects/Player";
 
 interface MainContentProps {
     target: string;
@@ -21,6 +23,7 @@ interface MainContentProps {
     onTask: boolean;
     handleOnTask: (onTask: boolean) => void;
     setTargetMonster: (monster: TargetMonster) => void;
+
 }
 
 const MainContent: React.FC<MainContentProps> = ({
@@ -37,6 +40,11 @@ const MainContent: React.FC<MainContentProps> = ({
     const [results, setResults] = useState<Calculator[]>([]);
     const isToaBoss: boolean = (monsters.get(target) as TargetMonster).raid === Raid.TombsOfAmascut;
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+    const [player, setPlayer] = useState<Player>(new Player());
+
+    useEffect(() => {
+        handleOnTask(player.onTask);
+    }, [player.onTask]);
 
 
     const handleMonsterSelect = (monster: TargetMonster) => {
@@ -68,7 +76,9 @@ const MainContent: React.FC<MainContentProps> = ({
             shownGearSets.push(...slayerGearSets);
         }
 
-        if ((monsters.get(target) as TargetMonster).slayerMonster && onTask) {
+        console.log(player);
+
+        if ((monsters.get(target) as TargetMonster).slayerMonster && player.onTask) {
             const slayerGearSets = gearSets.filter(gearSet => gearSet.types.includes(GearSetType.Slayer));
             shownGearSets.push(...slayerGearSets);
         }
@@ -79,28 +89,23 @@ const MainContent: React.FC<MainContentProps> = ({
 
         shownGearSets.forEach(gearSet => {
             gearSet.setRaid((monsters.get(target) as TargetMonster).raid);
-            const result: Calculator = new Calculator(gearSet);
-            result.targetMonster = monsters.get(target) as TargetMonster;
-            result.defenceReduction = defenceReduction;
-            result.onTask = onTask;
+            const calculator: Calculator = new Calculator(gearSet);
+            calculator.targetMonster = monsters.get(target) as TargetMonster;
+            calculator.defenceReduction = defenceReduction;
+            calculator.player = player;
+
             if (isToaBoss) {
-                result.player.attackLevelBoost = 26;
-                result.player.strengthLevelBoost = 26;
-                result.player.rangedLevelBoost = 26;
-                result.player.magicLevelBoost = 26;
-                result.calculateDPS(invocationLevel);
+                calculator.calculateDPS(invocationLevel);
             } else {
-                result.player.attackLevelBoost = 19;
-                result.player.strengthLevelBoost = 19;
-                result.player.rangedLevelBoost = 13;
-                result.player.magicLevelBoost = 13; //saturated heart
-                result.calculateDPS(0);
+                //Todo prevent use of salts outside toa
+                calculator.calculateDPS();
             }
-            results.push(result);
+
+            results.push(calculator);
         })
 
         setResults(results);
-    }, [target, invocationLevel, defenceReduction, onTask]);
+    }, [target, invocationLevel, defenceReduction, player]);
 
 
     const columns = React.useMemo<ColumnDef<Calculator>[]>(
@@ -202,7 +207,15 @@ const MainContent: React.FC<MainContentProps> = ({
                               defenceLevel={(monsters.get(target) as TargetMonster).defenceLevel}
                               maxReduction={(monsters.get(target) as TargetMonster).maxDefenceReduction}
                               handleChange={handleDefenceReduction}/>
-            {isSlayerMonster && <OnTaskCheck onTask={onTask} handleOnTask={handleOnTask}/>}
+            <div className="configurationPanel">
+                <ConfigurationPanel
+                    player={player}
+                    setPlayer={setPlayer}
+                    targetMonster={monsters.get(target) as TargetMonster}
+                    defenceReduction={defenceReduction}
+                    handleDefenceReduction={handleDefenceReduction}
+                />
+            </div>
             <GearTable data={results} columns={columns}/>
         </main>
     )
