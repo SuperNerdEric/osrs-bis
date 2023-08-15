@@ -71,42 +71,22 @@ export default function DefenceReduction(props: { bossName: string, defenceLevel
                         <img src={dragonWarhammer} width="auto" height="45" alt="logo"/>
                     </Stack>
                     <Stack direction="row" alignItems="center" gap={2}>
-                        <Button sx={buttonStyle}
-                                onClick={() => adjustDefenceReduction(-1)}>-</Button>
-                        <Tooltip open={tooltipOpen}
+                         <Tooltip open={tooltipOpen}
                                  title={`Max defence reduction for ${props.bossName} is ${props.maxReduction}`}
                                  onClose={() => setTooltipOpen(false)}
                                  onOpen={() => setTooltipOpen(true)}>
                             <TextField
                                 key={`${props.bossName}-textfield`}
-                                id="outlined-number"
+                                id="outlined"
                                 type="number"
-                                color="warning"
                                 value={localDefenceReductionText}
                                 defaultValue={localDefenceReduction}
                                 onChange={e => setDefenceReductionExact(e.target.value)}
-                                InputProps={{
-                                    style: {
-                                        fontSize: 16,
-                                    },
-                                    inputProps: {
-                                        min: 0,
-                                        max: props.maxReduction,
-                                    },
-                                }}
-                                InputLabelProps={{
-                                    shrink: true,
-                                }}
+                                inputProps={{style: {padding: 12}, max: 99}}
                                 sx={textFieldStyle}
+                                style={textFieldStyle}
                             />
                         </Tooltip>
-                        <Button
-                            sx={buttonStyle}
-                            onClick={() => adjustDefenceReduction(1)}
-                            onMouseLeave={() => setTooltipOpen(false)}
-                        >
-                            +
-                        </Button>
                     </Stack>
                 </Stack>
             </Container>
@@ -134,14 +114,12 @@ const textFieldStyle = {
         '&.Mui-focused fieldset': {
             borderColor: 'white',
         },
+        '& input[type="number"]::-webkit-inner-spin-button, & input[type="number"]::-webkit-outer-spin-button': {
+            '-webkit-appearance': 'none',
+            margin: 0,
+        },
+        '& input[type="number"]': {
+            '-moz-appearance': 'textfield',
+        },
     },
-}
-
-const buttonStyle = {
-    color: "black",
-    backgroundColor: '#d8ccb4',
-    '&:hover': {
-        backgroundColor: 'white',
-        color: 'black',
-    }
 }
