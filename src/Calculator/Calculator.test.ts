@@ -1276,5 +1276,33 @@ describe('Calculator class', () => {
             expect(result.hitChance).toBeCloseTo(0.401);
         });
     });
+
+    describe('with bowfa on rapid', () => {
+        beforeEach(() => {
+            result.gearSet = new GearSet([GearSetType.General], ItemName.BowOfFaerdhinen, CombatStyle.Rapid, [
+                ItemName.CrystalHelm,
+                ItemName.CrystalBody,
+                ItemName.CrystalLegs,
+                ItemName.ZaryteVambraces,
+                ItemName.PegasianBoots,
+                ItemName.NecklaceOfAnguish,
+                ItemName.AvasAssembler,
+                ItemName.VenatorRing
+            ]);
+            result.calculateDPS();
+        });
+
+        test('should calculate DPS correctly', () => {
+            expect(result.dps).toBeCloseTo(3.98); //Matches Bitterkoekje
+        });
+
+        test('should calculate maxHit correctly', () => {
+            expect(result.maxHit).toBe(47); //Matches Bitterkoekje
+        });
+
+        test('should calculate hitChance correctly', () => {
+            expect(result.hitChance).toBeCloseTo(0.407); //Matches Bitterkoekje
+        });
+    });
 });
 

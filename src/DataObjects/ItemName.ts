@@ -97,4 +97,8 @@ export enum ItemName {
     ZaryteCrossbow = "Zaryte crossbow",
     TwistedBuckler = "Twisted buckler",
     PegasianBoots = "Pegasian boots",
+    CrystalHelm = "Crystal helm",
+    CrystalBody = "Crystal body",
+    CrystalLegs = "Crystal legs",
+    BowOfFaerdhinen = "Bow of faerdhinen",
 }

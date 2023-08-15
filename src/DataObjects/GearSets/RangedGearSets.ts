@@ -4,6 +4,7 @@ import {GearSet, gearSets, GearSetType} from "../GearSets";
 
 export function generateRangedGearSets(){
     const rangedBase = [
+        [ItemName.CrystalHelm, ItemName.CrystalBody, ItemName.CrystalLegs, ItemName.ZaryteVambraces],
         [ItemName.MasoriMaskF, ItemName.MasoriBodyF, ItemName.MasoriChapsF, ItemName.ZaryteVambraces],
         [ItemName.ArmadylHelmet, ItemName.ArmadylChestplate, ItemName.ArmadylChainskirt, ItemName.ZaryteVambraces],
         [ItemName.VoidRangerHelm, ItemName.EliteVoidTop, ItemName.EliteVoidRobe, ItemName.VoidKnightGloves]
@@ -47,6 +48,8 @@ export function generateRangedGearSets(){
         new GearSet([GearSetType.General], ItemName.DragonHunterCrossbow, CombatStyle.Rapid, [...base, ItemName.TwistedBuckler, ItemName.RubyDragonBoltsE]);
         new GearSet([GearSetType.General], ItemName.DragonHunterCrossbow, CombatStyle.Rapid, [...base, ItemName.TwistedBuckler, ItemName.DiamondDragonBoltsE]);
         new GearSet([GearSetType.General], ItemName.DragonHunterCrossbow, CombatStyle.Rapid, [...base, ItemName.TwistedBuckler, ItemName.OnyxDragonBoltsE]);
+        new GearSet([GearSetType.General], ItemName.BowOfFaerdhinen, CombatStyle.Accurate, base);
+        new GearSet([GearSetType.General], ItemName.BowOfFaerdhinen, CombatStyle.Rapid, base);
     })
 
 }

@@ -830,3 +830,37 @@ createWeapon(ItemName.DragonHunterCrossbow, {
     speedSeconds: 3.6,
     ranged: 95,
 });
+
+createWeapon(ItemName.BowOfFaerdhinen, {
+    category: WeaponCategory.Bow,
+    imagePath: "./Images/ItemsOld/Bow_of_faerdhinen.png",
+    wikiLink: "https://oldschool.runescape.wiki/w/Bow_of_faerdhinen#Charged",
+    slot: Slot.TwoHand,
+    speedSeconds: 3,
+    ranged: 128,
+    rangedStrength: 106,
+});
+
+createItem(ItemName.CrystalHelm, {
+    imagePath: "./Images/ItemsOld/Crystal_helm.png",
+    wikiLink: "https://oldschool.runescape.wiki/w/Crystal_helm",
+    magic: -10,
+    ranged: 9,
+    slot: Slot.Helm,
+});
+
+createItem(ItemName.CrystalBody, {
+    imagePath: "./Images/ItemsOld/Crystal_body.png",
+    wikiLink: "https://oldschool.runescape.wiki/w/Crystal_body",
+    magic: -18,
+    ranged: 31,
+    slot: Slot.Chest,
+});
+
+createItem(ItemName.CrystalLegs, {
+    imagePath: "./Images/ItemsOld/Crystal_legs.png",
+    wikiLink: "https://oldschool.runescape.wiki/w/Crystal_legs",
+    magic: -12,
+    ranged: 18,
+    slot: Slot.Legs,
+});

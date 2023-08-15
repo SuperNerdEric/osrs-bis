@@ -32,6 +32,7 @@ import {InquisitorsMultiplierStrategy} from "./MultiplierStrategies/InquisitorsM
 import {CorporealBeastMultiplierStrategy} from "./MultiplierStrategies/CorporealBeastMultiplierStrategy";
 import {DragonHunterCrossbowMultiplierStrategy} from "./MultiplierStrategies/DragonHunterCrossbowMultiplierStrategy";
 import {TektonMultiplierStrategy} from "./MultiplierStrategies/TektonMultiplierStrategy";
+import {CrystalEquipmentMultiplierStrategy} from "./MultiplierStrategies/CrystalEquipmentMultiplierStrategy";
 
 export class Calculator {
     dps: number = 0;
@@ -151,6 +152,7 @@ export class Calculator {
         const dragonHunterLanceMultiplier = new DragonHunterLanceMultiplierStrategy(this).calculateMultiplier();
         const dragonHunterCrossbowMultiplier = new DragonHunterCrossbowMultiplierStrategy(this).calculateMultiplier(MultiplierType.Damage);
         const inquisitorsMultiplier = new InquisitorsMultiplierStrategy(this).calculateMultiplier();
+        const crystalEquipmentMultiplier = new CrystalEquipmentMultiplierStrategy(this).calculateMultiplier(MultiplierType.Damage);
         const corporealBeastMultiplier = new CorporealBeastMultiplierStrategy(this).calculateMultiplier();
 
         const gearMultipliers = [
@@ -160,6 +162,7 @@ export class Calculator {
             dragonHunterLanceMultiplier,
             dragonHunterCrossbowMultiplier,
             inquisitorsMultiplier,
+            crystalEquipmentMultiplier,
             corporealBeastMultiplier,
         ];
 
@@ -173,6 +176,7 @@ export class Calculator {
         const dragonHunterLanceMultiplier = new DragonHunterLanceMultiplierStrategy(this).calculateMultiplier();
         const dragonHunterCrossbowMultiplier = new DragonHunterCrossbowMultiplierStrategy(this).calculateMultiplier(MultiplierType.Accuracy);
         const inquisitorsMultiplier = new InquisitorsMultiplierStrategy(this).calculateMultiplier();
+        const crystalEquipmentMultiplier = new CrystalEquipmentMultiplierStrategy(this).calculateMultiplier(MultiplierType.Accuracy);
 
         const gearMultipliers = [
             Math.max(slayerMultiplier, salveMultiplier),
@@ -182,6 +186,7 @@ export class Calculator {
             dragonHunterLanceMultiplier,
             dragonHunterCrossbowMultiplier,
             inquisitorsMultiplier,
+            crystalEquipmentMultiplier
         ];
 
         return gearMultipliers;
