@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.8a8a8332.css",
-    "main.js": "/static/js/main.e31da8f8.js",
+    "main.css": "/static/css/main.65df87b3.css",
+    "main.js": "/static/js/main.bd981b47.js",
     "static/js/787.f7d32ca0.chunk.js": "/static/js/787.f7d32ca0.chunk.js",
     "static/media/Duke_Sucellus.png": "/static/media/Duke_Sucellus.20671a0f119b769958f1.png",
     "static/media/Fire_cape.png": "/static/media/Fire_cape.9fa34a7e2c3fc7a55285.png",
@@ -257,12 +257,12 @@
     "static/media/Void_knight_robe.webp": "/static/media/Void_knight_robe.e46393a4f5a26ca7786e.webp",
     "static/media/Zamorakian_hasta.webp": "/static/media/Zamorakian_hasta.be62bb7cec7ec3005a5e.webp",
     "index.html": "/index.html",
-    "main.8a8a8332.css.map": "/static/css/main.8a8a8332.css.map",
-    "main.e31da8f8.js.map": "/static/js/main.e31da8f8.js.map",
+    "main.65df87b3.css.map": "/static/css/main.65df87b3.css.map",
+    "main.bd981b47.js.map": "/static/js/main.bd981b47.js.map",
     "787.f7d32ca0.chunk.js.map": "/static/js/787.f7d32ca0.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.8a8a8332.css",
-    "static/js/main.e31da8f8.js"
+    "static/css/main.65df87b3.css",
+    "static/js/main.bd981b47.js"
   ]
 }
