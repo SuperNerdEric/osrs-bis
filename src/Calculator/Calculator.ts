@@ -31,6 +31,7 @@ import {DragonHunterLanceMultiplierStrategy} from "./MultiplierStrategies/Dragon
 import {InquisitorsMultiplierStrategy} from "./MultiplierStrategies/InquisitorsMultiplierStrategy";
 import {CorporealBeastMultiplierStrategy} from "./MultiplierStrategies/CorporealBeastMultiplierStrategy";
 import {DragonHunterCrossbowMultiplierStrategy} from "./MultiplierStrategies/DragonHunterCrossbowMultiplierStrategy";
+import {TektonMultiplierStrategy} from "./MultiplierStrategies/TektonMultiplierStrategy";
 
 export class Calculator {
     dps: number = 0;
@@ -61,12 +62,15 @@ export class Calculator {
         const defenceRoll = this.calculateDefenceRoll(invocationLevel, attackStyle);
 
         this.hitChance = this.calculateHitChance(attackRoll, defenceRoll);
+
+        new TektonMultiplierStrategy(this).calculateMultiplier();
         this.averageDamagePerHit = this.calculateDamagePerHit();
 
         let weaponSpeed = this.gearSet.weapon.speedSeconds;
         if (this.gearSet.weaponStyle === WeaponStyle.Rapid) {
             weaponSpeed -= 0.6;
         }
+
         this.dps = this.calculateDps(weaponSpeed);
     }
 

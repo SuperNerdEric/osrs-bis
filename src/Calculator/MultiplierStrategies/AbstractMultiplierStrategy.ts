@@ -13,5 +13,5 @@ export abstract class AbstractMultiplierStrategy {
         this.result = result;
     }
 
-abstract calculateMultiplier(multiplierType?: MultiplierType): number;
+    abstract calculateMultiplier(multiplierType?: MultiplierType): number;
 }
