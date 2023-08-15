@@ -952,3 +952,87 @@ monster.defenceStats = {
     [StyleType.Ranged]: 550
 };
 monsters.set(monster.shortName, monster);
+
+monster = new TargetMonster();
+monster.name = "Alchemical Hydra";
+monster.shortName = "Hydra";
+monster.size = "6x6";
+monster.raid = Raid.None;
+monster.slayerMonster = true;
+monster.isDraconic = true;
+monster.imagePath = './Images/Monsters/Alchemical_Hydra.png';
+monster.currentHitpoints = 1100;
+monster.defenceLevel = 100;
+monster.maxDefenceReduction = 100;
+monster.magicLevel = 260;
+monster.magicAccuracy = 45;
+monster.defenceStats = {
+    [StyleType.Stab]: 75,
+    [StyleType.Slash]: 150,
+    [StyleType.Crush]: 150,
+    [StyleType.Magic]: 150,
+    [StyleType.Ranged]: 45
+};
+monsters.set(monster.shortName, monster);
+
+monster = new TargetMonster();
+monster.name = "Mutated Bloodveld";
+monster.size = "2x2";
+monster.raid = Raid.None;
+monster.slayerMonster = true;
+monster.imagePath = './Images/Monsters/Mutated_Bloodveld.png';
+monster.currentHitpoints = 170;
+monster.defenceLevel = 30;
+monster.maxDefenceReduction = 30;
+monster.magicLevel = 1;
+monster.magicAccuracy = 0;
+monster.defenceStats = {
+    [StyleType.Stab]: 0,
+    [StyleType.Slash]: 0,
+    [StyleType.Crush]: 0,
+    [StyleType.Magic]: 0,
+    [StyleType.Ranged]: 0
+};
+monsters.set(monster.name, monster);
+
+monster = new TargetMonster();
+monster.name = "TzTok-Jad";
+monster.shortName = "Jad";
+monster.size = "5x5";
+monster.raid = Raid.None;
+monster.slayerMonster = true;
+monster.imagePath = './Images/Monsters/TzTok-Jad.png';
+monster.currentHitpoints = 250;
+monster.defenceLevel = 480;
+monster.maxDefenceReduction = 480;
+monster.magicLevel = 480;
+monster.magicAccuracy = 60;
+monster.defenceStats = {
+    [StyleType.Stab]: 0,
+    [StyleType.Slash]: 0,
+    [StyleType.Crush]: 0,
+    [StyleType.Magic]: 0,
+    [StyleType.Ranged]: 0
+};
+monsters.set(monster.shortName, monster);
+
+monster = new TargetMonster();
+monster.name = "Blue Dragon";
+monster.size = "4x4";
+monster.raid = Raid.None;
+monster.slayerMonster = true;
+monster.isDraconic = true;
+monster.imagePath = './Images/Monsters/Blue_dragon.png';
+monster.currentHitpoints = 105;
+monster.defenceLevel = 95;
+monster.maxDefenceReduction = 95;
+monster.magicLevel = 1;
+monster.magicAccuracy = 0;
+monster.defenceStats = {
+    [StyleType.Stab]: 50,
+    [StyleType.Slash]: 70,
+    [StyleType.Crush]: 70,
+    [StyleType.Magic]: 60,
+    [StyleType.Ranged]: 50
+};
+monsters.set(monster.name, monster);
