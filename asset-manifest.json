@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.65df87b3.css",
-    "main.js": "/static/js/main.621ea05c.js",
+    "main.js": "/static/js/main.7073f4b0.js",
     "static/js/787.f7d32ca0.chunk.js": "/static/js/787.f7d32ca0.chunk.js",
     "static/media/Duke_Sucellus.png": "/static/media/Duke_Sucellus.20671a0f119b769958f1.png",
     "static/media/Fire_cape.png": "/static/media/Fire_cape.9fa34a7e2c3fc7a55285.png",
@@ -71,6 +71,7 @@
     "static/media/Vespula.png": "/static/media/Vespula.6012ae66ede098cbe1c7.png",
     "static/media/Chaos_Elemental.png": "/static/media/Chaos_Elemental.bf1b7bb7dc65096f6f6c.png",
     "static/media/Twisted_bow.png": "/static/media/Twisted_bow.2aedad7d599bc8f4b727.png",
+    "static/media/Blue_dragon.png": "/static/media/Blue_dragon.62b4c1d14bf747063720.png",
     "static/media/The_Whisperer.png": "/static/media/The_Whisperer.7df35188362c813177f7.png",
     "static/media/Tumekens_shadow.png": "/static/media/Tumekens_shadow.e4414b83876093d05942.png",
     "static/media/Dragon_hunter_lance.png": "/static/media/Dragon_hunter_lance.4a59f42a1dcf19b5b0ee.png",
@@ -113,6 +114,7 @@
     "static/media/Imbued_zamorak_cape.png": "/static/media/Imbued_zamorak_cape.1e9dfff5d18e4248f6bf.png",
     "static/media/Kalphite_Queen.png": "/static/media/Kalphite_Queen.5c822bb2b0ac35f2bb3d.png",
     "static/media/Kraken.png": "/static/media/Kraken.8a5c242e95368e1ad82e.png",
+    "static/media/Alchemical_Hydra.png": "/static/media/Alchemical_Hydra.4def3dbb6e58b82840bf.png",
     "static/media/Alchemical_Hydra_(serpentine).png": "/static/media/Alchemical_Hydra_(serpentine).4def3dbb6e58b82840bf.png",
     "static/media/Dragonstone_bolts_(e).png": "/static/media/Dragonstone_bolts_(e).5b7d6e87f5f5b9016c6e.png",
     "static/media/Sotetseg.png": "/static/media/Sotetseg.9a36b1169b8898309528.png",
@@ -127,6 +129,7 @@
     "static/media/Inquisitors_mace.png": "/static/media/Inquisitors_mace.8fef75691958ab5ea7e2.png",
     "static/media/Tekton.png": "/static/media/Tekton.26a0588782ea7d3dc264.png",
     "static/media/Karil_the_Tainted.png": "/static/media/Karil_the_Tainted.152cbab1ceeecb93f8aa.png",
+    "static/media/Mutated_Bloodveld.png": "/static/media/Mutated_Bloodveld.b169e97938030f670963.png",
     "static/media/Diamond_dragon_bolts_(e).png": "/static/media/Diamond_dragon_bolts_(e).05182148389e506d819b.png",
     "static/media/Callisto.png": "/static/media/Callisto.d2dc88a0f80cf5eb90b6.png",
     "static/media/Tormented_bracelet.png": "/static/media/Tormented_bracelet.fe9d9f26167104d4a383.png",
@@ -258,11 +261,11 @@
     "static/media/Zamorakian_hasta.webp": "/static/media/Zamorakian_hasta.be62bb7cec7ec3005a5e.webp",
     "index.html": "/index.html",
     "main.65df87b3.css.map": "/static/css/main.65df87b3.css.map",
-    "main.621ea05c.js.map": "/static/js/main.621ea05c.js.map",
+    "main.7073f4b0.js.map": "/static/js/main.7073f4b0.js.map",
     "787.f7d32ca0.chunk.js.map": "/static/js/787.f7d32ca0.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.65df87b3.css",
-    "static/js/main.621ea05c.js"
+    "static/js/main.7073f4b0.js"
   ]
 }
