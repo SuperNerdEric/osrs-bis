@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.65df87b3.css",
-    "main.js": "/static/js/main.d0979897.js",
+    "main.js": "/static/js/main.d24f5cc5.js",
     "static/js/787.f7d32ca0.chunk.js": "/static/js/787.f7d32ca0.chunk.js",
     "static/media/Duke_Sucellus.png": "/static/media/Duke_Sucellus.20671a0f119b769958f1.png",
     "static/media/Fire_cape.png": "/static/media/Fire_cape.9fa34a7e2c3fc7a55285.png",
@@ -21,6 +21,7 @@
     "static/media/The_Leviathan.png": "/static/media/The_Leviathan.55dcf418391a400dce6e.png",
     "static/media/Eternal_boots.png": "/static/media/Eternal_boots.cdd222610931861cc08d.png",
     "static/media/Primordial_boots.png": "/static/media/Primordial_boots.2abbc3f9131217f61e18.png",
+    "static/media/Crystal_helm.png": "/static/media/Crystal_helm.fa9d7b28531b93ae35aa.png",
     "static/media/Thermonuclear_smoke_devil.png": "/static/media/Thermonuclear_smoke_devil.fd207b21db9d9e4e6c03.png",
     "static/media/Neitiznot_faceguard.png": "/static/media/Neitiznot_faceguard.2b4767b821c735e9122d.png",
     "static/media/TzKal-Zuk.png": "/static/media/TzKal-Zuk.4ef1b954955d34c6cbad.png",
@@ -29,6 +30,7 @@
     "static/media/Pegasian_boots.png": "/static/media/Pegasian_boots.6967e147ba8b16417659.png",
     "static/media/Elidinis_ward_f.png": "/static/media/Elidinis_ward_f.c829fefeca04da923076.png",
     "static/media/Akkha.png": "/static/media/Akkha.358bbb844f4f47e1b989.png",
+    "static/media/Crystal_body.png": "/static/media/Crystal_body.17630f711796d4c4d5f9.png",
     "static/media/Ultor_ring.png": "/static/media/Ultor_ring.14204ae31c5831eebe6a.png",
     "static/media/Arclight.png": "/static/media/Arclight.6ffd8220c32bcff30023.png",
     "static/media/Dragon_hunter_crossbow.png": "/static/media/Dragon_hunter_crossbow.31dab63fdbe01ebd699d.png",
@@ -93,6 +95,7 @@
     "static/media/Vanguard_(magic).png": "/static/media/Vanguard_(magic).40a11e8788e3a8d4dc62.png",
     "static/media/Abyssal_Sire.png": "/static/media/Abyssal_Sire.9b8d6d5503296f9dec28.png",
     "static/media/Keris_partisan.png": "/static/media/Keris_partisan.f2f00a1d890f74378e31.png",
+    "static/media/Crystal_legs.png": "/static/media/Crystal_legs.2ef59521b9fdb305dc0f.png",
     "static/media/Muttadile.png": "/static/media/Muttadile.ae46643bf43b55942a1f.png",
     "static/media/Soulreaper_axe.png": "/static/media/Soulreaper_axe.d0fa6175fdf25a15e68d.png",
     "static/media/Vanguard_(ranged).png": "/static/media/Vanguard_(ranged).e5b25e8d204726617e4e.png",
@@ -136,6 +139,7 @@
     "static/media/Inquisitors_great_helm.png": "/static/media/Inquisitors_great_helm.4cc034fe91a8e480b3cd.png",
     "static/media/Dharok_the_Wretched.png": "/static/media/Dharok_the_Wretched.4b1650c4e10390f541ac.png",
     "static/media/Armadyl_chestplate.png": "/static/media/Armadyl_chestplate.5ddc92efadeead7bd22b.png",
+    "static/media/Bow_of_faerdhinen.png": "/static/media/Bow_of_faerdhinen.b2e8ad7394dc122f1260.png",
     "static/media/Abyssal_Sire_(phase_3,_stage_1).png": "/static/media/Abyssal_Sire_(phase_3,_stage_1).5be2c005d885f378717a.png",
     "static/media/Verac_the_Defiled.png": "/static/media/Verac_the_Defiled.3f7d0eae06a80bd00dd1.png",
     "static/media/Elite_void_top.png": "/static/media/Elite_void_top.4d2499c34fdeecc7462b.png",
@@ -262,11 +266,11 @@
     "static/media/Zamorakian_hasta.webp": "/static/media/Zamorakian_hasta.be62bb7cec7ec3005a5e.webp",
     "index.html": "/index.html",
     "main.65df87b3.css.map": "/static/css/main.65df87b3.css.map",
-    "main.d0979897.js.map": "/static/js/main.d0979897.js.map",
+    "main.d24f5cc5.js.map": "/static/js/main.d24f5cc5.js.map",
     "787.f7d32ca0.chunk.js.map": "/static/js/787.f7d32ca0.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.65df87b3.css",
-    "static/js/main.d0979897.js"
+    "static/js/main.d24f5cc5.js"
   ]
 }
