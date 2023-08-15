@@ -12,7 +12,7 @@ const MonsterSearch: React.FC<MonsterSearchProps> = ({ onSelect }) => {
     const monsterArray = Array.from(monsters.values());
 
     return (
-        <div style={{ position: 'relative', width: '250px' }}>
+        <div style={{ position: 'relative', width: '230px' }}>
             <Autocomplete
                 options={monsterArray}
                 getOptionLabel={(monster) => monster.name}
@@ -72,7 +72,7 @@ const MonsterSearch: React.FC<MonsterSearchProps> = ({ onSelect }) => {
                         overflow: 'auto',
                         backgroundColor: '#d8ccb4',
                         border: '1px solid #ddd',
-                        fontSize: '20px',
+                        fontSize: '16px',
                     }
                 }}
             />
