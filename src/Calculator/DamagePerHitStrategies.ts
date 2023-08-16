@@ -1,5 +1,5 @@
 import {Calculator} from "./Calculator";
-import {Slot} from "../DataObjects/Item";
+import {Item, Slot} from "../DataObjects/Item";
 import {ItemName} from "../DataObjects/ItemName";
 
 export abstract class DamagePerHitStrategy {
@@ -54,7 +54,8 @@ export class KerisPartisanStrategy extends DamagePerHitStrategy {
 
 export class BoltEnchantedStrategy extends DamagePerHitStrategy {
     calculate() {
-        const bolt = this.result.gearSet.items.find(item => item.slot === Slot.Ammo && item.name.includes('bolt'));
+        const ammoItem = this.result.gearSet.getItemBySlot(Slot.Ammo) as Item;
+        const bolt = ammoItem?.name.includes('bolt') ? ammoItem : undefined;
 
         if (!bolt) {
             const defaultStrategy = new DefaultStrategy(this.result);
@@ -83,7 +84,8 @@ export class BoltEnchantedStrategy extends DamagePerHitStrategy {
 
 export class DiamondBoltEnchantedStrategy extends DamagePerHitStrategy {
     calculate() {
-        const bolt = this.result.gearSet.items.find(item => item.slot === Slot.Ammo && item.name.includes('bolt'));
+        const ammoItem = this.result.gearSet.getItemBySlot(Slot.Ammo) as Item;
+        const bolt = ammoItem?.name.includes('bolt') ? ammoItem : undefined;
 
         const diamondBolts = [ItemName.DiamondBoltsE, ItemName.DiamondDragonBoltsE];
 
@@ -97,7 +99,7 @@ export class DiamondBoltEnchantedStrategy extends DamagePerHitStrategy {
         const baseMaxHit = this.result.maxHit;
         const baseAverageDamagePerHit = this.result.calculateAverageDamagePerHit(baseMaxHit, this.result.baseHitChance);
 
-        if (this.result.gearSet.weapon.name === ItemName.ZaryteCrossbow) {
+        if (this.result.gearSet.getWeapon().name === ItemName.ZaryteCrossbow) {
             this.result.maxHit = Math.floor(baseMaxHit * 1.265);
         } else {
             this.result.maxHit = Math.floor(baseMaxHit * 1.15);
@@ -114,7 +116,8 @@ export class DiamondBoltEnchantedStrategy extends DamagePerHitStrategy {
 
 export class RubyBoltEnchantedStrategy extends DamagePerHitStrategy {
     calculate() {
-        const bolt = this.result.gearSet.items.find(item => item.slot === Slot.Ammo && item.name.includes('bolt'));
+        const ammoItem = this.result.gearSet.getItemBySlot(Slot.Ammo) as Item;
+        const bolt = ammoItem?.name.includes('bolt') ? ammoItem : undefined;
 
         const rubyBolts = [ItemName.RubyBoltsE, ItemName.RubyDragonBoltsE];
 
@@ -130,7 +133,7 @@ export class RubyBoltEnchantedStrategy extends DamagePerHitStrategy {
 
         //Todo this doesn't take into account that your targets health goes down as you fight it...
         let procMaxHit;
-        if (this.result.gearSet.weapon.name === ItemName.ZaryteCrossbow) {
+        if (this.result.gearSet.getWeapon().name === ItemName.ZaryteCrossbow) {
             procMaxHit = Math.min(Math.floor(this.result.targetMonster.currentHitpoints * 0.22), 110);
         } else {
             procMaxHit = Math.min(Math.floor(this.result.targetMonster.currentHitpoints * 0.2), 100);
@@ -156,7 +159,9 @@ export class RubyBoltEnchantedStrategy extends DamagePerHitStrategy {
 
 export class OnyxBoltEnchantedStrategy extends DamagePerHitStrategy {
     calculate() {
-        const bolt = this.result.gearSet.items.find(item => item.slot === Slot.Ammo && item.name.includes('bolt'));
+        const ammoItem = this.result.gearSet.getItemBySlot(Slot.Ammo) as Item;
+        const bolt = ammoItem?.name.includes('bolt') ? ammoItem : undefined;
+
         const onyxBolts = [ItemName.OnyxBoltsE, ItemName.OnyxDragonBoltsE];
 
         if (!bolt || !onyxBolts.includes(bolt.name) || this.result.targetMonster.isUndead) {
@@ -169,7 +174,7 @@ export class OnyxBoltEnchantedStrategy extends DamagePerHitStrategy {
         const baseAverageDamagePerHit = this.result.calculateAverageDamagePerHit(baseMaxHit, this.result.hitChance);
 
         let damageMultiplier = 1.20;
-        if (this.result.gearSet.weapon.name === ItemName.ZaryteCrossbow) {
+        if (this.result.gearSet.getWeapon().name === ItemName.ZaryteCrossbow) {
             damageMultiplier = 1.32;
         }
 

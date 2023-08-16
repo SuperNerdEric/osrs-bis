@@ -1,46 +1,69 @@
 import {ItemName} from "../ItemName";
-import {CombatStyle} from "../Item";
-import {GearSet, GearSetType} from "../GearSets";
+import {CombatStyle, Slot} from "../Item";
+import {GearSet, gearSets, GearSetType} from "../GearSets";
+import * as _ from "lodash";
 
-export function generateMageGearsets(){
-    const rangedBase = [
+export function generateMageGearsets() {
+    const mageBase = [
         [ItemName.AncestralHat, ItemName.AncestralRobeTop, ItemName.AncestralRobeBottom, ItemName.TormentedBracelet],
         [ItemName.AhrimsHood, ItemName.AhrimsRobetop, ItemName.AhrimsRobeskirt, ItemName.ZaryteVambraces],
         [ItemName.AhrimsRobetop, ItemName.AhrimsRobeskirt, ItemName.ZaryteVambraces],
         [ItemName.VoidMageHelm, ItemName.EliteVoidTop, ItemName.EliteVoidRobe, ItemName.VoidKnightGloves]
     ]
 
-    rangedBase.forEach(base => {
+    mageBase.forEach(base => {
         base.push(ItemName.OccultNecklace);
         base.push(ItemName.ImbuedZamorakCape);
     })
 
-    rangedBase.forEach(base => {
-        const rangedRings = [null, ItemName.MagusRing];
-        rangedRings.forEach(ring => {
-            if(ring) {
+    mageBase.forEach(base => {
+        const mageRings = [null, ItemName.MagusRing];
+        mageRings.forEach(ring => {
+            if (ring) {
                 const newSet = [...base];
                 newSet.push(ring);
-                rangedBase.push(newSet);
+                mageBase.push(newSet);
             }
         })
     })
 
-    rangedBase.forEach(base => {
-        const rangedBoots = [null, ItemName.EternalBoots];
-        rangedBoots.forEach(boots => {
-            if(boots) {
+    mageBase.forEach(base => {
+        const mageBoots = [null, ItemName.EternalBoots];
+        mageBoots.forEach(boots => {
+            if (boots) {
                 const newSet = [...base];
                 newSet.push(boots);
-                rangedBase.push(newSet);
+                mageBase.push(newSet);
             }
         })
     })
 
-    rangedBase.forEach(base => {
-        new GearSet([GearSetType.General], ItemName.TumekensShadow, CombatStyle.Accurate, base);
-        new GearSet([GearSetType.General], ItemName.SanguinestiStaff, CombatStyle.Accurate, [...base, ItemName.ElidinisWardF]);
-        new GearSet([GearSetType.General], ItemName.SanguinestiStaff, CombatStyle.Accurate, [...base, ItemName.BookOfTheDead]);
-    })
+    const weapons = [
+        {name: ItemName.TumekensShadow, styles: [CombatStyle.Accurate]},
+        {name: ItemName.SanguinestiStaff, styles: [CombatStyle.Accurate]}
+    ];
 
+    mageBase.forEach(base => {
+        weapons.forEach(weapon => {
+            weapon.styles.forEach(style => {
+                const gearSet = new GearSet([GearSetType.General]);
+                gearSet.addItemByName(weapon.name);
+                gearSet.setCombatStyle(style);
+
+                base.forEach(itemName => gearSet.addItemByName(itemName));
+
+                if (gearSet.getWeapon()?.slot === Slot.MainHand) {
+                    const cloneWithElidinisWardF = _.cloneDeep(gearSet);
+                    cloneWithElidinisWardF.addItemByName(ItemName.ElidinisWardF);
+                    gearSets.push(cloneWithElidinisWardF);
+
+                    const cloneWithBookOfTheDead = _.cloneDeep(gearSet);
+                    cloneWithBookOfTheDead.addItemByName(ItemName.BookOfTheDead);
+                    gearSets.push(cloneWithBookOfTheDead);
+                } else {
+                    gearSets.push(gearSet);
+                }
+            })
+        });
+    })
 }

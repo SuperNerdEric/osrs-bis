@@ -23,16 +23,18 @@ describe('Calculator class', () => {
 
     describe('with Osmumtens fang in ToA melee gear set', () => {
         beforeEach(() => {
-            result.gearSet = new GearSet([GearSetType.General], ItemName.OsmumtensFang, CombatStyle.Lunge, [
-                ItemName.AvernicDefender,
-                ItemName.TorvaFullHelm,
-                ItemName.TorvaPlatebody,
-                ItemName.TorvaPlatelegs,
-                ItemName.FerociousGloves,
-                ItemName.PrimordialBoots,
-                ItemName.AmuletOfTorture,
-                ItemName.InfernalCape
-            ]);
+            result.gearSet = new GearSet([GearSetType.General])
+                .addItemByName(ItemName.OsmumtensFang)
+                .setCombatStyle(CombatStyle.Lunge)
+                .addItemByName(ItemName.AvernicDefender)
+                .addItemByName(ItemName.TorvaFullHelm)
+                .addItemByName(ItemName.TorvaPlatebody)
+                .addItemByName(ItemName.TorvaPlatelegs)
+                .addItemByName(ItemName.FerociousGloves)
+                .addItemByName(ItemName.PrimordialBoots)
+                .addItemByName(ItemName.AmuletOfTorture)
+                .addItemByName(ItemName.InfernalCape);
+
             result.targetMonster = monsters.get("Ba-Ba") as TargetMonster;
             result.calculateDPS(300);
         });
@@ -52,16 +54,18 @@ describe('Calculator class', () => {
 
     describe('with Osmumtens fang against bloat', () => {
         beforeEach(() => {
-            result.gearSet = new GearSet([GearSetType.General], ItemName.OsmumtensFang, CombatStyle.Lunge, [
-                ItemName.AvernicDefender,
-                ItemName.TorvaFullHelm,
-                ItemName.TorvaPlatebody,
-                ItemName.TorvaPlatelegs,
-                ItemName.FerociousGloves,
-                ItemName.PrimordialBoots,
-                ItemName.AmuletOfTorture,
-                ItemName.InfernalCape
-            ]);
+            result.gearSet = new GearSet([GearSetType.General])
+                .addItemByName(ItemName.OsmumtensFang)
+                .setCombatStyle(CombatStyle.Lunge)
+                .addItemByName(ItemName.AvernicDefender)
+                .addItemByName(ItemName.TorvaFullHelm)
+                .addItemByName(ItemName.TorvaPlatebody)
+                .addItemByName(ItemName.TorvaPlatelegs)
+                .addItemByName(ItemName.FerociousGloves)
+                .addItemByName(ItemName.PrimordialBoots)
+                .addItemByName(ItemName.AmuletOfTorture)
+                .addItemByName(ItemName.InfernalCape);
+
             result.targetMonster = monsters.get("Bloat") as TargetMonster;
             result.calculateDPS();
         });
@@ -81,16 +85,18 @@ describe('Calculator class', () => {
 
     describe('with melee gear set including Slayer helmet (i) and onTask is false', () => {
         beforeEach(() => {
-            result.gearSet = new GearSet([GearSetType.General], ItemName.OsmumtensFang, CombatStyle.Lunge, [
-                ItemName.AvernicDefender,
-                ItemName.SlayerHelmetI,
-                ItemName.TorvaPlatebody,
-                ItemName.TorvaPlatelegs,
-                ItemName.FerociousGloves,
-                ItemName.PrimordialBoots,
-                ItemName.AmuletOfTorture,
-                ItemName.InfernalCape
-            ]);
+            result.gearSet = new GearSet([GearSetType.General])
+                .addItemByName(ItemName.OsmumtensFang)
+                .setCombatStyle(CombatStyle.Lunge)
+                .addItemByName(ItemName.AvernicDefender)
+                .addItemByName(ItemName.SlayerHelmetI)
+                .addItemByName(ItemName.TorvaPlatebody)
+                .addItemByName(ItemName.TorvaPlatelegs)
+                .addItemByName(ItemName.FerociousGloves)
+                .addItemByName(ItemName.PrimordialBoots)
+                .addItemByName(ItemName.AmuletOfTorture)
+                .addItemByName(ItemName.InfernalCape);
+
             result.player.onTask = false;
             result.calculateDPS();
         });
@@ -110,16 +116,18 @@ describe('Calculator class', () => {
 
     describe('with melee gear set including Slayer helmet (i) and onTask is true', () => {
         beforeEach(() => {
-            result.gearSet = new GearSet([GearSetType.General], ItemName.OsmumtensFang, CombatStyle.Lunge, [
-                ItemName.AvernicDefender,
-                ItemName.SlayerHelmetI,
-                ItemName.TorvaPlatebody,
-                ItemName.TorvaPlatelegs,
-                ItemName.FerociousGloves,
-                ItemName.PrimordialBoots,
-                ItemName.AmuletOfTorture,
-                ItemName.InfernalCape
-            ]);
+            result.gearSet = new GearSet([GearSetType.General])
+                .addItemByName(ItemName.OsmumtensFang)
+                .setCombatStyle(CombatStyle.Lunge)
+                .addItemByName(ItemName.AvernicDefender)
+                .addItemByName(ItemName.SlayerHelmetI)
+                .addItemByName(ItemName.TorvaPlatebody)
+                .addItemByName(ItemName.TorvaPlatelegs)
+                .addItemByName(ItemName.FerociousGloves)
+                .addItemByName(ItemName.PrimordialBoots)
+                .addItemByName(ItemName.AmuletOfTorture)
+                .addItemByName(ItemName.InfernalCape);
+
             result.player.onTask = true;
             result.calculateDPS();
         });
@@ -139,15 +147,17 @@ describe('Calculator class', () => {
 
     describe('with ranged gear set including Slayer helmet (i) and onTask is false', () => {
         beforeEach(() => {
-            result.gearSet = new GearSet([GearSetType.General], ItemName.TwistedBow, CombatStyle.Rapid, [
-                ItemName.DragonArrow,
-                ItemName.SlayerHelmetI,
-                ItemName.MasoriBodyF,
-                ItemName.MasoriChapsF,
-                ItemName.ZaryteVambraces,
-                ItemName.NecklaceOfAnguish,
-                ItemName.AvasAssembler
-            ]);
+            result.gearSet = new GearSet([GearSetType.General])
+                .addItemByName(ItemName.TwistedBow)
+                .setCombatStyle(CombatStyle.Rapid)
+                .addItemByName(ItemName.DragonArrow)
+                .addItemByName(ItemName.SlayerHelmetI)
+                .addItemByName(ItemName.MasoriBodyF)
+                .addItemByName(ItemName.MasoriChapsF)
+                .addItemByName(ItemName.ZaryteVambraces)
+                .addItemByName(ItemName.NecklaceOfAnguish)
+                .addItemByName(ItemName.AvasAssembler);
+
             result.player.onTask = false;
             result.calculateDPS();
         });
@@ -167,15 +177,17 @@ describe('Calculator class', () => {
 
     describe('with ranged gear set including Slayer helmet (i) and onTask is true', () => {
         beforeEach(() => {
-            result.gearSet = new GearSet([GearSetType.General], ItemName.TwistedBow, CombatStyle.Rapid, [
-                ItemName.DragonArrow,
-                ItemName.SlayerHelmetI,
-                ItemName.MasoriBodyF,
-                ItemName.MasoriChapsF,
-                ItemName.ZaryteVambraces,
-                ItemName.NecklaceOfAnguish,
-                ItemName.AvasAssembler
-            ]);
+            result.gearSet = new GearSet([GearSetType.General])
+                .addItemByName(ItemName.TwistedBow)
+                .setCombatStyle(CombatStyle.Rapid)
+                .addItemByName(ItemName.DragonArrow)
+                .addItemByName(ItemName.SlayerHelmetI)
+                .addItemByName(ItemName.MasoriBodyF)
+                .addItemByName(ItemName.MasoriChapsF)
+                .addItemByName(ItemName.ZaryteVambraces)
+                .addItemByName(ItemName.NecklaceOfAnguish)
+                .addItemByName(ItemName.AvasAssembler);
+
             result.player.onTask = true;
             result.calculateDPS();
         });
@@ -195,11 +207,13 @@ describe('Calculator class', () => {
 
     describe('tbow slayer dummy test', () => {
         beforeEach(() => {
-            result.gearSet = new GearSet([GearSetType.General], ItemName.TwistedBow, CombatStyle.Rapid, [
-                ItemName.BronzeArrow,
-                ItemName.SlayerHelmetI,
-                ItemName.MasoriBodyF
-            ]);
+            result.gearSet = new GearSet([GearSetType.General])
+                .addItemByName(ItemName.TwistedBow)
+                .setCombatStyle(CombatStyle.Rapid)
+                .addItemByName(ItemName.BronzeArrow)
+                .addItemByName(ItemName.SlayerHelmetI)
+                .addItemByName(ItemName.MasoriBodyF);
+
             result.targetMonster = monsters.get("Undead Combat Dummy") as TargetMonster;
             result.player.onTask = true;
             result.calculateDPS();
@@ -212,15 +226,17 @@ describe('Calculator class', () => {
 
     describe('with mage gear set including Slayer helmet (i) and onTask is false', () => {
         beforeEach(() => {
-            result.gearSet = new GearSet([GearSetType.General], ItemName.SanguinestiStaff, CombatStyle.Accurate, [
-                ItemName.ElidinisWardF,
-                ItemName.SlayerHelmetI,
-                ItemName.AncestralRobeTop,
-                ItemName.AncestralRobeBottom,
-                ItemName.TormentedBracelet,
-                ItemName.OccultNecklace,
-                ItemName.ImbuedZamorakCape
-            ]);
+            result.gearSet = new GearSet([GearSetType.General])
+                .addItemByName(ItemName.SanguinestiStaff)
+                .setCombatStyle(CombatStyle.Accurate)
+                .addItemByName(ItemName.ElidinisWardF)
+                .addItemByName(ItemName.SlayerHelmetI)
+                .addItemByName(ItemName.AncestralRobeTop)
+                .addItemByName(ItemName.AncestralRobeBottom)
+                .addItemByName(ItemName.TormentedBracelet)
+                .addItemByName(ItemName.OccultNecklace)
+                .addItemByName(ItemName.ImbuedZamorakCape);
+
             result.player.onTask = false;
             result.calculateDPS();
         });
@@ -240,15 +256,17 @@ describe('Calculator class', () => {
 
     describe('with mage gear set including Slayer helmet (i) and onTask is true', () => {
         beforeEach(() => {
-            result.gearSet = new GearSet([GearSetType.General], ItemName.SanguinestiStaff, CombatStyle.Accurate, [
-                ItemName.ElidinisWardF,
-                ItemName.SlayerHelmetI,
-                ItemName.AncestralRobeTop,
-                ItemName.AncestralRobeBottom,
-                ItemName.TormentedBracelet,
-                ItemName.OccultNecklace,
-                ItemName.ImbuedZamorakCape
-            ]);
+            result.gearSet = new GearSet([GearSetType.General])
+                .addItemByName(ItemName.SanguinestiStaff)
+                .setCombatStyle(CombatStyle.Accurate)
+                .addItemByName(ItemName.ElidinisWardF)
+                .addItemByName(ItemName.SlayerHelmetI)
+                .addItemByName(ItemName.AncestralRobeTop)
+                .addItemByName(ItemName.AncestralRobeBottom)
+                .addItemByName(ItemName.TormentedBracelet)
+                .addItemByName(ItemName.OccultNecklace)
+                .addItemByName(ItemName.ImbuedZamorakCape);
+
             result.player.onTask = true;
             result.calculateDPS();
         });
@@ -268,14 +286,16 @@ describe('Calculator class', () => {
 
     describe('with Tumekens shadow mage gear set including Slayer helmet (i) and onTask is false', () => {
         beforeEach(() => {
-            result.gearSet = new GearSet([GearSetType.General], ItemName.TumekensShadow, CombatStyle.Accurate, [
-                ItemName.SlayerHelmetI,
-                ItemName.AncestralRobeTop,
-                ItemName.AncestralRobeBottom,
-                ItemName.TormentedBracelet,
-                ItemName.OccultNecklace,
-                ItemName.ImbuedZamorakCape
-            ]);
+            result.gearSet = new GearSet([GearSetType.General])
+                .addItemByName(ItemName.TumekensShadow)
+                .setCombatStyle(CombatStyle.Accurate)
+                .addItemByName(ItemName.SlayerHelmetI)
+                .addItemByName(ItemName.AncestralRobeTop)
+                .addItemByName(ItemName.AncestralRobeBottom)
+                .addItemByName(ItemName.TormentedBracelet)
+                .addItemByName(ItemName.OccultNecklace)
+                .addItemByName(ItemName.ImbuedZamorakCape);
+
             result.player.onTask = false;
             result.calculateDPS();
         });
@@ -295,14 +315,16 @@ describe('Calculator class', () => {
 
     describe('with Tumekens shadow mage gear set including Slayer helmet (i) and onTask is true', () => {
         beforeEach(() => {
-            result.gearSet = new GearSet([GearSetType.General], ItemName.TumekensShadow, CombatStyle.Accurate, [
-                ItemName.SlayerHelmetI,
-                ItemName.AncestralRobeTop,
-                ItemName.AncestralRobeBottom,
-                ItemName.TormentedBracelet,
-                ItemName.OccultNecklace,
-                ItemName.ImbuedZamorakCape
-            ]);
+            result.gearSet = new GearSet([GearSetType.General])
+                .addItemByName(ItemName.TumekensShadow)
+                .setCombatStyle(CombatStyle.Accurate)
+                .addItemByName(ItemName.SlayerHelmetI)
+                .addItemByName(ItemName.AncestralRobeTop)
+                .addItemByName(ItemName.AncestralRobeBottom)
+                .addItemByName(ItemName.TormentedBracelet)
+                .addItemByName(ItemName.OccultNecklace)
+                .addItemByName(ItemName.ImbuedZamorakCape);
+
             result.player.onTask = true;
             result.calculateDPS();
         });
@@ -322,14 +344,16 @@ describe('Calculator class', () => {
 
     describe('with Tumekens shadow in ToA mage gear set', () => {
         beforeEach(() => {
-            result.gearSet = new GearSet([GearSetType.General], ItemName.TumekensShadow, CombatStyle.Accurate, [
-                ItemName.AncestralHat,
-                ItemName.AncestralRobeTop,
-                ItemName.AncestralRobeBottom,
-                ItemName.TormentedBracelet,
-                ItemName.OccultNecklace,
-                ItemName.ImbuedZamorakCape,
-            ], Raid.TombsOfAmascut);
+            result.gearSet = new GearSet([GearSetType.General], Raid.TombsOfAmascut)
+                .addItemByName(ItemName.TumekensShadow)
+                .setCombatStyle(CombatStyle.Accurate)
+                .addItemByName(ItemName.AncestralHat)
+                .addItemByName(ItemName.AncestralRobeTop)
+                .addItemByName(ItemName.AncestralRobeBottom)
+                .addItemByName(ItemName.TormentedBracelet)
+                .addItemByName(ItemName.OccultNecklace)
+                .addItemByName(ItemName.ImbuedZamorakCape);
+
             result.targetMonster = monsters.get("Zebak") as TargetMonster;
             result.calculateDPS(300);
         });
@@ -349,15 +373,17 @@ describe('Calculator class', () => {
 
     describe('with Tumekens shadow against Verzik', () => {
         beforeEach(() => {
-            result.gearSet = new GearSet([GearSetType.General], ItemName.TumekensShadow, CombatStyle.Accurate, [
-                ItemName.AncestralHat,
-                ItemName.AncestralRobeTop,
-                ItemName.AncestralRobeBottom,
-                ItemName.TormentedBracelet,
-                ItemName.OccultNecklace,
-                ItemName.ImbuedZamorakCape,
-                ItemName.MagusRing
-            ]);
+            result.gearSet = new GearSet([GearSetType.General])
+                .addItemByName(ItemName.TumekensShadow)
+                .setCombatStyle(CombatStyle.Accurate)
+                .addItemByName(ItemName.AncestralHat)
+                .addItemByName(ItemName.AncestralRobeTop)
+                .addItemByName(ItemName.AncestralRobeBottom)
+                .addItemByName(ItemName.TormentedBracelet)
+                .addItemByName(ItemName.OccultNecklace)
+                .addItemByName(ItemName.ImbuedZamorakCape)
+                .addItemByName(ItemName.MagusRing);
+
             result.targetMonster = monsters.get("Verzik P2") as TargetMonster;
             result.calculateDPS();
         });
@@ -377,15 +403,17 @@ describe('Calculator class', () => {
 
     describe('with Twisted bow in CoX', () => {
         beforeEach(() => {
-            result.gearSet = new GearSet([GearSetType.General], ItemName.TwistedBow, CombatStyle.Rapid, [
-                ItemName.DragonArrow,
-                ItemName.MasoriMaskF,
-                ItemName.MasoriBodyF,
-                ItemName.MasoriChapsF,
-                ItemName.ZaryteVambraces,
-                ItemName.NecklaceOfAnguish,
-                ItemName.AvasAssembler,
-            ]);
+            result.gearSet = new GearSet([GearSetType.General])
+                .addItemByName(ItemName.TwistedBow)
+                .setCombatStyle(CombatStyle.Rapid)
+                .addItemByName(ItemName.DragonArrow)
+                .addItemByName(ItemName.MasoriMaskF)
+                .addItemByName(ItemName.MasoriBodyF)
+                .addItemByName(ItemName.MasoriChapsF)
+                .addItemByName(ItemName.ZaryteVambraces)
+                .addItemByName(ItemName.NecklaceOfAnguish)
+                .addItemByName(ItemName.AvasAssembler);
+
             result.targetMonster = monsters.get("Olm (Head)") as TargetMonster;
             result.calculateDPS();
         });
@@ -405,15 +433,17 @@ describe('Calculator class', () => {
 
     describe('with Scythe on large monster', () => {
         beforeEach(() => {
-            result.gearSet = new GearSet([GearSetType.General], ItemName.ScytheOfVitur, CombatStyle.Chop, [
-                ItemName.TorvaFullHelm,
-                ItemName.TorvaPlatebody,
-                ItemName.TorvaPlatelegs,
-                ItemName.FerociousGloves,
-                ItemName.PrimordialBoots,
-                ItemName.AmuletOfTorture,
-                ItemName.InfernalCape
-            ]);
+            result.gearSet = new GearSet([GearSetType.General])
+                .addItemByName(ItemName.ScytheOfVitur)
+                .setCombatStyle(CombatStyle.Chop)
+                .addItemByName(ItemName.TorvaFullHelm)
+                .addItemByName(ItemName.TorvaPlatebody)
+                .addItemByName(ItemName.TorvaPlatelegs)
+                .addItemByName(ItemName.FerociousGloves)
+                .addItemByName(ItemName.PrimordialBoots)
+                .addItemByName(ItemName.AmuletOfTorture)
+                .addItemByName(ItemName.InfernalCape);
+
             result.targetMonster = monsters.get("Bloat") as TargetMonster;
             result.calculateDPS();
         });
@@ -433,16 +463,18 @@ describe('Calculator class', () => {
 
     describe('with Scythe on medium monster', () => {
         beforeEach(() => {
-            result.gearSet = new GearSet([GearSetType.General], ItemName.ScytheOfVitur, CombatStyle.Chop, [
-                ItemName.TorvaFullHelm,
-                ItemName.TorvaPlatebody,
-                ItemName.TorvaPlatelegs,
-                ItemName.FerociousGloves,
-                ItemName.PrimordialBoots,
-                ItemName.AmuletOfTorture,
-                ItemName.InfernalCape,
-                ItemName.BellatorRing
-            ]);
+            result.gearSet = new GearSet([GearSetType.General])
+                .addItemByName(ItemName.ScytheOfVitur)
+                .setCombatStyle(CombatStyle.Chop)
+                .addItemByName(ItemName.TorvaFullHelm)
+                .addItemByName(ItemName.TorvaPlatebody)
+                .addItemByName(ItemName.TorvaPlatelegs)
+                .addItemByName(ItemName.FerociousGloves)
+                .addItemByName(ItemName.PrimordialBoots)
+                .addItemByName(ItemName.AmuletOfTorture)
+                .addItemByName(ItemName.InfernalCape)
+                .addItemByName(ItemName.BellatorRing);
+
             result.targetMonster = monsters.get("Vardorvis") as TargetMonster;
             result.calculateDPS();
         });
@@ -462,16 +494,18 @@ describe('Calculator class', () => {
 
     describe('with Scythe on small monster', () => {
         beforeEach(() => {
-            result.gearSet = new GearSet([GearSetType.General], ItemName.ScytheOfVitur, CombatStyle.Chop, [
-                ItemName.TorvaFullHelm,
-                ItemName.TorvaPlatebody,
-                ItemName.TorvaPlatelegs,
-                ItemName.FerociousGloves,
-                ItemName.PrimordialBoots,
-                ItemName.AmuletOfTorture,
-                ItemName.InfernalCape,
-                ItemName.BellatorRing
-            ]);
+            result.gearSet = new GearSet([GearSetType.General])
+                .addItemByName(ItemName.ScytheOfVitur)
+                .setCombatStyle(CombatStyle.Chop)
+                .addItemByName(ItemName.TorvaFullHelm)
+                .addItemByName(ItemName.TorvaPlatebody)
+                .addItemByName(ItemName.TorvaPlatelegs)
+                .addItemByName(ItemName.FerociousGloves)
+                .addItemByName(ItemName.PrimordialBoots)
+                .addItemByName(ItemName.AmuletOfTorture)
+                .addItemByName(ItemName.InfernalCape)
+                .addItemByName(ItemName.BellatorRing);
+
             result.targetMonster = monsters.get("Karil") as TargetMonster;
             result.calculateDPS();
         });
@@ -492,16 +526,18 @@ describe('Calculator class', () => {
 
     describe('with Keris partisan on kalphite', () => {
         beforeEach(() => {
-            result.gearSet = new GearSet([GearSetType.General], ItemName.KerisPartisan, CombatStyle.Lunge, [
-                ItemName.AvernicDefender,
-                ItemName.TorvaFullHelm,
-                ItemName.TorvaPlatebody,
-                ItemName.TorvaPlatelegs,
-                ItemName.FerociousGloves,
-                ItemName.PrimordialBoots,
-                ItemName.AmuletOfTorture,
-                ItemName.InfernalCape
-            ]);
+            result.gearSet = new GearSet([GearSetType.General])
+                .addItemByName(ItemName.KerisPartisan)
+                .setCombatStyle(CombatStyle.Lunge)
+                .addItemByName(ItemName.AvernicDefender)
+                .addItemByName(ItemName.TorvaFullHelm)
+                .addItemByName(ItemName.TorvaPlatebody)
+                .addItemByName(ItemName.TorvaPlatelegs)
+                .addItemByName(ItemName.FerociousGloves)
+                .addItemByName(ItemName.PrimordialBoots)
+                .addItemByName(ItemName.AmuletOfTorture)
+                .addItemByName(ItemName.InfernalCape);
+
             result.targetMonster = monsters.get("KQ") as TargetMonster;
             result.calculateDPS();
         });
@@ -521,16 +557,18 @@ describe('Calculator class', () => {
 
     describe('with Keris partisan of breaching on kalphite', () => {
         beforeEach(() => {
-            result.gearSet = new GearSet([GearSetType.General], ItemName.KerisPartisanOfBreaching, CombatStyle.Lunge, [
-                ItemName.AvernicDefender,
-                ItemName.TorvaFullHelm,
-                ItemName.TorvaPlatebody,
-                ItemName.TorvaPlatelegs,
-                ItemName.FerociousGloves,
-                ItemName.PrimordialBoots,
-                ItemName.AmuletOfTorture,
-                ItemName.InfernalCape
-            ]);
+            result.gearSet = new GearSet([GearSetType.General])
+                .addItemByName(ItemName.KerisPartisanOfBreaching)
+                .setCombatStyle(CombatStyle.Lunge)
+                .addItemByName(ItemName.AvernicDefender)
+                .addItemByName(ItemName.TorvaFullHelm)
+                .addItemByName(ItemName.TorvaPlatebody)
+                .addItemByName(ItemName.TorvaPlatelegs)
+                .addItemByName(ItemName.FerociousGloves)
+                .addItemByName(ItemName.PrimordialBoots)
+                .addItemByName(ItemName.AmuletOfTorture)
+                .addItemByName(ItemName.InfernalCape);
+
             result.targetMonster = monsters.get("KQ") as TargetMonster;
             result.calculateDPS();
         });
@@ -550,16 +588,18 @@ describe('Calculator class', () => {
 
     describe('with Keris partisan of breaching on kalphite slayer task', () => {
         beforeEach(() => {
-            result.gearSet = new GearSet([GearSetType.General], ItemName.KerisPartisanOfBreaching, CombatStyle.Lunge, [
-                ItemName.AvernicDefender,
-                ItemName.SlayerHelmetI,
-                ItemName.TorvaPlatebody,
-                ItemName.TorvaPlatelegs,
-                ItemName.FerociousGloves,
-                ItemName.PrimordialBoots,
-                ItemName.AmuletOfTorture,
-                ItemName.InfernalCape
-            ]);
+            result.gearSet = new GearSet([GearSetType.General])
+                .addItemByName(ItemName.KerisPartisanOfBreaching)
+                .setCombatStyle(CombatStyle.Lunge)
+                .addItemByName(ItemName.AvernicDefender)
+                .addItemByName(ItemName.SlayerHelmetI)
+                .addItemByName(ItemName.TorvaPlatebody)
+                .addItemByName(ItemName.TorvaPlatelegs)
+                .addItemByName(ItemName.FerociousGloves)
+                .addItemByName(ItemName.PrimordialBoots)
+                .addItemByName(ItemName.AmuletOfTorture)
+                .addItemByName(ItemName.InfernalCape);
+
             result.targetMonster = monsters.get("KQ") as TargetMonster;
             result.player.onTask = true;
             result.calculateDPS();
@@ -580,16 +620,18 @@ describe('Calculator class', () => {
 
     describe('with Keris partisan of breaching on kalphite slayer task on pound combat style', () => {
         beforeEach(() => {
-            result.gearSet = new GearSet([GearSetType.Slayer], ItemName.KerisPartisanOfBreaching, CombatStyle.Pound, [
-                ItemName.AvernicDefender,
-                ItemName.SlayerHelmetI,
-                ItemName.TorvaPlatebody,
-                ItemName.TorvaPlatelegs,
-                ItemName.FerociousGloves,
-                ItemName.PrimordialBoots,
-                ItemName.AmuletOfTorture,
-                ItemName.InfernalCape
-            ]);
+            result.gearSet = new GearSet([GearSetType.Slayer])
+                .addItemByName(ItemName.KerisPartisanOfBreaching)
+                .setCombatStyle(CombatStyle.Pound)
+                .addItemByName(ItemName.AvernicDefender)
+                .addItemByName(ItemName.SlayerHelmetI)
+                .addItemByName(ItemName.TorvaPlatebody)
+                .addItemByName(ItemName.TorvaPlatelegs)
+                .addItemByName(ItemName.FerociousGloves)
+                .addItemByName(ItemName.PrimordialBoots)
+                .addItemByName(ItemName.AmuletOfTorture)
+                .addItemByName(ItemName.InfernalCape);
+
             result.targetMonster = monsters.get("KQ") as TargetMonster;
             result.player.onTask = true;
             result.calculateDPS();
@@ -610,16 +652,18 @@ describe('Calculator class', () => {
 
     describe('with melee gear set including Salve amulet and undead is true', () => {
         beforeEach(() => {
-            result.gearSet = new GearSet([GearSetType.General], ItemName.GhraziRapier, CombatStyle.Lunge, [
-                ItemName.AvernicDefender,
-                ItemName.TorvaFullHelm,
-                ItemName.TorvaPlatebody,
-                ItemName.TorvaPlatelegs,
-                ItemName.FerociousGloves,
-                ItemName.PrimordialBoots,
-                ItemName.SalveAmulet,
-                ItemName.InfernalCape
-            ]);
+            result.gearSet = new GearSet([GearSetType.General])
+                .addItemByName(ItemName.GhraziRapier)
+                .setCombatStyle(CombatStyle.Lunge)
+                .addItemByName(ItemName.AvernicDefender)
+                .addItemByName(ItemName.TorvaFullHelm)
+                .addItemByName(ItemName.TorvaPlatebody)
+                .addItemByName(ItemName.TorvaPlatelegs)
+                .addItemByName(ItemName.FerociousGloves)
+                .addItemByName(ItemName.PrimordialBoots)
+                .addItemByName(ItemName.SalveAmulet)
+                .addItemByName(ItemName.InfernalCape);
+
             result.targetMonster = monsters.get("Bloat") as TargetMonster;
             result.calculateDPS();
         });
@@ -639,16 +683,18 @@ describe('Calculator class', () => {
 
     describe('with melee gear set including Salve amulet (e) and undead is true', () => {
         beforeEach(() => {
-            result.gearSet = new GearSet([GearSetType.General], ItemName.GhraziRapier, CombatStyle.Lunge, [
-                ItemName.AvernicDefender,
-                ItemName.TorvaFullHelm,
-                ItemName.TorvaPlatebody,
-                ItemName.TorvaPlatelegs,
-                ItemName.FerociousGloves,
-                ItemName.PrimordialBoots,
-                ItemName.SalveAmuletE,
-                ItemName.InfernalCape
-            ]);
+            result.gearSet = new GearSet([GearSetType.General])
+                .addItemByName(ItemName.GhraziRapier)
+                .setCombatStyle(CombatStyle.Lunge)
+                .addItemByName(ItemName.AvernicDefender)
+                .addItemByName(ItemName.TorvaFullHelm)
+                .addItemByName(ItemName.TorvaPlatebody)
+                .addItemByName(ItemName.TorvaPlatelegs)
+                .addItemByName(ItemName.FerociousGloves)
+                .addItemByName(ItemName.PrimordialBoots)
+                .addItemByName(ItemName.SalveAmuletE)
+                .addItemByName(ItemName.InfernalCape);
+
             result.targetMonster = monsters.get("Bloat") as TargetMonster;
             result.calculateDPS();
         });
@@ -668,16 +714,18 @@ describe('Calculator class', () => {
 
     describe('with melee void', () => {
         beforeEach(() => {
-            result.gearSet = new GearSet([GearSetType.General], ItemName.GhraziRapier, CombatStyle.Lunge, [
-                ItemName.AvernicDefender,
-                ItemName.VoidMeleeHelm,
-                ItemName.VoidKnightTop,
-                ItemName.VoidKnightRobe,
-                ItemName.VoidKnightGloves,
-                ItemName.PrimordialBoots,
-                ItemName.AmuletOfTorture,
-                ItemName.InfernalCape
-            ]);
+            result.gearSet = new GearSet([GearSetType.General])
+                .addItemByName(ItemName.GhraziRapier)
+                .setCombatStyle(CombatStyle.Lunge)
+                .addItemByName(ItemName.AvernicDefender)
+                .addItemByName(ItemName.VoidMeleeHelm)
+                .addItemByName(ItemName.VoidKnightTop)
+                .addItemByName(ItemName.VoidKnightRobe)
+                .addItemByName(ItemName.VoidKnightGloves)
+                .addItemByName(ItemName.PrimordialBoots)
+                .addItemByName(ItemName.AmuletOfTorture)
+                .addItemByName(ItemName.InfernalCape);
+
             result.targetMonster = monsters.get("Bloat") as TargetMonster;
             result.calculateDPS();
         });
@@ -697,15 +745,17 @@ describe('Calculator class', () => {
 
     describe('with ranged void', () => {
         beforeEach(() => {
-            result.gearSet = new GearSet([GearSetType.General], ItemName.TwistedBow, CombatStyle.Rapid, [
-                ItemName.DragonArrow,
-                ItemName.VoidRangerHelm,
-                ItemName.VoidKnightTop,
-                ItemName.VoidKnightRobe,
-                ItemName.VoidKnightGloves,
-                ItemName.NecklaceOfAnguish,
-                ItemName.AvasAssembler
-            ]);
+            result.gearSet = new GearSet([GearSetType.General])
+                .addItemByName(ItemName.TwistedBow)
+                .setCombatStyle(CombatStyle.Rapid)
+                .addItemByName(ItemName.DragonArrow)
+                .addItemByName(ItemName.VoidRangerHelm)
+                .addItemByName(ItemName.VoidKnightTop)
+                .addItemByName(ItemName.VoidKnightRobe)
+                .addItemByName(ItemName.VoidKnightGloves)
+                .addItemByName(ItemName.NecklaceOfAnguish)
+                .addItemByName(ItemName.AvasAssembler);
+
             result.targetMonster = monsters.get("Bloat") as TargetMonster;
             result.calculateDPS();
         });
@@ -725,15 +775,17 @@ describe('Calculator class', () => {
 
     describe('with ranged elite void', () => {
         beforeEach(() => {
-            result.gearSet = new GearSet([GearSetType.General], ItemName.TwistedBow, CombatStyle.Rapid, [
-                ItemName.DragonArrow,
-                ItemName.VoidRangerHelm,
-                ItemName.EliteVoidTop,
-                ItemName.EliteVoidRobe,
-                ItemName.VoidKnightGloves,
-                ItemName.NecklaceOfAnguish,
-                ItemName.AvasAssembler
-            ]);
+            result.gearSet = new GearSet([GearSetType.General])
+                .addItemByName(ItemName.TwistedBow)
+                .setCombatStyle(CombatStyle.Rapid)
+                .addItemByName(ItemName.DragonArrow)
+                .addItemByName(ItemName.VoidRangerHelm)
+                .addItemByName(ItemName.EliteVoidTop)
+                .addItemByName(ItemName.EliteVoidRobe)
+                .addItemByName(ItemName.VoidKnightGloves)
+                .addItemByName(ItemName.NecklaceOfAnguish)
+                .addItemByName(ItemName.AvasAssembler);
+
             result.targetMonster = monsters.get("Bloat") as TargetMonster;
             result.calculateDPS();
         });
@@ -753,14 +805,16 @@ describe('Calculator class', () => {
 
     describe('with mage void', () => {
         beforeEach(() => {
-            result.gearSet = new GearSet([GearSetType.General], ItemName.SanguinestiStaff, CombatStyle.Accurate, [
-                ItemName.VoidMageHelm,
-                ItemName.VoidKnightTop,
-                ItemName.VoidKnightRobe,
-                ItemName.VoidKnightGloves,
-                ItemName.OccultNecklace,
-                ItemName.ImbuedZamorakCape
-            ]);
+            result.gearSet = new GearSet([GearSetType.General])
+                .addItemByName(ItemName.SanguinestiStaff)
+                .setCombatStyle(CombatStyle.Accurate)
+                .addItemByName(ItemName.VoidMageHelm)
+                .addItemByName(ItemName.VoidKnightTop)
+                .addItemByName(ItemName.VoidKnightRobe)
+                .addItemByName(ItemName.VoidKnightGloves)
+                .addItemByName(ItemName.OccultNecklace)
+                .addItemByName(ItemName.ImbuedZamorakCape);
+
             result.targetMonster = monsters.get("Bloat") as TargetMonster;
             result.calculateDPS();
         });
@@ -780,14 +834,16 @@ describe('Calculator class', () => {
 
     describe('with elite mage void', () => {
         beforeEach(() => {
-            result.gearSet = new GearSet([GearSetType.General], ItemName.SanguinestiStaff, CombatStyle.Accurate, [
-                ItemName.VoidMageHelm,
-                ItemName.EliteVoidTop,
-                ItemName.EliteVoidRobe,
-                ItemName.VoidKnightGloves,
-                ItemName.OccultNecklace,
-                ItemName.ImbuedZamorakCape
-            ]);
+            result.gearSet = new GearSet([GearSetType.General])
+                .addItemByName(ItemName.SanguinestiStaff)
+                .setCombatStyle(CombatStyle.Accurate)
+                .addItemByName(ItemName.VoidMageHelm)
+                .addItemByName(ItemName.EliteVoidTop)
+                .addItemByName(ItemName.EliteVoidRobe)
+                .addItemByName(ItemName.VoidKnightGloves)
+                .addItemByName(ItemName.OccultNecklace)
+                .addItemByName(ItemName.ImbuedZamorakCape);
+
             result.targetMonster = monsters.get("Bloat") as TargetMonster;
             result.calculateDPS();
         });
@@ -807,16 +863,17 @@ describe('Calculator class', () => {
 
     describe('with arclight against demon', () => {
         beforeEach(() => {
-            result.gearSet = new GearSet([GearSetType.Demon], ItemName.Arclight, CombatStyle.Slash, [
-                ItemName.AvernicDefender,
-                ItemName.TorvaFullHelm,
-                ItemName.TorvaPlatebody,
-                ItemName.TorvaPlatelegs,
-                ItemName.FerociousGloves,
-                ItemName.PrimordialBoots,
-                ItemName.AmuletOfTorture,
-                ItemName.InfernalCape
-            ]);
+            result.gearSet = new GearSet([GearSetType.Demon])
+                .addItemByName(ItemName.Arclight)
+                .setCombatStyle(CombatStyle.Slash)
+                .addItemByName(ItemName.AvernicDefender)
+                .addItemByName(ItemName.TorvaFullHelm)
+                .addItemByName(ItemName.TorvaPlatebody)
+                .addItemByName(ItemName.TorvaPlatelegs)
+                .addItemByName(ItemName.FerociousGloves)
+                .addItemByName(ItemName.PrimordialBoots)
+                .addItemByName(ItemName.AmuletOfTorture)
+                .addItemByName(ItemName.InfernalCape);
             result.targetMonster = monsters.get("Zamorak") as TargetMonster;
             result.calculateDPS();
         });
@@ -836,16 +893,18 @@ describe('Calculator class', () => {
 
     describe('with arclight and slayer helmet against demon on task', () => {
         beforeEach(() => {
-            result.gearSet = new GearSet([GearSetType.Demon], ItemName.Arclight, CombatStyle.Slash, [
-                ItemName.AvernicDefender,
-                ItemName.SlayerHelmetI,
-                ItemName.TorvaPlatebody,
-                ItemName.TorvaPlatelegs,
-                ItemName.FerociousGloves,
-                ItemName.PrimordialBoots,
-                ItemName.AmuletOfTorture,
-                ItemName.InfernalCape
-            ]);
+            result.gearSet = new GearSet([GearSetType.Demon])
+                .addItemByName(ItemName.Arclight)
+                .setCombatStyle(CombatStyle.Slash)
+                .addItemByName(ItemName.AvernicDefender)
+                .addItemByName(ItemName.SlayerHelmetI)
+                .addItemByName(ItemName.TorvaPlatebody)
+                .addItemByName(ItemName.TorvaPlatelegs)
+                .addItemByName(ItemName.FerociousGloves)
+                .addItemByName(ItemName.PrimordialBoots)
+                .addItemByName(ItemName.AmuletOfTorture)
+                .addItemByName(ItemName.InfernalCape);
+
             result.targetMonster = monsters.get("Zamorak") as TargetMonster;
             result.player.onTask = true;
             result.calculateDPS();
@@ -866,16 +925,18 @@ describe('Calculator class', () => {
 
     describe('with dragon hunter lance against dragon', () => {
         beforeEach(() => {
-            result.gearSet = new GearSet([GearSetType.General], ItemName.DragonHunterLance, CombatStyle.Lunge, [
-                ItemName.AvernicDefender,
-                ItemName.TorvaFullHelm,
-                ItemName.TorvaPlatebody,
-                ItemName.TorvaPlatelegs,
-                ItemName.FerociousGloves,
-                ItemName.PrimordialBoots,
-                ItemName.AmuletOfTorture,
-                ItemName.InfernalCape
-            ]);
+            result.gearSet = new GearSet([GearSetType.General])
+                .addItemByName(ItemName.DragonHunterLance)
+                .setCombatStyle(CombatStyle.Lunge)
+                .addItemByName(ItemName.AvernicDefender)
+                .addItemByName(ItemName.TorvaFullHelm)
+                .addItemByName(ItemName.TorvaPlatebody)
+                .addItemByName(ItemName.TorvaPlatelegs)
+                .addItemByName(ItemName.FerociousGloves)
+                .addItemByName(ItemName.PrimordialBoots)
+                .addItemByName(ItemName.AmuletOfTorture)
+                .addItemByName(ItemName.InfernalCape);
+
             result.targetMonster = monsters.get("Olm (Left Claw)") as TargetMonster;
             result.calculateDPS();
         });
@@ -895,17 +956,19 @@ describe('Calculator class', () => {
 
     describe('with dragon hunter lance and salve against undead dragon', () => {
         beforeEach(() => {
-            result.gearSet = new GearSet([GearSetType.General], ItemName.DragonHunterLance, CombatStyle.Lunge, [
-                ItemName.AvernicDefender,
-                ItemName.TorvaFullHelm,
-                ItemName.TorvaPlatebody,
-                ItemName.TorvaPlatelegs,
-                ItemName.FerociousGloves,
-                ItemName.PrimordialBoots,
-                ItemName.SalveAmuletEI,
-                ItemName.InfernalCape,
-                ItemName.UltorRing
-            ]);
+            result.gearSet = new GearSet([GearSetType.General])
+                .addItemByName(ItemName.DragonHunterLance)
+                .setCombatStyle(CombatStyle.Lunge)
+                .addItemByName(ItemName.AvernicDefender)
+                .addItemByName(ItemName.TorvaFullHelm)
+                .addItemByName(ItemName.TorvaPlatebody)
+                .addItemByName(ItemName.TorvaPlatelegs)
+                .addItemByName(ItemName.FerociousGloves)
+                .addItemByName(ItemName.PrimordialBoots)
+                .addItemByName(ItemName.SalveAmuletEI)
+                .addItemByName(ItemName.InfernalCape)
+                .addItemByName(ItemName.UltorRing);
+
             result.targetMonster = monsters.get("Vorkath") as TargetMonster;
             result.calculateDPS();
         });
@@ -925,16 +988,18 @@ describe('Calculator class', () => {
 
     describe('with dragon hunter crossbow and salve against undead dragon', () => {
         beforeEach(() => {
-            result.gearSet = new GearSet([GearSetType.General], ItemName.DragonHunterCrossbow, CombatStyle.Rapid, [
-                ItemName.DiamondDragonBoltsE,
-                ItemName.TwistedBuckler,
-                ItemName.MasoriMaskF,
-                ItemName.MasoriBodyF,
-                ItemName.MasoriChapsF,
-                ItemName.ZaryteVambraces,
-                ItemName.SalveAmuletEI,
-                ItemName.AvasAssembler,
-            ]);
+            result.gearSet = new GearSet([GearSetType.General])
+                .addItemByName(ItemName.DragonHunterCrossbow)
+                .setCombatStyle(CombatStyle.Rapid)
+                .addItemByName(ItemName.DiamondDragonBoltsE)
+                .addItemByName(ItemName.TwistedBuckler)
+                .addItemByName(ItemName.MasoriMaskF)
+                .addItemByName(ItemName.MasoriBodyF)
+                .addItemByName(ItemName.MasoriChapsF)
+                .addItemByName(ItemName.ZaryteVambraces)
+                .addItemByName(ItemName.SalveAmuletEI)
+                .addItemByName(ItemName.AvasAssembler);
+
             result.targetMonster = monsters.get("Vorkath") as TargetMonster;
             result.calculateDPS();
         });
@@ -955,17 +1020,19 @@ describe('Calculator class', () => {
 
     describe('with inquisitors against kq', () => {
         beforeEach(() => {
-            result.gearSet = new GearSet([GearSetType.General], ItemName.InquisitorsMace, CombatStyle.Pummel, [
-                ItemName.AvernicDefender,
-                ItemName.InquisitorsGreatHelm,
-                ItemName.InquisitorsHauberk,
-                ItemName.InquisitorsPlateskirt,
-                ItemName.FerociousGloves,
-                ItemName.PrimordialBoots,
-                ItemName.AmuletOfTorture,
-                ItemName.InfernalCape,
-                ItemName.UltorRing
-            ]);
+            result.gearSet = new GearSet([GearSetType.General])
+                .addItemByName(ItemName.InquisitorsMace)
+                .setCombatStyle(CombatStyle.Pummel)
+                .addItemByName(ItemName.AvernicDefender)
+                .addItemByName(ItemName.InquisitorsGreatHelm)
+                .addItemByName(ItemName.InquisitorsHauberk)
+                .addItemByName(ItemName.InquisitorsPlateskirt)
+                .addItemByName(ItemName.FerociousGloves)
+                .addItemByName(ItemName.PrimordialBoots)
+                .addItemByName(ItemName.AmuletOfTorture)
+                .addItemByName(ItemName.InfernalCape)
+                .addItemByName(ItemName.UltorRing);
+
             result.targetMonster = monsters.get("KQ") as TargetMonster;
             result.calculateDPS();
         });
@@ -986,17 +1053,19 @@ describe('Calculator class', () => {
 
     describe('with 2 piece inquisitors against kq', () => {
         beforeEach(() => {
-            result.gearSet = new GearSet([GearSetType.General], ItemName.InquisitorsMace, CombatStyle.Pummel, [
-                ItemName.AvernicDefender,
-                ItemName.TorvaFullHelm,
-                ItemName.InquisitorsHauberk,
-                ItemName.InquisitorsPlateskirt,
-                ItemName.FerociousGloves,
-                ItemName.PrimordialBoots,
-                ItemName.AmuletOfTorture,
-                ItemName.InfernalCape,
-                ItemName.UltorRing
-            ]);
+            result.gearSet = new GearSet([GearSetType.General])
+                .addItemByName(ItemName.InquisitorsMace)
+                .setCombatStyle(CombatStyle.Pummel)
+                .addItemByName(ItemName.AvernicDefender)
+                .addItemByName(ItemName.TorvaFullHelm)
+                .addItemByName(ItemName.InquisitorsHauberk)
+                .addItemByName(ItemName.InquisitorsPlateskirt)
+                .addItemByName(ItemName.FerociousGloves)
+                .addItemByName(ItemName.PrimordialBoots)
+                .addItemByName(ItemName.AmuletOfTorture)
+                .addItemByName(ItemName.InfernalCape)
+                .addItemByName(ItemName.UltorRing);
+
             result.targetMonster = monsters.get("KQ") as TargetMonster;
             result.calculateDPS();
         });
@@ -1016,17 +1085,19 @@ describe('Calculator class', () => {
 
     describe('with inquisitors stab against kq', () => {
         beforeEach(() => {
-            result.gearSet = new GearSet([GearSetType.General], ItemName.InquisitorsMace, CombatStyle.Spike, [
-                ItemName.AvernicDefender,
-                ItemName.InquisitorsGreatHelm,
-                ItemName.InquisitorsHauberk,
-                ItemName.InquisitorsPlateskirt,
-                ItemName.FerociousGloves,
-                ItemName.PrimordialBoots,
-                ItemName.AmuletOfTorture,
-                ItemName.InfernalCape,
-                ItemName.UltorRing
-            ]);
+            result.gearSet = new GearSet([GearSetType.General])
+                .addItemByName(ItemName.InquisitorsMace)
+                .setCombatStyle(CombatStyle.Spike)
+                .addItemByName(ItemName.AvernicDefender)
+                .addItemByName(ItemName.InquisitorsGreatHelm)
+                .addItemByName(ItemName.InquisitorsHauberk)
+                .addItemByName(ItemName.InquisitorsPlateskirt)
+                .addItemByName(ItemName.FerociousGloves)
+                .addItemByName(ItemName.PrimordialBoots)
+                .addItemByName(ItemName.AmuletOfTorture)
+                .addItemByName(ItemName.InfernalCape)
+                .addItemByName(ItemName.UltorRing);
+
             result.targetMonster = monsters.get("KQ") as TargetMonster;
             result.calculateDPS();
         });
@@ -1046,17 +1117,19 @@ describe('Calculator class', () => {
 
     describe('with armadyl crossbow on rapid', () => {
         beforeEach(() => {
-            result.gearSet = new GearSet([GearSetType.General], ItemName.ArmadylCrossbow, CombatStyle.Rapid, [
-                ItemName.DragonBolts,
-                ItemName.TwistedBuckler,
-                ItemName.MasoriMaskF,
-                ItemName.MasoriBodyF,
-                ItemName.MasoriChapsF,
-                ItemName.ZaryteVambraces,
-                ItemName.PegasianBoots,
-                ItemName.NecklaceOfAnguish,
-                ItemName.AvasAssembler,
-            ]);
+            result.gearSet = new GearSet([GearSetType.General])
+                .addItemByName(ItemName.ArmadylCrossbow)
+                .setCombatStyle(CombatStyle.Rapid)
+                .addItemByName(ItemName.DragonBolts)
+                .addItemByName(ItemName.TwistedBuckler)
+                .addItemByName(ItemName.MasoriMaskF)
+                .addItemByName(ItemName.MasoriBodyF)
+                .addItemByName(ItemName.MasoriChapsF)
+                .addItemByName(ItemName.ZaryteVambraces)
+                .addItemByName(ItemName.PegasianBoots)
+                .addItemByName(ItemName.NecklaceOfAnguish)
+                .addItemByName(ItemName.AvasAssembler);
+
             result.calculateDPS();
         });
 
@@ -1075,17 +1148,19 @@ describe('Calculator class', () => {
 
     describe('with armadyl crossbow on accurate', () => {
         beforeEach(() => {
-            result.gearSet = new GearSet([GearSetType.General], ItemName.ArmadylCrossbow, CombatStyle.Accurate, [
-                ItemName.DragonBolts,
-                ItemName.TwistedBuckler,
-                ItemName.MasoriMaskF,
-                ItemName.MasoriBodyF,
-                ItemName.MasoriChapsF,
-                ItemName.ZaryteVambraces,
-                ItemName.PegasianBoots,
-                ItemName.NecklaceOfAnguish,
-                ItemName.AvasAssembler,
-            ]);
+            result.gearSet = new GearSet([GearSetType.General])
+                .addItemByName(ItemName.ArmadylCrossbow)
+                .setCombatStyle(CombatStyle.Accurate)
+                .addItemByName(ItemName.DragonBolts)
+                .addItemByName(ItemName.TwistedBuckler)
+                .addItemByName(ItemName.MasoriMaskF)
+                .addItemByName(ItemName.MasoriBodyF)
+                .addItemByName(ItemName.MasoriChapsF)
+                .addItemByName(ItemName.ZaryteVambraces)
+                .addItemByName(ItemName.PegasianBoots)
+                .addItemByName(ItemName.NecklaceOfAnguish)
+                .addItemByName(ItemName.AvasAssembler);
+
             result.calculateDPS();
         });
 
@@ -1104,17 +1179,19 @@ describe('Calculator class', () => {
 
     describe('with armadyl crossbow with Diamond Dragon Bolts (e) on rapid', () => {
         beforeEach(() => {
-            result.gearSet = new GearSet([GearSetType.General], ItemName.ArmadylCrossbow, CombatStyle.Rapid, [
-                ItemName.DiamondDragonBoltsE,
-                ItemName.TwistedBuckler,
-                ItemName.MasoriMaskF,
-                ItemName.MasoriBodyF,
-                ItemName.MasoriChapsF,
-                ItemName.ZaryteVambraces,
-                ItemName.PegasianBoots,
-                ItemName.NecklaceOfAnguish,
-                ItemName.AvasAssembler,
-            ]);
+            result.gearSet = new GearSet([GearSetType.General])
+                .addItemByName(ItemName.ArmadylCrossbow)
+                .setCombatStyle(CombatStyle.Rapid)
+                .addItemByName(ItemName.DiamondDragonBoltsE)
+                .addItemByName(ItemName.TwistedBuckler)
+                .addItemByName(ItemName.MasoriMaskF)
+                .addItemByName(ItemName.MasoriBodyF)
+                .addItemByName(ItemName.MasoriChapsF)
+                .addItemByName(ItemName.ZaryteVambraces)
+                .addItemByName(ItemName.PegasianBoots)
+                .addItemByName(ItemName.NecklaceOfAnguish)
+                .addItemByName(ItemName.AvasAssembler);
+
             result.calculateDPS();
         });
 
@@ -1133,17 +1210,19 @@ describe('Calculator class', () => {
 
     describe('with armadyl crossbow with Diamond Dragon Bolts (e) on accurate', () => {
         beforeEach(() => {
-            result.gearSet = new GearSet([GearSetType.General], ItemName.ArmadylCrossbow, CombatStyle.Accurate, [
-                ItemName.DiamondDragonBoltsE,
-                ItemName.TwistedBuckler,
-                ItemName.MasoriMaskF,
-                ItemName.MasoriBodyF,
-                ItemName.MasoriChapsF,
-                ItemName.ZaryteVambraces,
-                ItemName.PegasianBoots,
-                ItemName.NecklaceOfAnguish,
-                ItemName.AvasAssembler,
-            ]);
+            result.gearSet = new GearSet([GearSetType.General])
+                .addItemByName(ItemName.ArmadylCrossbow)
+                .setCombatStyle(CombatStyle.Accurate)
+                .addItemByName(ItemName.DiamondDragonBoltsE)
+                .addItemByName(ItemName.TwistedBuckler)
+                .addItemByName(ItemName.MasoriMaskF)
+                .addItemByName(ItemName.MasoriBodyF)
+                .addItemByName(ItemName.MasoriChapsF)
+                .addItemByName(ItemName.ZaryteVambraces)
+                .addItemByName(ItemName.PegasianBoots)
+                .addItemByName(ItemName.NecklaceOfAnguish)
+                .addItemByName(ItemName.AvasAssembler);
+
             result.calculateDPS();
         });
 
@@ -1162,17 +1241,19 @@ describe('Calculator class', () => {
 
     describe('with armadyl crossbow with Ruby Dragon Bolts (e) on rapid', () => {
         beforeEach(() => {
-            result.gearSet = new GearSet([GearSetType.General], ItemName.ArmadylCrossbow, CombatStyle.Rapid, [
-                ItemName.RubyDragonBoltsE,
-                ItemName.TwistedBuckler,
-                ItemName.MasoriMaskF,
-                ItemName.MasoriBodyF,
-                ItemName.MasoriChapsF,
-                ItemName.ZaryteVambraces,
-                ItemName.PegasianBoots,
-                ItemName.NecklaceOfAnguish,
-                ItemName.AvasAssembler,
-            ]);
+            result.gearSet = new GearSet([GearSetType.General])
+                .addItemByName(ItemName.ArmadylCrossbow)
+                .setCombatStyle(CombatStyle.Rapid)
+                .addItemByName(ItemName.RubyDragonBoltsE)
+                .addItemByName(ItemName.TwistedBuckler)
+                .addItemByName(ItemName.MasoriMaskF)
+                .addItemByName(ItemName.MasoriBodyF)
+                .addItemByName(ItemName.MasoriChapsF)
+                .addItemByName(ItemName.ZaryteVambraces)
+                .addItemByName(ItemName.PegasianBoots)
+                .addItemByName(ItemName.NecklaceOfAnguish)
+                .addItemByName(ItemName.AvasAssembler);
+
             result.calculateDPS();
         });
 
@@ -1191,17 +1272,19 @@ describe('Calculator class', () => {
 
     describe('with armadyl crossbow with Onyx Dragon Bolts (e) on rapid', () => {
         beforeEach(() => {
-            result.gearSet = new GearSet([GearSetType.General], ItemName.ArmadylCrossbow, CombatStyle.Rapid, [
-                ItemName.OnyxDragonBoltsE,
-                ItemName.TwistedBuckler,
-                ItemName.MasoriMaskF,
-                ItemName.MasoriBodyF,
-                ItemName.MasoriChapsF,
-                ItemName.ZaryteVambraces,
-                ItemName.PegasianBoots,
-                ItemName.NecklaceOfAnguish,
-                ItemName.AvasAssembler,
-            ]);
+            result.gearSet = new GearSet([GearSetType.General])
+                .addItemByName(ItemName.ArmadylCrossbow)
+                .setCombatStyle(CombatStyle.Rapid)
+                .addItemByName(ItemName.OnyxDragonBoltsE)
+                .addItemByName(ItemName.TwistedBuckler)
+                .addItemByName(ItemName.MasoriMaskF)
+                .addItemByName(ItemName.MasoriBodyF)
+                .addItemByName(ItemName.MasoriChapsF)
+                .addItemByName(ItemName.ZaryteVambraces)
+                .addItemByName(ItemName.PegasianBoots)
+                .addItemByName(ItemName.NecklaceOfAnguish)
+                .addItemByName(ItemName.AvasAssembler);
+
             result.calculateDPS();
         });
 
@@ -1220,17 +1303,19 @@ describe('Calculator class', () => {
 
     describe('with zaryte crossbow with Onyx Dragon Bolts (e) on rapid', () => {
         beforeEach(() => {
-            result.gearSet = new GearSet([GearSetType.General], ItemName.ZaryteCrossbow, CombatStyle.Rapid, [
-                ItemName.OnyxDragonBoltsE,
-                ItemName.TwistedBuckler,
-                ItemName.MasoriMaskF,
-                ItemName.MasoriBodyF,
-                ItemName.MasoriChapsF,
-                ItemName.ZaryteVambraces,
-                ItemName.PegasianBoots,
-                ItemName.NecklaceOfAnguish,
-                ItemName.AvasAssembler,
-            ]);
+            result.gearSet = new GearSet([GearSetType.General])
+                .addItemByName(ItemName.ZaryteCrossbow)
+                .setCombatStyle(CombatStyle.Rapid)
+                .addItemByName(ItemName.OnyxDragonBoltsE)
+                .addItemByName(ItemName.TwistedBuckler)
+                .addItemByName(ItemName.MasoriMaskF)
+                .addItemByName(ItemName.MasoriBodyF)
+                .addItemByName(ItemName.MasoriChapsF)
+                .addItemByName(ItemName.ZaryteVambraces)
+                .addItemByName(ItemName.PegasianBoots)
+                .addItemByName(ItemName.NecklaceOfAnguish)
+                .addItemByName(ItemName.AvasAssembler);
+
             result.calculateDPS();
         });
 
@@ -1249,17 +1334,19 @@ describe('Calculator class', () => {
 
     describe('with zaryte crossbow with Diamond Dragon Bolts (e) on rapid', () => {
         beforeEach(() => {
-            result.gearSet = new GearSet([GearSetType.General], ItemName.ZaryteCrossbow, CombatStyle.Rapid, [
-                ItemName.DiamondDragonBoltsE,
-                ItemName.TwistedBuckler,
-                ItemName.MasoriMaskF,
-                ItemName.MasoriBodyF,
-                ItemName.MasoriChapsF,
-                ItemName.ZaryteVambraces,
-                ItemName.PegasianBoots,
-                ItemName.NecklaceOfAnguish,
-                ItemName.AvasAssembler,
-            ]);
+            result.gearSet = new GearSet([GearSetType.General])
+                .addItemByName(ItemName.ZaryteCrossbow)
+                .setCombatStyle(CombatStyle.Rapid)
+                .addItemByName(ItemName.DiamondDragonBoltsE)
+                .addItemByName(ItemName.TwistedBuckler)
+                .addItemByName(ItemName.MasoriMaskF)
+                .addItemByName(ItemName.MasoriBodyF)
+                .addItemByName(ItemName.MasoriChapsF)
+                .addItemByName(ItemName.ZaryteVambraces)
+                .addItemByName(ItemName.PegasianBoots)
+                .addItemByName(ItemName.NecklaceOfAnguish)
+                .addItemByName(ItemName.AvasAssembler);
+
             result.calculateDPS();
         });
 
@@ -1279,16 +1366,17 @@ describe('Calculator class', () => {
 
     describe('with bowfa on rapid', () => {
         beforeEach(() => {
-            result.gearSet = new GearSet([GearSetType.General], ItemName.BowOfFaerdhinen, CombatStyle.Rapid, [
-                ItemName.CrystalHelm,
-                ItemName.CrystalBody,
-                ItemName.CrystalLegs,
-                ItemName.ZaryteVambraces,
-                ItemName.PegasianBoots,
-                ItemName.NecklaceOfAnguish,
-                ItemName.AvasAssembler,
-                ItemName.VenatorRing
-            ]);
+            result.gearSet = new GearSet([GearSetType.General])
+                .addItemByName(ItemName.BowOfFaerdhinen)
+                .setCombatStyle(CombatStyle.Rapid)
+                .addItemByName(ItemName.CrystalHelm)
+                .addItemByName(ItemName.CrystalBody)
+                .addItemByName(ItemName.CrystalLegs)
+                .addItemByName(ItemName.ZaryteVambraces)
+                .addItemByName(ItemName.PegasianBoots)
+                .addItemByName(ItemName.NecklaceOfAnguish)
+                .addItemByName(ItemName.AvasAssembler)
+                .addItemByName(ItemName.VenatorRing);
             result.calculateDPS();
         });
 

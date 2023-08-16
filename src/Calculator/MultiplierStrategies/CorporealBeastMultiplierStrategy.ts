@@ -12,7 +12,7 @@ export class CorporealBeastMultiplierStrategy extends AbstractMultiplierStrategy
             return 1;
         }
 
-        const weapon = this.result.gearSet.weapon;
+        const weapon = this.result.gearSet.getWeapon();
         const combatStyle = this.result.gearSet.combatStyle;
 
         if ([WeaponCategory.Spear, WeaponCategory.Polearm].includes(weapon.category)) {

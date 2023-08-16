@@ -30,13 +30,15 @@ type SalveName = keyof typeof SalveMultiplierTable;
 
 export class SalveAmuletMultiplierStrategy extends AbstractMultiplierStrategy {
     calculateMultiplier(): number {
-        const salve = this.result.gearSet.items.find(item => Object.keys(SalveMultiplierTable).includes(item.name));
+        const salveNames = Object.keys(SalveMultiplierTable) as SalveName[];
+        const salve = salveNames.find(salveName => this.result.gearSet.hasItemByName(salveName));
+
 
         if (!salve || !this.result.targetMonster.isUndead) {
             return 1;
         }
 
         const combatClass = StyleToCombatClass[this.result.gearSet.styleType];
-        return SalveMultiplierTable[salve.name as SalveName][combatClass];
+        return SalveMultiplierTable[salve][combatClass];
     }
 }

@@ -580,7 +580,7 @@ createItem(ItemName.EliteVoidTop, {
 createItem(ItemName.EliteVoidRobe, {
     imagePath: "./Images/Items/Elite_void_robe.webp",
     wikiLink: "https://oldschool.runescape.wiki/w/Elite_void_robe",
-    slot: Slot.Chest,
+    slot: Slot.Legs,
 });
 
 createItem(ItemName.UltorRing, {
@@ -630,7 +630,7 @@ createWeapon(ItemName.Arclight, {
     category: WeaponCategory.SlashSword,
     imagePath: "./Images/Items/Arclight.webp",
     wikiLink: "https://oldschool.runescape.wiki/w/Arclight",
-    slot: Slot.TwoHand,
+    slot: Slot.MainHand,
     speedSeconds: 2.4,
     stab: 10,
     slash: 38,

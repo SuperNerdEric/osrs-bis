@@ -1,5 +1,5 @@
 import {ItemName} from "../ItemName";
-import {CombatStyle} from "../Item";
+import {CombatStyle, Slot} from "../Item";
 import {GearSet, gearSets, GearSetType} from "../GearSets";
 
 export function generateMeleeGearSets(){
@@ -23,28 +23,34 @@ export function generateMeleeGearSets(){
     meleeBase = combine(meleeBase, meleeCapes);
     meleeBase = combine(meleeBase, meleeAmulets);
 
+    const weaponsWithStyles: { name: ItemName, styles: CombatStyle[], gearSetType: GearSetType }[] = [
+        { name: ItemName.ScytheOfVitur, styles: [CombatStyle.Chop, CombatStyle.Jab], gearSetType: GearSetType.General },
+        { name: ItemName.SoulreaperAxe, styles: [CombatStyle.Hack, CombatStyle.Smash], gearSetType: GearSetType.General },
+        { name: ItemName.OsmumtensFang, styles: [CombatStyle.Lunge, CombatStyle.Slash], gearSetType: GearSetType.General },
+        { name: ItemName.GhraziRapier, styles: [CombatStyle.Stab], gearSetType: GearSetType.General },
+        { name: ItemName.ZamorakianHasta, styles: [CombatStyle.Lunge], gearSetType: GearSetType.General },
+        { name: ItemName.AbyssalBludgeon, styles: [CombatStyle.Pound], gearSetType: GearSetType.General },
+        { name: ItemName.InquisitorsMace, styles: [CombatStyle.Pound, CombatStyle.Pummel], gearSetType: GearSetType.General },
+        { name: ItemName.KerisPartisan, styles: [CombatStyle.Lunge, CombatStyle.Pound], gearSetType: GearSetType.Kalphites },
+        { name: ItemName.KerisPartisanOfBreaching, styles: [CombatStyle.Lunge, CombatStyle.Pound], gearSetType: GearSetType.Kalphites },
+        { name: ItemName.Arclight, styles: [CombatStyle.Lunge, CombatStyle.Slash], gearSetType: GearSetType.Demon },
+        { name: ItemName.DragonHunterLance, styles: [CombatStyle.Lunge, CombatStyle.Swipe], gearSetType: GearSetType.Draconic },
+    ];
+
     meleeBase.forEach(base => {
-        new GearSet([GearSetType.General], ItemName.ScytheOfVitur, CombatStyle.Chop, base);
-        new GearSet([GearSetType.General], ItemName.ScytheOfVitur, CombatStyle.Jab, base);
-        new GearSet([GearSetType.General], ItemName.SoulreaperAxe, CombatStyle.Hack, base);
-        new GearSet([GearSetType.General], ItemName.SoulreaperAxe, CombatStyle.Smash, base);
-        new GearSet([GearSetType.General], ItemName.OsmumtensFang, CombatStyle.Lunge, [...base, ItemName.AvernicDefender]);
-        new GearSet([GearSetType.General], ItemName.OsmumtensFang, CombatStyle.Slash, [...base, ItemName.AvernicDefender]);
-        new GearSet([GearSetType.General], ItemName.GhraziRapier, CombatStyle.Stab, [...base, ItemName.AvernicDefender]);
-        new GearSet([GearSetType.General], ItemName.ZamorakianHasta, CombatStyle.Lunge, [...base, ItemName.AvernicDefender]);
+        weaponsWithStyles.forEach(weaponEntry => {
+            weaponEntry.styles.forEach(style => {
+                const gearSet = new GearSet([weaponEntry.gearSetType]);
+                gearSet.addItemByName(weaponEntry.name);
+                gearSet.setCombatStyle(style);
 
-        new GearSet([GearSetType.General], ItemName.AbyssalBludgeon, CombatStyle.Pound, base);
-        new GearSet([GearSetType.General], ItemName.InquisitorsMace, CombatStyle.Pound, [...base, ItemName.AvernicDefender]);
-        new GearSet([GearSetType.General], ItemName.InquisitorsMace, CombatStyle.Pummel, [...base, ItemName.AvernicDefender]);
-
-        new GearSet([GearSetType.Kalphites], ItemName.KerisPartisan, CombatStyle.Lunge, [...base, ItemName.AvernicDefender]);
-        new GearSet([GearSetType.Kalphites], ItemName.KerisPartisan, CombatStyle.Pound, [...base, ItemName.AvernicDefender]);
-        new GearSet([GearSetType.Kalphites], ItemName.KerisPartisanOfBreaching, CombatStyle.Lunge, [...base, ItemName.AvernicDefender]);
-        new GearSet([GearSetType.Kalphites], ItemName.KerisPartisanOfBreaching, CombatStyle.Pound, [...base, ItemName.AvernicDefender]);
-
-        new GearSet([GearSetType.Demon], ItemName.Arclight, CombatStyle.Lunge, [...base, ItemName.AvernicDefender]);
-        new GearSet([GearSetType.Demon], ItemName.Arclight, CombatStyle.Slash, [...base, ItemName.AvernicDefender]);
-        new GearSet([GearSetType.Draconic], ItemName.DragonHunterLance, CombatStyle.Lunge, [...base, ItemName.AvernicDefender]);
-        new GearSet([GearSetType.Draconic], ItemName.DragonHunterLance, CombatStyle.Swipe, [...base, ItemName.AvernicDefender]);
-    })
+                base.forEach(itemName => gearSet.addItemByName(itemName));
+                const weapon = gearSet.getWeapon();
+                if (weapon && weapon.slot === Slot.MainHand) {
+                    gearSet.addItemByName(ItemName.AvernicDefender);
+                }
+                gearSets.push(gearSet);
+            });
+        });
+    });
 }

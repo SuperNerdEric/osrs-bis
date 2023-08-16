@@ -131,24 +131,17 @@ const MainContent: React.FC<MainContentProps> = ({
                     return (
                         <div>
                             {
-                                <Tooltip title={row.gearSet.weapon.name}>
-                                    <a href={row.gearSet.weapon.wikiLink} target="_blank" rel="noreferrer">
-                                        <img src={require(`${row.gearSet.weapon.imagePath}`)}
-                                             style={{width: `${imageSize}px`, height: `${imageSize}px`}}
-                                             alt={row.gearSet.weapon.name}/>
-                                    </a>
-                                </Tooltip>
-                            }
-                            {
-                                row.gearSet.items.map(item => (
-                                    <Tooltip title={item.name}>
-                                        <a href={item.wikiLink} target="_blank" rel="noreferrer">
-                                            <img src={require(`${item.imagePath}`)}
-                                                 style={{width: `${imageSize}px`, height: `${imageSize}px`}}
-                                                 alt={item.name}/>
-                                        </a>
-                                    </Tooltip>
-                                ))
+                                Array.from(row.gearSet.items.values())
+                                    .sort((a, b) => a.slot - b.slot)
+                                    .map(item => (
+                                        <Tooltip key={item.name} title={item.name}>
+                                            <a href={item.wikiLink} target="_blank" rel="noreferrer">
+                                                <img src={require(`${item.imagePath}`)}
+                                                     style={{width: `${imageSize}px`, height: `${imageSize}px`}}
+                                                     alt={item.name}/>
+                                            </a>
+                                        </Tooltip>
+                                    ))
                             }
                         </div>
                     )

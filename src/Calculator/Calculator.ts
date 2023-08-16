@@ -1,5 +1,5 @@
 import {TargetMonster} from "../DataObjects/TargetMonster";
-import {Slot, StyleType, WeaponStyle} from "../DataObjects/Item";
+import {Item, Slot, StyleType, WeaponStyle} from "../DataObjects/Item";
 import {Player} from "../DataObjects/Player";
 import {GearSet} from "../DataObjects/GearSets";
 import {ItemName} from "../DataObjects/ItemName";
@@ -69,7 +69,7 @@ export class Calculator {
         new TektonMultiplierStrategy(this).calculateMultiplier();
         this.averageDamagePerHit = this.calculateDamagePerHit();
 
-        this.attackInterval = this.gearSet.weapon.speedSeconds;
+        this.attackInterval = this.gearSet.getWeapon().speedSeconds;
         if (this.gearSet.weaponStyle === WeaponStyle.Rapid) {
             this.attackInterval -= 0.6;
         }
@@ -202,7 +202,7 @@ export class Calculator {
         } else {
             maxHit = Math.floor((this.player.skills.magic.level + this.player.skills.magic.boost) / 3) - 1;
 
-            if (this.gearSet.weapon.name == ItemName.TumekensShadow) {
+            if (this.gearSet.getWeapon().name == ItemName.TumekensShadow) {
                 maxHit += 2;
             }
             maxHit = Math.floor(maxHit * (1 + this.gearSet.styleStrength / 100));
@@ -251,8 +251,10 @@ export class Calculator {
 
     private calculateHitChance(attackRoll: number, defenceRoll: number) {
         let strategy;
-        const bolt = this.gearSet.items.find(item => item.slot === Slot.Ammo && item.name.includes('bolt'));
-        if (this.gearSet.weapon.name === ItemName.OsmumtensFang) {
+        const ammoItem = this.gearSet.getItemBySlot(Slot.Ammo) as Item;
+        const bolt = ammoItem?.name.includes('bolt') ? ammoItem : undefined;
+
+        if (this.gearSet.getWeapon().name === ItemName.OsmumtensFang) {
             strategy = new OsmumtensFangHitChanceStrategy(this);
         } else if (bolt) {
             strategy = new DiamondBoltHitChanceStrategy(this);
@@ -264,12 +266,13 @@ export class Calculator {
 
     private calculateDamagePerHit() {
         let strategy: DamagePerHitStrategy;
-        const bolt = this.gearSet.items.find(item => item.slot === Slot.Ammo && item.name.includes('bolt'));
-        if (this.gearSet.weapon.name === ItemName.ScytheOfVitur) {
+        const ammoItem = this.gearSet.getItemBySlot(Slot.Ammo) as Item;
+        const bolt = ammoItem?.name.includes('bolt') ? ammoItem : undefined;
+        if (this.gearSet.getWeapon().name === ItemName.ScytheOfVitur) {
             strategy = new ScytheOfViturStrategy(this);
-        } else if (this.gearSet.weapon.name === ItemName.OsmumtensFang) {
+        } else if (this.gearSet.getWeapon().name === ItemName.OsmumtensFang) {
             strategy = new OsmumtensFangStrategy(this);
-        } else if (this.gearSet.weapon.name.includes("Keris partisan")) {
+        } else if (this.gearSet.getWeapon().name.includes("Keris partisan")) {
             strategy = new KerisPartisanStrategy(this);
         } else if (bolt) {
             strategy = new BoltEnchantedStrategy(this);

@@ -3,7 +3,7 @@ import {AbstractMultiplierStrategy, MultiplierType} from "./AbstractMultiplierSt
 
 export class CrystalEquipmentMultiplierStrategy extends AbstractMultiplierStrategy {
     calculateMultiplier(multiplierType: MultiplierType): number {
-        const hasBow = this.result.gearSet.weapon?.name === ItemName.BowOfFaerdhinen;
+        const hasBow = this.result.gearSet.getWeapon()?.name === ItemName.BowOfFaerdhinen;
 
         if (!hasBow) return 1;
 
@@ -17,7 +17,7 @@ export class CrystalEquipmentMultiplierStrategy extends AbstractMultiplierStrate
         let totalAccuracyBonus = 0;
 
         bonuses.forEach(bonus => {
-            if (this.result.gearSet.items.some(item => item.name === bonus.piece)) {
+            if (this.result.gearSet.hasItemByName(bonus.piece)) {
                 totalDamageBonus += bonus.damageBonus;
                 totalAccuracyBonus += bonus.accuracyBonus;
             }

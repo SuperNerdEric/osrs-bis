@@ -3,7 +3,7 @@ import {AbstractMultiplierStrategy} from "./AbstractMultiplierStrategy";
 
 export class DragonHunterLanceMultiplierStrategy extends AbstractMultiplierStrategy {
     calculateMultiplier(): number {
-        if (this.result.gearSet.weapon.name === ItemName.DragonHunterLance && this.result.targetMonster.isDraconic) {
+        if (this.result.gearSet.getWeapon().name === ItemName.DragonHunterLance && this.result.targetMonster.isDraconic) {
             return 1.2;
         }
 

@@ -3,7 +3,7 @@ import {AbstractMultiplierStrategy} from "./AbstractMultiplierStrategy";
 
 export class SoulreaperMultiplierStrategy extends AbstractMultiplierStrategy {
     calculateMultiplier(): number {
-        if (this.result.gearSet.weapon.name === ItemName.SoulreaperAxe) {
+        if (this.result.gearSet.getWeapon().name === ItemName.SoulreaperAxe) {
             return 0.30;
         }
 

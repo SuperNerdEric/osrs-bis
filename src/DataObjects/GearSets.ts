@@ -5,6 +5,7 @@ import {Raid} from "./Raid";
 import {generateRangedGearSets} from "./GearSets/RangedGearSets";
 import {generateMeleeGearSets} from "./GearSets/MeleeGearSets";
 import {generateMageGearsets} from "./GearSets/MageGearSets";
+import * as _ from "lodash";
 
 export enum GearSetType {
     General,
@@ -17,69 +18,97 @@ export enum GearSetType {
 
 export class GearSet {
     types: GearSetType[];
-    weapon: Weapon;
-    combatStyle: CombatStyle;
-    styleType: StyleType;
-    weaponStyle: WeaponStyle;
-    styleTypeBonus: number;
-    styleStrength: number;
-    items: Item[];
+    combatStyle: CombatStyle = CombatStyle.Punch;
+    styleType: StyleType = StyleType.Crush;
+    weaponStyle: WeaponStyle = WeaponStyle.Accurate;
+    styleTypeBonus: number = 0;
+    styleStrength: number = 0;
+    items: Map<Slot, Item> = new Map();
     raid?: Raid;
 
-    constructor(gearSetTypes: GearSetType[], weaponName: ItemName, combatStyle: CombatStyle, otherItemNames: ItemName[], raid?: Raid) {
-        const weapon = items.get(weaponName);
-        if (weapon instanceof Weapon) {
-            let styleType: StyleType | undefined;
-            let weaponStyle: WeaponStyle | undefined;
+    constructor(gearSetTypes: GearSetType[], raid?: Raid) {
+        this.types = gearSetTypes;
+        this.raid = raid;
+    }
 
-            // If the weapon category is present in WeaponCategoryOptions
-            const weaponOptions = WeaponCategoryOptions[weapon.category];
+    addItemByName(itemName: string): this {
+        const item = items.get(itemName);
+        if (!item) {
+            throw new Error(`Item not found: ${itemName}`);
+        }
+        return this.addItem(item);
+    }
 
-            if (weaponOptions) {
-                // Look for the selected CombatStyle in the weapon's options
-                const matchingOption = weaponOptions.find(option => option.combatStyle === combatStyle);
-                // If a match is found, get the corresponding StyleType
-                if (matchingOption) {
-                    styleType = matchingOption.styleType;
-                    weaponStyle = matchingOption.weaponStyle;
-                }
+    addItem(item: Item): this {
+        if (item.slot === Slot.TwoHand) {
+            this.items.delete(Slot.MainHand);
+            this.items.delete(Slot.OffHand);
+        } else if (item.slot === Slot.MainHand || item.slot === Slot.OffHand) {
+            this.items.delete(Slot.TwoHand);
+        }
+        this.items.set(item.slot, item);
+        this.recalculateAttributes();
+
+        return this;
+    }
+
+    getItemBySlot(slot: Slot): Item | undefined {
+        return this.items.get(slot);
+    }
+
+    getWeapon(): Weapon {
+        const mainHand = this.getItemBySlot(Slot.MainHand);
+        const twoHand = this.getItemBySlot(Slot.TwoHand);
+        return twoHand as Weapon || mainHand as Weapon;
+    }
+
+    hasItemByName(itemName: ItemName): boolean {
+        return Array.from(this.items.values()).some(item => item.name === itemName);
+    }
+
+    private recalculateAttributes(): void {
+        const weapon = this.items.get(Slot.MainHand) || this.items.get(Slot.TwoHand);
+
+        if (weapon) {
+            const {gearItems, styleTypeBonus} = this.getStyleTypeBonus(this.items, this.styleType);
+            const styleStrength = this.getStyleStrengthBonus(this.styleType, gearItems);
+
+            this.styleTypeBonus = styleTypeBonus;
+            this.styleStrength = styleStrength;
+
+            if (weapon.name === ItemName.TumekensShadow) {
+                const multiplier = this.raid === Raid.TombsOfAmascut ? 4 : 3;
+                this.styleTypeBonus *= multiplier;
+                this.styleStrength = Math.min(100, this.styleStrength * multiplier);
             }
-
-            if (styleType && weaponStyle) {
-                const {gearItems, styleTypeBonus} = this.getStyleTypeBonus(weapon, otherItemNames, styleType);
-                const styleStrength = this.getStyleStrengthBonus(styleType, gearItems);
-
-                this.types = gearSetTypes;
-                this.combatStyle = combatStyle;
-                this.styleType = styleType;
-                this.weapon = weapon;
-                this.weaponStyle = weaponStyle;
-                this.items = otherItemNames.map(name => items.get(name) as Item);
-                this.items.sort((a, b) => a.slot - b.slot);
-
-                this.styleTypeBonus = styleTypeBonus;
-                this.styleStrength = styleStrength;
-
-                if (this.weapon.name === ItemName.TumekensShadow && raid === Raid.TombsOfAmascut) {
-                    this.styleTypeBonus *= 4;
-                    this.styleStrength = Math.min(100, this.styleStrength * 4);
-                } else if (this.weapon.name === ItemName.TumekensShadow) {
-                    this.styleTypeBonus *= 3;
-                    this.styleStrength = Math.min(100, this.styleStrength * 3);
-                }
-
-                gearSets.push(this);
-                return this;
-            } else {
-                throw new Error(`Invalid CombatStyle for the selected weapon.`);
-            }
-        } else {
-            throw new Error(`Weapon not found: ${weaponName}`);
         }
     }
 
-    private getStyleTypeBonus(weapon: Weapon, otherItemNames: ItemName[], styleType: StyleType | undefined) {
-        const gearItems = [weapon, ...otherItemNames.map(name => items.get(name) as Item)];
+    setCombatStyle(combatStyle: CombatStyle): this {
+        const weapon: Weapon = <Weapon>this.items.get(Slot.MainHand) || this.items.get(Slot.TwoHand);
+        if (!weapon) {
+            throw new Error("No weapon equipped.");
+        }
+
+        const weaponOptions = WeaponCategoryOptions[weapon.category];
+        if (!weaponOptions) {
+            throw new Error(`No weapon options available for category ${weapon.category}.`);
+        }
+
+        const matchingOption = weaponOptions.find(option => option.combatStyle === combatStyle);
+        if (!matchingOption) {
+            throw new Error(`Invalid CombatStyle for the selected weapon.`);
+        }
+
+        this.combatStyle = combatStyle;
+        this.styleType = matchingOption.styleType;
+        this.weaponStyle = matchingOption.weaponStyle;
+
+        return this;
+    }
+
+    private getStyleTypeBonus(items: Map<Slot, Item>, styleType: StyleType | undefined) {
+        const gearItems = Array.from(items.values());
 
         // @ts-ignore
         const styleTypeBonus = gearItems.reduce((total: number, item: Item) => total + (item[styleType.toLowerCase() as "stab" | "slash" | "crush" | "magic" | "ranged"]), 0);
@@ -116,26 +145,9 @@ export class GearSet {
         return requiredItems.every(requiredItem => gearItems.some(gearItem => gearItem.name === requiredItem));
     }
 
-
-    //This must be idempotent or re-renders will keep increasing the value
     setRaid(raid: Raid) {
         this.raid = raid;
-        const gearItems = [this.weapon, ...this.items];
-
-        // @ts-ignore
-        const styleTypeBonus = gearItems.reduce((total: number, item: Item) => total + (item[this.styleType.toLowerCase() as "stab" | "slash" | "crush" | "magic" | "ranged"]), 0);
-        const styleStrength = this.getStyleStrengthBonus(this.styleType, gearItems);
-
-        // Check if raid is TombsOfAmascut and if the weapon is Tumeken's shadow
-        if (this.weapon.name === ItemName.TumekensShadow) {
-            if (raid === Raid.TombsOfAmascut) {
-                this.styleTypeBonus = styleTypeBonus * 4;
-                this.styleStrength = Math.min(100, styleStrength * 4);
-            } else {
-                this.styleTypeBonus = styleTypeBonus * 3;
-                this.styleStrength = Math.min(100, styleStrength * 3);
-            }
-        }
+        this.recalculateAttributes();
     }
 }
 
@@ -146,29 +158,36 @@ generateRangedGearSets();
 generateMeleeGearSets();
 
 const uniqueGearSets = new Set<string>();
-gearSets.map(gearSet => {
-    // Create a new array of item names, excluding the existing amulet
-    const newItemNames = gearSet.items.map(item => item.name).filter(name => items.get(name)?.slot !== Slot.Neck);
+const newGearSets: GearSet[] = [];
 
-    // Add the SalveAmuletEI
-    newItemNames.push(ItemName.SalveAmuletEI);
+gearSets.forEach(gearSet => {
+    const clonedGearset: GearSet = _.cloneDeep(gearSet);
+    clonedGearset.addItemByName(ItemName.SalveAmuletEI);
 
+    const gearSetString = [
+        clonedGearset.combatStyle,
+        ...Array.from(clonedGearset.items.values()).map(item => item.name)
+    ].join();
 
-    const newGearSetStr = [gearSet.weapon.name, gearSet.combatStyle, ...newItemNames.sort()].join();
-    if (uniqueGearSets.has(newGearSetStr)) {
-        return;
-    } else {
-        uniqueGearSets.add(newGearSetStr);
+    if (!uniqueGearSets.has(gearSetString)) {
+        uniqueGearSets.add(gearSetString);
+        clonedGearset.types = [GearSetType.Undead];
+        newGearSets.push(clonedGearset);
     }
-
-    // Use the existing gear set's properties for the new GearSet, but replace the items
-    return new GearSet([GearSetType.Undead], gearSet.weapon.name, gearSet.combatStyle, newItemNames, gearSet.raid);
 });
 
-const gearSetsWithoutSalve = gearSets.filter(gearSet => !gearSet.items.some(item => item.name.includes(ItemName.SalveAmuletEI)));
+gearSets.push(...newGearSets);
+
+
+const gearSetsWithoutSalve = gearSets.filter(gearSet => {
+    const neckItem = gearSet.items.get(Slot.Neck);
+    return !neckItem || neckItem.name !== ItemName.SalveAmuletEI;
+});
 
 gearSetsWithoutSalve.map(gearSet => {
-    const newItemNames = gearSet.items.map(item => item.name).filter(name => items.get(name)?.slot !== Slot.Helm);
-    newItemNames.push(ItemName.SlayerHelmetI);
-    return new GearSet([GearSetType.Slayer], gearSet.weapon.name, gearSet.combatStyle, newItemNames, gearSet.raid);
+    const clonedGearset: GearSet = _.cloneDeep(gearSet);
+    clonedGearset.addItemByName(ItemName.SlayerHelmetI);
+    clonedGearset.types = [GearSetType.Slayer];
+    gearSets.push(clonedGearset);
+    return clonedGearset;
 });

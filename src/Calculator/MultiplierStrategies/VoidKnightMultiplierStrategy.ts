@@ -24,7 +24,8 @@ type HelmName = keyof typeof VoidKnightMultiplierTable;
 
 export class VoidKnightMultiplierStrategy extends AbstractMultiplierStrategy {
     calculateMultiplier(multiplierType?: MultiplierType): number {
-        const helm = this.result.gearSet.items.find(item => item.name in VoidKnightMultiplierTable);
+        const helm = Array.from(this.result.gearSet.items.values()).find(item => item.name in VoidKnightMultiplierTable);
+
 
         if (!helm || !this.hasValidVoidSetCombination()) {
             return 1;
@@ -36,7 +37,7 @@ export class VoidKnightMultiplierStrategy extends AbstractMultiplierStrategy {
         const isDamageCalculation = (multiplierType === MultiplierType.Damage);
 
         /**
-         * Mage bonus is on the {@link GearSet#applyEliteMageBonus} itself
+         * Mage elite bonus is on the {@link GearSet#applyEliteVoidMageBonus} itself as it goes on the equipment stats
          */
         if (this.hasEliteVoidSet() && (combatClass === CombatClass.Ranged) && isDamageCalculation) {
             multiplier += 0.025;
@@ -53,13 +54,16 @@ export class VoidKnightMultiplierStrategy extends AbstractMultiplierStrategy {
             (item: Item) => [ItemName.VoidKnightRobe, ItemName.EliteVoidRobe].includes(item.name) // Robe
         ];
 
-        return requiredItems.every(condition => this.result.gearSet.items.some(condition));
+        return requiredItems.every(condition => {
+            const conditionMet = Array.from(this.result.gearSet.items.values()).some(condition);
+            return conditionMet;
+        });
     }
 
 
     private hasEliteVoidSet(): boolean {
         const eliteVoidKnightItems = [ItemName.EliteVoidTop, ItemName.EliteVoidRobe];
-        return eliteVoidKnightItems.every(item => this.result.gearSet.items.some(gear => gear.name === item));
+        return eliteVoidKnightItems.every(itemName => this.result.gearSet.hasItemByName(itemName));
     }
 }
 

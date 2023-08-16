@@ -1,7 +1,7 @@
 import {Calculator} from "./Calculator";
 import {Raid} from "../DataObjects/Raid";
 import {ItemName} from "../DataObjects/ItemName";
-import {Slot} from "../DataObjects/Item";
+import {Item, Slot} from "../DataObjects/Item";
 import {getBoltActivationRate} from "./DamagePerHitStrategies";
 
 abstract class HitChanceStrategy {
@@ -32,7 +32,9 @@ export class OsmumtensFangHitChanceStrategy extends HitChanceStrategy {
 
 export class DiamondBoltHitChanceStrategy extends HitChanceStrategy {
     calculate(attackRoll: number, defenceRoll: number): number {
-        const bolt = this.result.gearSet.items.find(item => item.slot === Slot.Ammo && item.name.includes('bolt'));
+        const ammoItem = this.result.gearSet.getItemBySlot(Slot.Ammo) as Item;
+        const bolt = ammoItem?.name.includes('bolt') ? ammoItem : undefined;
+
         if (!bolt || ![ItemName.DiamondBoltsE, ItemName.DiamondDragonBoltsE, ItemName.RubyBoltsE, ItemName.RubyDragonBoltsE].includes(bolt.name)) {
             return new DefaultHitChanceStrategy(this.result).calculate(attackRoll, defenceRoll);
         }

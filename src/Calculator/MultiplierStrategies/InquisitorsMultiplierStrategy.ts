@@ -15,7 +15,7 @@ export class InquisitorsMultiplierStrategy extends AbstractMultiplierStrategy {
         ];
 
         const allPiecesEquipped = inquisitorsPieces.every(piece => {
-            return this.result.gearSet.items.some(item => item.name === piece);
+            return this.result.gearSet.hasItemByName(piece);
         });
 
         if (allPiecesEquipped) {
@@ -23,7 +23,7 @@ export class InquisitorsMultiplierStrategy extends AbstractMultiplierStrategy {
         }
 
         const equippedPieces = inquisitorsPieces.filter(piece => {
-            return this.result.gearSet.items.some(item => item.name === piece);
+            return this.result.gearSet.hasItemByName(piece);
         });
 
         return 1 + (equippedPieces.length * 0.005);
