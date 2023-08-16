@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.65df87b3.css",
-    "main.js": "/static/js/main.02398583.js",
+    "main.js": "/static/js/main.11b406c6.js",
     "static/js/787.f7d32ca0.chunk.js": "/static/js/787.f7d32ca0.chunk.js",
     "static/media/Duke_Sucellus.png": "/static/media/Duke_Sucellus.20671a0f119b769958f1.png",
     "static/media/Fire_cape.png": "/static/media/Fire_cape.9fa34a7e2c3fc7a55285.png",
@@ -266,11 +266,11 @@
     "static/media/Zamorakian_hasta.webp": "/static/media/Zamorakian_hasta.be62bb7cec7ec3005a5e.webp",
     "index.html": "/index.html",
     "main.65df87b3.css.map": "/static/css/main.65df87b3.css.map",
-    "main.02398583.js.map": "/static/js/main.02398583.js.map",
+    "main.11b406c6.js.map": "/static/js/main.11b406c6.js.map",
     "787.f7d32ca0.chunk.js.map": "/static/js/787.f7d32ca0.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.65df87b3.css",
-    "static/js/main.02398583.js"
+    "static/js/main.11b406c6.js"
   ]
 }
