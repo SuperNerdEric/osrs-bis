@@ -2,6 +2,7 @@ import * as React from 'react';
 import {Stack, TextField, Tooltip} from "@mui/material";
 import bandosGodsword from '../../Images/Bandos_godsword_small.png';
 import dragonWarhammer from '../../Images/Dragon_warhammer_small.png';
+import defence from '../../Images/Skills/Defence_icon.png';
 import {calculateDefenceLevel, calculateHits, DefenceReductionSummary} from "../../Calculator/DefenceCalculator";
 
 export default function DefenceReduction(props: { bossName: string, defenceLevel: number, maxReduction: number, handleCurrentDefence: any }) {
@@ -82,7 +83,7 @@ export default function DefenceReduction(props: { bossName: string, defenceLevel
                             handleBGSChange(newValue);
                         }}
                         variant="outlined"
-                        style={textFieldStyle}
+                        style={{ ...textFieldStyle, width: '60px' }}
                         inputProps={{style: {padding: 5}, min: 0, max: props.maxReduction}}
                     />
                 </Stack>
@@ -101,13 +102,13 @@ export default function DefenceReduction(props: { bossName: string, defenceLevel
                             handleCurrentDefenceChange(newValue);
                         }}
                         variant="outlined"
-                        style={textFieldStyle}
+                        style={{ ...textFieldStyle, width: '60px' }}
                         inputProps={{style: {padding: 5}, min: 0, max: props.defenceLevel}}
                     />
                 </Tooltip>
-                <span style={labelStyle}>
-                    /{props.defenceLevel} Defence
+                <span style={labelStyle}>/{props.defenceLevel}
                 </span>
+                    <img src={defence} alt="Defence" width="25" height="25"/>
                 </Stack>
             </Stack>
         </div>
@@ -117,7 +118,7 @@ export default function DefenceReduction(props: { bossName: string, defenceLevel
 const textFieldStyle = {
     color: "black",
     backgroundColor: "#d8ccb4",
-    width: 75,
+    width: 60,
     '& label.Mui-focused': {
         color: 'white',
     },
@@ -149,7 +150,7 @@ const textFieldStyle = {
 
 const labelStyle: React.CSSProperties = {
     fontSize: '18px',
-    width: '50px',
+    marginRight: '5px',
     display: 'inline-block',
     textAlign: 'right',
     whiteSpace: 'nowrap',
