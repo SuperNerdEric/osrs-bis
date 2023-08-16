@@ -19,7 +19,7 @@ function App() {
     const [urlState, setUrlState] = useUrlState({
         target: "Ba-Ba",
         invocationLevel: 300,
-        defenceReduction: 0,
+        currentDefence: 80,
         onTask: "false"
     });
     const [onTask, setOnTask] = React.useState(urlState.onTask === "false");
@@ -30,9 +30,9 @@ function App() {
         setUrlState({invocationLevel: newValue});
     };
 
-    const handleDefenceReduction = (defenceReduction: number) => {
-        devLog("Set defence reduction: " + defenceReduction);
-        setUrlState({defenceReduction: defenceReduction});
+    const handleCurrentDefence = (currentDefence: number) => {
+        devLog("Set current defence: " + currentDefence);
+        setUrlState({currentDefence: currentDefence});
     };
 
     const handleOnTask = (checked: boolean) => {
@@ -50,22 +50,22 @@ function App() {
                     setUrlState({
                         target: targetMonster.shortName || targetMonster.name,
                         invocationLevel: targetMonster.raid === Raid.TombsOfAmascut ? urlState.invocationLevel : undefined,
-                        defenceReduction: urlState.defenceReduction,
+                        currentDefence: targetMonster.defenceLevel,
                     });
                 }}/>
                 <MainContent
                     target={urlState.target}
                     invocationLevel={urlState.invocationLevel}
                     handleChange={handleChange}
-                    defenceReduction={urlState.defenceReduction}
-                    handleDefenceReduction={handleDefenceReduction}
+                    currentDefence={urlState.currentDefence}
+                    handleCurrentDefence={handleCurrentDefence}
                     onTask={onTask}
                     handleOnTask={handleOnTask}
                     setTargetMonster={(targetMonster: TargetMonster) => {
                         setUrlState({
                             target: targetMonster.shortName || targetMonster.name,
                             invocationLevel: targetMonster.raid === Raid.TombsOfAmascut ? urlState.invocationLevel : undefined,
-                            defenceReduction: urlState.defenceReduction,
+                            currentDefence: targetMonster.defenceLevel,
                         });
                     }}/>
             </div>

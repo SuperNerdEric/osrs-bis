@@ -42,7 +42,6 @@ export class Calculator {
     averageDamagePerHit: number = 0;
     baseHitChance: number = 0;
     hitChance: number = 0;
-    defenceReduction: number = 0;
     attackInterval: number = 0;
     gearSet: GearSet;
     player: Player = new Player();
@@ -231,12 +230,12 @@ export class Calculator {
         let baseDefence: number;
         if (attackStyle === StyleType.Magic) {
             if (this.targetMonster.name === "Verzik Vitur P2" || this.targetMonster.name === "Verzik Vitur P3") {
-                baseDefence = 9 + this.targetMonster.defenceLevel;
+                baseDefence = 9 + this.targetMonster.currentDefenceLevel;
             } else {
                 baseDefence = 9 + this.targetMonster.magicLevel;
             }
         } else {
-            baseDefence = this.targetMonster.defenceLevel - this.defenceReduction + 9;
+            baseDefence = this.targetMonster.currentDefenceLevel + 9;
         }
 
         const styleDefenceBonus = this.targetMonster.defenceStats[attackStyle];

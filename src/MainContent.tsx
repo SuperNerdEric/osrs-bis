@@ -18,8 +18,8 @@ interface MainContentProps {
     target: string;
     invocationLevel: number;
     handleChange: (event: Event, newValue: number | number[]) => void;
-    defenceReduction: number;
-    handleDefenceReduction: (defenceReduction: number) => void;
+    currentDefence: number;
+    handleCurrentDefence: (defenceReduction: number) => void;
     onTask: boolean;
     handleOnTask: (onTask: boolean) => void;
     setTargetMonster: (monster: TargetMonster) => void;
@@ -30,8 +30,8 @@ const MainContent: React.FC<MainContentProps> = ({
                                                      target,
                                                      invocationLevel,
                                                      handleChange,
-                                                     defenceReduction,
-                                                     handleDefenceReduction,
+                                                     currentDefence,
+                                                     handleCurrentDefence,
                                                      onTask,
                                                      handleOnTask,
                                                      setTargetMonster
@@ -91,21 +91,22 @@ const MainContent: React.FC<MainContentProps> = ({
             gearSet.setRaid((monsters.get(target) as TargetMonster).raid);
             const calculator: Calculator = new Calculator(gearSet);
             calculator.targetMonster = monsters.get(target) as TargetMonster;
-            calculator.defenceReduction = defenceReduction;
+            calculator.targetMonster.currentDefenceLevel = currentDefence;
             calculator.player = player;
 
             if (isToaBoss) {
                 calculator.calculateDPS(invocationLevel);
             } else {
-                //Todo prevent use of salts outside toa
                 calculator.calculateDPS();
             }
+
+
 
             results.push(calculator);
         })
 
         setResults(results);
-    }, [target, invocationLevel, defenceReduction, player]);
+    }, [target, invocationLevel, currentDefence, player]);
 
 
     const columns = React.useMemo<ColumnDef<Calculator>[]>(
@@ -213,9 +214,6 @@ const MainContent: React.FC<MainContentProps> = ({
 
     const imageSize = Math.max(20, Math.min(50, windowWidth / 20));
 
-
-    const isSlayerMonster: boolean = (monsters.get(target) as TargetMonster).slayerMonster;
-
     return (
         <main className="App-main">
             <h2 className="monsterName">{(monsters.get(target) as TargetMonster).name}</h2>
@@ -231,14 +229,14 @@ const MainContent: React.FC<MainContentProps> = ({
             <DefenceReduction bossName={target}
                               defenceLevel={(monsters.get(target) as TargetMonster).defenceLevel}
                               maxReduction={(monsters.get(target) as TargetMonster).maxDefenceReduction}
-                              handleChange={handleDefenceReduction}/>
+                              handleCurrentDefence={handleCurrentDefence}/>
             <div className="configurationPanel">
                 <ConfigurationPanel
                     player={player}
                     setPlayer={setPlayer}
                     targetMonster={monsters.get(target) as TargetMonster}
-                    defenceReduction={defenceReduction}
-                    handleDefenceReduction={handleDefenceReduction}
+                    defenceReduction={currentDefence}
+                    handleDefenceReduction={handleCurrentDefence}
                 />
             </div>
             <GearTable data={results} columns={columns}/>

@@ -2,6 +2,23 @@ import {StyleType} from "./Item";
 import {Raid} from "./Raid";
 
 export class TargetMonster {
+    get defenceLevel(): number {
+        return this._defenceLevel;
+    }
+
+    set defenceLevel(value: number) {
+        this._defenceLevel = Number(value);
+        this._currentDefenceLevel = Number(value);
+    }
+
+    get currentDefenceLevel(): number {
+        return this._currentDefenceLevel;
+    }
+
+    set currentDefenceLevel(value: number) {
+        this._currentDefenceLevel = Number(value);
+    }
+
     name: string = "";
     shortName: string = "";
     size: string = "1x1";
@@ -14,7 +31,8 @@ export class TargetMonster {
     isFiery: boolean = false;
     imagePath: string = "";
     currentHitpoints: number = 0;
-    defenceLevel: number = 0;
+    private _defenceLevel: number = 0;
+    private _currentDefenceLevel: number = 0;
     maxDefenceReduction: number = 0;
     magicLevel: number = 0;
     magicAccuracy: number = 0;

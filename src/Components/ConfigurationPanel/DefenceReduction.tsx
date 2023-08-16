@@ -1,95 +1,115 @@
 import * as React from 'react';
-import {Checkbox, Stack, TextField, Tooltip, Button, Typography, Grid, Container} from "@mui/material";
+import {Stack, TextField, Tooltip} from "@mui/material";
 import bandosGodsword from '../../Images/Bandos_godsword_small.png';
 import dragonWarhammer from '../../Images/Dragon_warhammer_small.png';
-import {useMediaQuery} from '@mui/material';
-import { useTheme } from '@mui/material/styles';
+import {calculateDefenceLevel, calculateHits, DefenceReductionSummary} from "../../Calculator/DefenceCalculator";
 
-
-
-export default function DefenceReduction(props: { bossName: string, defenceLevel: number, maxReduction: number, handleChange: any }) {
-    const [localDefenceReduction, setLocalDefenceReduction] = React.useState(0);
-    const [localDefenceReductionText, setLocalDefenceReductionText] = React.useState(String(0));
+export default function DefenceReduction(props: { bossName: string, defenceLevel: number, maxReduction: number, handleCurrentDefence: any }) {
+    const [dwhHits, setDwhHits] = React.useState(0);
+    const [bgsDamage, setBgsDamage] = React.useState(0);
+    const [currentDefence, setCurrentDefence] = React.useState(props.defenceLevel);
     const [tooltipOpen, setTooltipOpen] = React.useState<boolean>(false);
 
-    const adjustDefenceReduction = (adjustment: number) => {
-        const newValue = localDefenceReduction + adjustment;
-        setDefenceReduction(newValue);
+    const handleDWHChange = (newValue: number) => {
+        const newSummary: DefenceReductionSummary = {
+            dragonWarhammer: newValue,
+            bandosGodsword: bgsDamage
+        };
+        const newDefence = calculateDefenceLevel(props.defenceLevel, newSummary, props.maxReduction);
+        setCurrentDefence(newDefence);
+        props.handleCurrentDefence(newDefence);
+        setDwhHits(newValue);
     };
 
-    const setDefenceReductionExact = (newValue: string) => {
-        if(newValue === "") {
-            setLocalDefenceReductionText("");
-            setLocalDefenceReduction(0);
-        } else {
-            setDefenceReduction(Number(newValue));
-        }
+    const handleBGSChange = (newValue: number) => {
+        const newSummary: DefenceReductionSummary = {
+            dragonWarhammer: dwhHits,
+            bandosGodsword: newValue
+        };
+        const newDefence = calculateDefenceLevel(props.defenceLevel, newSummary, props.maxReduction);
+        setCurrentDefence(newDefence);
+        props.handleCurrentDefence(newDefence);
+        setBgsDamage(newValue);
     };
 
-    const setDefenceReduction = (newValue: number) => {
-        if (newValue > props.maxReduction) {
-            newValue = props.maxReduction;
+    const handleCurrentDefenceChange = (newValue: number) => {
+        if (newValue < (props.defenceLevel - props.maxReduction)) {
+            newValue = props.defenceLevel - props.maxReduction;
             setTooltipOpen(true);
             setTimeout(() => {
                 setTooltipOpen(false);
-            }, 3000);
+            }, 2000);
         }
-        if (newValue < 0) {
-            newValue = 0;
-        }
-        setLocalDefenceReduction(newValue);
-        setLocalDefenceReductionText(String(newValue));
 
-
-        props.handleChange(newValue);
+        const hits = calculateHits(newValue, props.defenceLevel);
+        setCurrentDefence(newValue);
+        props.handleCurrentDefence(newValue);
+        setDwhHits(hits.dragonWarhammer);
+        setBgsDamage(hits.bandosGodsword);
     };
 
     React.useEffect(() => {
-        if(localDefenceReduction > props.maxReduction) {
-            setLocalDefenceReduction(props.maxReduction);
-            setLocalDefenceReductionText(String(props.maxReduction));
-        }
-        props.handleChange(localDefenceReduction);
-    }, [localDefenceReduction, props.maxReduction]);
-
-    const theme = useTheme();
-    const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
+        setDwhHits(0);
+        setBgsDamage(0);
+        setCurrentDefence(props.defenceLevel);
+        props.handleCurrentDefence(props.defenceLevel);
+    }, [props.defenceLevel]);
 
     return (
-        <div>
-            <Container maxWidth="sm">
-                <Stack
-                    key={`${props.bossName}-stack`}
-                    direction={isSmallScreen ? "column" : "row"}
-                    alignItems="center"
-                    gap={2}
-                    justifyContent="center"
-                >
-                    <Stack direction="row" alignItems="center" gap={2}>
-                        {props.defenceLevel - localDefenceReduction}/{props.defenceLevel} Defence
-                        <img src={bandosGodsword} width="auto" height="45" alt="logo"/>
-                        <img src={dragonWarhammer} width="auto" height="45" alt="logo"/>
-                    </Stack>
-                    <Stack direction="row" alignItems="center" gap={2}>
-                         <Tooltip open={tooltipOpen}
-                                 title={`Max defence reduction for ${props.bossName} is ${props.maxReduction}`}
-                                 onClose={() => setTooltipOpen(false)}
-                                 onOpen={() => setTooltipOpen(true)}>
-                            <TextField
-                                key={`${props.bossName}-textfield`}
-                                id="outlined"
-                                type="number"
-                                value={localDefenceReductionText}
-                                defaultValue={localDefenceReduction}
-                                onChange={e => setDefenceReductionExact(e.target.value)}
-                                inputProps={{style: {padding: 12}, max: 99}}
-                                sx={textFieldStyle}
-                                style={textFieldStyle}
-                            />
-                        </Tooltip>
-                    </Stack>
+        <div style={{display: 'flex', justifyContent: 'center', flexWrap: 'wrap', marginTop: '7px'}}>
+            <Stack spacing={2} alignItems="center" direction="row">
+                <Stack direction="row" alignItems="center" gap={1}>
+                    <img src={dragonWarhammer} alt="Dragon Warhammer" width="30" height="30"/>
+                    <TextField
+                        type="number"
+                        value={dwhHits}
+                        onChange={e => {
+                            const newValue = Math.min(Number(e.target.value), 99);
+                            handleDWHChange(newValue);
+                        }}
+                        variant="outlined"
+                        style={textFieldStyle}
+                        inputProps={{style: {padding: 5}, min: 0, max: 99}}
+                    />
                 </Stack>
-            </Container>
+                <Stack direction="row" alignItems="center" gap={1}>
+                    <img src={bandosGodsword} alt="Bandos Godsword" width="30" height="30"/>
+                    <TextField
+                        type="number"
+                        value={bgsDamage}
+                        onChange={e => {
+                            const newValue = Math.min(Number(e.target.value), props.maxReduction);
+                            handleBGSChange(newValue);
+                        }}
+                        variant="outlined"
+                        style={textFieldStyle}
+                        inputProps={{style: {padding: 5}, min: 0, max: props.maxReduction}}
+                    />
+                </Stack>
+                <Stack direction="row" alignItems="center" gap={0}>
+                <Tooltip
+                    title={`Max defence reduction for ${props.bossName} is ${props.maxReduction}`}
+                    open={tooltipOpen}
+                    disableHoverListener
+                    arrow
+                >
+                    <TextField
+                        type="number"
+                        value={currentDefence}
+                        onChange={e => {
+                            const newValue = Math.min(Number(e.target.value), props.defenceLevel);
+                            handleCurrentDefenceChange(newValue);
+                        }}
+                        variant="outlined"
+                        style={textFieldStyle}
+                        inputProps={{style: {padding: 5}, min: 0, max: props.defenceLevel}}
+                    />
+                </Tooltip>
+                <span style={labelStyle}>
+                    /{props.defenceLevel} Defence
+                </span>
+                </Stack>
+            </Stack>
         </div>
     );
 }
@@ -122,4 +142,15 @@ const textFieldStyle = {
             '-moz-appearance': 'textfield',
         },
     },
+    '& .MuiInputLabel-root': {
+        whiteSpace: 'nowrap',
+    },
 }
+
+const labelStyle: React.CSSProperties = {
+    fontSize: '18px',
+    width: '50px',
+    display: 'inline-block',
+    textAlign: 'right',
+    whiteSpace: 'nowrap',
+};
