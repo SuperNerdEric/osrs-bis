@@ -1394,5 +1394,63 @@ describe('Calculator class', () => {
             expect(result.hitChance).toBeCloseTo(0.407); //Matches Bitterkoekje
         });
     });
+
+    describe('with blowpipe on rapid', () => {
+        beforeEach(() => {
+            result.gearSet = new GearSet([GearSetType.General])
+                .addItemByName(ItemName.ToxicBlowpipe)
+                .setCombatStyle(CombatStyle.Rapid)
+                .addItemByName(ItemName.DragonDart)
+                .addItemByName(ItemName.MasoriMaskF)
+                .addItemByName(ItemName.MasoriBodyF)
+                .addItemByName(ItemName.MasoriChapsF)
+                .addItemByName(ItemName.ZaryteVambraces)
+                .addItemByName(ItemName.NecklaceOfAnguish)
+                .addItemByName(ItemName.AvasAssembler)
+                .addItemByName(ItemName.VenatorRing);
+            result.calculateDPS();
+        });
+
+        test('should calculate DPS correctly', () => {
+            expect(result.dps).toBeCloseTo(2.931); //Matches Bitterkoekje
+        });
+
+        test('should calculate maxHit correctly', () => {
+            expect(result.maxHit).toBe(31); //Matches Bitterkoekje
+        });
+
+        test('should calculate hitChance correctly', () => {
+            expect(result.hitChance).toBeCloseTo(0.2269); //Matches Bitterkoekje
+        });
+    });
+
+    describe('with blowpipe on accurate', () => {
+        beforeEach(() => {
+            result.gearSet = new GearSet([GearSetType.General])
+                .addItemByName(ItemName.ToxicBlowpipe)
+                .setCombatStyle(CombatStyle.Accurate)
+                .addItemByName(ItemName.DragonDart)
+                .addItemByName(ItemName.MasoriMaskF)
+                .addItemByName(ItemName.MasoriBodyF)
+                .addItemByName(ItemName.MasoriChapsF)
+                .addItemByName(ItemName.ZaryteVambraces)
+                .addItemByName(ItemName.NecklaceOfAnguish)
+                .addItemByName(ItemName.AvasAssembler)
+                .addItemByName(ItemName.VenatorRing);
+            result.calculateDPS();
+        });
+
+        test('should calculate DPS correctly', () => {
+            expect(result.dps).toBeCloseTo(2.06); //Matches Bitterkoekje
+        });
+
+        test('should calculate maxHit correctly', () => {
+            expect(result.maxHit).toBe(32); //Matches Bitterkoekje
+        });
+
+        test('should calculate hitChance correctly', () => {
+            expect(result.hitChance).toBeCloseTo(0.2317); //Matches Bitterkoekje
+        });
+    });
 });
 
