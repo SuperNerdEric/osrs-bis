@@ -48,10 +48,10 @@ export class VoidKnightMultiplierStrategy extends AbstractMultiplierStrategy {
 
     private hasValidVoidSetCombination(): boolean {
         const requiredItems = [
-            (item: Item) => item.name in VoidKnightMultiplierTable, // Helm
-            (item: Item) => item.name === ItemName.VoidKnightGloves, // Gloves
-            (item: Item) => [ItemName.VoidKnightTop, ItemName.EliteVoidTop].includes(item.name), // Top
-            (item: Item) => [ItemName.VoidKnightRobe, ItemName.EliteVoidRobe].includes(item.name) // Robe
+            (item: Item) =>[ItemName.VoidMeleeHelm, ItemName.VoidMageHelm, ItemName.VoidRangerHelm].includes(item.name),
+            (item: Item) => item.name === ItemName.VoidKnightGloves,
+            (item: Item) => [ItemName.VoidKnightTop, ItemName.EliteVoidTop].includes(item.name),
+            (item: Item) => [ItemName.VoidKnightRobe, ItemName.EliteVoidRobe].includes(item.name)
         ];
 
         return requiredItems.every(condition => {

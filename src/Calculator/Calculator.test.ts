@@ -761,15 +761,15 @@ describe('Calculator class', () => {
         });
 
         test('should calculate DPS correctly', () => {
-            expect(result.dps).toBeCloseTo(1.532); //Matches fruitdeeps
+            expect(result.dps).toBeCloseTo(1.532); //Matches fruitdeeps and Bitterkoekje
         });
 
         test('should calculate maxHit correctly', () => {
-            expect(result.maxHit).toBe(62); //Matches fruitdeeps
+            expect(result.maxHit).toBe(62); //Matches fruitdeeps and Bitterkoekje
         });
 
         test('should calculate hitChance correctly', () => {
-            expect(result.hitChance).toBeCloseTo(0.1482); //Matches fruitdeeps
+            expect(result.hitChance).toBeCloseTo(0.1482); //Matches fruitdeeps and Bitterkoekje
         });
     });
 
@@ -791,15 +791,17 @@ describe('Calculator class', () => {
         });
 
         test('should calculate DPS correctly', () => {
-            expect(result.dps).toBeCloseTo(1.532); //Matches fruitdeeps
+            expect(result.dps).toBeCloseTo(1.532); //Matches fruitdeeps and Bitterkoekje
+            // this is the same as regular void because it only boosts gear strength % and
+            // 2.5% is so small in some cases it's not even an extra max hit
         });
 
         test('should calculate maxHit correctly', () => {
-            expect(result.maxHit).toBe(62); //Matches fruitdeeps
+            expect(result.maxHit).toBe(62); //Matches fruitdeeps and Bitterkoekje
         });
 
         test('should calculate hitChance correctly', () => {
-            expect(result.hitChance).toBeCloseTo(0.1482); //Matches fruitdeeps
+            expect(result.hitChance).toBeCloseTo(0.1482); //Matches fruitdeeps and Bitterkoekje
         });
     });
 
