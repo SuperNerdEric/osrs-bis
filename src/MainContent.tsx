@@ -76,8 +76,6 @@ const MainContent: React.FC<MainContentProps> = ({
             shownGearSets.push(...slayerGearSets);
         }
 
-        console.log(player);
-
         if ((monsters.get(target) as TargetMonster).slayerMonster && player.onTask) {
             const slayerGearSets = gearSets.filter(gearSet => gearSet.types.includes(GearSetType.Slayer));
             shownGearSets.push(...slayerGearSets);
@@ -91,7 +89,7 @@ const MainContent: React.FC<MainContentProps> = ({
             gearSet.setRaid((monsters.get(target) as TargetMonster).raid);
             const calculator: Calculator = new Calculator(gearSet);
             calculator.targetMonster = monsters.get(target) as TargetMonster;
-            calculator.targetMonster.variants.get("default")!.currentDefenceLevel = currentDefence;
+            calculator.targetMonster.currentDefenceLevel = currentDefence;
             calculator.player = player;
 
             if (isToaBoss) {
@@ -210,7 +208,7 @@ const MainContent: React.FC<MainContentProps> = ({
     return (
         <main className="App-main">
             <h2 className="monsterName">{(monsters.get(target) as TargetMonster).name}</h2>
-            <img src={require(`${(monsters.get(target) as TargetMonster).variants.get("default")!.imagePath}`)} width="auto"
+            <img src={require(`${(monsters.get(target) as TargetMonster).imagePath}`)} width="auto"
                  height="150" alt={target}/>
             {
                 isToaBoss &&
@@ -220,8 +218,8 @@ const MainContent: React.FC<MainContentProps> = ({
                 {isToaBoss && `${invocationLevel} Invocation   `}
             </caption>
             <DefenceReduction bossName={target}
-                              defenceLevel={(monsters.get(target) as TargetMonster).variants.get("default")!.defenceLevel}
-                              maxReduction={(monsters.get(target) as TargetMonster).variants.get("default")!.maxDefenceReduction}
+                              defenceLevel={(monsters.get(target) as TargetMonster).defenceLevel}
+                              maxReduction={(monsters.get(target) as TargetMonster).maxDefenceReduction}
                               handleCurrentDefence={handleCurrentDefence}/>
             <div className="configurationPanel">
                 <ConfigurationPanel

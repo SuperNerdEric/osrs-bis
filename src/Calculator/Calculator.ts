@@ -1,4 +1,4 @@
-import {MonsterVariant, TargetMonster} from "../DataObjects/TargetMonster";
+import {TargetMonster} from "../DataObjects/TargetMonster";
 import {Item, Slot, StyleType, WeaponStyle} from "../DataObjects/Item";
 import {Player} from "../DataObjects/Player";
 import {GearSet} from "../DataObjects/GearSets";
@@ -35,19 +35,6 @@ import {TektonMultiplierStrategy} from "./MultiplierStrategies/TektonMultiplierS
 import {CrystalEquipmentMultiplierStrategy} from "./MultiplierStrategies/CrystalEquipmentMultiplierStrategy";
 
 export class Calculator {
-    get targetMonster(): TargetMonster {
-        return this._targetMonster;
-    }
-
-    set targetMonster(value: TargetMonster) {
-        this._targetMonster = value;
-        this.targetMonsterVariant = this._targetMonster.variants.get("default")!;
-    }
-
-    set setVariant(variantName: string) {
-        this.targetMonsterVariant = this._targetMonster.variants.get(variantName)!;
-    }
-
     dps: number = 0;
     maxHit: number = 0;
     attackRoll: number = 0;
@@ -58,10 +45,9 @@ export class Calculator {
     attackInterval: number = 0;
     gearSet: GearSet;
     player: Player = new Player();
-    private _targetMonster: TargetMonster = new TargetMonster();
-    targetMonsterVariant: MonsterVariant = new MonsterVariant();
+    targetMonster: TargetMonster = new TargetMonster();
 
-    constructor(gearSet: GearSet, variant?: string) {
+    constructor(gearSet: GearSet) {
         this.gearSet = gearSet;
     }
 
@@ -244,15 +230,15 @@ export class Calculator {
         let baseDefence: number;
         if (attackStyle === StyleType.Magic) {
             if (this.targetMonster.name === "Verzik Vitur P2" || this.targetMonster.name === "Verzik Vitur P3") {
-                baseDefence = 9 + this.targetMonsterVariant.currentDefenceLevel;
+                baseDefence = 9 + this.targetMonster.currentDefenceLevel;
             } else {
-                baseDefence = 9 + this.targetMonsterVariant.magicLevel;
+                baseDefence = 9 + this.targetMonster.magicLevel;
             }
         } else {
-            baseDefence = this.targetMonsterVariant.currentDefenceLevel + 9;
+            baseDefence = this.targetMonster.currentDefenceLevel + 9;
         }
 
-        const styleDefenceBonus = this.targetMonsterVariant.defenceStats[attackStyle];
+        const styleDefenceBonus = this.targetMonster.defenceStats[attackStyle];
         let defenceRoll = baseDefence * (styleDefenceBonus + 64);
 
         if (invocationLevel > 0) {

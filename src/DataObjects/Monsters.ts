@@ -23,7 +23,7 @@ variant.defenceStats = {
     [StyleType.Magic]: 280,
     [StyleType.Ranged]: 200,
 };
-monster.variants.set(variant.variantName, variant);
+monster.addVariant(variant);
 monsters.set(monster.name, monster);
 
 monster = new TargetMonster();
@@ -44,7 +44,7 @@ variant.defenceStats = {
     [StyleType.Magic]: 10,
     [StyleType.Ranged]: 60,
 };
-monster.variants.set(variant.variantName, variant);
+monster.addVariant(variant);
 monsters.set(monster.name, monster);
 
 monster = new TargetMonster();
@@ -65,7 +65,7 @@ variant.defenceStats = {
     [StyleType.Magic]: 10,
     [StyleType.Ranged]: 60,
 };
-monster.variants.set(variant.variantName, variant);
+monster.addVariant(variant);
 monsters.set(monster.name, monster);
 
 monster = new TargetMonster();
@@ -87,7 +87,7 @@ variant.defenceStats = {
     [StyleType.Magic]: 200,
     [StyleType.Ranged]: 300,
 };
-monster.variants.set(variant.variantName, variant);
+monster.addVariant(variant);
 monsters.set(monster.name, monster);
 
 monster = new TargetMonster();
@@ -108,7 +108,7 @@ variant.defenceStats = {
     [StyleType.Magic]: 200,
     [StyleType.Ranged]: 110,
 };
-monster.variants.set(variant.variantName, variant);
+monster.addVariant(variant);
 monsters.set(monster.name, monster);
 
 monster = new TargetMonster();
@@ -129,7 +129,7 @@ variant.defenceStats = {
     [StyleType.Magic]: 50,
     [StyleType.Ranged]: 60
 };
-monster.variants.set(variant.variantName, variant);
+monster.addVariant(variant);
 monsters.set(monster.name, monster);
 
 
@@ -151,7 +151,7 @@ variant.defenceStats = {
     [StyleType.Magic]: 20,
     [StyleType.Ranged]: 20
 };
-monster.variants.set(variant.variantName, variant);
+monster.addVariant(variant);
 monsters.set(monster.name, monster);
 
 monster = new TargetMonster();
@@ -173,7 +173,7 @@ variant.defenceStats = {
     [StyleType.Magic]: 200,
     [StyleType.Ranged]: 200
 };
-monster.variants.set(variant.variantName, variant);
+monster.addVariant(variant);
 monsters.set(monster.shortName, monster);
 
 monster = new TargetMonster();
@@ -194,7 +194,7 @@ variant.defenceStats = {
     [StyleType.Magic]: 298,
     [StyleType.Ranged]: 90
 };
-monster.variants.set(variant.variantName, variant);
+monster.addVariant(variant);
 monsters.set(monster.shortName, monster);
 
 monster = new TargetMonster();
@@ -215,7 +215,7 @@ variant.defenceStats = {
     [StyleType.Magic]: 100,
     [StyleType.Ranged]: 100
 };
-monster.variants.set(variant.variantName, variant);
+monster.addVariant(variant);
 monsters.set(monster.shortName, monster);
 
 monster = new TargetMonster();
@@ -238,7 +238,7 @@ variant.defenceStats = {
     [StyleType.Magic]: 130,
     [StyleType.Ranged]: 80
 };
-monster.variants.set(variant.variantName, variant);
+monster.addVariant(variant);
 monsters.set(monster.shortName, monster);
 
 monster = new TargetMonster();
@@ -258,7 +258,7 @@ variant.defenceStats = {
     [StyleType.Magic]: 300,
     [StyleType.Ranged]: 190
 };
-monster.variants.set(variant.variantName, variant);
+monster.addVariant(variant);
 monsters.set(monster.name, monster);
 
 monster = new TargetMonster();
@@ -279,7 +279,7 @@ variant.defenceStats = {
     [StyleType.Magic]: 73,
     [StyleType.Ranged]: 0
 };
-monster.variants.set(variant.variantName, variant);
+monster.addVariant(variant);
 monsters.set(monster.shortName, monster);
 
 monster = new TargetMonster();
@@ -300,7 +300,7 @@ variant.defenceStats = {
     [StyleType.Magic]: -11,
     [StyleType.Ranged]: 249
 };
-monster.variants.set(variant.variantName, variant);
+monster.addVariant(variant);
 monsters.set(monster.shortName, monster);
 
 monster = new TargetMonster();
@@ -321,7 +321,7 @@ variant.defenceStats = {
     [StyleType.Magic]: -11,
     [StyleType.Ranged]: 250
 };
-monster.variants.set(variant.variantName, variant);
+monster.addVariant(variant);
 monsters.set(monster.shortName, monster);
 
 monster = new TargetMonster();
@@ -342,7 +342,7 @@ variant.defenceStats = {
     [StyleType.Magic]: 106,
     [StyleType.Ranged]: 100
 };
-monster.variants.set(variant.variantName, variant);
+monster.addVariant(variant);
 monsters.set(monster.shortName, monster);
 
 monster = new TargetMonster();
@@ -363,7 +363,7 @@ variant.defenceStats = {
     [StyleType.Magic]: 0,
     [StyleType.Ranged]: 221
 };
-monster.variants.set(variant.variantName, variant);
+monster.addVariant(variant);
 monsters.set(monster.shortName, monster);
 
 monster = new TargetMonster();
@@ -384,7 +384,7 @@ variant.defenceStats = {
     [StyleType.Magic]: 0,
     [StyleType.Ranged]: 225
 };
-monster.variants.set(variant.variantName, variant);
+monster.addVariant(variant);
 monsters.set(monster.shortName, monster);
 
 monster = new TargetMonster();
@@ -405,7 +405,7 @@ variant.defenceStats = {
     [StyleType.Magic]: 150,
     [StyleType.Ranged]: 230
 };
-monster.variants.set(variant.variantName, variant);
+monster.addVariant(variant);
 monsters.set(monster.shortName, monster);
 
 monster = new TargetMonster();
@@ -426,7 +426,7 @@ variant.defenceStats = {
     [StyleType.Magic]: 0,
     [StyleType.Ranged]: 0
 };
-monster.variants.set(variant.variantName, variant);
+monster.addVariant(variant);
 monsters.set(monster.shortName, monster);
 
 monster = new TargetMonster();
@@ -448,7 +448,7 @@ variant.defenceStats = {
     [StyleType.Magic]: 600,
     [StyleType.Ranged]: 800
 };
-monster.variants.set(variant.variantName, variant);
+monster.addVariant(variant);
 monsters.set(monster.shortName, monster);
 
 monster = new TargetMonster();
@@ -469,7 +469,7 @@ variant.defenceStats = {
     [StyleType.Magic]: 0,
     [StyleType.Ranged]: 0
 };
-monster.variants.set(variant.variantName, variant);
+monster.addVariant(variant);
 monsters.set(monster.shortName, monster);
 
 monster = new TargetMonster();
@@ -490,7 +490,7 @@ variant.defenceStats = {
     [StyleType.Magic]: 30,
     [StyleType.Ranged]: 150
 };
-monster.variants.set(variant.variantName, variant);
+monster.addVariant(variant);
 monsters.set(monster.shortName, monster);
 
 monster = new TargetMonster();
@@ -510,7 +510,7 @@ variant.defenceStats = {
     [StyleType.Magic]: 0,
     [StyleType.Ranged]: 160
 };
-monster.variants.set(variant.variantName, variant);
+monster.addVariant(variant);
 monsters.set(monster.name, monster);
 
 monster = new TargetMonster();
@@ -531,7 +531,7 @@ variant.defenceStats = {
     [StyleType.Magic]: 70,
     [StyleType.Ranged]: 250
 };
-monster.variants.set(variant.variantName, variant);
+monster.addVariant(variant);
 monsters.set(monster.shortName, monster);
 
 monster = new TargetMonster();
@@ -552,7 +552,7 @@ variant.defenceStats = {
     [StyleType.Magic]: 100,
     [StyleType.Ranged]: 230
 };
-monster.variants.set(variant.variantName, variant);
+monster.addVariant(variant);
 monsters.set(monster.shortName, monster);
 
 monster = new TargetMonster();
@@ -573,7 +573,7 @@ variant.defenceStats = {
     [StyleType.Magic]: 0,
     [StyleType.Ranged]: 0
 };
-monster.variants.set(variant.variantName, variant);
+monster.addVariant(variant);
 monsters.set(monster.name, monster);
 
 monster = new TargetMonster();
@@ -594,7 +594,7 @@ variant.defenceStats = {
     [StyleType.Magic]: 110,
     [StyleType.Ranged]: 50
 };
-monster.variants.set(variant.variantName, variant);
+monster.addVariant(variant);
 monsters.set(monster.name, monster);
 
 monster = new TargetMonster();
@@ -615,7 +615,7 @@ variant.defenceStats = {
     [StyleType.Magic]: 20,
     [StyleType.Ranged]: 400
 };
-monster.variants.set(variant.variantName, variant);
+monster.addVariant(variant);
 monsters.set(monster.name, monster);
 
 monster = new TargetMonster();
@@ -636,7 +636,7 @@ variant.defenceStats = {
     [StyleType.Magic]: 400,
     [StyleType.Ranged]: 300
 };
-monster.variants.set(variant.variantName, variant);
+monster.addVariant(variant);
 monsters.set(monster.name, monster);
 
 monster = new TargetMonster();
@@ -657,7 +657,7 @@ variant.defenceStats = {
     [StyleType.Magic]: 70,
     [StyleType.Ranged]: 60
 };
-monster.variants.set(variant.variantName, variant);
+monster.addVariant(variant);
 monsters.set(monster.name, monster);
 
 monster = new TargetMonster();
@@ -679,7 +679,7 @@ variant.defenceStats = {
     [StyleType.Magic]: 400,
     [StyleType.Ranged]: 60
 };
-monster.variants.set(variant.variantName, variant);
+monster.addVariant(variant);
 monsters.set(monster.shortName, monster);
 
 monster = new TargetMonster();
@@ -700,7 +700,7 @@ variant.defenceStats = {
     [StyleType.Magic]: 60,
     [StyleType.Ranged]: 0
 };
-monster.variants.set(variant.variantName, variant);
+monster.addVariant(variant);
 monsters.set(monster.name, monster);
 
 monster = new TargetMonster();
@@ -721,7 +721,7 @@ variant.defenceStats = {
     [StyleType.Magic]: 60,
     [StyleType.Ranged]: 75
 };
-monster.variants.set(variant.variantName, variant);
+monster.addVariant(variant);
 monsters.set(monster.name, monster);
 
 monster = new TargetMonster();
@@ -744,7 +744,7 @@ variant.defenceStats = {
     [StyleType.Magic]: 200,
     [StyleType.Ranged]: 50
 };
-monster.variants.set(variant.variantName, variant);
+monster.addVariant(variant);
 monsters.set(monster.shortName, monster);
 
 monster = new TargetMonster();
@@ -767,7 +767,7 @@ variant.defenceStats = {
     [StyleType.Magic]: 200,
     [StyleType.Ranged]: 200
 };
-monster.variants.set(variant.variantName, variant);
+monster.addVariant(variant);
 monsters.set(monster.shortName, monster);
 
 monster = new TargetMonster();
@@ -790,7 +790,7 @@ variant.defenceStats = {
     [StyleType.Magic]: 50,
     [StyleType.Ranged]: 200
 };
-monster.variants.set(variant.variantName, variant);
+monster.addVariant(variant);
 monsters.set(monster.shortName, monster);
 
 
@@ -812,7 +812,7 @@ variant.defenceStats = {
     [StyleType.Magic]: 0,
     [StyleType.Ranged]: 0
 };
-monster.variants.set(variant.variantName, variant);
+monster.addVariant(variant);
 monsters.set(monster.name, monster);
 
 monster = new TargetMonster();
@@ -836,7 +836,7 @@ variant.defenceStats = {
     [StyleType.Magic]: 100,
     [StyleType.Ranged]: 100
 };
-monster.variants.set(variant.variantName, variant);
+monster.addVariant(variant);
 monsters.set(monster.shortName, monster);
 
 monster = new TargetMonster();
@@ -860,7 +860,7 @@ variant.defenceStats = {
     [StyleType.Magic]: 10,
     [StyleType.Ranged]: 10
 };
-monster.variants.set(variant.variantName, variant);
+monster.addVariant(variant);
 monsters.set(monster.shortName, monster);
 
 monster = new TargetMonster();
@@ -883,7 +883,7 @@ variant.defenceStats = {
     [StyleType.Magic]: 10,
     [StyleType.Ranged]: 300
 };
-monster.variants.set(variant.variantName, variant);
+monster.addVariant(variant);
 monsters.set(monster.shortName, monster);
 
 monster = new TargetMonster();
@@ -906,7 +906,7 @@ variant.defenceStats = {
     [StyleType.Magic]: 580,
     [StyleType.Ranged]: 580
 };
-monster.variants.set(variant.variantName, variant);
+monster.addVariant(variant);
 monsters.set(monster.shortName, monster);
 
 monster = new TargetMonster();
@@ -929,7 +929,7 @@ variant.defenceStats = {
     [StyleType.Magic]: 280,
     [StyleType.Ranged]: 50
 };
-monster.variants.set(variant.variantName, variant);
+monster.addVariant(variant);
 monsters.set(monster.shortName, monster);
 
 monster = new TargetMonster();
@@ -953,7 +953,7 @@ variant.defenceStats = {
     [StyleType.Magic]: 440,
     [StyleType.Ranged]: 320
 };
-monster.variants.set(variant.variantName, variant);
+monster.addVariant(variant);
 monsters.set(monster.shortName, monster);
 
 monster = new TargetMonster();
@@ -977,7 +977,7 @@ variant.defenceStats = {
     [StyleType.Magic]: 240,
     [StyleType.Ranged]: 26
 };
-monster.variants.set(variant.variantName, variant);
+monster.addVariant(variant);
 monsters.set(monster.name, monster);
 
 monster = new TargetMonster();
@@ -1000,7 +1000,7 @@ variant.defenceStats = {
     [StyleType.Magic]: 10,
     [StyleType.Ranged]: 255
 };
-monster.variants.set(variant.variantName, variant);
+monster.addVariant(variant);
 monsters.set(monster.shortName, monster);
 
 monster = new TargetMonster();
@@ -1023,7 +1023,7 @@ variant.defenceStats = {
     [StyleType.Magic]: 255,
     [StyleType.Ranged]: 10
 };
-monster.variants.set(variant.variantName, variant);
+monster.addVariant(variant);
 monsters.set(monster.shortName, monster);
 
 monster = new TargetMonster();
@@ -1046,7 +1046,7 @@ variant.defenceStats = {
     [StyleType.Magic]: 255,
     [StyleType.Ranged]: 550
 };
-monster.variants.set(variant.variantName, variant);
+monster.addVariant(variant);
 monsters.set(monster.shortName, monster);
 
 monster = new TargetMonster();
@@ -1070,7 +1070,7 @@ variant.defenceStats = {
     [StyleType.Magic]: 150,
     [StyleType.Ranged]: 45
 };
-monster.variants.set(variant.variantName, variant);
+monster.addVariant(variant);
 monsters.set(monster.shortName, monster);
 
 monster = new TargetMonster();
@@ -1092,7 +1092,7 @@ variant.defenceStats = {
     [StyleType.Magic]: 0,
     [StyleType.Ranged]: 0
 };
-monster.variants.set(variant.variantName, variant);
+monster.addVariant(variant);
 monsters.set(monster.name, monster);
 
 monster = new TargetMonster();
@@ -1115,7 +1115,7 @@ variant.defenceStats = {
     [StyleType.Magic]: 0,
     [StyleType.Ranged]: 0
 };
-monster.variants.set(variant.variantName, variant);
+monster.addVariant(variant);
 monsters.set(monster.shortName, monster);
 
 monster = new TargetMonster();
@@ -1138,7 +1138,7 @@ variant.defenceStats = {
     [StyleType.Magic]: 60,
     [StyleType.Ranged]: 50
 };
-monster.variants.set(variant.variantName, variant);
+monster.addVariant(variant);
 monsters.set(monster.name, monster);
 
 monster = new TargetMonster();
@@ -1162,5 +1162,5 @@ variant.defenceStats = {
     [StyleType.Magic]: 80,
     [StyleType.Ranged]: 70
 };
-monster.variants.set(variant.variantName, variant);
+monster.addVariant(variant);
 monsters.set(monster.shortName, monster);

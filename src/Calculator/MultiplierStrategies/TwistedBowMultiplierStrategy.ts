@@ -5,7 +5,7 @@ import {Raid} from "../../DataObjects/Raid";
 export class TwistedBowStrengthMultiplierStrategy extends AbstractMultiplierStrategy {
     calculateMultiplier(): number {
         if (this.result.gearSet.getWeapon().name === ItemName.TwistedBow) {
-            let targetMagic = Math.max(this.result.targetMonsterVariant.magicLevel, this.result.targetMonsterVariant.magicAccuracy);
+            let targetMagic = Math.max(this.result.targetMonster.magicLevel, this.result.targetMonster.magicAccuracy);
 
             // The Magic level or accuracy caps at 250 outside the Chambers of Xeric, and 350 within.
             if (targetMagic > 350 && this.result.targetMonster.raid === Raid.ChambersOfXeric) {
@@ -30,7 +30,7 @@ export class TwistedBowAccuracyMultiplierStrategy extends AbstractMultiplierStra
         if (this.result.gearSet.getWeapon().name !== ItemName.TwistedBow) {
             return 1;
         }
-        let targetMagic = Math.max(this.result.targetMonsterVariant.magicLevel, this.result.targetMonsterVariant.magicAccuracy);
+        let targetMagic = Math.max(this.result.targetMonster.magicLevel, this.result.targetMonster.magicAccuracy);
 
         // The Magic level or accuracy caps at 250 outside the Chambers of Xeric, and 350 within.
         if (targetMagic > 350 && this.result.targetMonster.raid === Raid.ChambersOfXeric) {

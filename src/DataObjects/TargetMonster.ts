@@ -1,7 +1,17 @@
 import {StyleType} from "./Item";
 import {Raid} from "./Raid";
 
-export class MonsterVariant {
+interface IMonsterStats {
+    imagePath: string;
+    currentHitpoints: number;
+    defenceLevel: number;
+    maxDefenceReduction: number;
+    magicLevel: number;
+    magicAccuracy: number;
+    defenceStats: MonsterDefenceStats;
+}
+
+export class MonsterVariant implements IMonsterStats{
     variantName: string = "default";
     imagePath: string = "";
     currentHitpoints: number = 0;
@@ -35,7 +45,7 @@ export class MonsterVariant {
         this._currentDefenceLevel = Number(value);
     }
 }
-export class TargetMonster {
+export class TargetMonster implements IMonsterStats {
 
     name: string = "";
     shortName: string = "";
@@ -48,7 +58,58 @@ export class TargetMonster {
     isDraconic: boolean = false;
     isFiery: boolean = false;
     variants: Map<string, MonsterVariant> = new Map();
+    private activeVariant!: MonsterVariant;
 
+    setActiveVariant(variantName: string): void {
+        const variant = this.variants.get(variantName);
+        if(variant) {
+            this.activeVariant = variant;
+        }
+    }
+    get imagePath(): string {
+        return this.activeVariant.imagePath;
+    }
+
+
+    get currentHitpoints(): number {
+        return this.activeVariant.currentHitpoints;
+    }
+
+    get defenceLevel(): number {
+        return this.activeVariant.defenceLevel;
+    }
+
+    get maxDefenceReduction(): number {
+        return this.activeVariant.maxDefenceReduction;
+    }
+
+    get magicLevel(): number {
+        return this.activeVariant.magicLevel;
+    }
+
+    get magicAccuracy(): number {
+        return this.activeVariant.magicAccuracy;
+    }
+
+    get defenceStats(): MonsterDefenceStats {
+        return this.activeVariant.defenceStats;
+    }
+
+    get currentDefenceLevel() {
+        return this.activeVariant.currentDefenceLevel;
+    }
+
+    set currentDefenceLevel(value: number) {
+        this.activeVariant.currentDefenceLevel = value;
+    }
+
+    addVariant(variant: MonsterVariant): void {
+        this.variants.set(variant.variantName, variant);
+
+        if (!this.activeVariant) {
+            this.setActiveVariant(variant.variantName);
+        }
+    }
 }
 
 interface MonsterDefenceStats {
