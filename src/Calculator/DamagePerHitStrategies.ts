@@ -134,9 +134,9 @@ export class RubyBoltEnchantedStrategy extends DamagePerHitStrategy {
         //Todo this doesn't take into account that your targets health goes down as you fight it...
         let procMaxHit;
         if (this.result.gearSet.getWeapon().name === ItemName.ZaryteCrossbow) {
-            procMaxHit = Math.min(Math.floor(this.result.targetMonster.currentHitpoints * 0.22), 110);
+            procMaxHit = Math.min(Math.floor(this.result.targetMonsterVariant.currentHitpoints * 0.22), 110);
         } else {
-            procMaxHit = Math.min(Math.floor(this.result.targetMonster.currentHitpoints * 0.2), 100);
+            procMaxHit = Math.min(Math.floor(this.result.targetMonsterVariant.currentHitpoints * 0.2), 100);
         }
 
         if (this.result.targetMonster.name === "Corporeal Beast") {

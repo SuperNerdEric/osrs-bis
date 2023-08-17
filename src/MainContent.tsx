@@ -91,7 +91,7 @@ const MainContent: React.FC<MainContentProps> = ({
             gearSet.setRaid((monsters.get(target) as TargetMonster).raid);
             const calculator: Calculator = new Calculator(gearSet);
             calculator.targetMonster = monsters.get(target) as TargetMonster;
-            calculator.targetMonster.currentDefenceLevel = currentDefence;
+            calculator.targetMonster.variants.get("default")!.currentDefenceLevel = currentDefence;
             calculator.player = player;
 
             if (isToaBoss) {
@@ -210,7 +210,7 @@ const MainContent: React.FC<MainContentProps> = ({
     return (
         <main className="App-main">
             <h2 className="monsterName">{(monsters.get(target) as TargetMonster).name}</h2>
-            <img src={require(`${(monsters.get(target) as TargetMonster).imagePath}`)} width="auto"
+            <img src={require(`${(monsters.get(target) as TargetMonster).variants.get("default")!.imagePath}`)} width="auto"
                  height="150" alt={target}/>
             {
                 isToaBoss &&
@@ -220,8 +220,8 @@ const MainContent: React.FC<MainContentProps> = ({
                 {isToaBoss && `${invocationLevel} Invocation   `}
             </caption>
             <DefenceReduction bossName={target}
-                              defenceLevel={(monsters.get(target) as TargetMonster).defenceLevel}
-                              maxReduction={(monsters.get(target) as TargetMonster).maxDefenceReduction}
+                              defenceLevel={(monsters.get(target) as TargetMonster).variants.get("default")!.defenceLevel}
+                              maxReduction={(monsters.get(target) as TargetMonster).variants.get("default")!.maxDefenceReduction}
                               handleCurrentDefence={handleCurrentDefence}/>
             <div className="configurationPanel">
                 <ConfigurationPanel

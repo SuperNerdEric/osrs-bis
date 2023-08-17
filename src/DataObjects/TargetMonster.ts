@@ -1,7 +1,23 @@
 import {StyleType} from "./Item";
 import {Raid} from "./Raid";
 
-export class TargetMonster {
+export class MonsterVariant {
+    variantName: string = "default";
+    imagePath: string = "";
+    currentHitpoints: number = 0;
+    private _defenceLevel: number = 0;
+    private _currentDefenceLevel: number = 0;
+    maxDefenceReduction: number = 0;
+    magicLevel: number = 0;
+    magicAccuracy: number = 0;
+    defenceStats: MonsterDefenceStats = {
+        [StyleType.Stab]: 0,
+        [StyleType.Slash]: 0,
+        [StyleType.Crush]: 0,
+        [StyleType.Magic]: 0,
+        [StyleType.Ranged]: 0,
+    };
+
     get defenceLevel(): number {
         return this._defenceLevel;
     }
@@ -18,6 +34,8 @@ export class TargetMonster {
     set currentDefenceLevel(value: number) {
         this._currentDefenceLevel = Number(value);
     }
+}
+export class TargetMonster {
 
     name: string = "";
     shortName: string = "";
@@ -29,20 +47,7 @@ export class TargetMonster {
     isDemon: boolean = false;
     isDraconic: boolean = false;
     isFiery: boolean = false;
-    imagePath: string = "";
-    currentHitpoints: number = 0;
-    private _defenceLevel: number = 0;
-    private _currentDefenceLevel: number = 0;
-    maxDefenceReduction: number = 0;
-    magicLevel: number = 0;
-    magicAccuracy: number = 0;
-    defenceStats: MonsterDefenceStats = {
-        [StyleType.Stab]: 0,
-        [StyleType.Slash]: 0,
-        [StyleType.Crush]: 0,
-        [StyleType.Magic]: 0,
-        [StyleType.Ranged]: 0,
-    };
+    variants: Map<string, MonsterVariant> = new Map();
 
 }
 

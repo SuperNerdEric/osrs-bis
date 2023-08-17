@@ -50,7 +50,7 @@ function App() {
                     setUrlState({
                         target: targetMonster.shortName || targetMonster.name,
                         invocationLevel: targetMonster.raid === Raid.TombsOfAmascut ? urlState.invocationLevel : undefined,
-                        currentDefence: targetMonster.defenceLevel,
+                        currentDefence: targetMonster.variants.get("default")!.defenceLevel,
                     });
                 }}/>
                 <MainContent
@@ -65,7 +65,7 @@ function App() {
                         setUrlState({
                             target: targetMonster.shortName || targetMonster.name,
                             invocationLevel: targetMonster.raid === Raid.TombsOfAmascut ? urlState.invocationLevel : undefined,
-                            currentDefence: targetMonster.defenceLevel,
+                            currentDefence: targetMonster.variants.get("default")!.defenceLevel,
                         });
                     }}/>
             </div>

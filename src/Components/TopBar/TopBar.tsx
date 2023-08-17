@@ -25,7 +25,6 @@ const TopBar: React.FC<TopBarProps> = ({urlState, setUrlState, setTargetMonster}
                                 setUrlState({
                                     target: targetMonster.shortName || targetMonster.name,
                                     invocationLevel: targetMonster.raid === Raid.TombsOfAmascut ? urlState.invocationLevel : undefined,
-                                    defenceReduction: urlState.defenceReduction,
                                 });
                             }}/>
                             <div>
@@ -48,7 +47,6 @@ const TopBar: React.FC<TopBarProps> = ({urlState, setUrlState, setTargetMonster}
                                                 setUrlState({
                                                     target: targetMonster.shortName || targetMonster.name,
                                                     invocationLevel: targetMonster.raid === Raid.TombsOfAmascut ? urlState.invocationLevel : undefined,
-                                                    defenceReduction: urlState.defenceReduction,
                                                 });
                                             }} monsterList={section.monsters} sectionName={section.name}/>
                                         </Grid>
