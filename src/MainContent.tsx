@@ -47,11 +47,6 @@ const MainContent: React.FC<MainContentProps> = ({
         handleOnTask(player.onTask);
     }, [player.onTask]);
 
-
-    const handleMonsterSelect = (monster: TargetMonster) => {
-        setTargetMonster(monster);
-    };
-
     useEffect(() => {
         const results: Calculator[] = [];
 
