@@ -33,6 +33,7 @@ import {CorporealBeastMultiplierStrategy} from "./MultiplierStrategies/Corporeal
 import {DragonHunterCrossbowMultiplierStrategy} from "./MultiplierStrategies/DragonHunterCrossbowMultiplierStrategy";
 import {TektonMultiplierStrategy} from "./MultiplierStrategies/TektonMultiplierStrategy";
 import {CrystalEquipmentMultiplierStrategy} from "./MultiplierStrategies/CrystalEquipmentMultiplierStrategy";
+import {ZukMultiplierStrategy} from "./MultiplierStrategies/ZukMultiplierStrategy";
 
 export class Calculator {
     dps: number = 0;
@@ -67,6 +68,7 @@ export class Calculator {
         this.hitChance = this.calculateHitChance(this.attackRoll, this.defenceRoll);
 
         new TektonMultiplierStrategy(this).calculateMultiplier();
+        new ZukMultiplierStrategy(this).calculateMultiplier();
         this.averageDamagePerHit = this.calculateDamagePerHit();
 
         this.attackInterval = this.gearSet.getWeapon().speedSeconds;
