@@ -1,18 +1,17 @@
 import {Tooltip} from "@mui/material";
 import {Calculator} from "./Calculator/Calculator";
 import {TargetMonster} from "./DataObjects/TargetMonster";
-import {monsters} from "./DataObjects/Monsters";
 import {GearSet, gearSets, GearSetType} from "./DataObjects/GearSets";
 import {DiscreteSliderMarks} from "./Components/Slider";
 import DefenceReduction from "./Components/ConfigurationPanel/DefenceReduction";
 import React, {useEffect, useState} from 'react';
 import {Raid} from "./DataObjects/Raid";
-import OnTaskCheck from "./Components/ConfigurationPanel/OnTaskCheck";
 import {GearTable} from "./Components/Table";
 import {ColumnDef} from "@tanstack/react-table";
-import MonsterSearch from "./Components/MonsterSearch";
 import ConfigurationPanel from "./Components/ConfigurationPanel/ConfigurationPanel";
 import {Player} from "./DataObjects/Player";
+import MonsterVariantSelector from "./Components/MonsterVariantSelector";
+import { monsters } from "./Data/loadMonsters";
 
 interface MainContentProps {
     target: string;
@@ -37,10 +36,12 @@ const MainContent: React.FC<MainContentProps> = ({
                                                      setTargetMonster
                                                  }) => {
 
+
     const [results, setResults] = useState<Calculator[]>([]);
     const isToaBoss: boolean = (monsters.get(target) as TargetMonster).raid === Raid.TombsOfAmascut;
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
     const [player, setPlayer] = useState<Player>(new Player());
+    const [activeVariant, setActiveVariant] = useState<string>('default');
 
     useEffect(() => {
         handleOnTask(player.onTask);
@@ -52,6 +53,8 @@ const MainContent: React.FC<MainContentProps> = ({
     };
 
     useEffect(() => {
+        console.log(JSON.stringify(monsters.get(target) as TargetMonster));
+
         const results: Calculator[] = [];
 
         const shownGearSets: GearSet[] = [];
@@ -104,7 +107,7 @@ const MainContent: React.FC<MainContentProps> = ({
         })
 
         setResults(results);
-    }, [target, invocationLevel, currentDefence, player]);
+    }, [target, activeVariant, invocationLevel, currentDefence, player]);
 
 
     const columns = React.useMemo<ColumnDef<Calculator>[]>(
@@ -194,7 +197,6 @@ const MainContent: React.FC<MainContentProps> = ({
         []
     )
 
-
     useEffect(() => {
         const handleResize = () => setWindowWidth(window.innerWidth);
         window.addEventListener('resize', handleResize);
@@ -208,8 +210,19 @@ const MainContent: React.FC<MainContentProps> = ({
     return (
         <main className="App-main">
             <h2 className="monsterName">{(monsters.get(target) as TargetMonster).name}</h2>
-            <img src={require(`${(monsters.get(target) as TargetMonster).imagePath}`)} width="auto"
-                 height="150" alt={target}/>
+            <img
+                src={(monsters.get(target) as TargetMonster).imagePath}
+                width="auto"
+                height="150"
+                alt={target}
+                style={{ marginBottom: '5px' }}
+            />
+
+            <MonsterVariantSelector
+                monster={(monsters.get(target) as TargetMonster)}
+                onVariantChange={(selectedVariant) => setActiveVariant(selectedVariant)}
+            />
+
             {
                 isToaBoss &&
                 <DiscreteSliderMarks defaultValue={invocationLevel} handleChange={handleChange}/>

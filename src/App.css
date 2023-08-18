@@ -152,3 +152,32 @@ table {
     justify-content: center;  /* Horizontal centering */
     align-items: center;      /* Vertical centering (if needed) */
 }
+
+
+.MuiToggleButtonGroup-root {
+    background-color: #d8ccb4;
+    border: none;
+}
+
+.MuiToggleButton-root.MuiToggleButton-root {
+    color: black;
+    background-color: #d8ccb4;
+    border: none;
+    font-size: calc(7px + 0.5vmin);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.MuiToggleButton-root.MuiToggleButton-root:hover {
+    color: white;
+    background-color: #d8ccb4;
+}
+
+.MuiToggleButton-root.MuiToggleButton-root.Mui-selected {
+    color: white;
+    background-color: black;
+}
+
+.MuiToggleButton-root.MuiToggleButton-root.Mui-selected:hover {
+    background-color: black;
+}
+

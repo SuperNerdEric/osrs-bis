@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 
 import '../App.css';
 import {ThemeProvider, Tooltip} from "@mui/material";
@@ -11,6 +11,7 @@ import TopBar from "./TopBar/TopBar";
 import MainContent from "../MainContent";
 import {TargetMonster} from "../DataObjects/TargetMonster";
 import {Raid} from "../DataObjects/Raid";
+import {loadMonstersFromFile} from "../Data/loadMonsters";
 
 
 const history = createBrowserHistory();
@@ -23,7 +24,14 @@ function App() {
         onTask: "false"
     });
     const [onTask, setOnTask] = React.useState(urlState.onTask === "false");
+    const [loading, setLoading] = useState(true);
 
+
+
+    useEffect(() => {
+        loadMonstersFromFile();
+        setLoading(false);
+    }, []);
 
     const handleChange = (event: Event, newValue: number | number[]) => {
         devLog("Set invocation level: " + newValue);
@@ -42,6 +50,11 @@ function App() {
 
 
     const theme = getTheme();
+
+    if (loading) {
+        return <div>Loading...</div>;
+    }
+
 
     return (
         <ThemeProvider theme={theme}>

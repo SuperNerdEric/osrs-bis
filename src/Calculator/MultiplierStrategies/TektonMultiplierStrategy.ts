@@ -10,7 +10,7 @@ export class TektonMultiplierStrategy {
     }
 
     calculateMultiplier() {
-        if (this.result.targetMonster.name === "Tekton") {
+        if (this.result.targetMonster.name.includes("Tekton")) {
             if (this.result.gearSet.styleType === StyleType.Ranged) {
                 this.result.maxHit = 0;
                 this.result.hitChance = 0;

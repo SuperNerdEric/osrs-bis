@@ -4,7 +4,7 @@ import {TargetMonster} from "../../DataObjects/TargetMonster";
 import TopBarItem from "./TopBarItem";
 import DrawerMenu from "./DrawerMenu";
 import {GitHub} from "./GitHub";
-import {sections} from "../../DataObjects/MonsterSections";
+import {getSections} from "../../DataObjects/MonsterSections";
 import {Raid} from "../../DataObjects/Raid";
 import MonsterSearch from "../MonsterSearch";
 
@@ -21,7 +21,7 @@ const TopBar: React.FC<TopBarProps> = ({urlState, setUrlState, setTargetMonster}
                 <Toolbar style={{paddingLeft: 24, paddingRight: 10}}>
                     <Hidden smUp>
                         <div style={{display: 'flex', justifyContent: 'space-between', width: '100%'}}>
-                            <DrawerMenu sections={sections} setTargetMonster={(targetMonster: TargetMonster) => {
+                            <DrawerMenu sections={getSections()} setTargetMonster={(targetMonster: TargetMonster) => {
                                 setUrlState({
                                     target: targetMonster.shortName || targetMonster.name,
                                     invocationLevel: targetMonster.raid === Raid.TombsOfAmascut ? urlState.invocationLevel : undefined,
@@ -41,7 +41,7 @@ const TopBar: React.FC<TopBarProps> = ({urlState, setUrlState, setTargetMonster}
                         <Box display={{ xs: 'none', sm: 'block' }} width="100%" height="100%" position="relative">
                             <div style={{ display: 'flex', flexDirection: 'row', height: '100%' }}>
                                 <Grid container spacing={2} style={{ flexGrow: 1 }}>
-                                    {sections.map((section, index) => (
+                                    {getSections().map((section, index) => (
                                         <Grid item key={index}>
                                             <TopBarItem setTargetMonster={(targetMonster: TargetMonster) => {
                                                 setUrlState({

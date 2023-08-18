@@ -1,5 +1,5 @@
+import { monsters } from "../Data/loadMonsters";
 import {TargetMonster} from "./TargetMonster";
-import {monsters} from "./Monsters";
 
 
 export class MonsterSection {
@@ -12,15 +12,15 @@ export class MonsterSection {
     }
 }
 
-export const sections = [
-    new MonsterSection("Chambers of Xeric", ["Tekton", "Vanguard (Magic)", "Vanguard (Melee)", "Vanguard (Ranged)", "Vespula", "Vasa", "Muttadile (Small)", "Muttadile (Large)", "Olm (Right Claw)", "Olm (Left Claw)", "Olm (Head)"]),
-    new MonsterSection("Theatre of Blood", ["Maiden", "Bloat", "Nylo", "Sote", "Xarpus", "Verzik P2", "Verzik P3"]),
-    new MonsterSection("Tombs of Amascut", ["Ba-Ba", "Akkha", "Akkha's Shadow", "Kephri", "Zebak", "Obelisk", "Wardens P3"]),
-    new MonsterSection("Forgotten Four", ["Whisperer", "Vardorvis", "Leviathan", "Duke Sucellus"]),
-    new MonsterSection("God Wars Dungeon", ["Armadyl", "Bandos", "Saradomin", "Zamorak", "Nex"]),
-    new MonsterSection("Dagannoth Kings", ["Rex", "Prime", "Supreme"]),
-    new MonsterSection("Barrows", ["Ahrim", "Dharok", "Guthan", "Karil", "Torag", "Verac"]),
-    new MonsterSection("Other Bosses", ["Corp", "KBD", "KQ", "KQ (P2)", "Vorkath"])
-];
-
-
+export function getSections(): MonsterSection[] {
+    return [
+        new MonsterSection("Chambers of Xeric", ["Tekton", "Vanguard", "Vespula", "Vasa Nistirio", "Muttadile", "Great Olm"]),
+        new MonsterSection("Theatre of Blood", ["The Maiden of Sugadinti", "Pestilent Bloat", "Nylocas Vasilias", "Sotetseg", "Xarpus", "Verzik Vitur"]),
+        new MonsterSection("Tombs of Amascut", ["Ba-Ba", "Akkha", "Akkha's Shadow", "Kephri", "Zebak", "Obelisk", "Tumeken's Warden"]),
+        new MonsterSection("Forgotten Four", ["The Whisperer", "Vardorvis", "The Leviathan", "Duke Sucellus"]),
+        new MonsterSection("God Wars Dungeon", ["Kree'arra", "General Graardor", "Commander Zilyana", "K'ril Tsutsaroth", "Nex"]),
+        new MonsterSection("Dagannoth Kings", ["Dagannoth Rex", "Dagannoth Prime", "Dagannoth Supreme"]),
+        new MonsterSection("Barrows", ["Ahrim the Blighted", "Dharok the Wretched", "Guthan the Infested", "Karil the Tainted", "Torag the Corrupted", "Verac the Defiled"]),
+        new MonsterSection("Other Bosses", ["Corporeal Beast", "King Black Dragon", "Kalphite Queen", "Vorkath"])
+    ];
+}

@@ -11,7 +11,7 @@ interface IMonsterStats {
     defenceStats: MonsterDefenceStats;
 }
 
-export class MonsterVariant implements IMonsterStats{
+export class MonsterVariant implements IMonsterStats {
     variantName: string = "default";
     imagePath: string = "";
     currentHitpoints: number = 0;
@@ -52,18 +52,22 @@ export class TargetMonster implements IMonsterStats {
     size: string = "1x1";
     raid: Raid = Raid.None;
     slayerMonster: boolean = false;
+    slayerCategory: string = "";
     isKalphite: boolean = false;
     isUndead: boolean = false;
     isDemon: boolean = false;
     isDraconic: boolean = false;
     isFiery: boolean = false;
     variants: Map<string, MonsterVariant> = new Map();
-    private activeVariant!: MonsterVariant;
+    private _activeVariant!: MonsterVariant;
 
+    get activeVariant(): MonsterVariant {
+        return this._activeVariant;
+    }
     setActiveVariant(variantName: string): void {
         const variant = this.variants.get(variantName);
         if(variant) {
-            this.activeVariant = variant;
+            this._activeVariant = variant;
         }
     }
     get imagePath(): string {
@@ -109,6 +113,24 @@ export class TargetMonster implements IMonsterStats {
         if (!this.activeVariant) {
             this.setActiveVariant(variant.variantName);
         }
+    }
+
+    serialize() {
+        return {
+            name: this.name,
+            shortName: this.shortName,
+            size: this.size,
+            raid: this.raid,
+            slayerMonster: this.slayerMonster,
+            slayerCategory: this.slayerCategory,
+            isKalphite: this.isKalphite,
+            isUndead: this.isUndead,
+            isDemon: this.isDemon,
+            isDraconic: this.isDraconic,
+            isFiery: this.isFiery,
+            variants: Array.from(this.variants.entries()),
+            _activeVariant: this._activeVariant
+        };
     }
 }
 

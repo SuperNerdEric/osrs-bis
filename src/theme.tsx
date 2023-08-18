@@ -72,6 +72,21 @@ export function getTheme() {
                     }
                 },
             },
+            MuiSelect: {
+                styleOverrides: {
+                    select: {
+                        color: "black",
+                        backgroundColor: "#d8ccb4",
+                        "&:hover": {
+                            backgroundColor: "#d8ccb4",
+                            color: "white",
+                        }
+                    },
+                    icon: {
+                        color: "black",  // adjust as needed
+                    },
+                },
+            }
         },
     });
 }

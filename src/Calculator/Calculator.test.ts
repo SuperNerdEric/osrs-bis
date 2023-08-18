@@ -1,15 +1,18 @@
 import {Calculator} from './Calculator';
-import {TargetMonster} from '../DataObjects/TargetMonster';
+import {MonsterVariant, TargetMonster} from '../DataObjects/TargetMonster';
 import {Player} from '../DataObjects/Player';
 import {GearSet, GearSetType} from "../DataObjects/GearSets";
-import {monsters} from "../DataObjects/Monsters";
-import {CombatStyle} from "../DataObjects/Item";
+import {CombatStyle, StyleType} from "../DataObjects/Item";
 import {ItemName} from '../DataObjects/ItemName';
 import {Raid} from "../DataObjects/Raid";
+import {loadMonstersFromFile, monsters} from "../Data/loadMonsters";
 
 describe('Calculator class', () => {
     let result: Calculator;
 
+    beforeAll(() => {
+        loadMonstersFromFile();
+    })
     beforeEach(() => {
         // @ts-ignore
         result = new Calculator();
@@ -18,7 +21,7 @@ describe('Calculator class', () => {
         result.player.skills.strength.boost = 19;
         result.player.skills.ranged.boost = 13;
         result.player.skills.magic.boost = 10; //imbued heart
-        result.targetMonster = monsters.get("Armadyl") as TargetMonster;
+        result.targetMonster = monsters.get("Kree'arra") as TargetMonster;
     });
 
     describe('with Osmumtens fang in ToA melee gear set', () => {
@@ -52,7 +55,7 @@ describe('Calculator class', () => {
         });
     });
 
-    describe('with Osmumtens fang against bloat', () => {
+    describe('with Osmumtens fang against Pestilent Bloat', () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General])
                 .addItemByName(ItemName.OsmumtensFang)
@@ -66,7 +69,7 @@ describe('Calculator class', () => {
                 .addItemByName(ItemName.AmuletOfTorture)
                 .addItemByName(ItemName.InfernalCape);
 
-            result.targetMonster = monsters.get("Bloat") as TargetMonster;
+            result.targetMonster = monsters.get("Pestilent Bloat") as TargetMonster;
             result.calculateDPS();
         });
 
@@ -207,6 +210,27 @@ describe('Calculator class', () => {
 
     describe('tbow slayer dummy test', () => {
         beforeEach(() => {
+            const monster = new TargetMonster();
+            monster.name = "Undead Combat Dummy";
+            monster.raid = Raid.None;
+            const variant = new MonsterVariant();
+            variant.imagePath = './Images/Monsters/Undead_combat_dummy.png';
+            monster.isUndead = true;
+            variant.currentHitpoints = 9999;
+            variant.defenceLevel = 1;
+            variant.maxDefenceReduction = 1;
+            variant.magicLevel = 1;
+            variant.magicAccuracy = 999;
+            variant.defenceStats = {
+                [StyleType.Stab]: 0,
+                [StyleType.Slash]: 0,
+                [StyleType.Crush]: 0,
+                [StyleType.Magic]: 0,
+                [StyleType.Ranged]: 0
+            };
+            monster.addVariant(variant);
+            monsters.set(monster.name, monster);
+
             result.gearSet = new GearSet([GearSetType.General])
                 .addItemByName(ItemName.TwistedBow)
                 .setCombatStyle(CombatStyle.Rapid)
@@ -384,7 +408,7 @@ describe('Calculator class', () => {
                 .addItemByName(ItemName.ImbuedZamorakCape)
                 .addItemByName(ItemName.MagusRing);
 
-            result.targetMonster = monsters.get("Verzik P2") as TargetMonster;
+            result.targetMonster = monsters.get("Verzik Vitur") as TargetMonster;
             result.calculateDPS();
         });
 
@@ -414,7 +438,7 @@ describe('Calculator class', () => {
                 .addItemByName(ItemName.NecklaceOfAnguish)
                 .addItemByName(ItemName.AvasAssembler);
 
-            result.targetMonster = monsters.get("Olm (Head)") as TargetMonster;
+            result.targetMonster = monsters.get("Great Olm") as TargetMonster;
             result.calculateDPS();
         });
 
@@ -444,7 +468,7 @@ describe('Calculator class', () => {
                 .addItemByName(ItemName.AmuletOfTorture)
                 .addItemByName(ItemName.InfernalCape);
 
-            result.targetMonster = monsters.get("Bloat") as TargetMonster;
+            result.targetMonster = monsters.get("Pestilent Bloat") as TargetMonster;
             result.calculateDPS();
         });
 
@@ -506,7 +530,7 @@ describe('Calculator class', () => {
                 .addItemByName(ItemName.InfernalCape)
                 .addItemByName(ItemName.BellatorRing);
 
-            result.targetMonster = monsters.get("Karil") as TargetMonster;
+            result.targetMonster = monsters.get("Karil the Tainted") as TargetMonster;
             result.calculateDPS();
         });
 
@@ -538,7 +562,7 @@ describe('Calculator class', () => {
                 .addItemByName(ItemName.AmuletOfTorture)
                 .addItemByName(ItemName.InfernalCape);
 
-            result.targetMonster = monsters.get("KQ") as TargetMonster;
+            result.targetMonster = monsters.get("Kalphite Queen") as TargetMonster;
             result.calculateDPS();
         });
 
@@ -569,7 +593,7 @@ describe('Calculator class', () => {
                 .addItemByName(ItemName.AmuletOfTorture)
                 .addItemByName(ItemName.InfernalCape);
 
-            result.targetMonster = monsters.get("KQ") as TargetMonster;
+            result.targetMonster = monsters.get("Kalphite Queen") as TargetMonster;
             result.calculateDPS();
         });
 
@@ -600,7 +624,7 @@ describe('Calculator class', () => {
                 .addItemByName(ItemName.AmuletOfTorture)
                 .addItemByName(ItemName.InfernalCape);
 
-            result.targetMonster = monsters.get("KQ") as TargetMonster;
+            result.targetMonster = monsters.get("Kalphite Queen") as TargetMonster;
             result.player.onTask = true;
             result.calculateDPS();
         });
@@ -632,7 +656,7 @@ describe('Calculator class', () => {
                 .addItemByName(ItemName.AmuletOfTorture)
                 .addItemByName(ItemName.InfernalCape);
 
-            result.targetMonster = monsters.get("KQ") as TargetMonster;
+            result.targetMonster = monsters.get("Kalphite Queen") as TargetMonster;
             result.player.onTask = true;
             result.calculateDPS();
         });
@@ -664,7 +688,7 @@ describe('Calculator class', () => {
                 .addItemByName(ItemName.SalveAmulet)
                 .addItemByName(ItemName.InfernalCape);
 
-            result.targetMonster = monsters.get("Bloat") as TargetMonster;
+            result.targetMonster = monsters.get("Pestilent Bloat") as TargetMonster;
             result.calculateDPS();
         });
 
@@ -695,7 +719,7 @@ describe('Calculator class', () => {
                 .addItemByName(ItemName.SalveAmuletE)
                 .addItemByName(ItemName.InfernalCape);
 
-            result.targetMonster = monsters.get("Bloat") as TargetMonster;
+            result.targetMonster = monsters.get("Pestilent Bloat") as TargetMonster;
             result.calculateDPS();
         });
 
@@ -726,7 +750,7 @@ describe('Calculator class', () => {
                 .addItemByName(ItemName.AmuletOfTorture)
                 .addItemByName(ItemName.InfernalCape);
 
-            result.targetMonster = monsters.get("Bloat") as TargetMonster;
+            result.targetMonster = monsters.get("Pestilent Bloat") as TargetMonster;
             result.calculateDPS();
         });
 
@@ -756,7 +780,7 @@ describe('Calculator class', () => {
                 .addItemByName(ItemName.NecklaceOfAnguish)
                 .addItemByName(ItemName.AvasAssembler);
 
-            result.targetMonster = monsters.get("Bloat") as TargetMonster;
+            result.targetMonster = monsters.get("Pestilent Bloat") as TargetMonster;
             result.calculateDPS();
         });
 
@@ -786,7 +810,7 @@ describe('Calculator class', () => {
                 .addItemByName(ItemName.NecklaceOfAnguish)
                 .addItemByName(ItemName.AvasAssembler);
 
-            result.targetMonster = monsters.get("Bloat") as TargetMonster;
+            result.targetMonster = monsters.get("Pestilent Bloat") as TargetMonster;
             result.calculateDPS();
         });
 
@@ -817,7 +841,7 @@ describe('Calculator class', () => {
                 .addItemByName(ItemName.OccultNecklace)
                 .addItemByName(ItemName.ImbuedZamorakCape);
 
-            result.targetMonster = monsters.get("Bloat") as TargetMonster;
+            result.targetMonster = monsters.get("Pestilent Bloat") as TargetMonster;
             result.calculateDPS();
         });
 
@@ -846,7 +870,7 @@ describe('Calculator class', () => {
                 .addItemByName(ItemName.OccultNecklace)
                 .addItemByName(ItemName.ImbuedZamorakCape);
 
-            result.targetMonster = monsters.get("Bloat") as TargetMonster;
+            result.targetMonster = monsters.get("Pestilent Bloat") as TargetMonster;
             result.calculateDPS();
         });
 
@@ -876,7 +900,7 @@ describe('Calculator class', () => {
                 .addItemByName(ItemName.PrimordialBoots)
                 .addItemByName(ItemName.AmuletOfTorture)
                 .addItemByName(ItemName.InfernalCape);
-            result.targetMonster = monsters.get("Zamorak") as TargetMonster;
+            result.targetMonster = monsters.get("K'ril Tsutsaroth") as TargetMonster;
             result.calculateDPS();
         });
 
@@ -907,7 +931,7 @@ describe('Calculator class', () => {
                 .addItemByName(ItemName.AmuletOfTorture)
                 .addItemByName(ItemName.InfernalCape);
 
-            result.targetMonster = monsters.get("Zamorak") as TargetMonster;
+            result.targetMonster = monsters.get("K'ril Tsutsaroth") as TargetMonster;
             result.player.onTask = true;
             result.calculateDPS();
         });
@@ -939,7 +963,9 @@ describe('Calculator class', () => {
                 .addItemByName(ItemName.AmuletOfTorture)
                 .addItemByName(ItemName.InfernalCape);
 
-            result.targetMonster = monsters.get("Olm (Left Claw)") as TargetMonster;
+            const monster = monsters.get("Great Olm") as TargetMonster;
+            monster.setActiveVariant("Left claw");
+            result.targetMonster = monster
             result.calculateDPS();
         });
 
@@ -1020,7 +1046,7 @@ describe('Calculator class', () => {
         });
     });
 
-    describe('with inquisitors against kq', () => {
+    describe('with inquisitors against Kalphite Queen', () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General])
                 .addItemByName(ItemName.InquisitorsMace)
@@ -1035,7 +1061,7 @@ describe('Calculator class', () => {
                 .addItemByName(ItemName.InfernalCape)
                 .addItemByName(ItemName.UltorRing);
 
-            result.targetMonster = monsters.get("KQ") as TargetMonster;
+            result.targetMonster = monsters.get("Kalphite Queen") as TargetMonster;
             result.calculateDPS();
         });
 
@@ -1053,7 +1079,7 @@ describe('Calculator class', () => {
     });
 
 
-    describe('with 2 piece inquisitors against kq', () => {
+    describe('with 2 piece inquisitors against Kalphite Queen', () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General])
                 .addItemByName(ItemName.InquisitorsMace)
@@ -1068,7 +1094,7 @@ describe('Calculator class', () => {
                 .addItemByName(ItemName.InfernalCape)
                 .addItemByName(ItemName.UltorRing);
 
-            result.targetMonster = monsters.get("KQ") as TargetMonster;
+            result.targetMonster = monsters.get("Kalphite Queen") as TargetMonster;
             result.calculateDPS();
         });
 
@@ -1085,7 +1111,7 @@ describe('Calculator class', () => {
         });
     });
 
-    describe('with inquisitors stab against kq', () => {
+    describe('with inquisitors stab against Kalphite Queen', () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General])
                 .addItemByName(ItemName.InquisitorsMace)
@@ -1100,7 +1126,7 @@ describe('Calculator class', () => {
                 .addItemByName(ItemName.InfernalCape)
                 .addItemByName(ItemName.UltorRing);
 
-            result.targetMonster = monsters.get("KQ") as TargetMonster;
+            result.targetMonster = monsters.get("Kalphite Queen") as TargetMonster;
             result.calculateDPS();
         });
 
