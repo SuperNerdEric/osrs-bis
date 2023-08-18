@@ -53,8 +53,6 @@ const MainContent: React.FC<MainContentProps> = ({
     };
 
     useEffect(() => {
-        console.log(JSON.stringify(monsters.get(target) as TargetMonster));
-
         const results: Calculator[] = [];
 
         const shownGearSets: GearSet[] = [];
