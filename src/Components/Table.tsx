@@ -73,11 +73,10 @@ export function GearTable({data, columns}: GearTableProps) {
         },
         data: sortedData,
         columns,
-        // Pipeline
+        getRowId: (originalRow) => originalRow.id,
         getCoreRowModel: getCoreRowModel(),
         getFilteredRowModel: getFilteredRowModel(),
         getPaginationRowModel: getPaginationRowModel(),
-        //
         debugTable: true,
     })
 

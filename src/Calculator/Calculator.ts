@@ -34,6 +34,8 @@ import {DragonHunterCrossbowMultiplierStrategy} from "./MultiplierStrategies/Dra
 import {TektonMultiplierStrategy} from "./MultiplierStrategies/TektonMultiplierStrategy";
 import {CrystalEquipmentMultiplierStrategy} from "./MultiplierStrategies/CrystalEquipmentMultiplierStrategy";
 import {ZukMultiplierStrategy} from "./MultiplierStrategies/ZukMultiplierStrategy";
+import { v4 as uuidv4 } from 'uuid';
+
 
 export class Calculator {
     dps: number = 0;
@@ -47,9 +49,11 @@ export class Calculator {
     gearSet: GearSet;
     player: Player = new Player();
     targetMonster: TargetMonster = new TargetMonster();
+    id: string;
 
     constructor(gearSet: GearSet) {
         this.gearSet = gearSet;
+        this.id = uuidv4();
     }
 
     calculateDPS(invocationLevel: number = 0) {
