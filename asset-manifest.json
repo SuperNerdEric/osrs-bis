@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.9428da7f.css",
-    "main.js": "/static/js/main.5cb906e4.js",
+    "main.js": "/static/js/main.a8f93121.js",
     "static/js/787.f7d32ca0.chunk.js": "/static/js/787.f7d32ca0.chunk.js",
     "static/media/Duke_Sucellus.png": "/static/media/Duke_Sucellus.20671a0f119b769958f1.png",
     "static/media/Fire_cape.png": "/static/media/Fire_cape.9fa34a7e2c3fc7a55285.png",
@@ -102,6 +102,7 @@
     "static/media/Ruby_bolts_(e).png": "/static/media/Ruby_bolts_(e).39f74fe083992a0030fc.png",
     "static/media/Bryophyta.png": "/static/media/Bryophyta.653962dff3f930dec514.png",
     "static/media/Keris_partisan_of_the_sun.png": "/static/media/Keris_partisan_of_the_sun.86e36971be1ee07658ac.png",
+    "static/media/Harmonised_nightmare_staff.png": "/static/media/Harmonised_nightmare_staff.41888fd425c442a0f7a0.png",
     "static/media/Pearl_dragon_bolts_(e).png": "/static/media/Pearl_dragon_bolts_(e).713e1b749783634a291c.png",
     "static/media/The_Maiden_of_Sugadinti.png": "/static/media/The_Maiden_of_Sugadinti.28ace30dcd77c277dcc6.png",
     "static/media/Keris_partisan_of_corruption.png": "/static/media/Keris_partisan_of_corruption.4acc9d308736f75f3afb.png",
@@ -109,6 +110,7 @@
     "static/media/Emerald_dragon_bolts_(e).png": "/static/media/Emerald_dragon_bolts_(e).fa58a55f8b34e846be66.png",
     "static/media/Dragon_arrow.png": "/static/media/Dragon_arrow.17ff841c447cba53c701.png",
     "static/media/Dragonstone_dragon_bolts_(e).png": "/static/media/Dragonstone_dragon_bolts_(e).d4a9f9ea3d35e86e0a8b.png",
+    "static/media/Nightmare_staff.png": "/static/media/Nightmare_staff.d23b3df454ab2a4b05a3.png",
     "static/media/Keris_partisan_of_breaching.png": "/static/media/Keris_partisan_of_breaching.b8936fe41f06841b29a5.png",
     "static/media/Ruby_dragon_bolts_(e).png": "/static/media/Ruby_dragon_bolts_(e).29817d3e6de6ffecd039.png",
     "static/media/Onyx_dragon_bolts_(e).png": "/static/media/Onyx_dragon_bolts_(e).5bbd34e4e71bbfa71508.png",
@@ -151,6 +153,8 @@
     "static/media/Dawn.png": "/static/media/Dawn.1f55d99e46dee3a28b8b.png",
     "static/media/Zaryte_crossbow.png": "/static/media/Zaryte_crossbow.0adcb55a885f0bd7cf21.png",
     "static/media/Armadyl_chainskirt.png": "/static/media/Armadyl_chainskirt.deffb8411ecc15057d3e.png",
+    "static/media/Tome_of_water.png": "/static/media/Tome_of_water.690be6ac147785c320b4.png",
+    "static/media/Tome_of_fire.png": "/static/media/Tome_of_fire.76e6207b519988190502.png",
     "static/media/King_Black_Dragon.png": "/static/media/King_Black_Dragon.297c51eb11336ccab531.png",
     "static/media/Void_ranger_helm.png": "/static/media/Void_ranger_helm.1578e9d06c1ca91fd3bb.png",
     "static/media/Xarpus.png": "/static/media/Xarpus.187c054102bbd79e2d29.png",
@@ -185,6 +189,7 @@
     "static/media/Deranged_archaeologist.png": "/static/media/Deranged_archaeologist.7e5bd9f8284f7f75a832.png",
     "static/media/Crazy_archaeologist.png": "/static/media/Crazy_archaeologist.dd13a3a330feb24a93e6.png",
     "static/media/Necklace_of_anguish.png": "/static/media/Necklace_of_anguish.4470235995de2cfe5144.png",
+    "static/media/Staff_of_the_dead.png": "/static/media/Staff_of_the_dead.2b005f4fc6016e2a63fa.png",
     "static/media/Zamorakian_hasta.png": "/static/media/Zamorakian_hasta.7d1ba1a324e0025170dc.png",
     "static/media/Void_knight_gloves.png": "/static/media/Void_knight_gloves.005f394158de6ff9a09a.png",
     "static/media/Achievement_Diaries.png": "/static/media/Achievement_Diaries.c01cff90b13b79f3f9f4.png",
@@ -267,11 +272,11 @@
     "static/media/Zamorakian_hasta.webp": "/static/media/Zamorakian_hasta.be62bb7cec7ec3005a5e.webp",
     "index.html": "/index.html",
     "main.9428da7f.css.map": "/static/css/main.9428da7f.css.map",
-    "main.5cb906e4.js.map": "/static/js/main.5cb906e4.js.map",
+    "main.a8f93121.js.map": "/static/js/main.a8f93121.js.map",
     "787.f7d32ca0.chunk.js.map": "/static/js/787.f7d32ca0.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.9428da7f.css",
-    "static/js/main.5cb906e4.js"
+    "static/js/main.a8f93121.js"
   ]
 }
