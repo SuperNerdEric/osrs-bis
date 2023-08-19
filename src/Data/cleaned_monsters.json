@@ -57222,7 +57222,7 @@
                 "Normal",
                 {
                     "variantName": "Normal",
-                    "imagePath": "https://oldschool.runescape.wiki/images/abyssal_portal.png",
+                    "imagePath": "https://oldschool.runescape.wiki/images/Abyssal_portal.png",
                     "currentHitpoints": 250,
                     "_defenceLevel": 176,
                     "_currentDefenceLevel": 176,
@@ -57242,7 +57242,7 @@
                 "Challenge Mode",
                 {
                     "variantName": "Challenge Mode",
-                    "imagePath": "https://oldschool.runescape.wiki/images/abyssal_portal.png",
+                    "imagePath": "https://oldschool.runescape.wiki/images/Abyssal_portal.png",
                     "currentHitpoints": 370,
                     "_defenceLevel": 264,
                     "_currentDefenceLevel": 264,
@@ -57261,7 +57261,7 @@
         ],
         "_activeVariant": {
             "variantName": "Normal",
-            "imagePath": "https://oldschool.runescape.wiki/images/abyssal_portal.png",
+            "imagePath": "https://oldschool.runescape.wiki/images/Abyssal_portal.png",
             "currentHitpoints": 250,
             "_defenceLevel": 176,
             "_currentDefenceLevel": 176,
