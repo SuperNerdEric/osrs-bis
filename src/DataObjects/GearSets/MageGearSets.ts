@@ -2,6 +2,8 @@ import {ItemName} from "../ItemName";
 import {CombatStyle, Slot} from "../Item";
 import {GearSet, gearSets, GearSetType} from "../GearSets";
 import * as _ from "lodash";
+import {SpellBook} from "../Spell";
+import {SpellName} from "../SpellName";
 
 export function generateMageGearsets() {
     const mageBase = [
@@ -60,6 +62,12 @@ export function generateMageGearsets() {
                     const cloneWithBookOfTheDead = _.cloneDeep(gearSet);
                     cloneWithBookOfTheDead.addItemByName(ItemName.BookOfTheDead);
                     gearSets.push(cloneWithBookOfTheDead);
+
+                    const spellClone = _.cloneDeep(gearSet);
+                    spellClone.addItemByName(ItemName.HarmonisedNightmareStaff);
+                    spellClone.addItemByName(ItemName.TomeOfFire);
+                    spellClone.spell = SpellBook.getSpell(SpellName.FireSurge);
+                    gearSets.push(spellClone);
                 } else {
                     gearSets.push(gearSet);
                 }

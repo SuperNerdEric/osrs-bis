@@ -16,6 +16,8 @@ import {generateRangedGearSets} from "./GearSets/RangedGearSets";
 import {generateMeleeGearSets} from "./GearSets/MeleeGearSets";
 import {generateMageGearsets} from "./GearSets/MageGearSets";
 import * as _ from "lodash";
+import {Spell, SpellBook} from "./Spell";
+import {SpellName} from "./SpellName";
 
 export enum GearSetType {
     General,
@@ -32,6 +34,7 @@ export class GearSet {
     combatStyle: CombatStyle = CombatStyle.Punch;
     styleType: StyleType = StyleType.Crush;
     weaponStyle: WeaponStyle = WeaponStyle.Accurate;
+    spell?: Spell;
     styleTypeBonus: number = 0;
     styleStrength: number = 0;
     items: Map<Slot, Item> = new Map();
@@ -60,6 +63,15 @@ export class GearSet {
         this.items.set(item.slot, item);
         this.recalculateAttributes();
 
+        return this;
+    }
+
+    setSpellByName(spellName: SpellName): this {
+        const spell = SpellBook.getSpell(SpellName.FireSurge);
+        if (!spell) {
+            throw new Error(`Spell not found: ${spellName}`);
+        }
+        this.spell = spell;
         return this;
     }
 
@@ -111,7 +123,11 @@ export class GearSet {
             throw new Error(`Invalid CombatStyle for the selected weapon.`);
         }
 
-        this.combatClass = StyleToCombatClass[matchingOption.styleType];
+        if(this.spell) {
+            this.combatClass = CombatClass.Magic;
+        } else {
+            this.combatClass = StyleToCombatClass[matchingOption.styleType];
+        }
         this.combatStyle = combatStyle;
         this.styleType = matchingOption.styleType;
         this.weaponStyle = matchingOption.weaponStyle;

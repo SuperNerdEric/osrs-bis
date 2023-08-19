@@ -101,4 +101,9 @@ export enum ItemName {
     CrystalBody = "Crystal body",
     CrystalLegs = "Crystal legs",
     BowOfFaerdhinen = "Bow of faerdhinen",
+    StaffOfTheDead = "Staff of the dead",
+    TomeOfFire = "Tome of fire",
+    TomeOfWater = "Tome of water",
+    NightmareStaff = "Nightmare staff",
+    HarmonisedNightmareStaff = "Harmonised nightmare staff"
 }

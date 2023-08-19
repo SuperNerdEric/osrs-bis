@@ -6,6 +6,7 @@ import {CombatStyle, StyleType} from "../DataObjects/Item";
 import {ItemName} from '../DataObjects/ItemName';
 import {Raid} from "../DataObjects/Raid";
 import {loadMonstersFromFile, monsters} from "../Data/loadMonsters";
+import {SpellName} from "../DataObjects/SpellName";
 
 describe('Calculator class', () => {
     let result: Calculator;
@@ -1476,6 +1477,72 @@ describe('Calculator class', () => {
 
         test('should calculate hitChance correctly', () => {
             expect(result.hitChance).toBeCloseTo(0.2317); //Matches Bitterkoekje
+        });
+    });
+
+    describe('against ice demon with tbow', () => {
+        beforeEach(() => {
+            result.gearSet = new GearSet([GearSetType.General])
+                .addItemByName(ItemName.TwistedBow)
+                .setCombatStyle(CombatStyle.Rapid   )
+                .addItemByName(ItemName.DragonArrow)
+                .addItemByName(ItemName.MasoriMaskF)
+                .addItemByName(ItemName.MasoriBodyF)
+                .addItemByName(ItemName.MasoriChapsF)
+                .addItemByName(ItemName.ZaryteVambraces)
+                .addItemByName(ItemName.NecklaceOfAnguish)
+                .addItemByName(ItemName.AvasAssembler)
+                .addItemByName(ItemName.VenatorRing);
+            result.targetMonster = monsters.get("Ice demon") as TargetMonster;
+            result.player.skills.ranged.boost = 21; //Overload
+            result.calculateDPS();
+        });
+
+        //Bitterkoekje has 0.35 multiplier for some reason
+        test('should calculate DPS correctly', () => {
+            expect(result.dps).toBeCloseTo(3.715); //Matches Bitterkoekje if you set multiplier to 0.333334 instead of 0.35
+        });
+
+        test('should calculate maxHit correctly', () => {
+            expect(result.maxHit).toBe(32); //Matches Bitterkoekje if you set multiplier to 0.333334 instead of 0.35
+        });
+
+        test('should calculate hitChance correctly', () => {
+            expect(result.hitChance).toBeCloseTo(0.6966); //Matches Bitterkoekje
+        });
+    });
+
+    describe('against ice demon with fire surge', () => {
+        beforeEach(() => {
+            result.gearSet = new GearSet([GearSetType.General])
+                .addItemByName(ItemName.HarmonisedNightmareStaff)
+                .setCombatStyle(CombatStyle.Spell)
+                .addItemByName(ItemName.TomeOfFire)
+                .addItemByName(ItemName.AncestralHat)
+                .addItemByName(ItemName.AncestralRobeTop)
+                .addItemByName(ItemName.AncestralRobeBottom)
+                .addItemByName(ItemName.EternalBoots)
+                .addItemByName(ItemName.TormentedBracelet)
+                .addItemByName(ItemName.OccultNecklace)
+                .addItemByName(ItemName.ImbuedZamorakCape)
+                .addItemByName(ItemName.MagusRing)
+                .setSpellByName(SpellName.FireSurge);
+            result.targetMonster = monsters.get("Ice demon") as TargetMonster;
+            result.player.skills.magic.boost = 21; //Overload
+            result.calculateDPS();
+        });
+
+        //Bitterkoekje has 0.35 multiplier for some reason
+        test('should calculate DPS correctly', () => {
+            expect(result.dps).toBeCloseTo(10.589); //Matches Bitterkoekje
+        });
+
+        test('should calculate maxHit correctly', () => {
+            expect(result.maxHit).toBe(73); //Matches Bitterkoekje
+        });
+
+        test('should calculate hitChance correctly', () => {
+            expect(result.hitChance).toBeCloseTo(0.6963); //Matches Bitterkoekje
         });
     });
 });

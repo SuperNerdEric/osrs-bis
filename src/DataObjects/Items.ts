@@ -864,3 +864,51 @@ createItem(ItemName.CrystalLegs, {
     ranged: 18,
     slot: Slot.Legs,
 });
+
+createWeapon(ItemName.StaffOfTheDead, {
+    category: WeaponCategory.BladedStaff,
+    imagePath: "./Images/ItemsOld/Staff_of_the_dead.png",
+    wikiLink: "https://oldschool.runescape.wiki/w/Staff_of_the_dead",
+    slot: Slot.MainHand,
+    speedSeconds: 2.4,
+    stab: 55,
+    slash: 70,
+    crush: 0,
+    magic: 17,
+    strength: 72,
+    mageStrength: 15
+});
+
+createItem(ItemName.TomeOfFire, {
+    imagePath: "./Images/ItemsOld/Tome_of_fire.png",
+    wikiLink: "https://oldschool.runescape.wiki/w/Tome_of_fire",
+    magic: 8,
+    slot: Slot.OffHand,
+});
+
+createItem(ItemName.TomeOfWater, {
+    imagePath: "./Images/ItemsOld/Tome_of_water.png",
+    wikiLink: "https://oldschool.runescape.wiki/w/Tome_of_water",
+    magic: 8,
+    slot: Slot.OffHand,
+});
+
+createWeapon(ItemName.NightmareStaff, {
+    category: WeaponCategory.Staff,
+    imagePath: "./Images/ItemsOld/Nightmare_staff.png",
+    wikiLink: "https://oldschool.runescape.wiki/w/Nightmare_staff",
+    slot: Slot.MainHand,
+    speedSeconds: 3,
+    magic: 16,
+    mageStrength: 15
+});
+
+createWeapon(ItemName.HarmonisedNightmareStaff, {
+    category: WeaponCategory.Staff,
+    imagePath: "./Images/ItemsOld/Harmonised_nightmare_staff.png",
+    wikiLink: "https://oldschool.runescape.wiki/w/Harmonised_nightmare_staff",
+    slot: Slot.MainHand,
+    speedSeconds: 3,
+    magic: 16,
+    mageStrength: 15
+});

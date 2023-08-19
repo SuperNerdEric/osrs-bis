@@ -123,7 +123,18 @@ const MainContent: React.FC<MainContentProps> = ({
                 accessorKey: 'gear',
                 accessorFn: row => {
                     return (
-                        <div>
+                        <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap' }}>
+                            {
+                                row.gearSet.spell && (
+                                    <Tooltip key={row.gearSet.spell.name} title={row.gearSet.spell.name}>
+                                        <a href={row.gearSet.spell.wikiLink} target="_blank" rel="noreferrer">
+                                            <img src={require(`./Images/Spells/${row.gearSet.spell.name}.png`)}
+                                                 style={{ width: `${imageSize}px`, height: `${imageSize}px` }}
+                                                 alt={row.gearSet.spell.name} />
+                                        </a>
+                                    </Tooltip>
+                                )
+                            }
                             {
                                 Array.from(row.gearSet.items.values())
                                     .sort((a, b) => a.slot - b.slot)
@@ -131,8 +142,8 @@ const MainContent: React.FC<MainContentProps> = ({
                                         <Tooltip key={item.name} title={item.name}>
                                             <a href={item.wikiLink} target="_blank" rel="noreferrer">
                                                 <img src={require(`${item.imagePath}`)}
-                                                     style={{width: `${imageSize}px`, height: `${imageSize}px`}}
-                                                     alt={item.name}/>
+                                                     style={{ width: `${imageSize}px`, height: `${imageSize}px`}}
+                                                     alt={item.name} />
                                             </a>
                                         </Tooltip>
                                     ))

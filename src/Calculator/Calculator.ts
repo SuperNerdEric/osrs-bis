@@ -1,5 +1,5 @@
 import {TargetMonster} from "../DataObjects/TargetMonster";
-import {Item, Slot, StyleType, WeaponStyle} from "../DataObjects/Item";
+import {CombatClass, Item, Slot, StyleType, WeaponStyle} from "../DataObjects/Item";
 import {Player} from "../DataObjects/Player";
 import {GearSet} from "../DataObjects/GearSets";
 import {ItemName} from "../DataObjects/ItemName";
@@ -29,12 +29,14 @@ import {SoulreaperMultiplierStrategy} from "./MultiplierStrategies/SoulreaperMul
 import {ArclightMultiplierStrategy} from "./MultiplierStrategies/ArclightMultiplierStrategy";
 import {DragonHunterLanceMultiplierStrategy} from "./MultiplierStrategies/DragonHunterLanceMultiplierStrategy";
 import {InquisitorsMultiplierStrategy} from "./MultiplierStrategies/InquisitorsMultiplierStrategy";
-import {CorporealBeastMultiplierStrategy} from "./MultiplierStrategies/CorporealBeastMultiplierStrategy";
+import {CorporealBeastMultiplierStrategy} from "./MultiplierStrategies/Monsters/CorporealBeastMultiplierStrategy";
 import {DragonHunterCrossbowMultiplierStrategy} from "./MultiplierStrategies/DragonHunterCrossbowMultiplierStrategy";
-import {TektonMultiplierStrategy} from "./MultiplierStrategies/TektonMultiplierStrategy";
+import {TektonMultiplierStrategy} from "./MultiplierStrategies/Monsters/TektonMultiplierStrategy";
 import {CrystalEquipmentMultiplierStrategy} from "./MultiplierStrategies/CrystalEquipmentMultiplierStrategy";
-import {ZukMultiplierStrategy} from "./MultiplierStrategies/ZukMultiplierStrategy";
-import { v4 as uuidv4 } from 'uuid';
+import {ZukMultiplierStrategy} from "./MultiplierStrategies/Monsters/ZukMultiplierStrategy";
+import {v4 as uuidv4} from 'uuid';
+import {TomeOfFireMultiplierStrategy} from "./MultiplierStrategies/TomeOfFireMultiplierStrategy";
+import {IceDemonMultiplierStrategy} from "./MultiplierStrategies/Monsters/IceDemonMultiplierStrategy";
 
 
 export class Calculator {
@@ -59,8 +61,8 @@ export class Calculator {
     calculateDPS(invocationLevel: number = 0) {
         const attackStyle = this.gearSet.styleType;
 
-        const effectiveStrengthLevel = this.calculateEffectiveStrengthLevel(this.gearSet.styleType);
-        const effectiveAttackLevel = this.calculateEffectiveAttackLevel(this.gearSet.styleType);
+        const effectiveStrengthLevel = this.calculateEffectiveStrengthLevel(this.gearSet.combatClass);
+        const effectiveAttackLevel = this.calculateEffectiveAttackLevel(this.gearSet.combatClass);
 
         const gearStrengthMultipliers = this.getGearStrengthMultipliers();
         this.maxHit = this.calculateMaxHit(effectiveStrengthLevel, gearStrengthMultipliers, this.gearSet.styleType);
@@ -79,18 +81,25 @@ export class Calculator {
         if (this.gearSet.weaponStyle === WeaponStyle.Rapid) {
             this.attackInterval -= 0.6;
         }
+        if(this.gearSet.spell) {
+            this.attackInterval = 3;
+            if(this.gearSet.getWeapon().name === ItemName.HarmonisedNightmareStaff) {
+                //todo this should only be standard spellbook
+                this.attackInterval = 2.4;
+            }
+        }
 
         this.dps = this.calculateDps(this.attackInterval);
     }
 
-    private calculateEffectiveStrengthLevel(attackStyle: StyleType) {
+    private calculateEffectiveStrengthLevel(combatClass: CombatClass) {
         let effectiveLevel;
 
         const prayerBoostMelee = this.player.prayers.piety ? 1.23 : 1;
         const prayerBoostRanged = this.player.prayers.rigour ? 1.23 : 1;
         const prayerBoostMage = this.player.prayers.augury ? 1.25 : 1;
 
-        if (attackStyle === StyleType.Stab || attackStyle === StyleType.Slash || attackStyle === StyleType.Crush) {
+        if (combatClass === CombatClass.Melee) {
             const soulReaperMultiplier = new SoulreaperMultiplierStrategy(this).calculateMultiplier();
 
             effectiveLevel = Math.floor((this.player.skills.strength.level + this.player.skills.strength.boost) * (prayerBoostMelee + soulReaperMultiplier)) + 8;
@@ -99,7 +108,7 @@ export class Calculator {
             } else if (this.gearSet.weaponStyle === WeaponStyle.Controlled) {
                 effectiveLevel += 1;
             }
-        } else if (attackStyle === StyleType.Ranged) {
+        } else if (combatClass === CombatClass.Ranged) {
             effectiveLevel = Math.floor((this.player.skills.ranged.level + this.player.skills.ranged.boost) * prayerBoostRanged) + 8;
             if (this.gearSet.weaponStyle === WeaponStyle.Accurate) {
                 effectiveLevel += 3;
@@ -116,7 +125,7 @@ export class Calculator {
         return effectiveLevel;
     }
 
-    private calculateEffectiveAttackLevel(attackStyle: StyleType) {
+    private calculateEffectiveAttackLevel(combatClass: CombatClass) {
         let effectiveLevel;
 
         const prayerBoostMelee = this.player.prayers.piety ? 1.2 : 1;
@@ -126,7 +135,7 @@ export class Calculator {
         // According to sources void boosts effective attack level, not our attack roll
         const voidMultiplier = new VoidKnightMultiplierStrategy(this).calculateMultiplier(MultiplierType.Accuracy);
 
-        if (attackStyle === StyleType.Stab || attackStyle === StyleType.Slash || attackStyle === StyleType.Crush) {
+        if (combatClass === CombatClass.Melee) {
             effectiveLevel = Math.floor((this.player.skills.attack.level + this.player.skills.attack.boost) * prayerBoostMelee);
             if (this.gearSet.weaponStyle === WeaponStyle.Accurate) {
                 effectiveLevel += 3;
@@ -135,7 +144,7 @@ export class Calculator {
             }
             effectiveLevel += 8;
             effectiveLevel = Math.floor(effectiveLevel * voidMultiplier);
-        } else if (attackStyle === StyleType.Ranged) {
+        } else if (combatClass === CombatClass.Ranged) {
             effectiveLevel = Math.floor((this.player.skills.ranged.level + this.player.skills.ranged.boost) * prayerBoostRanged) + 8;
             if (this.gearSet.weaponStyle === WeaponStyle.Accurate) {
                 effectiveLevel += 3;
@@ -144,7 +153,7 @@ export class Calculator {
         } else {
             effectiveLevel = Math.floor((this.player.skills.magic.level + this.player.skills.magic.boost) * prayerBoostMage);
             effectiveLevel = Math.floor(effectiveLevel * voidMultiplier);
-            if (this.gearSet.weaponStyle === WeaponStyle.Accurate) {
+            if (this.gearSet.weaponStyle === WeaponStyle.Accurate && !this.gearSet.spell) {
                 effectiveLevel += 2;
             }
             effectiveLevel += 9;
@@ -162,6 +171,8 @@ export class Calculator {
         const inquisitorsMultiplier = new InquisitorsMultiplierStrategy(this).calculateMultiplier();
         const crystalEquipmentMultiplier = new CrystalEquipmentMultiplierStrategy(this).calculateMultiplier(MultiplierType.Damage);
         const corporealBeastMultiplier = new CorporealBeastMultiplierStrategy(this).calculateMultiplier();
+        const tomeOfFireMultiplier = new TomeOfFireMultiplierStrategy(this).calculateMultiplier();
+        const iceDemonMultiplier = new IceDemonMultiplierStrategy(this).calculateMultiplier();
 
         const gearMultipliers = [
             Math.max(slayerMultiplier, salveMultiplier),
@@ -172,6 +183,8 @@ export class Calculator {
             inquisitorsMultiplier,
             crystalEquipmentMultiplier,
             corporealBeastMultiplier,
+            iceDemonMultiplier,
+            tomeOfFireMultiplier
         ];
 
         return gearMultipliers;
@@ -206,10 +219,14 @@ export class Calculator {
         if ([StyleType.Stab, StyleType.Slash, StyleType.Crush, StyleType.Ranged].includes(attackStyle)) {
             maxHit = Math.floor(0.5 + (effectiveLevel * (this.gearSet.styleStrength + 64)) / 640);
         } else {
-            maxHit = Math.floor((this.player.skills.magic.level + this.player.skills.magic.boost) / 3) - 1;
+            if(this.gearSet.spell) {
+                maxHit = this.gearSet.spell.maxHit;
+            } else {
+                maxHit = Math.floor((this.player.skills.magic.level + this.player.skills.magic.boost) / 3) - 1;
 
-            if (this.gearSet.getWeapon().name == ItemName.TumekensShadow) {
-                maxHit += 2;
+                if (this.gearSet.getWeapon().name == ItemName.TumekensShadow) {
+                    maxHit += 2;
+                }
             }
             maxHit = Math.floor(maxHit * (1 + this.gearSet.styleStrength / 100));
         }

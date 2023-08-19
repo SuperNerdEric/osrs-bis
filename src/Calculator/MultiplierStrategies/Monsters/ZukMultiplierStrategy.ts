@@ -1,5 +1,5 @@
-import {CombatClass} from "../../DataObjects/Item";
-import {Calculator} from "../Calculator";
+import {CombatClass} from "../../../DataObjects/Item";
+import {Calculator} from "../../Calculator";
 
 export class ZukMultiplierStrategy {
 

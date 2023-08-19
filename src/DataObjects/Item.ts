@@ -75,6 +75,7 @@ export enum CombatStyle {
     ShortFuse = "Short fuse",
     Slash = "Slash",
     Smash = "Smash",
+    Spell = "Spell",
     Spike = "Spike",
     Stab = "Stab",
     Swipe = "Swipe"
@@ -239,6 +240,7 @@ export const WeaponCategoryOptions: { [category in WeaponCategory]?: AttackOptio
         {combatStyle: CombatStyle.Bash, styleType: StyleType.Crush, weaponStyle: WeaponStyle.Accurate},
         {combatStyle: CombatStyle.Pound, styleType: StyleType.Crush, weaponStyle: WeaponStyle.Aggressive},
         {combatStyle: CombatStyle.Focus, styleType: StyleType.Crush, weaponStyle: WeaponStyle.Defensive},
+        {combatStyle: CombatStyle.Spell, styleType: StyleType.Magic, weaponStyle: WeaponStyle.Defensive},
     ],
     [WeaponCategory.Thrown]: [
         {combatStyle: CombatStyle.Accurate, styleType: StyleType.Ranged, weaponStyle: WeaponStyle.Accurate},

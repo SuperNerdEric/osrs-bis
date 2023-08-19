@@ -1,10 +1,10 @@
-import {ItemName} from "../../DataObjects/ItemName";
-import {AbstractMultiplierStrategy} from "./AbstractMultiplierStrategy";
+import {ItemName} from "../../../DataObjects/ItemName";
+import {AbstractMultiplierStrategy} from "../AbstractMultiplierStrategy";
 import {
     StyleType,
     WeaponCategory,
     WeaponCategoryOptions
-} from "../../DataObjects/Item";
+} from "../../../DataObjects/Item";
 
 export class CorporealBeastMultiplierStrategy extends AbstractMultiplierStrategy {
     calculateMultiplier(): number {

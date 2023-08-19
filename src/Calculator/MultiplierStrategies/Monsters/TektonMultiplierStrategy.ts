@@ -1,5 +1,5 @@
-import {StyleType} from "../../DataObjects/Item";
-import {Calculator} from "../Calculator";
+import {StyleType} from "../../../DataObjects/Item";
+import {Calculator} from "../../Calculator";
 
 export class TektonMultiplierStrategy {
 
