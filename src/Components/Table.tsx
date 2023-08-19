@@ -7,12 +7,12 @@ import {
     getCoreRowModel,
     getFilteredRowModel,
     getPaginationRowModel,
-    flexRender,
+    flexRender, FilterFn,
 } from '@tanstack/react-table'
 import {Calculator} from "../Calculator/Calculator";
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-import {Stack, styled} from "@mui/material";
+import {Button, Stack, styled} from "@mui/material";
 import IconButton from '@mui/material/IconButton';
 import FirstPageIcon from '@mui/icons-material/FirstPage';
 import LastPageIcon from '@mui/icons-material/LastPage';
@@ -42,11 +42,63 @@ const StyledIconButton = styled(IconButton)`
   }
 `;
 
+const StyledButton = styled(Button)`
+  color: black;
+  background-color: #d8ccb4;
+  padding: 0px 4px;
+  border: 1px solid #ccc;
+  transition: background-color 0.3s ease;
+  font-size: 16px;
+  font-weight: bold;
+
+  &:hover {
+    background-color: white;
+    color: black;
+  }
+
+  &:disabled {
+    color: #888;
+    background-color: #ccc;
+  }
+`;
+
+
+
 export function GearTable({data, columns}: GearTableProps) {
     type SortKey = 'dps' | 'maxHit' | 'hitChance';
     const [sortConfig, setSortConfig] = React.useState({key: 'dps' as keyof Calculator, direction: 'descending'});
     const [sortedColumn, setSortedColumn] = React.useState<string | null>(null);
     const [isSortedDesc, setIsSortedDesc] = React.useState<boolean>(false);
+    const [selectedRowIds, setSelectedRowIds] = React.useState<string[]>([]);
+
+    const showAllRows = () => {
+        table.setGlobalFilter(undefined);
+        setSelectedRowIds([]);
+    };
+
+
+    const toggleRowSelection = (rowId: string) => {
+        setSelectedRowIds(prevState =>
+            prevState.includes(rowId)
+                ? prevState.filter(id => id !== rowId)
+                : [...prevState, rowId]
+        );
+    };
+
+    const hideSelectedRows = () => {
+        const alreadyHiddenRows = table.getState().globalFilter || [];
+        const combinedHiddenRows =[...selectedRowIds, ...alreadyHiddenRows];
+        setSelectedRowIds([]);
+        table.setGlobalFilter(combinedHiddenRows);
+    };
+
+
+
+    const hideSelectedRowsFilterFn: FilterFn<Calculator> = (row, columnId, filterValue) => {
+        const rowData: Calculator = row.original;
+        return !filterValue.includes(rowData.id);
+    };
+
 
     const sortedData = React.useMemo(() => {
         const sortableData = [...data];
@@ -73,12 +125,27 @@ export function GearTable({data, columns}: GearTableProps) {
         },
         data: sortedData,
         columns,
+        globalFilterFn: hideSelectedRowsFilterFn,
         getRowId: (originalRow) => originalRow.id,
         getCoreRowModel: getCoreRowModel(),
         getFilteredRowModel: getFilteredRowModel(),
         getPaginationRowModel: getPaginationRowModel(),
         debugTable: true,
     })
+
+    const areAllRowsSelected = table.getRowModel().rows.every(row => selectedRowIds.includes(row.id));
+
+    const toggleAllRowSelections = () => {
+        if (areAllRowsSelected) {
+            // If all rows on the page are selected, deselect them
+            const newSelectedRowIds = selectedRowIds.filter(rowId => !table.getRowModel().rows.some(row => row.id === rowId));
+            setSelectedRowIds(newSelectedRowIds);
+        } else {
+            // If not all rows on the page are selected, select all of them
+            const newSelectedRowIds = [...selectedRowIds, ...table.getRowModel().rows.map(row => row.id)];
+            setSelectedRowIds(newSelectedRowIds);
+        }
+    };
 
     const requestSort = (key: keyof Calculator) => {
         if (key === 'maxHit' || key === 'hitChance' || key === 'dps') {
@@ -92,14 +159,34 @@ export function GearTable({data, columns}: GearTableProps) {
         }
     }
 
-
     return (
         <div className="p-2">
             <div className="h-2"/>
+            <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: '3px', minHeight: '30px' }}>
+                <Stack direction="row" spacing={1}>
+                    {selectedRowIds.length !== 0 && (
+                        <StyledButton onClick={hideSelectedRows}>
+                            Hide ({selectedRowIds.length})
+                        </StyledButton>
+                    )}
+                    {table.getState().globalFilter !== undefined && (
+                        <StyledButton onClick={showAllRows}>
+                            Show ({table.getState().globalFilter.length})
+                        </StyledButton>
+                    )}
+                </Stack>
+            </div>
             <table>
                 <thead>
                 {table.getHeaderGroups().map(headerGroup => (
                     <tr key={headerGroup.id}>
+                        <th>
+                            <input
+                                type="checkbox"
+                                checked={areAllRowsSelected}
+                                onChange={toggleAllRowSelections}
+                            />
+                        </th>
                         {headerGroup.headers.map(header => (
                             <th key={header.id} onClick={() => requestSort(header.id as SortKey)}>
                                 {header.isPlaceholder
@@ -119,6 +206,13 @@ export function GearTable({data, columns}: GearTableProps) {
                 {table.getRowModel().rows.map(row => {
                     return (
                         <tr key={row.id}>
+                            <td>
+                                <input
+                                    type="checkbox"
+                                    checked={selectedRowIds.includes(row.id)}
+                                    onChange={() => toggleRowSelection(row.id)}
+                                />
+                            </td>
                             {row.getVisibleCells().map(cell => {
                                 return (
                                     <td key={cell.id}>
