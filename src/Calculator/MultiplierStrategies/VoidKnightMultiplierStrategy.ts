@@ -1,6 +1,6 @@
 import {ItemName} from "../../DataObjects/ItemName";
 import {AbstractMultiplierStrategy, MultiplierType} from "./AbstractMultiplierStrategy";
-import {CombatClass, Item, StyleToCombatClass} from "../../DataObjects/Item";
+import {CombatClass, Item} from "../../DataObjects/Item";
 
 const VoidKnightMultiplierTable = {
     [ItemName.VoidMeleeHelm]: {
@@ -31,7 +31,7 @@ export class VoidKnightMultiplierStrategy extends AbstractMultiplierStrategy {
             return 1;
         }
 
-        const combatClass = StyleToCombatClass[this.result.gearSet.styleType];
+        const combatClass = this.result.gearSet.combatClass;
         let multiplier = VoidKnightMultiplierTable[helm.name as HelmName][combatClass];
 
         const isDamageCalculation = (multiplierType === MultiplierType.Damage);

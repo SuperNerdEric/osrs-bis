@@ -1,5 +1,5 @@
 import {ItemName} from "../../DataObjects/ItemName";
-import {CombatClass, StyleToCombatClass} from "../../DataObjects/Item";
+import {CombatClass} from "../../DataObjects/Item";
 import {AbstractMultiplierStrategy} from "./AbstractMultiplierStrategy";
 
 const SalveMultiplierTable = {
@@ -38,7 +38,6 @@ export class SalveAmuletMultiplierStrategy extends AbstractMultiplierStrategy {
             return 1;
         }
 
-        const combatClass = StyleToCombatClass[this.result.gearSet.styleType];
-        return SalveMultiplierTable[salve][combatClass];
+        return SalveMultiplierTable[salve][this.result.gearSet.combatClass];
     }
 }

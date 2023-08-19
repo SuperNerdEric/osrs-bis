@@ -1,4 +1,14 @@
-import {CombatStyle, Item, Slot, StyleType, Weapon, WeaponCategoryOptions, WeaponStyle} from "./Item";
+import {
+    CombatClass,
+    CombatStyle,
+    Item,
+    Slot,
+    StyleToCombatClass,
+    StyleType,
+    Weapon,
+    WeaponCategoryOptions,
+    WeaponStyle
+} from "./Item";
 import {items} from "./Items";
 import {ItemName} from "./ItemName";
 import {Raid} from "./Raid";
@@ -18,6 +28,7 @@ export enum GearSetType {
 
 export class GearSet {
     types: GearSetType[];
+    combatClass: CombatClass = CombatClass.Melee;
     combatStyle: CombatStyle = CombatStyle.Punch;
     styleType: StyleType = StyleType.Crush;
     weaponStyle: WeaponStyle = WeaponStyle.Accurate;
@@ -100,6 +111,7 @@ export class GearSet {
             throw new Error(`Invalid CombatStyle for the selected weapon.`);
         }
 
+        this.combatClass = StyleToCombatClass[matchingOption.styleType];
         this.combatStyle = combatStyle;
         this.styleType = matchingOption.styleType;
         this.weaponStyle = matchingOption.weaponStyle;
