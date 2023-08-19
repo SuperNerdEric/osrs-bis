@@ -12,7 +12,7 @@ import {
 import {Calculator} from "../Calculator/Calculator";
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-import {Button, Stack, styled} from "@mui/material";
+import {Button, Checkbox, Stack, styled} from "@mui/material";
 import IconButton from '@mui/material/IconButton';
 import FirstPageIcon from '@mui/icons-material/FirstPage';
 import LastPageIcon from '@mui/icons-material/LastPage';
@@ -181,8 +181,8 @@ export function GearTable({data, columns}: GearTableProps) {
                 {table.getHeaderGroups().map(headerGroup => (
                     <tr key={headerGroup.id}>
                         <th>
-                            <input
-                                type="checkbox"
+                            <Checkbox
+                                size="small"
                                 checked={areAllRowsSelected}
                                 onChange={toggleAllRowSelections}
                             />
@@ -207,8 +207,7 @@ export function GearTable({data, columns}: GearTableProps) {
                     return (
                         <tr key={row.id}>
                             <td>
-                                <input
-                                    type="checkbox"
+                                <Checkbox size="small"
                                     checked={selectedRowIds.includes(row.id)}
                                     onChange={() => toggleRowSelection(row.id)}
                                 />

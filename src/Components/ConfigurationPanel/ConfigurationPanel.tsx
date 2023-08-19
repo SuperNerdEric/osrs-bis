@@ -118,7 +118,6 @@ const ConfigurationPanel: React.FC<ConfigurationPanelProps> = ({
                                                         }));
                                                     }}
                                                     name="On Task"
-                                                    sx={checkboxStyle}
                                                 />
                                             }
                                             label="On Task"
@@ -137,7 +136,6 @@ const ConfigurationPanel: React.FC<ConfigurationPanelProps> = ({
                                                         kandarinHardDiaryComplete: e.target.checked
                                                     })}
                                                     name="Kandarin Hard Diary"
-                                                    sx={checkboxStyle}
                                                 />
                                             }
                                             label="Kandarin Hard Diary"
@@ -175,14 +173,3 @@ const iconSize = {
     width: '25px',
     height: '25px'
 };
-
-const checkboxStyle = {
-    color: "#d8ccb4",
-    '&.Mui-checked': {
-        color: '#d8ccb4',
-    },
-    '& .MuiSvgIcon-root': {
-        fontSize: 25 // Updated to match the iconSize
-    }
-};
-

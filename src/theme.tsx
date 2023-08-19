@@ -86,6 +86,30 @@ export function getTheme() {
                         color: "black",  // adjust as needed
                     },
                 },
+            },
+            MuiCheckbox: {
+                styleOverrides: {
+                    root: {
+                        color: "#d8ccb4",
+                        '&.Mui-checked': {
+                            color: '#d8ccb4',
+                        },
+                        '& .MuiSvgIcon-root': {
+                            fontSize: 25 // Updated to match the iconSize
+                        }
+                    },
+                },
+                variants: [
+                    {
+                        props: { size: 'small' },
+                        style: {
+                            padding: '0px',
+                            '& .MuiSvgIcon-root': {
+                                fontSize: 25  // reduced font size for the icon
+                            }
+                        }
+                    }
+                ]
             }
         },
     });
