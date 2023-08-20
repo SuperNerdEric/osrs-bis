@@ -1532,7 +1532,6 @@ describe('Calculator class', () => {
             result.calculateDPS();
         });
 
-        //Bitterkoekje has 0.35 multiplier for some reason
         test('should calculate DPS correctly', () => {
             expect(result.dps).toBeCloseTo(10.589); //Matches Bitterkoekje
         });
@@ -1543,6 +1542,72 @@ describe('Calculator class', () => {
 
         test('should calculate hitChance correctly', () => {
             expect(result.hitChance).toBeCloseTo(0.6963); //Matches Bitterkoekje
+        });
+    });
+
+    describe('virtus ancient magicks against Dagannoth Rex', () => {
+        beforeEach(() => {
+            result.gearSet = new GearSet([GearSetType.General])
+                .addItemByName(ItemName.KodaiWand)
+                .setCombatStyle(CombatStyle.Spell)
+                .addItemByName(ItemName.ElidinisWardF)
+                .addItemByName(ItemName.VirtusMask)
+                .addItemByName(ItemName.VirtusRobeTop)
+                .addItemByName(ItemName.VirtusRobeBottom)
+                .addItemByName(ItemName.EternalBoots)
+                .addItemByName(ItemName.TormentedBracelet)
+                .addItemByName(ItemName.OccultNecklace)
+                .addItemByName(ItemName.ImbuedZamorakCape)
+                .addItemByName(ItemName.MagusRing)
+                .setSpellByName(SpellName.IceBarrage);
+            result.targetMonster = monsters.get("Dagannoth Rex") as TargetMonster;
+            result.player.skills.magic.boost = 13; //Saturated heart
+            result.calculateDPS();
+        });
+
+        test('should calculate DPS correctly', () => {
+            expect(result.dps).toBeCloseTo(7.429); //Matches Bitterkoekje
+        });
+
+        test('should calculate maxHit correctly', () => {
+            expect(result.maxHit).toBe(45); //Matches Bitterkoekje
+        });
+
+        test('should calculate hitChance correctly', () => {
+            expect(result.hitChance).toBeCloseTo(0.9906); //Matches Bitterkoekje
+        });
+    });
+
+    describe('harmonised ancient magicks against Dagannoth Rex', () => {
+        beforeEach(() => {
+            result.gearSet = new GearSet([GearSetType.General])
+                .addItemByName(ItemName.HarmonisedNightmareStaff)
+                .setCombatStyle(CombatStyle.Spell)
+                .addItemByName(ItemName.BookOfTheDead)
+                .addItemByName(ItemName.VirtusMask)
+                .addItemByName(ItemName.VirtusRobeTop)
+                .addItemByName(ItemName.VirtusRobeBottom)
+                .addItemByName(ItemName.EternalBoots)
+                .addItemByName(ItemName.TormentedBracelet)
+                .addItemByName(ItemName.OccultNecklace)
+                .addItemByName(ItemName.ImbuedZamorakCape)
+                .addItemByName(ItemName.MagusRing)
+                .setSpellByName(SpellName.IceBarrage);
+            result.targetMonster = monsters.get("Dagannoth Rex") as TargetMonster;
+            result.player.skills.magic.boost = 13; //Saturated heart
+            result.calculateDPS();
+        });
+
+        test('should calculate DPS correctly', () => {
+            expect(result.dps).toBeCloseTo(7.092); //Matches Bitterkoekje
+        });
+
+        test('should calculate maxHit correctly', () => {
+            expect(result.maxHit).toBe(43); //Matches Bitterkoekje
+        });
+
+        test('should calculate hitChance correctly', () => {
+            expect(result.hitChance).toBeCloseTo(0.9896); //Matches Bitterkoekje
         });
     });
 });

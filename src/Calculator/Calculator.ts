@@ -37,6 +37,7 @@ import {ZukMultiplierStrategy} from "./MultiplierStrategies/Monsters/ZukMultipli
 import {v4 as uuidv4} from 'uuid';
 import {TomeOfFireMultiplierStrategy} from "./MultiplierStrategies/TomeOfFireMultiplierStrategy";
 import {IceDemonMultiplierStrategy} from "./MultiplierStrategies/Monsters/IceDemonMultiplierStrategy";
+import {SpellBookType} from "../DataObjects/Spell";
 
 
 export class Calculator {
@@ -64,8 +65,8 @@ export class Calculator {
         const effectiveStrengthLevel = this.calculateEffectiveStrengthLevel(this.gearSet.combatClass);
         const effectiveAttackLevel = this.calculateEffectiveAttackLevel(this.gearSet.combatClass);
 
-        const gearStrengthMultipliers = this.getGearStrengthMultipliers();
-        this.maxHit = this.calculateMaxHit(effectiveStrengthLevel, gearStrengthMultipliers, this.gearSet.styleType);
+        const gearDamageMultipliers = this.getGearDamageMultipliers();
+        this.maxHit = this.calculateMaxHit(effectiveStrengthLevel, gearDamageMultipliers, this.gearSet.styleType);
 
         const gearAccuracyMultipliers = this.getGearAccuracyMultipliers();
         this.attackRoll = this.calculateAttackRoll(effectiveAttackLevel, gearAccuracyMultipliers);
@@ -83,8 +84,8 @@ export class Calculator {
         }
         if(this.gearSet.spell) {
             this.attackInterval = 3;
-            if(this.gearSet.getWeapon().name === ItemName.HarmonisedNightmareStaff) {
-                //todo this should only be standard spellbook
+            if(this.gearSet.getWeapon().name === ItemName.HarmonisedNightmareStaff
+                && this.gearSet.spell.spellbook === SpellBookType.Standard) {
                 this.attackInterval = 2.4;
             }
         }
@@ -162,7 +163,7 @@ export class Calculator {
         return effectiveLevel;
     }
 
-    private getGearStrengthMultipliers(): number[] {
+    private getGearDamageMultipliers(): number[] {
         const slayerMultiplier = new SlayerHelmetMultiplierStrategy(this).calculateMultiplier();
         const salveMultiplier = new SalveAmuletMultiplierStrategy(this).calculateMultiplier();
         const arcLightMultiplier = new ArclightMultiplierStrategy(this).calculateMultiplier();
@@ -213,7 +214,7 @@ export class Calculator {
         return gearMultipliers;
     }
 
-    private calculateMaxHit(effectiveLevel: number, gearMultipliers: number[], attackStyle: StyleType): number {
+    private calculateMaxHit(effectiveLevel: number, gearDamageMultipliers: number[], attackStyle: StyleType): number {
         let maxHit: number;
 
         if ([StyleType.Stab, StyleType.Slash, StyleType.Crush, StyleType.Ranged].includes(attackStyle)) {
@@ -231,7 +232,7 @@ export class Calculator {
             maxHit = Math.floor(maxHit * (1 + this.gearSet.styleStrength / 100));
         }
 
-        for (const gearMultiplier of gearMultipliers) {
+        for (const gearMultiplier of gearDamageMultipliers) {
             maxHit = Math.floor(maxHit * gearMultiplier);
         }
 

@@ -912,3 +912,39 @@ createWeapon(ItemName.HarmonisedNightmareStaff, {
     magic: 16,
     mageStrength: 15
 });
+
+createWeapon(ItemName.KodaiWand, {
+    category: WeaponCategory.Staff,
+    imagePath: "./Images/ItemsOld/Kodai_wand.png",
+    wikiLink: "https://oldschool.runescape.wiki/w/Kodai_wand",
+    slot: Slot.MainHand,
+    speedSeconds: 2.4,
+    magic: 28,
+    mageStrength: 15
+});
+
+createItem(ItemName.VirtusMask, {
+    imagePath: "./Images/ItemsOld/Virtus_mask.png",
+    wikiLink: "https://oldschool.runescape.wiki/w/Virtus_mask",
+    magic: 8,
+    mageStrength: 1,
+    slot: Slot.Helm,
+});
+
+createItem(ItemName.VirtusRobeTop, {
+    imagePath: "./Images/ItemsOld/Virtus_robe_top.png",
+    wikiLink: "https://oldschool.runescape.wiki/w/Virtus_robe_top",
+    magic: 35,
+    ranged: -11,
+    mageStrength: 1,
+    slot: Slot.Chest,
+});
+
+createItem(ItemName.VirtusRobeBottom, {
+    imagePath: "./Images/ItemsOld/Virtus_robe_bottom.png",
+    wikiLink: "https://oldschool.runescape.wiki/w/Virtus_robe_bottom",
+    magic: 26,
+    ranged: -9,
+    mageStrength: 1,
+    slot: Slot.Legs,
+});

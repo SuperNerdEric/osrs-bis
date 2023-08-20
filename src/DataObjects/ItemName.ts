@@ -105,5 +105,9 @@ export enum ItemName {
     TomeOfFire = "Tome of fire",
     TomeOfWater = "Tome of water",
     NightmareStaff = "Nightmare staff",
-    HarmonisedNightmareStaff = "Harmonised nightmare staff"
+    HarmonisedNightmareStaff = "Harmonised nightmare staff",
+    VirtusMask = "Virtus mask",
+    VirtusRobeTop = "Virtus robe top",
+    VirtusRobeBottom = "Virtus robe bottom",
+    KodaiWand = "Kodai wand"
 }

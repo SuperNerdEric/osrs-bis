@@ -16,7 +16,7 @@ import {generateRangedGearSets} from "./GearSets/RangedGearSets";
 import {generateMeleeGearSets} from "./GearSets/MeleeGearSets";
 import {generateMageGearsets} from "./GearSets/MageGearSets";
 import * as _ from "lodash";
-import {Spell, SpellBook} from "./Spell";
+import {ancientSpellbook, arceuusSpellbook, Spell, SpellBookType, standardSpellbook} from "./Spell";
 import {SpellName} from "./SpellName";
 
 export enum GearSetType {
@@ -67,11 +67,15 @@ export class GearSet {
     }
 
     setSpellByName(spellName: SpellName): this {
-        const spell = SpellBook.getSpell(SpellName.FireSurge);
+        const spell = standardSpellbook.getSpell(spellName)
+            || arceuusSpellbook.getSpell(spellName)
+            || ancientSpellbook.getSpell(spellName);
         if (!spell) {
             throw new Error(`Spell not found: ${spellName}`);
         }
         this.spell = spell;
+        this.recalculateAttributes();
+
         return this;
     }
 
@@ -105,6 +109,19 @@ export class GearSet {
                 this.styleStrength = Math.min(100, this.styleStrength * multiplier);
             }
         }
+
+        const virtusItems = [ItemName.VirtusMask, ItemName.VirtusRobeTop, ItemName.VirtusRobeBottom];
+        let virtusBonus = 0;
+
+        for (const item of virtusItems) {
+            if (this.hasItemByName(item)) {
+                if (this.spell && this.spell.spellbook === SpellBookType.Ancient) {
+                    virtusBonus += 3;
+                }
+            }
+        }
+
+        this.styleStrength += virtusBonus;
     }
 
     setCombatStyle(combatStyle: CombatStyle): this {
