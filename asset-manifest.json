@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.9428da7f.css",
-    "main.js": "/static/js/main.a8f93121.js",
+    "main.js": "/static/js/main.91597fa3.js",
     "static/js/787.f7d32ca0.chunk.js": "/static/js/787.f7d32ca0.chunk.js",
     "static/media/Duke_Sucellus.png": "/static/media/Duke_Sucellus.20671a0f119b769958f1.png",
     "static/media/Fire_cape.png": "/static/media/Fire_cape.9fa34a7e2c3fc7a55285.png",
@@ -71,7 +71,9 @@
     "static/media/Ahrims_robetop.png": "/static/media/Ahrims_robetop.9412755614596f7890b9.png",
     "static/media/Pestilent_Bloat.png": "/static/media/Pestilent_Bloat.78d0642523093344975b.png",
     "static/media/Vespula.png": "/static/media/Vespula.6012ae66ede098cbe1c7.png",
+    "static/media/Virtus_mask.png": "/static/media/Virtus_mask.85f80424045f6d18069b.png",
     "static/media/Chaos_Elemental.png": "/static/media/Chaos_Elemental.bf1b7bb7dc65096f6f6c.png",
+    "static/media/Kodai_wand.png": "/static/media/Kodai_wand.b5c0777385bb37008c55.png",
     "static/media/Twisted_bow.png": "/static/media/Twisted_bow.2aedad7d599bc8f4b727.png",
     "static/media/Blue_dragon.png": "/static/media/Blue_dragon.62b4c1d14bf747063720.png",
     "static/media/The_Whisperer.png": "/static/media/The_Whisperer.7df35188362c813177f7.png",
@@ -144,6 +146,7 @@
     "static/media/Bow_of_faerdhinen.png": "/static/media/Bow_of_faerdhinen.b2e8ad7394dc122f1260.png",
     "static/media/Abyssal_Sire_(phase_3,_stage_1).png": "/static/media/Abyssal_Sire_(phase_3,_stage_1).5be2c005d885f378717a.png",
     "static/media/Verac_the_Defiled.png": "/static/media/Verac_the_Defiled.3f7d0eae06a80bd00dd1.png",
+    "static/media/Virtus_robe_bottom.png": "/static/media/Virtus_robe_bottom.887fb8f99f823cf75917.png",
     "static/media/Elite_void_top.png": "/static/media/Elite_void_top.4d2499c34fdeecc7462b.png",
     "static/media/Dagannoth_Rex.png": "/static/media/Dagannoth_Rex.532411c9348e17f14f6e.png",
     "static/media/TzTok-Jad.png": "/static/media/TzTok-Jad.3b77bdcf85018a7348ac.png",
@@ -152,6 +155,7 @@
     "static/media/Abyssal_Sire_(phase_1).png": "/static/media/Abyssal_Sire_(phase_1).50486898121ed5b5a8d1.png",
     "static/media/Dawn.png": "/static/media/Dawn.1f55d99e46dee3a28b8b.png",
     "static/media/Zaryte_crossbow.png": "/static/media/Zaryte_crossbow.0adcb55a885f0bd7cf21.png",
+    "static/media/Virtus_robe_top.png": "/static/media/Virtus_robe_top.263dc3e8cf09523c8cbb.png",
     "static/media/Armadyl_chainskirt.png": "/static/media/Armadyl_chainskirt.deffb8411ecc15057d3e.png",
     "static/media/Tome_of_water.png": "/static/media/Tome_of_water.690be6ac147785c320b4.png",
     "static/media/Tome_of_fire.png": "/static/media/Tome_of_fire.76e6207b519988190502.png",
@@ -272,11 +276,11 @@
     "static/media/Zamorakian_hasta.webp": "/static/media/Zamorakian_hasta.be62bb7cec7ec3005a5e.webp",
     "index.html": "/index.html",
     "main.9428da7f.css.map": "/static/css/main.9428da7f.css.map",
-    "main.a8f93121.js.map": "/static/js/main.a8f93121.js.map",
+    "main.91597fa3.js.map": "/static/js/main.91597fa3.js.map",
     "787.f7d32ca0.chunk.js.map": "/static/js/787.f7d32ca0.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.9428da7f.css",
-    "static/js/main.a8f93121.js"
+    "static/js/main.91597fa3.js"
   ]
 }
