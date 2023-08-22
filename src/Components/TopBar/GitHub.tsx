@@ -9,7 +9,7 @@ export function GitHub() {
             color: "white",
             textAlign: 'right',
         }}>
-            <a href="https://github.com/SuperNerdEric/osrs-dps" target="_blank" style={{textDecoration: "none"}}
+            <a href="https://github.com/SuperNerdEric/osrs-bis" target="_blank" style={{textDecoration: "none"}}
                rel="noreferrer">
                 <Stack direction="row" alignItems="center" gap={1}>
                     <GitHubIcon style={{
