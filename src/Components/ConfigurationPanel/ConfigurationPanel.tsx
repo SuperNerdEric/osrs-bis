@@ -17,16 +17,12 @@ interface ConfigurationPanelProps {
     player: Player;
     setPlayer: React.Dispatch<React.SetStateAction<Player>>;
     targetMonster: TargetMonster;
-    defenceReduction: number;
-    handleDefenceReduction: (defenceReduction: number) => void;
 }
 
 const ConfigurationPanel: React.FC<ConfigurationPanelProps> = ({
                                                                    player,
                                                                    setPlayer,
                                                                    targetMonster,
-                                                                   defenceReduction,
-                                                                   handleDefenceReduction
                                                                }) => {
     const [isOpen, setIsOpen] = useState(false);
 

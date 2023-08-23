@@ -11,68 +11,64 @@ import {ColumnDef} from "@tanstack/react-table";
 import ConfigurationPanel from "./Components/ConfigurationPanel/ConfigurationPanel";
 import {Player} from "./DataObjects/Player";
 import MonsterVariantSelector from "./Components/MonsterVariantSelector";
-import { monsters } from "./Data/loadMonsters";
+import MonsterHitpoints from "./Components/ConfigurationPanel/MonsterHitpoints";
 
 interface MainContentProps {
-    target: string;
+    targetMonster: TargetMonster;
+    setTargetMonster: (monster: TargetMonster) => void,
     invocationLevel: number;
-    handleChange: (event: Event, newValue: number | number[]) => void;
-    currentDefence: number;
-    handleCurrentDefence: (defenceReduction: number) => void;
+    handleSetInvocationLevel: (newValue: number) => void;
     onTask: boolean;
     handleOnTask: (onTask: boolean) => void;
-    setTargetMonster: (monster: TargetMonster) => void;
-
 }
 
 const MainContent: React.FC<MainContentProps> = ({
-                                                     target,
+                                                     targetMonster,
+                                                     setTargetMonster,
                                                      invocationLevel,
-                                                     handleChange,
-                                                     currentDefence,
-                                                     handleCurrentDefence,
+                                                     handleSetInvocationLevel,
                                                      onTask,
                                                      handleOnTask,
-                                                     setTargetMonster
                                                  }) => {
 
 
     const [results, setResults] = useState<Calculator[]>([]);
-    const isToaBoss: boolean = (monsters.get(target) as TargetMonster).raid === Raid.TombsOfAmascut;
+    const isToaBoss: boolean = targetMonster.raid === Raid.TombsOfAmascut;
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
     const [player, setPlayer] = useState<Player>(new Player());
-    const [activeVariant, setActiveVariant] = useState<string>('default');
 
     useEffect(() => {
         handleOnTask(player.onTask);
     }, [player.onTask]);
+
+    console.log(targetMonster.activeVariant.variantName);
 
     useEffect(() => {
         const results: Calculator[] = [];
 
         const shownGearSets: GearSet[] = [];
 
-        if ((monsters.get(target) as TargetMonster).isKalphite) {
+        if (targetMonster.isKalphite) {
             const slayerGearSets = gearSets.filter(gearSet => gearSet.types.includes(GearSetType.Kalphites));
             shownGearSets.push(...slayerGearSets);
         }
 
-        if ((monsters.get(target) as TargetMonster).isDemon) {
+        if (targetMonster.isDemon) {
             const slayerGearSets = gearSets.filter(gearSet => gearSet.types.includes(GearSetType.Demon));
             shownGearSets.push(...slayerGearSets);
         }
 
-        if ((monsters.get(target) as TargetMonster).isDraconic) {
+        if (targetMonster.isDraconic) {
             const slayerGearSets = gearSets.filter(gearSet => gearSet.types.includes(GearSetType.Draconic));
             shownGearSets.push(...slayerGearSets);
         }
 
-        if ((monsters.get(target) as TargetMonster).isUndead) {
+        if (targetMonster.isUndead) {
             const slayerGearSets = gearSets.filter(gearSet => gearSet.types.includes(GearSetType.Undead));
             shownGearSets.push(...slayerGearSets);
         }
 
-        if ((monsters.get(target) as TargetMonster).slayerMonster && player.onTask) {
+        if (targetMonster.slayerMonster && player.onTask) {
             const slayerGearSets = gearSets.filter(gearSet => gearSet.types.includes(GearSetType.Slayer));
             shownGearSets.push(...slayerGearSets);
         }
@@ -82,10 +78,9 @@ const MainContent: React.FC<MainContentProps> = ({
 
 
         shownGearSets.forEach(gearSet => {
-            gearSet.setRaid((monsters.get(target) as TargetMonster).raid);
+            gearSet.setRaid(targetMonster.raid);
             const calculator: Calculator = new Calculator(gearSet);
-            calculator.targetMonster = monsters.get(target) as TargetMonster;
-            calculator.targetMonster.currentDefenceLevel = currentDefence;
+            calculator.targetMonster = targetMonster;
             calculator.player = player;
 
             if (isToaBoss) {
@@ -95,12 +90,11 @@ const MainContent: React.FC<MainContentProps> = ({
             }
 
 
-
             results.push(calculator);
         })
 
         setResults(results);
-    }, [target, activeVariant, invocationLevel, currentDefence, player]);
+    }, [targetMonster, targetMonster.name, targetMonster.activeVariant, targetMonster.hitpoints, targetMonster.defenceLevel, targetMonster.currentHitpoints, targetMonster.currentDefenceLevel, invocationLevel, player]);
 
 
     const columns = React.useMemo<ColumnDef<Calculator>[]>(
@@ -123,14 +117,14 @@ const MainContent: React.FC<MainContentProps> = ({
                 accessorKey: 'gear',
                 accessorFn: row => {
                     return (
-                        <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap' }}>
+                        <div style={{display: 'flex', alignItems: 'center', flexWrap: 'wrap'}}>
                             {
                                 row.gearSet.spell && (
                                     <Tooltip key={row.gearSet.spell.name} title={row.gearSet.spell.name}>
                                         <a href={row.gearSet.spell.wikiLink} target="_blank" rel="noreferrer">
                                             <img src={require(`./Images/Spells/${row.gearSet.spell.name}.png`)}
-                                                 style={{ width: `${imageSize}px`, height: `${imageSize}px` }}
-                                                 alt={row.gearSet.spell.name} />
+                                                 style={{width: `${imageSize}px`, height: `${imageSize}px`}}
+                                                 alt={row.gearSet.spell.name}/>
                                         </a>
                                     </Tooltip>
                                 )
@@ -142,8 +136,8 @@ const MainContent: React.FC<MainContentProps> = ({
                                         <Tooltip key={item.name} title={item.name}>
                                             <a href={item.wikiLink} target="_blank" rel="noreferrer">
                                                 <img src={require(`${item.imagePath}`)}
-                                                     style={{ width: `${imageSize}px`, height: `${imageSize}px`}}
-                                                     alt={item.name} />
+                                                     style={{width: `${imageSize}px`, height: `${imageSize}px`}}
+                                                     alt={item.name}/>
                                             </a>
                                         </Tooltip>
                                     ))
@@ -213,38 +207,51 @@ const MainContent: React.FC<MainContentProps> = ({
 
     return (
         <main className="App-main">
-            <h2 className="monsterName">{(monsters.get(target) as TargetMonster).name}</h2>
+            <h2 className="monsterName">{targetMonster.name}</h2>
             <img
-                src={(monsters.get(target) as TargetMonster).imagePath}
+                src={targetMonster.imagePath}
                 width="auto"
                 height="150"
-                alt={target}
-                style={{ marginBottom: '5px' }}
+                alt={targetMonster.name}
+                style={{marginBottom: '5px'}}
             />
 
             <MonsterVariantSelector
-                monster={(monsters.get(target) as TargetMonster)}
-                onVariantChange={(selectedVariant) => setActiveVariant(selectedVariant)}
+                monster={targetMonster}
+                setTargetMonster={(selectedVariant) => setTargetMonster(selectedVariant)}
             />
 
             {
                 isToaBoss &&
-                <DiscreteSliderMarks defaultValue={invocationLevel} handleChange={handleChange}/>
+                <DiscreteSliderMarks value={invocationLevel} handleChange={handleSetInvocationLevel}/>
             }
             <caption>
                 {isToaBoss && `${invocationLevel} Invocation   `}
             </caption>
-            <DefenceReduction bossName={target}
-                              defenceLevel={(monsters.get(target) as TargetMonster).defenceLevel}
-                              maxReduction={(monsters.get(target) as TargetMonster).maxDefenceReduction}
-                              handleCurrentDefence={handleCurrentDefence}/>
+            <div className="hitpoints-defence-container">
+                <DefenceReduction bossName={targetMonster.name}
+                                  defenceLevel={targetMonster.defenceLevel}
+                                  maxReduction={targetMonster.maxDefenceReduction}
+                                  currentDefence={targetMonster.currentDefenceLevel}
+                                  handleCurrentDefence={currentDefence => {
+                                      targetMonster.currentDefenceLevel = currentDefence;
+                                      setTargetMonster(targetMonster);
+                                  }}/>
+                <MonsterHitpoints
+                    monsterName={targetMonster.name}
+                    currentHitpoints={targetMonster.currentHitpoints}
+                    maxHitpoints={targetMonster.hitpoints}
+                    handleCurrentHitpointsChange={currentHitpoints => {
+                        targetMonster.currentHitpoints = currentHitpoints;
+                        setTargetMonster(targetMonster);
+                    }}
+                />
+            </div>
             <div className="configurationPanel">
                 <ConfigurationPanel
                     player={player}
                     setPlayer={setPlayer}
-                    targetMonster={monsters.get(target) as TargetMonster}
-                    defenceReduction={currentDefence}
-                    handleDefenceReduction={handleCurrentDefence}
+                    targetMonster={targetMonster}
                 />
             </div>
             <GearTable data={results} columns={columns}/>
@@ -253,3 +260,4 @@ const MainContent: React.FC<MainContentProps> = ({
 }
 
 export default MainContent;
+

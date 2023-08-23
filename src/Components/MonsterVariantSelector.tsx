@@ -1,29 +1,30 @@
 import React from 'react';
 import {TargetMonster} from "../DataObjects/TargetMonster";
 import {MenuItem, Select, ToggleButton, ToggleButtonGroup} from "@mui/material";
+import {monsters} from "../Data/loadMonsters";
 
 interface MonsterVariantSelectorProps {
     monster: TargetMonster;
-    onVariantChange: (variantName: string) => void;
+    setTargetMonster: (monster: TargetMonster) => void;
 }
 
-const MonsterVariantSelector: React.FC<MonsterVariantSelectorProps> = ({ monster, onVariantChange }) => {
+const MonsterVariantSelector: React.FC<MonsterVariantSelectorProps> = ({ monster, setTargetMonster }) => {
     const { variants } = monster;
     const variantNames = Array.from(variants.keys());
 
     if (variantNames.length <= 1) {
-        return null; // No toggle needed for one variant
+        return null;
     }
 
     const handleVariantChange = (variantName: string) => {
         monster.setActiveVariant(variantName);
-        onVariantChange(variantName);
+        setTargetMonster(monster);
     };
 
     const handleVariantChangeToggle = (event: React.MouseEvent<HTMLElement>, newAlignment: string) => {
         if (newAlignment !== null) {
             monster.setActiveVariant(newAlignment);
-            onVariantChange(newAlignment);
+            setTargetMonster(monster);
         }
     };
 

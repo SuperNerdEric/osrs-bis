@@ -15,6 +15,7 @@ export class MonsterVariant implements IMonsterStats {
     variantName: string = "default";
     imagePath: string = "";
     currentHitpoints: number = 0;
+    hitpoints: number = 0;
     private _defenceLevel: number = 0;
     private _currentDefenceLevel: number = 0;
     maxDefenceReduction: number = 0;
@@ -77,6 +78,14 @@ export class TargetMonster implements IMonsterStats {
 
     get currentHitpoints(): number {
         return this.activeVariant.currentHitpoints;
+    }
+
+    set currentHitpoints(value: number) {
+        this.activeVariant.currentHitpoints = value;
+    }
+
+    get hitpoints(): number {
+        return this.activeVariant.hitpoints;
     }
 
     get defenceLevel(): number {

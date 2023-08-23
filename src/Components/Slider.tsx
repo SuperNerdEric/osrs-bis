@@ -60,18 +60,25 @@ function valuetext(value: number) {
     return `${value} Invocation level`;
 }
 
-export function DiscreteSliderMarks(props: { handleChange: any, defaultValue: number }) {
+export function DiscreteSliderMarks(props: { handleChange: (value: number) => void, value: number }) {
+    const [sliderValue, setSliderValue] = React.useState(props.value);
+
+    React.useEffect(() => {
+        setSliderValue(props.value);
+    }, [props.value]);
+
     return (
         <Box sx={{width: "90%", maxWidth: "1000px", mx: "auto"}}>
             <Slider
                 aria-label="Custom marks"
-                defaultValue={props.defaultValue}
+                value={sliderValue}
                 getAriaValueText={valuetext}
                 step={5}
                 valueLabelDisplay="auto"
                 marks={marks}
                 max={600}
-                onChange={props.handleChange}
+                onChange={(event, value) => setSliderValue(value as number)}
+                onChangeCommitted={(event, value) => props.handleChange(value as number)}
             />
         </Box>
     );

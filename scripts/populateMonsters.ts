@@ -27,6 +27,7 @@ export function createVariantFromJson(entry: any, versionKey: string, smwname?: 
     }
 
     variant.imagePath = extractFirstImageUrl(entry.image);
+    variant.hitpoints = parseInt(entry.hitpoints, 10);
     variant.currentHitpoints = parseInt(entry.hitpoints, 10);
 
     variant.defenceLevel = parseInt(entry.def, 10);
@@ -157,6 +158,6 @@ export function processJsonAndAddToMonsters() {
             serializedMonsters[key] = value.serialize();
         });
 
-        fs.writeFileSync('./src/Data/cleaned_monsters.json', JSON.stringify(serializedMonsters, null, 4));
+        fs.writeFileSync('./cleaned_monsters.json', JSON.stringify(serializedMonsters, null, 4));
     }
 }

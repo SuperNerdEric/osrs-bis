@@ -2,13 +2,20 @@ import * as React from 'react';
 import {Stack, TextField, Tooltip} from "@mui/material";
 import bandosGodsword from '../../Images/Bandos_godsword_small.png';
 import dragonWarhammer from '../../Images/Dragon_warhammer_small.png';
-import defence from '../../Images/Skills/Defence_icon.png';
+import defenceIcon from '../../Images/Skills/Defence_icon.png';
 import {calculateDefenceLevel, calculateHits, DefenceReductionSummary} from "../../Calculator/DefenceCalculator";
 
-export default function DefenceReduction(props: { bossName: string, defenceLevel: number, maxReduction: number, handleCurrentDefence: any }) {
+interface DefenceReductionProps {
+    bossName: string;
+    defenceLevel: number;
+    maxReduction: number;
+    currentDefence: number;
+    handleCurrentDefence: (newValue: number) => void;
+}
+
+export default function DefenceReduction(props: DefenceReductionProps) {
     const [dwhHits, setDwhHits] = React.useState(0);
     const [bgsDamage, setBgsDamage] = React.useState(0);
-    const [currentDefence, setCurrentDefence] = React.useState(props.defenceLevel);
     const [tooltipOpen, setTooltipOpen] = React.useState<boolean>(false);
 
     const handleDWHChange = (newValue: number) => {
@@ -17,7 +24,6 @@ export default function DefenceReduction(props: { bossName: string, defenceLevel
             bandosGodsword: bgsDamage
         };
         const newDefence = calculateDefenceLevel(props.defenceLevel, newSummary, props.maxReduction);
-        setCurrentDefence(newDefence);
         props.handleCurrentDefence(newDefence);
         setDwhHits(newValue);
     };
@@ -28,7 +34,6 @@ export default function DefenceReduction(props: { bossName: string, defenceLevel
             bandosGodsword: newValue
         };
         const newDefence = calculateDefenceLevel(props.defenceLevel, newSummary, props.maxReduction);
-        setCurrentDefence(newDefence);
         props.handleCurrentDefence(newDefence);
         setBgsDamage(newValue);
     };
@@ -43,7 +48,6 @@ export default function DefenceReduction(props: { bossName: string, defenceLevel
         }
 
         const hits = calculateHits(newValue, props.defenceLevel);
-        setCurrentDefence(newValue);
         props.handleCurrentDefence(newValue);
         setDwhHits(hits.dragonWarhammer);
         setBgsDamage(hits.bandosGodsword);
@@ -52,8 +56,9 @@ export default function DefenceReduction(props: { bossName: string, defenceLevel
     React.useEffect(() => {
         setDwhHits(0);
         setBgsDamage(0);
-        setCurrentDefence(props.defenceLevel);
-        props.handleCurrentDefence(props.defenceLevel);
+        if (Number(props.currentDefence) !== Number(props.defenceLevel)) {
+            props.handleCurrentDefence(props.defenceLevel);
+        }
     }, [props.defenceLevel]);
 
     return (
@@ -70,7 +75,7 @@ export default function DefenceReduction(props: { bossName: string, defenceLevel
                         }}
                         variant="outlined"
                         style={textFieldStyle}
-                        inputProps={{style: {padding: 5}, min: 0, max: 99}}
+                        inputProps={{style: {padding: 0, fontSize: "18px"}, min: 0, max: 99}}
                     />
                 </Stack>
                 <Stack direction="row" alignItems="center" gap={1}>
@@ -83,32 +88,31 @@ export default function DefenceReduction(props: { bossName: string, defenceLevel
                             handleBGSChange(newValue);
                         }}
                         variant="outlined"
-                        style={{ ...textFieldStyle, width: '60px' }}
-                        inputProps={{style: {padding: 5}, min: 0, max: props.maxReduction}}
+                        style={{...textFieldStyle, width: '60px'}}
+                        inputProps={{style: {padding: 0, fontSize: "18px"}, min: 0, max: props.maxReduction}}
                     />
                 </Stack>
                 <Stack direction="row" alignItems="center" gap={0}>
-                <Tooltip
-                    title={`Max defence reduction for ${props.bossName} is ${props.maxReduction}`}
-                    open={tooltipOpen}
-                    disableHoverListener
-                    arrow
-                >
-                    <TextField
-                        type="number"
-                        value={currentDefence}
-                        onChange={e => {
-                            const newValue = Math.min(Number(e.target.value), props.defenceLevel);
-                            handleCurrentDefenceChange(newValue);
-                        }}
-                        variant="outlined"
-                        style={{ ...textFieldStyle, width: '60px' }}
-                        inputProps={{style: {padding: 5}, min: 0, max: props.defenceLevel}}
-                    />
-                </Tooltip>
-                <span style={labelStyle}>/{props.defenceLevel}
+                    <Tooltip
+                        title={`Max defence reduction for ${props.bossName} is ${props.maxReduction}`}
+                        open={tooltipOpen}
+                        disableHoverListener
+                        arrow
+                    >
+                        <TextField
+                            value={props.currentDefence}
+                            onChange={e => {
+                                const newValue = Math.min(Number(e.target.value), props.defenceLevel);
+                                handleCurrentDefenceChange(newValue);
+                            }}
+                            variant="outlined"
+                            style={{...textFieldStyle, width: '60px'}}
+                            inputProps={{style: {padding: 0, textAlign: "center", fontSize: "18px"}, min: 0, max: props.defenceLevel}}
+                        />
+                    </Tooltip>
+                    <span style={labelStyle}>/{props.defenceLevel}
                 </span>
-                    <img src={defence} alt="Defence" width="25" height="25"/>
+                    <img src={defenceIcon} alt="Defence" width="25" height="25"/>
                 </Stack>
             </Stack>
         </div>

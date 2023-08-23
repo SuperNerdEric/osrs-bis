@@ -11,7 +11,9 @@ import TopBar from "./TopBar/TopBar";
 import MainContent from "../MainContent";
 import {TargetMonster} from "../DataObjects/TargetMonster";
 import {Raid} from "../DataObjects/Raid";
-import {loadMonstersFromFile} from "../Data/loadMonsters";
+import {loadMonstersFromFile, monsters} from "../Data/loadMonsters";
+import {UrlStateType} from "../UrlStateType";
+import * as _ from "lodash";
 
 
 const history = createBrowserHistory();
@@ -21,33 +23,50 @@ function App() {
         target: "Ba-Ba",
         invocationLevel: 300,
         currentDefence: 80,
-        onTask: "false"
+        currentHitpoints: 380,
+        onTask: "false",
+        version: "default",
     });
     const [onTask, setOnTask] = React.useState(urlState.onTask === "false");
     const [loading, setLoading] = useState(true);
-
+    const [targetMonster, setTargetMonster] = useState<TargetMonster | null>(null);
 
 
     useEffect(() => {
         loadMonstersFromFile();
-        setLoading(false);
+        let monsterName = urlState.target;
+        if (!monsterName) {
+            monsterName = "Ba-Ba";
+        }
+        const monster = monsters.get(monsterName);
+        if (monster) {
+            setTargetMonster(monster);
+            setLoading(false);
+        }
     }, []);
 
-    const handleChange = (event: Event, newValue: number | number[]) => {
-        devLog("Set invocation level: " + newValue);
-        setUrlState({invocationLevel: newValue});
-    };
+    useEffect(() => {
+        const originalMonster = monsters.get(urlState.target);
+        if (originalMonster) {
+            const clonedMonster: TargetMonster = _.cloneDeep(originalMonster);
+            if (urlState.version) {
+                clonedMonster.setActiveVariant(urlState.version);
+            }
+            monsters.set(urlState.target, clonedMonster);
+            setTargetMonster(clonedMonster);
+        }
+    }, [urlState.currentDefence, urlState.currentHitpoints, urlState.version]);
 
-    const handleCurrentDefence = (currentDefence: number) => {
-        devLog("Set current defence: " + currentDefence);
-        setUrlState({currentDefence: currentDefence});
+
+    const handleSetInvocation = (newValue: number) => {
+        devLog("Set invocation level: " + newValue);
+        updateUrlState({invocationLevel: newValue});
     };
 
     const handleOnTask = (checked: boolean) => {
         setOnTask(checked);
-        setUrlState({onTask: String(checked)});
+        updateUrlState({onTask: String(checked)});
     };
-
 
     const theme = getTheme();
 
@@ -55,32 +74,43 @@ function App() {
         return <div>Loading...</div>;
     }
 
+    const updateUrlState = (newState: Partial<UrlStateType>) => {
+        console.log("New state: " + JSON.stringify(newState));
+        const shouldUpdate = Object.keys(newState).some(key => newState[key as keyof UrlStateType] !== urlState[key as keyof UrlStateType]);
+
+        if (shouldUpdate) {
+            console.log("Updating url with: ", newState);
+            setUrlState(prevState => ({...prevState, ...newState}));
+        }
+    };
+
+    const handleSetTargetMonster = (targetMonster: TargetMonster) => {
+        updateUrlState({
+            target: targetMonster.shortName || targetMonster.name,
+            invocationLevel: targetMonster.raid === Raid.TombsOfAmascut ? urlState.invocationLevel : undefined,
+            currentDefence: targetMonster.currentDefenceLevel,
+            currentHitpoints: targetMonster.currentHitpoints,
+            version: targetMonster.activeVariant.variantName,
+        });
+        monsters.set(targetMonster.name, targetMonster);
+        setTargetMonster(targetMonster);
+    };
 
     return (
         <ThemeProvider theme={theme}>
             <div className="App">
-                <TopBar urlState={urlState} setUrlState={setUrlState} setTargetMonster={(targetMonster: TargetMonster) => {
-                    setUrlState({
-                        target: targetMonster.shortName || targetMonster.name,
-                        invocationLevel: targetMonster.raid === Raid.TombsOfAmascut ? urlState.invocationLevel : undefined,
-                        currentDefence: targetMonster.defenceLevel,
-                    });
-                }}/>
-                <MainContent
-                    target={urlState.target}
-                    invocationLevel={urlState.invocationLevel}
-                    handleChange={handleChange}
-                    currentDefence={urlState.currentDefence}
-                    handleCurrentDefence={handleCurrentDefence}
-                    onTask={onTask}
-                    handleOnTask={handleOnTask}
-                    setTargetMonster={(targetMonster: TargetMonster) => {
-                        setUrlState({
-                            target: targetMonster.shortName || targetMonster.name,
-                            invocationLevel: targetMonster.raid === Raid.TombsOfAmascut ? urlState.invocationLevel : undefined,
-                            currentDefence: targetMonster.defenceLevel,
-                        });
-                    }}/>
+                <TopBar urlState={urlState} setTargetMonster={handleSetTargetMonster}/>
+                {!loading && targetMonster && (
+                    <MainContent
+                        targetMonster={targetMonster}
+                        setTargetMonster={handleSetTargetMonster}
+                        invocationLevel={urlState.invocationLevel}
+                        handleSetInvocationLevel={handleSetInvocation}
+                        onTask={onTask}
+                        handleOnTask={handleOnTask}
+                    />
+                )}
+
             </div>
         </ThemeProvider>
     );
