@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.9428da7f.css",
-    "main.js": "/static/js/main.f685a7e9.js",
+    "main.css": "/static/css/main.6902d5d7.css",
+    "main.js": "/static/js/main.ac887868.js",
     "static/js/787.98701412.chunk.js": "/static/js/787.98701412.chunk.js",
     "static/media/Duke_Sucellus.png": "/static/media/Duke_Sucellus.20671a0f119b769958f1.png",
     "static/media/Fire_cape.png": "/static/media/Fire_cape.9fa34a7e2c3fc7a55285.png",
@@ -275,12 +275,12 @@
     "static/media/Void_knight_robe.webp": "/static/media/Void_knight_robe.e46393a4f5a26ca7786e.webp",
     "static/media/Zamorakian_hasta.webp": "/static/media/Zamorakian_hasta.be62bb7cec7ec3005a5e.webp",
     "index.html": "/index.html",
-    "main.9428da7f.css.map": "/static/css/main.9428da7f.css.map",
-    "main.f685a7e9.js.map": "/static/js/main.f685a7e9.js.map",
+    "main.6902d5d7.css.map": "/static/css/main.6902d5d7.css.map",
+    "main.ac887868.js.map": "/static/js/main.ac887868.js.map",
     "787.98701412.chunk.js.map": "/static/js/787.98701412.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.9428da7f.css",
-    "static/js/main.f685a7e9.js"
+    "static/css/main.6902d5d7.css",
+    "static/js/main.ac887868.js"
   ]
 }
