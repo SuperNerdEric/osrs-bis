@@ -215,6 +215,13 @@ createItem(ItemName.DragonDart, {
     rangedStrength: 35,
 });
 
+createItem(ItemName.AmethystDart, {
+    imagePath: './Images/ItemsOld/Amethyst_dart.png',
+    wikiLink: "https://oldschool.runescape.wiki/w/Amethyst_dart",
+    slot: Slot.Ammo,
+    rangedStrength: 28,
+});
+
 createItem(ItemName.MasoriMaskF, {
     imagePath: './Images/Items/Masori_mask_f.webp',
     wikiLink: "https://oldschool.runescape.wiki/w/Masori_mask_(f)",

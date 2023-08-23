@@ -18,6 +18,7 @@ export enum ItemName {
     ScytheOfVitur = "Scythe of vitur",
     ToxicBlowpipe = "Toxic blowpipe",
     DragonDart = "Dragon dart",
+    AmethystDart = "Amethyst dart",
     MasoriMaskF = "Masori mask (f)",
     MasoriBodyF = "Masori body (f)",
     MasoriChapsF = "Masori chaps (f)",

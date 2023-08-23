@@ -46,6 +46,12 @@ export function generateRangedGearSets() {
             gearSetType: GearSetType.General
         },
         {
+            name: ItemName.ToxicBlowpipe,
+            styles: [CombatStyle.Rapid],
+            ammos: [ItemName.AmethystDart],
+            gearSetType: GearSetType.General
+        },
+        {
             name: ItemName.TwistedBow,
             styles: [CombatStyle.Rapid],
             ammos: [ItemName.DragonArrow],
