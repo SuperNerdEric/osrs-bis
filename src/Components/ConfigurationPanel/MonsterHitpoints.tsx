@@ -31,7 +31,7 @@ export default function MonsterHitpoints(props: MonsterHitpointsProps) {
                 />
                 <span style={labelStyle}>/{props.maxHitpoints}
                 </span>
-                <img src={hitpointsIcon} alt="Defence" width="25" height="25"/>
+                <img src={hitpointsIcon} alt="Hitpoints" width="25" height="25"/>
             </Stack>
         </div>
     );
