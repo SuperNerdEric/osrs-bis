@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.6902d5d7.css",
-    "main.js": "/static/js/main.ce17f69e.js",
+    "main.js": "/static/js/main.fffa9d4b.js",
     "static/js/787.98701412.chunk.js": "/static/js/787.98701412.chunk.js",
     "static/media/Duke_Sucellus.png": "/static/media/Duke_Sucellus.20671a0f119b769958f1.png",
     "static/media/Fire_cape.png": "/static/media/Fire_cape.9fa34a7e2c3fc7a55285.png",
@@ -131,6 +131,7 @@
     "static/media/Onyx_bolts_(e).png": "/static/media/Onyx_bolts_(e).519fdc69db12a44bcfe9.png",
     "static/media/Inquisitors_hauberk.png": "/static/media/Inquisitors_hauberk.a194a3e5cfbfac6149c0.png",
     "static/media/Sanguinesti_staff.png": "/static/media/Sanguinesti_staff.a15e0414b16bc465c270.png",
+    "static/media/Amethyst_dart.png": "/static/media/Amethyst_dart.1b0507d989880992bbd1.png",
     "static/media/Avernic_defender.png": "/static/media/Avernic_defender.39c68f769ce3d7519708.png",
     "static/media/Nylocas_Vasilias_(melee).png": "/static/media/Nylocas_Vasilias_(melee).799071ff974ee39c57fd.png",
     "static/media/Inquisitors_mace.png": "/static/media/Inquisitors_mace.8fef75691958ab5ea7e2.png",
@@ -276,11 +277,11 @@
     "static/media/Zamorakian_hasta.webp": "/static/media/Zamorakian_hasta.be62bb7cec7ec3005a5e.webp",
     "index.html": "/index.html",
     "main.6902d5d7.css.map": "/static/css/main.6902d5d7.css.map",
-    "main.ce17f69e.js.map": "/static/js/main.ce17f69e.js.map",
+    "main.fffa9d4b.js.map": "/static/js/main.fffa9d4b.js.map",
     "787.98701412.chunk.js.map": "/static/js/787.98701412.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.6902d5d7.css",
-    "static/js/main.ce17f69e.js"
+    "static/js/main.fffa9d4b.js"
   ]
 }
