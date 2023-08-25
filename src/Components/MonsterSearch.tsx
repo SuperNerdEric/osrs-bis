@@ -10,14 +10,15 @@ interface MonsterSearchProps {
 
 const MonsterSearch: React.FC<MonsterSearchProps> = ({ onSelect }) => {
     const monsterArray = Array.from(monsters.values());
+    console.log("Monsters: " + monsters.size);
 
     return (
         <div style={{ position: 'relative', width: '230px' }}>
             <Autocomplete
                 options={monsterArray}
-                getOptionLabel={(monster) => monster.name}
+                getOptionLabel={(monster) => monster.title}
                 onInputChange={(event, newValue) => {
-                    const selectedMonster = monsterArray.find(m => m.name === newValue);
+                    const selectedMonster = monsterArray.find(m => m.title === newValue);
                     if (selectedMonster) {
                         onSelect(selectedMonster);
                     }

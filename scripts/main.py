@@ -108,7 +108,11 @@ def main():
             for infobox in infoboxes:
                 data = {param.name.strip(): param.value.strip() for param in infobox.params if param.showkey}
                 monster_versions = split_versions(data)
-                monsters.append(monster_versions)
+                monster_entry = {
+                    'title': title,
+                    'data': monster_versions
+                }
+                monsters.append(monster_entry)
 
     with open('./wiki_monster_data.json', 'w', encoding='utf-8') as f:
         json.dump(monsters, f, ensure_ascii=False, indent=4)

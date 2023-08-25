@@ -1,7 +1,7 @@
 import {StyleType} from "../src/DataObjects/Item";
 import {MonsterVariant, TargetMonster} from "../src/DataObjects/TargetMonster";
 import {Raid} from "../src/DataObjects/Raid";
-import monstersData from "./wiki_monsters_data.json";
+import monstersData from "./wiki_monster_data.json";
 import * as fs from "fs";
 
 function extractFirstImageUrl(imageField: string): string {
@@ -67,15 +67,15 @@ export function processJsonAndAddToMonsters() {
     const monsterByName: { [key: string]: TargetMonster } = {};
 
     for (const monsterEntry of data) {
-        const versions = Object.keys(monsterEntry);
+        const versions = Object.keys(monsterEntry.data);
 
-        if(monsterEntry[versions[0]].def === "") {
-            console.log("Skipping " + monsterEntry[versions[0]].name);
+        if(monsterEntry.data[versions[0]].def === "") {
+            console.log("Skipping " + monsterEntry.data[versions[0]].name);
             continue;
         }
 
         let monster: TargetMonster;
-        const monsterName = monsterEntry[versions[0]].name;
+        const monsterName = monsterEntry.title;
 
         if (!monsterByName[monsterName]) {
             monster = new TargetMonster();
@@ -86,15 +86,15 @@ export function processJsonAndAddToMonsters() {
         }
 
         for (const versionKey of versions) {
-            const versionData = monsterEntry[versionKey];
+            const versionData = monsterEntry.data[versionKey];
 
             if(versionData.def === "") {
-                console.log("Skipping " + monsterEntry[versions[0]].name);
+                console.log("Skipping " + monsterEntry.data[versions[0]].name);
                 continue;
             }
 
             if(monsterName === "Verzik Vitur" && versionKey === "Phase 1") {
-                console.log("Skipping " + monsterEntry[versions[0]].name);
+                console.log("Skipping " + monsterEntry.data[versions[0]].name);
                 continue;
             }
 
@@ -161,3 +161,5 @@ export function processJsonAndAddToMonsters() {
         fs.writeFileSync('./cleaned_monsters.json', JSON.stringify(serializedMonsters, null, 4));
     }
 }
+
+processJsonAndAddToMonsters();

@@ -9,6 +9,7 @@ export function loadMonstersFromFile() {
         const monsterData = cleanedData[monsterName];
         const monster = new TargetMonster();
 
+        monster.title = monsterName;
         monster.name = monsterData.name;
         monster.shortName = monsterData.shortName;
         monster.size = monsterData.size;
@@ -31,6 +32,6 @@ export function loadMonstersFromFile() {
 
         monster.setActiveVariant(monsterData._activeVariant.variantName)
 
-        monsters.set(monsterName, monster);
+        monsters.set(monster.title, monster);
     }
 }

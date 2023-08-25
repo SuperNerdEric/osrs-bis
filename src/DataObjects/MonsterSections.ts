@@ -16,7 +16,7 @@ export function getSections(): MonsterSection[] {
     return [
         new MonsterSection("Chambers of Xeric", ["Tekton", "Ice demon", "Vanguard", "Vespula", "Vasa Nistirio", "Muttadile", "Great Olm"]),
         new MonsterSection("Theatre of Blood", ["The Maiden of Sugadinti", "Pestilent Bloat", "Nylocas Vasilias", "Sotetseg", "Xarpus", "Verzik Vitur"]),
-        new MonsterSection("Tombs of Amascut", ["Ba-Ba", "Akkha", "Akkha's Shadow", "Kephri", "Zebak", "Obelisk", "Tumeken's Warden"]),
+        new MonsterSection("Tombs of Amascut", ["Ba-Ba", "Akkha", "Akkha's Shadow", "Kephri", "Zebak", "Obelisk (Tombs of Amascut)", "Tumeken's Warden"]),
         new MonsterSection("Forgotten Four", ["The Whisperer", "Vardorvis", "The Leviathan", "Duke Sucellus"]),
         new MonsterSection("God Wars Dungeon", ["Kree'arra", "General Graardor", "Commander Zilyana", "K'ril Tsutsaroth", "Nex"]),
         new MonsterSection("Dagannoth Kings", ["Dagannoth Rex", "Dagannoth Prime", "Dagannoth Supreme"]),

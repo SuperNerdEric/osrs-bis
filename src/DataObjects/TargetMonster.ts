@@ -48,6 +48,7 @@ export class MonsterVariant implements IMonsterStats {
 }
 export class TargetMonster implements IMonsterStats {
 
+    title: string = "";
     name: string = "";
     shortName: string = "";
     size: string = "1x1";

@@ -207,7 +207,7 @@ const MainContent: React.FC<MainContentProps> = ({
 
     return (
         <main className="App-main">
-            <h2 className="monsterName">{targetMonster.name}</h2>
+            <h2 className="monsterName">{targetMonster.title}</h2>
             <img
                 src={targetMonster.imagePath}
                 width="auto"

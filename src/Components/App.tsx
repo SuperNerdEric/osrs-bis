@@ -86,13 +86,13 @@ function App() {
 
     const handleSetTargetMonster = (targetMonster: TargetMonster) => {
         updateUrlState({
-            target: targetMonster.shortName || targetMonster.name,
+            target: targetMonster.title,
             invocationLevel: targetMonster.raid === Raid.TombsOfAmascut ? urlState.invocationLevel : undefined,
             currentDefence: targetMonster.currentDefenceLevel,
             currentHitpoints: targetMonster.currentHitpoints,
             version: targetMonster.activeVariant.variantName,
         });
-        monsters.set(targetMonster.name, targetMonster);
+        monsters.set(targetMonster.title, targetMonster);
         setTargetMonster(targetMonster);
     };
 
