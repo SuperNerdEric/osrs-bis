@@ -38,11 +38,14 @@ import {v4 as uuidv4} from 'uuid';
 import {TomeOfFireMultiplierStrategy} from "./MultiplierStrategies/TomeOfFireMultiplierStrategy";
 import {IceDemonMultiplierStrategy} from "./MultiplierStrategies/Monsters/IceDemonMultiplierStrategy";
 import {SpellBookType} from "../DataObjects/Spell";
+import {ZulrahMultiplierStrategy} from "./MultiplierStrategies/Monsters/ZulrahMultiplierStrategy";
 
 
 export class Calculator {
     dps: number = 0;
+    baseMaxHit: number = 0;
     maxHit: number = 0;
+    procRate: number = 0;
     attackRoll: number = 0;
     defenceRoll: number = 0;
     averageDamagePerHit: number = 0;
@@ -77,6 +80,7 @@ export class Calculator {
         new TektonMultiplierStrategy(this).calculateMultiplier();
         new ZukMultiplierStrategy(this).calculateMultiplier();
         this.averageDamagePerHit = this.calculateDamagePerHit();
+        new ZulrahMultiplierStrategy(this).calculateMultiplier();
 
         this.attackInterval = this.gearSet.getWeapon().speedSeconds;
         if (this.gearSet.weaponStyle === WeaponStyle.Rapid) {

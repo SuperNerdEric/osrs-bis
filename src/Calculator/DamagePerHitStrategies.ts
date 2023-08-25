@@ -94,21 +94,20 @@ export class DiamondBoltEnchantedStrategy extends DamagePerHitStrategy {
             return defaultStrategy.calculate();
         }
 
-        const activationPercent = getBoltActivationRate(bolt.name, this.result.player.kandarinHardDiaryComplete);
+        this.result.procRate = getBoltActivationRate(bolt.name, this.result.player.kandarinHardDiaryComplete) / 100;
 
-        const baseMaxHit = this.result.maxHit;
-        const baseAverageDamagePerHit = this.result.calculateAverageDamagePerHit(baseMaxHit, this.result.baseHitChance);
+        this.result.baseMaxHit = this.result.maxHit;
+        const baseAverageDamagePerHit = this.result.calculateAverageDamagePerHit(this.result.baseMaxHit, this.result.baseHitChance);
 
         if (this.result.gearSet.getWeapon().name === ItemName.ZaryteCrossbow) {
-            this.result.maxHit = Math.floor(baseMaxHit * 1.265);
+            this.result.maxHit = Math.floor(this.result.baseMaxHit * 1.265);
         } else {
-            this.result.maxHit = Math.floor(baseMaxHit * 1.15);
+            this.result.maxHit = Math.floor(this.result.baseMaxHit * 1.15);
         }
 
         const procAverageDamagePerHit = this.result.calculateAverageDamagePerHit(this.result.maxHit, 1)
 
-        const activationRate = (activationPercent / 100);
-        const averageDamagePerHit = baseAverageDamagePerHit * (1 - activationRate) + (activationRate * procAverageDamagePerHit);
+        const averageDamagePerHit = baseAverageDamagePerHit * (1 - this.result.procRate) + (this.result.procRate * procAverageDamagePerHit);
 
         return averageDamagePerHit;
     }
@@ -126,10 +125,10 @@ export class RubyBoltEnchantedStrategy extends DamagePerHitStrategy {
             return defaultStrategy.calculate();
         }
 
-        const activationPercent = getBoltActivationRate(bolt.name, this.result.player.kandarinHardDiaryComplete);
+        this.result.procRate = getBoltActivationRate(bolt.name, this.result.player.kandarinHardDiaryComplete) / 100;
 
-        const baseMaxHit = this.result.maxHit;
-        const baseAverageDamagePerHit = this.result.calculateAverageDamagePerHit(baseMaxHit, this.result.baseHitChance);
+        this.result.baseMaxHit = this.result.maxHit;
+        const baseAverageDamagePerHit = this.result.calculateAverageDamagePerHit(this.result.baseMaxHit, this.result.baseHitChance);
 
         //Todo this doesn't take into account that your targets health goes down as you fight it...
         let procMaxHit;
@@ -150,8 +149,7 @@ export class RubyBoltEnchantedStrategy extends DamagePerHitStrategy {
         // This is because it either misses (0) or hits max
         const procAverageDamagePerHit = procMaxHit;
 
-        const activationRate = (activationPercent / 100);
-        const averageDamagePerHit = baseAverageDamagePerHit * (1 - activationRate) + (activationRate * procAverageDamagePerHit);
+        const averageDamagePerHit = baseAverageDamagePerHit * (1 - this.result.procRate) + (this.result.procRate * procAverageDamagePerHit);
 
         return averageDamagePerHit;
     }
@@ -169,22 +167,21 @@ export class OnyxBoltEnchantedStrategy extends DamagePerHitStrategy {
             return defaultStrategy.calculate();
         }
 
-        const activationPercent = getBoltActivationRate(bolt.name, this.result.player.kandarinHardDiaryComplete);
-        const baseMaxHit = this.result.maxHit;
-        const baseAverageDamagePerHit = this.result.calculateAverageDamagePerHit(baseMaxHit, this.result.hitChance);
+        this.result.procRate = getBoltActivationRate(bolt.name, this.result.player.kandarinHardDiaryComplete) / 100;
+        this.result.baseMaxHit = this.result.maxHit;
+        const baseAverageDamagePerHit = this.result.calculateAverageDamagePerHit(this.result.baseMaxHit, this.result.hitChance);
 
         let damageMultiplier = 1.20;
         if (this.result.gearSet.getWeapon().name === ItemName.ZaryteCrossbow) {
             damageMultiplier = 1.32;
         }
 
-        const procMaxHit = Math.floor(baseMaxHit * damageMultiplier);
+        const procMaxHit = Math.floor(this.result.baseMaxHit * damageMultiplier);
         this.result.maxHit = procMaxHit;
 
         const procAverageDamagePerHit = this.result.calculateAverageDamagePerHit(procMaxHit, this.result.hitChance);
 
-        const activationRate = (activationPercent / 100);
-        const averageDamagePerHit = baseAverageDamagePerHit * (1 - activationRate) + (activationRate * procAverageDamagePerHit);
+        const averageDamagePerHit = baseAverageDamagePerHit * (1 - this.result.procRate) + (this.result.procRate * procAverageDamagePerHit);
 
         return averageDamagePerHit;
     }
