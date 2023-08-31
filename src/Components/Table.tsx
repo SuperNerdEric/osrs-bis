@@ -79,6 +79,7 @@ const StyledButton = styled(Button)`
 `;
 
 const ClearFiltersButton = styled(StyledButton)`
+  min-width: 20px;
   font-size: calc(0.4em + 0.1vw);
   white-space: nowrap;
 `;
@@ -268,13 +269,13 @@ export function GearTable({data, columns}: GearTableProps) {
     return (
         <div>
             <div style={{display: 'flex', flexDirection: 'row', flexWrap: 'nowrap', overflowX: 'auto', width: '100%'}}>
-                <div style={{cursor: 'pointer', marginRight: '10px'}}>
+                <div style={{cursor: 'pointer', marginRight: '0px'}}>
                     <Tooltip title="Filter items by slot">
                         <FilterList/>
                     </Tooltip>
                 </div>
                 {Object.values(Slot).filter((slot): slot is Slot => typeof slot === 'number').map((slot) => (
-                    <div style={{margin: '0 1px'}}>
+                    <div style={{margin: '0 0px'}}>
                         <SlotDropdown
                             key={slot}
                             slot={slot}
@@ -291,10 +292,10 @@ export function GearTable({data, columns}: GearTableProps) {
                 ))}
                 <div style={{marginLeft: 'auto', display: 'flex', alignItems: 'center'}}>
                     {isClearButtonVisible ? (
-                        <ClearFiltersButton onClick={clearAllFilters}>Clear Filters</ClearFiltersButton>
+                        <ClearFiltersButton onClick={clearAllFilters}>Clear</ClearFiltersButton>
                     ) : (
                         <div style={{width: '100%', height: '100%', visibility: 'hidden'}}>
-                            <ClearFiltersButton>Clear Filters</ClearFiltersButton>
+                            <ClearFiltersButton>Clear</ClearFiltersButton>
                         </div>
                     )}
                 </div>
@@ -410,7 +411,7 @@ function SlotDropdown({
     };
 
     return (
-        <div style={{display: 'inline-block', marginRight: '1px'}}>
+        <div style={{display: 'inline-block', marginRight: '0px'}}>
             <ButtonBase
                 sx={{
                     '&:hover': {
