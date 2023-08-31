@@ -265,43 +265,78 @@ export function GearTable({data, columns}: GearTableProps) {
             11: [],
         });
     };
-    const isMobile = window.innerWidth <= 768;
+    const isMobile = window.innerWidth <= 600;
 
     return (
         <div>
-            <div style={{display: 'flex', flexDirection: 'row', flexWrap: 'nowrap', overflowX: 'auto', width: '100%'}}>
-                <div style={{ cursor: 'pointer', marginRight: '0px', display: isMobile ? 'none' : 'block' }}>
-                    <Tooltip title="Filter items by slot">
-                        <FilterList/>
-                    </Tooltip>
-                </div>
+            <div style={{
+                display: 'flex',
+                flexDirection: isMobile ? 'column' : 'row',
+                overflowX: 'auto',
+                width: '100%',
+                alignItems: 'center'
+            }}>
 
-                {Object.values(Slot).filter((slot): slot is Slot => typeof slot === 'number').map((slot) => (
-                    <div style={{margin: '0 0px'}}>
-                        <SlotDropdown
-                            key={slot}
-                            slot={slot}
-                            selectedItems={selectedItemsBySlot[slot]}
-                            onItemSelect={(selected) => {
-                                setSelectedItemsBySlot(prev => ({
-                                    ...prev,
-                                    [slot]: selected?.map(s => s.value) || [],
-                                }));
-                            }}
-                            options={slotOptions(slot)}
-                        />
+                {isMobile ? (
+                    <div style={{
+                        width: '100%',
+                        display: 'flex',
+                        justifyContent: 'right',
+                        marginTop: '5px',
+                        marginBottom: '3px'
+                    }}>
+                        <ClearFiltersButton
+                            style={{visibility: isClearButtonVisible ? 'visible' : 'hidden'}}
+                            onClick={clearAllFilters}
+                        >
+                            Clear Filters
+                        </ClearFiltersButton>
                     </div>
-                ))}
-                <div style={{marginLeft: 'auto', marginRight: '3px', display: 'flex', alignItems: 'center'}}>
-                    {isClearButtonVisible ? (
-                        <ClearFiltersButton onClick={clearAllFilters}>Clear</ClearFiltersButton>
-                    ) : (
-                        <div style={{width: '100%', height: '100%', visibility: 'hidden'}}>
-                            <ClearFiltersButton>Clear</ClearFiltersButton>
+                ) : null}
+
+                <div style={{
+                    display: 'flex',
+                    flexDirection: 'row',
+                    flexWrap: 'nowrap',
+                    width: '100%',
+                    alignItems: 'center'
+                }}>
+                    <div style={{cursor: 'pointer', marginRight: '0px', display: isMobile ? 'none' : 'block'}}>
+                        <Tooltip title="Filter items by slot">
+                            <FilterList/>
+                        </Tooltip>
+                    </div>
+
+                    {Object.values(Slot).filter((slot): slot is Slot => typeof slot === 'number').map((slot) => (
+                        <div style={{margin: '0 0px'}}>
+                            <SlotDropdown
+                                key={slot}
+                                slot={slot}
+                                selectedItems={selectedItemsBySlot[slot]}
+                                onItemSelect={(selected) => {
+                                    setSelectedItemsBySlot(prev => ({
+                                        ...prev,
+                                        [slot]: selected?.map(s => s.value) || [],
+                                    }));
+                                }}
+                                options={slotOptions(slot)}
+                            />
                         </div>
-                    )}
+                    ))}
+
+                    {!isMobile ? (
+                        <div style={{marginLeft: 'auto', marginRight: '3px'}}>
+                            <ClearFiltersButton
+                                style={{visibility: isClearButtonVisible ? 'visible' : 'hidden'}}
+                                onClick={clearAllFilters}
+                            >
+                                Clear Filters
+                            </ClearFiltersButton>
+                        </div>
+                    ) : null}
                 </div>
             </div>
+
             <div className="p-2">
                 <div className="h-2"/>
                 <table>

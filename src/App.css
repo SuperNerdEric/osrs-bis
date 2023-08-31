@@ -189,8 +189,8 @@ table {
 }
 
 :root {
-    --icon-gradient: calc((50 - 30) / (1024 - 390));
-    --icon-base: calc(30px - var(--icon-gradient) * 390px);
+    --icon-gradient: calc((50 - 32.5) / (1024 - 390));
+    --icon-base: calc(32.5px - var(--icon-gradient) * 390px);
     --icon-size: min(calc(var(--icon-base) + var(--icon-gradient) * 100vw), 50px);
 }
 
