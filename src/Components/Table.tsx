@@ -265,15 +265,17 @@ export function GearTable({data, columns}: GearTableProps) {
             11: [],
         });
     };
+    const isMobile = window.innerWidth <= 768;
 
     return (
         <div>
             <div style={{display: 'flex', flexDirection: 'row', flexWrap: 'nowrap', overflowX: 'auto', width: '100%'}}>
-                <div style={{cursor: 'pointer', marginRight: '0px'}}>
+                <div style={{ cursor: 'pointer', marginRight: '0px', display: isMobile ? 'none' : 'block' }}>
                     <Tooltip title="Filter items by slot">
                         <FilterList/>
                     </Tooltip>
                 </div>
+
                 {Object.values(Slot).filter((slot): slot is Slot => typeof slot === 'number').map((slot) => (
                     <div style={{margin: '0 0px'}}>
                         <SlotDropdown
@@ -290,7 +292,7 @@ export function GearTable({data, columns}: GearTableProps) {
                         />
                     </div>
                 ))}
-                <div style={{marginLeft: 'auto', display: 'flex', alignItems: 'center'}}>
+                <div style={{marginLeft: 'auto', marginRight: '3px', display: 'flex', alignItems: 'center'}}>
                     {isClearButtonVisible ? (
                         <ClearFiltersButton onClick={clearAllFilters}>Clear</ClearFiltersButton>
                     ) : (
