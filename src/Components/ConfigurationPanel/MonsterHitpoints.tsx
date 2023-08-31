@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Stack, TextField} from "@mui/material";
+import {Stack, TextField, Tooltip} from "@mui/material";
 import hitpointsIcon from '../../Images/Skills/Hitpoints_icon.png';
 
 interface MonsterHitpointsProps {
@@ -11,7 +11,7 @@ interface MonsterHitpointsProps {
 
 export default function MonsterHitpoints(props: MonsterHitpointsProps) {
     React.useEffect(() => {
-        if(Number(props.currentHitpoints) !== Number(props.maxHitpoints)) {
+        if (Number(props.currentHitpoints) !== Number(props.maxHitpoints)) {
             props.handleCurrentHitpointsChange(props.maxHitpoints);
         }
     }, [props.maxHitpoints]);
@@ -27,11 +27,17 @@ export default function MonsterHitpoints(props: MonsterHitpointsProps) {
                     }}
                     variant="outlined"
                     style={{...textFieldStyle, width: '60px'}}
-                    inputProps={{style: {padding: 0, fontSize: "18px", textAlign: "center"}, min: 0, max: props.maxHitpoints}}
+                    inputProps={{
+                        style: {padding: 0, fontSize: "18px", textAlign: "center"},
+                        min: 0,
+                        max: props.maxHitpoints
+                    }}
                 />
                 <span style={labelStyle}>/{props.maxHitpoints}
                 </span>
-                <img src={hitpointsIcon} alt="Hitpoints" width="25" height="25"/>
+                <Tooltip title={"Hitpoints affects Ruby bolts (e) special effect damage"}>
+                    <img src={hitpointsIcon} alt="Hitpoints" width="25" height="25"/>
+                </Tooltip>
             </Stack>
         </div>
     );

@@ -112,7 +112,9 @@ export default function DefenceReduction(props: DefenceReductionProps) {
                     </Tooltip>
                     <span style={labelStyle}>/{props.defenceLevel}
                 </span>
-                    <img src={defenceIcon} alt="Defence" width="25" height="25"/>
+                    <Tooltip title={"Defence affects melee and ranged hit chance"}>
+                        <img src={defenceIcon} alt="Defence" width="25" height="25"/>
+                    </Tooltip>
                 </Stack>
             </Stack>
         </div>

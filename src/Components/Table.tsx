@@ -203,8 +203,8 @@ export function GearTable({data, columns}: GearTableProps) {
     const slotOptions = (slot: Slot) => {
         const itemsNamesSet = new Set();
 
-        const options = gearSets.reduce((acc, gearSet) => {
-            const item = gearSet.getItemBySlot(slot);
+        const options = data.reduce((acc, rowData) => {
+            const item = rowData.gearSet.getItemBySlot(slot);
             if (item && !itemsNamesSet.has(item.name)) {
                 itemsNamesSet.add(item.name);
                 acc.push({value: item.name, label: item.name});
