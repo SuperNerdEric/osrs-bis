@@ -1,6 +1,7 @@
 import {ItemName} from "../ItemName";
 import {CombatStyle, Slot} from "../Item";
 import {GearSet, gearSets, GearSetType} from "../GearSets";
+import {items} from "../Items";
 
 export function generateMeleeGearSets(){
     const combine = (base: ItemName[][], additional: (ItemName | null)[]): ItemName[][] =>
@@ -15,7 +16,8 @@ export function generateMeleeGearSets(){
         [ItemName.VoidMeleeHelm, ItemName.EliteVoidTop, ItemName.EliteVoidRobe, ItemName.VoidKnightGloves, ItemName.PrimordialBoots],
     ];
 
-    const meleeRings = [null, ItemName.BerserkerRingI, ItemName.UltorRing, ItemName.BellatorRing];
+    const meleeRings = [null, ItemName.BerserkerRingI, ItemName.WarriorRingI, ItemName.UltorRing, ItemName.BellatorRing];
+    const meleeOffhands = [ItemName.DragonDefender, ItemName.AvernicDefender];
     const meleeCapes = [ItemName.FireCape, ItemName.InfernalCape];
     const meleeAmulets = [ItemName.AmuletOfTorture, ItemName.AmuletOfFury];
 
@@ -40,16 +42,23 @@ export function generateMeleeGearSets(){
     meleeBase.forEach(base => {
         weaponsWithStyles.forEach(weaponEntry => {
             weaponEntry.styles.forEach(style => {
-                const gearSet = new GearSet([weaponEntry.gearSetType]);
-                gearSet.addItemByName(weaponEntry.name);
-                gearSet.setCombatStyle(style);
-
-                base.forEach(itemName => gearSet.addItemByName(itemName));
-                const weapon = gearSet.getWeapon();
-                if (weapon && weapon.slot === Slot.MainHand) {
-                    gearSet.addItemByName(ItemName.AvernicDefender);
+                let gearSet: GearSet;
+                if (weaponEntry && items.get(weaponEntry.name)!.slot === Slot.MainHand) {
+                    meleeOffhands.forEach(offhand => {
+                        gearSet = new GearSet([weaponEntry.gearSetType]);
+                        gearSet.addItemByName(offhand);
+                        gearSet.addItemByName(weaponEntry.name);
+                        gearSet.setCombatStyle(style);
+                        base.forEach(itemName => gearSet.addItemByName(itemName));
+                        gearSets.push(gearSet);
+                    })
+                } else {
+                    gearSet = new GearSet([weaponEntry.gearSetType]);
+                    gearSet.addItemByName(weaponEntry.name);
+                    gearSet.setCombatStyle(style);
+                    base.forEach(itemName => gearSet.addItemByName(itemName));
+                    gearSets.push(gearSet);
                 }
-                gearSets.push(gearSet);
             });
         });
     });

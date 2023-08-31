@@ -106,22 +106,14 @@ export function processJsonAndAddToMonsters() {
             }
             monster.size = `${versionData.size}x${versionData.size}`;
             if (versionData.attributes) {
-                if (versionData.attributes.includes("dragon")) {
-                    monster.isDraconic = true;
-                }
-                if (versionData.attributes.includes("fiery")) {
-                    monster.isFiery = true;
-                }
-                if (versionData.attributes.includes("undead")) {
-                    monster.isUndead = true;
-                }
-                if (versionData.attributes.includes("kalphite")) {
-                    monster.isKalphite = true;
-                }
-                if (versionData.attributes.includes("demon")) {
-                    monster.isDemon = true;
-                }
-                if (versionData.attributes.includes("xerician")) {
+                const attributesLowercase = versionData.attributes.toLowerCase();
+
+                monster.isDraconic = attributesLowercase.includes("dragon");
+                monster.isFiery = attributesLowercase.includes("fiery");
+                monster.isUndead = attributesLowercase.includes("undead");
+                monster.isKalphite = attributesLowercase.includes("kalphite");
+                monster.isDemon = attributesLowercase.includes("demon");
+                if (attributesLowercase.includes("xerician")) {
                     monster.raid = Raid.ChambersOfXeric;
                 }
             }

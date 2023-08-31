@@ -1610,5 +1610,36 @@ describe('Calculator class', () => {
             expect(result.hitChance).toBeCloseTo(0.9896); //Matches Bitterkoekje
         });
     });
+
+    describe('arclight against Duke Sucellus', () => {
+        beforeEach(() => {
+            result.gearSet = new GearSet([GearSetType.General])
+                .addItemByName(ItemName.Arclight)
+                .setCombatStyle(CombatStyle.Slash)
+                .addItemByName(ItemName.AvernicDefender)
+                .addItemByName(ItemName.TorvaFullHelm)
+                .addItemByName(ItemName.TorvaPlatebody)
+                .addItemByName(ItemName.TorvaPlatelegs)
+                .addItemByName(ItemName.PrimordialBoots)
+                .addItemByName(ItemName.FerociousGloves)
+                .addItemByName(ItemName.AmuletOfTorture)
+                .addItemByName(ItemName.InfernalCape)
+                .addItemByName(ItemName.BellatorRing)
+            result.targetMonster = monsters.get("Duke Sucellus") as TargetMonster;
+            result.calculateDPS();
+        });
+
+        test('should calculate DPS correctly', () => {
+            expect(result.dps).toBeCloseTo(5.993); //Matches Bitterkoekje
+        });
+
+        test('should calculate maxHit correctly', () => {
+            expect(result.maxHit).toBe(51); //Matches Bitterkoekje
+        });
+
+        test('should calculate hitChance correctly', () => {
+            expect(result.hitChance).toBeCloseTo(0.564  ); //Matches Bitterkoekje
+        });
+    });
 });
 

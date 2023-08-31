@@ -39,6 +39,18 @@ createItem(ItemName.AvernicDefender, {
     strength: 8,
 });
 
+createItem(ItemName.DragonDefender, {
+    imagePath: "./Images/ItemsOld/Dragon_defender.png",
+    wikiLink: "https://oldschool.runescape.wiki/w/Dragon_defender",
+    slot: Slot.OffHand,
+    stab: 25,
+    slash: 24,
+    crush: 23,
+    magic: -3,
+    ranged: -2,
+    strength: 6,
+});
+
 createItem(ItemName.TorvaFullHelm, {
     imagePath: "./Images/Items/Torva_full_helm.webp",
     wikiLink: "https://oldschool.runescape.wiki/w/Torva_full_helm#Restored",
@@ -539,6 +551,13 @@ createItem(ItemName.BerserkerRingI, {
     imagePath: "./Images/Items/Berserker_ring_(i).webp",
     wikiLink: "https://oldschool.runescape.wiki/w/Berserker_ring_(i)",
     strength: 8,
+    slot: Slot.Ring,
+});
+
+createItem(ItemName.WarriorRingI, {
+    imagePath: "./Images/ItemsOld/Warrior_ring_(i).png",
+    wikiLink: "https://oldschool.runescape.wiki/w/Warrior_ring_(i)",
+    slash: 8,
     slot: Slot.Ring,
 });
 

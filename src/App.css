@@ -27,7 +27,6 @@ button {
 }
 
 button:hover {
-    color: white;
     background-color: #d8ccb4;
 }
 
@@ -187,4 +186,15 @@ table {
     flex-direction: column;
     align-items: flex-end; /* This will right-align the child elements */
     justify-content: center; /* This will vertically center the items in case there's extra space */
+}
+
+:root {
+    --icon-gradient: calc((50 - 20) / (1024 - 390));
+    --icon-base: calc(20px - var(--icon-gradient) * 390px);
+    --icon-size: min(calc(var(--icon-base) + var(--icon-gradient) * 100vw), 50px);
+}
+
+.icon-size {
+    width: var(--icon-size);
+    height: var(--icon-size);
 }

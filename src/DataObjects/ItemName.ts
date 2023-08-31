@@ -1,6 +1,7 @@
 export enum ItemName {
     OsmumtensFang = "Osmumten's fang",
     AvernicDefender = "Avernic defender",
+    DragonDefender = "Dragon defender",
     TorvaFullHelm = "Torva full helm",
     TorvaPlatebody = "Torva platebody",
     TorvaPlatelegs = "Torva platelegs",
@@ -57,6 +58,7 @@ export enum ItemName {
     SalveAmuletEI = "Salve amulet(ei)",
     BerserkerRing = "Berserker ring",
     BerserkerRingI = "Berserker ring (i)",
+    WarriorRingI = "Warrior ring (i)",
     VoidMeleeHelm = "Void melee helm",
     VoidRangerHelm = "Void ranger helm",
     VoidMageHelm = "Void mage helm",

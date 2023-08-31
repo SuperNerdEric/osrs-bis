@@ -12,8 +12,7 @@ export enum Slot {
     Boots,
     Neck,
     Cape,
-    Ring,
-    Undefined
+    Ring
 }
 
 export enum WeaponCategory {
@@ -270,7 +269,7 @@ export class Item {
     name: ItemName;
     imagePath: string = "";
     wikiLink: string = "";
-    slot: Slot = Slot.Undefined;
+    slot: Slot = Slot.TwoHand; //Todo make this better
     stab: number = 0;
     slash: number = 0;
     crush: number = 0;

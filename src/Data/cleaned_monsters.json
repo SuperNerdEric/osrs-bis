@@ -15116,7 +15116,7 @@
         "slayerMonster": "Ogres, Zombies",
         "slayerCategory": "Ogres, Zombies",
         "isKalphite": false,
-        "isUndead": false,
+        "isUndead": true,
         "isDemon": false,
         "isDraconic": false,
         "isFiery": false,
@@ -60596,7 +60596,7 @@
                     "_currentDefenceLevel": 1,
                     "maxDefenceReduction": 1,
                     "magicLevel": 1,
-                    "magicAccuracy": null,
+                    "magicAccuracy": 0,
                     "defenceStats": {
                         "Stab": 0,
                         "Slash": 0,
@@ -60616,7 +60616,7 @@
             "_currentDefenceLevel": 1,
             "maxDefenceReduction": 1,
             "magicLevel": 1,
-            "magicAccuracy": null,
+            "magicAccuracy": 0,
             "defenceStats": {
                 "Stab": 0,
                 "Slash": 0,
@@ -67693,6 +67693,59 @@
             }
         }
     },
+    "Guard (Death to the Dorgeshuun)": {
+        "name": "Guard",
+        "shortName": "",
+        "size": "1x1",
+        "raid": 0,
+        "slayerCategory": "",
+        "isKalphite": false,
+        "isUndead": false,
+        "isDemon": false,
+        "isDraconic": false,
+        "isFiery": false,
+        "variants": [
+            [
+                "default",
+                {
+                    "variantName": "default",
+                    "imagePath": "https://oldschool.runescape.wiki/images/Guard_(Death_to_the_Dorgeshuun).png",
+                    "currentHitpoints": 30,
+                    "hitpoints": 30,
+                    "_defenceLevel": 12,
+                    "_currentDefenceLevel": 12,
+                    "maxDefenceReduction": 12,
+                    "magicLevel": 1,
+                    "magicAccuracy": 0,
+                    "defenceStats": {
+                        "Stab": 7,
+                        "Slash": 7,
+                        "Crush": 0,
+                        "Magic": 0,
+                        "Ranged": 7
+                    }
+                }
+            ]
+        ],
+        "_activeVariant": {
+            "variantName": "default",
+            "imagePath": "https://oldschool.runescape.wiki/images/Guard_(Death_to_the_Dorgeshuun).png",
+            "currentHitpoints": 30,
+            "hitpoints": 30,
+            "_defenceLevel": 12,
+            "_currentDefenceLevel": 12,
+            "maxDefenceReduction": 12,
+            "magicLevel": 1,
+            "magicAccuracy": 0,
+            "defenceStats": {
+                "Stab": 7,
+                "Slash": 7,
+                "Crush": 0,
+                "Magic": 0,
+                "Ranged": 7
+            }
+        }
+    },
     "Skeleton (The Restless Ghost)": {
         "name": "Skeleton",
         "shortName": "",
@@ -69252,6 +69305,59 @@
         "_activeVariant": {
             "variantName": "default",
             "imagePath": "https://oldschool.runescape.wiki/images/Black_knight_(Port_Sarim_Jail).png",
+            "currentHitpoints": 42,
+            "hitpoints": 42,
+            "_defenceLevel": 25,
+            "_currentDefenceLevel": 25,
+            "maxDefenceReduction": 25,
+            "magicLevel": 1,
+            "magicAccuracy": 0,
+            "defenceStats": {
+                "Stab": 73,
+                "Slash": 76,
+                "Crush": 70,
+                "Magic": -11,
+                "Ranged": 72
+            }
+        }
+    },
+    "Black Knight (Wanted!)": {
+        "name": "Black Knight",
+        "shortName": "",
+        "size": "1x1",
+        "raid": 0,
+        "slayerCategory": "",
+        "isKalphite": false,
+        "isUndead": false,
+        "isDemon": false,
+        "isDraconic": false,
+        "isFiery": false,
+        "variants": [
+            [
+                "default",
+                {
+                    "variantName": "default",
+                    "imagePath": "https://oldschool.runescape.wiki/images/Black_Knight_(Wanted!).png",
+                    "currentHitpoints": 42,
+                    "hitpoints": 42,
+                    "_defenceLevel": 25,
+                    "_currentDefenceLevel": 25,
+                    "maxDefenceReduction": 25,
+                    "magicLevel": 1,
+                    "magicAccuracy": 0,
+                    "defenceStats": {
+                        "Stab": 73,
+                        "Slash": 76,
+                        "Crush": 70,
+                        "Magic": -11,
+                        "Ranged": 72
+                    }
+                }
+            ]
+        ],
+        "_activeVariant": {
+            "variantName": "default",
+            "imagePath": "https://oldschool.runescape.wiki/images/Black_Knight_(Wanted!).png",
             "currentHitpoints": 42,
             "hitpoints": 42,
             "_defenceLevel": 25,
@@ -79273,7 +79379,7 @@
         "slayerCategory": "",
         "isKalphite": false,
         "isUndead": false,
-        "isDemon": false,
+        "isDemon": true,
         "isDraconic": false,
         "isFiery": false,
         "variants": [
@@ -79347,7 +79453,7 @@
         "slayerMonster": "Revenants, Ghosts",
         "slayerCategory": "Revenants, Ghosts",
         "isKalphite": false,
-        "isUndead": false,
+        "isUndead": true,
         "isDemon": false,
         "isDraconic": false,
         "isFiery": false,
@@ -80355,81 +80461,6 @@
                 "Crush": 120,
                 "Magic": 10,
                 "Ranged": 60
-            }
-        }
-    },
-    "User:Ostentatio/biobox": {
-        "name": "Vorkath",
-        "shortName": "",
-        "size": "7x7",
-        "raid": 0,
-        "slayerMonster": "Blue Dragons, Zombies, Bosses",
-        "slayerCategory": "Blue Dragons, Zombies, Bosses",
-        "isKalphite": false,
-        "isUndead": true,
-        "isDemon": false,
-        "isDraconic": true,
-        "isFiery": true,
-        "variants": [
-            [
-                "Post-quest",
-                {
-                    "variantName": "Post-quest",
-                    "imagePath": "https://oldschool.runescape.wiki/images/Vorkath.png",
-                    "currentHitpoints": 750,
-                    "hitpoints": 750,
-                    "_defenceLevel": 214,
-                    "_currentDefenceLevel": 214,
-                    "maxDefenceReduction": 214,
-                    "magicLevel": 150,
-                    "magicAccuracy": 150,
-                    "defenceStats": {
-                        "Stab": 26,
-                        "Slash": 108,
-                        "Crush": 108,
-                        "Magic": 240,
-                        "Ranged": 26
-                    }
-                }
-            ],
-            [
-                "Dragon Slayer II",
-                {
-                    "variantName": "Dragon Slayer II",
-                    "imagePath": "https://oldschool.runescape.wiki/images/Vorkath.png",
-                    "currentHitpoints": 460,
-                    "hitpoints": 460,
-                    "_defenceLevel": 164,
-                    "_currentDefenceLevel": 164,
-                    "maxDefenceReduction": 164,
-                    "magicLevel": 148,
-                    "magicAccuracy": 148,
-                    "defenceStats": {
-                        "Stab": 66,
-                        "Slash": 126,
-                        "Crush": 126,
-                        "Magic": 204,
-                        "Ranged": 80
-                    }
-                }
-            ]
-        ],
-        "_activeVariant": {
-            "variantName": "Post-quest",
-            "imagePath": "https://oldschool.runescape.wiki/images/Vorkath.png",
-            "currentHitpoints": 750,
-            "hitpoints": 750,
-            "_defenceLevel": 214,
-            "_currentDefenceLevel": 214,
-            "maxDefenceReduction": 214,
-            "magicLevel": 150,
-            "magicAccuracy": 150,
-            "defenceStats": {
-                "Stab": 26,
-                "Slash": 108,
-                "Crush": 108,
-                "Magic": 240,
-                "Ranged": 26
             }
         }
     },
@@ -81711,7 +81742,7 @@
         "slayerMonster": "Revenants, Ghosts",
         "slayerCategory": "Revenants, Ghosts",
         "isKalphite": false,
-        "isUndead": false,
+        "isUndead": true,
         "isDemon": false,
         "isDraconic": false,
         "isFiery": false,
@@ -82157,7 +82188,7 @@
         "slayerCategory": "Bosses",
         "isKalphite": false,
         "isUndead": false,
-        "isDemon": false,
+        "isDemon": true,
         "isDraconic": false,
         "isFiery": false,
         "variants": [
@@ -86415,7 +86446,7 @@
         "slayerCategory": "",
         "isKalphite": false,
         "isUndead": false,
-        "isDemon": false,
+        "isDemon": true,
         "isDraconic": false,
         "isFiery": false,
         "variants": [
@@ -86489,7 +86520,7 @@
         "slayerCategory": "",
         "isKalphite": false,
         "isUndead": false,
-        "isDemon": false,
+        "isDemon": true,
         "isDraconic": false,
         "isFiery": false,
         "variants": [
@@ -86542,7 +86573,7 @@
         "slayerCategory": "",
         "isKalphite": false,
         "isUndead": false,
-        "isDemon": false,
+        "isDemon": true,
         "isDraconic": false,
         "isFiery": false,
         "variants": [
@@ -86595,7 +86626,7 @@
         "slayerCategory": "",
         "isKalphite": false,
         "isUndead": false,
-        "isDemon": false,
+        "isDemon": true,
         "isDraconic": false,
         "isFiery": false,
         "variants": [
@@ -87125,7 +87156,7 @@
         "slayerCategory": "Lesser Demons",
         "isKalphite": false,
         "isUndead": false,
-        "isDemon": false,
+        "isDemon": true,
         "isDraconic": false,
         "isFiery": false,
         "variants": [
@@ -87251,6 +87282,1270 @@
                 "Crush": 0,
                 "Magic": 0,
                 "Ranged": 0
+            }
+        }
+    },
+    "Giant goblin": {
+        "name": "Giant goblin",
+        "shortName": "",
+        "size": "2x2",
+        "raid": 0,
+        "slayerMonster": "Goblins",
+        "slayerCategory": "Goblins",
+        "isKalphite": false,
+        "isUndead": false,
+        "isDemon": false,
+        "isDraconic": false,
+        "isFiery": false,
+        "variants": [
+            [
+                "default",
+                {
+                    "variantName": "default",
+                    "imagePath": "https://oldschool.runescape.wiki/images/Giant_goblin.png",
+                    "currentHitpoints": 750,
+                    "hitpoints": 750,
+                    "_defenceLevel": 250,
+                    "_currentDefenceLevel": 250,
+                    "maxDefenceReduction": 250,
+                    "magicLevel": 1,
+                    "magicAccuracy": 0,
+                    "defenceStats": {
+                        "Stab": -15,
+                        "Slash": -15,
+                        "Crush": -15,
+                        "Magic": -15,
+                        "Ranged": -15
+                    }
+                }
+            ]
+        ],
+        "_activeVariant": {
+            "variantName": "default",
+            "imagePath": "https://oldschool.runescape.wiki/images/Giant_goblin.png",
+            "currentHitpoints": 750,
+            "hitpoints": 750,
+            "_defenceLevel": 250,
+            "_currentDefenceLevel": 250,
+            "maxDefenceReduction": 250,
+            "magicLevel": 1,
+            "magicAccuracy": 0,
+            "defenceStats": {
+                "Stab": -15,
+                "Slash": -15,
+                "Crush": -15,
+                "Magic": -15,
+                "Ranged": -15
+            }
+        }
+    },
+    "Dagannoth Rex (Deadman: Apocalypse)": {
+        "name": "Dagannoth Rex",
+        "shortName": "",
+        "size": "3x3",
+        "raid": 0,
+        "slayerMonster": "Bosses, Dagannoth",
+        "slayerCategory": "Bosses, Dagannoth",
+        "isKalphite": false,
+        "isUndead": false,
+        "isDemon": false,
+        "isDraconic": false,
+        "isFiery": false,
+        "variants": [
+            [
+                "default",
+                {
+                    "variantName": "default",
+                    "imagePath": "https://oldschool.runescape.wiki/images/Dagannoth_Rex_(Deadman_Apocalypse).png",
+                    "currentHitpoints": 750,
+                    "hitpoints": 750,
+                    "_defenceLevel": 255,
+                    "_currentDefenceLevel": 255,
+                    "maxDefenceReduction": 255,
+                    "magicLevel": 0,
+                    "magicAccuracy": 0,
+                    "defenceStats": {
+                        "Stab": 255,
+                        "Slash": 255,
+                        "Crush": 255,
+                        "Magic": 10,
+                        "Ranged": 255
+                    }
+                }
+            ]
+        ],
+        "_activeVariant": {
+            "variantName": "default",
+            "imagePath": "https://oldschool.runescape.wiki/images/Dagannoth_Rex_(Deadman_Apocalypse).png",
+            "currentHitpoints": 750,
+            "hitpoints": 750,
+            "_defenceLevel": 255,
+            "_currentDefenceLevel": 255,
+            "maxDefenceReduction": 255,
+            "magicLevel": 0,
+            "magicAccuracy": 0,
+            "defenceStats": {
+                "Stab": 255,
+                "Slash": 255,
+                "Crush": 255,
+                "Magic": 10,
+                "Ranged": 255
+            }
+        }
+    },
+    "King Black Dragon (Deadman: Apocalypse)": {
+        "name": "King Black Dragon",
+        "shortName": "",
+        "size": "5x5",
+        "raid": 0,
+        "slayerMonster": "Black Dragons, Bosses",
+        "slayerCategory": "Black Dragons, Bosses",
+        "isKalphite": false,
+        "isUndead": false,
+        "isDemon": false,
+        "isDraconic": true,
+        "isFiery": false,
+        "variants": [
+            [
+                "default",
+                {
+                    "variantName": "default",
+                    "imagePath": "https://oldschool.runescape.wiki/images/King_Black_Dragon_(Deadman_Apocalypse).png",
+                    "currentHitpoints": 250,
+                    "hitpoints": 250,
+                    "_defenceLevel": 240,
+                    "_currentDefenceLevel": 240,
+                    "maxDefenceReduction": 240,
+                    "magicLevel": 240,
+                    "magicAccuracy": 0,
+                    "defenceStats": {
+                        "Stab": 70,
+                        "Slash": 90,
+                        "Crush": 90,
+                        "Magic": 80,
+                        "Ranged": 70
+                    }
+                }
+            ]
+        ],
+        "_activeVariant": {
+            "variantName": "default",
+            "imagePath": "https://oldschool.runescape.wiki/images/King_Black_Dragon_(Deadman_Apocalypse).png",
+            "currentHitpoints": 250,
+            "hitpoints": 250,
+            "_defenceLevel": 240,
+            "_currentDefenceLevel": 240,
+            "maxDefenceReduction": 240,
+            "magicLevel": 240,
+            "magicAccuracy": 0,
+            "defenceStats": {
+                "Stab": 70,
+                "Slash": 90,
+                "Crush": 90,
+                "Magic": 80,
+                "Ranged": 70
+            }
+        }
+    },
+    "Dagannoth Supreme (Deadman: Apocalypse)": {
+        "name": "Dagannoth Supreme",
+        "shortName": "",
+        "size": "3x3",
+        "raid": 0,
+        "slayerMonster": "Bosses, Dagannoth",
+        "slayerCategory": "Bosses, Dagannoth",
+        "isKalphite": false,
+        "isUndead": false,
+        "isDemon": false,
+        "isDraconic": false,
+        "isFiery": false,
+        "variants": [
+            [
+                "default",
+                {
+                    "variantName": "default",
+                    "imagePath": "https://oldschool.runescape.wiki/images/Dagannoth_Supreme_(Deadman_Apocalypse).png",
+                    "currentHitpoints": 750,
+                    "hitpoints": 750,
+                    "_defenceLevel": 128,
+                    "_currentDefenceLevel": 128,
+                    "maxDefenceReduction": 128,
+                    "magicLevel": 255,
+                    "magicAccuracy": 0,
+                    "defenceStats": {
+                        "Stab": 10,
+                        "Slash": 10,
+                        "Crush": 10,
+                        "Magic": 255,
+                        "Ranged": 550
+                    }
+                }
+            ]
+        ],
+        "_activeVariant": {
+            "variantName": "default",
+            "imagePath": "https://oldschool.runescape.wiki/images/Dagannoth_Supreme_(Deadman_Apocalypse).png",
+            "currentHitpoints": 750,
+            "hitpoints": 750,
+            "_defenceLevel": 128,
+            "_currentDefenceLevel": 128,
+            "maxDefenceReduction": 128,
+            "magicLevel": 255,
+            "magicAccuracy": 0,
+            "defenceStats": {
+                "Stab": 10,
+                "Slash": 10,
+                "Crush": 10,
+                "Magic": 255,
+                "Ranged": 550
+            }
+        }
+    },
+    "Dagannoth Prime (Deadman: Apocalypse)": {
+        "name": "Dagannoth Prime",
+        "shortName": "",
+        "size": "3x3",
+        "raid": 0,
+        "slayerMonster": "Bosses, Dagannoth",
+        "slayerCategory": "Bosses, Dagannoth",
+        "isKalphite": false,
+        "isUndead": false,
+        "isDemon": false,
+        "isDraconic": false,
+        "isFiery": false,
+        "variants": [
+            [
+                "default",
+                {
+                    "variantName": "default",
+                    "imagePath": "https://oldschool.runescape.wiki/images/Dagannoth_Prime_(Deadman_Apocalypse).png",
+                    "currentHitpoints": 750,
+                    "hitpoints": 750,
+                    "_defenceLevel": 255,
+                    "_currentDefenceLevel": 255,
+                    "maxDefenceReduction": 255,
+                    "magicLevel": 255,
+                    "magicAccuracy": 0,
+                    "defenceStats": {
+                        "Stab": 255,
+                        "Slash": 255,
+                        "Crush": 255,
+                        "Magic": 255,
+                        "Ranged": 10
+                    }
+                }
+            ]
+        ],
+        "_activeVariant": {
+            "variantName": "default",
+            "imagePath": "https://oldschool.runescape.wiki/images/Dagannoth_Prime_(Deadman_Apocalypse).png",
+            "currentHitpoints": 750,
+            "hitpoints": 750,
+            "_defenceLevel": 255,
+            "_currentDefenceLevel": 255,
+            "maxDefenceReduction": 255,
+            "magicLevel": 255,
+            "magicAccuracy": 0,
+            "defenceStats": {
+                "Stab": 255,
+                "Slash": 255,
+                "Crush": 255,
+                "Magic": 255,
+                "Ranged": 10
+            }
+        }
+    },
+    "Kree'arra (Deadman: Apocalypse)": {
+        "name": "Kree'arra",
+        "shortName": "",
+        "size": "5x5",
+        "raid": 0,
+        "slayerCategory": "",
+        "isKalphite": false,
+        "isUndead": false,
+        "isDemon": false,
+        "isDraconic": false,
+        "isFiery": false,
+        "variants": [
+            [
+                "default",
+                {
+                    "variantName": "default",
+                    "imagePath": "https://oldschool.runescape.wiki/images/Kree'arra_(Deadman_Apocalypse).png",
+                    "currentHitpoints": 350,
+                    "hitpoints": 350,
+                    "_defenceLevel": 260,
+                    "_currentDefenceLevel": 260,
+                    "maxDefenceReduction": 260,
+                    "magicLevel": 200,
+                    "magicAccuracy": 0,
+                    "defenceStats": {
+                        "Stab": 180,
+                        "Slash": 180,
+                        "Crush": 180,
+                        "Magic": 200,
+                        "Ranged": 200
+                    }
+                }
+            ]
+        ],
+        "_activeVariant": {
+            "variantName": "default",
+            "imagePath": "https://oldschool.runescape.wiki/images/Kree'arra_(Deadman_Apocalypse).png",
+            "currentHitpoints": 350,
+            "hitpoints": 350,
+            "_defenceLevel": 260,
+            "_currentDefenceLevel": 260,
+            "maxDefenceReduction": 260,
+            "magicLevel": 200,
+            "magicAccuracy": 0,
+            "defenceStats": {
+                "Stab": 180,
+                "Slash": 180,
+                "Crush": 180,
+                "Magic": 200,
+                "Ranged": 200
+            }
+        }
+    },
+    "General Graardor (Deadman: Apocalypse)": {
+        "name": "General Graardor",
+        "shortName": "",
+        "size": "4x4",
+        "raid": 0,
+        "slayerMonster": "Bosses",
+        "slayerCategory": "Bosses",
+        "isKalphite": false,
+        "isUndead": false,
+        "isDemon": false,
+        "isDraconic": false,
+        "isFiery": false,
+        "variants": [
+            [
+                "default",
+                {
+                    "variantName": "default",
+                    "imagePath": "https://oldschool.runescape.wiki/images/General_Graardor_(Deadman_Apocalypse).png",
+                    "currentHitpoints": 1000,
+                    "hitpoints": 1000,
+                    "_defenceLevel": 250,
+                    "_currentDefenceLevel": 250,
+                    "maxDefenceReduction": 250,
+                    "magicLevel": 80,
+                    "magicAccuracy": 0,
+                    "defenceStats": {
+                        "Stab": 90,
+                        "Slash": 90,
+                        "Crush": 90,
+                        "Magic": 201,
+                        "Ranged": 90
+                    }
+                }
+            ]
+        ],
+        "_activeVariant": {
+            "variantName": "default",
+            "imagePath": "https://oldschool.runescape.wiki/images/General_Graardor_(Deadman_Apocalypse).png",
+            "currentHitpoints": 1000,
+            "hitpoints": 1000,
+            "_defenceLevel": 250,
+            "_currentDefenceLevel": 250,
+            "maxDefenceReduction": 250,
+            "magicLevel": 80,
+            "magicAccuracy": 0,
+            "defenceStats": {
+                "Stab": 90,
+                "Slash": 90,
+                "Crush": 90,
+                "Magic": 201,
+                "Ranged": 90
+            }
+        }
+    },
+    "Commander Zilyana (Deadman: Apocalypse)": {
+        "name": "Commander Zilyana",
+        "shortName": "",
+        "size": "2x2",
+        "raid": 0,
+        "slayerMonster": "Bosses",
+        "slayerCategory": "Bosses",
+        "isKalphite": false,
+        "isUndead": false,
+        "isDemon": false,
+        "isDraconic": false,
+        "isFiery": false,
+        "variants": [
+            [
+                "default",
+                {
+                    "variantName": "default",
+                    "imagePath": "https://oldschool.runescape.wiki/images/Commander_Zilyana_(Deadman_Apocalypse).png",
+                    "currentHitpoints": 500,
+                    "hitpoints": 500,
+                    "_defenceLevel": 300,
+                    "_currentDefenceLevel": 300,
+                    "maxDefenceReduction": 300,
+                    "magicLevel": 300,
+                    "magicAccuracy": 200,
+                    "defenceStats": {
+                        "Stab": 100,
+                        "Slash": 100,
+                        "Crush": 100,
+                        "Magic": 100,
+                        "Ranged": 100
+                    }
+                }
+            ]
+        ],
+        "_activeVariant": {
+            "variantName": "default",
+            "imagePath": "https://oldschool.runescape.wiki/images/Commander_Zilyana_(Deadman_Apocalypse).png",
+            "currentHitpoints": 500,
+            "hitpoints": 500,
+            "_defenceLevel": 300,
+            "_currentDefenceLevel": 300,
+            "maxDefenceReduction": 300,
+            "magicLevel": 300,
+            "magicAccuracy": 200,
+            "defenceStats": {
+                "Stab": 100,
+                "Slash": 100,
+                "Crush": 100,
+                "Magic": 100,
+                "Ranged": 100
+            }
+        }
+    },
+    "K'ril Tsutsaroth (Deadman: Apocalypse)": {
+        "name": "K'ril Tsutsaroth",
+        "shortName": "",
+        "size": "5x5",
+        "raid": 0,
+        "slayerMonster": "Bosses, Greater Demons",
+        "slayerCategory": "Bosses, Greater Demons",
+        "isKalphite": false,
+        "isUndead": false,
+        "isDemon": false,
+        "isDraconic": false,
+        "isFiery": false,
+        "variants": [
+            [
+                "default",
+                {
+                    "variantName": "default",
+                    "imagePath": "https://oldschool.runescape.wiki/images/K'ril_Tsutsaroth_(Deadman_Apocalypse).png",
+                    "currentHitpoints": 1000,
+                    "hitpoints": 1000,
+                    "_defenceLevel": 270,
+                    "_currentDefenceLevel": 270,
+                    "maxDefenceReduction": 270,
+                    "magicLevel": 200,
+                    "magicAccuracy": 0,
+                    "defenceStats": {
+                        "Stab": 80,
+                        "Slash": 80,
+                        "Crush": 80,
+                        "Magic": 130,
+                        "Ranged": 80
+                    }
+                }
+            ]
+        ],
+        "_activeVariant": {
+            "variantName": "default",
+            "imagePath": "https://oldschool.runescape.wiki/images/K'ril_Tsutsaroth_(Deadman_Apocalypse).png",
+            "currentHitpoints": 1000,
+            "hitpoints": 1000,
+            "_defenceLevel": 270,
+            "_currentDefenceLevel": 270,
+            "maxDefenceReduction": 270,
+            "magicLevel": 200,
+            "magicAccuracy": 0,
+            "defenceStats": {
+                "Stab": 80,
+                "Slash": 80,
+                "Crush": 80,
+                "Magic": 130,
+                "Ranged": 80
+            }
+        }
+    },
+    "Dharok the Wretched (Deadman: Apocalypse)": {
+        "name": "Dharok the Wretched",
+        "shortName": "",
+        "size": "2x2",
+        "raid": 0,
+        "slayerMonster": "Bosses",
+        "slayerCategory": "Bosses",
+        "isKalphite": false,
+        "isUndead": false,
+        "isDemon": false,
+        "isDraconic": false,
+        "isFiery": false,
+        "variants": [
+            [
+                "default",
+                {
+                    "variantName": "default",
+                    "imagePath": "https://oldschool.runescape.wiki/images/Dharok_the_Wretched_(Deadman_Apocalypse).png",
+                    "currentHitpoints": 200,
+                    "hitpoints": 200,
+                    "_defenceLevel": 100,
+                    "_currentDefenceLevel": 100,
+                    "maxDefenceReduction": 100,
+                    "magicLevel": 1,
+                    "magicAccuracy": -58,
+                    "defenceStats": {
+                        "Stab": 252,
+                        "Slash": 250,
+                        "Crush": 244,
+                        "Magic": -11,
+                        "Ranged": 249
+                    }
+                }
+            ]
+        ],
+        "_activeVariant": {
+            "variantName": "default",
+            "imagePath": "https://oldschool.runescape.wiki/images/Dharok_the_Wretched_(Deadman_Apocalypse).png",
+            "currentHitpoints": 200,
+            "hitpoints": 200,
+            "_defenceLevel": 100,
+            "_currentDefenceLevel": 100,
+            "maxDefenceReduction": 100,
+            "magicLevel": 1,
+            "magicAccuracy": -58,
+            "defenceStats": {
+                "Stab": 252,
+                "Slash": 250,
+                "Crush": 244,
+                "Magic": -11,
+                "Ranged": 249
+            }
+        }
+    },
+    "Porazdir (Deadman: Apocalypse)": {
+        "name": "Porazdir",
+        "shortName": "",
+        "size": "3x3",
+        "raid": 0,
+        "slayerMonster": "Black Demons",
+        "slayerCategory": "Black Demons",
+        "isKalphite": false,
+        "isUndead": false,
+        "isDemon": true,
+        "isDraconic": false,
+        "isFiery": false,
+        "variants": [
+            [
+                "default",
+                {
+                    "variantName": "default",
+                    "imagePath": "https://oldschool.runescape.wiki/images/Porazdir_(Deadman_Apocalypse).png",
+                    "currentHitpoints": 320,
+                    "hitpoints": 320,
+                    "_defenceLevel": 100,
+                    "_currentDefenceLevel": 100,
+                    "maxDefenceReduction": 100,
+                    "magicLevel": 180,
+                    "magicAccuracy": 80,
+                    "defenceStats": {
+                        "Stab": 200,
+                        "Slash": 200,
+                        "Crush": 200,
+                        "Magic": -60,
+                        "Ranged": 200
+                    }
+                }
+            ]
+        ],
+        "_activeVariant": {
+            "variantName": "default",
+            "imagePath": "https://oldschool.runescape.wiki/images/Porazdir_(Deadman_Apocalypse).png",
+            "currentHitpoints": 320,
+            "hitpoints": 320,
+            "_defenceLevel": 100,
+            "_currentDefenceLevel": 100,
+            "maxDefenceReduction": 100,
+            "magicLevel": 180,
+            "magicAccuracy": 80,
+            "defenceStats": {
+                "Stab": 200,
+                "Slash": 200,
+                "Crush": 200,
+                "Magic": -60,
+                "Ranged": 200
+            }
+        }
+    },
+    "Justiciar Zachariah (Deadman: Apocalypse)": {
+        "name": "Justiciar Zachariah",
+        "shortName": "",
+        "size": "3x3",
+        "raid": 0,
+        "slayerCategory": "",
+        "isKalphite": false,
+        "isUndead": false,
+        "isDemon": false,
+        "isDraconic": false,
+        "isFiery": false,
+        "variants": [
+            [
+                "default",
+                {
+                    "variantName": "default",
+                    "imagePath": "https://oldschool.runescape.wiki/images/Justiciar_Zachariah_(Deadman_Apocalypse).png",
+                    "currentHitpoints": 320,
+                    "hitpoints": 320,
+                    "_defenceLevel": 100,
+                    "_currentDefenceLevel": 100,
+                    "maxDefenceReduction": 100,
+                    "magicLevel": 180,
+                    "magicAccuracy": 80,
+                    "defenceStats": {
+                        "Stab": 200,
+                        "Slash": 200,
+                        "Crush": 200,
+                        "Magic": -60,
+                        "Ranged": 200
+                    }
+                }
+            ]
+        ],
+        "_activeVariant": {
+            "variantName": "default",
+            "imagePath": "https://oldschool.runescape.wiki/images/Justiciar_Zachariah_(Deadman_Apocalypse).png",
+            "currentHitpoints": 320,
+            "hitpoints": 320,
+            "_defenceLevel": 100,
+            "_currentDefenceLevel": 100,
+            "maxDefenceReduction": 100,
+            "magicLevel": 180,
+            "magicAccuracy": 80,
+            "defenceStats": {
+                "Stab": 200,
+                "Slash": 200,
+                "Crush": 200,
+                "Magic": -60,
+                "Ranged": 200
+            }
+        }
+    },
+    "Derwen (Deadman: Apocalypse)": {
+        "name": "Derwen",
+        "shortName": "",
+        "size": "3x3",
+        "raid": 0,
+        "slayerCategory": "",
+        "isKalphite": false,
+        "isUndead": false,
+        "isDemon": false,
+        "isDraconic": false,
+        "isFiery": false,
+        "variants": [
+            [
+                "default",
+                {
+                    "variantName": "default",
+                    "imagePath": "https://oldschool.runescape.wiki/images/Derwen_(Deadman_Apocalypse).png",
+                    "currentHitpoints": 320,
+                    "hitpoints": 320,
+                    "_defenceLevel": 100,
+                    "_currentDefenceLevel": 100,
+                    "maxDefenceReduction": 100,
+                    "magicLevel": 180,
+                    "magicAccuracy": 80,
+                    "defenceStats": {
+                        "Stab": 200,
+                        "Slash": 200,
+                        "Crush": 200,
+                        "Magic": -60,
+                        "Ranged": 200
+                    }
+                }
+            ]
+        ],
+        "_activeVariant": {
+            "variantName": "default",
+            "imagePath": "https://oldschool.runescape.wiki/images/Derwen_(Deadman_Apocalypse).png",
+            "currentHitpoints": 320,
+            "hitpoints": 320,
+            "_defenceLevel": 100,
+            "_currentDefenceLevel": 100,
+            "maxDefenceReduction": 100,
+            "magicLevel": 180,
+            "magicAccuracy": 80,
+            "defenceStats": {
+                "Stab": 200,
+                "Slash": 200,
+                "Crush": 200,
+                "Magic": -60,
+                "Ranged": 200
+            }
+        }
+    },
+    "Greater abyssal demon (Deadman: Apocalypse)": {
+        "name": "Greater abyssal demon",
+        "shortName": "",
+        "size": "3x3",
+        "raid": 0,
+        "slayerMonster": "Abyssal Demons",
+        "slayerCategory": "Abyssal Demons",
+        "isKalphite": false,
+        "isUndead": false,
+        "isDemon": true,
+        "isDraconic": false,
+        "isFiery": false,
+        "variants": [
+            [
+                "default",
+                {
+                    "variantName": "default",
+                    "imagePath": "https://oldschool.runescape.wiki/images/Greater_abyssal_demon_(Deadman_Apocalypse).png",
+                    "currentHitpoints": 750,
+                    "hitpoints": 750,
+                    "_defenceLevel": 240,
+                    "_currentDefenceLevel": 240,
+                    "maxDefenceReduction": 240,
+                    "magicLevel": 1,
+                    "magicAccuracy": 0,
+                    "defenceStats": {
+                        "Stab": 50,
+                        "Slash": 50,
+                        "Crush": 50,
+                        "Magic": 0,
+                        "Ranged": 50
+                    }
+                }
+            ]
+        ],
+        "_activeVariant": {
+            "variantName": "default",
+            "imagePath": "https://oldschool.runescape.wiki/images/Greater_abyssal_demon_(Deadman_Apocalypse).png",
+            "currentHitpoints": 750,
+            "hitpoints": 750,
+            "_defenceLevel": 240,
+            "_currentDefenceLevel": 240,
+            "maxDefenceReduction": 240,
+            "magicLevel": 1,
+            "magicAccuracy": 0,
+            "defenceStats": {
+                "Stab": 50,
+                "Slash": 50,
+                "Crush": 50,
+                "Magic": 0,
+                "Ranged": 50
+            }
+        }
+    },
+    "Flaming pyrelord (Deadman: Apocalyse)": {
+        "name": "Flaming pyrelord",
+        "shortName": "",
+        "size": "3x3",
+        "raid": 0,
+        "slayerCategory": "",
+        "isKalphite": false,
+        "isUndead": false,
+        "isDemon": true,
+        "isDraconic": false,
+        "isFiery": false,
+        "variants": [
+            [
+                "default",
+                {
+                    "variantName": "default",
+                    "imagePath": "https://oldschool.runescape.wiki/images/Flaming_pyrelord_(Deadman_Apocalypse).png",
+                    "currentHitpoints": 750,
+                    "hitpoints": 750,
+                    "_defenceLevel": 250,
+                    "_currentDefenceLevel": 250,
+                    "maxDefenceReduction": 250,
+                    "magicLevel": 1,
+                    "magicAccuracy": 0,
+                    "defenceStats": {
+                        "Stab": 18,
+                        "Slash": 18,
+                        "Crush": 18,
+                        "Magic": 150,
+                        "Ranged": 18
+                    }
+                }
+            ]
+        ],
+        "_activeVariant": {
+            "variantName": "default",
+            "imagePath": "https://oldschool.runescape.wiki/images/Flaming_pyrelord_(Deadman_Apocalypse).png",
+            "currentHitpoints": 750,
+            "hitpoints": 750,
+            "_defenceLevel": 250,
+            "_currentDefenceLevel": 250,
+            "maxDefenceReduction": 250,
+            "magicLevel": 1,
+            "magicAccuracy": 0,
+            "defenceStats": {
+                "Stab": 18,
+                "Slash": 18,
+                "Crush": 18,
+                "Magic": 150,
+                "Ranged": 18
+            }
+        }
+    },
+    "Cave abomination (Deadman: Apocalypse)": {
+        "name": "Cave abomination",
+        "shortName": "",
+        "size": "3x3",
+        "raid": 0,
+        "slayerCategory": "",
+        "isKalphite": false,
+        "isUndead": false,
+        "isDemon": false,
+        "isDraconic": false,
+        "isFiery": false,
+        "variants": [
+            [
+                "default",
+                {
+                    "variantName": "default",
+                    "imagePath": "https://oldschool.runescape.wiki/images/Cave_abomination_(Deadman_Apocalypse).png",
+                    "currentHitpoints": 750,
+                    "hitpoints": 750,
+                    "_defenceLevel": 142,
+                    "_currentDefenceLevel": 142,
+                    "maxDefenceReduction": 142,
+                    "magicLevel": 230,
+                    "magicAccuracy": 0,
+                    "defenceStats": {
+                        "Stab": 0,
+                        "Slash": 0,
+                        "Crush": 0,
+                        "Magic": 0,
+                        "Ranged": 0
+                    }
+                }
+            ]
+        ],
+        "_activeVariant": {
+            "variantName": "default",
+            "imagePath": "https://oldschool.runescape.wiki/images/Cave_abomination_(Deadman_Apocalypse).png",
+            "currentHitpoints": 750,
+            "hitpoints": 750,
+            "_defenceLevel": 142,
+            "_currentDefenceLevel": 142,
+            "maxDefenceReduction": 142,
+            "magicLevel": 230,
+            "magicAccuracy": 0,
+            "defenceStats": {
+                "Stab": 0,
+                "Slash": 0,
+                "Crush": 0,
+                "Magic": 0,
+                "Ranged": 0
+            }
+        }
+    },
+    "Jal-ImKot (Deadman: Apocalypse)": {
+        "name": "Jal-ImKot",
+        "shortName": "",
+        "size": "4x4",
+        "raid": 0,
+        "slayerMonster": "TzHaar",
+        "slayerCategory": "TzHaar",
+        "isKalphite": false,
+        "isUndead": false,
+        "isDemon": false,
+        "isDraconic": false,
+        "isFiery": false,
+        "variants": [
+            [
+                "default",
+                {
+                    "variantName": "default",
+                    "imagePath": "https://oldschool.runescape.wiki/images/Jal-ImKot_(Deadman_Apocalypse).png",
+                    "currentHitpoints": 750,
+                    "hitpoints": 750,
+                    "_defenceLevel": 120,
+                    "_currentDefenceLevel": 120,
+                    "maxDefenceReduction": 120,
+                    "magicLevel": 120,
+                    "magicAccuracy": 0,
+                    "defenceStats": {
+                        "Stab": 65,
+                        "Slash": 65,
+                        "Crush": 65,
+                        "Magic": 30,
+                        "Ranged": 50
+                    }
+                }
+            ]
+        ],
+        "_activeVariant": {
+            "variantName": "default",
+            "imagePath": "https://oldschool.runescape.wiki/images/Jal-ImKot_(Deadman_Apocalypse).png",
+            "currentHitpoints": 750,
+            "hitpoints": 750,
+            "_defenceLevel": 120,
+            "_currentDefenceLevel": 120,
+            "maxDefenceReduction": 120,
+            "magicLevel": 120,
+            "magicAccuracy": 0,
+            "defenceStats": {
+                "Stab": 65,
+                "Slash": 65,
+                "Crush": 65,
+                "Magic": 30,
+                "Ranged": 50
+            }
+        }
+    },
+    "Malevolent Mage (Deadman: Apocalypse)": {
+        "name": "Malevolent Mage",
+        "shortName": "",
+        "size": "1x1",
+        "raid": 0,
+        "slayerCategory": "",
+        "isKalphite": false,
+        "isUndead": false,
+        "isDemon": false,
+        "isDraconic": false,
+        "isFiery": false,
+        "variants": [
+            [
+                "default",
+                {
+                    "variantName": "default",
+                    "imagePath": "https://oldschool.runescape.wiki/images/Malevolent_Mage_(Deadman_Apocalypse).png",
+                    "currentHitpoints": 500,
+                    "hitpoints": 500,
+                    "_defenceLevel": 150,
+                    "_currentDefenceLevel": 150,
+                    "maxDefenceReduction": 150,
+                    "magicLevel": 255,
+                    "magicAccuracy": 0,
+                    "defenceStats": {
+                        "Stab": 0,
+                        "Slash": 0,
+                        "Crush": 0,
+                        "Magic": 300,
+                        "Ranged": 0
+                    }
+                }
+            ]
+        ],
+        "_activeVariant": {
+            "variantName": "default",
+            "imagePath": "https://oldschool.runescape.wiki/images/Malevolent_Mage_(Deadman_Apocalypse).png",
+            "currentHitpoints": 500,
+            "hitpoints": 500,
+            "_defenceLevel": 150,
+            "_currentDefenceLevel": 150,
+            "maxDefenceReduction": 150,
+            "magicLevel": 255,
+            "magicAccuracy": 0,
+            "defenceStats": {
+                "Stab": 0,
+                "Slash": 0,
+                "Crush": 0,
+                "Magic": 300,
+                "Ranged": 0
+            }
+        }
+    },
+    "Vitreous warped Jelly (Deadman: Apocalypse)": {
+        "name": "Vitreous warped Jelly",
+        "shortName": "",
+        "size": "3x3",
+        "raid": 0,
+        "slayerCategory": "",
+        "isKalphite": false,
+        "isUndead": false,
+        "isDemon": false,
+        "isDraconic": false,
+        "isFiery": false,
+        "variants": [
+            [
+                "default",
+                {
+                    "variantName": "default",
+                    "imagePath": "https://oldschool.runescape.wiki/images/Vitreous_warped_Jelly_(Deadman_Apocalypse).png",
+                    "currentHitpoints": 500,
+                    "hitpoints": 500,
+                    "_defenceLevel": 250,
+                    "_currentDefenceLevel": 250,
+                    "maxDefenceReduction": 250,
+                    "magicLevel": 180,
+                    "magicAccuracy": 0,
+                    "defenceStats": {
+                        "Stab": 0,
+                        "Slash": 0,
+                        "Crush": 0,
+                        "Magic": 0,
+                        "Ranged": 0
+                    }
+                }
+            ]
+        ],
+        "_activeVariant": {
+            "variantName": "default",
+            "imagePath": "https://oldschool.runescape.wiki/images/Vitreous_warped_Jelly_(Deadman_Apocalypse).png",
+            "currentHitpoints": 500,
+            "hitpoints": 500,
+            "_defenceLevel": 250,
+            "_currentDefenceLevel": 250,
+            "maxDefenceReduction": 250,
+            "magicLevel": 180,
+            "magicAccuracy": 0,
+            "defenceStats": {
+                "Stab": 0,
+                "Slash": 0,
+                "Crush": 0,
+                "Magic": 0,
+                "Ranged": 0
+            }
+        }
+    },
+    "Sulphur Lizard (Deadman: Apocalypse)": {
+        "name": "Sulphur Lizard",
+        "shortName": "",
+        "size": "2x2",
+        "raid": 0,
+        "slayerMonster": "Lizards",
+        "slayerCategory": "Lizards",
+        "isKalphite": false,
+        "isUndead": false,
+        "isDemon": false,
+        "isDraconic": false,
+        "isFiery": false,
+        "variants": [
+            [
+                "default",
+                {
+                    "variantName": "default",
+                    "imagePath": "https://oldschool.runescape.wiki/images/Sulphur_Lizard_(Deadman_Apocalypse).png",
+                    "currentHitpoints": 500,
+                    "hitpoints": 500,
+                    "_defenceLevel": 75,
+                    "_currentDefenceLevel": 75,
+                    "maxDefenceReduction": 75,
+                    "magicLevel": 1,
+                    "magicAccuracy": 0,
+                    "defenceStats": {
+                        "Stab": 15,
+                        "Slash": 25,
+                        "Crush": 25,
+                        "Magic": 0,
+                        "Ranged": 15
+                    }
+                }
+            ]
+        ],
+        "_activeVariant": {
+            "variantName": "default",
+            "imagePath": "https://oldschool.runescape.wiki/images/Sulphur_Lizard_(Deadman_Apocalypse).png",
+            "currentHitpoints": 500,
+            "hitpoints": 500,
+            "_defenceLevel": 75,
+            "_currentDefenceLevel": 75,
+            "maxDefenceReduction": 75,
+            "magicLevel": 1,
+            "magicAccuracy": 0,
+            "defenceStats": {
+                "Stab": 15,
+                "Slash": 25,
+                "Crush": 25,
+                "Magic": 0,
+                "Ranged": 15
+            }
+        }
+    },
+    "Night beast (Deadman: Apocalypse)": {
+        "name": "Night beast",
+        "shortName": "",
+        "size": "4x4",
+        "raid": 0,
+        "slayerMonster": "Dark Beasts",
+        "slayerCategory": "Dark Beasts",
+        "isKalphite": false,
+        "isUndead": false,
+        "isDemon": false,
+        "isDraconic": false,
+        "isFiery": false,
+        "variants": [
+            [
+                "default",
+                {
+                    "variantName": "default",
+                    "imagePath": "https://oldschool.runescape.wiki/images/Night_beast_(Deadman_Apocalypse).png",
+                    "currentHitpoints": 500,
+                    "hitpoints": 500,
+                    "_defenceLevel": 220,
+                    "_currentDefenceLevel": 220,
+                    "maxDefenceReduction": 220,
+                    "magicLevel": 300,
+                    "magicAccuracy": 0,
+                    "defenceStats": {
+                        "Stab": 75,
+                        "Slash": 80,
+                        "Crush": 200,
+                        "Magic": 190,
+                        "Ranged": 100
+                    }
+                }
+            ]
+        ],
+        "_activeVariant": {
+            "variantName": "default",
+            "imagePath": "https://oldschool.runescape.wiki/images/Night_beast_(Deadman_Apocalypse).png",
+            "currentHitpoints": 500,
+            "hitpoints": 500,
+            "_defenceLevel": 220,
+            "_currentDefenceLevel": 220,
+            "maxDefenceReduction": 220,
+            "magicLevel": 300,
+            "magicAccuracy": 0,
+            "defenceStats": {
+                "Stab": 75,
+                "Slash": 80,
+                "Crush": 200,
+                "Magic": 190,
+                "Ranged": 100
+            }
+        }
+    },
+    "User:LilyUIM/exodus": {
+        "name": "Exodus",
+        "shortName": "",
+        "size": "7x7",
+        "raid": 0,
+        "slayerCategory": "",
+        "isKalphite": false,
+        "isUndead": false,
+        "isDemon": false,
+        "isDraconic": false,
+        "isFiery": false,
+        "variants": [
+            [
+                "Primordial",
+                {
+                    "variantName": "Primordial",
+                    "imagePath": "https://oldschool.runescape.wiki/images/Raw_manta_ray_detail.png",
+                    "currentHitpoints": 3250,
+                    "hitpoints": 3250,
+                    "_defenceLevel": 750,
+                    "_currentDefenceLevel": 750,
+                    "maxDefenceReduction": 750,
+                    "magicLevel": 750,
+                    "magicAccuracy": 750,
+                    "defenceStats": {
+                        "Stab": 2250,
+                        "Slash": 2250,
+                        "Crush": 2250,
+                        "Magic": 2250,
+                        "Ranged": -50
+                    }
+                }
+            ],
+            [
+                "Disassembled",
+                {
+                    "variantName": "Disassembled",
+                    "imagePath": "https://oldschool.runescape.wiki/images/Burnt_manta_ray_detail.png",
+                    "currentHitpoints": 2500,
+                    "hitpoints": 2500,
+                    "_defenceLevel": 750,
+                    "_currentDefenceLevel": 750,
+                    "maxDefenceReduction": 750,
+                    "magicLevel": 2250,
+                    "magicAccuracy": 0,
+                    "defenceStats": {
+                        "Stab": 2250,
+                        "Slash": 2250,
+                        "Crush": -50,
+                        "Magic": 2250,
+                        "Ranged": 2250
+                    }
+                }
+            ],
+            [
+                "Reformed",
+                {
+                    "variantName": "Reformed",
+                    "imagePath": "https://oldschool.runescape.wiki/images/Cake_tin_detail.png",
+                    "currentHitpoints": 4000,
+                    "hitpoints": 4000,
+                    "_defenceLevel": 750,
+                    "_currentDefenceLevel": 750,
+                    "maxDefenceReduction": 750,
+                    "magicLevel": 625,
+                    "magicAccuracy": 375,
+                    "defenceStats": {
+                        "Stab": 50,
+                        "Slash": 2250,
+                        "Crush": -50,
+                        "Magic": 2250,
+                        "Ranged": 50
+                    }
+                }
+            ],
+            [
+                "Empowered",
+                {
+                    "variantName": "Empowered",
+                    "imagePath": "https://oldschool.runescape.wiki/images/Cake_tin_detail.png",
+                    "currentHitpoints": 6250,
+                    "hitpoints": 6250,
+                    "_defenceLevel": 750,
+                    "_currentDefenceLevel": 750,
+                    "maxDefenceReduction": 750,
+                    "magicLevel": 900,
+                    "magicAccuracy": 600,
+                    "defenceStats": {
+                        "Stab": 64,
+                        "Slash": 2835,
+                        "Crush": -63,
+                        "Magic": 2835,
+                        "Ranged": 64
+                    }
+                }
+            ],
+            [
+                "Enraged",
+                {
+                    "variantName": "Enraged",
+                    "imagePath": "https://oldschool.runescape.wiki/images/Cake_tin_detail.png",
+                    "currentHitpoints": 4000,
+                    "hitpoints": 4000,
+                    "_defenceLevel": 1,
+                    "_currentDefenceLevel": 1,
+                    "maxDefenceReduction": 1,
+                    "magicLevel": 1250,
+                    "magicAccuracy": 800,
+                    "defenceStats": {
+                        "Stab": -63,
+                        "Slash": -63,
+                        "Crush": -63,
+                        "Magic": -63,
+                        "Ranged": -63
+                    }
+                }
+            ]
+        ],
+        "_activeVariant": {
+            "variantName": "Primordial",
+            "imagePath": "https://oldschool.runescape.wiki/images/Raw_manta_ray_detail.png",
+            "currentHitpoints": 3250,
+            "hitpoints": 3250,
+            "_defenceLevel": 750,
+            "_currentDefenceLevel": 750,
+            "maxDefenceReduction": 750,
+            "magicLevel": 750,
+            "magicAccuracy": 750,
+            "defenceStats": {
+                "Stab": 2250,
+                "Slash": 2250,
+                "Crush": 2250,
+                "Magic": 2250,
+                "Ranged": -50
             }
         }
     }
