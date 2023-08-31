@@ -79,6 +79,8 @@ export enum ItemName {
     InquisitorsPlateskirt = "Inquisitor's plateskirt",
     InquisitorsMace = "Inquisitor's mace",
     AbyssalBludgeon = "Abyssal bludgeon",
+    AbyssalTentacle = "Abyssal tentacle",
+    AbyssalWhip = "Abyssal whip",
     DragonBolts = "Dragon bolts",
     OpalBoltsE = "Opal bolts (e)",
     OpalDragonBoltsE = "Opal dragon bolts (e)",
@@ -136,4 +138,7 @@ export enum ItemName {
     RuneHalberd = "Rune halberd",
     DragonHalberd = "Dragon halberd",
     CrystalHalberd = "Crystal halberd",
+    BladeOfSaeldor = "Blade of saeldor",
+    DragonScimitar = "Dragon scimitar",
+    SaradominSword = "Saradomin sword",
 }

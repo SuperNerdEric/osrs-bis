@@ -986,3 +986,63 @@ createItem(ItemName.VirtusRobeBottom, {
     mageStrength: 1,
     slot: Slot.Legs,
 });
+
+createWeapon(ItemName.AbyssalTentacle, {
+    category: WeaponCategory.Whip,
+    imagePath: './Images/ItemsOld/Abyssal_tentacle.png',
+    wikiLink: "https://oldschool.runescape.wiki/w/Abyssal_tentacle",
+    slot: Slot.MainHand,
+    speedSeconds: 2.4,
+    stab: 0,
+    slash: 90,
+    crush: 0,
+    strength: 86,
+});
+
+createWeapon(ItemName.AbyssalWhip, {
+    category: WeaponCategory.Whip,
+    imagePath: './Images/ItemsOld/Abyssal_whip.png',
+    wikiLink: "https://oldschool.runescape.wiki/w/Abyssal_whip",
+    slot: Slot.MainHand,
+    speedSeconds: 2.4,
+    stab: 0,
+    slash: 82,
+    crush: 0,
+    strength: 82,
+});
+
+createWeapon(ItemName.BladeOfSaeldor, {
+    category: WeaponCategory.SlashSword,
+    imagePath: './Images/ItemsOld/Blade_of_saeldor.png',
+    wikiLink: "https://oldschool.runescape.wiki/w/Blade_of_saeldor",
+    slot: Slot.MainHand,
+    speedSeconds: 2.4,
+    stab: 55,
+    slash: 94,
+    crush: 0,
+    strength: 89,
+});
+
+createWeapon(ItemName.DragonScimitar, {
+    category: WeaponCategory.SlashSword,
+    imagePath: './Images/ItemsOld/Dragon_scimitar.png',
+    wikiLink: "https://oldschool.runescape.wiki/w/Dragon_scimitar",
+    slot: Slot.MainHand,
+    speedSeconds: 2.4,
+    stab: 8,
+    slash: 67,
+    crush: -2,
+    strength: 66,
+});
+
+createWeapon(ItemName.SaradominSword, {
+    category: WeaponCategory.TwoHandedSword,
+    imagePath: './Images/ItemsOld/Saradomin_sword.png',
+    wikiLink: "https://oldschool.runescape.wiki/w/Saradomin_sword",
+    slot: Slot.TwoHand,
+    speedSeconds: 2.4,
+    stab: 0,
+    slash: 82,
+    crush: 60,
+    strength: 82,
+});
