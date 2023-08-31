@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.6902d5d7.css",
-    "main.js": "/static/js/main.6fa2c68f.js",
+    "main.css": "/static/css/main.0947e11d.css",
+    "main.js": "/static/js/main.f025498d.js",
     "static/js/787.98701412.chunk.js": "/static/js/787.98701412.chunk.js",
     "static/media/Duke_Sucellus.png": "/static/media/Duke_Sucellus.20671a0f119b769958f1.png",
     "static/media/Fire_cape.png": "/static/media/Fire_cape.9fa34a7e2c3fc7a55285.png",
@@ -14,6 +14,7 @@
     "static/media/Ba-Ba.png": "/static/media/Ba-Ba.f5aa50a5f40b62158e0d.png",
     "static/media/Berserker_ring_(i).png": "/static/media/Berserker_ring_(i).d3120fb6ec06a3f452b9.png",
     "static/media/Berserker_ring.png": "/static/media/Berserker_ring.797b4d225e183b0cf579.png",
+    "static/media/Warrior_ring_(i).png": "/static/media/Warrior_ring_(i).078bff45fd523a31aac4.png",
     "static/media/Nex.png": "/static/media/Nex.8ce8afd99ffc1d6f1e2c.png",
     "static/media/Masori_body_f.png": "/static/media/Masori_body_f.6a7e218d564acd6122c7.png",
     "static/media/Avas_assembler.png": "/static/media/Avas_assembler.e0feeb140058bd7ed78f.png",
@@ -93,6 +94,7 @@
     "static/media/Dragon_dart.png": "/static/media/Dragon_dart.8613e18291962c399fbe.png",
     "static/media/Cerberus.png": "/static/media/Cerberus.e23ae67fdf31a1cac146.png",
     "static/media/Venenatis.png": "/static/media/Venenatis.6b4ee0dd19365b2248b1.png",
+    "static/media/Dragon_defender.png": "/static/media/Dragon_defender.d8f2edd172932281d98e.png",
     "static/media/Diamond_bolts_(e).png": "/static/media/Diamond_bolts_(e).19e26a6973251e35b4ab.png",
     "static/media/Vanguard_(magic).png": "/static/media/Vanguard_(magic).40a11e8788e3a8d4dc62.png",
     "static/media/Abyssal_Sire.png": "/static/media/Abyssal_Sire.9b8d6d5503296f9dec28.png",
@@ -276,12 +278,12 @@
     "static/media/Void_knight_robe.webp": "/static/media/Void_knight_robe.e46393a4f5a26ca7786e.webp",
     "static/media/Zamorakian_hasta.webp": "/static/media/Zamorakian_hasta.be62bb7cec7ec3005a5e.webp",
     "index.html": "/index.html",
-    "main.6902d5d7.css.map": "/static/css/main.6902d5d7.css.map",
-    "main.6fa2c68f.js.map": "/static/js/main.6fa2c68f.js.map",
+    "main.0947e11d.css.map": "/static/css/main.0947e11d.css.map",
+    "main.f025498d.js.map": "/static/js/main.f025498d.js.map",
     "787.98701412.chunk.js.map": "/static/js/787.98701412.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.6902d5d7.css",
-    "static/js/main.6fa2c68f.js"
+    "static/css/main.0947e11d.css",
+    "static/js/main.f025498d.js"
   ]
 }
