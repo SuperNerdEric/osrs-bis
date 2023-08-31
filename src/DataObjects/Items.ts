@@ -185,6 +185,18 @@ createWeapon(ItemName.GhraziRapier, {
     strength: 89,
 });
 
+createWeapon(ItemName.ZamorakianSpear, {
+    category: WeaponCategory.Spear,
+    imagePath: './Images/ItemsOld/Zamorakian_spear.png',
+    wikiLink: "https://oldschool.runescape.wiki/w/Zamorakian_spear",
+    slot: Slot.TwoHand,
+    speedSeconds: 2.4,
+    stab: 85,
+    slash: 65,
+    crush: 65,
+    strength: 75,
+});
+
 createWeapon(ItemName.ZamorakianHasta, {
     category: WeaponCategory.Spear,
     imagePath: './Images/Items/Zamorakian_hasta.webp',

@@ -30,6 +30,7 @@ export function generateMeleeGearSets(){
         { name: ItemName.SoulreaperAxe, styles: [CombatStyle.Hack, CombatStyle.Smash], gearSetType: GearSetType.General },
         { name: ItemName.OsmumtensFang, styles: [CombatStyle.Lunge, CombatStyle.Slash], gearSetType: GearSetType.General },
         { name: ItemName.GhraziRapier, styles: [CombatStyle.Stab], gearSetType: GearSetType.General },
+        { name: ItemName.ZamorakianSpear, styles: [CombatStyle.Lunge], gearSetType: GearSetType.General },
         { name: ItemName.ZamorakianHasta, styles: [CombatStyle.Lunge], gearSetType: GearSetType.General },
         { name: ItemName.AbyssalBludgeon, styles: [CombatStyle.Pound], gearSetType: GearSetType.General },
         { name: ItemName.InquisitorsMace, styles: [CombatStyle.Pound, CombatStyle.Pummel], gearSetType: GearSetType.General },
