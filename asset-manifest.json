@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.0947e11d.css",
-    "main.js": "/static/js/main.5084a380.js",
+    "main.js": "/static/js/main.b0791b43.js",
     "static/js/787.98701412.chunk.js": "/static/js/787.98701412.chunk.js",
     "static/media/Duke_Sucellus.png": "/static/media/Duke_Sucellus.20671a0f119b769958f1.png",
     "static/media/Fire_cape.png": "/static/media/Fire_cape.9fa34a7e2c3fc7a55285.png",
@@ -112,6 +112,7 @@
     "static/media/Keris_partisan_of_corruption.png": "/static/media/Keris_partisan_of_corruption.4acc9d308736f75f3afb.png",
     "static/media/Opal_dragon_bolts_(e).png": "/static/media/Opal_dragon_bolts_(e).2ca1b7fa7aeb16894c76.png",
     "static/media/Emerald_dragon_bolts_(e).png": "/static/media/Emerald_dragon_bolts_(e).fa58a55f8b34e846be66.png",
+    "static/media/Abyssal_whip.png": "/static/media/Abyssal_whip.c23d3d6d00d45884953c.png",
     "static/media/Dragon_arrow.png": "/static/media/Dragon_arrow.17ff841c447cba53c701.png",
     "static/media/Dragonstone_dragon_bolts_(e).png": "/static/media/Dragonstone_dragon_bolts_(e).d4a9f9ea3d35e86e0a8b.png",
     "static/media/Nightmare_staff.png": "/static/media/Nightmare_staff.d23b3df454ab2a4b05a3.png",
@@ -135,6 +136,7 @@
     "static/media/Sanguinesti_staff.png": "/static/media/Sanguinesti_staff.a15e0414b16bc465c270.png",
     "static/media/Amethyst_dart.png": "/static/media/Amethyst_dart.1b0507d989880992bbd1.png",
     "static/media/Avernic_defender.png": "/static/media/Avernic_defender.39c68f769ce3d7519708.png",
+    "static/media/Saradomin_sword.png": "/static/media/Saradomin_sword.84df41b92286b2a59770.png",
     "static/media/Nylocas_Vasilias_(melee).png": "/static/media/Nylocas_Vasilias_(melee).799071ff974ee39c57fd.png",
     "static/media/Inquisitors_mace.png": "/static/media/Inquisitors_mace.8fef75691958ab5ea7e2.png",
     "static/media/Tekton.png": "/static/media/Tekton.26a0588782ea7d3dc264.png",
@@ -168,11 +170,13 @@
     "static/media/Salve_amulet_(e).png": "/static/media/Salve_amulet_(e).ec817d0bdad28595d0af.png",
     "static/media/Dagannoth_Prime.png": "/static/media/Dagannoth_Prime.7adb74410f3b11c1280f.png",
     "static/media/Armadyl_helmet.png": "/static/media/Armadyl_helmet.0b1995b2a9703b40aeb2.png",
+    "static/media/Abyssal_tentacle.png": "/static/media/Abyssal_tentacle.520fcb7f751d1802f9f9.png",
     "static/media/Ahrim_the_Blighted.png": "/static/media/Ahrim_the_Blighted.ab4bcdb22f5acb833c99.png",
     "static/media/Bronze_arrow.png": "/static/media/Bronze_arrow.3e109cbce20c3895c3e3.png",
     "static/media/Torva_full_helm.png": "/static/media/Torva_full_helm.c1d4ff91388658a95794.png",
     "static/media/Armadyl_crossbow.png": "/static/media/Armadyl_crossbow.02e3d59978e5f00b02e3.png",
     "static/media/Salve_amulet(ei).png": "/static/media/Salve_amulet(ei).7398bb58aebb7c588699.png",
+    "static/media/Blade_of_saeldor.png": "/static/media/Blade_of_saeldor.d397c89f492bf3706c6f.png",
     "static/media/Giant_Mole.png": "/static/media/Giant_Mole.4e2c990f8bd0b94cb2bb.png",
     "static/media/Guthan_the_Infested.png": "/static/media/Guthan_the_Infested.2768f199e75f907b577e.png",
     "static/media/Dagannoth_Supreme.png": "/static/media/Dagannoth_Supreme.99d5c2ed8f8bcbb04bae.png",
@@ -195,6 +199,7 @@
     "static/media/Void_knight_top.png": "/static/media/Void_knight_top.1dae678e026df02ab7a2.png",
     "static/media/Ahrims_hood.png": "/static/media/Ahrims_hood.580b3b68b3c06f7e8ea1.png",
     "static/media/Deranged_archaeologist.png": "/static/media/Deranged_archaeologist.7e5bd9f8284f7f75a832.png",
+    "static/media/Dragon_scimitar.png": "/static/media/Dragon_scimitar.2f3ecc51bcb80548606a.png",
     "static/media/Crazy_archaeologist.png": "/static/media/Crazy_archaeologist.dd13a3a330feb24a93e6.png",
     "static/media/Necklace_of_anguish.png": "/static/media/Necklace_of_anguish.4470235995de2cfe5144.png",
     "static/media/Staff_of_the_dead.png": "/static/media/Staff_of_the_dead.2b005f4fc6016e2a63fa.png",
@@ -280,11 +285,11 @@
     "static/media/Zamorakian_hasta.webp": "/static/media/Zamorakian_hasta.be62bb7cec7ec3005a5e.webp",
     "index.html": "/index.html",
     "main.0947e11d.css.map": "/static/css/main.0947e11d.css.map",
-    "main.5084a380.js.map": "/static/js/main.5084a380.js.map",
+    "main.b0791b43.js.map": "/static/js/main.b0791b43.js.map",
     "787.98701412.chunk.js.map": "/static/js/787.98701412.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.0947e11d.css",
-    "static/js/main.5084a380.js"
+    "static/js/main.b0791b43.js"
   ]
 }
