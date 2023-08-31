@@ -7,8 +7,9 @@ import {SpellName} from "../SpellName";
 export function generateMageGearsets() {
     const mageBase = [
         [ItemName.AncestralHat, ItemName.AncestralRobeTop, ItemName.AncestralRobeBottom, ItemName.TormentedBracelet],
+        [ItemName.AncestralRobeTop, ItemName.AncestralRobeBottom, ItemName.TormentedBracelet],
         [ItemName.AhrimsHood, ItemName.AhrimsRobetop, ItemName.AhrimsRobeskirt, ItemName.TormentedBracelet],
-        [ItemName.AhrimsRobetop, ItemName.AhrimsRobeskirt, ItemName.ZaryteVambraces],
+        [ItemName.AhrimsRobetop, ItemName.AhrimsRobeskirt, ItemName.TormentedBracelet],
         [ItemName.VoidMageHelm, ItemName.EliteVoidTop, ItemName.EliteVoidRobe, ItemName.VoidKnightGloves],
         [ItemName.VirtusMask, ItemName.VirtusRobeTop, ItemName.VirtusRobeBottom, ItemName.TormentedBracelet]
 

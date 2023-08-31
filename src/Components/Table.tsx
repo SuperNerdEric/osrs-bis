@@ -160,9 +160,14 @@ export function GearTable({data, columns}: GearTableProps) {
                 const selectedItems = selectedItemsBySlot[slotType];
                 if (selectedItems.length > 0) {
                     const item = rowData.gearSet.getItemBySlot(slotType);
-                    if (!item || !selectedItems.includes(item.name)) {
+                    if (selectedItems.includes('None')) {
+                        if (item && !selectedItems.includes(item.name)) {
+                            nonWeaponMatch = false;
+                            break;
+                        }
+                    } else if (!item || !selectedItems.includes(item.name)) {
                         nonWeaponMatch = false;
-                        break;  // break the loop as soon as we find a non-matching item
+                        break;
                     }
                 }
             }
@@ -202,15 +207,22 @@ export function GearTable({data, columns}: GearTableProps) {
 
     const slotOptions = (slot: Slot) => {
         const itemsNamesSet = new Set();
+        let hasEmptySlot = false;
 
         const options = data.reduce((acc, rowData) => {
             const item = rowData.gearSet.getItemBySlot(slot);
-            if (item && !itemsNamesSet.has(item.name)) {
+            if (!item) {
+                hasEmptySlot = true;
+            } else if (!itemsNamesSet.has(item.name)) {
                 itemsNamesSet.add(item.name);
                 acc.push({value: item.name, label: item.name});
             }
             return acc;
         }, [] as Array<{ value: string; label: string }>);
+
+        if (hasEmptySlot && slot !== Slot.MainHand && slot !== Slot.OffHand && slot !== Slot.TwoHand) {
+            options.push({value: 'None', label: 'None'});
+        }
 
         return options;
     };
