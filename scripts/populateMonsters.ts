@@ -20,7 +20,7 @@ export function createVariantFromJson(entry: any, versionKey: string, smwname?: 
     const monsters = new Map<string, TargetMonster>;
     const variant = new MonsterVariant();
 
-    if(smwname) {
+    if (smwname) {
         variant.variantName = smwname;
     } else {
         variant.variantName = versionKey;
@@ -31,17 +31,19 @@ export function createVariantFromJson(entry: any, versionKey: string, smwname?: 
     variant.currentHitpoints = parseInt(entry.hitpoints, 10);
 
     variant.defenceLevel = parseInt(entry.def, 10);
-    if(entry.name === "Sotetseg") {
+    if (entry.name === "Sotetseg") {
         variant.maxDefenceReduction = 100;
-    } else if(entry.name === "Verzik Vitur") {
+    } else if (entry.name === "Verzik Vitur") {
         variant.maxDefenceReduction = 0;
-    } else if(entry.name === "Nex") {
+    } else if (entry.name === "Nex") {
         variant.maxDefenceReduction = 10;
-    } else if(["Ba-Ba", "Akkha", "Akkha's Shadow", "Kephri", "Zebak"].includes(entry.name)) {
+    } else if (["Ba-Ba", "Akkha", "Akkha's Shadow", "Kephri", "Zebak"].includes(entry.name)) {
         variant.maxDefenceReduction = 20;
-    } else if(entry.name === "Obelisk") {
+    } else if (entry.name === "Obelisk") {
         variant.maxDefenceReduction = 40;
-    } else if(["Tumeken's Warden", "Elidinis' Warden"].includes(entry.name)) {
+    } else if (["Tumeken's Warden", "Elidinis' Warden"].includes(entry.name)) {
+        variant.maxDefenceReduction = 30;
+    } else if (["Phosani's Nightmare", "The Nightmare"].includes(entry.name)) {
         variant.maxDefenceReduction = 30;
     } else {
         variant.maxDefenceReduction = parseInt(entry.def, 10);
@@ -69,7 +71,7 @@ export function processJsonAndAddToMonsters() {
     for (const monsterEntry of data) {
         const versions = Object.keys(monsterEntry.data);
 
-        if(monsterEntry.data[versions[0]].def === "") {
+        if (monsterEntry.data[versions[0]].def === "") {
             console.log("Skipping " + monsterEntry.data[versions[0]].name);
             continue;
         }
@@ -88,12 +90,12 @@ export function processJsonAndAddToMonsters() {
         for (const versionKey of versions) {
             const versionData = monsterEntry.data[versionKey];
 
-            if(versionData.def === "") {
+            if (versionData.def === "") {
                 console.log("Skipping " + monsterEntry.data[versions[0]].name);
                 continue;
             }
 
-            if(monsterName === "Verzik Vitur" && versionKey === "Phase 1") {
+            if (monsterName === "Verzik Vitur" && versionKey === "Phase 1") {
                 console.log("Skipping " + monsterEntry.data[versions[0]].name);
                 continue;
             }
@@ -101,7 +103,7 @@ export function processJsonAndAddToMonsters() {
             const variant = createVariantFromJson(versionData, versionKey, versionData.smwname);
 
             //Get the first monster name
-            if(!monster.name) {
+            if (!monster.name) {
                 monster.name = versionData.name;
             }
             monster.size = `${versionData.size}x${versionData.size}`;
@@ -122,21 +124,21 @@ export function processJsonAndAddToMonsters() {
                 monster.raid = Raid.TombsOfAmascut;
             }
             monster.slayerMonster = versionData.cat;
-            if(monster.slayerMonster) {
+            if (monster.slayerMonster) {
                 monster.slayerCategory = versionData.cat;
             }
 
             monster.addVariant(variant);
 
-            if(["Normal", "Post-Quest", "Damaged"].includes(versionKey)) {
+            if (["Normal", "Post-Quest", "Damaged"].includes(versionKey)) {
                 monster.setActiveVariant(versionKey);
             }
 
-            if(["Normal mode"].includes(versionData.smwname)) {
+            if (["Normal mode"].includes(versionData.smwname)) {
                 monster.setActiveVariant(versionData.smwname);
             }
 
-            if(monster.name === "Verzik Vitur" && versionData.smwname === "Normal mode, Phase 2") {
+            if (monster.name === "Verzik Vitur" && versionData.smwname === "Normal mode, Phase 2") {
                 monster.setActiveVariant(versionData.smwname);
             }
         }

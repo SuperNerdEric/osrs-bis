@@ -72320,7 +72320,7 @@
                     "hitpoints": 2400,
                     "_defenceLevel": 150,
                     "_currentDefenceLevel": 150,
-                    "maxDefenceReduction": 150,
+                    "maxDefenceReduction": 30,
                     "magicLevel": 150,
                     "magicAccuracy": 140,
                     "defenceStats": {
@@ -72340,7 +72340,7 @@
             "hitpoints": 2400,
             "_defenceLevel": 150,
             "_currentDefenceLevel": 150,
-            "maxDefenceReduction": 150,
+            "maxDefenceReduction": 30,
             "magicLevel": 150,
             "magicAccuracy": 140,
             "defenceStats": {
@@ -73460,7 +73460,7 @@
                     "hitpoints": 3200,
                     "_defenceLevel": 150,
                     "_currentDefenceLevel": 150,
-                    "maxDefenceReduction": 150,
+                    "maxDefenceReduction": 30,
                     "magicLevel": 150,
                     "magicAccuracy": 220,
                     "defenceStats": {
@@ -73480,7 +73480,7 @@
             "hitpoints": 3200,
             "_defenceLevel": 150,
             "_currentDefenceLevel": 150,
-            "maxDefenceReduction": 150,
+            "maxDefenceReduction": 30,
             "magicLevel": 150,
             "magicAccuracy": 220,
             "defenceStats": {
