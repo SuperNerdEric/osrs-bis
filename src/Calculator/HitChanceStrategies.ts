@@ -62,3 +62,18 @@ export class DefaultHitChanceStrategy extends HitChanceStrategy {
         }
     }
 }
+
+export function calculateHitChance(calculator: Calculator, attackRoll: number, defenceRoll: number) {
+    let strategy;
+    const ammoItem = calculator.gearSet.getItemBySlot(Slot.Ammo) as Item;
+    const bolt = ammoItem?.name.includes('bolt') ? ammoItem : undefined;
+
+    if (calculator.gearSet.getWeapon().name === ItemName.OsmumtensFang) {
+        strategy = new OsmumtensFangHitChanceStrategy(calculator);
+    } else if (bolt) {
+        strategy = new DiamondBoltHitChanceStrategy(calculator);
+    } else {
+        strategy = new DefaultHitChanceStrategy(calculator);
+    }
+    return strategy.calculate(attackRoll, defenceRoll);
+}

@@ -1,45 +1,19 @@
 import {TargetMonster} from "../DataObjects/TargetMonster";
-import {CombatClass, Item, Slot, StyleType, WeaponStyle} from "../DataObjects/Item";
+import {CombatClass, StyleType, WeaponStyle} from "../DataObjects/Item";
 import {Player} from "../DataObjects/Player";
 import {GearSet} from "../DataObjects/GearSets";
 import {ItemName} from "../DataObjects/ItemName";
-import {
-    BoltEnchantedStrategy,
-    DamagePerHitStrategy,
-    DefaultStrategy,
-    KerisPartisanStrategy,
-    OsmumtensFangStrategy,
-    ScytheOfViturStrategy
-} from "./DamagePerHitStrategies";
-import {
-    DefaultHitChanceStrategy,
-    DiamondBoltHitChanceStrategy,
-    OsmumtensFangHitChanceStrategy
-} from "./HitChanceStrategies";
-import {KerisMultiplierStrategy,} from "./MultiplierStrategies/KerisMultiplierStrategy";
-import {SlayerHelmetMultiplierStrategy} from "./MultiplierStrategies/SlayerHelmetMultiplierStrategy";
-import {SalveAmuletMultiplierStrategy} from "./MultiplierStrategies/SalveAmuletMultiplierStrategy";
-import {
-    TwistedBowAccuracyMultiplierStrategy,
-    TwistedBowStrengthMultiplierStrategy
-} from "./MultiplierStrategies/TwistedBowMultiplierStrategy";
+import {calculateDamagePerHit} from "./DamagePerHitStrategies";
+import {calculateHitChance} from "./HitChanceStrategies";
 import {VoidKnightMultiplierStrategy} from "./MultiplierStrategies/VoidKnightMultiplierStrategy";
 import {MultiplierType} from "./MultiplierStrategies/AbstractMultiplierStrategy";
 import {SoulreaperMultiplierStrategy} from "./MultiplierStrategies/SoulreaperMultiplierStrategy";
-import {ArclightMultiplierStrategy} from "./MultiplierStrategies/ArclightMultiplierStrategy";
-import {DragonHunterLanceMultiplierStrategy} from "./MultiplierStrategies/DragonHunterLanceMultiplierStrategy";
-import {InquisitorsMultiplierStrategy} from "./MultiplierStrategies/InquisitorsMultiplierStrategy";
-import {CorporealBeastMultiplierStrategy} from "./MultiplierStrategies/Monsters/CorporealBeastMultiplierStrategy";
-import {DragonHunterCrossbowMultiplierStrategy} from "./MultiplierStrategies/DragonHunterCrossbowMultiplierStrategy";
 import {TektonMultiplierStrategy} from "./MultiplierStrategies/Monsters/TektonMultiplierStrategy";
-import {CrystalEquipmentMultiplierStrategy} from "./MultiplierStrategies/CrystalEquipmentMultiplierStrategy";
 import {ZukMultiplierStrategy} from "./MultiplierStrategies/Monsters/ZukMultiplierStrategy";
 import {v4 as uuidv4} from 'uuid';
-import {TomeOfFireMultiplierStrategy} from "./MultiplierStrategies/TomeOfFireMultiplierStrategy";
-import {IceDemonMultiplierStrategy} from "./MultiplierStrategies/Monsters/IceDemonMultiplierStrategy";
 import {SpellBookType} from "../DataObjects/Spell";
 import {ZulrahMultiplierStrategy} from "./MultiplierStrategies/Monsters/ZulrahMultiplierStrategy";
-import {LeafyMultiplierStrategy} from "./MultiplierStrategies/Monsters/LeafyMultiplierStrategy";
+import {getGearAccuracyMultipliers, getGearDamageMultipliers} from "./MultiplierStrategies/MultiplierUtils";
 
 
 export class Calculator {
@@ -69,18 +43,18 @@ export class Calculator {
         const effectiveStrengthLevel = this.calculateEffectiveStrengthLevel(this.gearSet.combatClass);
         const effectiveAttackLevel = this.calculateEffectiveAttackLevel(this.gearSet.combatClass);
 
-        const gearDamageMultipliers = this.getGearDamageMultipliers();
+        const gearDamageMultipliers = getGearDamageMultipliers(this);
         this.maxHit = this.calculateMaxHit(effectiveStrengthLevel, gearDamageMultipliers, this.gearSet.styleType);
 
-        const gearAccuracyMultipliers = this.getGearAccuracyMultipliers();
+        const gearAccuracyMultipliers = getGearAccuracyMultipliers(this);
         this.attackRoll = this.calculateAttackRoll(effectiveAttackLevel, gearAccuracyMultipliers);
         this.defenceRoll = this.calculateDefenceRoll(invocationLevel, attackStyle);
 
-        this.hitChance = this.calculateHitChance(this.attackRoll, this.defenceRoll);
+        this.hitChance = calculateHitChance(this, this.attackRoll, this.defenceRoll);
 
         new TektonMultiplierStrategy(this).calculateMultiplier();
         new ZukMultiplierStrategy(this).calculateMultiplier();
-        this.averageDamagePerHit = this.calculateDamagePerHit();
+        this.averageDamagePerHit = calculateDamagePerHit(this);
         new ZulrahMultiplierStrategy(this).calculateMultiplier();
 
         this.attackInterval = this.gearSet.getWeapon().speedSeconds;
@@ -164,59 +138,6 @@ export class Calculator {
         return effectiveLevel;
     }
 
-    private getGearDamageMultipliers(): number[] {
-        const slayerMultiplier = new SlayerHelmetMultiplierStrategy(this).calculateMultiplier();
-        const salveMultiplier = new SalveAmuletMultiplierStrategy(this).calculateMultiplier();
-        const arcLightMultiplier = new ArclightMultiplierStrategy(this).calculateMultiplier();
-        const dragonHunterLanceMultiplier = new DragonHunterLanceMultiplierStrategy(this).calculateMultiplier();
-        const dragonHunterCrossbowMultiplier = new DragonHunterCrossbowMultiplierStrategy(this).calculateMultiplier(MultiplierType.Damage);
-        const inquisitorsMultiplier = new InquisitorsMultiplierStrategy(this).calculateMultiplier();
-        const crystalEquipmentMultiplier = new CrystalEquipmentMultiplierStrategy(this).calculateMultiplier(MultiplierType.Damage);
-        const corporealBeastMultiplier = new CorporealBeastMultiplierStrategy(this).calculateMultiplier();
-        const leafyMultiplier = new LeafyMultiplierStrategy(this).calculateMultiplier();
-        const tomeOfFireMultiplier = new TomeOfFireMultiplierStrategy(this).calculateMultiplier();
-        const iceDemonMultiplier = new IceDemonMultiplierStrategy(this).calculateMultiplier();
-
-        const gearMultipliers = [
-            Math.max(slayerMultiplier, salveMultiplier),
-            new TwistedBowStrengthMultiplierStrategy(this).calculateMultiplier(),
-            arcLightMultiplier,
-            dragonHunterLanceMultiplier,
-            dragonHunterCrossbowMultiplier,
-            inquisitorsMultiplier,
-            crystalEquipmentMultiplier,
-            corporealBeastMultiplier,
-            leafyMultiplier,
-            iceDemonMultiplier,
-            tomeOfFireMultiplier
-        ];
-
-        return gearMultipliers;
-    }
-
-    private getGearAccuracyMultipliers(): number[] {
-        const slayerMultiplier = new SlayerHelmetMultiplierStrategy(this).calculateMultiplier();
-        const salveMultiplier = new SalveAmuletMultiplierStrategy(this).calculateMultiplier();
-        const arcLightMultiplier = new ArclightMultiplierStrategy(this).calculateMultiplier();
-        const dragonHunterLanceMultiplier = new DragonHunterLanceMultiplierStrategy(this).calculateMultiplier();
-        const dragonHunterCrossbowMultiplier = new DragonHunterCrossbowMultiplierStrategy(this).calculateMultiplier(MultiplierType.Accuracy);
-        const inquisitorsMultiplier = new InquisitorsMultiplierStrategy(this).calculateMultiplier();
-        const crystalEquipmentMultiplier = new CrystalEquipmentMultiplierStrategy(this).calculateMultiplier(MultiplierType.Accuracy);
-
-        const gearMultipliers = [
-            Math.max(slayerMultiplier, salveMultiplier),
-            new KerisMultiplierStrategy(this).calculateMultiplier(),
-            new TwistedBowAccuracyMultiplierStrategy(this).calculateMultiplier(),
-            arcLightMultiplier,
-            dragonHunterLanceMultiplier,
-            dragonHunterCrossbowMultiplier,
-            inquisitorsMultiplier,
-            crystalEquipmentMultiplier
-        ];
-
-        return gearMultipliers;
-    }
-
     private calculateMaxHit(effectiveLevel: number, gearDamageMultipliers: number[], attackStyle: StyleType): number {
         let maxHit: number;
 
@@ -274,39 +195,6 @@ export class Calculator {
             defenceRoll = Math.floor(defenceRoll * multiplier);
         }
         return defenceRoll;
-    }
-
-    private calculateHitChance(attackRoll: number, defenceRoll: number) {
-        let strategy;
-        const ammoItem = this.gearSet.getItemBySlot(Slot.Ammo) as Item;
-        const bolt = ammoItem?.name.includes('bolt') ? ammoItem : undefined;
-
-        if (this.gearSet.getWeapon().name === ItemName.OsmumtensFang) {
-            strategy = new OsmumtensFangHitChanceStrategy(this);
-        } else if (bolt) {
-            strategy = new DiamondBoltHitChanceStrategy(this);
-        } else {
-            strategy = new DefaultHitChanceStrategy(this);
-        }
-        return strategy.calculate(attackRoll, defenceRoll);
-    }
-
-    private calculateDamagePerHit() {
-        let strategy: DamagePerHitStrategy;
-        const ammoItem = this.gearSet.getItemBySlot(Slot.Ammo) as Item;
-        const bolt = ammoItem?.name.includes('bolt') ? ammoItem : undefined;
-        if (this.gearSet.getWeapon().name === ItemName.ScytheOfVitur) {
-            strategy = new ScytheOfViturStrategy(this);
-        } else if (this.gearSet.getWeapon().name === ItemName.OsmumtensFang) {
-            strategy = new OsmumtensFangStrategy(this);
-        } else if (this.gearSet.getWeapon().name.includes("Keris partisan")) {
-            strategy = new KerisPartisanStrategy(this);
-        } else if (bolt) {
-            strategy = new BoltEnchantedStrategy(this);
-        } else {
-            strategy = new DefaultStrategy(this);
-        }
-        return strategy.calculate();
     }
 
     calculateAverageDamagePerHit(maxHit: number, hitChance: number) {

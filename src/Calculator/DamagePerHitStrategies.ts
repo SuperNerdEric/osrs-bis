@@ -232,3 +232,21 @@ export class DefaultStrategy extends DamagePerHitStrategy {
         return this.result.calculateAverageDamagePerHit(this.result.maxHit, this.result.hitChance);
     }
 }
+
+export function calculateDamagePerHit(calculator: Calculator) {
+    let strategy: DamagePerHitStrategy;
+    const ammoItem = calculator.gearSet.getItemBySlot(Slot.Ammo) as Item;
+    const bolt = ammoItem?.name.includes('bolt') ? ammoItem : undefined;
+    if (calculator.gearSet.getWeapon().name === ItemName.ScytheOfVitur) {
+        strategy = new ScytheOfViturStrategy(calculator);
+    } else if (calculator.gearSet.getWeapon().name === ItemName.OsmumtensFang) {
+        strategy = new OsmumtensFangStrategy(calculator);
+    } else if (calculator.gearSet.getWeapon().name.includes("Keris partisan")) {
+        strategy = new KerisPartisanStrategy(calculator);
+    } else if (bolt) {
+        strategy = new BoltEnchantedStrategy(calculator);
+    } else {
+        strategy = new DefaultStrategy(calculator);
+    }
+    return strategy.calculate();
+}
