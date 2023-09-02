@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.bfb22a3e.css",
-    "main.js": "/static/js/main.b138590a.js",
+    "main.js": "/static/js/main.420f465e.js",
     "static/js/787.98701412.chunk.js": "/static/js/787.98701412.chunk.js",
     "static/media/Duke_Sucellus.png": "/static/media/Duke_Sucellus.20671a0f119b769958f1.png",
     "static/media/Fire_cape.png": "/static/media/Fire_cape.9fa34a7e2c3fc7a55285.png",
@@ -116,6 +116,7 @@
     "static/media/Dragon_arrow.png": "/static/media/Dragon_arrow.17ff841c447cba53c701.png",
     "static/media/Dragonstone_dragon_bolts_(e).png": "/static/media/Dragonstone_dragon_bolts_(e).d4a9f9ea3d35e86e0a8b.png",
     "static/media/Nightmare_staff.png": "/static/media/Nightmare_staff.d23b3df454ab2a4b05a3.png",
+    "static/media/Amethyst_broad_bolts.png": "/static/media/Amethyst_broad_bolts.64aab3bda2ae33a44f3a.png",
     "static/media/Keris_partisan_of_breaching.png": "/static/media/Keris_partisan_of_breaching.b8936fe41f06841b29a5.png",
     "static/media/Ruby_dragon_bolts_(e).png": "/static/media/Ruby_dragon_bolts_(e).29817d3e6de6ffecd039.png",
     "static/media/Onyx_dragon_bolts_(e).png": "/static/media/Onyx_dragon_bolts_(e).5bbd34e4e71bbfa71508.png",
@@ -288,11 +289,11 @@
     "static/media/Zamorakian_hasta.webp": "/static/media/Zamorakian_hasta.be62bb7cec7ec3005a5e.webp",
     "index.html": "/index.html",
     "main.bfb22a3e.css.map": "/static/css/main.bfb22a3e.css.map",
-    "main.b138590a.js.map": "/static/js/main.b138590a.js.map",
+    "main.420f465e.js.map": "/static/js/main.420f465e.js.map",
     "787.98701412.chunk.js.map": "/static/js/787.98701412.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.bfb22a3e.css",
-    "static/js/main.b138590a.js"
+    "static/js/main.420f465e.js"
   ]
 }
