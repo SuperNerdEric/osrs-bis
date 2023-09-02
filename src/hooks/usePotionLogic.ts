@@ -60,16 +60,20 @@ export const usePotionLogic = (player: Player, setPlayer: React.Dispatch<React.S
     }
 
     function setSkillBoost(player: Player, skill: keyof Player['skills'], boost: number): void {
-        setPlayer(prevPlayer => ({
-            ...prevPlayer,
-            skills: {
+        setPlayer(prevPlayer => {
+            const newPlayer = new Player();
+            Object.assign(newPlayer, prevPlayer);
+
+            newPlayer.skills = {
                 ...prevPlayer.skills,
                 [skill]: {
                     ...prevPlayer.skills[skill],
                     boost
                 }
-            }
-        }));
+            };
+
+            return newPlayer;
+        });
     }
 
     const potionHandlers: Record<PotionKey, (isChecked: boolean) => void> = {

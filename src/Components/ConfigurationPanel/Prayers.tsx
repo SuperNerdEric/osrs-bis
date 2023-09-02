@@ -1,18 +1,18 @@
 import React from 'react';
 import {Stack, FormControlLabel, Checkbox} from '@mui/material';
+import {Prayer} from "../../DataObjects/Prayer";
 
-type PrayerLabel = 'piety' | 'rigour' | 'augury';
 
 interface PrayersProps {
     prayersData: {
-        label: PrayerLabel,
+        label: Prayer,
         displayName: string,
         icon: string
     }[];
     player: {
-        prayers: Record<string, boolean>
+        prayers: Record<Prayer, boolean>
     };
-    handlePrayerChange: (label: PrayerLabel, isChecked: boolean) => void;
+    handlePrayerChange: (label: Prayer, isChecked: boolean) => void;
 }
 
 const Prayers: React.FC<PrayersProps> = ({prayersData, player, handlePrayerChange}) => {

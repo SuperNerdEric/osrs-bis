@@ -12,6 +12,7 @@ import SkillsPanel from "./Skills";
 import Boosts from "./Boosts";
 import Prayers from "./Prayers";
 import usePotionLogic from "../../hooks/usePotionLogic";
+import {Prayer} from "../../DataObjects/Prayer";
 
 interface ConfigurationPanelProps {
     player: Player;
@@ -28,37 +29,43 @@ const ConfigurationPanel: React.FC<ConfigurationPanelProps> = ({
 
     const {potionStates, handlePotionChange} = usePotionLogic(player, setPlayer, targetMonster.raid);
 
-    const handlePrayerChange = (label: PrayerLabel, isChecked: boolean) => {
-        setPlayer(prevPlayer => ({
-            ...prevPlayer,
-            prayers: {
-                ...prevPlayer.prayers,
-                [label]: isChecked
-            }
-        }));
+    const handlePrayerChange = (prayer: Prayer, isChecked: boolean) => {
+        setPlayer(prevPlayer => {
+            const newPlayer = new Player();
+            Object.assign(newPlayer, prevPlayer);
+            newPlayer.prayers[prayer] = isChecked;
+            return newPlayer;
+        });
     };
 
     useEffect(() => {
         if (!targetMonster.slayerMonster) {
-            setPlayer(prevPlayer => ({...prevPlayer, onTask: false}));
+
+            setPlayer(prevPlayer => {
+                const newPlayer = new Player();
+                Object.assign(newPlayer, prevPlayer);
+                newPlayer.onTask = false;
+                return newPlayer;
+            });
         }
     }, [targetMonster.slayerMonster]);
 
     const handlePlayerUpdate = (skillName: SkillName, newValue: number) => {
-        setPlayer(prevPlayer => ({
-            ...prevPlayer,
-            skills: {
+        setPlayer(prevPlayer => {
+            const newPlayer = new Player();
+            Object.assign(newPlayer, prevPlayer);
+            newPlayer.skills = {
                 ...prevPlayer.skills,
                 [skillName]: {
                     ...prevPlayer.skills[skillName],
-                    level: newValue // assuming you're updating the level; adjust if it's for boost
+                    level: newValue
                 }
-            }
-        }));
+            };
+            return newPlayer;
+        });
     };
 
     type SkillName = keyof Player['skills'];
-
 
     return (
         <div style={{maxWidth: '1000px', margin: '0 auto'}}>
@@ -108,10 +115,12 @@ const ConfigurationPanel: React.FC<ConfigurationPanelProps> = ({
                                                 <Checkbox
                                                     checked={player.onTask}
                                                     onChange={(e) => {
-                                                        setPlayer(prevPlayer => ({
-                                                            ...prevPlayer,
-                                                            onTask: e.target.checked
-                                                        }));
+                                                        setPlayer(prevPlayer => {
+                                                            const newPlayer = new Player();
+                                                            Object.assign(newPlayer, prevPlayer);
+                                                            newPlayer.onTask = e.target.checked;
+                                                            return newPlayer;
+                                                        });
                                                     }}
                                                     name="On Task"
                                                 />
@@ -127,10 +136,14 @@ const ConfigurationPanel: React.FC<ConfigurationPanelProps> = ({
                                             control={
                                                 <Checkbox
                                                     checked={player.kandarinHardDiaryComplete}
-                                                    onChange={(e) => setPlayer({
-                                                        ...player,
-                                                        kandarinHardDiaryComplete: e.target.checked
-                                                    })}
+                                                    onChange={(e) => {
+                                                        setPlayer(prevPlayer => {
+                                                            const newPlayer = new Player();
+                                                            Object.assign(newPlayer, prevPlayer); // This copies properties from prevPlayer to newPlayer
+                                                            newPlayer.kandarinHardDiaryComplete = e.target.checked;
+                                                            return newPlayer;
+                                                        });
+                                                    }}
                                                     name="Kandarin Hard Diary"
                                                 />
                                             }
@@ -152,12 +165,14 @@ const ConfigurationPanel: React.FC<ConfigurationPanelProps> = ({
 
 export default ConfigurationPanel;
 
-type PrayerLabel = 'piety' | 'rigour' | 'augury';
-
-const prayersData = [
-    {label: 'piety' as PrayerLabel, displayName: 'Piety', icon: PietyIcon},
-    {label: 'rigour' as PrayerLabel, displayName: 'Rigour', icon: RigourIcon},
-    {label: 'augury' as PrayerLabel, displayName: 'Augury', icon: AuguryIcon}
+const prayersData: {
+    label: Prayer,
+    displayName: string,
+    icon: string
+}[] = [
+    {label: Prayer.Piety, displayName: 'Piety', icon: PietyIcon},
+    {label: Prayer.Rigour, displayName: 'Rigour', icon: RigourIcon},
+    {label: Prayer.Augury, displayName: 'Augury', icon: AuguryIcon}
 ];
 
 const sharedStyle = {
