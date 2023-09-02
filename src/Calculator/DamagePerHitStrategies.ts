@@ -140,7 +140,7 @@ export class RubyBoltEnchantedStrategy extends DamagePerHitStrategy {
 
         if (this.result.targetMonster.name === "Corporeal Beast") {
             procMaxHit = procMaxHit * 0.5;
-        } else if (this.result.targetMonster.name === "Tekton") {
+        } else if (this.result.targetMonster.name === "Tekton" || this.result.targetMonster.isLeafy) {
             procMaxHit = 0;
         }
 

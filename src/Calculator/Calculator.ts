@@ -39,6 +39,7 @@ import {TomeOfFireMultiplierStrategy} from "./MultiplierStrategies/TomeOfFireMul
 import {IceDemonMultiplierStrategy} from "./MultiplierStrategies/Monsters/IceDemonMultiplierStrategy";
 import {SpellBookType} from "../DataObjects/Spell";
 import {ZulrahMultiplierStrategy} from "./MultiplierStrategies/Monsters/ZulrahMultiplierStrategy";
+import {LeafyMultiplierStrategy} from "./MultiplierStrategies/Monsters/LeafyMultiplierStrategy";
 
 
 export class Calculator {
@@ -172,6 +173,7 @@ export class Calculator {
         const inquisitorsMultiplier = new InquisitorsMultiplierStrategy(this).calculateMultiplier();
         const crystalEquipmentMultiplier = new CrystalEquipmentMultiplierStrategy(this).calculateMultiplier(MultiplierType.Damage);
         const corporealBeastMultiplier = new CorporealBeastMultiplierStrategy(this).calculateMultiplier();
+        const leafyMultiplier = new LeafyMultiplierStrategy(this).calculateMultiplier();
         const tomeOfFireMultiplier = new TomeOfFireMultiplierStrategy(this).calculateMultiplier();
         const iceDemonMultiplier = new IceDemonMultiplierStrategy(this).calculateMultiplier();
 
@@ -184,6 +186,7 @@ export class Calculator {
             inquisitorsMultiplier,
             crystalEquipmentMultiplier,
             corporealBeastMultiplier,
+            leafyMultiplier,
             iceDemonMultiplier,
             tomeOfFireMultiplier
         ];

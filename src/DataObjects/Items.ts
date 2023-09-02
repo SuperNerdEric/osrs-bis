@@ -1046,3 +1046,46 @@ createWeapon(ItemName.SaradominSword, {
     crush: 60,
     strength: 82,
 });
+
+createWeapon(ItemName.LeafBladedSpear, {
+    category: WeaponCategory.Spear,
+    imagePath: './Images/ItemsOld/Leaf-bladed_spear.png',
+    wikiLink: "https://oldschool.runescape.wiki/w/Leaf-bladed_spear",
+    slot: Slot.TwoHand,
+    speedSeconds: 3.0,
+    stab: 47,
+    slash: 42,
+    crush: 36,
+    strength: 50,
+});
+
+createWeapon(ItemName.LeafBladedSword, {
+    category: WeaponCategory.StabSword,
+    imagePath: './Images/ItemsOld/Leaf-bladed_sword.png',
+    wikiLink: "https://oldschool.runescape.wiki/w/Leaf-bladed_sword",
+    slot: Slot.MainHand,
+    speedSeconds: 2.4,
+    stab: 67,
+    slash: 62,
+    crush: 0,
+    strength: 50,
+});
+
+createWeapon(ItemName.LeafBladedBattleaxe, {
+    category: WeaponCategory.Axe,
+    imagePath: './Images/ItemsOld/Leaf-bladed_battleaxe.png',
+    wikiLink: "https://oldschool.runescape.wiki/w/Leaf-bladed_battleaxe",
+    slot: Slot.MainHand,
+    speedSeconds: 3.0,
+    stab: -2,
+    slash: 72,
+    crush: 72,
+    strength: 92,
+});
+
+createItem(ItemName.AmethystBroadBolts, {
+    imagePath: "./Images/ItemsOld/Amethyst_broad_bolts.png",
+    wikiLink: "https://oldschool.runescape.wiki/w/Amethyst_broad_bolts",
+    rangedStrength: 115,
+    slot: Slot.Ammo,
+});

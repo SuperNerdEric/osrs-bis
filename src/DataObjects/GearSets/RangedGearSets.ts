@@ -60,21 +60,21 @@ export function generateRangedGearSets() {
         {
             name: ItemName.ArmadylCrossbow,
             styles: [CombatStyle.Rapid],
-            ammos: [ItemName.RubyDragonBoltsE, ItemName.DiamondDragonBoltsE],
+            ammos: [ItemName.RubyDragonBoltsE, ItemName.DiamondDragonBoltsE, ItemName.AmethystBroadBolts],
             offhand: ItemName.TwistedBuckler,
             gearSetType: GearSetType.General
         },
         {
             name: ItemName.ZaryteCrossbow,
             styles: [CombatStyle.Rapid],
-            ammos: [ItemName.RubyDragonBoltsE, ItemName.DiamondDragonBoltsE, ItemName.OnyxDragonBoltsE],
+            ammos: [ItemName.RubyDragonBoltsE, ItemName.DiamondDragonBoltsE, ItemName.OnyxDragonBoltsE, ItemName.AmethystBroadBolts],
             offhand: ItemName.TwistedBuckler,
             gearSetType: GearSetType.General
         },
         {
             name: ItemName.DragonHunterCrossbow,
             styles: [CombatStyle.Rapid],
-            ammos: [ItemName.RubyDragonBoltsE, ItemName.DiamondDragonBoltsE, ItemName.OnyxDragonBoltsE],
+            ammos: [ItemName.RubyDragonBoltsE, ItemName.DiamondDragonBoltsE, ItemName.OnyxDragonBoltsE, ItemName.AmethystBroadBolts],
             offhand: ItemName.TwistedBuckler,
             gearSetType: GearSetType.General
         }

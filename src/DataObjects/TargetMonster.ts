@@ -60,6 +60,7 @@ export class TargetMonster implements IMonsterStats {
     isDemon: boolean = false;
     isDraconic: boolean = false;
     isFiery: boolean = false;
+    isLeafy: boolean = false;
     variants: Map<string, MonsterVariant> = new Map();
     private _activeVariant!: MonsterVariant;
 
@@ -138,6 +139,7 @@ export class TargetMonster implements IMonsterStats {
             isDemon: this.isDemon,
             isDraconic: this.isDraconic,
             isFiery: this.isFiery,
+            isLeafy: this.isLeafy,
             variants: Array.from(this.variants.entries()),
             _activeVariant: this._activeVariant
         };

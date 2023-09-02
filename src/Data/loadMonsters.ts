@@ -21,6 +21,7 @@ export function loadMonstersFromFile() {
         monster.isDemon = monsterData.isDemon;
         monster.isDraconic = monsterData.isDraconic;
         monster.isFiery = monsterData.isFiery;
+        monster.isLeafy = monsterData.isLeafy;
 
         monsterData.variants.forEach((variantData: any[]) => {
             const variant = new MonsterVariant();
