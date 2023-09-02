@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.bfb22a3e.css",
-    "main.js": "/static/js/main.a54d8cf4.js",
+    "main.js": "/static/js/main.b138590a.js",
     "static/js/787.98701412.chunk.js": "/static/js/787.98701412.chunk.js",
     "static/media/Duke_Sucellus.png": "/static/media/Duke_Sucellus.20671a0f119b769958f1.png",
     "static/media/Fire_cape.png": "/static/media/Fire_cape.9fa34a7e2c3fc7a55285.png",
@@ -152,6 +152,7 @@
     "static/media/Abyssal_Sire_(phase_3,_stage_1).png": "/static/media/Abyssal_Sire_(phase_3,_stage_1).5be2c005d885f378717a.png",
     "static/media/Verac_the_Defiled.png": "/static/media/Verac_the_Defiled.3f7d0eae06a80bd00dd1.png",
     "static/media/Virtus_robe_bottom.png": "/static/media/Virtus_robe_bottom.887fb8f99f823cf75917.png",
+    "static/media/Leaf-bladed_spear.png": "/static/media/Leaf-bladed_spear.6b88f09147832b5fded2.png",
     "static/media/Elite_void_top.png": "/static/media/Elite_void_top.4d2499c34fdeecc7462b.png",
     "static/media/Dagannoth_Rex.png": "/static/media/Dagannoth_Rex.532411c9348e17f14f6e.png",
     "static/media/TzTok-Jad.png": "/static/media/TzTok-Jad.3b77bdcf85018a7348ac.png",
@@ -192,7 +193,9 @@
     "static/media/Zamorakian_spear.png": "/static/media/Zamorakian_spear.266b29a3d379f772b9df.png",
     "static/media/Inquisitors_plateskirt.png": "/static/media/Inquisitors_plateskirt.9c1ad53badecbcdf01c4.png",
     "static/media/The_Nightmare.png": "/static/media/The_Nightmare.e292293fa933c7fc37f4.png",
+    "static/media/Leaf-bladed_battleaxe.png": "/static/media/Leaf-bladed_battleaxe.757428aaf172d43972c2.png",
     "static/media/Ancestral_robe_bottom.png": "/static/media/Ancestral_robe_bottom.115ff67ea436031fb11e.png",
+    "static/media/Leaf-bladed_sword.png": "/static/media/Leaf-bladed_sword.8b0f154b9d3a353f24ce.png",
     "static/media/github.png": "/static/media/github.5eab40a02fe444730a11.png",
     "static/media/Void_mage_helm.png": "/static/media/Void_mage_helm.255cf5986a94a4753845.png",
     "static/media/Ghrazi_rapier.png": "/static/media/Ghrazi_rapier.c9af9e067f8a3f7d8d5e.png",
@@ -285,11 +288,11 @@
     "static/media/Zamorakian_hasta.webp": "/static/media/Zamorakian_hasta.be62bb7cec7ec3005a5e.webp",
     "index.html": "/index.html",
     "main.bfb22a3e.css.map": "/static/css/main.bfb22a3e.css.map",
-    "main.a54d8cf4.js.map": "/static/js/main.a54d8cf4.js.map",
+    "main.b138590a.js.map": "/static/js/main.b138590a.js.map",
     "787.98701412.chunk.js.map": "/static/js/787.98701412.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.bfb22a3e.css",
-    "static/js/main.a54d8cf4.js"
+    "static/js/main.b138590a.js"
   ]
 }
