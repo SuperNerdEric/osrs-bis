@@ -3,17 +3,15 @@ import {CombatClass, StyleType, WeaponStyle} from "../DataObjects/Item";
 import {Player} from "../DataObjects/Player";
 import {GearSet} from "../DataObjects/GearSets";
 import {ItemName} from "../DataObjects/ItemName";
-import {calculateDamagePerHit} from "./DamagePerHitStrategies";
 import {calculateHitChance} from "./HitChanceStrategies";
 import {VoidKnightMultiplierStrategy} from "./MultiplierStrategies/VoidKnightMultiplierStrategy";
 import {MultiplierType} from "./MultiplierStrategies/AbstractMultiplierStrategy";
 import {SoulreaperMultiplierStrategy} from "./MultiplierStrategies/SoulreaperMultiplierStrategy";
-import {TektonMultiplierStrategy} from "./MultiplierStrategies/Monsters/TektonMultiplierStrategy";
-import {ZukMultiplierStrategy} from "./MultiplierStrategies/Monsters/ZukMultiplierStrategy";
 import {v4 as uuidv4} from 'uuid';
 import {SpellBookType} from "../DataObjects/Spell";
-import {ZulrahMultiplierStrategy} from "./MultiplierStrategies/Monsters/ZulrahMultiplierStrategy";
 import {getGearAccuracyMultipliers, getGearDamageMultipliers} from "./MultiplierStrategies/MultiplierUtils";
+import {averageDamage, DamageProbability} from "./DamageProbability";
+import {getDamageDistribution} from "./DamageDistributionStrategies";
 
 
 export class Calculator {
@@ -23,8 +21,8 @@ export class Calculator {
     procRate: number = 0;
     attackRoll: number = 0;
     defenceRoll: number = 0;
+    damageDistribution: DamageProbability[] = [];
     averageDamagePerHit: number = 0;
-    baseHitChance: number = 0;
     hitChance: number = 0;
     attackInterval: number = 0;
     gearSet: GearSet;
@@ -51,11 +49,9 @@ export class Calculator {
         this.defenceRoll = this.calculateDefenceRoll(invocationLevel, attackStyle);
 
         this.hitChance = calculateHitChance(this, this.attackRoll, this.defenceRoll);
-
-        new TektonMultiplierStrategy(this).calculateMultiplier();
-        new ZukMultiplierStrategy(this).calculateMultiplier();
-        this.averageDamagePerHit = calculateDamagePerHit(this);
-        new ZulrahMultiplierStrategy(this).calculateMultiplier();
+        this.damageDistribution = getDamageDistribution(this);
+        this.averageDamagePerHit = averageDamage(this.damageDistribution);
+        this.maxHit = Math.max(...this.damageDistribution.map(prob => prob.dmg));
 
         this.attackInterval = this.gearSet.getWeapon().speedSeconds;
         if (this.gearSet.weaponStyle === WeaponStyle.Rapid) {
@@ -69,7 +65,7 @@ export class Calculator {
             }
         }
 
-        this.dps = this.calculateDps(this.attackInterval);
+        this.dps = this.calculateDps(this.averageDamagePerHit, this.attackInterval);
     }
 
     private calculateEffectiveStrengthLevel(combatClass: CombatClass) {
@@ -94,7 +90,6 @@ export class Calculator {
         } else {
             effectiveLevel = Math.floor((this.player.skills.magic.level + this.player.skills.magic.boost) * prayerModifiers.magic) + 8;
         }
-
 
         //According to sources void boosts effective strength level, not our max hit
         const voidMultiplier = new VoidKnightMultiplierStrategy(this).calculateMultiplier(MultiplierType.Damage);
@@ -177,6 +172,7 @@ export class Calculator {
     private calculateDefenceRoll(invocationLevel: number, attackStyle: StyleType): number {
         let baseDefence: number;
         if (attackStyle === StyleType.Magic) {
+            //todo add all of these
             if (this.targetMonster.name.includes("Verzik Vitur") || this.targetMonster.name.includes("Ice demon")) {
                 baseDefence = 9 + this.targetMonster.currentDefenceLevel;
             } else {
@@ -197,11 +193,7 @@ export class Calculator {
         return defenceRoll;
     }
 
-    calculateAverageDamagePerHit(maxHit: number, hitChance: number) {
-        return (maxHit * hitChance) / 2;
-    }
-
-    private calculateDps(weaponSpeed: number) {
-        return this.averageDamagePerHit / weaponSpeed;
+    private calculateDps(averageDamagePerHit: number, weaponSpeed: number) {
+        return averageDamagePerHit / weaponSpeed;
     }
 }

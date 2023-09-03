@@ -1,8 +1,6 @@
 import {Calculator} from "./Calculator";
 import {Raid} from "../DataObjects/Raid";
 import {ItemName} from "../DataObjects/ItemName";
-import {Item, Slot} from "../DataObjects/Item";
-import {getBoltActivationRate} from "./DamagePerHitStrategies";
 
 abstract class HitChanceStrategy {
     protected result: Calculator;
@@ -30,28 +28,6 @@ export class OsmumtensFangHitChanceStrategy extends HitChanceStrategy {
     }
 }
 
-export class DiamondBoltHitChanceStrategy extends HitChanceStrategy {
-    calculate(attackRoll: number, defenceRoll: number): number {
-        const ammoItem = this.result.gearSet.getItemBySlot(Slot.Ammo) as Item;
-        const bolt = ammoItem?.name.includes('bolt') ? ammoItem : undefined;
-
-        if (!bolt || ![ItemName.DiamondBoltsE, ItemName.DiamondDragonBoltsE, ItemName.RubyBoltsE, ItemName.RubyDragonBoltsE].includes(bolt.name)) {
-            return new DefaultHitChanceStrategy(this.result).calculate(attackRoll, defenceRoll);
-        }
-
-        const activationPercent = getBoltActivationRate(bolt.name, this.result.player.kandarinHardDiaryComplete);
-
-        const activationRate = activationPercent / 100;
-        const nonActivationRate = 1 - activationRate;
-
-        this.result.baseHitChance = new DefaultHitChanceStrategy(this.result).calculate(attackRoll, defenceRoll);
-
-        const overallHitChance = (nonActivationRate * this.result.baseHitChance) + activationRate;
-
-        return overallHitChance;
-    }
-}
-
 
 export class DefaultHitChanceStrategy extends HitChanceStrategy {
     calculate(attackRoll: number, defenceRoll: number): number {
@@ -65,13 +41,9 @@ export class DefaultHitChanceStrategy extends HitChanceStrategy {
 
 export function calculateHitChance(calculator: Calculator, attackRoll: number, defenceRoll: number) {
     let strategy;
-    const ammoItem = calculator.gearSet.getItemBySlot(Slot.Ammo) as Item;
-    const bolt = ammoItem?.name.includes('bolt') ? ammoItem : undefined;
 
     if (calculator.gearSet.getWeapon().name === ItemName.OsmumtensFang) {
         strategy = new OsmumtensFangHitChanceStrategy(calculator);
-    } else if (bolt) {
-        strategy = new DiamondBoltHitChanceStrategy(calculator);
     } else {
         strategy = new DefaultHitChanceStrategy(calculator);
     }

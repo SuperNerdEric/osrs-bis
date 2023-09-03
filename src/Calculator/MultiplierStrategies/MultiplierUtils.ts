@@ -16,32 +16,26 @@ import {
 } from "./TwistedBowMultiplierStrategy";
 import {Calculator} from "../Calculator";
 import {KerisMultiplierStrategy} from "./KerisMultiplierStrategy";
+import {ZukMultiplierStrategy} from "./Monsters/ZukMultiplierStrategy";
 
 export function getGearDamageMultipliers(calculator: Calculator): number[] {
     const slayerMultiplier = new SlayerHelmetMultiplierStrategy(calculator).calculateMultiplier();
     const salveMultiplier = new SalveAmuletMultiplierStrategy(calculator).calculateMultiplier();
-    const arcLightMultiplier = new ArclightMultiplierStrategy(calculator).calculateMultiplier();
-    const dragonHunterLanceMultiplier = new DragonHunterLanceMultiplierStrategy(calculator).calculateMultiplier();
-    const dragonHunterCrossbowMultiplier = new DragonHunterCrossbowMultiplierStrategy(calculator).calculateMultiplier(MultiplierType.Damage);
-    const inquisitorsMultiplier = new InquisitorsMultiplierStrategy(calculator).calculateMultiplier();
-    const crystalEquipmentMultiplier = new CrystalEquipmentMultiplierStrategy(calculator).calculateMultiplier(MultiplierType.Damage);
-    const corporealBeastMultiplier = new CorporealBeastMultiplierStrategy(calculator).calculateMultiplier();
-    const leafyMultiplier = new LeafyMultiplierStrategy(calculator).calculateMultiplier();
-    const tomeOfFireMultiplier = new TomeOfFireMultiplierStrategy(calculator).calculateMultiplier();
-    const iceDemonMultiplier = new IceDemonMultiplierStrategy(calculator).calculateMultiplier();
 
     const gearMultipliers = [
         Math.max(slayerMultiplier, salveMultiplier),
+        new KerisMultiplierStrategy(calculator).calculateMultiplier(MultiplierType.Damage),
         new TwistedBowStrengthMultiplierStrategy(calculator).calculateMultiplier(),
-        arcLightMultiplier,
-        dragonHunterLanceMultiplier,
-        dragonHunterCrossbowMultiplier,
-        inquisitorsMultiplier,
-        crystalEquipmentMultiplier,
-        corporealBeastMultiplier,
-        leafyMultiplier,
-        iceDemonMultiplier,
-        tomeOfFireMultiplier
+        new ArclightMultiplierStrategy(calculator).calculateMultiplier(),
+        new DragonHunterLanceMultiplierStrategy(calculator).calculateMultiplier(),
+        new DragonHunterCrossbowMultiplierStrategy(calculator).calculateMultiplier(MultiplierType.Damage),
+        new InquisitorsMultiplierStrategy(calculator).calculateMultiplier(),
+        new CrystalEquipmentMultiplierStrategy(calculator).calculateMultiplier(MultiplierType.Damage),
+        new LeafyMultiplierStrategy(calculator).calculateMultiplier(),
+        new ZukMultiplierStrategy(calculator).calculateMultiplier(),
+        new IceDemonMultiplierStrategy(calculator).calculateMultiplier(),
+        new TomeOfFireMultiplierStrategy(calculator).calculateMultiplier(),
+        new CorporealBeastMultiplierStrategy(calculator).calculateMultiplier(),
     ];
 
     return gearMultipliers;
@@ -50,21 +44,16 @@ export function getGearDamageMultipliers(calculator: Calculator): number[] {
 export function getGearAccuracyMultipliers(calculator: Calculator): number[] {
     const slayerMultiplier = new SlayerHelmetMultiplierStrategy(calculator).calculateMultiplier();
     const salveMultiplier = new SalveAmuletMultiplierStrategy(calculator).calculateMultiplier();
-    const arcLightMultiplier = new ArclightMultiplierStrategy(calculator).calculateMultiplier();
-    const dragonHunterLanceMultiplier = new DragonHunterLanceMultiplierStrategy(calculator).calculateMultiplier();
-    const dragonHunterCrossbowMultiplier = new DragonHunterCrossbowMultiplierStrategy(calculator).calculateMultiplier(MultiplierType.Accuracy);
-    const inquisitorsMultiplier = new InquisitorsMultiplierStrategy(calculator).calculateMultiplier();
-    const crystalEquipmentMultiplier = new CrystalEquipmentMultiplierStrategy(calculator).calculateMultiplier(MultiplierType.Accuracy);
 
     const gearMultipliers = [
         Math.max(slayerMultiplier, salveMultiplier),
-        new KerisMultiplierStrategy(calculator).calculateMultiplier(),
+        new KerisMultiplierStrategy(calculator).calculateMultiplier(MultiplierType.Accuracy),
         new TwistedBowAccuracyMultiplierStrategy(calculator).calculateMultiplier(),
-        arcLightMultiplier,
-        dragonHunterLanceMultiplier,
-        dragonHunterCrossbowMultiplier,
-        inquisitorsMultiplier,
-        crystalEquipmentMultiplier
+        new ArclightMultiplierStrategy(calculator).calculateMultiplier(),
+        new DragonHunterLanceMultiplierStrategy(calculator).calculateMultiplier(),
+        new DragonHunterCrossbowMultiplierStrategy(calculator).calculateMultiplier(MultiplierType.Accuracy),
+        new InquisitorsMultiplierStrategy(calculator).calculateMultiplier(),
+        new CrystalEquipmentMultiplierStrategy(calculator).calculateMultiplier(MultiplierType.Accuracy)
     ];
 
     return gearMultipliers;

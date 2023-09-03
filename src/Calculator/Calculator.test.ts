@@ -474,7 +474,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate DPS correctly', () => {
-            expect(result.dps).toBeCloseTo(11.534); //Matches fruitdeeps
+            expect(result.dps).toBeCloseTo(11.534); //Matches fruitdeeps and Bitterkoekje
         });
 
         test('should calculate maxHit correctly', () => {
@@ -482,7 +482,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate hitChance correctly', () => {
-            expect(result.hitChance).toBeCloseTo(0.8544); //Matches fruitdeeps
+            expect(result.hitChance).toBeCloseTo(0.8544); //Matches fruitdeeps and Bitterkoekje
         });
     });
 
@@ -1042,8 +1042,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate hitChance correctly', () => {
-            expect(result.baseHitChance).toBeCloseTo(0.8410); //Matches Bitterkoekje
-            expect(result.hitChance).toBeCloseTo(0.8585); //Matches fruitdeeps
+            expect(result.hitChance).toBeCloseTo(0.8410); //Matches Bitterkoekje
         });
     });
 
@@ -1233,7 +1232,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate hitChance correctly', () => {
-            expect(result.hitChance).toBeCloseTo(0.3921); //Matches Fruitdeeps (with proc)
+            expect(result.hitChance).toBeCloseTo(0.3169); //Matches Bitterkoekje
         });
     });
 
@@ -1264,7 +1263,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate hitChance correctly', () => {
-            expect(result.hitChance).toBeCloseTo(0.3980); //Matches Fruitdeeps (with proc)
+            expect(result.hitChance).toBeCloseTo(0.3236); //Matches Bitterkoekje
         });
     });
 
@@ -1295,7 +1294,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate hitChance correctly', () => {
-            expect(result.hitChance).toBeCloseTo(0.3620); //Matches Fruitdeeps (with proc)
+            expect(result.hitChance).toBeCloseTo(0.3169); //Matches Bitterkoekje
         });
     });
 
@@ -1388,8 +1387,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate hitChance correctly', () => {
-            expect(result.baseHitChance).toBeCloseTo(0.3269) //Matches Bitterkoekje
-            expect(result.hitChance).toBeCloseTo(0.401);
+            expect(result.hitChance).toBeCloseTo(0.3269) //Matches Bitterkoekje
         });
     });
 
@@ -1639,6 +1637,100 @@ describe('Calculator class', () => {
 
         test('should calculate hitChance correctly', () => {
             expect(result.hitChance).toBeCloseTo(0.564  ); //Matches Bitterkoekje
+        });
+    });
+
+    describe('with ruby dragon bolts (e) against Zulrah', () => {
+        beforeEach(() => {
+            result.gearSet = new GearSet([GearSetType.General])
+                .addItemByName(ItemName.ZaryteCrossbow)
+                .setCombatStyle(CombatStyle.Rapid)
+                .addItemByName(ItemName.RubyDragonBoltsE)
+                .addItemByName(ItemName.TwistedBuckler)
+                .addItemByName(ItemName.MasoriMaskF)
+                .addItemByName(ItemName.MasoriBodyF)
+                .addItemByName(ItemName.MasoriChapsF)
+                .addItemByName(ItemName.ZaryteVambraces)
+                .addItemByName(ItemName.PegasianBoots)
+                .addItemByName(ItemName.NecklaceOfAnguish)
+                .addItemByName(ItemName.AvasAssembler)
+            result.targetMonster = monsters.get("Zulrah") as TargetMonster;
+            result.targetMonster.setActiveVariant("Tanzanite")
+            result.calculateDPS();
+        });
+
+        test('should calculate DPS correctly', () => {
+            expect(result.dps).toBeCloseTo(6.9254); //Matches manual redistribution
+            expect(result.dps).toBeCloseTo(6.9147); //Matches Bitterkoekje
+        });
+
+        test('should calculate maxHit correctly', () => {
+            expect(result.maxHit).toBe(50);
+        });
+
+        test('should calculate hitChance correctly', () => {
+            expect(result.hitChance).toBeCloseTo(0.7870); //Matches Bitterkoekje
+        });
+    });
+
+    describe('with twisted bow against Zulrah', () => {
+        beforeEach(() => {
+            result.gearSet = new GearSet([GearSetType.General])
+                .addItemByName(ItemName.TwistedBow)
+                .setCombatStyle(CombatStyle.Rapid)
+                .addItemByName(ItemName.DragonArrow)
+                .addItemByName(ItemName.SlayerHelmetI)
+                .addItemByName(ItemName.MasoriBodyF)
+                .addItemByName(ItemName.MasoriChapsF)
+                .addItemByName(ItemName.ZaryteVambraces)
+                .addItemByName(ItemName.PegasianBoots)
+                .addItemByName(ItemName.NecklaceOfAnguish)
+                .addItemByName(ItemName.AvasAssembler)
+                .addItemByName(ItemName.VenatorRing)
+            result.targetMonster = monsters.get("Zulrah") as TargetMonster;
+            result.targetMonster.setActiveVariant("Tanzanite");
+
+            result.player.onTask = true;
+            result.calculateDPS();
+        });
+
+        test('should calculate DPS correctly', () => {
+            expect(result.dps).toBeCloseTo(9.6875); //Matches Bitterkoekje
+        });
+
+        test('should calculate maxHit correctly', () => {
+            expect(result.maxHit).toBe(50);
+        });
+
+        test('should calculate hitChance correctly', () => {
+            expect(result.hitChance).toBeCloseTo(0.8398); //Matches Bitterkoekje
+        });
+    });
+
+    describe('with ruby dragon bolts (e) against Tekton', () => {
+        beforeEach(() => {
+            result.gearSet = new GearSet([GearSetType.General])
+                .addItemByName(ItemName.ZaryteCrossbow)
+                .setCombatStyle(CombatStyle.Rapid)
+                .addItemByName(ItemName.RubyDragonBoltsE)
+                .addItemByName(ItemName.TwistedBuckler)
+                .addItemByName(ItemName.MasoriMaskF)
+                .addItemByName(ItemName.MasoriBodyF)
+                .addItemByName(ItemName.MasoriChapsF)
+                .addItemByName(ItemName.ZaryteVambraces)
+                .addItemByName(ItemName.PegasianBoots)
+                .addItemByName(ItemName.NecklaceOfAnguish)
+                .addItemByName(ItemName.AvasAssembler)
+            result.targetMonster = monsters.get("Tekton") as TargetMonster;
+            result.calculateDPS();
+        });
+
+        test('should calculate DPS correctly', () => {
+            expect(result.dps).toBeCloseTo(0);
+        });
+
+        test('should calculate maxHit correctly', () => {
+            expect(result.maxHit).toBe(0);
         });
     });
 });
