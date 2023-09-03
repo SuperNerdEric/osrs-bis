@@ -68,6 +68,11 @@ const MainContent: React.FC<MainContentProps> = ({
             shownGearSets.push(...slayerGearSets);
         }
 
+        if (targetMonster.isLeafy) {
+            const slayerGearSets = gearSets.filter(gearSet => gearSet.types.includes(GearSetType.Leafy));
+            shownGearSets.push(...slayerGearSets);
+        }
+
         if (targetMonster.slayerMonster && player.onTask) {
             const slayerGearSets = gearSets.filter(gearSet => gearSet.types.includes(GearSetType.Slayer));
             shownGearSets.push(...slayerGearSets);

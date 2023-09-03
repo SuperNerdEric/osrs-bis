@@ -25,7 +25,8 @@ export enum GearSetType {
     Kalphites,
     Demon,
     Draconic,
-    Undead
+    Undead,
+    Leafy
 }
 
 export class GearSet {
