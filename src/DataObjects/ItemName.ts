@@ -167,4 +167,5 @@ export enum ItemName {
     OrangeSalamander = "Orange salamander",
     RedSalamander = "Red salamander",
     BlackSalamander = "Black salamander",
+    CrystalBow = "Crystal bow",
 }
