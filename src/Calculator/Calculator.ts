@@ -12,6 +12,7 @@ import {SpellBookType} from "../DataObjects/Spell";
 import {getGearAccuracyMultipliers, getGearDamageMultipliers} from "./MultiplierStrategies/MultiplierUtils";
 import {averageDamage, DamageProbability} from "./DamageProbability";
 import {getDamageDistribution} from "./DamageDistributionStrategies";
+import {getMagicWeaponMaxHit} from "./MagicWeaponMaxHit";
 
 
 export class Calculator {
@@ -142,11 +143,8 @@ export class Calculator {
             if (this.gearSet.spell) {
                 maxHit = this.gearSet.spell.maxHit;
             } else {
-                maxHit = Math.floor((this.player.skills.magic.level + this.player.skills.magic.boost) / 3) - 1;
-
-                if (this.gearSet.getWeapon().name == ItemName.TumekensShadow) {
-                    maxHit += 2;
-                }
+                const boostedMagicLevel = this.player.skills.magic.level + this.player.skills.magic.boost;
+                maxHit = getMagicWeaponMaxHit(this.gearSet.getWeapon().name, boostedMagicLevel);
             }
             maxHit = Math.floor(maxHit * (1 + this.gearSet.styleStrength / 100));
         }
@@ -157,7 +155,6 @@ export class Calculator {
 
         return maxHit;
     }
-
 
     private calculateAttackRoll(effectiveAttackLevel: number, gearAccuracyMultipliers: number[]) {
         let attackRoll = effectiveAttackLevel * (this.gearSet.styleTypeBonus + 64);
