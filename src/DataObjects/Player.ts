@@ -1,16 +1,16 @@
 import {Prayer, prayerBonuses, PrayerModifiers} from "./Prayer";
 
-export interface SkillSet {
+export interface Skill {
     level: number;
     boost: number;
 }
 
 export class Player {
     skills: {
-        attack: SkillSet;
-        strength: SkillSet;
-        ranged: SkillSet;
-        magic: SkillSet;
+        attack: Skill;
+        strength: Skill;
+        ranged: Skill;
+        magic: Skill;
     };
 
     onTask: boolean = false;
