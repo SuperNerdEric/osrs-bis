@@ -1420,6 +1420,34 @@ describe('Calculator class', () => {
         });
     });
 
+    describe('with bowfa and slayer helmet on rapid', () => {
+        beforeEach(() => {
+            result.gearSet = new GearSet([GearSetType.General])
+                .addItemByName(ItemName.BowOfFaerdhinen)
+                .setCombatStyle(CombatStyle.Rapid)
+                .addItemByName(ItemName.SlayerHelmetI)
+                .addItemByName(ItemName.CrystalBody)
+                .addItemByName(ItemName.CrystalLegs)
+                .addItemByName(ItemName.AvasAssembler)
+            result.player.skills.ranged.boost = 0;
+            result.player.onTask = true;
+
+            result.calculateDPS();
+        });
+
+        test('should calculate DPS correctly', () => {
+            expect(result.dps).toBeCloseTo(2.945732477); //Matches Bitterkoekje
+        });
+
+        test('should calculate maxHit correctly', () => {
+            expect(result.maxHit).toBe(44); //Matches Bitterkoekje
+        });
+
+        test('should calculate hitChance correctly', () => {
+            expect(result.hitChance).toBeCloseTo(0.3214); //Matches Bitterkoekje
+        });
+    });
+
     describe('with blowpipe on rapid', () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General])

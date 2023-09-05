@@ -23,6 +23,7 @@ export function getGearDamageMultipliers(calculator: Calculator): number[] {
     const salveMultiplier = new SalveAmuletMultiplierStrategy(calculator).calculateMultiplier();
 
     const gearMultipliers = [
+        new CrystalEquipmentMultiplierStrategy(calculator).calculateMultiplier(MultiplierType.Damage),
         Math.max(slayerMultiplier, salveMultiplier),
         new KerisMultiplierStrategy(calculator).calculateMultiplier(MultiplierType.Damage),
         new TwistedBowStrengthMultiplierStrategy(calculator).calculateMultiplier(),
@@ -30,7 +31,6 @@ export function getGearDamageMultipliers(calculator: Calculator): number[] {
         new DragonHunterLanceMultiplierStrategy(calculator).calculateMultiplier(),
         new DragonHunterCrossbowMultiplierStrategy(calculator).calculateMultiplier(MultiplierType.Damage),
         new InquisitorsMultiplierStrategy(calculator).calculateMultiplier(),
-        new CrystalEquipmentMultiplierStrategy(calculator).calculateMultiplier(MultiplierType.Damage),
         new LeafyMultiplierStrategy(calculator).calculateMultiplier(),
         new ZukMultiplierStrategy(calculator).calculateMultiplier(),
         new IceDemonMultiplierStrategy(calculator).calculateMultiplier(),
@@ -46,6 +46,7 @@ export function getGearAccuracyMultipliers(calculator: Calculator): number[] {
     const salveMultiplier = new SalveAmuletMultiplierStrategy(calculator).calculateMultiplier();
 
     const gearMultipliers = [
+        new CrystalEquipmentMultiplierStrategy(calculator).calculateMultiplier(MultiplierType.Accuracy),
         Math.max(slayerMultiplier, salveMultiplier),
         new KerisMultiplierStrategy(calculator).calculateMultiplier(MultiplierType.Accuracy),
         new TwistedBowAccuracyMultiplierStrategy(calculator).calculateMultiplier(),
@@ -53,7 +54,6 @@ export function getGearAccuracyMultipliers(calculator: Calculator): number[] {
         new DragonHunterLanceMultiplierStrategy(calculator).calculateMultiplier(),
         new DragonHunterCrossbowMultiplierStrategy(calculator).calculateMultiplier(MultiplierType.Accuracy),
         new InquisitorsMultiplierStrategy(calculator).calculateMultiplier(),
-        new CrystalEquipmentMultiplierStrategy(calculator).calculateMultiplier(MultiplierType.Accuracy)
     ];
 
     return gearMultipliers;
