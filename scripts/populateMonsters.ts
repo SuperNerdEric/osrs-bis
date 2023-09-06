@@ -137,6 +137,14 @@ export function processJsonAndAddToMonsters() {
             if (monster.name === "Verzik Vitur" && versionData.smwname === "Normal mode, Phase 2") {
                 monster.setActiveVariant(versionData.smwname);
             }
+
+            if (monsterEntry.title === "Kraken") {
+                monster.setActiveVariant("Kraken");
+            }
+
+            if (monsterEntry.title === "Cave kraken") {
+                monster.setActiveVariant("Cave kraken");
+            }
         }
 
         for (const monsterName in monsterByName) {

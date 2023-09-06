@@ -36279,8 +36279,8 @@
             ]
         ],
         "_activeVariant": {
-            "variantName": "Whirlpool",
-            "imagePath": "https://oldschool.runescape.wiki/images/Whirlpool_(cave_kraken).png",
+            "variantName": "Cave kraken",
+            "imagePath": "https://oldschool.runescape.wiki/images/Cave_kraken.png",
             "currentHitpoints": 125,
             "hitpoints": 125,
             "_defenceLevel": 150,
@@ -36560,10 +36560,10 @@
             ]
         ],
         "_activeVariant": {
-            "variantName": "Whirlpool",
-            "imagePath": "https://oldschool.runescape.wiki/images/Whirlpool.png",
-            "currentHitpoints": 0,
-            "hitpoints": 0,
+            "variantName": "Kraken",
+            "imagePath": "https://oldschool.runescape.wiki/images/Kraken.png",
+            "currentHitpoints": 255,
+            "hitpoints": 255,
             "_defenceLevel": 1,
             "_currentDefenceLevel": 1,
             "maxDefenceReduction": 1,
@@ -84887,61 +84887,6 @@
                 "Crush": -5,
                 "Magic": 0,
                 "Ranged": 5
-            }
-        }
-    },
-    "User:BigDiesel2m/Projects/Sandbox9": {
-        "name": "Venenatis",
-        "shortName": "",
-        "size": "4x4",
-        "raid": 0,
-        "slayerMonster": "Spiders, Bosses",
-        "slayerCategory": "Spiders, Bosses",
-        "isKalphite": false,
-        "isUndead": false,
-        "isDemon": false,
-        "isDraconic": false,
-        "isFiery": false,
-        "isLeafy": false,
-        "variants": [
-            [
-                "default",
-                {
-                    "variantName": "default",
-                    "imagePath": "https://oldschool.runescape.wiki/images/Venenatis.png",
-                    "currentHitpoints": 850,
-                    "hitpoints": 850,
-                    "_defenceLevel": 321,
-                    "_currentDefenceLevel": 321,
-                    "maxDefenceReduction": 321,
-                    "magicLevel": 300,
-                    "magicAccuracy": 0,
-                    "defenceStats": {
-                        "Stab": 100,
-                        "Slash": 100,
-                        "Crush": 10,
-                        "Magic": 300,
-                        "Ranged": 150
-                    }
-                }
-            ]
-        ],
-        "_activeVariant": {
-            "variantName": "default",
-            "imagePath": "https://oldschool.runescape.wiki/images/Venenatis.png",
-            "currentHitpoints": 850,
-            "hitpoints": 850,
-            "_defenceLevel": 321,
-            "_currentDefenceLevel": 321,
-            "maxDefenceReduction": 321,
-            "magicLevel": 300,
-            "magicAccuracy": 0,
-            "defenceStats": {
-                "Stab": 100,
-                "Slash": 100,
-                "Crush": 10,
-                "Magic": 300,
-                "Ranged": 150
             }
         }
     },

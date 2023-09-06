@@ -39013,7 +39013,7 @@
                 "dcrush": "99",
                 "dmagic": "159",
                 "drange": "149",
-                "immunepoison": "Yes",
+                "immunepoison": "No",
                 "immunevenom": "Yes"
             },
             "Hard": {
@@ -39052,7 +39052,7 @@
                 "dcrush": "99",
                 "dmagic": "159",
                 "drange": "149",
-                "immunepoison": "Yes",
+                "immunepoison": "No",
                 "immunevenom": "Yes"
             }
         }
@@ -97820,7 +97820,7 @@
                 "attack style": "Melee, Range, Magic",
                 "attack speed": "Varies",
                 "immunepoison": "No",
-                "immunevenom": "Yes",
+                "immunevenom": "Poison",
                 "immunecannon": "Yes",
                 "examine": "An unfathomably huge sea creature."
             },
@@ -97859,7 +97859,7 @@
                 "attack style": "Melee, Range, Magic",
                 "attack speed": "Varies",
                 "immunepoison": "No",
-                "immunevenom": "Yes",
+                "immunevenom": "Poison",
                 "immunecannon": "Yes",
                 "examine": "An unfathomably huge sea creature."
             },
@@ -97898,7 +97898,7 @@
                 "attack style": "Melee, Range, Magic",
                 "attack speed": "Varies",
                 "immunepoison": "No",
-                "immunevenom": "Yes",
+                "immunevenom": "Poison",
                 "immunecannon": "Yes",
                 "examine": "An unfathomably huge sea creature."
             }
@@ -99194,53 +99194,6 @@
                 "immunethrall": "No",
                 "respawn": "70",
                 "id": "7265"
-            }
-        }
-    },
-    {
-        "title": "User:BigDiesel2m/Projects/Sandbox9",
-        "data": {
-            "default": {
-                "name": "Venenatis",
-                "image": "[[File:Venenatis.png|280px]]",
-                "release": "[[13 March]] [[2014]]",
-                "update": "Rejuvenating the Wilderness: More risk, more reward",
-                "members": "Yes",
-                "combat": "464",
-                "size": "4",
-                "examine": "That'll get your arachnophobia going...",
-                "xpbonus": "52.5",
-                "max hit": "21 ([[Melee]]), 35 ([[Ranged]]), 30 ([[Magic]])",
-                "aggressive": "Yes",
-                "poisonous": "No",
-                "attack style": "[[Stab]], [[Magic]], [[Ranged]]",
-                "attack speed": "4",
-                "slayxp": "956.2",
-                "cat": "Spiders, Bosses",
-                "assignedby": "turael,spria,krystilia,konar,nieve,duradel",
-                "hitpoints": "850",
-                "att": "300",
-                "str": "200",
-                "def": "321",
-                "mage": "300",
-                "range": "350",
-                "attbns": "0",
-                "strbns": "0",
-                "amagic": "0",
-                "mbns": "0",
-                "arange": "0",
-                "rngbns": "0",
-                "dstab": "100",
-                "dslash": "100",
-                "dcrush": "10",
-                "dmagic": "300",
-                "drange": "150",
-                "immunepoison": "Yes",
-                "immunevenom": "Yes",
-                "immunecannon": "No",
-                "immunethrall": "No",
-                "respawn": "28",
-                "id": "6610"
             }
         }
     },
@@ -102946,7 +102899,7 @@
                 "attack style": "",
                 "attack speed": "4",
                 "respawn": "60",
-                "hitpoints": "",
+                "hitpoints": "100",
                 "att": "",
                 "str": "",
                 "def": "",
@@ -102988,7 +102941,7 @@
                 "poisonous": "",
                 "attack style": "",
                 "attack speed": "4",
-                "hitpoints": "",
+                "hitpoints": "40",
                 "att": "",
                 "str": "",
                 "def": "",
@@ -103031,7 +102984,7 @@
                 "attack style": "",
                 "attack speed": "4",
                 "respawn": "60",
-                "hitpoints": "",
+                "hitpoints": "50",
                 "att": "",
                 "str": "",
                 "def": "",
@@ -104755,7 +104708,7 @@
                 "image": "[[File:Raw manta ray detail.png|250px]]",
                 "examine": "An ancient, void-infused fragment of a fallen God.",
                 "combat": "1365",
-                "max hit": "8, 43 (Dual Magic), 198 (Shockwave), 20 (Twin Strikes)",
+                "max hit": "8, 43 (Dual Magic), 198 (Ichxyc Shock), 20 (Twin Strikes)",
                 "poisonous": "Yes (venom) (24)",
                 "attack style": "[[Typeless]] [[Magic]], [[Magical]] [[Slash]], [[Slash]]",
                 "hitpoints": "3250",
