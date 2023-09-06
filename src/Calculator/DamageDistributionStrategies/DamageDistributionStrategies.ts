@@ -1,5 +1,5 @@
 import {Calculator} from "../Calculator";
-import {CombatClass, Item, Slot, StyleType} from "../../DataObjects/Item";
+import {CombatClass, Item, Slot} from "../../DataObjects/Item";
 import {ItemName} from "../../DataObjects/ItemName";
 import {
     upsertDamageProbability,
@@ -164,14 +164,18 @@ export function getDamageDistribution(calculator: Calculator) {
         distributions = distributions.map(distribution => adjustForFragmentOfSeren(distribution));
     }
 
+    if (calculator.targetMonster.title.toLowerCase().includes("kraken")) {
+        distributions = distributions.map(distribution => adjustForKraken(distribution, calculator));
+    }
+
     const distribution = combineMultipleDistributions(distributions);
     return distribution;
 }
 
 export function adjustForTekton(distribution: DamageProbability[], calculator: Calculator): DamageProbability[] {
-    if (calculator.gearSet.styleType === StyleType.Ranged) {
+    if (calculator.gearSet.combatClass === CombatClass.Ranged) {
         return [{dmg: 0, probability: 1}];
-    } else if (calculator.gearSet.styleType === StyleType.Magic) {
+    } else if (calculator.gearSet.combatClass === CombatClass.Magic) {
         distribution = distribution.map(d => {
             d.dmg = Math.floor(d.dmg * 0.20);
             return d;
@@ -205,3 +209,16 @@ export function adjustForFragmentOfSeren(distribution: DamageProbability[]): Dam
     return rerollDamageAboveCap(distribution, 22, 24);
 }
 
+export function adjustForKraken(distribution: DamageProbability[], calculator: Calculator): DamageProbability[] {
+    if (calculator.gearSet.combatClass === CombatClass.Melee) {
+        return [{ dmg: 0, probability: 1 }];
+    } else if (calculator.gearSet.combatClass === CombatClass.Ranged) {
+        distribution = distribution.map(dmgProb => {
+            if (dmgProb.dmg >= 1) {
+                dmgProb.dmg = Math.max(Math.floor(dmgProb.dmg / 7), 1);
+            }
+            return dmgProb;
+        });
+    }
+    return distribution;
+}

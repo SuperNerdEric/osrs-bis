@@ -1823,5 +1823,31 @@ describe('Calculator class', () => {
             expect(result.hitChance).toBeCloseTo(0.9653);
         });
     });
+
+    describe('melee on kraken', () => {
+        beforeEach(() => {
+            result.gearSet = new GearSet([GearSetType.General])
+                .addItemByName(ItemName.ScytheOfVitur)
+                .setCombatStyle(CombatStyle.Reap)
+                .addItemByName(ItemName.TorvaFullHelm)
+                .addItemByName(ItemName.TorvaPlatebody)
+                .addItemByName(ItemName.TorvaPlatelegs)
+                .addItemByName(ItemName.FerociousGloves)
+                .addItemByName(ItemName.PrimordialBoots)
+                .addItemByName(ItemName.AmuletOfTorture)
+                .addItemByName(ItemName.InfernalCape)
+                .addItemByName(ItemName.BellatorRing)
+            result.targetMonster = monsters.get("Kraken") as TargetMonster;
+            result.calculateDPS();
+        });
+
+        test('should calculate DPS correctly', () => {
+            expect(result.dps).toBeCloseTo(0);
+        });
+
+        test('should calculate maxHit correctly', () => {
+            expect(result.maxHit).toBe(0);
+        });
+    });
 });
 
