@@ -109,6 +109,11 @@ export class GearSet {
                 this.styleTypeBonus *= multiplier;
                 this.styleStrength = Math.min(100, this.styleStrength * multiplier);
             }
+
+            //Happens after Tumeken's for some reason https://archive.ph/mw2LB https://archive.ph/CtG0m
+            if (this.applyEliteVoidMageBonus(gearItems)) {
+                this.styleStrength += 2.5;
+            }
         }
 
         const virtusItems = [ItemName.VirtusMask, ItemName.VirtusRobeTop, ItemName.VirtusRobeBottom];
@@ -178,12 +183,7 @@ export class GearSet {
                 break;
         }
 
-        let styleStrength = gearItems.reduce((total: number, item: Item) => total + item[strengthAttribute], 0);
-
-        if (this.applyEliteVoidMageBonus(gearItems)) {
-            styleStrength += 2.5;
-        }
-        return styleStrength;
+        return gearItems.reduce((total: number, item: Item) => total + item[strengthAttribute], 0);
     }
 
     private applyEliteVoidMageBonus(gearItems: (Weapon | Item)[]): boolean {
