@@ -10,8 +10,8 @@ import {SoulreaperMultiplierStrategy} from "./MultiplierStrategies/SoulreaperMul
 import {v4 as uuidv4} from 'uuid';
 import {SpellBookType} from "../DataObjects/Spell";
 import {getGearAccuracyMultipliers, getGearDamageMultipliers} from "./MultiplierStrategies/MultiplierUtils";
-import {averageDamage, DamageProbability} from "./DamageProbability";
-import {getDamageDistribution} from "./DamageDistributionStrategies";
+import {averageDamage, DamageProbability} from "./DamageDistributionStrategies/DamageProbability";
+import {getDamageDistribution} from "./DamageDistributionStrategies/DamageDistributionStrategies";
 import {getMagicWeaponMaxHit} from "./MagicWeaponMaxHit";
 
 

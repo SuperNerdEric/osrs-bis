@@ -95,11 +95,6 @@ export function processJsonAndAddToMonsters() {
                 continue;
             }
 
-            if (monsterName === "Verzik Vitur" && versionKey === "Phase 1") {
-                console.log("Skipping " + monsterEntry.data[versions[0]].name);
-                continue;
-            }
-
             const variant = createVariantFromJson(versionData, versionKey, versionData.smwname);
 
             //Get the first monster name

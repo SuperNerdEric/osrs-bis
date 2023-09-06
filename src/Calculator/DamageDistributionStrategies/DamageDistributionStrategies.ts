@@ -1,77 +1,41 @@
-import {Calculator} from "./Calculator";
-import {CombatClass, Item, Slot, StyleType} from "../DataObjects/Item";
-import {ItemName} from "../DataObjects/ItemName";
-import {upsertDamageProbability, DamageProbability, generateUniformDistribution} from "./DamageProbability";
-import {getBoltActivationRate} from "./BoltActivationRates";
+import {Calculator} from "../Calculator";
+import {CombatClass, Item, Slot, StyleType} from "../../DataObjects/Item";
+import {ItemName} from "../../DataObjects/ItemName";
+import {
+    upsertDamageProbability,
+    DamageProbability,
+    generateUniformDistribution,
+    rerollDamageAboveCap, combineMultipleDistributions, combineTwoDistributions
+} from "./DamageProbability";
+import {getBoltActivationRate} from "../BoltActivationRates";
+import {AbstractDamageDistributionStrategy} from "./AbstractDamageDistributionStrategy";
 
-export abstract class DamageDistributionStrategy {
-    protected result: Calculator;
-    protected damageDistribution: DamageProbability[];
-
-    constructor(result: Calculator) {
-        this.result = result;
-        this.damageDistribution = generateUniformDistribution(0, this.result.maxHit, this.result.hitChance);
-    }
-
-    /**
-     * Adjusts the base damage distribution to account for a special effect (proc).
-     * - Reduces base damage probabilities based on the proc rate.
-     * - Merges the proc's damage distribution into the base distribution.
-     *
-     * @param procDistribution - The distribution for the special effect outcomes.
-     * @param procRate - The probability of the special effect activating.
-     */
-    protected adjustDistributionForProc(procDistribution: DamageProbability[], procRate: number) {
-        for (const dmgProb of this.damageDistribution) {
-            dmgProb.probability *= (1 - procRate);
-        }
-
-        for (const dmgProb of procDistribution) {
-            upsertDamageProbability(this.damageDistribution, dmgProb.dmg, dmgProb.probability);
-        }
-    }
-
-    abstract getDamageDistribution(): DamageProbability[];
-}
-
-export class ScytheOfViturStrategy extends DamageDistributionStrategy {
-    getDamageDistribution() {
+export class ScytheOfViturStrategy extends AbstractDamageDistributionStrategy {
+    getDamageDistributions() {
         const numberOfHits = Math.min(Number(this.result.targetMonster.size.at(0)), 3);
         let hitValue = this.result.maxHit;
 
-        for (let i = 1; i < numberOfHits; i++) {
+        const distributions: DamageProbability[][] = [];
+        for (let i = 0; i < numberOfHits; i++) {
+            distributions.push(generateUniformDistribution(0, hitValue, this.result.hitChance));
             hitValue = Math.floor(hitValue / 2);
-            const currentHitDistribution = generateUniformDistribution(0, hitValue, this.result.hitChance);
-
-            const newDistribution: DamageProbability[] = [];
-
-            for (const mainProb of this.damageDistribution) {
-                for (const currentProb of currentHitDistribution) {
-                    const combinedDmg = mainProb.dmg + currentProb.dmg;
-                    const combinedProb = mainProb.probability * currentProb.probability;
-                    upsertDamageProbability(newDistribution, combinedDmg, combinedProb);
-                }
-            }
-
-            this.damageDistribution = newDistribution;
         }
-
-        return this.damageDistribution;
+        return distributions;
     }
 }
 
-export class OsmumtensFangStrategy extends DamageDistributionStrategy {
-    getDamageDistribution() {
+export class OsmumtensFangStrategy extends AbstractDamageDistributionStrategy {
+    getDamageDistributions() {
         const minHit = Math.floor(this.result.maxHit * 0.15);
         this.result.maxHit = this.result.maxHit - minHit;
         const distribution = generateUniformDistribution(minHit, this.result.maxHit, this.result.hitChance);
-        return distribution;
+        return [distribution];
     }
 }
 
 
-export class KerisStrategy extends DamageDistributionStrategy {
-    getDamageDistribution() {
+export class KerisStrategy extends AbstractDamageDistributionStrategy {
+    getDamageDistributions() {
         if (this.result.targetMonster.isKalphite) {
             this.result.procRate = 1 / 51;
             const procMultiplier = 3;
@@ -85,16 +49,16 @@ export class KerisStrategy extends DamageDistributionStrategy {
             this.adjustDistributionForProc(procDistribution, this.result.procRate);
 
             this.result.baseMaxHit = this.result.maxHit;
-            return this.damageDistribution;
+            return [this.damageDistribution];
         } else {
             const defaultStrategy = new DefaultStrategy(this.result);
-            return defaultStrategy.getDamageDistribution();
+            return defaultStrategy.getDamageDistributions();
         }
     }
 }
 
-export class DiamondBoltEnchantedStrategy extends DamageDistributionStrategy {
-    getDamageDistribution() {
+export class DiamondBoltEnchantedStrategy extends AbstractDamageDistributionStrategy {
+    getDamageDistributions() {
         this.result.procRate = getBoltActivationRate(ItemName.DiamondBoltsE, this.result.player.kandarinHardDiaryComplete) / 100;
 
         let damageMultiplier;
@@ -108,12 +72,12 @@ export class DiamondBoltEnchantedStrategy extends DamageDistributionStrategy {
         const procDistribution = generateUniformDistribution(0, procMaxHit, this.result.procRate);
 
         this.adjustDistributionForProc(procDistribution, this.result.procRate);
-        return this.damageDistribution;
+        return [this.damageDistribution];
     }
 }
 
-export class RubyBoltEnchantedStrategy extends DamageDistributionStrategy {
-    getDamageDistribution() {
+export class RubyBoltEnchantedStrategy extends AbstractDamageDistributionStrategy {
+    getDamageDistributions() {
         this.result.procRate = getBoltActivationRate(ItemName.RubyBoltsE, this.result.player.kandarinHardDiaryComplete) / 100;
 
         let procMaxHit;
@@ -127,12 +91,12 @@ export class RubyBoltEnchantedStrategy extends DamageDistributionStrategy {
         upsertDamageProbability(procDistribution, procMaxHit, this.result.procRate);
         this.adjustDistributionForProc(procDistribution, this.result.procRate);
 
-        return this.damageDistribution;
+        return [this.damageDistribution];
     }
 }
 
-export class OnyxBoltEnchantedStrategy extends DamageDistributionStrategy {
-    getDamageDistribution() {
+export class OnyxBoltEnchantedStrategy extends AbstractDamageDistributionStrategy {
+    getDamageDistributions() {
         this.result.procRate = getBoltActivationRate(ItemName.OnyxBoltsE, this.result.player.kandarinHardDiaryComplete) / 100;
 
         let damageMultiplier = 1.20;
@@ -144,13 +108,13 @@ export class OnyxBoltEnchantedStrategy extends DamageDistributionStrategy {
         const procHitChance = this.result.procRate * this.result.hitChance; //Does NOT bypass accuracy roll, so we have to include hit chance
         const procDistribution = generateUniformDistribution(0, procMaxHit, procHitChance);
         this.adjustDistributionForProc(procDistribution, this.result.procRate);
-        return this.damageDistribution;
+        return [this.damageDistribution];
     }
 }
 
-export class DefaultStrategy extends DamageDistributionStrategy {
-    getDamageDistribution() {
-        return generateUniformDistribution(0, this.result.maxHit, this.result.hitChance);
+export class DefaultStrategy extends AbstractDamageDistributionStrategy {
+    getDamageDistributions() {
+        return [generateUniformDistribution(0, this.result.maxHit, this.result.hitChance)];
     }
 }
 
@@ -168,7 +132,7 @@ export function getStrategyFromBolt(calculator: Calculator, boltName: ItemName) 
 }
 
 export function getDamageDistribution(calculator: Calculator) {
-    let strategy: DamageDistributionStrategy;
+    let strategy: AbstractDamageDistributionStrategy;
     const ammoItem = calculator.gearSet.getItemBySlot(Slot.Ammo) as Item;
     const bolt = ammoItem?.name.includes('bolt') ? ammoItem : undefined;
     if (calculator.gearSet.getWeapon().name === ItemName.ScytheOfVitur) {
@@ -183,14 +147,24 @@ export function getDamageDistribution(calculator: Calculator) {
         strategy = new DefaultStrategy(calculator);
     }
 
-    let distribution = strategy.getDamageDistribution();
+    let distributions = strategy.getDamageDistributions();
     if (calculator.targetMonster.name.includes("Tekton")) {
-        distribution = adjustForTekton(distribution, calculator);
-    }
-    if (calculator.targetMonster.name.includes("Zulrah")) {
-        distribution = adjustForZulrah(distribution, calculator);
+        distributions = distributions.map(distribution => adjustForTekton(distribution, calculator));
     }
 
+    if (calculator.targetMonster.name.includes("Zulrah")) {
+        distributions = distributions.map(distribution => adjustForZulrah(distribution, calculator));
+    }
+
+    if (calculator.targetMonster.name.includes("Verzik") && calculator.targetMonster.activeVariant.variantName.includes("Phase 1")) {
+        distributions = distributions.map(distribution => adjustForVerzikP1(distribution, calculator));
+    }
+
+    if (calculator.targetMonster.name.includes("Fragment of Seren")) {
+        distributions = distributions.map(distribution => adjustForFragmentOfSeren(distribution));
+    }
+
+    const distribution = combineMultipleDistributions(distributions);
     return distribution;
 }
 
@@ -210,20 +184,24 @@ export function adjustForZulrah(distribution: DamageProbability[], calculator: C
     if (calculator.gearSet.combatClass === CombatClass.Melee) {
         return [{dmg: 0, probability: 1}];
     } else {
-        const adjustedDistribution: DamageProbability[] = [];
-
-        for (const dmgProb of distribution) {
-            if (dmgProb.dmg > 50) {
-                // Redistribute evenly across 45-50
-                const redistributedProbability = dmgProb.probability / 6;
-                for (let dmgValue = 45; dmgValue <= 50; dmgValue++) {
-                    upsertDamageProbability(adjustedDistribution, dmgValue, redistributedProbability);
-                }
-            } else {
-                adjustedDistribution.push(dmgProb);
-            }
-        }
-
-        return adjustedDistribution;
+        return rerollDamageAboveCap(distribution, 45, 50);
     }
 }
+
+export function adjustForVerzikP1(distribution: DamageProbability[], calculator: Calculator): DamageProbability[] {
+    if (calculator.gearSet.getWeapon()?.name === ItemName.Dawnbringer) {
+        // For Dawnbringer, assume 100% hit chance but rolls evenly from 0 to max hit
+        return generateUniformDistribution(0, calculator.maxHit, 1);
+    } else if (calculator.gearSet.combatClass === CombatClass.Melee) {
+        const verzikCapDistribution = generateUniformDistribution(0, 10, 1);
+        return combineTwoDistributions(distribution, verzikCapDistribution, Math.min);
+    } else {
+        const verzikCapDistribution = generateUniformDistribution(0, 3, 1);
+        return combineTwoDistributions(distribution, verzikCapDistribution, Math.min);
+    }
+}
+
+export function adjustForFragmentOfSeren(distribution: DamageProbability[]): DamageProbability[] {
+    return rerollDamageAboveCap(distribution, 22, 24);
+}
+

@@ -26,7 +26,7 @@ export function generateMeleeGearSets(){
     meleeBase = combine(meleeBase, meleeAmulets);
 
     const weaponsWithStyles: { name: ItemName, styles: CombatStyle[], gearSetType: GearSetType }[] = [
-        { name: ItemName.ScytheOfVitur, styles: [CombatStyle.Chop, CombatStyle.Jab], gearSetType: GearSetType.General },
+        { name: ItemName.ScytheOfVitur, styles: [CombatStyle.Reap, CombatStyle.Chop, CombatStyle.Jab], gearSetType: GearSetType.General },
         { name: ItemName.SoulreaperAxe, styles: [CombatStyle.Hack, CombatStyle.Smash], gearSetType: GearSetType.General },
         { name: ItemName.OsmumtensFang, styles: [CombatStyle.Lunge, CombatStyle.Slash], gearSetType: GearSetType.General },
         { name: ItemName.GhraziRapier, styles: [CombatStyle.Stab], gearSetType: GearSetType.General },

@@ -65302,6 +65302,27 @@
         "isLeafy": false,
         "variants": [
             [
+                "Entry mode, Phase 1",
+                {
+                    "variantName": "Entry mode, Phase 1",
+                    "imagePath": "https://oldschool.runescape.wiki/images/Verzik_Vitur.png",
+                    "currentHitpoints": 1200,
+                    "hitpoints": 1200,
+                    "_defenceLevel": 10,
+                    "_currentDefenceLevel": 10,
+                    "maxDefenceReduction": 0,
+                    "magicLevel": 180,
+                    "magicAccuracy": 32,
+                    "defenceStats": {
+                        "Stab": 10,
+                        "Slash": 10,
+                        "Crush": 10,
+                        "Magic": 10,
+                        "Ranged": 10
+                    }
+                }
+            ],
+            [
                 "Entry mode, Phase 2",
                 {
                     "variantName": "Entry mode, Phase 2",
@@ -65344,6 +65365,27 @@
                 }
             ],
             [
+                "Normal mode, Phase 1",
+                {
+                    "variantName": "Normal mode, Phase 1",
+                    "imagePath": "https://oldschool.runescape.wiki/images/Verzik_Vitur.png",
+                    "currentHitpoints": 2000,
+                    "hitpoints": 2000,
+                    "_defenceLevel": 20,
+                    "_currentDefenceLevel": 20,
+                    "maxDefenceReduction": 0,
+                    "magicLevel": 400,
+                    "magicAccuracy": 80,
+                    "defenceStats": {
+                        "Stab": 20,
+                        "Slash": 20,
+                        "Crush": 20,
+                        "Magic": 20,
+                        "Ranged": 20
+                    }
+                }
+            ],
+            [
                 "Normal mode, Phase 2",
                 {
                     "variantName": "Normal mode, Phase 2",
@@ -65382,6 +65424,27 @@
                         "Crush": 70,
                         "Magic": 100,
                         "Ranged": 230
+                    }
+                }
+            ],
+            [
+                "Hard mode, Phase 1",
+                {
+                    "variantName": "Hard mode, Phase 1",
+                    "imagePath": "https://oldschool.runescape.wiki/images/Verzik_Vitur.png",
+                    "currentHitpoints": 2000,
+                    "hitpoints": 2000,
+                    "_defenceLevel": 20,
+                    "_currentDefenceLevel": 20,
+                    "maxDefenceReduction": 0,
+                    "magicLevel": 400,
+                    "magicAccuracy": 80,
+                    "defenceStats": {
+                        "Stab": 20,
+                        "Slash": 20,
+                        "Crush": 20,
+                        "Magic": 20,
+                        "Ranged": 20
                     }
                 }
             ],

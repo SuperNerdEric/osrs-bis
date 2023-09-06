@@ -1761,5 +1761,67 @@ describe('Calculator class', () => {
             expect(result.maxHit).toBe(0);
         });
     });
+
+    describe('scythe on verzik p1', () => {
+        beforeEach(() => {
+            result.gearSet = new GearSet([GearSetType.General])
+                .addItemByName(ItemName.ScytheOfVitur)
+                .setCombatStyle(CombatStyle.Reap)
+                .addItemByName(ItemName.TorvaFullHelm)
+                .addItemByName(ItemName.TorvaPlatebody)
+                .addItemByName(ItemName.TorvaPlatelegs)
+                .addItemByName(ItemName.FerociousGloves)
+                .addItemByName(ItemName.PrimordialBoots)
+                .addItemByName(ItemName.AmuletOfTorture)
+                .addItemByName(ItemName.InfernalCape)
+                .addItemByName(ItemName.BellatorRing)
+            result.targetMonster = monsters.get("Verzik Vitur") as TargetMonster;
+            result.targetMonster.setActiveVariant("Normal mode, Phase 1");
+            result.calculateDPS();
+        });
+
+        test('should calculate DPS correctly', () => {
+            expect(result.dps).toBeCloseTo(3.9426);
+        });
+
+        test('should calculate maxHit correctly', () => {
+            expect(result.maxHit).toBe(30);
+        });
+
+        test('should calculate hitChance correctly', () => {
+            expect(result.hitChance).toBeCloseTo(0.9653);
+        });
+    });
+
+    describe('scythe with void on verzik p1', () => {
+        beforeEach(() => {
+            result.gearSet = new GearSet([GearSetType.General])
+                .addItemByName(ItemName.ScytheOfVitur)
+                .setCombatStyle(CombatStyle.Reap)
+                .addItemByName(ItemName.VoidMeleeHelm)
+                .addItemByName(ItemName.EliteVoidTop)
+                .addItemByName(ItemName.EliteVoidRobe)
+                .addItemByName(ItemName.VoidKnightGloves)
+                .addItemByName(ItemName.PrimordialBoots)
+                .addItemByName(ItemName.AmuletOfTorture)
+                .addItemByName(ItemName.InfernalCape)
+                .addItemByName(ItemName.BellatorRing)
+            result.targetMonster = monsters.get("Verzik Vitur") as TargetMonster;
+            result.targetMonster.setActiveVariant("Normal mode, Phase 1");
+            result.calculateDPS();
+        });
+
+        test('should calculate DPS correctly', () => {
+            expect(result.dps).toBeCloseTo(3.8704);
+        });
+
+        test('should calculate maxHit correctly', () => {
+            expect(result.maxHit).toBe(30);
+        });
+
+        test('should calculate hitChance correctly', () => {
+            expect(result.hitChance).toBeCloseTo(0.9653);
+        });
+    });
 });
 
