@@ -16,7 +16,6 @@ import {
 } from "./TwistedBowMultiplierStrategy";
 import {Calculator} from "../Calculator";
 import {KerisMultiplierStrategy} from "./KerisMultiplierStrategy";
-import {ZukMultiplierStrategy} from "./Monsters/ZukMultiplierStrategy";
 import {TomeOfWaterMultiplierStrategy} from "./TomeOfWaterMultiplierStrategy";
 
 export function getGearDamageMultipliers(calculator: Calculator): number[] {
@@ -33,7 +32,6 @@ export function getGearDamageMultipliers(calculator: Calculator): number[] {
         new DragonHunterCrossbowMultiplierStrategy(calculator).calculateMultiplier(MultiplierType.Damage),
         new InquisitorsMultiplierStrategy(calculator).calculateMultiplier(),
         new LeafyMultiplierStrategy(calculator).calculateMultiplier(),
-        new ZukMultiplierStrategy(calculator).calculateMultiplier(),
         new IceDemonMultiplierStrategy(calculator).calculateMultiplier(),
         new TomeOfFireMultiplierStrategy(calculator).calculateMultiplier(),
         new TomeOfWaterMultiplierStrategy(calculator).calculateMultiplier(),

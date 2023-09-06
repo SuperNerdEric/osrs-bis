@@ -168,6 +168,10 @@ export function getDamageDistribution(calculator: Calculator) {
         distributions = distributions.map(distribution => adjustForKraken(distribution, calculator));
     }
 
+    if (calculator.targetMonster.name.includes("Abyssal portal") || calculator.targetMonster.name.includes("TzKal-Zuk") ) {
+        distributions = distributions.map(distribution => immuneToMelee(distribution, calculator));
+    }
+
     const distribution = combineMultipleDistributions(distributions);
     return distribution;
 }
@@ -190,6 +194,13 @@ export function adjustForZulrah(distribution: DamageProbability[], calculator: C
     } else {
         return rerollDamageAboveCap(distribution, 45, 50);
     }
+}
+
+export function immuneToMelee(distribution: DamageProbability[], calculator: Calculator): DamageProbability[] {
+    if (calculator.gearSet.combatClass === CombatClass.Melee) {
+        return [{dmg: 0, probability: 1}];
+    }
+    return distribution;
 }
 
 export function adjustForVerzikP1(distribution: DamageProbability[], calculator: Calculator): DamageProbability[] {
