@@ -1849,5 +1849,39 @@ describe('Calculator class', () => {
             expect(result.maxHit).toBe(0);
         });
     });
+
+    describe('water surge on kraken', () => {
+        beforeEach(() => {
+            result.gearSet = new GearSet([GearSetType.General])
+                .addItemByName(ItemName.HarmonisedNightmareStaff)
+                .setCombatStyle(CombatStyle.Spell)
+                .addItemByName(ItemName.TomeOfWater)
+                .addItemByName(ItemName.SlayerHelmetI)
+                .addItemByName(ItemName.AncestralRobeTop)
+                .addItemByName(ItemName.AncestralRobeBottom)
+                .addItemByName(ItemName.TormentedBracelet)
+                .addItemByName(ItemName.EternalBoots)
+                .addItemByName(ItemName.OccultNecklace)
+                .addItemByName(ItemName.ImbuedZamorakCape)
+                .addItemByName(ItemName.MagusRing)
+                .setSpellByName(SpellName.WaterSurge);
+            result.targetMonster = monsters.get("Kraken") as TargetMonster;
+            result.player.onTask = true;
+            result.player.skills.magic.boost = 13; //Saturated heart
+            result.calculateDPS();
+        });
+
+        test('should calculate DPS correctly', () => {
+            expect(result.dps).toBeCloseTo(8.1477); //Matches Bitterkoekje (magic lvl is wrong on Bitter though)
+        });
+
+        test('should calculate maxHit correctly', () => {
+            expect(result.maxHit).toBe(40); //Matches Bitterkoekje
+        });
+
+        test('should calculate hitChance correctly', () => {
+            expect(result.hitChance).toBeCloseTo(0.9777); //Matches Bitterkoekje
+        });
+    });
 });
 

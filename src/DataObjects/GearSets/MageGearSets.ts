@@ -50,6 +50,7 @@ export function generateMageGearsets() {
     ];
 
     const spells = [
+        {name: SpellName.WaterSurge, requiredOffhand: ItemName.TomeOfWater},
         {name: SpellName.FireSurge, requiredOffhand: ItemName.TomeOfFire},
         {name: SpellName.IceBarrage, requiredOffhand: null}
     ];
@@ -59,6 +60,7 @@ export function generateMageGearsets() {
         ItemName.ElidinisWardF,
         ItemName.BookOfTheDead,
         ItemName.TomeOfFire,
+        ItemName.TomeOfWater,
         null
     ];
 

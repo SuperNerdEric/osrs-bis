@@ -17,6 +17,7 @@ import {
 import {Calculator} from "../Calculator";
 import {KerisMultiplierStrategy} from "./KerisMultiplierStrategy";
 import {ZukMultiplierStrategy} from "./Monsters/ZukMultiplierStrategy";
+import {TomeOfWaterMultiplierStrategy} from "./TomeOfWaterMultiplierStrategy";
 
 export function getGearDamageMultipliers(calculator: Calculator): number[] {
     const slayerMultiplier = new SlayerHelmetMultiplierStrategy(calculator).calculateMultiplier();
@@ -35,6 +36,7 @@ export function getGearDamageMultipliers(calculator: Calculator): number[] {
         new ZukMultiplierStrategy(calculator).calculateMultiplier(),
         new IceDemonMultiplierStrategy(calculator).calculateMultiplier(),
         new TomeOfFireMultiplierStrategy(calculator).calculateMultiplier(),
+        new TomeOfWaterMultiplierStrategy(calculator).calculateMultiplier(),
         new CorporealBeastMultiplierStrategy(calculator).calculateMultiplier(),
     ];
 
@@ -54,6 +56,7 @@ export function getGearAccuracyMultipliers(calculator: Calculator): number[] {
         new DragonHunterLanceMultiplierStrategy(calculator).calculateMultiplier(),
         new DragonHunterCrossbowMultiplierStrategy(calculator).calculateMultiplier(MultiplierType.Accuracy),
         new InquisitorsMultiplierStrategy(calculator).calculateMultiplier(),
+        new TomeOfWaterMultiplierStrategy(calculator).calculateMultiplier(),
     ];
 
     return gearMultipliers;
