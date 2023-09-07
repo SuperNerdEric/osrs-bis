@@ -51,6 +51,15 @@ createItem(ItemName.DragonDefender, {
     strength: 6,
 });
 
+createItem(ItemName.DragonfireShield, {
+    imagePath: "./Images/ItemsOld/Dragonfire_shield.png",
+    wikiLink: "https://oldschool.runescape.wiki/w/Dragonfire_shield#Charged",
+    slot: Slot.OffHand,
+    magic: -10,
+    ranged: -5,
+    strength: 7,
+});
+
 createItem(ItemName.TorvaFullHelm, {
     imagePath: "./Images/Items/Torva_full_helm.webp",
     wikiLink: "https://oldschool.runescape.wiki/w/Torva_full_helm#Restored",

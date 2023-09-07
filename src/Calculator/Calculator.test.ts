@@ -2055,5 +2055,127 @@ describe('Calculator class', () => {
             expect(result.maxHit).toBe(25); //Tested in game
         });
     });
+
+    describe('with dragon hunter crossbow and slayer helmet against dragon', () => {
+        beforeEach(() => {
+            result.gearSet = new GearSet([GearSetType.General])
+                .addItemByName(ItemName.DragonHunterCrossbow)
+                .setCombatStyle(CombatStyle.Rapid)
+                .addItemByName(ItemName.DragonBolts)
+                .addItemByName(ItemName.TwistedBuckler)
+                .addItemByName(ItemName.SlayerHelmetI)
+                .addItemByName(ItemName.MasoriBodyF)
+                .addItemByName(ItemName.MasoriChapsF)
+                .addItemByName(ItemName.ZaryteVambraces)
+                .addItemByName(ItemName.PegasianBoots)
+                .addItemByName(ItemName.NecklaceOfAnguish)
+                .addItemByName(ItemName.AvasAssembler)
+                .addItemByName(ItemName.VenatorRing);
+            result.targetMonster = monsters.get("Blue dragon") as TargetMonster;
+            result.player.onTask = true;
+            result.calculateDPS();
+        });
+
+        test('should calculate DPS correctly', () => {
+            expect(result.dps).toBeCloseTo(10.322); //Matches Bitterkoekje
+        });
+
+        test('should calculate maxHit correctly', () => {
+            expect(result.maxHit).toBe(68); //Matches Bitterkoekje
+        });
+
+        test('should calculate hitChance correctly', () => {
+            expect(result.hitChance).toBeCloseTo(0.9108); //Matches Bitterkoekje
+        });
+    });
+
+    describe('with dragon hunter crossbow and slayer helmet against dragon', () => {
+        beforeEach(() => {
+            result.gearSet = new GearSet([GearSetType.General])
+                .addItemByName(ItemName.DragonHunterCrossbow)
+                .setCombatStyle(CombatStyle.Rapid)
+                .addItemByName(ItemName.DragonBolts)
+                .addItemByName(ItemName.TwistedBuckler)
+                .addItemByName(ItemName.SlayerHelmetI)
+                .addItemByName(ItemName.MasoriBodyF)
+                .addItemByName(ItemName.MasoriChapsF)
+                .addItemByName(ItemName.ZaryteVambraces)
+                .addItemByName(ItemName.PegasianBoots)
+                .addItemByName(ItemName.NecklaceOfAnguish)
+                .addItemByName(ItemName.AvasAssembler)
+                .addItemByName(ItemName.VenatorRing);
+            result.targetMonster = monsters.get("Blue dragon") as TargetMonster;
+            result.player.onTask = true;
+            result.calculateDPS();
+        });
+
+        test('should calculate DPS correctly', () => {
+            expect(result.dps).toBeCloseTo(10.322); //Matches Bitterkoekje
+        });
+
+        test('should calculate maxHit correctly', () => {
+            expect(result.maxHit).toBe(68); //Matches Bitterkoekje
+        });
+
+        test('should calculate hitChance correctly', () => {
+            expect(result.hitChance).toBeCloseTo(0.9108); //Matches Bitterkoekje
+        });
+    });
+
+    describe('with dragon hunter lance against rune dragon', () => {
+        beforeEach(() => {
+            result.gearSet = new GearSet([GearSetType.General])
+                .addItemByName(ItemName.DragonHunterLance)
+                .setCombatStyle(CombatStyle.Lunge)
+                .addItemByName(ItemName.DragonfireShield)
+                .addItemByName(ItemName.FerociousGloves)
+                .addItemByName(ItemName.AmuletOfTorture)
+                .addItemByName(ItemName.FireCape)
+                .addItemByName(ItemName.BerserkerRingI)
+
+            result.targetMonster = monsters.get("Rune dragon") as TargetMonster;
+            result.calculateDPS();
+        });
+
+        test('should calculate DPS correctly', () => {
+            expect(result.dps).toBeCloseTo(6.256); //Matches Bitterkoekje (once you fix defence level)
+        });
+
+        test('should calculate maxHit correctly', () => {
+            expect(result.maxHit).toBe(51); //Matches Bitterkoekje
+        });
+
+        test('should calculate hitChance correctly', () => {
+            expect(result.hitChance).toBeCloseTo(0.5888); //Matches Bitterkoekje
+        });
+    });
+
+    describe('with osmumtens fang against rune dragon', () => {
+        beforeEach(() => {
+            result.gearSet = new GearSet([GearSetType.General])
+                .addItemByName(ItemName.OsmumtensFang)
+                .setCombatStyle(CombatStyle.Lunge)
+                .addItemByName(ItemName.DragonfireShield)
+                .addItemByName(ItemName.FerociousGloves)
+                .addItemByName(ItemName.AmuletOfTorture)
+                .addItemByName(ItemName.FireCape)
+                .addItemByName(ItemName.BerserkerRingI)
+
+            result.targetMonster = monsters.get("Rune dragon") as TargetMonster;
+            result.calculateDPS();
+        });
+
+        test('should calculate DPS correctly', () => {
+            expect(result.dps).toBeCloseTo(6.2327); //Matches Bitterkoekje (once you fix defence level)
+        });
+
+        test('should calculate maxHit correctly', () => {
+            expect(result.maxHit).toBe(44); //Matches Bitterkoekje
+        });
+
+        test('should calculate hitChance correctly', () => {
+            expect(result.hitChance).toBeCloseTo(0.7333); //Matches Bitterkoekje
+        });
+    });
 });
 

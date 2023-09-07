@@ -10,17 +10,20 @@ export function generateMeleeGearSets(){
         );
 
     let meleeBase: ItemName[][] = [
-        [ItemName.InquisitorsGreatHelm, ItemName.InquisitorsHauberk, ItemName.InquisitorsPlateskirt, ItemName.FerociousGloves, ItemName.PrimordialBoots],
-        [ItemName.TorvaFullHelm, ItemName.TorvaPlatebody, ItemName.TorvaPlatelegs, ItemName.FerociousGloves, ItemName.PrimordialBoots],
-        [ItemName.NeitiznotFaceguard, ItemName.BandosChestplate, ItemName.BandosTassets, ItemName.FerociousGloves, ItemName.PrimordialBoots],
-        [ItemName.VoidMeleeHelm, ItemName.EliteVoidTop, ItemName.EliteVoidRobe, ItemName.VoidKnightGloves, ItemName.PrimordialBoots],
+        [ItemName.FerociousGloves],
+        [ItemName.InquisitorsGreatHelm, ItemName.InquisitorsHauberk, ItemName.InquisitorsPlateskirt, ItemName.FerociousGloves],
+        [ItemName.TorvaFullHelm, ItemName.TorvaPlatebody, ItemName.TorvaPlatelegs, ItemName.FerociousGloves],
+        [ItemName.NeitiznotFaceguard, ItemName.BandosChestplate, ItemName.BandosTassets, ItemName.FerociousGloves],
+        [ItemName.VoidMeleeHelm, ItemName.EliteVoidTop, ItemName.EliteVoidRobe, ItemName.VoidKnightGloves],
     ];
 
+    const meleeBoots = [null, ItemName.PrimordialBoots];
     const meleeRings = [null, ItemName.BerserkerRingI, ItemName.WarriorRingI, ItemName.UltorRing, ItemName.BellatorRing];
-    const meleeOffhands = [ItemName.DragonDefender, ItemName.AvernicDefender];
+    const meleeOffhands = [ItemName.DragonDefender, ItemName.AvernicDefender, ItemName.DragonfireShield];
     const meleeCapes = [ItemName.FireCape, ItemName.InfernalCape];
     const meleeAmulets = [ItemName.AmuletOfTorture, ItemName.AmuletOfFury];
 
+    meleeBase = combine(meleeBase, meleeBoots);
     meleeBase = combine(meleeBase, meleeRings);
     meleeBase = combine(meleeBase, meleeCapes);
     meleeBase = combine(meleeBase, meleeAmulets);
@@ -28,7 +31,7 @@ export function generateMeleeGearSets(){
     const weaponsWithStyles: { name: ItemName, styles: CombatStyle[], gearSetType: GearSetType }[] = [
         { name: ItemName.ScytheOfVitur, styles: [CombatStyle.Reap, CombatStyle.Chop, CombatStyle.Jab], gearSetType: GearSetType.General },
         { name: ItemName.SoulreaperAxe, styles: [CombatStyle.Hack, CombatStyle.Smash], gearSetType: GearSetType.General },
-        { name: ItemName.OsmumtensFang, styles: [CombatStyle.Lunge, CombatStyle.Slash], gearSetType: GearSetType.General },
+        { name: ItemName.OsmumtensFang, styles: [CombatStyle.Stab, CombatStyle.Lunge, CombatStyle.Slash], gearSetType: GearSetType.General },
         { name: ItemName.GhraziRapier, styles: [CombatStyle.Stab], gearSetType: GearSetType.General },
         { name: ItemName.ZamorakianSpear, styles: [CombatStyle.Lunge], gearSetType: GearSetType.General },
         { name: ItemName.ZamorakianHasta, styles: [CombatStyle.Lunge], gearSetType: GearSetType.General },

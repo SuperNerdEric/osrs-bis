@@ -171,5 +171,6 @@ export enum ItemName {
     ChaosGauntlets = "Chaos gauntlets",
     MysticSmokeStaff = "Mystic smoke staff",
     SmokeBattlestaff = "Smoke battlestaff",
-    StaffOfFire = "Staff of fire"
+    StaffOfFire = "Staff of fire",
+    DragonfireShield = "Dragonfire shield",
 }
