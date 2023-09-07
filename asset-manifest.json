@@ -1,8 +1,10 @@
 {
   "files": {
     "main.css": "/static/css/main.bfb22a3e.css",
-    "main.js": "/static/js/main.67c8001d.js",
+    "main.js": "/static/js/main.95143533.js",
     "static/js/787.98701412.chunk.js": "/static/js/787.98701412.chunk.js",
+    "static/media/Mystic_smoke_staff.gif": "/static/media/Mystic_smoke_staff.1db57e9780287ca950ce.gif",
+    "static/media/Smoke_battlestaff.gif": "/static/media/Smoke_battlestaff.1db57e9780287ca950ce.gif",
     "static/media/Duke_Sucellus.png": "/static/media/Duke_Sucellus.20671a0f119b769958f1.png",
     "static/media/Fire_cape.png": "/static/media/Fire_cape.9fa34a7e2c3fc7a55285.png",
     "static/media/Infernal_cape.png": "/static/media/Infernal_cape.138db8766550a20565e9.png",
@@ -146,6 +148,7 @@
     "static/media/Diamond_dragon_bolts_(e).png": "/static/media/Diamond_dragon_bolts_(e).05182148389e506d819b.png",
     "static/media/Callisto.png": "/static/media/Callisto.d2dc88a0f80cf5eb90b6.png",
     "static/media/Tormented_bracelet.png": "/static/media/Tormented_bracelet.fe9d9f26167104d4a383.png",
+    "static/media/Staff_of_fire.png": "/static/media/Staff_of_fire.10a0f228b94b7b882453.png",
     "static/media/Inquisitors_great_helm.png": "/static/media/Inquisitors_great_helm.4cc034fe91a8e480b3cd.png",
     "static/media/Dharok_the_Wretched.png": "/static/media/Dharok_the_Wretched.4b1650c4e10390f541ac.png",
     "static/media/Armadyl_chestplate.png": "/static/media/Armadyl_chestplate.5ddc92efadeead7bd22b.png",
@@ -191,6 +194,7 @@
     "static/media/Chaos_Fanatic.png": "/static/media/Chaos_Fanatic.9e6a0dce586c53c4970f.png",
     "static/media/Osmumtens_fang.png": "/static/media/Osmumtens_fang.5d9371d746b9e4b5d1f4.png",
     "static/media/Scorpia.png": "/static/media/Scorpia.4eedc0f4f2ac48c80281.png",
+    "static/media/Chaos_gauntlets.png": "/static/media/Chaos_gauntlets.ac31f4964b53a6b5f091.png",
     "static/media/Zamorakian_spear.png": "/static/media/Zamorakian_spear.266b29a3d379f772b9df.png",
     "static/media/Inquisitors_plateskirt.png": "/static/media/Inquisitors_plateskirt.9c1ad53badecbcdf01c4.png",
     "static/media/The_Nightmare.png": "/static/media/The_Nightmare.e292293fa933c7fc37f4.png",
@@ -289,11 +293,11 @@
     "static/media/Zamorakian_hasta.webp": "/static/media/Zamorakian_hasta.be62bb7cec7ec3005a5e.webp",
     "index.html": "/index.html",
     "main.bfb22a3e.css.map": "/static/css/main.bfb22a3e.css.map",
-    "main.67c8001d.js.map": "/static/js/main.67c8001d.js.map",
+    "main.95143533.js.map": "/static/js/main.95143533.js.map",
     "787.98701412.chunk.js.map": "/static/js/787.98701412.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.bfb22a3e.css",
-    "static/js/main.67c8001d.js"
+    "static/js/main.95143533.js"
   ]
 }
