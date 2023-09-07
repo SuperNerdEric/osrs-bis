@@ -6,7 +6,9 @@ export class CrystalEquipmentMultiplierStrategy extends AbstractMultiplierStrate
         const validBows = [ItemName.BowOfFaerdhinen, ItemName.CrystalBow];
         const currentWeapon = this.result.gearSet.getWeapon()?.name;
 
-        if (!validBows.includes(currentWeapon)) return 1;
+        if (!validBows.includes(currentWeapon)) {
+            return 1;
+        }
 
         const bonuses = [
             { piece: ItemName.CrystalHelm, damageBonus: 0.025, accuracyBonus: 0.05 },
