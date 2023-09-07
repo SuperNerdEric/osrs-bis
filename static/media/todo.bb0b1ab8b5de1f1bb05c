@@ -1,0 +1,83 @@
+https://www.dafont.com/runescape-uf.font
+
+https://oldschool.runescape.wiki/w/Staves
+https://oldschool.runescape.wiki/w/Charge - god spells +10
+
+
+Does salve use mage strength instead of multiplying dmg?
+did deep into additive/multiplicative with obsidian (don't assume bitter is right, check on dummy)
+dhcb should be additive with slayer? (does that not imply additive with salve?)
+
+https://twitter.com/JagexAsh/status/1647928422843273220
+https://twitter.com/JagexAsh/status/1242015573325877248
+
+might need to add multipliers together
+function sumMultipliers(...multipliers: number[]): number {
+    return multipliers.reduce((sum, multiplier) => sum + (multiplier - 1), 1);
+}
+
+support gear sets with no weapon (but spell) maybe punching..
+custom gear sets
+magic dart
+adjust soulreaper axe
+vulnerability / seercull / accursed sceptre
+thrall dps on top? nah kind of
+crumble undead is undead only
+keris partisan of corruption special attack dmg boost / accuracy
+dharoks / other barrows / Amulet of the damned
+finish up bolts / waiting for bitter to update
+barbarian assault
+obsidian armor / obsidian weapons / berserker necklace
+viggora's / other wilderness shit
+silverlight / darklight
+vampires
+    blisterwood flail
+    blisterwood sickle
+    rod of ivandis
+    ivandis flail
+
+other prayers / potions
+chaos gauntlets
+castle wars bracelet
+ice arrows
+venator bow
+thammaron's sceptre
+Barronite mace
+Craw's bow (in wilderness)
+skogre / zogre / comp ogre bow
+slagilith / pickaxe
+shades - gadderhammer
+
+
+
+better dwh / bgs in DefenceReduction
+
+int DWH_Hits = 0;
+int BGS_Damage = 0;
+
+while (currentDefence < baseDefence) {
+    int DWH_HitChance = calculateHitChance(currentDefence, "DWH");
+    int DWH_Reduction = floor(0.3 * baseDefence);
+    DWH_Reduction = DWH_Reduction * DWH_HitChance;
+
+    int BGS_HitChance = calculateHitChance(currentDefence, "BGS");
+    int BGS_Average_Damage = BGS_MaxDamage / 2; // Calculating average from max
+    int BGS_Expected_Damage = BGS_Average_Damage * BGS_HitChance;
+
+    if (DWH_Reduction >= BGS_Expected_Damage) {
+        baseDefence -= DWH_Reduction;
+        DWH_Hits++;
+    } else {
+        baseDefence -= BGS_Expected_Damage;
+        BGS_Damage += BGS_Expected_Damage;
+    }
+}
+
+return {DWH_Hits, BGS_Damage};
+
+It initializes counters for both weapons: how many hits with the DWH and how much damage with the BGS.
+As long as the monster's current defence is less than its base (or original) defence, it does the following:
+Calculates the expected reduction in defence if the DWH hits, considering the weapon's hit chance.
+Calculates the expected damage of the BGS, considering its average damage and hit chance.
+Compares the two values: if the DWH would reduce more defence than the BGS, it uses the DWH and counts a hit. Otherwise, it uses the BGS and adds its damage to the counter.
+Once the monster's defence is sufficiently reduced, it returns the number of DWH hits and the total BGS damage dealt.
