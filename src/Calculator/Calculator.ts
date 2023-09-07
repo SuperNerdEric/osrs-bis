@@ -1,5 +1,5 @@
 import {TargetMonster} from "../DataObjects/TargetMonster";
-import {CombatClass, StyleType, WeaponStyle} from "../DataObjects/Item";
+import {CombatClass, Slot, StyleType, WeaponStyle} from "../DataObjects/Item";
 import {Player} from "../DataObjects/Player";
 import {GearSet} from "../DataObjects/GearSets";
 import {ItemName} from "../DataObjects/ItemName";
@@ -8,7 +8,7 @@ import {VoidKnightMultiplierStrategy} from "./MultiplierStrategies/VoidKnightMul
 import {MultiplierType} from "./MultiplierStrategies/AbstractMultiplierStrategy";
 import {SoulreaperMultiplierStrategy} from "./MultiplierStrategies/SoulreaperMultiplierStrategy";
 import {v4 as uuidv4} from 'uuid';
-import {SpellBookType} from "../DataObjects/Spell";
+import {Spell, SpellBookType} from "../DataObjects/Spell";
 import {getGearAccuracyMultipliers, getGearDamageMultipliers} from "./MultiplierStrategies/MultiplierUtils";
 import {averageDamage, DamageProbability} from "./DamageDistributionStrategies/DamageProbability";
 import {getDamageDistribution} from "./DamageDistributionStrategies/DamageDistributionStrategies";
@@ -142,6 +142,7 @@ export class Calculator {
         } else {
             if (this.gearSet.spell) {
                 maxHit = this.gearSet.spell.maxHit;
+                maxHit = this.applyChaosGauntletBoost(this.gearSet.spell, this.gearSet);
             } else {
                 const boostedMagicLevel = this.player.skills.magic.level + this.player.skills.magic.boost;
                 maxHit = getMagicWeaponMaxHit(this.gearSet.getWeapon().name, boostedMagicLevel);
@@ -192,5 +193,12 @@ export class Calculator {
 
     private calculateDps(averageDamagePerHit: number, weaponSpeed: number) {
         return averageDamagePerHit / weaponSpeed;
+    }
+
+    private applyChaosGauntletBoost(spell: Spell, gearSet: GearSet): number {
+        if (gearSet.getItemBySlot(Slot.Gloves)?.name === ItemName.ChaosGauntlets && spell.name.includes("Bolt")) {
+            return spell.maxHit + 3;
+        }
+        return spell.maxHit;
     }
 }

@@ -1089,3 +1089,52 @@ createItem(ItemName.AmethystBroadBolts, {
     rangedStrength: 115,
     slot: Slot.Ammo,
 });
+
+createItem(ItemName.ChaosGauntlets, {
+    imagePath: "./Images/ItemsOld/Chaos_gauntlets.png",
+    wikiLink: "https://oldschool.runescape.wiki/w/Chaos_gauntlets",
+    stab: 2,
+    slash: 2,
+    crush: 2,
+    strength: 2,
+    slot: Slot.Gloves,
+});
+
+createWeapon(ItemName.MysticSmokeStaff, {
+    category: WeaponCategory.Staff,
+    imagePath: './Images/ItemsOld/Mystic_smoke_staff.gif',
+    wikiLink: "https://oldschool.runescape.wiki/w/Mystic_smoke_staff",
+    slot: Slot.MainHand,
+    speedSeconds: 3.0,
+    stab: 10,
+    slash: -1,
+    crush: 40,
+    magic: 14,
+    strength: 50,
+});
+
+createWeapon(ItemName.SmokeBattlestaff, {
+    category: WeaponCategory.Staff,
+    imagePath: './Images/ItemsOld/Smoke_battlestaff.gif',
+    wikiLink: "https://oldschool.runescape.wiki/w/Smoke_battlestaff",
+    slot: Slot.MainHand,
+    speedSeconds: 3.0,
+    stab: 7,
+    slash: -1,
+    crush: 28,
+    magic: 12,
+    strength: 50,
+});
+
+createWeapon(ItemName.StaffOfFire, {
+    category: WeaponCategory.Staff,
+    imagePath: './Images/ItemsOld/Staff_of_fire.png',
+    wikiLink: "https://oldschool.runescape.wiki/w/Staff_of_fire",
+    slot: Slot.MainHand,
+    speedSeconds: 3.0,
+    stab: 3,
+    slash: -1,
+    crush: 9,
+    magic: 10,
+    strength: 6,
+});

@@ -1883,5 +1883,177 @@ describe('Calculator class', () => {
             expect(result.hitChance).toBeCloseTo(0.9777); //Matches Bitterkoekje
         });
     });
+
+    describe('fire bolt with chaos gauntlets', () => {
+        beforeEach(() => {
+            result.gearSet = new GearSet([GearSetType.General])
+                .addItemByName(ItemName.MysticSmokeStaff)
+                .setCombatStyle(CombatStyle.Spell)
+                .addItemByName(ItemName.TomeOfFire)
+                .addItemByName(ItemName.SlayerHelmetI)
+                .addItemByName(ItemName.AncestralRobeTop)
+                .addItemByName(ItemName.AncestralRobeBottom)
+                .addItemByName(ItemName.ChaosGauntlets)
+                .addItemByName(ItemName.EternalBoots)
+                .addItemByName(ItemName.OccultNecklace)
+                .addItemByName(ItemName.ImbuedZamorakCape)
+                .addItemByName(ItemName.MagusRing)
+                .setSpellByName(SpellName.FireBolt);
+            result.targetMonster = monsters.get("Blue dragon") as TargetMonster;
+            result.player.onTask = true;
+            result.player.skills.magic.boost = 13; //Saturated heart
+            result.calculateDPS();
+        });
+
+        test('should calculate DPS correctly', () => {
+            expect(result.dps).toBeCloseTo(5.0798); //Matches Bitterkoekje
+        });
+
+        test('should calculate maxHit correctly', () => {
+            expect(result.maxHit).toBe(31); //Matches Bitterkoekje
+        });
+
+        test('should calculate hitChance correctly', () => {
+            expect(result.hitChance).toBeCloseTo(0.9832); //Matches Bitterkoekje
+        });
+    });
+
+    describe('fire bolt with chaos gauntlets', () => {
+        beforeEach(() => {
+            result.gearSet = new GearSet([GearSetType.General])
+                .addItemByName(ItemName.MysticSmokeStaff)
+                .setCombatStyle(CombatStyle.Spell)
+                .addItemByName(ItemName.TomeOfFire)
+                .addItemByName(ItemName.SlayerHelmetI)
+                .addItemByName(ItemName.AncestralRobeTop)
+                .addItemByName(ItemName.AncestralRobeBottom)
+                .addItemByName(ItemName.ChaosGauntlets)
+                .addItemByName(ItemName.EternalBoots)
+                .addItemByName(ItemName.OccultNecklace)
+                .addItemByName(ItemName.ImbuedZamorakCape)
+                .addItemByName(ItemName.MagusRing)
+                .setSpellByName(SpellName.FireBolt);
+            result.targetMonster = monsters.get("Blue dragon") as TargetMonster;
+            result.player.onTask = true;
+            result.player.skills.magic.boost = 13; //Saturated heart
+            result.calculateDPS();
+        });
+
+        test('should calculate DPS correctly', () => {
+            expect(result.dps).toBeCloseTo(5.08155); //Matches Bitterkoekje
+        });
+
+        test('should calculate maxHit correctly', () => {
+            expect(result.maxHit).toBe(31); //Tested in game
+        });
+
+        test('should calculate hitChance correctly', () => {
+            expect(result.hitChance).toBeCloseTo(0.9835); //Matches Bitterkoekje
+        });
+    });
+
+    describe('fire bolt with chaos gauntlets no cape', () => {
+        beforeEach(() => {
+            result.gearSet = new GearSet([GearSetType.General])
+                .addItemByName(ItemName.MysticSmokeStaff)
+                .setCombatStyle(CombatStyle.Spell)
+                .addItemByName(ItemName.TomeOfFire)
+                .addItemByName(ItemName.SlayerHelmetI)
+                .addItemByName(ItemName.AncestralRobeTop)
+                .addItemByName(ItemName.AncestralRobeBottom)
+                .addItemByName(ItemName.ChaosGauntlets)
+                .addItemByName(ItemName.EternalBoots)
+                .addItemByName(ItemName.OccultNecklace)
+                //.addItemByName(ItemName.ImbuedZamorakCape) no cape
+                .addItemByName(ItemName.MagusRing)
+                .setSpellByName(SpellName.FireBolt);
+            result.targetMonster = monsters.get("Blue dragon") as TargetMonster;
+            result.player.onTask = true;
+            result.player.skills.magic.boost = 13; //Saturated heart
+            result.calculateDPS();
+        });
+
+        test('should calculate maxHit correctly', () => {
+            expect(result.maxHit).toBe(30); //Tested in game
+        });
+    });
+
+    describe('fire bolt with chaos gauntlets no cape or helm', () => {
+        beforeEach(() => {
+            result.gearSet = new GearSet([GearSetType.General])
+                .addItemByName(ItemName.MysticSmokeStaff)
+                .setCombatStyle(CombatStyle.Spell)
+                .addItemByName(ItemName.TomeOfFire)
+                //.addItemByName(ItemName.SlayerHelmetI) no helm
+                .addItemByName(ItemName.AncestralRobeTop)
+                .addItemByName(ItemName.AncestralRobeBottom)
+                .addItemByName(ItemName.ChaosGauntlets)
+                .addItemByName(ItemName.EternalBoots)
+                .addItemByName(ItemName.OccultNecklace)
+                //.addItemByName(ItemName.ImbuedZamorakCape) no cape
+                .addItemByName(ItemName.MagusRing)
+                .setSpellByName(SpellName.FireBolt);
+            result.targetMonster = monsters.get("Blue dragon") as TargetMonster;
+            result.player.onTask = true;
+            result.player.skills.magic.boost = 13; //Saturated heart
+            result.calculateDPS();
+        });
+
+        test('should calculate maxHit correctly', () => {
+            expect(result.maxHit).toBe(27); //Tested in game
+        });
+    });
+
+    describe('fire bolt with chaos gauntlets no helm', () => {
+        beforeEach(() => {
+            result.gearSet = new GearSet([GearSetType.General])
+                .addItemByName(ItemName.MysticSmokeStaff)
+                .setCombatStyle(CombatStyle.Spell)
+                .addItemByName(ItemName.TomeOfFire)
+                //.addItemByName(ItemName.SlayerHelmetI) no helm
+                .addItemByName(ItemName.AncestralRobeTop)
+                .addItemByName(ItemName.AncestralRobeBottom)
+                .addItemByName(ItemName.ChaosGauntlets)
+                .addItemByName(ItemName.EternalBoots)
+                .addItemByName(ItemName.OccultNecklace)
+                .addItemByName(ItemName.ImbuedZamorakCape)
+                .addItemByName(ItemName.MagusRing)
+                .setSpellByName(SpellName.FireBolt);
+            result.targetMonster = monsters.get("Blue dragon") as TargetMonster;
+            result.player.onTask = true;
+            result.player.skills.magic.boost = 13; //Saturated heart
+            result.calculateDPS();
+        });
+
+        test('should calculate maxHit correctly', () => {
+            expect(result.maxHit).toBe(28); //Tested in game
+        });
+    });
+
+    describe('fire bolt with regular staff', () => {
+        beforeEach(() => {
+            result.gearSet = new GearSet([GearSetType.General])
+                .addItemByName(ItemName.StaffOfFire)
+                .setCombatStyle(CombatStyle.Spell)
+                .addItemByName(ItemName.TomeOfFire)
+                //.addItemByName(ItemName.SlayerHelmetI) no helm
+                .addItemByName(ItemName.AncestralRobeTop)
+                .addItemByName(ItemName.AncestralRobeBottom)
+                .addItemByName(ItemName.ChaosGauntlets)
+                .addItemByName(ItemName.EternalBoots)
+                .addItemByName(ItemName.OccultNecklace)
+                .addItemByName(ItemName.ImbuedZamorakCape)
+                .addItemByName(ItemName.MagusRing)
+                .setSpellByName(SpellName.FireBolt);
+            result.targetMonster = monsters.get("Blue dragon") as TargetMonster;
+            result.player.onTask = true;
+            result.player.skills.magic.boost = 13; //Saturated heart
+            result.calculateDPS();
+        });
+
+        test('should calculate maxHit correctly', () => {
+            expect(result.maxHit).toBe(25); //Tested in game
+        });
+    });
 });
 

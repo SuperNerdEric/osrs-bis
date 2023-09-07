@@ -168,4 +168,8 @@ export enum ItemName {
     RedSalamander = "Red salamander",
     BlackSalamander = "Black salamander",
     CrystalBow = "Crystal bow",
+    ChaosGauntlets = "Chaos gauntlets",
+    MysticSmokeStaff = "Mystic smoke staff",
+    SmokeBattlestaff = "Smoke battlestaff",
+    StaffOfFire = "Staff of fire"
 }

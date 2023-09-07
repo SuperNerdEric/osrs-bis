@@ -17,6 +17,7 @@ import {
 import {Calculator} from "../Calculator";
 import {KerisMultiplierStrategy} from "./KerisMultiplierStrategy";
 import {TomeOfWaterMultiplierStrategy} from "./TomeOfWaterMultiplierStrategy";
+import {SmokeBattlestaffMultiplierStrategy} from "./SmokeBattlestaffMultiplierStrategy";
 
 export function getGearDamageMultipliers(calculator: Calculator): number[] {
     const slayerMultiplier = new SlayerHelmetMultiplierStrategy(calculator).calculateMultiplier();
@@ -36,6 +37,7 @@ export function getGearDamageMultipliers(calculator: Calculator): number[] {
         new TomeOfFireMultiplierStrategy(calculator).calculateMultiplier(),
         new TomeOfWaterMultiplierStrategy(calculator).calculateMultiplier(),
         new CorporealBeastMultiplierStrategy(calculator).calculateMultiplier(),
+
     ];
 
     return gearMultipliers;
@@ -47,6 +49,7 @@ export function getGearAccuracyMultipliers(calculator: Calculator): number[] {
 
     const gearMultipliers = [
         new CrystalEquipmentMultiplierStrategy(calculator).calculateMultiplier(MultiplierType.Accuracy),
+        new SmokeBattlestaffMultiplierStrategy(calculator).calculateMultiplier(),
         Math.max(slayerMultiplier, salveMultiplier),
         new KerisMultiplierStrategy(calculator).calculateMultiplier(MultiplierType.Accuracy),
         new TwistedBowAccuracyMultiplierStrategy(calculator).calculateMultiplier(),

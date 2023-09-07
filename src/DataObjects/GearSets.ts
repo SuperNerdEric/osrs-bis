@@ -16,7 +16,7 @@ import {generateRangedGearSets} from "./GearSets/RangedGearSets";
 import {generateMeleeGearSets} from "./GearSets/MeleeGearSets";
 import {generateMageGearsets} from "./GearSets/MageGearSets";
 import * as _ from "lodash";
-import {ancientSpellbook, arceuusSpellbook, Spell, SpellBookType, standardSpellbook} from "./Spell";
+import {ancientSpellbook, arceuusSpellbook, Spell, spellBookMapping, SpellBookType, standardSpellbook} from "./Spell";
 import {SpellName} from "./SpellName";
 
 export enum GearSetType {
@@ -114,6 +114,10 @@ export class GearSet {
             if (this.applyEliteVoidMageBonus(gearItems)) {
                 this.styleStrength += 2.5;
             }
+
+            if (this.applySmokeBattleStaffBonus()) {
+                this.styleStrength += 10;
+            }
         }
 
         const virtusItems = [ItemName.VirtusMask, ItemName.VirtusRobeTop, ItemName.VirtusRobeBottom];
@@ -189,6 +193,15 @@ export class GearSet {
     private applyEliteVoidMageBonus(gearItems: (Weapon | Item)[]): boolean {
         const requiredItems = [ItemName.VoidMageHelm, ItemName.EliteVoidTop, ItemName.EliteVoidRobe, ItemName.VoidKnightGloves];
         return requiredItems.every(requiredItem => gearItems.some(gearItem => gearItem.name === requiredItem));
+    }
+
+    private applySmokeBattleStaffBonus(): boolean {
+        const validStaves = [ItemName.SmokeBattlestaff, ItemName.MysticSmokeStaff];
+        const currentWeapon = this.getWeapon().name;
+        if(validStaves.includes(currentWeapon) && this.spell && spellBookMapping[SpellBookType.Standard].getSpell(this.spell.name)) {
+            return true;
+        }
+        return false;
     }
 
     setRaid(raid: Raid) {
