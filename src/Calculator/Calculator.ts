@@ -4,15 +4,14 @@ import {Player} from "../DataObjects/Player";
 import {GearSet} from "../DataObjects/GearSets";
 import {ItemName} from "../DataObjects/ItemName";
 import {calculateHitChance} from "./HitChanceStrategies";
-import {VoidKnightMultiplierStrategy} from "./MultiplierStrategies/VoidKnightMultiplierStrategy";
-import {MultiplierType} from "./MultiplierStrategies/AbstractMultiplierStrategy";
-import {SoulreaperMultiplierStrategy} from "./MultiplierStrategies/SoulreaperMultiplierStrategy";
+import {MultiplierType} from "./Multipliers/MultiplierType";
 import {v4 as uuidv4} from 'uuid';
 import {Spell, SpellBookType} from "../DataObjects/Spell";
-import {getGearAccuracyMultipliers, getGearDamageMultipliers} from "./MultiplierStrategies/MultiplierUtils";
+import {getGearAccuracyMultipliers, getGearDamageMultipliers} from "./Multipliers/MultiplierUtils";
 import {averageDamage, DamageProbability} from "./DamageDistributionStrategies/DamageProbability";
 import {getDamageDistribution} from "./DamageDistributionStrategies/DamageDistributionStrategies";
 import {getMagicWeaponMaxHit} from "./MagicWeaponMaxHit";
+import {soulreaperMultiplier, voidKnightMultiplier} from "./Multipliers";
 
 
 export class Calculator {
@@ -75,7 +74,7 @@ export class Calculator {
         const prayerModifiers = this.player.getPrayerModifiers();
 
         if (combatClass === CombatClass.Melee) {
-            const soulReaperMultiplier = new SoulreaperMultiplierStrategy(this).calculateMultiplier();
+            const soulReaperMultiplier = soulreaperMultiplier(this);
 
             effectiveLevel = Math.floor((this.player.skills.strength.level + this.player.skills.strength.boost) * (prayerModifiers.strength + soulReaperMultiplier)) + 8;
             if (this.gearSet.weaponStyle === WeaponStyle.Aggressive) {
@@ -93,7 +92,7 @@ export class Calculator {
         }
 
         //According to sources void boosts effective strength level, not our max hit
-        const voidMultiplier = new VoidKnightMultiplierStrategy(this).calculateMultiplier(MultiplierType.Damage);
+        const voidMultiplier = voidKnightMultiplier(this, MultiplierType.Damage);
         effectiveLevel = Math.floor(effectiveLevel * voidMultiplier);
 
         return effectiveLevel;
@@ -105,7 +104,7 @@ export class Calculator {
         const prayerModifiers = this.player.getPrayerModifiers();
 
         // According to sources void boosts effective attack level, not our attack roll
-        const voidMultiplier = new VoidKnightMultiplierStrategy(this).calculateMultiplier(MultiplierType.Accuracy);
+        const voidMultiplier = voidKnightMultiplier(this, MultiplierType.Accuracy);
 
         if (combatClass === CombatClass.Melee) {
             effectiveLevel = Math.floor((this.player.skills.attack.level + this.player.skills.attack.boost) * prayerModifiers.attack);

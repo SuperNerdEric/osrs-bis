@@ -1,6 +1,6 @@
-import {ItemName} from "../../DataObjects/ItemName";
-import {CombatClass} from "../../DataObjects/Item";
-import {AbstractMultiplierStrategy} from "./AbstractMultiplierStrategy";
+import {ItemName} from "../../../DataObjects/ItemName";
+import {CombatClass} from "../../../DataObjects/Item";
+import {Calculator} from "../../Calculator";
 
 const SalveMultiplierTable = {
     [ItemName.SalveAmulet]: {
@@ -27,17 +27,13 @@ const SalveMultiplierTable = {
 
 type SalveName = keyof typeof SalveMultiplierTable;
 
+export function salveAmuletMultiplier(calculator: Calculator): number {
+    const salveNames = Object.keys(SalveMultiplierTable) as SalveName[];
+    const salve = salveNames.find(salveName => calculator.gearSet.hasItemByName(salveName));
 
-export class SalveAmuletMultiplierStrategy extends AbstractMultiplierStrategy {
-    calculateMultiplier(): number {
-        const salveNames = Object.keys(SalveMultiplierTable) as SalveName[];
-        const salve = salveNames.find(salveName => this.result.gearSet.hasItemByName(salveName));
-
-
-        if (!salve || !this.result.targetMonster.isUndead) {
-            return 1;
-        }
-
-        return SalveMultiplierTable[salve][this.result.gearSet.combatClass];
+    if (!salve || !calculator.targetMonster.isUndead) {
+        return 1;
     }
+
+    return SalveMultiplierTable[salve][calculator.gearSet.combatClass];
 }
