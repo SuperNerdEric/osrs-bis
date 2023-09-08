@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.bfb22a3e.css",
-    "main.js": "/static/js/main.4a054585.js",
+    "main.js": "/static/js/main.883676ad.js",
     "static/js/787.98701412.chunk.js": "/static/js/787.98701412.chunk.js",
     "static/media/Mystic_smoke_staff.gif": "/static/media/Mystic_smoke_staff.1db57e9780287ca950ce.gif",
     "static/media/Smoke_battlestaff.gif": "/static/media/Smoke_battlestaff.1db57e9780287ca950ce.gif",
@@ -31,6 +31,7 @@
     "static/media/Ferocious_gloves.png": "/static/media/Ferocious_gloves.3b400fa603401fc91294.png",
     "static/media/Kephri.png": "/static/media/Kephri.41193c90191fd1068685.png",
     "static/media/Pegasian_boots.png": "/static/media/Pegasian_boots.6967e147ba8b16417659.png",
+    "static/media/Dragonfire_shield.png": "/static/media/Dragonfire_shield.74f51f2b045a048fb2e1.png",
     "static/media/Elidinis_ward_f.png": "/static/media/Elidinis_ward_f.c829fefeca04da923076.png",
     "static/media/Akkha.png": "/static/media/Akkha.358bbb844f4f47e1b989.png",
     "static/media/Crystal_body.png": "/static/media/Crystal_body.17630f711796d4c4d5f9.png",
@@ -90,6 +91,7 @@
     "static/media/Emerald_bolts_(e).png": "/static/media/Emerald_bolts_(e).b5c6bc30e567149a25ff.png",
     "static/media/Ahrims_robeskirt.png": "/static/media/Ahrims_robeskirt.5d0b9701bc0908070db3.png",
     "static/media/Zulrah_(tanzanite).png": "/static/media/Zulrah_(tanzanite).d45eae7d9e9f371fce3b.png",
+    "static/media/Dragon_sword.png": "/static/media/Dragon_sword.78ff610881c0517f3d35.png",
     "static/media/Obor.png": "/static/media/Obor.99be2526a81af20353ef.png",
     "static/media/Pearl_bolts_(e).png": "/static/media/Pearl_bolts_(e).304e30c817d6f6bea8ea.png",
     "static/media/Abyssal_bludgeon.png": "/static/media/Abyssal_bludgeon.b7a91c6df2cfbddabefc.png",
@@ -293,11 +295,11 @@
     "static/media/Zamorakian_hasta.webp": "/static/media/Zamorakian_hasta.be62bb7cec7ec3005a5e.webp",
     "index.html": "/index.html",
     "main.bfb22a3e.css.map": "/static/css/main.bfb22a3e.css.map",
-    "main.4a054585.js.map": "/static/js/main.4a054585.js.map",
+    "main.883676ad.js.map": "/static/js/main.883676ad.js.map",
     "787.98701412.chunk.js.map": "/static/js/787.98701412.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.bfb22a3e.css",
-    "static/js/main.4a054585.js"
+    "static/js/main.883676ad.js"
   ]
 }
