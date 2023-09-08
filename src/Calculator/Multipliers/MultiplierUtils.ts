@@ -21,16 +21,18 @@ import {smokeBattlestaffMultiplier} from "./Items/SmokeBattlestaffMultiplier";
 export function getGearDamageMultipliers(calculator: Calculator): number[] {
     const slayerMultiplier = slayerHelmetMultiplier(calculator);
     const salveMultiplier = salveAmuletMultiplier(calculator);
-    const dhcbDmgMultiplier = dragonHunterCrossbowMultiplier(calculator, MultiplierType.Damage);
+    const dhcbMultiplier = dragonHunterCrossbowMultiplier(calculator, MultiplierType.Damage);
 
-    const gearMultipliers = [
+    const slayerSalveMultiplier = [];
+    if (slayerMultiplier > salveMultiplier) {
+        slayerSalveMultiplier.push(sumMultipliers(dhcbMultiplier, slayerMultiplier));
+    } else {
+        slayerSalveMultiplier.push(salveMultiplier, dhcbMultiplier);
+    }
+
+    return [
         crystalEquipmentMultiplier(calculator, MultiplierType.Damage),
-        Math.max(
-            sumMultipliers(
-                dhcbDmgMultiplier,
-                slayerMultiplier
-            ),
-            salveMultiplier * dhcbDmgMultiplier),
+        ...slayerSalveMultiplier,
         kerisMultiplier(calculator, MultiplierType.Damage),
         twistedBowMultiplier(calculator, MultiplierType.Damage),
         arclightMultiplier(calculator),
@@ -40,25 +42,30 @@ export function getGearDamageMultipliers(calculator: Calculator): number[] {
         iceDemonMultiplier(calculator),
         tomeOfFireMultiplier(calculator),
         tomeOfWaterMultiplier(calculator),
-        corporealBeastMultiplier(calculator),
+        corporealBeastMultiplier(calculator)
     ];
-
-    return gearMultipliers;
 }
 
 export function getGearAccuracyMultipliers(calculator: Calculator): number[] {
     const slayerMultiplier = slayerHelmetMultiplier(calculator);
     const salveMultiplier = salveAmuletMultiplier(calculator);
+    const dhcbMultiplier = dragonHunterCrossbowMultiplier(calculator, MultiplierType.Accuracy);
+
+    const slayerSalveMultiplier = [];
+    if (slayerMultiplier > salveMultiplier) {
+        slayerSalveMultiplier.push(sumMultipliers(dhcbMultiplier, slayerMultiplier));
+    } else {
+        slayerSalveMultiplier.push(salveMultiplier, dhcbMultiplier);
+    }
 
     const gearMultipliers = [
         crystalEquipmentMultiplier(calculator, MultiplierType.Accuracy),
         smokeBattlestaffMultiplier(calculator),
-        Math.max(slayerMultiplier, salveMultiplier),
+        ...slayerSalveMultiplier,
         kerisMultiplier(calculator, MultiplierType.Accuracy),
         twistedBowMultiplier(calculator, MultiplierType.Accuracy),
         arclightMultiplier(calculator),
         dragonHunterLanceMultiplier(calculator),
-        dragonHunterCrossbowMultiplier(calculator, MultiplierType.Accuracy),
         inquisitorsMultiplier(calculator),
         tomeOfWaterMultiplier(calculator),
     ];
