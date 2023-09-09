@@ -1,5 +1,3 @@
-// Boosts.tsx
-
 import React from 'react';
 import { Stack, FormControlLabel, Checkbox } from '@mui/material';
 import { Raid } from "../../Calculator/DataObjects/Raid";
