@@ -12,6 +12,7 @@ import {averageDamage, DamageProbability} from "./DamageDistributionStrategies/D
 import {getDamageDistribution} from "./DamageDistributionStrategies/DamageDistributionStrategies";
 import {getMagicWeaponMaxHit} from "./MagicWeaponMaxHit";
 import {soulreaperMultiplier, voidKnightMultiplier} from "./Multipliers";
+import {defenceBasedMagicDefMonsters} from "./DefenceBasedMagicDefMonsters";
 
 
 export class Calculator {
@@ -169,8 +170,7 @@ export class Calculator {
     private calculateDefenceRoll(invocationLevel: number, attackStyle: StyleType): number {
         let baseDefence: number;
         if (attackStyle === StyleType.Magic) {
-            //todo add all of these
-            if (this.targetMonster.name.includes("Verzik Vitur") || this.targetMonster.name.includes("Ice demon")) {
+            if (defenceBasedMagicDefMonsters.includes(this.targetMonster.title)) {
                 baseDefence = 9 + this.targetMonster.currentDefenceLevel;
             } else {
                 baseDefence = 9 + this.targetMonster.magicLevel;
