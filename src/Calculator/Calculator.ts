@@ -13,6 +13,7 @@ import {getDamageDistribution} from "./DamageDistributionStrategies/DamageDistri
 import {getMagicWeaponMaxHit} from "./MagicWeaponMaxHit";
 import {soulreaperMultiplier, voidKnightMultiplier} from "./Multipliers";
 import {defenceBasedMagicDefMonsters} from "./DefenceBasedMagicDefMonsters";
+import {SpellName} from "../DataObjects/SpellName";
 
 
 export class Calculator {
@@ -142,6 +143,9 @@ export class Calculator {
         } else {
             if (this.gearSet.spell) {
                 maxHit = this.gearSet.spell.maxHit;
+                if (!this.targetMonster.isUndead && this.gearSet.spell.name === SpellName.CrumbleUndead) {
+                    return 0;
+                }
                 maxHit = this.applyChaosGauntletBoost(this.gearSet.spell, this.gearSet);
             } else {
                 const boostedMagicLevel = this.player.skills.magic.level + this.player.skills.magic.boost;
