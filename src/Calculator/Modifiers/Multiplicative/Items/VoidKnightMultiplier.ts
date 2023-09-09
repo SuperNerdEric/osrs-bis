@@ -1,7 +1,7 @@
-import {ItemName} from "../../DataObjects/ItemName";
+import {ItemName} from "../../../DataObjects/ItemName";
 import {MultiplierType} from "../MultiplierType";
-import {CombatClass, Item} from "../../DataObjects/Item";
-import {Calculator} from "../../Calculator";
+import {CombatClass, Item} from "../../../DataObjects/Item";
+import {Calculator} from "../../../Calculator";
 
 const VoidKnightMultiplierTable = {
     [ItemName.VoidMeleeHelm]: {
@@ -36,7 +36,7 @@ export function voidKnightMultiplier(calculator: Calculator, multiplierType?: Mu
     const isDamageCalculation = (multiplierType === MultiplierType.Damage);
 
     /**
-     * Mage elite bonus is on the {@link GearSet#applyEliteVoidMageBonus} itself as it goes on the equipment stats
+     * Mage elite bonus is on the {@link #eliteVoidMageAddend} as it is additive and goes on the equipment stats
      */
     if (hasEliteVoidSet(calculator) && (combatClass === CombatClass.Ranged) && isDamageCalculation) {
         multiplier += 0.025;

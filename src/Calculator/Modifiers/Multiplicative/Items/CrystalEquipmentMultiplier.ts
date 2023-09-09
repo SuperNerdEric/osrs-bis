@@ -1,6 +1,6 @@
-import {Calculator} from "../../Calculator";
+import {Calculator} from "../../../Calculator";
 import {MultiplierType} from "../MultiplierType";
-import {ItemName} from "../../DataObjects/ItemName";
+import {ItemName} from "../../../DataObjects/ItemName";
 
 export function crystalEquipmentMultiplier(calculator: Calculator, multiplierType: MultiplierType): number {
     const validBows = [ItemName.BowOfFaerdhinen, ItemName.CrystalBow];

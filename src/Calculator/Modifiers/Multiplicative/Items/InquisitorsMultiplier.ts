@@ -1,6 +1,6 @@
-import {Calculator} from "../../Calculator";
-import {ItemName} from "../../DataObjects/ItemName";
-import {StyleType} from "../../DataObjects/Item";
+import {Calculator} from "../../../Calculator";
+import {ItemName} from "../../../DataObjects/ItemName";
+import {StyleType} from "../../../DataObjects/Item";
 
 export function inquisitorsMultiplier(calculator: Calculator): number {
     if (calculator.gearSet.styleType !== StyleType.Crush) {

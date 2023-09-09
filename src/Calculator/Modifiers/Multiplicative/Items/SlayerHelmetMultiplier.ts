@@ -1,6 +1,6 @@
-import {Calculator} from "../../Calculator";
-import {ItemName} from "../../DataObjects/ItemName";
-import {CombatClass} from "../../DataObjects/Item";
+import {Calculator} from "../../../Calculator";
+import {ItemName} from "../../../DataObjects/ItemName";
+import {CombatClass} from "../../../DataObjects/Item";
 
 export function slayerHelmetMultiplier(calculator: Calculator): number {
     const slayerHelmetPresent = calculator.gearSet.hasItemByName(ItemName.SlayerHelmetI);

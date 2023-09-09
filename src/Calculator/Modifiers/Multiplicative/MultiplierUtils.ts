@@ -1,6 +1,7 @@
 import {MultiplierType} from "./MultiplierType";
-import {Calculator} from "../Calculator";
+import {Calculator} from "../../Calculator";
 import {
+    amuletOfAvariceMultiplier,
     arclightMultiplier,
     berserkerNecklaceMultiplier,
     corporealBeastMultiplier,
@@ -22,14 +23,15 @@ import {
 
 export function getGearDamageMultipliers(calculator: Calculator): number[] {
     const slayerMultiplier = slayerHelmetMultiplier(calculator);
-    const salveMultiplier = salveAmuletMultiplier(calculator);
+    const salveMultiplier = salveAmuletMultiplier(calculator, MultiplierType.Damage);
+    const avariceMultiplier = amuletOfAvariceMultiplier(calculator, MultiplierType.Damage);
     const dhcbMultiplier = dragonHunterCrossbowMultiplier(calculator, MultiplierType.Damage);
 
     const slayerSalveMultiplier = [];
-    if (slayerMultiplier > salveMultiplier) {
+    if (slayerMultiplier > salveMultiplier && slayerMultiplier > avariceMultiplier) {
         slayerSalveMultiplier.push(sumMultipliers(dhcbMultiplier, slayerMultiplier));
     } else {
-        slayerSalveMultiplier.push(salveMultiplier, dhcbMultiplier);
+        slayerSalveMultiplier.push(salveMultiplier, avariceMultiplier, dhcbMultiplier);
     }
 
     return [
@@ -52,14 +54,15 @@ export function getGearDamageMultipliers(calculator: Calculator): number[] {
 
 export function getGearAccuracyMultipliers(calculator: Calculator): number[] {
     const slayerMultiplier = slayerHelmetMultiplier(calculator);
-    const salveMultiplier = salveAmuletMultiplier(calculator);
+    const salveMultiplier = salveAmuletMultiplier(calculator, MultiplierType.Accuracy);
+    const avariceMultiplier = amuletOfAvariceMultiplier(calculator, MultiplierType.Accuracy);
     const dhcbMultiplier = dragonHunterCrossbowMultiplier(calculator, MultiplierType.Accuracy);
 
     const slayerSalveMultiplier = [];
-    if (slayerMultiplier > salveMultiplier) {
+    if (slayerMultiplier > salveMultiplier && slayerMultiplier > avariceMultiplier) {
         slayerSalveMultiplier.push(sumMultipliers(dhcbMultiplier, slayerMultiplier));
     } else {
-        slayerSalveMultiplier.push(salveMultiplier, dhcbMultiplier);
+        slayerSalveMultiplier.push(salveMultiplier, avariceMultiplier, dhcbMultiplier);
     }
 
     const gearMultipliers = [

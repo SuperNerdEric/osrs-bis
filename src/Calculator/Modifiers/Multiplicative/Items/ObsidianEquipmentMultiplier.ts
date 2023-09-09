@@ -1,5 +1,5 @@
-import {Calculator} from "../../Calculator";
-import {ItemName} from "../../DataObjects/ItemName";
+import {Calculator} from "../../../Calculator";
+import {ItemName} from "../../../DataObjects/ItemName";
 
 export const obsidianMeleeWeapons = [
     ItemName.ToktzXilEk,

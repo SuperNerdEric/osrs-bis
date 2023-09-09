@@ -1,6 +1,6 @@
-import {ItemName} from "../../DataObjects/ItemName";
-import {StyleType, WeaponCategoryOptions} from "../../DataObjects/Item";
-import {Calculator} from "../../Calculator";
+import {ItemName} from "../../../DataObjects/ItemName";
+import {StyleType, WeaponCategoryOptions} from "../../../DataObjects/Item";
+import {Calculator} from "../../../Calculator";
 
 const corpbaneWeapons = [
     ItemName.BronzeSpear,

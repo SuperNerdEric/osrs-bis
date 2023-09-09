@@ -1,5 +1,5 @@
-import {Calculator} from "../../Calculator";
-import {ItemName} from "../../DataObjects/ItemName";
+import {Calculator} from "../../../Calculator";
+import {ItemName} from "../../../DataObjects/ItemName";
 
 export function dragonHunterLanceMultiplier(calculator: Calculator): number {
     if (calculator.gearSet.getWeapon().name === ItemName.DragonHunterLance && calculator.targetMonster.isDraconic) {

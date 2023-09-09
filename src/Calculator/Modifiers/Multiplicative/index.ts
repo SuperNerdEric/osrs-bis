@@ -1,5 +1,6 @@
 export {slayerHelmetMultiplier} from "./Items/SlayerHelmetMultiplier";
 export {salveAmuletMultiplier} from "./Items/SalveAmuletMultiplier";
+export {amuletOfAvariceMultiplier} from "./Items/AmuletOfAvariceMultiplier";
 export {dragonHunterCrossbowMultiplier} from "./Items/DragonHunterCrossbowMultiplier";
 export {dragonHunterLanceMultiplier} from "./Items/DragonHunterLanceMultiplier";
 export {crystalEquipmentMultiplier} from "./Items/CrystalEquipmentMultiplier";

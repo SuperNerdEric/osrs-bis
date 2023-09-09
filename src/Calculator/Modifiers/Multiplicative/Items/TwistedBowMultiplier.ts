@@ -1,6 +1,6 @@
-import {Calculator} from "../../Calculator";
-import {ItemName} from "../../DataObjects/ItemName";
-import {Raid} from "../../DataObjects/Raid";
+import {Calculator} from "../../../Calculator";
+import {ItemName} from "../../../DataObjects/ItemName";
+import {Raid} from "../../../DataObjects/Raid";
 import {MultiplierType} from "../MultiplierType";
 
 export function twistedBowMultiplier(calculator: Calculator, multiplierType: MultiplierType): number {

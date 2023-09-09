@@ -184,4 +184,5 @@ export enum ItemName {
     ObsidianPlatebody = "Obsidian platebody",
     ObsidianPlatelegs = "Obsidian platelegs",
     BerserkerNecklace = "Berserker necklace",
+    AmuletOfAvarice = "Amulet of avarice",
 }

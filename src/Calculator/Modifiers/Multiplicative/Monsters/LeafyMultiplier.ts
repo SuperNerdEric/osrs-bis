@@ -1,6 +1,6 @@
-import {Calculator} from "../../Calculator";
-import {ItemName} from "../../DataObjects/ItemName";
-import {Slot} from "../../DataObjects/Item";
+import {Calculator} from "../../../Calculator";
+import {ItemName} from "../../../DataObjects/ItemName";
+import {Slot} from "../../../DataObjects/Item";
 
 export function leafyMultiplier(calculator: Calculator): number {
     const leafyEffectiveWeapons = [

@@ -25,6 +25,10 @@ describe('Calculator class', () => {
         result.targetMonster = monsters.get("Kree'arra") as TargetMonster;
     });
 
+    function shouldEqualPrecise(value: number, expected: number) {
+        expect(value).toBeCloseTo(expected, 2);
+    }
+
     describe('with Osmumtens fang in ToA melee gear set', () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General])
@@ -44,7 +48,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate DPS correctly', () => {
-            expect(result.dps).toBeCloseTo(7.833);  //Matches fruitdeeps
+            shouldEqualPrecise(result.dps, 7.833);  //Matches fruitdeeps
         });
 
         test('should calculate maxHit correctly', () => {
@@ -52,7 +56,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate hitChance correctly', () => {
-            expect(result.hitChance).toBeCloseTo(0.8393);  //Matches fruitdeeps
+            shouldEqualPrecise(result.hitChance, 0.8393);  //Matches fruitdeeps
         });
     });
 
@@ -75,7 +79,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate DPS correctly', () => {
-            expect(result.dps).toBeCloseTo(9.010);  //Matches fruitdeeps
+            shouldEqualPrecise(result.dps, 9.010);  //Matches fruitdeeps
         });
 
         test('should calculate maxHit correctly', () => {
@@ -83,7 +87,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate hitChance correctly', () => {
-            expect(result.hitChance).toBeCloseTo(0.9653);  //Matches fruitdeeps
+            shouldEqualPrecise(result.hitChance, 0.9653);  //Matches fruitdeeps
         });
     });
 
@@ -106,7 +110,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate DPS correctly', () => {
-            expect(result.dps).toBeCloseTo(3.214);
+            shouldEqualPrecise(result.dps, 3.2144293608383063);
         });
 
         test('should calculate maxHit correctly', () => {
@@ -114,7 +118,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate hitChance correctly', () => {
-            expect(result.hitChance).toBeCloseTo(0.3572);
+            shouldEqualPrecise(result.hitChance, 0.3572);
         });
     });
 
@@ -137,7 +141,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate DPS correctly', () => {
-            expect(result.dps).toBeCloseTo(4.375);
+            shouldEqualPrecise(result.dps, 4.375);
         });
 
         test('should calculate maxHit correctly', () => {
@@ -145,7 +149,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate hitChance correctly', () => {
-            expect(result.hitChance).toBeCloseTo(0.4167);
+            shouldEqualPrecise(result.hitChance, 0.4167);
         });
     });
 
@@ -167,7 +171,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate DPS correctly', () => {
-            expect(result.dps).toBeCloseTo(3.625); //Matches fruitdeeps
+            shouldEqualPrecise(result.dps, 3.625); //Matches fruitdeeps
         });
 
         test('should calculate maxHit correctly', () => {
@@ -175,7 +179,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate hitChance correctly', () => {
-            expect(result.hitChance).toBeCloseTo(0.3198); //Matches fruitdeeps
+            shouldEqualPrecise(result.hitChance, 0.3198); //Matches fruitdeeps
         });
     });
 
@@ -197,7 +201,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate DPS correctly', () => {
-            expect(result.dps).toBeCloseTo(4.782); //Matches fruitdeeps
+            shouldEqualPrecise(result.dps, 4.782); //Matches fruitdeeps
         });
 
         test('should calculate maxHit correctly', () => {
@@ -205,7 +209,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate hitChance correctly', () => {
-            expect(result.hitChance).toBeCloseTo(0.3678); //Matches fruitdeeps
+            shouldEqualPrecise(result.hitChance, 0.3678); //Matches fruitdeeps
         });
     });
 
@@ -267,7 +271,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate DPS correctly', () => {
-            expect(result.dps).toBeCloseTo(2.625); //Matches fruitdeeps
+            shouldEqualPrecise(result.dps, 2.625); //Matches fruitdeeps
         });
 
         test('should calculate maxHit correctly', () => {
@@ -275,7 +279,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate hitChance correctly', () => {
-            expect(result.hitChance).toBeCloseTo(0.2864); //Matches fruitdeeps
+            shouldEqualPrecise(result.hitChance, 0.2864); //Matches fruitdeeps
         });
     });
 
@@ -297,7 +301,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate DPS correctly', () => {
-            expect(result.dps).toBeCloseTo(3.431); //Matches fruitdeeps
+            shouldEqualPrecise(result.dps, 3.431); //Matches fruitdeeps
         });
 
         test('should calculate maxHit correctly', () => {
@@ -305,7 +309,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate hitChance correctly', () => {
-            expect(result.hitChance).toBeCloseTo(0.3293); //Matches fruitdeeps
+            shouldEqualPrecise(result.hitChance, 0.3293); //Matches fruitdeeps
         });
     });
 
@@ -326,7 +330,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate DPS correctly', () => {
-            expect(result.dps).toBeCloseTo(6.024); //Matches fruitdeeps
+            shouldEqualPrecise(result.dps, 6.024); //Matches fruitdeeps
         });
 
         test('should calculate maxHit correctly', () => {
@@ -334,7 +338,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate hitChance correctly', () => {
-            expect(result.hitChance).toBeCloseTo(0.6024); //Matches fruitdeeps
+            shouldEqualPrecise(result.hitChance, 0.6024); //Matches fruitdeeps
         });
     });
 
@@ -355,7 +359,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate DPS correctly', () => {
-            expect(result.dps).toBeCloseTo(7.524); //Matches fruitdeeps
+            shouldEqualPrecise(result.dps, 7.524); //Matches fruitdeeps
         });
 
         test('should calculate maxHit correctly', () => {
@@ -363,7 +367,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate hitChance correctly', () => {
-            expect(result.hitChance).toBeCloseTo(0.6524); //Matches fruitdeeps
+            shouldEqualPrecise(result.hitChance, 0.6524); //Matches fruitdeeps
         });
     });
 
@@ -384,7 +388,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate DPS correctly', () => {
-            expect(result.dps).toBeCloseTo(7.776); //Matches fruitdeeps
+            shouldEqualPrecise(result.dps, 7.776); //Matches fruitdeeps
         });
 
         test('should calculate maxHit correctly', () => {
@@ -392,7 +396,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate hitChance correctly', () => {
-            expect(result.hitChance).toBeCloseTo(0.6571); //Matches fruitdeeps
+            shouldEqualPrecise(result.hitChance, 0.6571); //Matches fruitdeeps
         });
     });
 
@@ -414,7 +418,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate DPS correctly', () => {
-            expect(result.dps).toBeCloseTo(8.7566); //Matches fruitdeeps and Bitterkoekje
+            shouldEqualPrecise(result.dps, 8.7566); //Matches fruitdeeps and Bitterkoekje
         });
 
         test('should calculate maxHit correctly', () => {
@@ -422,7 +426,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate hitChance correctly', () => {
-            expect(result.hitChance).toBeCloseTo(0.8209); //Matches fruitdeeps and Bitterkoekje
+            shouldEqualPrecise(result.hitChance, 0.8209); //Matches fruitdeeps and Bitterkoekje
         });
     });
 
@@ -444,7 +448,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate DPS correctly', () => {
-            expect(result.dps).toBeCloseTo(10.557); //Matches fruitdeeps
+            shouldEqualPrecise(result.dps, 10.557); //Matches fruitdeeps
         });
 
         test('should calculate maxHit correctly', () => {
@@ -452,7 +456,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate hitChance correctly', () => {
-            expect(result.hitChance).toBeCloseTo(0.8226); //Matches fruitdeeps
+            shouldEqualPrecise(result.hitChance, 0.8226); //Matches fruitdeeps
         });
     });
 
@@ -474,7 +478,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate DPS correctly', () => {
-            expect(result.dps).toBeCloseTo(11.534); //Matches fruitdeeps and Bitterkoekje
+            shouldEqualPrecise(result.dps, 11.534); //Matches fruitdeeps and Bitterkoekje
         });
 
         test('should calculate maxHit correctly', () => {
@@ -482,7 +486,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate hitChance correctly', () => {
-            expect(result.hitChance).toBeCloseTo(0.8544); //Matches fruitdeeps and Bitterkoekje
+            shouldEqualPrecise(result.hitChance, 0.8544); //Matches fruitdeeps and Bitterkoekje
         });
     });
 
@@ -505,7 +509,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate DPS correctly', () => {
-            expect(result.dps).toBeCloseTo(7.059); //Matches Bitterkoekje
+            shouldEqualPrecise(result.dps, 7.059); //Matches Bitterkoekje
         });
 
         test('should calculate maxHit correctly', () => {
@@ -513,7 +517,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate hitChance correctly', () => {
-            expect(result.hitChance).toBeCloseTo(0.5802); //Matches Bitterkoekje
+            shouldEqualPrecise(result.hitChance, 0.5802); //Matches Bitterkoekje
         });
     });
 
@@ -536,7 +540,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate DPS correctly', () => {
-            expect(result.dps).toBeCloseTo(6.42); //Matches Bitterkoekje
+            shouldEqualPrecise(result.dps, 6.42); //Matches Bitterkoekje
         });
 
         test('should calculate maxHit correctly', () => {
@@ -544,7 +548,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate hitChance correctly', () => {
-            expect(result.hitChance).toBeCloseTo(0.7862); //Matches Bitterkoekje
+            shouldEqualPrecise(result.hitChance, 0.7862); //Matches Bitterkoekje
         });
     });
 
@@ -568,7 +572,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate DPS correctly', () => {
-            expect(result.dps).toBeCloseTo(4.760); //Higher than fruitdeeps because their max hit is too low for proc
+            shouldEqualPrecise(result.dps, 4.760); //Higher than fruitdeeps because their max hit is too low for proc
         });
 
         test('should calculate maxHit correctly', () => {
@@ -576,7 +580,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate hitChance correctly', () => {
-            expect(result.hitChance).toBeCloseTo(0.3997); //Matches fruitdeeps
+            shouldEqualPrecise(result.hitChance, 0.3997); //Matches fruitdeeps
         });
     });
 
@@ -599,7 +603,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate DPS correctly', () => {
-            expect(result.dps).toBeCloseTo(6.308); //Higher than fruitdeeps because their max hit is too low for proc
+            shouldEqualPrecise(result.dps, 6.308); //Higher than fruitdeeps because their max hit is too low for proc
         });
 
         test('should calculate maxHit correctly', () => {
@@ -607,7 +611,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate hitChance correctly', () => {
-            expect(result.hitChance).toBeCloseTo(0.5309); //Matches fruitdeeps
+            shouldEqualPrecise(result.hitChance, 0.5309); //Matches fruitdeeps
         });
     });
 
@@ -631,7 +635,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate DPS correctly', () => {
-            expect(result.dps).toBeCloseTo(7.883); //Higher than fruitdeeps because their max hit is too low for proc
+            shouldEqualPrecise(result.dps, 7.883); //Higher than fruitdeeps because their max hit is too low for proc
         });
 
         test('should calculate maxHit correctly', () => {
@@ -639,7 +643,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate hitChance correctly', () => {
-            expect(result.hitChance).toBeCloseTo(0.5979); //Matches fruitdeeps
+            shouldEqualPrecise(result.hitChance, 0.5979); //Matches fruitdeeps
         });
     });
 
@@ -663,7 +667,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate DPS correctly', () => {
-            expect(result.dps).toBeCloseTo(9.695); //Higher than fruitdeeps because their max hit is too low for proc
+            shouldEqualPrecise(result.dps, 9.695); //Higher than fruitdeeps because their max hit is too low for proc
         });
 
         test('should calculate maxHit correctly', () => {
@@ -671,7 +675,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate hitChance correctly', () => {
-            expect(result.hitChance).toBeCloseTo(0.7348); //Matches fruitdeeps
+            shouldEqualPrecise(result.hitChance, 0.7348); //Matches fruitdeeps
         });
     });
 
@@ -694,7 +698,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate DPS correctly', () => {
-            expect(result.dps).toBeCloseTo(10.207); //Matches fruitdeeps
+            shouldEqualPrecise(result.dps, 10.207); //Matches fruitdeeps
         });
 
         test('should calculate maxHit correctly', () => {
@@ -702,7 +706,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate hitChance correctly', () => {
-            expect(result.hitChance).toBeCloseTo(0.8447); //Matches fruitdeeps
+            shouldEqualPrecise(result.hitChance, 0.8447); //Matches fruitdeeps
         });
     });
 
@@ -725,7 +729,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate DPS correctly', () => {
-            expect(result.dps).toBeCloseTo(10.613); //Matches fruitdeeps
+            shouldEqualPrecise(result.dps, 10.613); //Matches fruitdeeps
         });
 
         test('should calculate maxHit correctly', () => {
@@ -733,7 +737,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate hitChance correctly', () => {
-            expect(result.hitChance).toBeCloseTo(0.8490); //Matches fruitdeeps
+            shouldEqualPrecise(result.hitChance, 0.8490); //Matches fruitdeeps
         });
     });
 
@@ -756,7 +760,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate DPS correctly', () => {
-            expect(result.dps).toBeCloseTo(8.510); //Matches fruitdeeps
+            shouldEqualPrecise(result.dps, 8.510); //Matches fruitdeeps
         });
 
         test('should calculate maxHit correctly', () => {
@@ -764,7 +768,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate hitChance correctly', () => {
-            expect(result.hitChance).toBeCloseTo(0.8336); //Matches fruitdeeps
+            shouldEqualPrecise(result.hitChance, 0.8336); //Matches fruitdeeps
         });
     });
 
@@ -786,7 +790,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate DPS correctly', () => {
-            expect(result.dps).toBeCloseTo(1.532); //Matches fruitdeeps and Bitterkoekje
+            shouldEqualPrecise(result.dps, 1.532); //Matches fruitdeeps and Bitterkoekje
         });
 
         test('should calculate maxHit correctly', () => {
@@ -794,7 +798,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate hitChance correctly', () => {
-            expect(result.hitChance).toBeCloseTo(0.1482); //Matches fruitdeeps and Bitterkoekje
+            shouldEqualPrecise(result.hitChance, 0.1482); //Matches fruitdeeps and Bitterkoekje
         });
     });
 
@@ -816,7 +820,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate DPS correctly', () => {
-            expect(result.dps).toBeCloseTo(1.532); //Matches fruitdeeps and Bitterkoekje
+            shouldEqualPrecise(result.dps, 1.532); //Matches fruitdeeps and Bitterkoekje
             // this is the same as regular void because it only boosts gear strength % and
             // 2.5% is so small in some cases it's not even an extra max hit
         });
@@ -826,7 +830,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate hitChance correctly', () => {
-            expect(result.hitChance).toBeCloseTo(0.1482); //Matches fruitdeeps and Bitterkoekje
+            shouldEqualPrecise(result.hitChance, 0.1482); //Matches fruitdeeps and Bitterkoekje
         });
     });
 
@@ -847,7 +851,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate DPS correctly', () => {
-            expect(result.dps).toBeCloseTo(0.928); //Matches fruitdeeps
+            shouldEqualPrecise(result.dps, 0.928); //Matches fruitdeeps
         });
 
         test('should calculate maxHit correctly', () => {
@@ -855,7 +859,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate hitChance correctly', () => {
-            expect(result.hitChance).toBeCloseTo(0.1143); //Matches fruitdeeps
+            shouldEqualPrecise(result.hitChance, 0.1143); //Matches fruitdeeps
         });
     });
 
@@ -876,7 +880,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate DPS correctly', () => {
-            expect(result.dps).toBeCloseTo(0.9522); //Matches fruitdeeps
+            shouldEqualPrecise(result.dps, 0.9522); //Matches fruitdeeps
         });
 
         test('should calculate maxHit correctly', () => {
@@ -884,7 +888,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate hitChance correctly', () => {
-            expect(result.hitChance).toBeCloseTo(0.1143); //Matches fruitdeeps
+            shouldEqualPrecise(result.hitChance, 0.1143); //Matches fruitdeeps
         });
     });
 
@@ -906,7 +910,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate DPS correctly', () => {
-            expect(result.dps).toBeCloseTo(6.159); //Matches Bitterkoekje
+            shouldEqualPrecise(result.dps, 6.159); //Matches Bitterkoekje
         });
 
         test('should calculate maxHit correctly', () => {
@@ -914,7 +918,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate hitChance correctly', () => {
-            expect(result.hitChance).toBeCloseTo(0.5279); //Matches Bitterkoekje
+            shouldEqualPrecise(result.hitChance, 0.5279); //Matches Bitterkoekje
         });
     });
 
@@ -938,7 +942,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate DPS correctly', () => {
-            expect(result.dps).toBeCloseTo(7.567); //Matches Bitterkoekje
+            shouldEqualPrecise(result.dps, 7.567); //Matches Bitterkoekje
         });
 
         test('should calculate maxHit correctly', () => {
@@ -946,7 +950,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate hitChance correctly', () => {
-            expect(result.hitChance).toBeCloseTo(0.5954); //Matches Bitterkoekje
+            shouldEqualPrecise(result.hitChance, 0.5954); //Matches Bitterkoekje
         });
     });
 
@@ -971,7 +975,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate DPS correctly', () => {
-            expect(result.dps).toBeCloseTo(8.519); //Matches Bitterkoekje
+            shouldEqualPrecise(result.dps, 8.519); //Matches Bitterkoekje
         });
 
         test('should calculate maxHit correctly', () => {
@@ -979,7 +983,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate hitChance correctly', () => {
-            expect(result.hitChance).toBeCloseTo(0.7302); //Matches Bitterkoekje
+            shouldEqualPrecise(result.hitChance, 0.7302); //Matches Bitterkoekje
         });
     });
 
@@ -1003,7 +1007,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate DPS correctly', () => {
-            expect(result.dps).toBeCloseTo(10.892); //Matches Bitterkoekje
+            shouldEqualPrecise(result.dps, 10.892); //Matches Bitterkoekje
         });
 
         test('should calculate maxHit correctly', () => {
@@ -1011,7 +1015,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate hitChance correctly', () => {
-            expect(result.hitChance).toBeCloseTo(0.7688); //Matches Bitterkoekje
+            shouldEqualPrecise(result.hitChance, 0.7688); //Matches Bitterkoekje
         });
     });
 
@@ -1034,7 +1038,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate DPS correctly', () => {
-            expect(result.dps).toBeCloseTo(10.199); //Matches Bitterkoekje
+            shouldEqualPrecise(result.dps, 10.199); //Matches Bitterkoekje
         });
 
         test('should calculate maxHit correctly', () => {
@@ -1042,7 +1046,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate hitChance correctly', () => {
-            expect(result.hitChance).toBeCloseTo(0.8410); //Matches Bitterkoekje
+            shouldEqualPrecise(result.hitChance, 0.8410); //Matches Bitterkoekje
         });
     });
 
@@ -1066,7 +1070,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate DPS correctly', () => {
-            expect(result.dps).toBeCloseTo(8.107); //Matches Bitterkoekje
+            shouldEqualPrecise(result.dps, 8.107); //Matches Bitterkoekje
         });
 
         test('should calculate maxHit correctly', () => {
@@ -1074,7 +1078,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate hitChance correctly', () => {
-            expect(result.hitChance).toBeCloseTo(0.7076); //Matches Bitterkoekje
+            shouldEqualPrecise(result.hitChance, 0.7076); //Matches Bitterkoekje
         });
     });
 
@@ -1099,7 +1103,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate DPS correctly', () => {
-            expect(result.dps).toBeCloseTo(7.948); //Matches Bitterkoekje
+            shouldEqualPrecise(result.dps, 7.948); //Matches Bitterkoekje
         });
 
         test('should calculate maxHit correctly', () => {
@@ -1107,7 +1111,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate hitChance correctly', () => {
-            expect(result.hitChance).toBeCloseTo(0.6936); //Matches Bitterkoekje
+            shouldEqualPrecise(result.hitChance, 0.6936); //Matches Bitterkoekje
         });
     });
 
@@ -1131,7 +1135,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate DPS correctly', () => {
-            expect(result.dps).toBeCloseTo(4.114); //Matches Bitterkoekje
+            shouldEqualPrecise(result.dps, 4.114); //Matches Bitterkoekje
         });
 
         test('should calculate maxHit correctly', () => {
@@ -1139,7 +1143,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate hitChance correctly', () => {
-            expect(result.hitChance).toBeCloseTo(0.3726); //Matches Bitterkoekje
+            shouldEqualPrecise(result.hitChance, 0.3726); //Matches Bitterkoekje
         });
     });
 
@@ -1162,7 +1166,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate DPS correctly', () => {
-            expect(result.dps).toBeCloseTo(2.535); //Matches Bitterkoekje
+            shouldEqualPrecise(result.dps, 2.535); //Matches Bitterkoekje
         });
 
         test('should calculate maxHit correctly', () => {
@@ -1170,7 +1174,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate hitChance correctly', () => {
-            expect(result.hitChance).toBeCloseTo(0.3169); //Matches Bitterkoekje
+            shouldEqualPrecise(result.hitChance, 0.3169); //Matches Bitterkoekje
         });
     });
 
@@ -1193,7 +1197,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate DPS correctly', () => {
-            expect(result.dps).toBeCloseTo(2.202); //Matches Bitterkoekje
+            shouldEqualPrecise(result.dps, 2.202); //Matches Bitterkoekje
         });
 
         test('should calculate maxHit correctly', () => {
@@ -1201,7 +1205,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate hitChance correctly', () => {
-            expect(result.hitChance).toBeCloseTo(0.3236); //Matches Bitterkoekje
+            shouldEqualPrecise(result.hitChance, 0.3236); //Matches Bitterkoekje
         });
     });
 
@@ -1224,7 +1228,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate DPS correctly', () => {
-            expect(result.dps).toBeCloseTo(3.265); //Matches Bitterkoekje
+            shouldEqualPrecise(result.dps, 3.265); //Matches Bitterkoekje
         });
 
         test('should calculate maxHit correctly', () => {
@@ -1232,7 +1236,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate hitChance correctly', () => {
-            expect(result.hitChance).toBeCloseTo(0.3169); //Matches Bitterkoekje
+            shouldEqualPrecise(result.hitChance, 0.3169); //Matches Bitterkoekje
         });
     });
 
@@ -1255,7 +1259,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate DPS correctly', () => {
-            expect(result.dps).toBeCloseTo(2.816); //Matches Bitterkoekje
+            shouldEqualPrecise(result.dps, 2.816); //Matches Bitterkoekje
         });
 
         test('should calculate maxHit correctly', () => {
@@ -1263,7 +1267,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate hitChance correctly', () => {
-            expect(result.hitChance).toBeCloseTo(0.3236); //Matches Bitterkoekje
+            shouldEqualPrecise(result.hitChance, 0.3236); //Matches Bitterkoekje
         });
     });
 
@@ -1286,7 +1290,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate DPS correctly', () => {
-            expect(result.dps).toBeCloseTo(3.490); //Matches Bitterkoekje
+            shouldEqualPrecise(result.dps, 3.490); //Matches Bitterkoekje
         });
 
         test('should calculate maxHit correctly', () => {
@@ -1294,7 +1298,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate hitChance correctly', () => {
-            expect(result.hitChance).toBeCloseTo(0.3169); //Matches Bitterkoekje
+            shouldEqualPrecise(result.hitChance, 0.3169); //Matches Bitterkoekje
         });
     });
 
@@ -1317,7 +1321,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate DPS correctly', () => {
-            expect(result.dps).toBeCloseTo(2.593); //Matches Bitterkoekje
+            shouldEqualPrecise(result.dps, 2.593); //Matches Bitterkoekje
         });
 
         test('should calculate maxHit correctly', () => {
@@ -1325,7 +1329,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate hitChance correctly', () => {
-            expect(result.hitChance).toBeCloseTo(0.3169); //Matches Bitterkoekje
+            shouldEqualPrecise(result.hitChance, 0.3169); //Matches Bitterkoekje
         });
     });
 
@@ -1348,7 +1352,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate DPS correctly', () => {
-            expect(result.dps).toBeCloseTo(2.68); //Matches Bitterkoekje
+            shouldEqualPrecise(result.dps, 2.68); //Matches Bitterkoekje
         });
 
         test('should calculate maxHit correctly', () => {
@@ -1356,7 +1360,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate hitChance correctly', () => {
-            expect(result.hitChance).toBeCloseTo(0.3269); //Matches Bitterkoekje
+            shouldEqualPrecise(result.hitChance, 0.3269); //Matches Bitterkoekje
         });
     });
 
@@ -1379,7 +1383,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate DPS correctly', () => {
-            expect(result.dps).toBeCloseTo(3.427); //Matches Bitterkoekje
+            shouldEqualPrecise(result.dps, 3.427); //Matches Bitterkoekje
         });
 
         test('should calculate maxHit correctly', () => {
@@ -1408,7 +1412,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate DPS correctly', () => {
-            expect(result.dps).toBeCloseTo(3.98); //Matches Bitterkoekje
+            shouldEqualPrecise(result.dps, 3.98); //Matches Bitterkoekje
         });
 
         test('should calculate maxHit correctly', () => {
@@ -1416,7 +1420,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate hitChance correctly', () => {
-            expect(result.hitChance).toBeCloseTo(0.407); //Matches Bitterkoekje
+            shouldEqualPrecise(result.hitChance, 0.407); //Matches Bitterkoekje
         });
     });
 
@@ -1436,7 +1440,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate DPS correctly', () => {
-            expect(result.dps).toBeCloseTo(2.945732477); //Matches Bitterkoekje
+            shouldEqualPrecise(result.dps, 2.945732477); //Matches Bitterkoekje
         });
 
         test('should calculate maxHit correctly', () => {
@@ -1444,7 +1448,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate hitChance correctly', () => {
-            expect(result.hitChance).toBeCloseTo(0.3214); //Matches Bitterkoekje
+            shouldEqualPrecise(result.hitChance, 0.3214); //Matches Bitterkoekje
         });
     });
 
@@ -1465,7 +1469,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate DPS correctly', () => {
-            expect(result.dps).toBeCloseTo(2.931); //Matches Bitterkoekje
+            shouldEqualPrecise(result.dps, 2.931); //Matches Bitterkoekje
         });
 
         test('should calculate maxHit correctly', () => {
@@ -1473,7 +1477,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate hitChance correctly', () => {
-            expect(result.hitChance).toBeCloseTo(0.2269); //Matches Bitterkoekje
+            shouldEqualPrecise(result.hitChance, 0.2269); //Matches Bitterkoekje
         });
     });
 
@@ -1494,7 +1498,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate DPS correctly', () => {
-            expect(result.dps).toBeCloseTo(2.06); //Matches Bitterkoekje
+            shouldEqualPrecise(result.dps, 2.06); //Matches Bitterkoekje
         });
 
         test('should calculate maxHit correctly', () => {
@@ -1502,7 +1506,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate hitChance correctly', () => {
-            expect(result.hitChance).toBeCloseTo(0.2317); //Matches Bitterkoekje
+            shouldEqualPrecise(result.hitChance, 0.2317); //Matches Bitterkoekje
         });
     });
 
@@ -1510,7 +1514,7 @@ describe('Calculator class', () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General])
                 .addItemByName(ItemName.TwistedBow)
-                .setCombatStyle(CombatStyle.Rapid   )
+                .setCombatStyle(CombatStyle.Rapid)
                 .addItemByName(ItemName.DragonArrow)
                 .addItemByName(ItemName.MasoriMaskF)
                 .addItemByName(ItemName.MasoriBodyF)
@@ -1526,7 +1530,7 @@ describe('Calculator class', () => {
 
         //Bitterkoekje has 0.35 multiplier for some reason
         test('should calculate DPS correctly', () => {
-            expect(result.dps).toBeCloseTo(3.715); //Matches Bitterkoekje if you set multiplier to 0.333334 instead of 0.35
+            shouldEqualPrecise(result.dps, 3.715); //Matches Bitterkoekje if you set multiplier to 0.333334 instead of 0.35
         });
 
         test('should calculate maxHit correctly', () => {
@@ -1534,7 +1538,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate hitChance correctly', () => {
-            expect(result.hitChance).toBeCloseTo(0.6966); //Matches Bitterkoekje
+            shouldEqualPrecise(result.hitChance, 0.6966); //Matches Bitterkoekje
         });
     });
 
@@ -1559,7 +1563,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate DPS correctly', () => {
-            expect(result.dps).toBeCloseTo(10.589); //Matches Bitterkoekje
+            shouldEqualPrecise(result.dps, 10.589); //Matches Bitterkoekje
         });
 
         test('should calculate maxHit correctly', () => {
@@ -1567,7 +1571,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate hitChance correctly', () => {
-            expect(result.hitChance).toBeCloseTo(0.6963); //Matches Bitterkoekje
+            shouldEqualPrecise(result.hitChance, 0.6963); //Matches Bitterkoekje
         });
     });
 
@@ -1592,7 +1596,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate DPS correctly', () => {
-            expect(result.dps).toBeCloseTo(7.429); //Matches Bitterkoekje
+            shouldEqualPrecise(result.dps, 7.429); //Matches Bitterkoekje
         });
 
         test('should calculate maxHit correctly', () => {
@@ -1600,7 +1604,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate hitChance correctly', () => {
-            expect(result.hitChance).toBeCloseTo(0.9906); //Matches Bitterkoekje
+            shouldEqualPrecise(result.hitChance, 0.9906); //Matches Bitterkoekje
         });
     });
 
@@ -1625,7 +1629,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate DPS correctly', () => {
-            expect(result.dps).toBeCloseTo(7.092); //Matches Bitterkoekje
+            shouldEqualPrecise(result.dps, 7.092); //Matches Bitterkoekje
         });
 
         test('should calculate maxHit correctly', () => {
@@ -1633,7 +1637,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate hitChance correctly', () => {
-            expect(result.hitChance).toBeCloseTo(0.9896); //Matches Bitterkoekje
+            shouldEqualPrecise(result.hitChance, 0.9896); //Matches Bitterkoekje
         });
     });
 
@@ -1656,7 +1660,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate DPS correctly', () => {
-            expect(result.dps).toBeCloseTo(5.993); //Matches Bitterkoekje
+            shouldEqualPrecise(result.dps, 5.993); //Matches Bitterkoekje
         });
 
         test('should calculate maxHit correctly', () => {
@@ -1664,7 +1668,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate hitChance correctly', () => {
-            expect(result.hitChance).toBeCloseTo(0.564  ); //Matches Bitterkoekje
+            shouldEqualPrecise(result.hitChance, 0.564); //Matches Bitterkoekje
         });
     });
 
@@ -1688,8 +1692,8 @@ describe('Calculator class', () => {
         });
 
         test('should calculate DPS correctly', () => {
-            expect(result.dps).toBeCloseTo(6.9254); //Matches manual redistribution
-            expect(result.dps).toBeCloseTo(6.9147); //Matches Bitterkoekje
+            shouldEqualPrecise(result.dps, 6.9254); //Matches manual redistribution
+            shouldEqualPrecise(result.dps, 6.9147); //Matches Bitterkoekje
         });
 
         test('should calculate maxHit correctly', () => {
@@ -1697,7 +1701,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate hitChance correctly', () => {
-            expect(result.hitChance).toBeCloseTo(0.7870); //Matches Bitterkoekje
+            shouldEqualPrecise(result.hitChance, 0.7870); //Matches Bitterkoekje
         });
     });
 
@@ -1723,7 +1727,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate DPS correctly', () => {
-            expect(result.dps).toBeCloseTo(9.6875); //Matches Bitterkoekje
+            shouldEqualPrecise(result.dps, 9.6875); //Matches Bitterkoekje
         });
 
         test('should calculate maxHit correctly', () => {
@@ -1731,7 +1735,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate hitChance correctly', () => {
-            expect(result.hitChance).toBeCloseTo(0.8398); //Matches Bitterkoekje
+            shouldEqualPrecise(result.hitChance, 0.8398); //Matches Bitterkoekje
         });
     });
 
@@ -1754,7 +1758,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate DPS correctly', () => {
-            expect(result.dps).toBeCloseTo(0);
+            shouldEqualPrecise(result.dps, 0);
         });
 
         test('should calculate maxHit correctly', () => {
@@ -1781,7 +1785,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate DPS correctly', () => {
-            expect(result.dps).toBeCloseTo(3.9426);
+            shouldEqualPrecise(result.dps, 3.9426);
         });
 
         test('should calculate maxHit correctly', () => {
@@ -1789,7 +1793,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate hitChance correctly', () => {
-            expect(result.hitChance).toBeCloseTo(0.9653);
+            shouldEqualPrecise(result.hitChance, 0.9653);
         });
     });
 
@@ -1812,7 +1816,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate DPS correctly', () => {
-            expect(result.dps).toBeCloseTo(3.8704);
+            shouldEqualPrecise(result.dps, 3.8704);
         });
 
         test('should calculate maxHit correctly', () => {
@@ -1820,7 +1824,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate hitChance correctly', () => {
-            expect(result.hitChance).toBeCloseTo(0.9653);
+            shouldEqualPrecise(result.hitChance, 0.9653);
         });
     });
 
@@ -1842,7 +1846,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate DPS correctly', () => {
-            expect(result.dps).toBeCloseTo(0);
+            shouldEqualPrecise(result.dps, 0);
         });
 
         test('should calculate maxHit correctly', () => {
@@ -1872,7 +1876,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate DPS correctly', () => {
-            expect(result.dps).toBeCloseTo(8.1477); //Matches Bitterkoekje (magic lvl is wrong on Bitter though)
+            shouldEqualPrecise(result.dps, 8.1477); //Matches Bitterkoekje (magic lvl is wrong on Bitter though)
         });
 
         test('should calculate maxHit correctly', () => {
@@ -1880,7 +1884,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate hitChance correctly', () => {
-            expect(result.hitChance).toBeCloseTo(0.9777); //Matches Bitterkoekje
+            shouldEqualPrecise(result.hitChance, 0.9777); //Matches Bitterkoekje
         });
     });
 
@@ -1906,7 +1910,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate DPS correctly', () => {
-            expect(result.dps).toBeCloseTo(5.0798); //Matches Bitterkoekje
+            shouldEqualPrecise(result.dps, 5.0798); //Matches Bitterkoekje
         });
 
         test('should calculate maxHit correctly', () => {
@@ -1914,7 +1918,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate hitChance correctly', () => {
-            expect(result.hitChance).toBeCloseTo(0.9832); //Matches Bitterkoekje
+            shouldEqualPrecise(result.hitChance, 0.9832); //Matches Bitterkoekje
         });
     });
 
@@ -1940,7 +1944,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate DPS correctly', () => {
-            expect(result.dps).toBeCloseTo(5.08155); //Matches Bitterkoekje
+            shouldEqualPrecise(result.dps, 5.08155); //Matches Bitterkoekje
         });
 
         test('should calculate maxHit correctly', () => {
@@ -1948,7 +1952,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate hitChance correctly', () => {
-            expect(result.hitChance).toBeCloseTo(0.9835); //Matches Bitterkoekje
+            shouldEqualPrecise(result.hitChance, 0.9835); //Matches Bitterkoekje
         });
     });
 
@@ -2030,6 +2034,88 @@ describe('Calculator class', () => {
         });
     });
 
+    describe('sanguinesti staff with salve amulet', () => {
+        beforeEach(() => {
+            result.gearSet = new GearSet([GearSetType.General])
+                .addItemByName(ItemName.SanguinestiStaff)
+                .setCombatStyle(CombatStyle.Accurate)
+                .addItemByName(ItemName.SalveAmuletEI)
+                .addItemByName(ItemName.TormentedBracelet)
+            result.targetMonster = monsters.get("Pestilent Bloat") as TargetMonster;
+            result.player.skills.magic.boost = 13; //Saturated heart
+            result.calculateDPS();
+        });
+
+        test('should calculate DPS correctly', () => {
+            shouldEqualPrecise(result.dps, 0.7964); //Matches Bitterkoekje
+        });
+
+        test('should calculate maxHit correctly', () => {
+            expect(result.maxHit).toBe(45); //Tested in game
+        });
+
+        test('should calculate hitChance correctly', () => {
+            shouldEqualPrecise(result.hitChance, 0.0850); //Matches Bitterkoekje
+        });
+    });
+
+    describe('sanguinesti staff with amulet of avarice', () => {
+        beforeEach(() => {
+            result.gearSet = new GearSet([GearSetType.General])
+                .addItemByName(ItemName.SanguinestiStaff)
+                .setCombatStyle(CombatStyle.Accurate)
+                .addItemByName(ItemName.AmuletOfAvarice)
+                .addItemByName(ItemName.TormentedBracelet)
+            result.targetMonster = monsters.get("Revenant dragon") as TargetMonster;
+            result.player.skills.magic.boost = 13; //Saturated heart
+            result.calculateDPS();
+        });
+
+        test('should calculate maxHit correctly', () => {
+            expect(result.maxHit).toBe(45); //Tested in game
+        });
+    });
+
+    describe('abyssal tentacle with amulet of avarice', () => {
+        beforeEach(() => {
+            result.gearSet = new GearSet([GearSetType.General])
+                .addItemByName(ItemName.AbyssalTentacle)
+                .setCombatStyle(CombatStyle.Flick)
+                .addItemByName(ItemName.AmuletOfAvarice)
+            result.targetMonster = monsters.get("Revenant dragon") as TargetMonster;
+            result.calculateDPS();
+        });
+
+        test('should calculate maxHit correctly', () => {
+            expect(result.maxHit).toBe(44); //Tested in game
+        });
+    });
+
+    describe('sanguinesti staff with slayer helmet', () => {
+        beforeEach(() => {
+            result.gearSet = new GearSet([GearSetType.General])
+                .addItemByName(ItemName.SanguinestiStaff)
+                .setCombatStyle(CombatStyle.Accurate)
+                .addItemByName(ItemName.SlayerHelmetI)
+                .addItemByName(ItemName.TormentedBracelet)
+            result.player.onTask = true;
+            result.player.skills.magic.boost = 13; //Saturated heart
+            result.calculateDPS();
+        });
+
+        test('should calculate DPS correctly', () => {
+            shouldEqualPrecise(result.dps, 1.404); //Matches Bitterkoekje
+        });
+
+        test('should calculate maxHit correctly', () => {
+            expect(result.maxHit).toBe(42); //Tested in game
+        });
+
+        test('should calculate hitChance correctly', () => {
+            shouldEqualPrecise(result.hitChance, 0.1605); //Matches Bitterkoekje
+        });
+    });
+
     describe('fire bolt with regular staff', () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General])
@@ -2077,7 +2163,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate DPS correctly', () => {
-            expect(result.dps).toBeCloseTo(10.322); //Matches Bitterkoekje
+            shouldEqualPrecise(result.dps, 10.322); //Matches Bitterkoekje
         });
 
         test('should calculate maxHit correctly', () => {
@@ -2085,7 +2171,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate hitChance correctly', () => {
-            expect(result.hitChance).toBeCloseTo(0.9108); //Matches Bitterkoekje
+            shouldEqualPrecise(result.hitChance, 0.9108); //Matches Bitterkoekje
         });
     });
 
@@ -2110,7 +2196,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate DPS correctly', () => {
-            expect(result.dps).toBeCloseTo(10.322); //Matches Bitterkoekje
+            shouldEqualPrecise(result.dps, 10.322); //Matches Bitterkoekje
         });
 
         test('should calculate maxHit correctly', () => {
@@ -2118,7 +2204,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate hitChance correctly', () => {
-            expect(result.hitChance).toBeCloseTo(0.9108); //Matches Bitterkoekje
+            shouldEqualPrecise(result.hitChance, 0.9108); //Matches Bitterkoekje
         });
     });
 
@@ -2138,7 +2224,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate DPS correctly', () => {
-            expect(result.dps).toBeCloseTo(6.256); //Matches Bitterkoekje (once you fix defence level)
+            shouldEqualPrecise(result.dps, 6.256); //Matches Bitterkoekje (once you fix defence level)
         });
 
         test('should calculate maxHit correctly', () => {
@@ -2146,7 +2232,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate hitChance correctly', () => {
-            expect(result.hitChance).toBeCloseTo(0.5888); //Matches Bitterkoekje
+            shouldEqualPrecise(result.hitChance, 0.5888); //Matches Bitterkoekje
         });
     });
 
@@ -2166,7 +2252,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate DPS correctly', () => {
-            expect(result.dps).toBeCloseTo(6.2327); //Matches Bitterkoekje (once you fix defence level)
+            shouldEqualPrecise(result.dps, 6.2327); //Matches Bitterkoekje (once you fix defence level)
         });
 
         test('should calculate maxHit correctly', () => {
@@ -2174,7 +2260,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate hitChance correctly', () => {
-            expect(result.hitChance).toBeCloseTo(0.7333); //Matches Bitterkoekje
+            shouldEqualPrecise(result.hitChance, 0.7333); //Matches Bitterkoekje
         });
     });
 
@@ -2198,7 +2284,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate DPS correctly', () => {
-            expect(result.dps).toBeCloseTo(11.106); //Matches Bitterkoekje
+            shouldEqualPrecise(result.dps, 11.106); //Matches Bitterkoekje
         });
 
         test('should calculate maxHit correctly', () => {
@@ -2206,7 +2292,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate hitChance correctly', () => {
-            expect(result.hitChance).toBeCloseTo(0.9872); //Matches Bitterkoekje
+            shouldEqualPrecise(result.hitChance, 0.9872); //Matches Bitterkoekje
         });
     });
 });

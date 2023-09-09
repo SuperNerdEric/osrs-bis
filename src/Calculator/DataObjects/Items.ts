@@ -1190,3 +1190,15 @@ createItem(ItemName.BerserkerNecklace, {
     strength: 7,
     slot: Slot.Neck,
 });
+
+createItem(ItemName.AmuletOfAvarice, {
+    imagePath: "./Images/ItemsOld/Amulet_of_avarice.png",
+    wikiLink: "https://oldschool.runescape.wiki/w/Amulet_of_avarice",
+    stab: 10,
+    slash: 10,
+    crush: 10,
+    magic: 10,
+    ranged: 10,
+    strength: 6,
+    slot: Slot.Neck,
+});

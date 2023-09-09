@@ -4,16 +4,17 @@ import {Player} from "./DataObjects/Player";
 import {GearSet} from "./DataObjects/GearSets";
 import {ItemName} from "./DataObjects/ItemName";
 import {calculateHitChance} from "./HitChanceStrategies";
-import {MultiplierType} from "./Multipliers/MultiplierType";
+import {MultiplierType} from "./Modifiers/Multiplicative/MultiplierType";
 import {v4 as uuidv4} from 'uuid';
 import {Spell, SpellBookType} from "./DataObjects/Spell";
-import {getGearAccuracyMultipliers, getGearDamageMultipliers} from "./Multipliers/MultiplierUtils";
+import {getGearAccuracyMultipliers, getGearDamageMultipliers} from "./Modifiers/Multiplicative/MultiplierUtils";
 import {averageDamage, DamageProbability} from "./DamageDistributionStrategies/DamageProbability";
 import {getDamageDistribution} from "./DamageDistributionStrategies/DamageDistributionStrategies";
 import {getMagicWeaponMaxHit} from "./MagicWeaponMaxHit";
-import {soulreaperMultiplier, voidKnightMultiplier} from "./Multipliers";
+import {soulreaperMultiplier, voidKnightMultiplier} from "./Modifiers/Multiplicative";
 import {defenceBasedMagicDefMonsters} from "./DefenceBasedMagicDefMonsters";
 import {SpellName} from "./DataObjects/SpellName";
+import {getGearDamageTotalAdditive} from "./Modifiers/Additive/AdditiveUtils";
 
 
 export class Calculator {
@@ -44,7 +45,7 @@ export class Calculator {
         const effectiveAttackLevel = this.calculateEffectiveAttackLevel(this.gearSet.combatClass);
 
         const gearDamageMultipliers = getGearDamageMultipliers(this);
-        this.maxHit = this.calculateMaxHit(effectiveStrengthLevel, gearDamageMultipliers, this.gearSet.styleType);
+        this.maxHit = this.calculateMaxHit(effectiveStrengthLevel, gearDamageMultipliers, this.gearSet.combatClass);
 
         const gearAccuracyMultipliers = getGearAccuracyMultipliers(this);
         this.attackRoll = this.calculateAttackRoll(effectiveAttackLevel, gearAccuracyMultipliers);
@@ -135,10 +136,10 @@ export class Calculator {
         return effectiveLevel;
     }
 
-    private calculateMaxHit(effectiveLevel: number, gearDamageMultipliers: number[], attackStyle: StyleType): number {
+    private calculateMaxHit(effectiveLevel: number, gearDamageMultipliers: number[], combatClass: CombatClass): number {
         let maxHit: number;
 
-        if ([StyleType.Stab, StyleType.Slash, StyleType.Crush, StyleType.Ranged].includes(attackStyle)) {
+        if ([CombatClass.Melee, CombatClass.Ranged].includes(combatClass)) {
             maxHit = Math.floor(0.5 + (effectiveLevel * (this.gearSet.styleStrength + 64)) / 640);
         } else {
             if (this.gearSet.spell) {
@@ -151,6 +152,7 @@ export class Calculator {
                 const boostedMagicLevel = this.player.skills.magic.level + this.player.skills.magic.boost;
                 maxHit = getMagicWeaponMaxHit(this.gearSet.getWeapon().name, boostedMagicLevel);
             }
+            this.gearSet.styleStrength += getGearDamageTotalAdditive(this);
             maxHit = Math.floor(maxHit * (1 + this.gearSet.styleStrength / 100));
         }
 

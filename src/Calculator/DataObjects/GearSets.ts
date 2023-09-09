@@ -16,7 +16,7 @@ import {generateRangedGearSets} from "../../GearSets/RangedGearSets";
 import {generateMeleeGearSets} from "../../GearSets/MeleeGearSets";
 import {generateMageGearsets} from "../../GearSets/MageGearSets";
 import * as _ from "lodash";
-import {ancientSpellbook, arceuusSpellbook, Spell, spellBookMapping, SpellBookType, standardSpellbook} from "./Spell";
+import {ancientSpellbook, arceuusSpellbook, Spell, standardSpellbook} from "./Spell";
 import {SpellName} from "./SpellName";
 
 export enum GearSetType {
@@ -109,29 +109,7 @@ export class GearSet {
                 this.styleTypeBonus *= multiplier;
                 this.styleStrength = Math.min(100, this.styleStrength * multiplier);
             }
-
-            //Happens after Tumeken's for some reason https://archive.ph/mw2LB https://archive.ph/CtG0m
-            if (this.applyEliteVoidMageBonus(gearItems)) {
-                this.styleStrength += 2.5;
-            }
-
-            if (this.applySmokeBattleStaffBonus()) {
-                this.styleStrength += 10;
-            }
         }
-
-        const virtusItems = [ItemName.VirtusMask, ItemName.VirtusRobeTop, ItemName.VirtusRobeBottom];
-        let virtusBonus = 0;
-
-        for (const item of virtusItems) {
-            if (this.hasItemByName(item)) {
-                if (this.spell && this.spell.spellbook === SpellBookType.Ancient) {
-                    virtusBonus += 3;
-                }
-            }
-        }
-
-        this.styleStrength += virtusBonus;
     }
 
     setCombatStyle(combatStyle: CombatStyle): this {
@@ -188,20 +166,6 @@ export class GearSet {
         }
 
         return gearItems.reduce((total: number, item: Item) => total + item[strengthAttribute], 0);
-    }
-
-    private applyEliteVoidMageBonus(gearItems: (Weapon | Item)[]): boolean {
-        const requiredItems = [ItemName.VoidMageHelm, ItemName.EliteVoidTop, ItemName.EliteVoidRobe, ItemName.VoidKnightGloves];
-        return requiredItems.every(requiredItem => gearItems.some(gearItem => gearItem.name === requiredItem));
-    }
-
-    private applySmokeBattleStaffBonus(): boolean {
-        const validStaves = [ItemName.SmokeBattlestaff, ItemName.MysticSmokeStaff];
-        const currentWeapon = this.getWeapon().name;
-        if(validStaves.includes(currentWeapon) && this.spell && spellBookMapping[SpellBookType.Standard].getSpell(this.spell.name)) {
-            return true;
-        }
-        return false;
     }
 
     setRaid(raid: Raid) {
