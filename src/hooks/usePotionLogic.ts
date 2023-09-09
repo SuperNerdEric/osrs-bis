@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react';
-import {Player} from "../DataObjects/Player";
-import {Raid} from "../DataObjects/Raid";
+import {Player} from "../Calculator/DataObjects/Player";
+import {Raid} from "../Calculator/DataObjects/Raid";
 
 interface PotionStates {
     superCombat: boolean;

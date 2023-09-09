@@ -1,6 +1,6 @@
 import {Calculator} from "./Calculator";
-import {Raid} from "../DataObjects/Raid";
-import {ItemName} from "../DataObjects/ItemName";
+import {Raid} from "./DataObjects/Raid";
+import {ItemName} from "./DataObjects/ItemName";
 
 abstract class HitChanceStrategy {
     protected result: Calculator;

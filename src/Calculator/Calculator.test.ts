@@ -1,12 +1,12 @@
 import {Calculator} from './Calculator';
-import {MonsterVariant, TargetMonster} from '../DataObjects/TargetMonster';
-import {Player} from '../DataObjects/Player';
-import {GearSet, GearSetType} from "../DataObjects/GearSets";
-import {CombatStyle, StyleType} from "../DataObjects/Item";
-import {ItemName} from '../DataObjects/ItemName';
-import {Raid} from "../DataObjects/Raid";
-import {loadMonstersFromFile, monsters} from "../Data/loadMonsters";
-import {SpellName} from "../DataObjects/SpellName";
+import {MonsterVariant, TargetMonster} from './DataObjects/TargetMonster';
+import {Player} from './DataObjects/Player';
+import {GearSet, GearSetType} from "./DataObjects/GearSets";
+import {CombatStyle, StyleType} from "./DataObjects/Item";
+import {ItemName} from './DataObjects/ItemName';
+import {Raid} from "./DataObjects/Raid";
+import {loadMonstersFromFile, monsters} from "./Data/loadMonsters";
+import {SpellName} from "./DataObjects/SpellName";
 
 describe('Calculator class', () => {
     let result: Calculator;

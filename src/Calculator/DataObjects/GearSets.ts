@@ -12,9 +12,9 @@ import {
 import {items} from "./Items";
 import {ItemName} from "./ItemName";
 import {Raid} from "./Raid";
-import {generateRangedGearSets} from "./GearSets/RangedGearSets";
-import {generateMeleeGearSets} from "./GearSets/MeleeGearSets";
-import {generateMageGearsets} from "./GearSets/MageGearSets";
+import {generateRangedGearSets} from "../../GearSets/RangedGearSets";
+import {generateMeleeGearSets} from "../../GearSets/MeleeGearSets";
+import {generateMageGearsets} from "../../GearSets/MageGearSets";
 import * as _ from "lodash";
 import {ancientSpellbook, arceuusSpellbook, Spell, spellBookMapping, SpellBookType, standardSpellbook} from "./Spell";
 import {SpellName} from "./SpellName";

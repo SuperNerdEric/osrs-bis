@@ -1,4 +1,4 @@
-import {gearSets} from "../GearSets";
+import {gearSets} from "../Calculator/DataObjects/GearSets";
 import {generateMeleeGearSets} from "./MeleeGearSets";
 
 describe('GearSetGenerator class', () => {

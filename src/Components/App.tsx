@@ -9,9 +9,9 @@ import {createBrowserHistory} from 'history';
 import {devLog} from '../utils';
 import TopBar from "./TopBar/TopBar";
 import MainContent from "../MainContent";
-import {TargetMonster} from "../DataObjects/TargetMonster";
-import {Raid} from "../DataObjects/Raid";
-import {loadMonstersFromFile, monsters} from "../Data/loadMonsters";
+import {TargetMonster} from "../Calculator/DataObjects/TargetMonster";
+import {Raid} from "../Calculator/DataObjects/Raid";
+import {loadMonstersFromFile, monsters} from "../Calculator/Data/loadMonsters";
 import {UrlStateType} from "../UrlStateType";
 import * as _ from "lodash";
 

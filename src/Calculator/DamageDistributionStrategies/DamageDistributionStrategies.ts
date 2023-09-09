@@ -1,6 +1,6 @@
 import {Calculator} from "../Calculator";
-import {CombatClass, Item, Slot} from "../../DataObjects/Item";
-import {ItemName} from "../../DataObjects/ItemName";
+import {CombatClass, Item, Slot} from "../DataObjects/Item";
+import {ItemName} from "../DataObjects/ItemName";
 import {
     upsertDamageProbability,
     DamageProbability,

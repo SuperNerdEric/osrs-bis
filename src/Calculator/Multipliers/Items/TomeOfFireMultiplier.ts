@@ -1,5 +1,5 @@
-import {ItemName} from "../../../DataObjects/ItemName";
-import {SpellName} from "../../../DataObjects/SpellName";
+import {ItemName} from "../../DataObjects/ItemName";
+import {SpellName} from "../../DataObjects/SpellName";
 import {Calculator} from "../../Calculator";
 
 const FireSpellMultiplier = 1.50;

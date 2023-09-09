@@ -1,5 +1,5 @@
 import {Calculator} from "../../Calculator";
-import {ItemName} from "../../../DataObjects/ItemName";
+import {ItemName} from "../../DataObjects/ItemName";
 
 export function arclightMultiplier(calculator: Calculator): number {
     if (calculator.gearSet.getWeapon().name === ItemName.Arclight && calculator.targetMonster.isDemon) {

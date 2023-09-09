@@ -1,5 +1,5 @@
 import {Calculator} from "../../Calculator";
-import {ItemName} from "../../../DataObjects/ItemName";
+import {ItemName} from "../../DataObjects/ItemName";
 
 export function soulreaperMultiplier(calculator: Calculator): number {
     const currentWeapon = calculator.gearSet.getWeapon()?.name;

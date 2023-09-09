@@ -1,6 +1,6 @@
-import {StyleType} from "../src/DataObjects/Item";
-import {MonsterVariant, TargetMonster} from "../src/DataObjects/TargetMonster";
-import {Raid} from "../src/DataObjects/Raid";
+import {StyleType} from "../src/Calculator/DataObjects/Item";
+import {MonsterVariant, TargetMonster} from "../src/Calculator/DataObjects/TargetMonster";
+import {Raid} from "../src/Calculator/DataObjects/Raid";
 import monstersData from "./wiki_monster_data.json";
 import * as fs from "fs";
 

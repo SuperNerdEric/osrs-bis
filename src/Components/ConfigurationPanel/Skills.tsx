@@ -1,6 +1,6 @@
 import React from 'react';
 import {TextField, Stack} from '@mui/material';
-import {Player} from "../../DataObjects/Player";
+import {Player} from "../../Calculator/DataObjects/Player";
 import AttackIcon from '../../Images/Skills/Attack_icon.png';
 import MagicIcon from '../../Images/Skills/Magic_icon.png';
 import RangedIcon from '../../Images/Skills/Ranged_icon.png';

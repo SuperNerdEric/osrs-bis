@@ -1,15 +1,15 @@
 import {Tooltip} from "@mui/material";
 import {Calculator} from "./Calculator/Calculator";
-import {TargetMonster} from "./DataObjects/TargetMonster";
-import {GearSet, gearSets, GearSetType} from "./DataObjects/GearSets";
+import {TargetMonster} from "./Calculator/DataObjects/TargetMonster";
+import {GearSet, gearSets, GearSetType} from "./Calculator/DataObjects/GearSets";
 import {DiscreteSliderMarks} from "./Components/Slider";
 import DefenceReduction from "./Components/ConfigurationPanel/DefenceReduction";
 import React, {useEffect, useState} from 'react';
-import {Raid} from "./DataObjects/Raid";
+import {Raid} from "./Calculator/DataObjects/Raid";
 import {GearTable} from "./Components/Table";
 import {ColumnDef} from "@tanstack/react-table";
 import ConfigurationPanel from "./Components/ConfigurationPanel/ConfigurationPanel";
-import {Player} from "./DataObjects/Player";
+import {Player} from "./Calculator/DataObjects/Player";
 import MonsterVariantSelector from "./Components/MonsterVariantSelector";
 import MonsterHitpoints from "./Components/ConfigurationPanel/MonsterHitpoints";
 

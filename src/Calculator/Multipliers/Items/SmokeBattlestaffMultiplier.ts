@@ -1,6 +1,6 @@
 import {Calculator} from "../../Calculator";
-import {ItemName} from "../../../DataObjects/ItemName";
-import {spellBookMapping, SpellBookType} from "../../../DataObjects/Spell";
+import {ItemName} from "../../DataObjects/ItemName";
+import {spellBookMapping, SpellBookType} from "../../DataObjects/Spell";
 
 export function smokeBattlestaffMultiplier(calculator: Calculator): number {
     const validStaves = [ItemName.SmokeBattlestaff, ItemName.MysticSmokeStaff];

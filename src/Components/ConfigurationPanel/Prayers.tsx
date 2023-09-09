@@ -1,6 +1,6 @@
 import React from 'react';
 import {Stack, FormControlLabel, Checkbox} from '@mui/material';
-import {Prayer} from "../../DataObjects/Prayer";
+import {Prayer} from "../../Calculator/DataObjects/Prayer";
 
 
 interface PrayersProps {

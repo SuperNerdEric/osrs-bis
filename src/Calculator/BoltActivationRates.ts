@@ -1,4 +1,4 @@
-import {ItemName} from "../DataObjects/ItemName";
+import {ItemName} from "./DataObjects/ItemName";
 
 export function getBoltActivationRate(boltName: ItemName, kandarinHardComplete: boolean): number {
     const baseRates: { [key in ItemName]?: number } = {

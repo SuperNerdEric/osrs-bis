@@ -1,6 +1,6 @@
 import {Calculator} from "../../Calculator";
 import {MultiplierType} from "../MultiplierType";
-import {ItemName} from "../../../DataObjects/ItemName";
+import {ItemName} from "../../DataObjects/ItemName";
 
 export function kerisMultiplier(calculator: Calculator, multiplierType: MultiplierType): number {
     if (multiplierType === MultiplierType.Damage) {

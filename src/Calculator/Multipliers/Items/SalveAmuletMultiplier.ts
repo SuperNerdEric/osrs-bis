@@ -1,5 +1,5 @@
-import {ItemName} from "../../../DataObjects/ItemName";
-import {CombatClass} from "../../../DataObjects/Item";
+import {ItemName} from "../../DataObjects/ItemName";
+import {CombatClass} from "../../DataObjects/Item";
 import {Calculator} from "../../Calculator";
 
 const SalveMultiplierTable = {

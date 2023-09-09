@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Stack, FormControlLabel, Checkbox } from '@mui/material';
-import { Raid } from "../../DataObjects/Raid";
+import { Raid } from "../../Calculator/DataObjects/Raid";
 
 interface BoostProps {
     potionStates: PotionStates;

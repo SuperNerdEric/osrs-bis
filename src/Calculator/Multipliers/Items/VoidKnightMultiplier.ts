@@ -1,6 +1,6 @@
-import {ItemName} from "../../../DataObjects/ItemName";
+import {ItemName} from "../../DataObjects/ItemName";
 import {MultiplierType} from "../MultiplierType";
-import {CombatClass, Item} from "../../../DataObjects/Item";
+import {CombatClass, Item} from "../../DataObjects/Item";
 import {Calculator} from "../../Calculator";
 
 const VoidKnightMultiplierTable = {

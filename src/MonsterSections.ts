@@ -1,5 +1,5 @@
-import { monsters } from "../Data/loadMonsters";
-import {TargetMonster} from "./TargetMonster";
+import { monsters } from "./Calculator/Data/loadMonsters";
+import {TargetMonster} from "./Calculator/DataObjects/TargetMonster";
 
 
 export class MonsterSection {

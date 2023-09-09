@@ -1,4 +1,4 @@
-import {ItemName} from "../DataObjects/ItemName";
+import {ItemName} from "./DataObjects/ItemName";
 
 export  function getMagicWeaponMaxHit(weaponName: ItemName, boostedMagicLevel: number) {
     return getPoweredStaffMaxHit(weaponName, boostedMagicLevel)

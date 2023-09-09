@@ -1,7 +1,7 @@
 import React from 'react';
-import {TargetMonster} from "../DataObjects/TargetMonster";
+import {TargetMonster} from "../Calculator/DataObjects/TargetMonster";
 import {MenuItem, Select, ToggleButton, ToggleButtonGroup} from "@mui/material";
-import {monsters} from "../Data/loadMonsters";
+import {monsters} from "../Calculator/Data/loadMonsters";
 
 interface MonsterVariantSelectorProps {
     monster: TargetMonster;

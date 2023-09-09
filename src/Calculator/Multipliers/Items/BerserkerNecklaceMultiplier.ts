@@ -1,6 +1,6 @@
 import {Calculator} from "../../Calculator";
 import {obsidianMeleeWeapons} from "./ObsidianEquipmentMultiplier";
-import {ItemName} from "../../../DataObjects/ItemName";
+import {ItemName} from "../../DataObjects/ItemName";
 
 export function berserkerNecklaceMultiplier(calculator: Calculator): number {
     const currentWeapon = calculator.gearSet.getWeapon()?.name;

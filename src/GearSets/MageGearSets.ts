@@ -1,8 +1,8 @@
-import {ItemName} from "../ItemName";
-import {CombatStyle, Slot} from "../Item";
-import {GearSet, gearSets, GearSetType} from "../GearSets";
+import {ItemName} from "../Calculator/DataObjects/ItemName";
+import {CombatStyle, Slot} from "../Calculator/DataObjects/Item";
+import {GearSet, gearSets, GearSetType} from "../Calculator/DataObjects/GearSets";
 import * as _ from "lodash";
-import {SpellName} from "../SpellName";
+import {SpellName} from "../Calculator/DataObjects/SpellName";
 
 export function generateMageGearsets() {
     const mageBase = [

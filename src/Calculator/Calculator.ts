@@ -1,19 +1,19 @@
-import {TargetMonster} from "../DataObjects/TargetMonster";
-import {CombatClass, Slot, StyleType, WeaponStyle} from "../DataObjects/Item";
-import {Player} from "../DataObjects/Player";
-import {GearSet} from "../DataObjects/GearSets";
-import {ItemName} from "../DataObjects/ItemName";
+import {TargetMonster} from "./DataObjects/TargetMonster";
+import {CombatClass, Slot, StyleType, WeaponStyle} from "./DataObjects/Item";
+import {Player} from "./DataObjects/Player";
+import {GearSet} from "./DataObjects/GearSets";
+import {ItemName} from "./DataObjects/ItemName";
 import {calculateHitChance} from "./HitChanceStrategies";
 import {MultiplierType} from "./Multipliers/MultiplierType";
 import {v4 as uuidv4} from 'uuid';
-import {Spell, SpellBookType} from "../DataObjects/Spell";
+import {Spell, SpellBookType} from "./DataObjects/Spell";
 import {getGearAccuracyMultipliers, getGearDamageMultipliers} from "./Multipliers/MultiplierUtils";
 import {averageDamage, DamageProbability} from "./DamageDistributionStrategies/DamageProbability";
 import {getDamageDistribution} from "./DamageDistributionStrategies/DamageDistributionStrategies";
 import {getMagicWeaponMaxHit} from "./MagicWeaponMaxHit";
 import {soulreaperMultiplier, voidKnightMultiplier} from "./Multipliers";
 import {defenceBasedMagicDefMonsters} from "./DefenceBasedMagicDefMonsters";
-import {SpellName} from "../DataObjects/SpellName";
+import {SpellName} from "./DataObjects/SpellName";
 
 
 export class Calculator {

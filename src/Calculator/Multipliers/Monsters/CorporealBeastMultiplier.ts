@@ -1,5 +1,5 @@
-import {ItemName} from "../../../DataObjects/ItemName";
-import {StyleType, WeaponCategoryOptions} from "../../../DataObjects/Item";
+import {ItemName} from "../../DataObjects/ItemName";
+import {StyleType, WeaponCategoryOptions} from "../../DataObjects/Item";
 import {Calculator} from "../../Calculator";
 
 const corpbaneWeapons = [

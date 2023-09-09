@@ -1,5 +1,5 @@
 import {Calculator} from "../../Calculator";
-import {SpellName} from "../../../DataObjects/SpellName";
+import {SpellName} from "../../DataObjects/SpellName";
 
 const EligibleFireSpells = [
     SpellName.FireStrike,

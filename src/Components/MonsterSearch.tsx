@@ -1,8 +1,8 @@
 import React from 'react';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
-import { TargetMonster } from "../DataObjects/TargetMonster";
-import {monsters} from "../Data/loadMonsters";
+import { TargetMonster } from "../Calculator/DataObjects/TargetMonster";
+import {monsters} from "../Calculator/Data/loadMonsters";
 
 interface MonsterSearchProps {
     onSelect: (monster: TargetMonster) => void;

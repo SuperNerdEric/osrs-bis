@@ -6,13 +6,13 @@ import RigourIcon from '../../Images/Prayers/Rigour.png';
 import AuguryIcon from '../../Images/Prayers/Augury.png';
 import slayerIcon from "../../Images/Skills/Slayer_icon.png";
 import diaryIcon from "../../Images/Achievement_Diaries.png";
-import {Player} from "../../DataObjects/Player";
-import {TargetMonster} from "../../DataObjects/TargetMonster";
+import {Player} from "../../Calculator/DataObjects/Player";
+import {TargetMonster} from "../../Calculator/DataObjects/TargetMonster";
 import SkillsPanel from "./Skills";
 import Boosts from "./Boosts";
 import Prayers from "./Prayers";
 import usePotionLogic from "../../hooks/usePotionLogic";
-import {Prayer} from "../../DataObjects/Prayer";
+import {Prayer} from "../../Calculator/DataObjects/Prayer";
 
 interface ConfigurationPanelProps {
     player: Player;

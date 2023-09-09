@@ -1,7 +1,7 @@
-import {ItemName} from "../ItemName";
-import {CombatStyle, Slot} from "../Item";
-import {GearSet, gearSets, GearSetType} from "../GearSets";
-import {items} from "../Items";
+import {ItemName} from "../Calculator/DataObjects/ItemName";
+import {CombatStyle, Slot} from "../Calculator/DataObjects/Item";
+import {GearSet, gearSets, GearSetType} from "../Calculator/DataObjects/GearSets";
+import {items} from "../Calculator/DataObjects/Items";
 
 export function generateMeleeGearSets(){
     const combine = (base: ItemName[][], additional: (ItemName | null)[]): ItemName[][] =>

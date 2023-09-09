@@ -1,10 +1,10 @@
 import React from 'react';
 import {Hidden, Grid, Box, AppBar, Toolbar, Stack} from "@mui/material";
-import {TargetMonster} from "../../DataObjects/TargetMonster";
+import {TargetMonster} from "../../Calculator/DataObjects/TargetMonster";
 import TopBarItem from "./TopBarItem";
 import DrawerMenu from "./DrawerMenu";
 import {GitHub} from "./GitHub";
-import {getSections} from "../../DataObjects/MonsterSections";
+import {getSections} from "../../MonsterSections";
 
 import MonsterSearch from "../MonsterSearch";
 
