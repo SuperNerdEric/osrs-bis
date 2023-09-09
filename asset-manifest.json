@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.bfb22a3e.css",
-    "main.js": "/static/js/main.5258cf5a.js",
+    "main.js": "/static/js/main.e1102fd4.js",
     "static/js/787.98701412.chunk.js": "/static/js/787.98701412.chunk.js",
     "static/media/Mystic_smoke_staff.gif": "/static/media/Mystic_smoke_staff.1db57e9780287ca950ce.gif",
     "static/media/Smoke_battlestaff.gif": "/static/media/Smoke_battlestaff.1db57e9780287ca950ce.gif",
@@ -104,6 +104,7 @@
     "static/media/Abyssal_Sire.png": "/static/media/Abyssal_Sire.9b8d6d5503296f9dec28.png",
     "static/media/Keris_partisan.png": "/static/media/Keris_partisan.f2f00a1d890f74378e31.png",
     "static/media/Crystal_legs.png": "/static/media/Crystal_legs.2ef59521b9fdb305dc0f.png",
+    "static/media/Amulet_of_avarice.png": "/static/media/Amulet_of_avarice.075f479cb31ae9e8f3e1.png",
     "static/media/Muttadile.png": "/static/media/Muttadile.ae46643bf43b55942a1f.png",
     "static/media/Soulreaper_axe.png": "/static/media/Soulreaper_axe.d0fa6175fdf25a15e68d.png",
     "static/media/Vanguard_(ranged).png": "/static/media/Vanguard_(ranged).e5b25e8d204726617e4e.png",
@@ -300,11 +301,11 @@
     "static/media/Zamorakian_hasta.webp": "/static/media/Zamorakian_hasta.be62bb7cec7ec3005a5e.webp",
     "index.html": "/index.html",
     "main.bfb22a3e.css.map": "/static/css/main.bfb22a3e.css.map",
-    "main.5258cf5a.js.map": "/static/js/main.5258cf5a.js.map",
+    "main.e1102fd4.js.map": "/static/js/main.e1102fd4.js.map",
     "787.98701412.chunk.js.map": "/static/js/787.98701412.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.bfb22a3e.css",
-    "static/js/main.5258cf5a.js"
+    "static/js/main.e1102fd4.js"
   ]
 }
