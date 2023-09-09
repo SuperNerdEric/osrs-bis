@@ -2177,5 +2177,37 @@ describe('Calculator class', () => {
             expect(result.hitChance).toBeCloseTo(0.7333); //Matches Bitterkoekje
         });
     });
+
+    describe('with obsidian sword, obsidian set, and berserker necklace', () => {
+        beforeEach(() => {
+            result.gearSet = new GearSet([GearSetType.General])
+                .addItemByName(ItemName.ToktzXilAk)
+                .setCombatStyle(CombatStyle.Lunge)
+                .addItemByName(ItemName.AvernicDefender)
+                .addItemByName(ItemName.FerociousGloves)
+                .addItemByName(ItemName.InfernalCape)
+                .addItemByName(ItemName.ObsidianHelmet)
+                .addItemByName(ItemName.ObsidianPlatebody)
+                .addItemByName(ItemName.ObsidianPlatelegs)
+                .addItemByName(ItemName.BerserkerNecklace)
+                .addItemByName(ItemName.PrimordialBoots)
+                .addItemByName(ItemName.BerserkerRingI)
+
+            result.targetMonster = monsters.get("Sand Crab") as TargetMonster;
+            result.calculateDPS();
+        });
+
+        test('should calculate DPS correctly', () => {
+            expect(result.dps).toBeCloseTo(11.106); //Matches Bitterkoekje
+        });
+
+        test('should calculate maxHit correctly', () => {
+            expect(result.maxHit).toBe(54); //Matches Bitterkoekje
+        });
+
+        test('should calculate hitChance correctly', () => {
+            expect(result.hitChance).toBeCloseTo(0.9872); //Matches Bitterkoekje
+        });
+    });
 });
 

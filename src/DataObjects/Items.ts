@@ -1147,3 +1147,46 @@ createWeapon(ItemName.StaffOfFire, {
     magic: 10,
     strength: 6,
 });
+
+createWeapon(ItemName.ToktzXilAk, {
+    category: WeaponCategory.StabSword,
+    imagePath: './Images/ItemsOld/Toktz-xil-ak.png',
+    wikiLink: "https://oldschool.runescape.wiki/w/Toktz-xil-ak",
+    slot: Slot.MainHand,
+    speedSeconds: 2.4,
+    stab: 47,
+    slash: 38,
+    crush: -2,
+    strength: 49,
+});
+
+createItem(ItemName.ObsidianHelmet, {
+    imagePath: "./Images/ItemsOld/Obsidian_helmet.png",
+    wikiLink: "https://oldschool.runescape.wiki/w/Obsidian_helmet",
+    strength: 3,
+    slot: Slot.Helm,
+});
+
+createItem(ItemName.ObsidianPlatebody, {
+    imagePath: "./Images/ItemsOld/Obsidian_platebody.png",
+    wikiLink: "https://oldschool.runescape.wiki/w/Obsidian_platebody",
+    strength: 3,
+    slot: Slot.Chest,
+});
+
+createItem(ItemName.ObsidianPlatelegs, {
+    imagePath: "./Images/ItemsOld/Obsidian_platelegs.png",
+    wikiLink: "https://oldschool.runescape.wiki/w/Obsidian_platelegs",
+    strength: 1,
+    slot: Slot.Legs,
+});
+
+createItem(ItemName.BerserkerNecklace, {
+    imagePath: "./Images/ItemsOld/Berserker_necklace.png",
+    wikiLink: "https://oldschool.runescape.wiki/w/Berserker_necklace",
+    stab: -10,
+    slash: -10,
+    crush: -10,
+    strength: 7,
+    slot: Slot.Neck,
+});

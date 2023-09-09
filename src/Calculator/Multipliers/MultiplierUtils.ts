@@ -2,6 +2,7 @@ import {MultiplierType} from "./MultiplierType";
 import {Calculator} from "../Calculator";
 import {
     arclightMultiplier,
+    berserkerNecklaceMultiplier,
     corporealBeastMultiplier,
     crystalEquipmentMultiplier,
     dragonHunterCrossbowMultiplier,
@@ -10,13 +11,14 @@ import {
     inquisitorsMultiplier,
     kerisMultiplier,
     leafyMultiplier,
+    obsidianEquipmentMultiplier,
     salveAmuletMultiplier,
     slayerHelmetMultiplier,
+    smokeBattlestaffMultiplier,
     tomeOfFireMultiplier,
     tomeOfWaterMultiplier,
     twistedBowMultiplier,
 } from "./index";
-import {smokeBattlestaffMultiplier} from "./Items/SmokeBattlestaffMultiplier";
 
 export function getGearDamageMultipliers(calculator: Calculator): number[] {
     const slayerMultiplier = slayerHelmetMultiplier(calculator);
@@ -33,6 +35,8 @@ export function getGearDamageMultipliers(calculator: Calculator): number[] {
     return [
         crystalEquipmentMultiplier(calculator, MultiplierType.Damage),
         ...slayerSalveMultiplier,
+        obsidianEquipmentMultiplier(calculator),
+        berserkerNecklaceMultiplier(calculator),
         kerisMultiplier(calculator, MultiplierType.Damage),
         twistedBowMultiplier(calculator, MultiplierType.Damage),
         arclightMultiplier(calculator),
@@ -62,6 +66,7 @@ export function getGearAccuracyMultipliers(calculator: Calculator): number[] {
         crystalEquipmentMultiplier(calculator, MultiplierType.Accuracy),
         smokeBattlestaffMultiplier(calculator),
         ...slayerSalveMultiplier,
+        obsidianEquipmentMultiplier(calculator),
         kerisMultiplier(calculator, MultiplierType.Accuracy),
         twistedBowMultiplier(calculator, MultiplierType.Accuracy),
         arclightMultiplier(calculator),

@@ -12,6 +12,7 @@ export function generateMeleeGearSets(){
     let meleeBase: ItemName[][] = [
         [ItemName.FerociousGloves],
         [ItemName.InquisitorsGreatHelm, ItemName.InquisitorsHauberk, ItemName.InquisitorsPlateskirt, ItemName.FerociousGloves],
+        //[ItemName.ObsidianHelmet, ItemName.ObsidianPlatebody, ItemName.ObsidianPlatelegs, ItemName.FerociousGloves],
         [ItemName.TorvaFullHelm, ItemName.TorvaPlatebody, ItemName.TorvaPlatelegs, ItemName.FerociousGloves],
         [ItemName.NeitiznotFaceguard, ItemName.BandosChestplate, ItemName.BandosTassets, ItemName.FerociousGloves],
         [ItemName.VoidMeleeHelm, ItemName.EliteVoidTop, ItemName.EliteVoidRobe, ItemName.VoidKnightGloves],
@@ -21,7 +22,7 @@ export function generateMeleeGearSets(){
     const meleeRings = [null, ItemName.BerserkerRingI, ItemName.WarriorRingI, ItemName.UltorRing, ItemName.BellatorRing];
     const meleeOffhands = [ItemName.DragonDefender, ItemName.AvernicDefender, ItemName.DragonfireShield];
     const meleeCapes = [ItemName.FireCape, ItemName.InfernalCape];
-    const meleeAmulets = [ItemName.AmuletOfTorture, ItemName.AmuletOfFury];
+    const meleeAmulets = [ItemName.AmuletOfTorture, ItemName.AmuletOfFury, ItemName.BerserkerNecklace];
 
     meleeBase = combine(meleeBase, meleeBoots);
     meleeBase = combine(meleeBase, meleeRings);
@@ -40,8 +41,9 @@ export function generateMeleeGearSets(){
         { name: ItemName.AbyssalTentacle, styles: [CombatStyle.Flick, CombatStyle.Lash], gearSetType: GearSetType.General },
         { name: ItemName.AbyssalWhip, styles: [CombatStyle.Flick, CombatStyle.Lash], gearSetType: GearSetType.General },
         { name: ItemName.BladeOfSaeldor, styles: [CombatStyle.Chop, CombatStyle.Slash, CombatStyle.Lunge], gearSetType: GearSetType.General },
-        { name: ItemName.DragonScimitar, styles: [CombatStyle.Chop, CombatStyle.Slash, CombatStyle.Lunge], gearSetType: GearSetType.General },
-        { name: ItemName.SaradominSword, styles: [CombatStyle.Chop, CombatStyle.Slash, CombatStyle.Smash], gearSetType: GearSetType.General },
+        //{ name: ItemName.DragonScimitar, styles: [CombatStyle.Chop, CombatStyle.Slash, CombatStyle.Lunge], gearSetType: GearSetType.General },
+        //{ name: ItemName.SaradominSword, styles: [CombatStyle.Chop, CombatStyle.Slash, CombatStyle.Smash], gearSetType: GearSetType.General },
+        //{ name: ItemName.ToktzXilAk, styles: [CombatStyle.Stab, CombatStyle.Lunge, CombatStyle.Slash], gearSetType: GearSetType.General },
         { name: ItemName.LeafBladedSpear, styles: [CombatStyle.Lunge, CombatStyle.Swipe, CombatStyle.Pound], gearSetType: GearSetType.Leafy },
         { name: ItemName.LeafBladedSword, styles: [CombatStyle.Stab, CombatStyle.Lunge, CombatStyle.Slash], gearSetType: GearSetType.Leafy },
         { name: ItemName.LeafBladedBattleaxe, styles: [CombatStyle.Chop, CombatStyle.Hack, CombatStyle.Smash], gearSetType: GearSetType.Leafy },
