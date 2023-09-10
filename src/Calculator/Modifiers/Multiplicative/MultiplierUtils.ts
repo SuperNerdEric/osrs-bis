@@ -20,23 +20,22 @@ import {
     tomeOfWaterMultiplier,
     twistedBowMultiplier,
 } from "./index";
+import {ItemName} from "../../DataObjects/ItemName";
+import {CombatClass, Slot} from "../../DataObjects/Item";
 
 export function getGearDamageMultipliers(calculator: Calculator): number[] {
-    const slayerMultiplier = slayerHelmetMultiplier(calculator);
-    const salveMultiplier = salveAmuletMultiplier(calculator, MultiplierType.Damage);
-    const avariceMultiplier = amuletOfAvariceMultiplier(calculator, MultiplierType.Damage);
     const dhcbMultiplier = dragonHunterCrossbowMultiplier(calculator, MultiplierType.Damage);
 
-    const slayerSalveMultiplier = [];
-    if (slayerMultiplier > salveMultiplier && slayerMultiplier > avariceMultiplier) {
-        slayerSalveMultiplier.push(sumMultipliers(dhcbMultiplier, slayerMultiplier));
-    } else {
-        slayerSalveMultiplier.push(salveMultiplier, avariceMultiplier, dhcbMultiplier);
-    }
+    const chosenMultiplierSource = determineMultiplierSource(calculator);
+    const multiplierMapping = {
+        [MultiplierSource.Slayer]: () => [sumMultipliers(dhcbMultiplier, slayerHelmetMultiplier(calculator))],
+        [MultiplierSource.Salve]: () => [salveAmuletMultiplier(calculator, MultiplierType.Damage), dhcbMultiplier],
+        [MultiplierSource.Avarice]: () => [amuletOfAvariceMultiplier(calculator, MultiplierType.Damage), dhcbMultiplier]
+    };
 
     return [
         crystalEquipmentMultiplier(calculator, MultiplierType.Damage),
-        ...slayerSalveMultiplier,
+        ...multiplierMapping[chosenMultiplierSource](),
         obsidianEquipmentMultiplier(calculator),
         berserkerNecklaceMultiplier(calculator),
         kerisMultiplier(calculator, MultiplierType.Damage),
@@ -53,22 +52,19 @@ export function getGearDamageMultipliers(calculator: Calculator): number[] {
 }
 
 export function getGearAccuracyMultipliers(calculator: Calculator): number[] {
-    const slayerMultiplier = slayerHelmetMultiplier(calculator);
-    const salveMultiplier = salveAmuletMultiplier(calculator, MultiplierType.Accuracy);
-    const avariceMultiplier = amuletOfAvariceMultiplier(calculator, MultiplierType.Accuracy);
     const dhcbMultiplier = dragonHunterCrossbowMultiplier(calculator, MultiplierType.Accuracy);
 
-    const slayerSalveMultiplier = [];
-    if (slayerMultiplier > salveMultiplier && slayerMultiplier > avariceMultiplier) {
-        slayerSalveMultiplier.push(sumMultipliers(dhcbMultiplier, slayerMultiplier));
-    } else {
-        slayerSalveMultiplier.push(salveMultiplier, avariceMultiplier, dhcbMultiplier);
-    }
+    const chosenMultiplierSource = determineMultiplierSource(calculator);
+    const multiplierMapping = {
+        [MultiplierSource.Slayer]: () => [sumMultipliers(dhcbMultiplier, slayerHelmetMultiplier(calculator))],
+        [MultiplierSource.Salve]: () => [salveAmuletMultiplier(calculator, MultiplierType.Accuracy), dhcbMultiplier],
+        [MultiplierSource.Avarice]: () => [amuletOfAvariceMultiplier(calculator, MultiplierType.Accuracy), dhcbMultiplier]
+    };
 
     const gearMultipliers = [
         crystalEquipmentMultiplier(calculator, MultiplierType.Accuracy),
         smokeBattlestaffMultiplier(calculator),
-        ...slayerSalveMultiplier,
+        ...multiplierMapping[chosenMultiplierSource](),
         obsidianEquipmentMultiplier(calculator),
         kerisMultiplier(calculator, MultiplierType.Accuracy),
         twistedBowMultiplier(calculator, MultiplierType.Accuracy),
@@ -83,4 +79,30 @@ export function getGearAccuracyMultipliers(calculator: Calculator): number[] {
 
 function sumMultipliers(...multipliers: number[]): number {
     return multipliers.reduce((sum, multiplier) => sum + (multiplier - 1), 1);
+}
+
+enum MultiplierSource {
+    Slayer,
+    Salve,
+    Avarice
+}
+
+function determineMultiplierSource(calculator: Calculator): MultiplierSource {
+    const isUndead = calculator.targetMonster.isUndead;
+    const salveAmulets = [ItemName.SalveAmulet, ItemName.SalveAmuletE, ItemName.SalveAmuletI, ItemName.SalveAmuletEI];
+
+    const isFightingRevenant = calculator.targetMonster.name.includes("Revenant");
+    const isWearingAvarice = calculator.gearSet.hasItemByName(ItemName.AmuletOfAvarice);
+
+    const neck = calculator.gearSet.getItemBySlot(Slot.Neck)?.name;
+
+    if (isFightingRevenant && isWearingAvarice) {
+        return MultiplierSource.Avarice;
+    } else if (isUndead && neck && salveAmulets.includes(neck)) {
+        if (neck === ItemName.SalveAmuletI || neck === ItemName.SalveAmuletEI || calculator.gearSet.combatClass === CombatClass.Melee) {
+            return MultiplierSource.Salve;
+        }
+    }
+
+    return MultiplierSource.Slayer;
 }

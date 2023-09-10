@@ -2116,6 +2116,26 @@ describe('Calculator class', () => {
         });
     });
 
+    describe('sanguinesti staff with slayer helmet and salve', () => {
+        beforeEach(() => {
+            result.gearSet = new GearSet([GearSetType.General])
+                .addItemByName(ItemName.SanguinestiStaff)
+                .setCombatStyle(CombatStyle.Accurate)
+                .addItemByName(ItemName.SlayerHelmetI)
+                .addItemByName(ItemName.SalveAmuletI)
+                .addItemByName(ItemName.TormentedBracelet)
+            result.player.onTask = true;
+            result.player.skills.magic.boost = 13; //Saturated heart
+            result.targetMonster = monsters.get("Pestilent Bloat") as TargetMonster;
+            result.calculateDPS();
+        });
+
+        test('should calculate maxHit correctly', () => {
+            expect(result.maxHit).toBe(43); //Tested in game
+        });
+
+    });
+
     describe('fire bolt with regular staff', () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General])
