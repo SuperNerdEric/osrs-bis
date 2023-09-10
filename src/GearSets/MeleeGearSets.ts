@@ -10,7 +10,7 @@ export function generateMeleeGearSets(){
         );
 
     let meleeBase: ItemName[][] = [
-        [ItemName.FerociousGloves],
+        //[ItemName.FerociousGloves],
         [ItemName.InquisitorsGreatHelm, ItemName.InquisitorsHauberk, ItemName.InquisitorsPlateskirt, ItemName.FerociousGloves],
         //[ItemName.ObsidianHelmet, ItemName.ObsidianPlatebody, ItemName.ObsidianPlatelegs, ItemName.FerociousGloves],
         [ItemName.TorvaFullHelm, ItemName.TorvaPlatebody, ItemName.TorvaPlatelegs, ItemName.FerociousGloves],
@@ -20,9 +20,9 @@ export function generateMeleeGearSets(){
 
     const meleeBoots = [null, ItemName.PrimordialBoots];
     const meleeRings = [null, ItemName.BerserkerRingI, ItemName.WarriorRingI, ItemName.UltorRing, ItemName.BellatorRing];
-    const meleeOffhands = [ItemName.DragonDefender, ItemName.AvernicDefender, ItemName.DragonfireShield];
+    const meleeOffhands = [ItemName.DragonDefender, ItemName.AvernicDefender];
     const meleeCapes = [ItemName.FireCape, ItemName.InfernalCape];
-    const meleeAmulets = [ItemName.AmuletOfTorture, ItemName.AmuletOfFury, ItemName.BerserkerNecklace];
+    const meleeAmulets = [ItemName.AmuletOfTorture, ItemName.AmuletOfFury];
 
     meleeBase = combine(meleeBase, meleeBoots);
     meleeBase = combine(meleeBase, meleeRings);
