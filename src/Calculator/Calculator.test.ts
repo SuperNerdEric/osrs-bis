@@ -2076,6 +2076,22 @@ describe('Calculator class', () => {
         });
     });
 
+    describe('dhcb with ruby bolts', () => {
+        beforeEach(() => {
+            result.gearSet = new GearSet([GearSetType.General])
+                .addItemByName(ItemName.DragonHunterCrossbow)
+                .setCombatStyle(CombatStyle.Rapid)
+                .addItemByName(ItemName.DragonBolts)
+                .addItemByName(ItemName.MasoriBodyF)
+            result.targetMonster = monsters.get("Blue dragon") as TargetMonster;
+            result.calculateDPS();
+        });
+
+        test('should calculate maxHit correctly', () => {
+            expect(result.maxHit).toBe(53); //Tested in game
+        });
+    });
+
     describe('abyssal tentacle with amulet of avarice', () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General])
