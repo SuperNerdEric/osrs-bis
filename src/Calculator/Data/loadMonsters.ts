@@ -22,6 +22,9 @@ export function loadMonstersFromFile() {
         monster.isDraconic = monsterData.isDraconic;
         monster.isFiery = monsterData.isFiery;
         monster.isLeafy = monsterData.isLeafy;
+        monster.isVampyre1 = monsterData.isVampyre1;
+        monster.isVampyre2 = monsterData.isVampyre2;
+        monster.isVampyre3 = monsterData.isVampyre3;
 
         monsterData.variants.forEach((variantData: any[]) => {
             const variant = new MonsterVariant();

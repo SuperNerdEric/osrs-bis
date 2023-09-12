@@ -1202,3 +1202,40 @@ createItem(ItemName.AmuletOfAvarice, {
     strength: 6,
     slot: Slot.Neck,
 });
+
+createWeapon(ItemName.IvandisFlail, {
+    category: WeaponCategory.Staff,
+    imagePath: './Images/ItemsOld/Ivandis_flail.png',
+    wikiLink: "https://oldschool.runescape.wiki/w/Ivandis_flail",
+    slot: Slot.MainHand,
+    speedSeconds: 3.0,
+    stab: 24,
+    slash: 38,
+    crush: 62,
+    magic: 8,
+    strength: 42,
+});
+
+createWeapon(ItemName.BlisterwoodSickle, {
+    category: WeaponCategory.SlashSword,
+    imagePath: './Images/ItemsOld/Blisterwood_sickle.png',
+    wikiLink: "https://oldschool.runescape.wiki/w/Blisterwood_sickle",
+    slot: Slot.MainHand,
+    speedSeconds: 3.0,
+    stab: 30,
+    slash: 38,
+    strength: 32,
+});
+
+createWeapon(ItemName.BlisterwoodFlail, {
+    category: WeaponCategory.Staff,
+    imagePath: './Images/ItemsOld/Blisterwood_flail.png',
+    wikiLink: "https://oldschool.runescape.wiki/w/Blisterwood_flail",
+    slot: Slot.MainHand,
+    speedSeconds: 3.0,
+    stab: 30,
+    slash: 44,
+    crush: 68,
+    magic: 8,
+    strength: 46,
+});

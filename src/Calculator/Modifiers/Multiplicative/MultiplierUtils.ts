@@ -22,6 +22,7 @@ import {
 } from "./index";
 import {ItemName} from "../../DataObjects/ItemName";
 import {CombatClass, Slot} from "../../DataObjects/Item";
+import {vampyreMultiplier} from "./Items/VampyreMultiplier";
 
 export function getGearDamageMultipliers(calculator: Calculator): number[] {
     const dhcbMultiplier = dragonHunterCrossbowMultiplier(calculator, MultiplierType.Damage);
@@ -47,6 +48,7 @@ export function getGearDamageMultipliers(calculator: Calculator): number[] {
         iceDemonMultiplier(calculator),
         tomeOfFireMultiplier(calculator),
         tomeOfWaterMultiplier(calculator),
+        vampyreMultiplier(calculator, MultiplierType.Damage),
         corporealBeastMultiplier(calculator)
     ];
 }
@@ -72,6 +74,7 @@ export function getGearAccuracyMultipliers(calculator: Calculator): number[] {
         dragonHunterLanceMultiplier(calculator),
         inquisitorsMultiplier(calculator),
         tomeOfWaterMultiplier(calculator),
+        vampyreMultiplier(calculator, MultiplierType.Accuracy),
     ];
 
     return gearMultipliers;

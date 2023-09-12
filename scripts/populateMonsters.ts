@@ -111,6 +111,9 @@ export function processJsonAndAddToMonsters() {
                 monster.isKalphite = attributesLowercase.includes("kalphite");
                 monster.isDemon = attributesLowercase.includes("demon");
                 monster.isLeafy = attributesLowercase.includes("leafy");
+                monster.isVampyre1 = attributesLowercase.includes("vampyre1");
+                monster.isVampyre2 = attributesLowercase.includes("vampyre2");
+                monster.isVampyre3 = attributesLowercase.includes("vampyre3");
                 if (attributesLowercase.includes("xerician")) {
                     monster.raid = Raid.ChambersOfXeric;
                 }

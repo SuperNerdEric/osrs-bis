@@ -2300,6 +2300,47 @@ describe('Calculator class', () => {
         });
     });
 
+    describe('with arclight on vampyre', () => {
+        beforeEach(() => {
+            result.gearSet = new GearSet([GearSetType.General])
+                .addItemByName(ItemName.Arclight)
+                .setCombatStyle(CombatStyle.Slash)
+
+            result.targetMonster = monsters.get("Feral Vampyre") as TargetMonster;
+            result.calculateDPS();
+        });
+
+        test('should calculate maxHit correctly', () => {
+            expect(result.maxHit).toBe(19);
+        });
+
+    });
+
+
+    describe('with blisterwood flail on Vyrewatch (87)', () => {
+        beforeEach(() => {
+            result.gearSet = new GearSet([GearSetType.General])
+                .addItemByName(ItemName.BlisterwoodFlail)
+                .setCombatStyle(CombatStyle.Pound)
+
+            result.targetMonster = monsters.get("Vyrewatch") as TargetMonster;
+            result.calculateDPS();
+        });
+
+        test('should calculate DPS correctly', () => {
+            shouldEqualPrecise(result.dps, 4.748); //Matches Bitterkoekje
+        });
+
+        test('should calculate maxHit correctly', () => {
+            expect(result.maxHit).toBe(33); //Matches Bitterkoekje
+        });
+
+        test('should calculate hitChance correctly', () => {
+            shouldEqualPrecise(result.hitChance, 0.8633); //Matches Bitterkoekje
+        });
+
+    });
+
     describe('with obsidian sword, obsidian set, and berserker necklace', () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General])
