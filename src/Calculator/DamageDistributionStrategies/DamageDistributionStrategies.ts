@@ -78,6 +78,10 @@ export class DiamondBoltEnchantedStrategy extends AbstractDamageDistributionStra
 
 export class RubyBoltEnchantedStrategy extends AbstractDamageDistributionStrategy {
     getDamageDistributions() {
+        if(this.result.maxHit === 0) {
+            //If we have a max hit of 0 right now it's probably because it's immune, and we don't want to override that
+            return [this.damageDistribution];
+        }
         this.result.procRate = getBoltActivationRate(ItemName.RubyBoltsE, this.result.player.kandarinHardDiaryComplete) / 100;
 
         let procMaxHit;

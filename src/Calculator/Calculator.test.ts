@@ -2341,7 +2341,31 @@ describe('Calculator class', () => {
 
     });
 
-    describe('with obsidian sword, obsidian set, and berserker necklace', () => {
+    describe('with Ruby Dragon Bolts (e) against vampyre', () => {
+        beforeEach(() => {
+            result.gearSet = new GearSet([GearSetType.General])
+                .addItemByName(ItemName.ZaryteCrossbow)
+                .setCombatStyle(CombatStyle.Rapid)
+                .addItemByName(ItemName.RubyDragonBoltsE)
+
+            result.targetMonster = monsters.get("Vyrewatch") as TargetMonster;
+            result.calculateDPS();
+        });
+
+        test('should calculate DPS correctly', () => {
+            shouldEqualPrecise(result.dps, 0); //Just to confirm it's immune
+        });
+
+        test('should calculate maxHit correctly', () => {
+            expect(result.maxHit).toBe(0);
+
+            test('should calculate hitChance correctly', () => {
+                shouldEqualPrecise(result.hitChance, 0.0);
+            });
+        });
+    });
+
+        describe('with obsidian sword, obsidian set, and berserker necklace', () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General])
                 .addItemByName(ItemName.ToktzXilAk)
