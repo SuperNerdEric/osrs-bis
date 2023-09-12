@@ -2336,7 +2336,7 @@ describe('Calculator class', () => {
         });
 
         test('should calculate hitChance correctly', () => {
-            shouldEqualPrecise(result.hitChance, 0.8633); //Matches Bitterkoekje
+            shouldEqualPrecise(result.hitChance, 0.8633); //Matches Bitterkoekje (Bitter doesn't seem to apply accuracy bonus)
         });
 
     });
