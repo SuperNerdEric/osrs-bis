@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.bfb22a3e.css",
-    "main.js": "/static/js/main.312403c2.js",
+    "main.js": "/static/js/main.34bd97c8.js",
     "static/js/787.98701412.chunk.js": "/static/js/787.98701412.chunk.js",
     "static/media/Mystic_smoke_staff.gif": "/static/media/Mystic_smoke_staff.1db57e9780287ca950ce.gif",
     "static/media/Smoke_battlestaff.gif": "/static/media/Smoke_battlestaff.1db57e9780287ca950ce.gif",
@@ -68,6 +68,7 @@
     "static/media/Vanguard_(melee).png": "/static/media/Vanguard_(melee).2ad3addc1bb9d1b10ea4.png",
     "static/media/Slayer_helmet_(i).png": "/static/media/Slayer_helmet_(i).06372caee3fbc0430b21.png",
     "static/media/Twisted_buckler.png": "/static/media/Twisted_buckler.16311e52bca14e9123cb.png",
+    "static/media/Blisterwood_flail.png": "/static/media/Blisterwood_flail.cdffacd9d38398fdffee.png",
     "static/media/Vardorvis.png": "/static/media/Vardorvis.615391021efb1f675d59.png",
     "static/media/Elidinis_Warden.png": "/static/media/Elidinis_Warden.301a3314a7806d59386b.png",
     "static/media/Masori_chaps_f.png": "/static/media/Masori_chaps_f.c6914cadaf45f783ea42.png",
@@ -80,6 +81,7 @@
     "static/media/Kodai_wand.png": "/static/media/Kodai_wand.b5c0777385bb37008c55.png",
     "static/media/Twisted_bow.png": "/static/media/Twisted_bow.2aedad7d599bc8f4b727.png",
     "static/media/Blue_dragon.png": "/static/media/Blue_dragon.62b4c1d14bf747063720.png",
+    "static/media/Ivandis_flail.png": "/static/media/Ivandis_flail.e554c3ef3009c8afd26c.png",
     "static/media/The_Whisperer.png": "/static/media/The_Whisperer.7df35188362c813177f7.png",
     "static/media/Tumekens_shadow.png": "/static/media/Tumekens_shadow.e4414b83876093d05942.png",
     "static/media/Dragon_hunter_lance.png": "/static/media/Dragon_hunter_lance.4a59f42a1dcf19b5b0ee.png",
@@ -196,6 +198,7 @@
     "static/media/Amulet_of_torture.png": "/static/media/Amulet_of_torture.86be3e26709fd8216c6b.png",
     "static/media/Obsidian_helmet.png": "/static/media/Obsidian_helmet.a8cdc454e0718f4c9168.png",
     "static/media/Scythe_of_vitur.png": "/static/media/Scythe_of_vitur.b8f13e6a970d2312a385.png",
+    "static/media/Blisterwood_sickle.png": "/static/media/Blisterwood_sickle.710af38b562947f496d7.png",
     "static/media/Chaos_Fanatic.png": "/static/media/Chaos_Fanatic.9e6a0dce586c53c4970f.png",
     "static/media/Osmumtens_fang.png": "/static/media/Osmumtens_fang.5d9371d746b9e4b5d1f4.png",
     "static/media/Scorpia.png": "/static/media/Scorpia.4eedc0f4f2ac48c80281.png",
@@ -301,11 +304,11 @@
     "static/media/Zamorakian_hasta.webp": "/static/media/Zamorakian_hasta.be62bb7cec7ec3005a5e.webp",
     "index.html": "/index.html",
     "main.bfb22a3e.css.map": "/static/css/main.bfb22a3e.css.map",
-    "main.312403c2.js.map": "/static/js/main.312403c2.js.map",
+    "main.34bd97c8.js.map": "/static/js/main.34bd97c8.js.map",
     "787.98701412.chunk.js.map": "/static/js/787.98701412.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.bfb22a3e.css",
-    "static/js/main.312403c2.js"
+    "static/js/main.34bd97c8.js"
   ]
 }
