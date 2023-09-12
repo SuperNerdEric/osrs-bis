@@ -157,7 +157,7 @@ const ConfigurationPanel: React.FC<ConfigurationPanelProps> = ({
                                         <img src={soulreaperIcon} alt="Soulreaper Axe" style={iconSize}/>
                                         <TextField
                                             type="number"
-                                            value={player.soulStacks}
+                                            value={player.soulStacks.toString()}
                                             onChange={e => {
                                                 const newValue = Math.max(0, Math.min(Number(e.target.value), 5));
                                                 setPlayer(prevPlayer => {
