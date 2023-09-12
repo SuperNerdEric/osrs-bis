@@ -15,6 +15,7 @@ export class Player {
 
     onTask: boolean = false;
     kandarinHardDiaryComplete: boolean = true;
+    private _soulStacks: number = 5;
     prayers: Record<Prayer, boolean>;
 
     constructor() {
@@ -66,5 +67,17 @@ export class Player {
         }
 
         return modifiers;
+    }
+
+    get soulStacks(): number {
+        return this._soulStacks;
+    }
+
+    set soulStacks(value: number) {
+        if (value >= 0 && value <= 5) {
+            this._soulStacks = value;
+        } else {
+            throw new Error("soulStacks must be between 0 and 5");
+        }
     }
 }

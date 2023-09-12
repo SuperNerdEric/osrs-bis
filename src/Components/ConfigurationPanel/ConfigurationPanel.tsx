@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import {Collapse, Checkbox, FormControlLabel, Grid, Stack, Tooltip} from '@mui/material';
+import {Collapse, Checkbox, FormControlLabel, Grid, Stack, Tooltip, TextField} from '@mui/material';
 
 import PietyIcon from '../../Images/Prayers/Piety.png';
 import RigourIcon from '../../Images/Prayers/Rigour.png';
 import AuguryIcon from '../../Images/Prayers/Augury.png';
 import slayerIcon from "../../Images/Skills/Slayer_icon.png";
 import diaryIcon from "../../Images/Achievement_Diaries.png";
+import soulreaperIcon from "../../Images/Soulreaper_axe.png";
 import {Player} from "../../Calculator/DataObjects/Player";
 import {TargetMonster} from "../../Calculator/DataObjects/TargetMonster";
 import SkillsPanel from "./Skills";
@@ -151,6 +152,28 @@ const ConfigurationPanel: React.FC<ConfigurationPanelProps> = ({
                                         />
                                     </Stack>
                                 </Tooltip>
+                                <Tooltip title="Soulreaper axe stacks (Each Soul Stack gives the player a +6% boost to their Strength level)">
+                                    <Stack direction="row" alignItems="center" gap={2}>
+                                        <img src={soulreaperIcon} alt="Soulreaper Axe" style={iconSize}/>
+                                        <TextField
+                                            type="number"
+                                            value={player.soulStacks}
+                                            onChange={e => {
+                                                const newValue = Math.max(0, Math.min(Number(e.target.value), 5));
+                                                setPlayer(prevPlayer => {
+                                                    const newPlayer = new Player();
+                                                    Object.assign(newPlayer, prevPlayer);
+                                                    newPlayer.soulStacks = newValue;
+                                                    return newPlayer;
+                                                });
+                                            }}
+                                            variant="outlined"
+                                            style={textFieldStyle}
+                                            inputProps={{style: {padding: 0}, min: 0, max: 5}}
+                                        />
+                                        <span style={labelStyle}>Soulreaper Stacks</span>
+                                    </Stack>
+                                </Tooltip>
                             </div>
                         </div>
                     </Grid>
@@ -183,4 +206,19 @@ const sharedStyle = {
 const iconSize = {
     width: '25px',
     height: '25px'
+};
+
+const textFieldStyle = {
+    backgroundColor: '#d8ccb4',
+    color: 'black',
+    width: '30px'
+};
+
+const labelStyle: React.CSSProperties = {
+    fontSize: '18px',
+    width: '50px',
+    display: 'inline-block',
+    textAlign: 'right',
+    whiteSpace: 'nowrap',
+    padding: '4px 0',
 };
