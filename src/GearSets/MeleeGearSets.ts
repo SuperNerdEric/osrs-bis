@@ -44,6 +44,7 @@ export function generateMeleeGearSets(){
         //{ name: ItemName.DragonScimitar, styles: [CombatStyle.Chop, CombatStyle.Slash, CombatStyle.Lunge], gearSetType: GearSetType.General },
         //{ name: ItemName.SaradominSword, styles: [CombatStyle.Chop, CombatStyle.Slash, CombatStyle.Smash], gearSetType: GearSetType.General },
         //{ name: ItemName.ToktzXilAk, styles: [CombatStyle.Stab, CombatStyle.Lunge, CombatStyle.Slash], gearSetType: GearSetType.General },
+        { name: ItemName.BlisterwoodFlail, styles: [CombatStyle.Bash, CombatStyle.Pound], gearSetType: GearSetType.Vampyre },
         { name: ItemName.LeafBladedSpear, styles: [CombatStyle.Lunge, CombatStyle.Swipe, CombatStyle.Pound], gearSetType: GearSetType.Leafy },
         { name: ItemName.LeafBladedSword, styles: [CombatStyle.Stab, CombatStyle.Lunge, CombatStyle.Slash], gearSetType: GearSetType.Leafy },
         { name: ItemName.LeafBladedBattleaxe, styles: [CombatStyle.Chop, CombatStyle.Hack, CombatStyle.Smash], gearSetType: GearSetType.Leafy },

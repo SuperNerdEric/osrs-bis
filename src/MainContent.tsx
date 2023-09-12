@@ -73,6 +73,11 @@ const MainContent: React.FC<MainContentProps> = ({
             shownGearSets.push(...slayerGearSets);
         }
 
+        if (targetMonster.isVampyre1 || targetMonster.isVampyre2 || targetMonster.isVampyre3) {
+            const slayerGearSets = gearSets.filter(gearSet => gearSet.types.includes(GearSetType.Vampyre));
+            shownGearSets.push(...slayerGearSets);
+        }
+
         if (targetMonster.slayerMonster && player.onTask) {
             const slayerGearSets = gearSets.filter(gearSet => gearSet.types.includes(GearSetType.Slayer));
             shownGearSets.push(...slayerGearSets);
