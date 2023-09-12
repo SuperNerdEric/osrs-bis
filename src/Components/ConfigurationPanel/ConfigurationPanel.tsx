@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Collapse, Checkbox, FormControlLabel, Grid, Stack, Tooltip, TextField, InputLabel} from '@mui/material';
+import {Checkbox, Collapse, FormControlLabel, Grid, InputLabel, Stack, TextField, Tooltip} from '@mui/material';
 
 import PietyIcon from '../../Images/Prayers/Piety.png';
 import RigourIcon from '../../Images/Prayers/Rigour.png';
@@ -130,53 +130,54 @@ const ConfigurationPanel: React.FC<ConfigurationPanelProps> = ({
                                         />
                                     </Stack>
                                 )}
-                                <Tooltip title="Increases chance of enchanted bolt special effect occurring by 10%">
-                                    <Stack direction="row" alignItems="center" gap={2}>
+                                <Stack direction="row" alignItems="center" gap={2}>
+                                    <Tooltip title="Increases chance of enchanted bolt special effect occurring by 10%">
                                         <img src={diaryIcon} alt="Kandarin Hard Diary" style={iconSize}/>
-                                        <FormControlLabel
-                                            control={
-                                                <Checkbox
-                                                    checked={player.kandarinHardDiaryComplete}
-                                                    onChange={(e) => {
-                                                        setPlayer(prevPlayer => {
-                                                            const newPlayer = new Player();
-                                                            Object.assign(newPlayer, prevPlayer); // This copies properties from prevPlayer to newPlayer
-                                                            newPlayer.kandarinHardDiaryComplete = e.target.checked;
-                                                            return newPlayer;
-                                                        });
-                                                    }}
-                                                    name="Kandarin Hard Diary"
-                                                />
-                                            }
-                                            label="Kandarin Hard Diary"
-                                        />
-                                    </Stack>
-                                </Tooltip>
-                                <Tooltip title="Soulreaper axe stacks (Each Soul Stack gives the player a +6% boost to their Strength level)">
-                                    <Stack direction="row" alignItems="center" gap={2}>
+                                    </Tooltip>
+                                    <FormControlLabel
+                                        control={
+                                            <Checkbox
+                                                checked={player.kandarinHardDiaryComplete}
+                                                onChange={(e) => {
+                                                    setPlayer(prevPlayer => {
+                                                        const newPlayer = new Player();
+                                                        Object.assign(newPlayer, prevPlayer); // This copies properties from prevPlayer to newPlayer
+                                                        newPlayer.kandarinHardDiaryComplete = e.target.checked;
+                                                        return newPlayer;
+                                                    });
+                                                }}
+                                                name="Kandarin Hard Diary"
+                                            />
+                                        }
+                                        label="Kandarin Hard Diary"
+                                    />
+                                </Stack>
+                                <Stack direction="row" alignItems="center" gap={2}>
+                                    <Tooltip
+                                        title="Soulreaper axe stacks (Each Soul Stack gives the player a +6% boost to their Strength level)">
                                         <img src={soulreaperIcon} alt="Soulreaper Axe" style={iconSize}/>
-                                        <TextField
-                                            type="number"
-                                            value={player.soulStacks.toString()}
-                                            onChange={e => {
-                                                const newValue = Math.max(0, Math.min(Number(e.target.value), 5));
-                                                setPlayer(prevPlayer => {
-                                                    const newPlayer = new Player();
-                                                    Object.assign(newPlayer, prevPlayer);
-                                                    newPlayer.soulStacks = newValue;
-                                                    return newPlayer;
-                                                });
-                                            }}
-                                            variant="outlined"
-                                            style={textFieldStyle}
-                                            inputProps={{style: {padding: 0}, min: 0, max: 5}}
-                                        />
-                                        <InputLabel sx={{ color: 'white', fontSize: '16px', padding: '5px 0' }} htmlFor="soul-stacks-input">
-                                            Soul Stacks
-                                        </InputLabel>
-
-                                    </Stack>
-                                </Tooltip>
+                                    </Tooltip>
+                                    <TextField
+                                        type="number"
+                                        value={player.soulStacks.toString()}
+                                        onChange={e => {
+                                            const newValue = Math.max(0, Math.min(Number(e.target.value), 5));
+                                            setPlayer(prevPlayer => {
+                                                const newPlayer = new Player();
+                                                Object.assign(newPlayer, prevPlayer);
+                                                newPlayer.soulStacks = newValue;
+                                                return newPlayer;
+                                            });
+                                        }}
+                                        variant="outlined"
+                                        style={textFieldStyle}
+                                        inputProps={{style: {padding: 0}, min: 0, max: 5}}
+                                    />
+                                    <InputLabel sx={{color: 'white', fontSize: '16px', padding: '5px 0'}}
+                                                htmlFor="soul-stacks-input">
+                                        Soul Stacks
+                                    </InputLabel>
+                                </Stack>
                             </div>
                         </div>
                     </Grid>
