@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Collapse, Checkbox, FormControlLabel, Grid, Stack, Tooltip, TextField} from '@mui/material';
+import {Collapse, Checkbox, FormControlLabel, Grid, Stack, Tooltip, TextField, InputLabel} from '@mui/material';
 
 import PietyIcon from '../../Images/Prayers/Piety.png';
 import RigourIcon from '../../Images/Prayers/Rigour.png';
@@ -171,7 +171,10 @@ const ConfigurationPanel: React.FC<ConfigurationPanelProps> = ({
                                             style={textFieldStyle}
                                             inputProps={{style: {padding: 0}, min: 0, max: 5}}
                                         />
-                                        <span style={labelStyle}>Soulreaper Stacks</span>
+                                        <InputLabel sx={{ color: 'white', fontSize: '16px', padding: '5px 0' }} htmlFor="soul-stacks-input">
+                                            Soul Stacks
+                                        </InputLabel>
+
                                     </Stack>
                                 </Tooltip>
                             </div>
@@ -212,13 +215,4 @@ const textFieldStyle = {
     backgroundColor: '#d8ccb4',
     color: 'black',
     width: '30px'
-};
-
-const labelStyle: React.CSSProperties = {
-    fontSize: '18px',
-    width: '50px',
-    display: 'inline-block',
-    textAlign: 'right',
-    whiteSpace: 'nowrap',
-    padding: '4px 0',
 };
