@@ -201,5 +201,6 @@ export enum ItemName {
     Darklight = "Darklight",
     RodOfIvandis = "Rod of ivandis",
     Wolfbane = "Wolfbane",
+    WarpedSceptre = "Warped sceptre",
 
 }

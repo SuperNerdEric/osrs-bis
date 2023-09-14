@@ -35,6 +35,8 @@ export function getPoweredStaffMaxHit(weaponName: ItemName, magicLevel: number):
         case ItemName.CrystalStaffPerfected:
         case ItemName.CorruptedStaffPerfected:
             return 39;
+        case ItemName.WarpedSceptre:
+            return 16 + Math.floor((8 * (magicLevel - 62)) / 37);
         default:
             return undefined;
     }
