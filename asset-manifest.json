@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.bfb22a3e.css",
-    "main.js": "/static/js/main.adc23ed0.js",
+    "main.js": "/static/js/main.2bcdb2ef.js",
     "static/js/787.98701412.chunk.js": "/static/js/787.98701412.chunk.js",
     "static/media/Mystic_smoke_staff.gif": "/static/media/Mystic_smoke_staff.1db57e9780287ca950ce.gif",
     "static/media/Smoke_battlestaff.gif": "/static/media/Smoke_battlestaff.1db57e9780287ca950ce.gif",
@@ -159,6 +159,7 @@
     "static/media/Inquisitors_great_helm.png": "/static/media/Inquisitors_great_helm.4cc034fe91a8e480b3cd.png",
     "static/media/Dharok_the_Wretched.png": "/static/media/Dharok_the_Wretched.4b1650c4e10390f541ac.png",
     "static/media/Armadyl_chestplate.png": "/static/media/Armadyl_chestplate.5ddc92efadeead7bd22b.png",
+    "static/media/Slayers_staff_(e).png": "/static/media/Slayers_staff_(e).4a8d2dbaf0898b51d4db.png",
     "static/media/Bow_of_faerdhinen.png": "/static/media/Bow_of_faerdhinen.b2e8ad7394dc122f1260.png",
     "static/media/Abyssal_Sire_(phase_3,_stage_1).png": "/static/media/Abyssal_Sire_(phase_3,_stage_1).5be2c005d885f378717a.png",
     "static/media/Verac_the_Defiled.png": "/static/media/Verac_the_Defiled.3f7d0eae06a80bd00dd1.png",
@@ -305,11 +306,11 @@
     "static/media/Zamorakian_hasta.webp": "/static/media/Zamorakian_hasta.be62bb7cec7ec3005a5e.webp",
     "index.html": "/index.html",
     "main.bfb22a3e.css.map": "/static/css/main.bfb22a3e.css.map",
-    "main.adc23ed0.js.map": "/static/js/main.adc23ed0.js.map",
+    "main.2bcdb2ef.js.map": "/static/js/main.2bcdb2ef.js.map",
     "787.98701412.chunk.js.map": "/static/js/787.98701412.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.bfb22a3e.css",
-    "static/js/main.adc23ed0.js"
+    "static/js/main.2bcdb2ef.js"
   ]
 }
