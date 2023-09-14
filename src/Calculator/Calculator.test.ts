@@ -2059,6 +2059,21 @@ describe('Calculator class', () => {
         });
     });
 
+    describe('warped sceptre', () => {
+        beforeEach(() => {
+            result.gearSet = new GearSet([GearSetType.General])
+                .addItemByName(ItemName.WarpedSceptre)
+                .setCombatStyle(CombatStyle.Accurate)
+
+            result.player.skills.magic.boost = 13; //Saturated heart
+            result.calculateDPS();
+        });
+
+        test('should calculate maxHit correctly', () => {
+            expect(result.maxHit).toBe(26); //Tested in game
+        });
+    });
+
     describe('sanguinesti staff with amulet of avarice', () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General])

@@ -1239,3 +1239,12 @@ createWeapon(ItemName.BlisterwoodFlail, {
     magic: 8,
     strength: 46,
 });
+
+createWeapon(ItemName.WarpedSceptre, {
+    category: WeaponCategory.PoweredStaff,
+    imagePath: './Images/ItemsOld/Warped_sceptre.png',
+    wikiLink: "https://oldschool.runescape.wiki/w/Warped_sceptre#Charged",
+    slot: Slot.MainHand,
+    speedSeconds: 2.4,
+    magic: 12,
+});
