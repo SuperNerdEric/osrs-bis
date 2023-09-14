@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.bfb22a3e.css",
-    "main.js": "/static/js/main.52c49666.js",
+    "main.js": "/static/js/main.f10c9f06.js",
     "static/js/787.98701412.chunk.js": "/static/js/787.98701412.chunk.js",
     "static/media/Mystic_smoke_staff.gif": "/static/media/Mystic_smoke_staff.1db57e9780287ca950ce.gif",
     "static/media/Smoke_battlestaff.gif": "/static/media/Smoke_battlestaff.1db57e9780287ca950ce.gif",
@@ -81,6 +81,7 @@
     "static/media/Kodai_wand.png": "/static/media/Kodai_wand.b5c0777385bb37008c55.png",
     "static/media/Twisted_bow.png": "/static/media/Twisted_bow.2aedad7d599bc8f4b727.png",
     "static/media/Blue_dragon.png": "/static/media/Blue_dragon.62b4c1d14bf747063720.png",
+    "static/media/Warped_sceptre.png": "/static/media/Warped_sceptre.3aad9ef18a2bf8fcc2b8.png",
     "static/media/Ivandis_flail.png": "/static/media/Ivandis_flail.e554c3ef3009c8afd26c.png",
     "static/media/The_Whisperer.png": "/static/media/The_Whisperer.7df35188362c813177f7.png",
     "static/media/Tumekens_shadow.png": "/static/media/Tumekens_shadow.e4414b83876093d05942.png",
@@ -304,11 +305,11 @@
     "static/media/Zamorakian_hasta.webp": "/static/media/Zamorakian_hasta.be62bb7cec7ec3005a5e.webp",
     "index.html": "/index.html",
     "main.bfb22a3e.css.map": "/static/css/main.bfb22a3e.css.map",
-    "main.52c49666.js.map": "/static/js/main.52c49666.js.map",
+    "main.f10c9f06.js.map": "/static/js/main.f10c9f06.js.map",
     "787.98701412.chunk.js.map": "/static/js/787.98701412.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.bfb22a3e.css",
-    "static/js/main.52c49666.js"
+    "static/js/main.f10c9f06.js"
   ]
 }
