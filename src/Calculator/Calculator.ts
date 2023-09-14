@@ -174,19 +174,15 @@ export class Calculator {
     }
 
     private calculateDefenceRoll(invocationLevel: number, attackStyle: StyleType): number {
-        let baseDefence: number;
-        if (attackStyle === StyleType.Magic) {
-            if (defenceBasedMagicDefMonsters.includes(this.targetMonster.title)) {
-                baseDefence = 9 + this.targetMonster.currentDefenceLevel;
-            } else {
-                baseDefence = 9 + this.targetMonster.magicLevel;
-            }
+        let baseDefence = 9;
+
+        if (attackStyle !== StyleType.Magic || defenceBasedMagicDefMonsters.includes(this.targetMonster.title)) {
+            baseDefence += this.targetMonster.currentDefenceLevel;
         } else {
-            baseDefence = this.targetMonster.currentDefenceLevel + 9;
+            baseDefence += this.targetMonster.magicLevel;
         }
 
-        const styleDefenceBonus = this.targetMonster.defenceStats[attackStyle];
-        let defenceRoll = baseDefence * (styleDefenceBonus + 64);
+        let defenceRoll = baseDefence * (this.targetMonster.defenceStats[attackStyle] + 64);
 
         if (invocationLevel > 0) {
             // For every 5 raid levels, it increases by 2%
