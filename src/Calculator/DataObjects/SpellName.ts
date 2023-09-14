@@ -24,6 +24,7 @@ export enum SpellName {
     EarthSurge = "Earth Surge",
     FireSurge = "Fire Surge",
     IbanBlast = "Iban Blast",
+    MagicDart = "Magic Dart",
 
     GhostlyGrasp = "Ghostly Grasp",
     SkeletalGrasp = "Skeletal Grasp",
@@ -47,7 +48,6 @@ export enum SpellName {
     SmokeBarrage = "Smoke Barrage",
     ShadowBarrage = "Shadow Barrage",
     BloodBarrage = "Blood Barrage",
-    IceBarrage = "Ice Barrage"
-
+    IceBarrage = "Ice Barrage",
 
 }

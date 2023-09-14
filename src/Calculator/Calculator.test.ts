@@ -313,6 +313,40 @@ describe('Calculator class', () => {
         });
     });
 
+    describe('with magic dart on kurask', () => {
+        beforeEach(() => {
+            result.gearSet = new GearSet([GearSetType.General])
+                .addItemByName(ItemName.SlayersStaffE)
+                .setCombatStyle(CombatStyle.Spell)
+                .addItemByName(ItemName.ElidinisWardF)
+                .addItemByName(ItemName.SlayerHelmetI)
+                .addItemByName(ItemName.AncestralRobeTop)
+                .addItemByName(ItemName.AncestralRobeBottom)
+                .addItemByName(ItemName.EternalBoots)
+                .addItemByName(ItemName.TormentedBracelet)
+                .addItemByName(ItemName.OccultNecklace)
+                .addItemByName(ItemName.ImbuedZamorakCape)
+                .setSpellByName(SpellName.MagicDart);
+
+            result.targetMonster = monsters.get("Kurask") as TargetMonster;
+
+            result.player.onTask = true;
+            result.calculateDPS();
+        });
+
+        test('should calculate DPS correctly', () => {
+            shouldEqualPrecise(result.dps, 7.2679); //Matches Bitterkoekje
+        });
+
+        test('should calculate maxHit correctly', () => {
+            expect(result.maxHit).toBe(44);  //Matches Bitterkoekje
+        });
+
+        test('should calculate hitChance correctly', () => {
+            shouldEqualPrecise(result.hitChance, 0.9911); //Matches Bitterkoekje
+        });
+    });
+
     describe('with Tumekens shadow mage gear set including Slayer helmet (i) and onTask is false', () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General])

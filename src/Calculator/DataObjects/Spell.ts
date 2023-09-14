@@ -57,6 +57,7 @@ standardSpellbook.addSpell(SpellName.WaterSurge, 22);
 standardSpellbook.addSpell(SpellName.EarthSurge, 23);
 standardSpellbook.addSpell(SpellName.FireSurge, 24);
 standardSpellbook.addSpell(SpellName.IbanBlast, 25);
+standardSpellbook.addSpell(SpellName.MagicDart, 0);
 
 export const arceuusSpellbook = new SpellBook(SpellBookType.Arceuus);
 arceuusSpellbook.addSpell(SpellName.GhostlyGrasp, 12);

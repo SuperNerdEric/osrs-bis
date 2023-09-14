@@ -1,20 +1,18 @@
 import {TargetMonster} from "./DataObjects/TargetMonster";
-import {CombatClass, Slot, StyleType, WeaponStyle} from "./DataObjects/Item";
+import {CombatClass, StyleType, WeaponStyle} from "./DataObjects/Item";
 import {Player} from "./DataObjects/Player";
 import {GearSet} from "./DataObjects/GearSets";
 import {ItemName} from "./DataObjects/ItemName";
 import {calculateHitChance} from "./HitChanceStrategies";
 import {MultiplierType} from "./Modifiers/Multiplicative/MultiplierType";
 import {v4 as uuidv4} from 'uuid';
-import {Spell, SpellBookType} from "./DataObjects/Spell";
+import {SpellBookType} from "./DataObjects/Spell";
 import {getGearAccuracyMultipliers, getGearDamageMultipliers} from "./Modifiers/Multiplicative/MultiplierUtils";
 import {averageDamage, DamageProbability} from "./DamageDistributionStrategies/DamageProbability";
 import {getDamageDistribution} from "./DamageDistributionStrategies/DamageDistributionStrategies";
-import {getMagicWeaponMaxHit} from "./MagicWeaponMaxHit";
+import {getMagicMaxHit} from "./MagicMaxHit";
 import {soulreaperMultiplier, voidKnightMultiplier} from "./Modifiers/Multiplicative";
 import {defenceBasedMagicDefMonsters} from "./DefenceBasedMagicDefMonsters";
-import {SpellName} from "./DataObjects/SpellName";
-import {getGearDamageTotalAdditive} from "./Modifiers/Additive/AdditiveUtils";
 
 
 export class Calculator {
@@ -142,18 +140,7 @@ export class Calculator {
         if ([CombatClass.Melee, CombatClass.Ranged].includes(combatClass)) {
             maxHit = Math.floor(0.5 + (effectiveLevel * (this.gearSet.styleStrength + 64)) / 640);
         } else {
-            if (this.gearSet.spell) {
-                maxHit = this.gearSet.spell.maxHit;
-                if (!this.targetMonster.isUndead && this.gearSet.spell.name === SpellName.CrumbleUndead) {
-                    return 0;
-                }
-                maxHit = this.applyChaosGauntletBoost(this.gearSet.spell, this.gearSet);
-            } else {
-                const boostedMagicLevel = this.player.skills.magic.level + this.player.skills.magic.boost;
-                maxHit = getMagicWeaponMaxHit(this.gearSet.getWeapon().name, boostedMagicLevel);
-            }
-            this.gearSet.styleStrength += getGearDamageTotalAdditive(this);
-            maxHit = Math.floor(maxHit * (1 + this.gearSet.styleStrength / 100));
+            maxHit = getMagicMaxHit(this);
         }
 
         for (const gearMultiplier of gearDamageMultipliers) {
@@ -194,12 +181,5 @@ export class Calculator {
 
     private calculateDps(averageDamagePerHit: number, weaponSpeed: number) {
         return averageDamagePerHit / weaponSpeed;
-    }
-
-    private applyChaosGauntletBoost(spell: Spell, gearSet: GearSet): number {
-        if (gearSet.getItemBySlot(Slot.Gloves)?.name === ItemName.ChaosGauntlets && spell.name.includes("Bolt")) {
-            return spell.maxHit + 3;
-        }
-        return spell.maxHit;
     }
 }

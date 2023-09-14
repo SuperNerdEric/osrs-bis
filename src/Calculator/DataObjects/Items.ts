@@ -1248,3 +1248,16 @@ createWeapon(ItemName.WarpedSceptre, {
     speedSeconds: 2.4,
     magic: 12,
 });
+
+createWeapon(ItemName.SlayersStaffE, {
+    category: WeaponCategory.Staff,
+    imagePath: './Images/ItemsOld/Slayers_staff_(e).png',
+    wikiLink: "https://oldschool.runescape.wiki/w/Slayer%27s_staff_(e)",
+    slot: Slot.MainHand,
+    speedSeconds: 3.0,
+    stab: 7,
+    slash: -1,
+    crush: 25,
+    magic: 12,
+    strength: 35,
+});
