@@ -31,6 +31,7 @@ export function generateMeleeGearSets(){
 
     const weaponsWithStyles: { name: ItemName, styles: CombatStyle[], gearSetType: GearSetType }[] = [
         { name: ItemName.ScytheOfVitur, styles: [CombatStyle.Reap, CombatStyle.Chop, CombatStyle.Jab], gearSetType: GearSetType.General },
+        { name: ItemName.ElderMaul, styles: [CombatStyle.Pound, CombatStyle.Pummel], gearSetType: GearSetType.General },
         { name: ItemName.SoulreaperAxe, styles: [CombatStyle.Hack, CombatStyle.Smash], gearSetType: GearSetType.General },
         { name: ItemName.OsmumtensFang, styles: [CombatStyle.Stab, CombatStyle.Lunge, CombatStyle.Slash], gearSetType: GearSetType.General },
         { name: ItemName.GhraziRapier, styles: [CombatStyle.Stab], gearSetType: GearSetType.General },

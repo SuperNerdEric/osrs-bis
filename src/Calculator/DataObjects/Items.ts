@@ -1261,3 +1261,14 @@ createWeapon(ItemName.SlayersStaffE, {
     magic: 12,
     strength: 35,
 });
+
+createWeapon(ItemName.ElderMaul, {
+    category: WeaponCategory.Blunt,
+    imagePath: './Images/ItemsOld/Elder_maul.png',
+    wikiLink: "https://oldschool.runescape.wiki/w/Elder_maul",
+    slot: Slot.TwoHand,
+    speedSeconds: 3.6,
+    crush: 135,
+    magic: -4,
+    strength: 147,
+});
