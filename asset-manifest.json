@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.bfb22a3e.css",
-    "main.js": "/static/js/main.2bcdb2ef.js",
+    "main.js": "/static/js/main.33a3b8c7.js",
     "static/js/787.98701412.chunk.js": "/static/js/787.98701412.chunk.js",
     "static/media/Mystic_smoke_staff.gif": "/static/media/Mystic_smoke_staff.1db57e9780287ca950ce.gif",
     "static/media/Smoke_battlestaff.gif": "/static/media/Smoke_battlestaff.1db57e9780287ca950ce.gif",
@@ -90,6 +90,7 @@
     "static/media/Zulrah_(magma).png": "/static/media/Zulrah_(magma).cb81a88b599b0ee9ae92.png",
     "static/media/Verzik_Vitur_(flying).png": "/static/media/Verzik_Vitur_(flying).51ff53ba66b3178c4568.png",
     "static/media/Zulrah_(serpentine).png": "/static/media/Zulrah_(serpentine).b122cc0e8b51a0529b7d.png",
+    "static/media/Dharoks_greataxe.png": "/static/media/Dharoks_greataxe.30099742e915f420a8f6.png",
     "static/media/Void_knight_robe.png": "/static/media/Void_knight_robe.f00fda317d5f4e12c31e.png",
     "static/media/Emerald_bolts_(e).png": "/static/media/Emerald_bolts_(e).b5c6bc30e567149a25ff.png",
     "static/media/Ahrims_robeskirt.png": "/static/media/Ahrims_robeskirt.5d0b9701bc0908070db3.png",
@@ -152,6 +153,7 @@
     "static/media/Karil_the_Tainted.png": "/static/media/Karil_the_Tainted.152cbab1ceeecb93f8aa.png",
     "static/media/Obsidian_platebody.png": "/static/media/Obsidian_platebody.13d3855079b11b337148.png",
     "static/media/Mutated_Bloodveld.png": "/static/media/Mutated_Bloodveld.b169e97938030f670963.png",
+    "static/media/Dharoks_helm.png": "/static/media/Dharoks_helm.410f1f16e8a3eaf1c7e8.png",
     "static/media/Diamond_dragon_bolts_(e).png": "/static/media/Diamond_dragon_bolts_(e).05182148389e506d819b.png",
     "static/media/Callisto.png": "/static/media/Callisto.d2dc88a0f80cf5eb90b6.png",
     "static/media/Tormented_bracelet.png": "/static/media/Tormented_bracelet.fe9d9f26167104d4a383.png",
@@ -193,6 +195,7 @@
     "static/media/Giant_Mole.png": "/static/media/Giant_Mole.4e2c990f8bd0b94cb2bb.png",
     "static/media/Guthan_the_Infested.png": "/static/media/Guthan_the_Infested.2768f199e75f907b577e.png",
     "static/media/Dagannoth_Supreme.png": "/static/media/Dagannoth_Supreme.99d5c2ed8f8bcbb04bae.png",
+    "static/media/Elder_maul.png": "/static/media/Elder_maul.1c2ba1c3a21f23a89f9e.png",
     "static/media/Salve_amulet(i).png": "/static/media/Salve_amulet(i).247ef231cd13ca9275a1.png",
     "static/media/Salve_amulet.png": "/static/media/Salve_amulet.247ef231cd13ca9275a1.png",
     "static/media/Torva_platelegs.png": "/static/media/Torva_platelegs.ccf92a8381c5b9a004d2.png",
@@ -201,6 +204,7 @@
     "static/media/Obsidian_helmet.png": "/static/media/Obsidian_helmet.a8cdc454e0718f4c9168.png",
     "static/media/Scythe_of_vitur.png": "/static/media/Scythe_of_vitur.b8f13e6a970d2312a385.png",
     "static/media/Blisterwood_sickle.png": "/static/media/Blisterwood_sickle.710af38b562947f496d7.png",
+    "static/media/Dharoks_platebody.png": "/static/media/Dharoks_platebody.a8e0741bc6c5bd2ff70e.png",
     "static/media/Chaos_Fanatic.png": "/static/media/Chaos_Fanatic.9e6a0dce586c53c4970f.png",
     "static/media/Osmumtens_fang.png": "/static/media/Osmumtens_fang.5d9371d746b9e4b5d1f4.png",
     "static/media/Scorpia.png": "/static/media/Scorpia.4eedc0f4f2ac48c80281.png",
@@ -214,6 +218,7 @@
     "static/media/Leaf-bladed_sword.png": "/static/media/Leaf-bladed_sword.8b0f154b9d3a353f24ce.png",
     "static/media/github.png": "/static/media/github.5eab40a02fe444730a11.png",
     "static/media/Void_mage_helm.png": "/static/media/Void_mage_helm.255cf5986a94a4753845.png",
+    "static/media/Dharoks_platelegs.png": "/static/media/Dharoks_platelegs.4316bb1db260e0d863e4.png",
     "static/media/Ghrazi_rapier.png": "/static/media/Ghrazi_rapier.c9af9e067f8a3f7d8d5e.png",
     "static/media/Void_knight_top.png": "/static/media/Void_knight_top.1dae678e026df02ab7a2.png",
     "static/media/Ahrims_hood.png": "/static/media/Ahrims_hood.580b3b68b3c06f7e8ea1.png",
@@ -306,11 +311,11 @@
     "static/media/Zamorakian_hasta.webp": "/static/media/Zamorakian_hasta.be62bb7cec7ec3005a5e.webp",
     "index.html": "/index.html",
     "main.bfb22a3e.css.map": "/static/css/main.bfb22a3e.css.map",
-    "main.2bcdb2ef.js.map": "/static/js/main.2bcdb2ef.js.map",
+    "main.33a3b8c7.js.map": "/static/js/main.33a3b8c7.js.map",
     "787.98701412.chunk.js.map": "/static/js/787.98701412.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.bfb22a3e.css",
-    "static/js/main.2bcdb2ef.js"
+    "static/js/main.33a3b8c7.js"
   ]
 }
