@@ -1,4 +1,104 @@
 {
+    "RuneScape:Sandbox": {
+        "name": "Abyssal demon",
+        "shortName": "",
+        "size": "1x1",
+        "raid": 0,
+        "slayerMonster": "Abyssal Demons",
+        "slayerCategory": "Abyssal Demons",
+        "isKalphite": false,
+        "isUndead": false,
+        "isDemon": true,
+        "isDraconic": false,
+        "isFiery": false,
+        "isLeafy": false,
+        "isVampyre1": false,
+        "isVampyre2": false,
+        "isVampyre3": false,
+        "variants": [
+            [
+                "Standard",
+                {
+                    "variantName": "Standard",
+                    "imagePath": "https://oldschool.runescape.wiki/images/Abyssal_demon.png",
+                    "currentHitpoints": 150,
+                    "hitpoints": 150,
+                    "_defenceLevel": 135,
+                    "_currentDefenceLevel": 135,
+                    "maxDefenceReduction": 135,
+                    "magicLevel": 1,
+                    "magicAccuracy": 0,
+                    "defenceStats": {
+                        "Stab": 20,
+                        "Slash": 20,
+                        "Crush": 20,
+                        "Magic": 0,
+                        "Ranged": 20
+                    }
+                }
+            ],
+            [
+                "Catacombs of Kourend",
+                {
+                    "variantName": "Catacombs of Kourend",
+                    "imagePath": "https://oldschool.runescape.wiki/images/Abyssal_demon_(Catacombs_of_Kourend).png",
+                    "currentHitpoints": 150,
+                    "hitpoints": 150,
+                    "_defenceLevel": 135,
+                    "_currentDefenceLevel": 135,
+                    "maxDefenceReduction": 135,
+                    "magicLevel": 1,
+                    "magicAccuracy": 0,
+                    "defenceStats": {
+                        "Stab": 20,
+                        "Slash": 20,
+                        "Crush": 20,
+                        "Magic": 0,
+                        "Ranged": 20
+                    }
+                }
+            ],
+            [
+                "Wilderness Slayer Cave",
+                {
+                    "variantName": "Wilderness Slayer Cave",
+                    "imagePath": "https://oldschool.runescape.wiki/images/Abyssal_demon.png",
+                    "currentHitpoints": 150,
+                    "hitpoints": 150,
+                    "_defenceLevel": 135,
+                    "_currentDefenceLevel": 135,
+                    "maxDefenceReduction": 135,
+                    "magicLevel": 1,
+                    "magicAccuracy": 0,
+                    "defenceStats": {
+                        "Stab": 20,
+                        "Slash": 20,
+                        "Crush": 20,
+                        "Magic": 0,
+                        "Ranged": 20
+                    }
+                }
+            ]
+        ],
+        "_activeVariant": {
+            "variantName": "Standard",
+            "imagePath": "https://oldschool.runescape.wiki/images/Abyssal_demon.png",
+            "currentHitpoints": 150,
+            "hitpoints": 150,
+            "_defenceLevel": 135,
+            "_currentDefenceLevel": 135,
+            "maxDefenceReduction": 135,
+            "magicLevel": 1,
+            "magicAccuracy": 0,
+            "defenceStats": {
+                "Stab": 20,
+                "Slash": 20,
+                "Crush": 20,
+                "Magic": 0,
+                "Ranged": 20
+            }
+        }
+    },
     "Tz-Kih": {
         "name": "Tz-Kih",
         "shortName": "",
@@ -15958,6 +16058,27 @@
                         "Ranged": -21
                     }
                 }
+            ],
+            [
+                "Shayzien",
+                {
+                    "variantName": "Shayzien",
+                    "imagePath": "https://oldschool.runescape.wiki/images/Woman_(Shayzien).png",
+                    "currentHitpoints": 7,
+                    "hitpoints": 7,
+                    "_defenceLevel": 1,
+                    "_currentDefenceLevel": 1,
+                    "maxDefenceReduction": 1,
+                    "magicLevel": 1,
+                    "magicAccuracy": 0,
+                    "defenceStats": {
+                        "Stab": -21,
+                        "Slash": -21,
+                        "Crush": -21,
+                        "Magic": -21,
+                        "Ranged": -21
+                    }
+                }
             ]
         ],
         "_activeVariant": {
@@ -26719,27 +26840,6 @@
                         "Ranged": 0
                     }
                 }
-            ],
-            [
-                "Historical",
-                {
-                    "variantName": "Historical",
-                    "imagePath": "https://oldschool.runescape.wiki/images/Ogre_shaman_(unused).png",
-                    "currentHitpoints": 1,
-                    "hitpoints": 1,
-                    "_defenceLevel": 1,
-                    "_currentDefenceLevel": 1,
-                    "maxDefenceReduction": 1,
-                    "magicLevel": 1,
-                    "magicAccuracy": 0,
-                    "defenceStats": {
-                        "Stab": 0,
-                        "Slash": 0,
-                        "Crush": 0,
-                        "Magic": 0,
-                        "Ranged": 0
-                    }
-                }
             ]
         ],
         "_activeVariant": {
@@ -31275,7 +31375,7 @@
         "raid": 0,
         "slayerMonster": "Scabarites",
         "slayerCategory": "Scabarites",
-        "isKalphite": false,
+        "isKalphite": true,
         "isUndead": false,
         "isDemon": false,
         "isDraconic": false,
@@ -38979,7 +39079,7 @@
                     "_defenceLevel": 225,
                     "_currentDefenceLevel": 225,
                     "maxDefenceReduction": 225,
-                    "magicLevel": 1,
+                    "magicLevel": 140,
                     "magicAccuracy": 0,
                     "defenceStats": {
                         "Stab": 150,
@@ -38999,7 +39099,7 @@
             "_defenceLevel": 225,
             "_currentDefenceLevel": 225,
             "maxDefenceReduction": 225,
-            "magicLevel": 1,
+            "magicLevel": 140,
             "magicAccuracy": 0,
             "defenceStats": {
                 "Stab": 150,
@@ -41981,7 +42081,7 @@
         "raid": 0,
         "slayerMonster": "Scabarites",
         "slayerCategory": "Scabarites",
-        "isKalphite": false,
+        "isKalphite": true,
         "isUndead": false,
         "isDemon": false,
         "isDraconic": false,
@@ -54449,7 +54549,7 @@
         "raid": 0,
         "slayerMonster": "Kalphite",
         "slayerCategory": "Kalphite",
-        "isKalphite": false,
+        "isKalphite": true,
         "isUndead": false,
         "isDemon": false,
         "isDraconic": false,
@@ -63792,8 +63892,8 @@
             }
         }
     },
-    "Evil creature": {
-        "name": "Evil creature",
+    "Evil Creature": {
+        "name": "Evil Creature",
         "shortName": "",
         "size": "1x1",
         "raid": 0,
@@ -63812,7 +63912,28 @@
                 "Standard",
                 {
                     "variantName": "Standard",
-                    "imagePath": "https://oldschool.runescape.wiki/images/Evil_creature.png",
+                    "imagePath": "https://oldschool.runescape.wiki/images/Evil_Creature.png",
+                    "currentHitpoints": 1,
+                    "hitpoints": 1,
+                    "_defenceLevel": 1,
+                    "_currentDefenceLevel": 1,
+                    "maxDefenceReduction": 1,
+                    "magicLevel": 1,
+                    "magicAccuracy": 0,
+                    "defenceStats": {
+                        "Stab": 0,
+                        "Slash": 0,
+                        "Crush": 0,
+                        "Magic": 0,
+                        "Ranged": 0
+                    }
+                }
+            ],
+            [
+                "Izzie <!-- Separate versions because Monster Examine doesn't work on this one -->",
+                {
+                    "variantName": "Izzie <!-- Separate versions because Monster Examine doesn't work on this one -->",
+                    "imagePath": "https://oldschool.runescape.wiki/images/Evil_Creature.png",
                     "currentHitpoints": 1,
                     "hitpoints": 1,
                     "_defenceLevel": 1,
@@ -63832,7 +63953,7 @@
         ],
         "_activeVariant": {
             "variantName": "Standard",
-            "imagePath": "https://oldschool.runescape.wiki/images/Evil_creature.png",
+            "imagePath": "https://oldschool.runescape.wiki/images/Evil_Creature.png",
             "currentHitpoints": 1,
             "hitpoints": 1,
             "_defenceLevel": 1,
@@ -68833,8 +68954,8 @@
                 {
                     "variantName": "Normal Mode Maiden",
                     "imagePath": "https://oldschool.runescape.wiki/images/Nylocas_Matomenos.png",
-                    "currentHitpoints": 100,
-                    "hitpoints": 100,
+                    "currentHitpoints": null,
+                    "hitpoints": null,
                     "_defenceLevel": 100,
                     "_currentDefenceLevel": 100,
                     "maxDefenceReduction": 100,
@@ -68854,8 +68975,8 @@
                 {
                     "variantName": "Normal Mode Verzik",
                     "imagePath": "https://oldschool.runescape.wiki/images/Nylocas_Matomenos.png",
-                    "currentHitpoints": 200,
-                    "hitpoints": 200,
+                    "currentHitpoints": null,
+                    "hitpoints": null,
                     "_defenceLevel": 100,
                     "_currentDefenceLevel": 100,
                     "maxDefenceReduction": 100,
@@ -71343,6 +71464,27 @@
                 {
                     "variantName": "Prifddinas",
                     "imagePath": "https://oldschool.runescape.wiki/images/Prifddinas_guard_(Deadman_Mode).png",
+                    "currentHitpoints": 800,
+                    "hitpoints": 800,
+                    "_defenceLevel": 300,
+                    "_currentDefenceLevel": 300,
+                    "maxDefenceReduction": 300,
+                    "magicLevel": 1,
+                    "magicAccuracy": 0,
+                    "defenceStats": {
+                        "Stab": 8,
+                        "Slash": 9,
+                        "Crush": 7,
+                        "Magic": 0,
+                        "Ranged": 8
+                    }
+                }
+            ],
+            [
+                "Warriors' guild",
+                {
+                    "variantName": "Warriors' guild",
+                    "imagePath": "",
                     "currentHitpoints": 800,
                     "hitpoints": 800,
                     "_defenceLevel": 300,
@@ -82445,7 +82587,7 @@
     "Barbarian Warlord": {
         "name": "Barbarian Warlord",
         "shortName": "",
-        "size": "x",
+        "size": "1x1",
         "raid": 0,
         "slayerCategory": "",
         "isKalphite": false,
@@ -84298,7 +84440,7 @@
     "Champion of Scabaras": {
         "name": "Champion of Scabaras",
         "shortName": "",
-        "size": "x",
+        "size": "1x1",
         "raid": 0,
         "slayerCategory": "",
         "isKalphite": false,
@@ -85334,7 +85476,7 @@
         "size": "3x3",
         "raid": 0,
         "slayerCategory": "",
-        "isKalphite": false,
+        "isKalphite": true,
         "isUndead": false,
         "isDemon": false,
         "isDraconic": false,
@@ -85391,7 +85533,7 @@
         "size": "3x3",
         "raid": 0,
         "slayerCategory": "",
-        "isKalphite": false,
+        "isKalphite": true,
         "isUndead": false,
         "isDemon": false,
         "isDraconic": false,
@@ -85505,7 +85647,7 @@
         "size": "3x3",
         "raid": 0,
         "slayerCategory": "",
-        "isKalphite": false,
+        "isKalphite": true,
         "isUndead": false,
         "isDemon": false,
         "isDraconic": false,
@@ -85562,7 +85704,7 @@
         "size": "1x1",
         "raid": 0,
         "slayerCategory": "",
-        "isKalphite": false,
+        "isKalphite": true,
         "isUndead": false,
         "isDemon": false,
         "isDraconic": false,
@@ -87514,7 +87656,7 @@
                     "_defenceLevel": 150,
                     "_currentDefenceLevel": 150,
                     "maxDefenceReduction": 150,
-                    "magicLevel": 1,
+                    "magicLevel": 90,
                     "magicAccuracy": 0,
                     "defenceStats": {
                         "Stab": 125,
@@ -87534,7 +87676,7 @@
             "_defenceLevel": 150,
             "_currentDefenceLevel": 150,
             "maxDefenceReduction": 150,
-            "magicLevel": 1,
+            "magicLevel": 90,
             "magicAccuracy": 0,
             "defenceStats": {
                 "Stab": 125,
@@ -93295,8 +93437,8 @@
                     "_defenceLevel": 750,
                     "_currentDefenceLevel": 750,
                     "maxDefenceReduction": 750,
-                    "magicLevel": 750,
-                    "magicAccuracy": 750,
+                    "magicLevel": 1,
+                    "magicAccuracy": 5400,
                     "defenceStats": {
                         "Stab": 2250,
                         "Slash": 2250,
@@ -93389,6 +93531,27 @@
                         "Ranged": -63
                     }
                 }
+            ],
+            [
+                "Core Stabiliser",
+                {
+                    "variantName": "Core Stabiliser",
+                    "imagePath": "https://oldschool.runescape.wiki/images/Unstable_Orb.png",
+                    "currentHitpoints": 1000000,
+                    "hitpoints": 1000000,
+                    "_defenceLevel": 1,
+                    "_currentDefenceLevel": 1,
+                    "maxDefenceReduction": 1,
+                    "magicLevel": 1,
+                    "magicAccuracy": 0,
+                    "defenceStats": {
+                        "Stab": -63,
+                        "Slash": -63,
+                        "Crush": -63,
+                        "Magic": -63,
+                        "Ranged": -63
+                    }
+                }
             ]
         ],
         "_activeVariant": {
@@ -93399,8 +93562,8 @@
             "_defenceLevel": 750,
             "_currentDefenceLevel": 750,
             "maxDefenceReduction": 750,
-            "magicLevel": 750,
-            "magicAccuracy": 750,
+            "magicLevel": 1,
+            "magicAccuracy": 5400,
             "defenceStats": {
                 "Stab": 2250,
                 "Slash": 2250,
@@ -93464,6 +93627,601 @@
                 "Crush": -15,
                 "Magic": -15,
                 "Ranged": -15
+            }
+        }
+    },
+    "User:Duralith/Sandbox/Infoboxen": {
+        "name": "Frogeel",
+        "shortName": "",
+        "size": "2x2",
+        "raid": 0,
+        "slayerCategory": "",
+        "isKalphite": false,
+        "isUndead": false,
+        "isDemon": false,
+        "isDraconic": false,
+        "isFiery": false,
+        "isLeafy": false,
+        "isVampyre1": false,
+        "isVampyre2": false,
+        "isVampyre3": false,
+        "variants": [
+            [
+                "default",
+                {
+                    "variantName": "default",
+                    "imagePath": "https://oldschool.runescape.wiki/images/Frogeel.png",
+                    "currentHitpoints": 90,
+                    "hitpoints": 90,
+                    "_defenceLevel": 90,
+                    "_currentDefenceLevel": 90,
+                    "maxDefenceReduction": 90,
+                    "magicLevel": 1,
+                    "magicAccuracy": 0,
+                    "defenceStats": {
+                        "Stab": 0,
+                        "Slash": 0,
+                        "Crush": 0,
+                        "Magic": 0,
+                        "Ranged": 0
+                    }
+                }
+            ]
+        ],
+        "_activeVariant": {
+            "variantName": "default",
+            "imagePath": "https://oldschool.runescape.wiki/images/Frogeel.png",
+            "currentHitpoints": 90,
+            "hitpoints": 90,
+            "_defenceLevel": 90,
+            "_currentDefenceLevel": 90,
+            "maxDefenceReduction": 90,
+            "magicLevel": 1,
+            "magicAccuracy": 0,
+            "defenceStats": {
+                "Stab": 0,
+                "Slash": 0,
+                "Crush": 0,
+                "Magic": 0,
+                "Ranged": 0
+            }
+        }
+    },
+    "Mutated Terrorbird": {
+        "name": "Mutated Terrorbird",
+        "shortName": "",
+        "size": "3x3",
+        "raid": 0,
+        "slayerMonster": "Warped Creatures",
+        "slayerCategory": "Warped Creatures",
+        "isKalphite": false,
+        "isUndead": false,
+        "isDemon": false,
+        "isDraconic": false,
+        "isFiery": false,
+        "isLeafy": false,
+        "isVampyre1": false,
+        "isVampyre2": false,
+        "isVampyre3": false,
+        "variants": [
+            [
+                "default",
+                {
+                    "variantName": "default",
+                    "imagePath": "https://oldschool.runescape.wiki/images/Mutated_Terrorbird.png",
+                    "currentHitpoints": 320,
+                    "hitpoints": 320,
+                    "_defenceLevel": 40,
+                    "_currentDefenceLevel": 40,
+                    "maxDefenceReduction": 40,
+                    "magicLevel": 110,
+                    "magicAccuracy": 0,
+                    "defenceStats": {
+                        "Stab": 50,
+                        "Slash": 50,
+                        "Crush": 0,
+                        "Magic": 0,
+                        "Ranged": 62
+                    }
+                }
+            ]
+        ],
+        "_activeVariant": {
+            "variantName": "default",
+            "imagePath": "https://oldschool.runescape.wiki/images/Mutated_Terrorbird.png",
+            "currentHitpoints": 320,
+            "hitpoints": 320,
+            "_defenceLevel": 40,
+            "_currentDefenceLevel": 40,
+            "maxDefenceReduction": 40,
+            "magicLevel": 110,
+            "magicAccuracy": 0,
+            "defenceStats": {
+                "Stab": 50,
+                "Slash": 50,
+                "Crush": 0,
+                "Magic": 0,
+                "Ranged": 62
+            }
+        }
+    },
+    "Mutated Tortoise": {
+        "name": "Mutated Tortoise",
+        "shortName": "",
+        "size": "4x4",
+        "raid": 0,
+        "slayerMonster": "Warped Creatures",
+        "slayerCategory": "Warped Creatures",
+        "isKalphite": false,
+        "isUndead": false,
+        "isDemon": false,
+        "isDraconic": false,
+        "isFiery": false,
+        "isLeafy": false,
+        "isVampyre1": false,
+        "isVampyre2": false,
+        "isVampyre3": false,
+        "variants": [
+            [
+                "default",
+                {
+                    "variantName": "default",
+                    "imagePath": "https://oldschool.runescape.wiki/images/Mutated_Tortoise.png",
+                    "currentHitpoints": 440,
+                    "hitpoints": 440,
+                    "_defenceLevel": 120,
+                    "_currentDefenceLevel": 120,
+                    "maxDefenceReduction": 120,
+                    "magicLevel": 90,
+                    "magicAccuracy": 0,
+                    "defenceStats": {
+                        "Stab": 50,
+                        "Slash": 50,
+                        "Crush": 0,
+                        "Magic": 0,
+                        "Ranged": 60
+                    }
+                }
+            ]
+        ],
+        "_activeVariant": {
+            "variantName": "default",
+            "imagePath": "https://oldschool.runescape.wiki/images/Mutated_Tortoise.png",
+            "currentHitpoints": 440,
+            "hitpoints": 440,
+            "_defenceLevel": 120,
+            "_currentDefenceLevel": 120,
+            "maxDefenceReduction": 120,
+            "magicLevel": 90,
+            "magicAccuracy": 0,
+            "defenceStats": {
+                "Stab": 50,
+                "Slash": 50,
+                "Crush": 0,
+                "Magic": 0,
+                "Ranged": 60
+            }
+        }
+    },
+    "Warped Tortoise": {
+        "name": "Warped Tortoise",
+        "shortName": "",
+        "size": "3x3",
+        "raid": 0,
+        "slayerMonster": "Warped Creatures",
+        "slayerCategory": "Warped Creatures",
+        "isKalphite": false,
+        "isUndead": false,
+        "isDemon": false,
+        "isDraconic": false,
+        "isFiery": false,
+        "isLeafy": false,
+        "isVampyre1": false,
+        "isVampyre2": false,
+        "isVampyre3": false,
+        "variants": [
+            [
+                "default",
+                {
+                    "variantName": "default",
+                    "imagePath": "https://oldschool.runescape.wiki/images/Warped_Tortoise.png",
+                    "currentHitpoints": 200,
+                    "hitpoints": 200,
+                    "_defenceLevel": 78,
+                    "_currentDefenceLevel": 78,
+                    "maxDefenceReduction": 78,
+                    "magicLevel": 50,
+                    "magicAccuracy": 0,
+                    "defenceStats": {
+                        "Stab": 50,
+                        "Slash": 50,
+                        "Crush": 0,
+                        "Magic": 0,
+                        "Ranged": 60
+                    }
+                }
+            ]
+        ],
+        "_activeVariant": {
+            "variantName": "default",
+            "imagePath": "https://oldschool.runescape.wiki/images/Warped_Tortoise.png",
+            "currentHitpoints": 200,
+            "hitpoints": 200,
+            "_defenceLevel": 78,
+            "_currentDefenceLevel": 78,
+            "maxDefenceReduction": 78,
+            "magicLevel": 50,
+            "magicAccuracy": 0,
+            "defenceStats": {
+                "Stab": 50,
+                "Slash": 50,
+                "Crush": 0,
+                "Magic": 0,
+                "Ranged": 60
+            }
+        }
+    },
+    "Warped Terrorbird": {
+        "name": "Warped Terrorbird",
+        "shortName": "",
+        "size": "2x2",
+        "raid": 0,
+        "slayerMonster": "Warped Creatures",
+        "slayerCategory": "Warped Creatures",
+        "isKalphite": false,
+        "isUndead": false,
+        "isDemon": false,
+        "isDraconic": false,
+        "isFiery": false,
+        "isLeafy": false,
+        "isVampyre1": false,
+        "isVampyre2": false,
+        "isVampyre3": false,
+        "variants": [
+            [
+                "Level 96",
+                {
+                    "variantName": "Level 96",
+                    "imagePath": "https://oldschool.runescape.wiki/images/Warped_Terrorbird_(lv_96).png",
+                    "currentHitpoints": 150,
+                    "hitpoints": 150,
+                    "_defenceLevel": 20,
+                    "_currentDefenceLevel": 20,
+                    "maxDefenceReduction": 20,
+                    "magicLevel": 60,
+                    "magicAccuracy": 0,
+                    "defenceStats": {
+                        "Stab": 50,
+                        "Slash": 50,
+                        "Crush": 0,
+                        "Magic": 0,
+                        "Ranged": 62
+                    }
+                }
+            ],
+            [
+                "Level 138",
+                {
+                    "variantName": "Level 138",
+                    "imagePath": "https://oldschool.runescape.wiki/images/Warped_Terrorbird_(lv_138).png",
+                    "currentHitpoints": 200,
+                    "hitpoints": 200,
+                    "_defenceLevel": 60,
+                    "_currentDefenceLevel": 60,
+                    "maxDefenceReduction": 60,
+                    "magicLevel": 160,
+                    "magicAccuracy": 0,
+                    "defenceStats": {
+                        "Stab": 50,
+                        "Slash": 50,
+                        "Crush": 0,
+                        "Magic": 0,
+                        "Ranged": 62
+                    }
+                }
+            ]
+        ],
+        "_activeVariant": {
+            "variantName": "Level 96",
+            "imagePath": "https://oldschool.runescape.wiki/images/Warped_Terrorbird_(lv_96).png",
+            "currentHitpoints": 150,
+            "hitpoints": 150,
+            "_defenceLevel": 20,
+            "_currentDefenceLevel": 20,
+            "maxDefenceReduction": 20,
+            "magicLevel": 60,
+            "magicAccuracy": 0,
+            "defenceStats": {
+                "Stab": 50,
+                "Slash": 50,
+                "Crush": 0,
+                "Magic": 0,
+                "Ranged": 62
+            }
+        }
+    },
+    "Weak Barrier": {
+        "name": "Null",
+        "shortName": "",
+        "size": "undefinedxundefined",
+        "raid": 0,
+        "slayerCategory": "",
+        "isKalphite": false,
+        "isUndead": false,
+        "isDemon": false,
+        "isDraconic": false,
+        "isFiery": false,
+        "isLeafy": false,
+        "isVampyre1": false,
+        "isVampyre2": false,
+        "isVampyre3": false,
+        "variants": [
+            [
+                "default",
+                {
+                    "variantName": "default",
+                    "imagePath": "https://oldschool.runescape.wiki/images/Placeholder.png",
+                    "currentHitpoints": 50,
+                    "hitpoints": 50,
+                    "_defenceLevel": 20,
+                    "_currentDefenceLevel": 20,
+                    "maxDefenceReduction": 20,
+                    "magicLevel": 1,
+                    "magicAccuracy": 0,
+                    "defenceStats": {
+                        "Stab": 0,
+                        "Slash": 0,
+                        "Crush": 0,
+                        "Magic": 0,
+                        "Ranged": 0
+                    }
+                }
+            ]
+        ],
+        "_activeVariant": {
+            "variantName": "default",
+            "imagePath": "https://oldschool.runescape.wiki/images/Placeholder.png",
+            "currentHitpoints": 50,
+            "hitpoints": 50,
+            "_defenceLevel": 20,
+            "_currentDefenceLevel": 20,
+            "maxDefenceReduction": 20,
+            "magicLevel": 1,
+            "magicAccuracy": 0,
+            "defenceStats": {
+                "Stab": 0,
+                "Slash": 0,
+                "Crush": 0,
+                "Magic": 0,
+                "Ranged": 0
+            }
+        }
+    },
+    "Medium Barrier": {
+        "name": "Null",
+        "shortName": "",
+        "size": "undefinedxundefined",
+        "raid": 0,
+        "slayerCategory": "",
+        "isKalphite": false,
+        "isUndead": false,
+        "isDemon": false,
+        "isDraconic": false,
+        "isFiery": false,
+        "isLeafy": false,
+        "isVampyre1": false,
+        "isVampyre2": false,
+        "isVampyre3": false,
+        "variants": [
+            [
+                "default",
+                {
+                    "variantName": "default",
+                    "imagePath": "https://oldschool.runescape.wiki/images/Placeholder.png",
+                    "currentHitpoints": 100,
+                    "hitpoints": 100,
+                    "_defenceLevel": 40,
+                    "_currentDefenceLevel": 40,
+                    "maxDefenceReduction": 40,
+                    "magicLevel": 1,
+                    "magicAccuracy": 0,
+                    "defenceStats": {
+                        "Stab": 0,
+                        "Slash": 0,
+                        "Crush": 0,
+                        "Magic": 0,
+                        "Ranged": 0
+                    }
+                }
+            ]
+        ],
+        "_activeVariant": {
+            "variantName": "default",
+            "imagePath": "https://oldschool.runescape.wiki/images/Placeholder.png",
+            "currentHitpoints": 100,
+            "hitpoints": 100,
+            "_defenceLevel": 40,
+            "_currentDefenceLevel": 40,
+            "maxDefenceReduction": 40,
+            "magicLevel": 1,
+            "magicAccuracy": 0,
+            "defenceStats": {
+                "Stab": 0,
+                "Slash": 0,
+                "Crush": 0,
+                "Magic": 0,
+                "Ranged": 0
+            }
+        }
+    },
+    "Strong Barrier": {
+        "name": "Null",
+        "shortName": "",
+        "size": "undefinedxundefined",
+        "raid": 0,
+        "slayerCategory": "",
+        "isKalphite": false,
+        "isUndead": false,
+        "isDemon": false,
+        "isDraconic": false,
+        "isFiery": false,
+        "isLeafy": false,
+        "isVampyre1": false,
+        "isVampyre2": false,
+        "isVampyre3": false,
+        "variants": [
+            [
+                "default",
+                {
+                    "variantName": "default",
+                    "imagePath": "https://oldschool.runescape.wiki/images/Placeholder.png",
+                    "currentHitpoints": 200,
+                    "hitpoints": 200,
+                    "_defenceLevel": 50,
+                    "_currentDefenceLevel": 50,
+                    "maxDefenceReduction": 50,
+                    "magicLevel": 1,
+                    "magicAccuracy": 0,
+                    "defenceStats": {
+                        "Stab": 0,
+                        "Slash": 0,
+                        "Crush": 0,
+                        "Magic": 0,
+                        "Ranged": 0
+                    }
+                }
+            ]
+        ],
+        "_activeVariant": {
+            "variantName": "default",
+            "imagePath": "https://oldschool.runescape.wiki/images/Placeholder.png",
+            "currentHitpoints": 200,
+            "hitpoints": 200,
+            "_defenceLevel": 50,
+            "_currentDefenceLevel": 50,
+            "maxDefenceReduction": 50,
+            "magicLevel": 1,
+            "magicAccuracy": 0,
+            "defenceStats": {
+                "Stab": 0,
+                "Slash": 0,
+                "Crush": 0,
+                "Magic": 0,
+                "Ranged": 0
+            }
+        }
+    },
+    "Overcharged Barrier": {
+        "name": "Null",
+        "shortName": "",
+        "size": "undefinedxundefined",
+        "raid": 0,
+        "slayerCategory": "",
+        "isKalphite": false,
+        "isUndead": false,
+        "isDemon": false,
+        "isDraconic": false,
+        "isFiery": false,
+        "isLeafy": false,
+        "isVampyre1": false,
+        "isVampyre2": false,
+        "isVampyre3": false,
+        "variants": [
+            [
+                "default",
+                {
+                    "variantName": "default",
+                    "imagePath": "https://oldschool.runescape.wiki/images/Placeholder.png",
+                    "currentHitpoints": 400,
+                    "hitpoints": 400,
+                    "_defenceLevel": 70,
+                    "_currentDefenceLevel": 70,
+                    "maxDefenceReduction": 70,
+                    "magicLevel": 1,
+                    "magicAccuracy": 0,
+                    "defenceStats": {
+                        "Stab": 0,
+                        "Slash": 0,
+                        "Crush": 0,
+                        "Magic": 0,
+                        "Ranged": 0
+                    }
+                }
+            ]
+        ],
+        "_activeVariant": {
+            "variantName": "default",
+            "imagePath": "https://oldschool.runescape.wiki/images/Placeholder.png",
+            "currentHitpoints": 400,
+            "hitpoints": 400,
+            "_defenceLevel": 70,
+            "_currentDefenceLevel": 70,
+            "maxDefenceReduction": 70,
+            "magicLevel": 1,
+            "magicAccuracy": 0,
+            "defenceStats": {
+                "Stab": 0,
+                "Slash": 0,
+                "Crush": 0,
+                "Magic": 0,
+                "Ranged": 0
+            }
+        }
+    },
+    "Ogre shaman (Swan Song)": {
+        "name": "Ogre shaman",
+        "shortName": "",
+        "size": "2x2",
+        "raid": 0,
+        "slayerCategory": "",
+        "isKalphite": false,
+        "isUndead": false,
+        "isDemon": false,
+        "isDraconic": false,
+        "isFiery": false,
+        "isLeafy": false,
+        "isVampyre1": false,
+        "isVampyre2": false,
+        "isVampyre3": false,
+        "variants": [
+            [
+                "default",
+                {
+                    "variantName": "default",
+                    "imagePath": "https://oldschool.runescape.wiki/images/Ogre_shaman_(Swan_Song).png",
+                    "currentHitpoints": 1,
+                    "hitpoints": 1,
+                    "_defenceLevel": 1,
+                    "_currentDefenceLevel": 1,
+                    "maxDefenceReduction": 1,
+                    "magicLevel": 1,
+                    "magicAccuracy": 0,
+                    "defenceStats": {
+                        "Stab": 0,
+                        "Slash": 0,
+                        "Crush": 0,
+                        "Magic": 0,
+                        "Ranged": 0
+                    }
+                }
+            ]
+        ],
+        "_activeVariant": {
+            "variantName": "default",
+            "imagePath": "https://oldschool.runescape.wiki/images/Ogre_shaman_(Swan_Song).png",
+            "currentHitpoints": 1,
+            "hitpoints": 1,
+            "_defenceLevel": 1,
+            "_currentDefenceLevel": 1,
+            "maxDefenceReduction": 1,
+            "magicLevel": 1,
+            "magicAccuracy": 0,
+            "defenceStats": {
+                "Stab": 0,
+                "Slash": 0,
+                "Crush": 0,
+                "Magic": 0,
+                "Ranged": 0
             }
         }
     }
