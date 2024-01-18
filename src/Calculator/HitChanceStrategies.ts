@@ -1,6 +1,7 @@
 import {Calculator} from "./Calculator";
 import {Raid} from "./DataObjects/Raid";
 import {ItemName} from "./DataObjects/ItemName";
+import {StyleType} from "./DataObjects/Item";
 
 abstract class HitChanceStrategy {
     protected result: Calculator;
@@ -42,7 +43,7 @@ export class DefaultHitChanceStrategy extends HitChanceStrategy {
 export function calculateHitChance(calculator: Calculator, attackRoll: number, defenceRoll: number) {
     let strategy;
 
-    if (calculator.gearSet.getWeapon().name === ItemName.OsmumtensFang) {
+    if (calculator.gearSet.getWeapon().name === ItemName.OsmumtensFang && calculator.gearSet.styleType === StyleType.Stab) {
         strategy = new OsmumtensFangHitChanceStrategy(calculator);
     } else {
         strategy = new DefaultHitChanceStrategy(calculator);

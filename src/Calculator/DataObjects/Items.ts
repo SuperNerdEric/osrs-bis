@@ -225,7 +225,7 @@ createWeapon(ItemName.ScytheOfVitur, {
     slot: Slot.TwoHand,
     speedSeconds: 3,
     stab: 70,
-    slash: 110,
+    slash: 125,
     crush: 30,
     magic: -6,
     strength: 75,
