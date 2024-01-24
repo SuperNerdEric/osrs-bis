@@ -20,12 +20,12 @@ const history = createBrowserHistory();
 
 function App() {
     const [urlState, setUrlState] = useUrlState({
-        target: "Ba-Ba",
+        target: "Scurrius",
         invocationLevel: 300,
-        currentDefence: 80,
-        currentHitpoints: 380,
+        currentDefence: 60,
+        currentHitpoints: 500,
         onTask: "false",
-        version: "default",
+        version: "Solo",
     });
     const [onTask, setOnTask] = React.useState(urlState.onTask === "false");
     const [loading, setLoading] = useState(true);

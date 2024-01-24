@@ -4,9 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4032619e-3942-4a56-9b4c-b729a2e7d785" name="Changes" comment="">
+    <list default="true" id="4032619e-3942-4a56-9b4c-b729a2e7d785" name="Changes" comment="Add Dharoks images.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/cleaned_monsters.json" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/cleaned_monsters.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/wiki_monster_data.json" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/wiki_monster_data.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Calculator/Data/cleaned_monsters.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/Calculator/Data/cleaned_monsters.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MonsterSections.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/MonsterSections.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/todo" beforeDir="false" afterPath="$PROJECT_DIR$/src/todo" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,37 +32,46 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
   <component name="ProjectId" id="2Gh9bFrevmIAJ2WXg22bapgMtYU" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/Eric/WebstormProjects/osrs-dps/src/Images",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.standard": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.standard": "",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "settings.javascript.linters.eslint",
-    "ts.external.directory.path": "C:\\Users\\Eric\\WebstormProjects\\osrs-dps\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Eric/WebstormProjects/osrs-dps&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs.jest.jest_package&quot;: &quot;C:/Users/Eric/WebstormProjects/osrs-dps/node_modules/react-scripts&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;settings.typescriptcompiler&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\Eric\\WebstormProjects\\osrs-dps\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Eric\WebstormProjects\osrs-dps\src\Calculator\Data" />
       <recent name="C:\Users\Eric\WebstormProjects\osrs-dps\src\Images" />
       <recent name="C:\Users\Eric\WebstormProjects\osrs-dps\src" />
       <recent name="C:\Users\Eric\WebstormProjects\osrs-dps\src\DataObjects" />
       <recent name="C:\Users\Eric\WebstormProjects\osrs-dps\src\Images\Monsters" />
-      <recent name="C:\Users\Eric\WebstormProjects\osrs-dps\src\Images\Items" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Eric\WebstormProjects\osrs-dps\src\Images" />
@@ -70,7 +85,19 @@
       <recent name="C:\Users\Eric\WebstormProjects\osrs-dps\src\Slider.tsx" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.deploy">
+  <component name="RunManager" selected="npm.start">
+    <configuration name="Calculator class" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <jest-package value="$PROJECT_DIR$/node_modules/react-scripts" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="SUITE" />
+      <test-file value="$PROJECT_DIR$/src/Calculator/Calculator.test.ts" />
+      <test-names>
+        <test-name value="Calculator class" />
+      </test-names>
+      <method v="2" />
+    </configuration>
     <configuration name="Debug" type="JavascriptDebugType" uri="http://localhost:3000/">
       <method v="2" />
     </configuration>
@@ -84,11 +111,21 @@
       <envs />
       <method v="2" />
     </configuration>
-    <configuration name="predeploy" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/package.json" />
+    <configuration name="runMainPy" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/scripts/package.json" />
       <command value="run" />
       <scripts>
-        <script value="predeploy" />
+        <script value="runMainPy" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="runParser" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/scripts/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="runParser" />
       </scripts>
       <node-interpreter value="project" />
       <envs />
@@ -104,29 +141,21 @@
       <envs />
       <method v="2" />
     </configuration>
-    <configuration name="updateBrowserList" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="updateBrowserList" />
-      </scripts>
-      <node-interpreter value="project" />
-      <envs />
-      <method v="2" />
-    </configuration>
     <list>
       <item itemvalue="JavaScript Debug.Debug" />
-      <item itemvalue="npm.deploy" />
-      <item itemvalue="npm.predeploy" />
-      <item itemvalue="npm.updateBrowserList" />
+      <item itemvalue="Jest.Calculator class" />
       <item itemvalue="npm.start" />
+      <item itemvalue="npm.runMainPy" />
+      <item itemvalue="npm.runParser" />
+      <item itemvalue="npm.deploy" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.deploy" />
-        <item itemvalue="npm.predeploy" />
-        <item itemvalue="npm.updateBrowserList" />
         <item itemvalue="npm.start" />
+        <item itemvalue="npm.runParser" />
+        <item itemvalue="npm.runMainPy" />
+        <item itemvalue="Jest.Calculator class" />
+        <item itemvalue="npm.deploy" />
       </list>
     </recent_temporary>
   </component>
@@ -144,6 +173,27 @@
       <workItem from="1690615273474" duration="49000" />
       <workItem from="1690681175668" duration="3474000" />
       <workItem from="1690701178749" duration="3751000" />
+      <workItem from="1697227646655" duration="922000" />
+      <workItem from="1697230893213" duration="1029000" />
+      <workItem from="1697231945485" duration="5845000" />
+      <workItem from="1704932597467" duration="5652000" />
+      <workItem from="1704939808270" duration="226000" />
+      <workItem from="1704940050772" duration="367000" />
+      <workItem from="1704940435406" duration="147000" />
+      <workItem from="1704940603625" duration="128000" />
+      <workItem from="1704940746459" duration="1157000" />
+      <workItem from="1704941944677" duration="297000" />
+      <workItem from="1704942297513" duration="340000" />
+      <workItem from="1704942659734" duration="252000" />
+      <workItem from="1704942927610" duration="114000" />
+      <workItem from="1704943055627" duration="153000" />
+      <workItem from="1704943222643" duration="125000" />
+      <workItem from="1704943363711" duration="1552000" />
+      <workItem from="1704949590822" duration="12052000" />
+      <workItem from="1705025161954" duration="13925000" />
+      <workItem from="1705432705452" duration="9688000" />
+      <workItem from="1705607575572" duration="5255000" />
+      <workItem from="1706105323370" duration="1035000" />
     </task>
     <task id="LOCAL-00001" summary="Implement melee DPS calcs for Tombs of Amascut.">
       <created>1666906409037</created>
@@ -432,7 +482,37 @@
       <option name="project" value="LOCAL" />
       <updated>1690705654162</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="Add Elder maul.">
+      <created>1696956545382</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1696956545382</updated>
+    </task>
+    <task id="LOCAL-00043" summary="Add Dharoks images.">
+      <created>1696956571230</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1696956571230</updated>
+    </task>
+    <task id="LOCAL-00044" summary="Update data from wiki.">
+      <option name="closed" value="true" />
+      <created>1697336108949</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1697336108949</updated>
+    </task>
+    <task id="LOCAL-00045" summary="Scythe/fang updates https://secure.runescape.com/m=news/scythe--fang-updates?oldschool=1">
+      <option name="closed" value="true" />
+      <created>1705609101027</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1705609101027</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -450,12 +530,16 @@
     </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
+    <option name="OPEN_GENERIC_TABS">
+      <map>
+        <entry key="52086bcf-b2e9-4f9e-9b74-37d48baac41c" value="TOOL_WINDOW" />
+      </map>
+    </option>
     <option name="TAB_STATES">
       <map>
         <entry key="52086bcf-b2e9-4f9e-9b74-37d48baac41c">
           <value>
             <State>
-              <option name="SHOW_ONLY_AFFECTED_CHANGES" value="true" />
               <option name="FILTERS">
                 <map>
                   <entry key="branch">
@@ -474,22 +558,14 @@
                   </entry>
                 </map>
               </option>
+              <option name="SHOW_ONLY_AFFECTED_CHANGES" value="true" />
             </State>
           </value>
         </entry>
       </map>
     </option>
-    <option name="OPEN_GENERIC_TABS">
-      <map>
-        <entry key="52086bcf-b2e9-4f9e-9b74-37d48baac41c" value="TOOL_WINDOW" />
-      </map>
-    </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Add magic DPS calculation." />
-    <MESSAGE value="Add gh-pages deploy." />
-    <MESSAGE value="Fix readme text." />
-    <MESSAGE value="Fix content meta tag." />
     <MESSAGE value="Add link to host in README.md" />
     <MESSAGE value="Update commented out old accuracy check in case I ever want to turn in back on." />
     <MESSAGE value="Add book of the dead and keris." />
@@ -511,7 +587,11 @@
     <MESSAGE value="Add minWidth for easier navigation." />
     <MESSAGE value="Create ReasonPopover.tsx" />
     <MESSAGE value="Add defence reduction. Also make more mobile friendly." />
-    <option name="LAST_COMMIT_MESSAGE" value="Add defence reduction. Also make more mobile friendly." />
+    <MESSAGE value="Add Elder maul." />
+    <MESSAGE value="Update data from wiki." />
+    <MESSAGE value="Scythe/fang updates https://secure.runescape.com/m=news/scythe--fang-updates?oldschool=1" />
+    <MESSAGE value="Add Dharoks images." />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Dharoks images." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -542,7 +622,17 @@
           <url>file://$PROJECT_DIR$/src/DefenceReduction.tsx</url>
           <option name="timeStamp" value="18" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/scripts/populateMonsters.ts</url>
+          <line>66</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/osrs_dps$Calculator_class_dhcb_with_ruby_bolts.info" NAME="Calculator class.dhcb with ruby bolts Coverage Results" MODIFIED="1694391002493" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="JestJavaScriptTestRunnerCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/osrs_dps$Result_class_with_ranged_gear_set_including_Slayer_helmet__i__and_onTask_is_true.info" NAME="Result class.with ranged gear set including Slayer helmet (i) and onTask is true Coverage Results" MODIFIED="1691100296428" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="JestJavaScriptTestRunnerCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

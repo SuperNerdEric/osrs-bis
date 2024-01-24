@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "runMainPy": "python3 main.py",
-    "runParser": "ts-node-esm populateMonsters.ts"
+    "runParser": "npx tsx populateMonsters.ts"
   },
   "author": "",
   "license": "ISC",
