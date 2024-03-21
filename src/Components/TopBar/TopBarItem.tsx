@@ -18,7 +18,7 @@ const TopBarItem: React.FC<TopBarProps> = ({setTargetMonster, monsterList, secti
             onMouseEnter={() => setIsOpen(true)}
             onMouseLeave={() => setIsOpen(false)}
         >
-            <Button style={{ fontSize: '25px' }}>{sectionName}</Button>
+            <Button style={{ fontSize: '20px' }}>{sectionName}</Button>
             {isOpen && (
                 <div className="dropdown-content">
                     {monsterList.map((monster, index) => (

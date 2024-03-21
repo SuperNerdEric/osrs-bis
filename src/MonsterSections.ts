@@ -21,6 +21,7 @@ export function getSections(): MonsterSection[] {
         new MonsterSection("God Wars Dungeon", ["Kree'arra", "General Graardor", "Commander Zilyana", "K'ril Tsutsaroth", "Nex"]),
         new MonsterSection("Dagannoth Kings", ["Dagannoth Rex", "Dagannoth Prime", "Dagannoth Supreme"]),
         new MonsterSection("Barrows", ["Ahrim the Blighted", "Dharok the Wretched", "Guthan the Infested", "Karil the Tainted", "Torag the Corrupted", "Verac the Defiled"]),
+        new MonsterSection("Moons of Peril", ["Blood Moon", "Eclipse Moon", "Blue Moon"]),
         new MonsterSection("Other Bosses", ["Corporeal Beast", "King Black Dragon", "Kalphite Queen", "Vorkath", "Zulrah", "Scurrius"])
     ];
 }

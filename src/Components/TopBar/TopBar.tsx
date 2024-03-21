@@ -48,7 +48,7 @@ const TopBar: React.FC<TopBarProps> = ({setTargetMonster}) => {
                                         </Grid>
                                     ))}
                                 </Grid>
-                                <div style={{ marginTop: '5px' }}>
+                                <div style={{ marginTop: '0px' }}>
                                     <Stack direction="row" alignItems="center" gap={4}>
                                         <div className="monsterSearch">
                                             <MonsterSearch onSelect={setTargetMonster} />
