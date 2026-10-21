@@ -1,7 +1,8 @@
 {
   "files": {
-    "main.css": "/static/css/main.bfb22a3e.css",
-    "main.js": "/static/js/main.04f8672a.js",
+    "main.css": "/static/css/main.45003458.css",
+    "main.js": "/static/js/main.94d6e035.js",
+    "static/js/451.97db5135.chunk.js": "/static/js/451.97db5135.chunk.js",
     "static/js/787.98701412.chunk.js": "/static/js/787.98701412.chunk.js",
     "static/media/Mystic_smoke_staff.gif": "/static/media/Mystic_smoke_staff.1db57e9780287ca950ce.gif",
     "static/media/Smoke_battlestaff.gif": "/static/media/Smoke_battlestaff.1db57e9780287ca950ce.gif",
@@ -201,6 +202,7 @@
     "static/media/Torva_platelegs.png": "/static/media/Torva_platelegs.ccf92a8381c5b9a004d2.png",
     "static/media/Zaryte_vambraces.png": "/static/media/Zaryte_vambraces.8bb2db3d88927064ca02.png",
     "static/media/Amulet_of_torture.png": "/static/media/Amulet_of_torture.86be3e26709fd8216c6b.png",
+    "static/media/LICENSE": "/static/media/LICENSE.7cec43f5d53168ea749f",
     "static/media/Obsidian_helmet.png": "/static/media/Obsidian_helmet.a8cdc454e0718f4c9168.png",
     "static/media/Scythe_of_vitur.png": "/static/media/Scythe_of_vitur.b8f13e6a970d2312a385.png",
     "static/media/Blisterwood_sickle.png": "/static/media/Blisterwood_sickle.710af38b562947f496d7.png",
@@ -310,12 +312,13 @@
     "static/media/Void_knight_robe.webp": "/static/media/Void_knight_robe.e46393a4f5a26ca7786e.webp",
     "static/media/Zamorakian_hasta.webp": "/static/media/Zamorakian_hasta.be62bb7cec7ec3005a5e.webp",
     "index.html": "/index.html",
-    "main.bfb22a3e.css.map": "/static/css/main.bfb22a3e.css.map",
-    "main.04f8672a.js.map": "/static/js/main.04f8672a.js.map",
+    "main.45003458.css.map": "/static/css/main.45003458.css.map",
+    "main.94d6e035.js.map": "/static/js/main.94d6e035.js.map",
+    "451.97db5135.chunk.js.map": "/static/js/451.97db5135.chunk.js.map",
     "787.98701412.chunk.js.map": "/static/js/787.98701412.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.bfb22a3e.css",
-    "static/js/main.04f8672a.js"
+    "static/css/main.45003458.css",
+    "static/js/main.94d6e035.js"
   ]
 }
