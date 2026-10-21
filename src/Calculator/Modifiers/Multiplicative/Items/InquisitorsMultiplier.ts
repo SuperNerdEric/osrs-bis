@@ -1,6 +1,6 @@
-import {Calculator} from "../../../Calculator";
-import {ItemName} from "../../../DataObjects/ItemName";
-import {StyleType} from "../../../DataObjects/Item";
+import { Calculator } from "../../../Calculator";
+import { ItemName } from "../../../DataObjects/ItemName";
+import { StyleType } from "../../../DataObjects/Item";
 
 export function inquisitorsMultiplier(calculator: Calculator): number {
     if (calculator.gearSet.styleType !== StyleType.Crush) {
@@ -10,10 +10,10 @@ export function inquisitorsMultiplier(calculator: Calculator): number {
     const inquisitorsPieces = [
         ItemName.InquisitorsGreatHelm,
         ItemName.InquisitorsHauberk,
-        ItemName.InquisitorsPlateskirt
+        ItemName.InquisitorsPlateskirt,
     ];
 
-    const allPiecesEquipped = inquisitorsPieces.every(piece => {
+    const allPiecesEquipped = inquisitorsPieces.every((piece) => {
         return calculator.gearSet.hasItemByName(piece);
     });
 
@@ -21,9 +21,9 @@ export function inquisitorsMultiplier(calculator: Calculator): number {
         return 1.025;
     }
 
-    const equippedPieces = inquisitorsPieces.filter(piece => {
+    const equippedPieces = inquisitorsPieces.filter((piece) => {
         return calculator.gearSet.hasItemByName(piece);
     });
 
-    return 1 + (equippedPieces.length * 0.005);
+    return 1 + equippedPieces.length * 0.005;
 }

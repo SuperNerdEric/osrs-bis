@@ -1,4 +1,4 @@
-import {ItemName} from "./DataObjects/ItemName";
+import { ItemName } from "./DataObjects/ItemName";
 
 export function getBoltActivationRate(boltName: ItemName, kandarinHardComplete: boolean): number {
     const baseRates: { [key in ItemName]?: number } = {
@@ -15,7 +15,7 @@ export function getBoltActivationRate(boltName: ItemName, kandarinHardComplete: 
         [ItemName.DragonstoneBoltsE]: 6,
         [ItemName.DragonstoneDragonBoltsE]: 6,
         [ItemName.OnyxBoltsE]: 11,
-        [ItemName.OnyxDragonBoltsE]: 11
+        [ItemName.OnyxDragonBoltsE]: 11,
     };
 
     const kandarinRates: { [key in ItemName]?: number } = {
@@ -32,8 +32,8 @@ export function getBoltActivationRate(boltName: ItemName, kandarinHardComplete: 
         [ItemName.DragonstoneBoltsE]: 6.6,
         [ItemName.DragonstoneDragonBoltsE]: 6.6,
         [ItemName.OnyxBoltsE]: 12.1,
-        [ItemName.OnyxDragonBoltsE]: 12.1
+        [ItemName.OnyxDragonBoltsE]: 12.1,
     };
 
-    return kandarinHardComplete ? (kandarinRates[boltName] || 0) : (baseRates[boltName] || 0);
+    return kandarinHardComplete ? kandarinRates[boltName] || 0 : baseRates[boltName] || 0;
 }

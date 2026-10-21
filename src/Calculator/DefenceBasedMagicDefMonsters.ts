@@ -13,5 +13,5 @@ export const defenceBasedMagicDefMonsters: string[] = [
     "Verzik Vitur",
     "Fragment of Seren",
     "Baboon Brawler",
-    "Rabbit (Prifddinas)"
+    "Rabbit (Prifddinas)",
 ];

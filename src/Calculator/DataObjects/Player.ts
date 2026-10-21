@@ -1,4 +1,4 @@
-import {Prayer, prayerBonuses, PrayerModifiers} from "./Prayer";
+import { Prayer, prayerBonuses, PrayerModifiers } from "./Prayer";
 
 export interface Skill {
     level: number;
@@ -15,15 +15,21 @@ export class Player {
 
     onTask: boolean = false;
     kandarinHardDiaryComplete: boolean = true;
+    elementalFragments = {
+        air: true,
+        water: true,
+        earth: true,
+        fire: true,
+    };
     private _soulStacks: number = 5;
     prayers: Record<Prayer, boolean>;
 
     constructor() {
         this.skills = {
-            attack: {level: 99, boost: 0},
-            strength: {level: 99, boost: 0},
-            ranged: {level: 99, boost: 0},
-            magic: {level: 99, boost: 0},
+            attack: { level: 99, boost: 0 },
+            strength: { level: 99, boost: 0 },
+            ranged: { level: 99, boost: 0 },
+            magic: { level: 99, boost: 0 },
         };
 
         this.prayers = {
@@ -41,8 +47,9 @@ export class Player {
             [Prayer.UltimateStrength]: false,
             [Prayer.Augury]: true,
             [Prayer.Chivalry]: false,
-            [Prayer.Piety]: true,
-            [Prayer.Rigour]: true
+            [Prayer.Piety]: false,
+            [Prayer.Rigour]: true,
+            [Prayer.Zeal]: true,
         };
     }
 
@@ -59,11 +66,11 @@ export class Player {
             strength: 1,
             rangedAccuracy: 1,
             rangedStrength: 1,
-            magic: 1
+            magic: 1,
         };
 
         for (const prayer of activePrayers) {
-            modifiers = {...modifiers, ...prayerBonuses[prayer]};
+            modifiers = { ...modifiers, ...prayerBonuses[prayer] };
         }
 
         return modifiers;

@@ -1,19 +1,20 @@
-import React, {useEffect, useState} from 'react';
-import {Checkbox, Collapse, FormControlLabel, Grid, InputLabel, Stack, TextField, Tooltip} from '@mui/material';
+import React, { useEffect, useState } from "react";
+import { Checkbox, Collapse, FormControlLabel, Grid, InputLabel, Stack, TextField, Tooltip } from "@mui/material";
 
-import PietyIcon from '../../Images/Prayers/Piety.png';
-import RigourIcon from '../../Images/Prayers/Rigour.png';
-import AuguryIcon from '../../Images/Prayers/Augury.png';
+import PietyIcon from "../../Images/Prayers/Piety.png";
+import ZealIcon from "../../Images/Prayers/Zeal.png";
+import RigourIcon from "../../Images/Prayers/Rigour.png";
+import AuguryIcon from "../../Images/Prayers/Augury.png";
 import slayerIcon from "../../Images/Skills/Slayer_icon.png";
 import diaryIcon from "../../Images/Achievement_Diaries.png";
 import soulreaperIcon from "../../Images/Soulreaper_axe.png";
-import {Player} from "../../Calculator/DataObjects/Player";
-import {TargetMonster} from "../../Calculator/DataObjects/TargetMonster";
+import { Player } from "../../Calculator/DataObjects/Player";
+import { TargetMonster } from "../../Calculator/DataObjects/TargetMonster";
 import SkillsPanel from "./Skills";
 import Boosts from "./Boosts";
 import Prayers from "./Prayers";
 import usePotionLogic from "../../hooks/usePotionLogic";
-import {Prayer} from "../../Calculator/DataObjects/Prayer";
+import { Prayer } from "../../Calculator/DataObjects/Prayer";
 
 interface ConfigurationPanelProps {
     player: Player;
@@ -21,28 +22,29 @@ interface ConfigurationPanelProps {
     targetMonster: TargetMonster;
 }
 
-const ConfigurationPanel: React.FC<ConfigurationPanelProps> = ({
-                                                                   player,
-                                                                   setPlayer,
-                                                                   targetMonster,
-                                                               }) => {
+const ConfigurationPanel: React.FC<ConfigurationPanelProps> = ({ player, setPlayer, targetMonster }) => {
     const [isOpen, setIsOpen] = useState(false);
 
-    const {potionStates, handlePotionChange} = usePotionLogic(player, setPlayer, targetMonster.raid);
+    const { potionStates, handlePotionChange } = usePotionLogic(player, setPlayer, targetMonster.raid);
 
     const handlePrayerChange = (prayer: Prayer, isChecked: boolean) => {
-        setPlayer(prevPlayer => {
+        setPlayer((prevPlayer) => {
             const newPlayer = new Player();
             Object.assign(newPlayer, prevPlayer);
-            newPlayer.prayers[prayer] = isChecked;
+            newPlayer.prayers = { ...prevPlayer.prayers, [prayer]: isChecked };
+            if (prayer === Prayer.Zeal && isChecked) {
+                newPlayer.prayers[Prayer.Piety] = false;
+            }
+            if (prayer === Prayer.Piety && isChecked) {
+                newPlayer.prayers[Prayer.Zeal] = false;
+            }
             return newPlayer;
         });
     };
 
     useEffect(() => {
         if (!targetMonster.slayerMonster) {
-
-            setPlayer(prevPlayer => {
+            setPlayer((prevPlayer) => {
                 const newPlayer = new Player();
                 Object.assign(newPlayer, prevPlayer);
                 newPlayer.onTask = false;
@@ -52,44 +54,49 @@ const ConfigurationPanel: React.FC<ConfigurationPanelProps> = ({
     }, [targetMonster.slayerMonster]);
 
     const handlePlayerUpdate = (skillName: SkillName, newValue: number) => {
-        setPlayer(prevPlayer => {
+        setPlayer((prevPlayer) => {
             const newPlayer = new Player();
             Object.assign(newPlayer, prevPlayer);
             newPlayer.skills = {
                 ...prevPlayer.skills,
                 [skillName]: {
                     ...prevPlayer.skills[skillName],
-                    level: newValue
-                }
+                    level: newValue,
+                },
             };
             return newPlayer;
         });
     };
 
-    type SkillName = keyof Player['skills'];
+    type SkillName = keyof Player["skills"];
 
     return (
-        <div style={{maxWidth: '1000px', margin: '0 auto'}}>
-            <div style={{display: 'flex', alignItems: 'center', cursor: 'pointer'}} onClick={() => setIsOpen(!isOpen)}>
-                <hr style={{flex: 1, borderTop: '2px solid black'}}/>
-                <span style={{
-                    ...sharedStyle,
-                    margin: '0 15px',
-                    padding: '2px 15px',
-                    borderRadius: '15px',
-                    fontSize: '18px',
-                    fontWeight: 'bold',
-                    userSelect: 'none'
-                }}>
-                    {isOpen ? 'Hide Configuration' : 'Show Configuration'}
+        <div style={{ maxWidth: "1000px", margin: "0 auto" }}>
+            <div
+                style={{ display: "flex", alignItems: "center", cursor: "pointer" }}
+                onClick={() => setIsOpen(!isOpen)}
+            >
+                <hr style={{ flex: 1, borderTop: "2px solid black" }} />
+                <span
+                    style={{
+                        ...sharedStyle,
+                        margin: "0 15px",
+                        padding: "2px 15px",
+                        borderRadius: "15px",
+                        fontSize: "18px",
+                        fontWeight: "bold",
+                        userSelect: "none",
+                    }}
+                >
+                    {isOpen ? "Hide Configuration" : "Show Configuration"}
                 </span>
-                <hr style={{flex: 1, borderTop: '2px solid black'}}/>
+                <hr style={{ flex: 1, borderTop: "2px solid black" }} />
             </div>
 
-            <Collapse in={isOpen} style={{paddingTop: '20px'}}>
+            <Collapse in={isOpen} style={{ paddingTop: "20px" }}>
                 <Grid container spacing={3}>
                     <Grid item xs={6}>
-                        <SkillsPanel player={player} handlePlayerUpdate={handlePlayerUpdate}/>
+                        <SkillsPanel player={player} handlePlayerUpdate={handlePlayerUpdate} />
                     </Grid>
                     <Grid item xs={6}>
                         <Boosts
@@ -99,24 +106,20 @@ const ConfigurationPanel: React.FC<ConfigurationPanelProps> = ({
                         />
                     </Grid>
                     <Grid item xs={6}>
-                        <Prayers
-                            prayersData={prayersData}
-                            player={player}
-                            handlePrayerChange={handlePrayerChange}
-                        />
+                        <Prayers prayersData={prayersData} player={player} handlePrayerChange={handlePrayerChange} />
                     </Grid>
                     <Grid item xs={6}>
-                        <div style={{display: 'flex', justifyContent: 'center', flexWrap: 'wrap'}}>
-                            <div style={{display: 'flex', flexDirection: 'column', alignItems: 'flex-start'}}>
+                        <div style={{ display: "flex", justifyContent: "center", flexWrap: "wrap" }}>
+                            <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
                                 {targetMonster.slayerMonster && (
                                     <Stack direction="row" alignItems="center" gap={2}>
-                                        <img src={slayerIcon} alt="Slayer Task" style={iconSize}/>
+                                        <img src={slayerIcon} alt="Slayer Task" style={iconSize} />
                                         <FormControlLabel
                                             control={
                                                 <Checkbox
                                                     checked={player.onTask}
                                                     onChange={(e) => {
-                                                        setPlayer(prevPlayer => {
+                                                        setPlayer((prevPlayer) => {
                                                             const newPlayer = new Player();
                                                             Object.assign(newPlayer, prevPlayer);
                                                             newPlayer.onTask = e.target.checked;
@@ -132,14 +135,14 @@ const ConfigurationPanel: React.FC<ConfigurationPanelProps> = ({
                                 )}
                                 <Stack direction="row" alignItems="center" gap={2}>
                                     <Tooltip title="Increases chance of enchanted bolt special effect occurring by 10%">
-                                        <img src={diaryIcon} alt="Kandarin Hard Diary" style={iconSize}/>
+                                        <img src={diaryIcon} alt="Kandarin Hard Diary" style={iconSize} />
                                     </Tooltip>
                                     <FormControlLabel
                                         control={
                                             <Checkbox
                                                 checked={player.kandarinHardDiaryComplete}
                                                 onChange={(e) => {
-                                                    setPlayer(prevPlayer => {
+                                                    setPlayer((prevPlayer) => {
                                                         const newPlayer = new Player();
                                                         Object.assign(newPlayer, prevPlayer); // This copies properties from prevPlayer to newPlayer
                                                         newPlayer.kandarinHardDiaryComplete = e.target.checked;
@@ -153,16 +156,52 @@ const ConfigurationPanel: React.FC<ConfigurationPanelProps> = ({
                                     />
                                 </Stack>
                                 <Stack direction="row" alignItems="center" gap={2}>
-                                    <Tooltip
-                                        title="Soulreaper axe stacks (Each Soul Stack gives the player a +6% boost to their Strength level)">
-                                        <img src={soulreaperIcon} alt="Soulreaper Axe" style={iconSize}/>
+                                    <Tooltip title="Broken Archive fragments. Each one adds 2 to the base max hit of that element's standard spells, before magic damage and elemental weakness.">
+                                        <span style={iconSize} />
+                                    </Tooltip>
+                                    <div>
+                                        {(
+                                            [
+                                                ["air", "Wind"],
+                                                ["water", "Water"],
+                                                ["earth", "Earth"],
+                                                ["fire", "Fire"],
+                                            ] as const
+                                        ).map(([element, label]) => (
+                                            <FormControlLabel
+                                                key={element}
+                                                control={
+                                                    <Checkbox
+                                                        checked={player.elementalFragments[element]}
+                                                        onChange={(e) => {
+                                                            const checked = e.target.checked;
+                                                            setPlayer((prevPlayer) => {
+                                                                const newPlayer = new Player();
+                                                                Object.assign(newPlayer, prevPlayer);
+                                                                newPlayer.elementalFragments = {
+                                                                    ...prevPlayer.elementalFragments,
+                                                                    [element]: checked,
+                                                                };
+                                                                return newPlayer;
+                                                            });
+                                                        }}
+                                                    />
+                                                }
+                                                label={`${label} fragment`}
+                                            />
+                                        ))}
+                                    </div>
+                                </Stack>
+                                <Stack direction="row" alignItems="center" gap={2}>
+                                    <Tooltip title="Soulreaper axe stacks (Each Soul Stack gives the player a +6% boost to their Strength level)">
+                                        <img src={soulreaperIcon} alt="Soulreaper Axe" style={iconSize} />
                                     </Tooltip>
                                     <TextField
                                         type="number"
                                         value={player.soulStacks.toString()}
-                                        onChange={e => {
+                                        onChange={(e) => {
                                             const newValue = Math.max(0, Math.min(Number(e.target.value), 5));
-                                            setPlayer(prevPlayer => {
+                                            setPlayer((prevPlayer) => {
                                                 const newPlayer = new Player();
                                                 Object.assign(newPlayer, prevPlayer);
                                                 newPlayer.soulStacks = newValue;
@@ -171,21 +210,21 @@ const ConfigurationPanel: React.FC<ConfigurationPanelProps> = ({
                                         }}
                                         variant="outlined"
                                         style={textFieldStyle}
-                                        inputProps={{style: {padding: 0}, min: 0, max: 5}}
+                                        inputProps={{ style: { padding: 0 }, min: 0, max: 5 }}
                                     />
-                                    <InputLabel sx={{color: 'white', fontSize: '16px', padding: '5px 0'}}
-                                                htmlFor="soul-stacks-input">
+                                    <InputLabel
+                                        sx={{ color: "white", fontSize: "16px", padding: "5px 0" }}
+                                        htmlFor="soul-stacks-input"
+                                    >
                                         Soul Stacks
                                     </InputLabel>
                                 </Stack>
                             </div>
                         </div>
                     </Grid>
-
                 </Grid>
-                <hr style={{flex: 1, borderTop: '2px solid black'}}/>
+                <hr style={{ flex: 1, borderTop: "2px solid black" }} />
             </Collapse>
-
         </div>
     );
 };
@@ -193,27 +232,29 @@ const ConfigurationPanel: React.FC<ConfigurationPanelProps> = ({
 export default ConfigurationPanel;
 
 const prayersData: {
-    label: Prayer,
-    displayName: string,
-    icon: string
+    label: Prayer;
+    displayName: string;
+    icon: string;
 }[] = [
-    {label: Prayer.Piety, displayName: 'Piety', icon: PietyIcon},
-    {label: Prayer.Rigour, displayName: 'Rigour', icon: RigourIcon},
-    {label: Prayer.Augury, displayName: 'Augury', icon: AuguryIcon}
+    { label: Prayer.Zeal, displayName: "Zeal", icon: ZealIcon },
+    { label: Prayer.Piety, displayName: "Piety", icon: PietyIcon },
+    { label: Prayer.Rigour, displayName: "Rigour", icon: RigourIcon },
+    { label: Prayer.Augury, displayName: "Augury", icon: AuguryIcon },
 ];
 
 const sharedStyle = {
-    backgroundColor: '#d8ccb4',
-    color: 'black'
+    backgroundColor: "#d8ccb4",
+    color: "black",
 };
 
 const iconSize = {
-    width: '25px',
-    height: '25px'
+    width: "25px",
+    height: "25px",
+    objectFit: "contain" as const,
 };
 
 const textFieldStyle = {
-    backgroundColor: '#d8ccb4',
-    color: 'black',
-    width: '30px'
+    backgroundColor: "#d8ccb4",
+    color: "black",
+    width: "30px",
 };

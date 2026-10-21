@@ -1,6 +1,6 @@
-import {Calculator} from "../../../Calculator";
-import {MultiplierType} from "../MultiplierType";
-import {ItemName} from "../../../DataObjects/ItemName";
+import { Calculator } from "../../../Calculator";
+import { MultiplierType } from "../MultiplierType";
+import { ItemName } from "../../../DataObjects/ItemName";
 
 export function crystalEquipmentMultiplier(calculator: Calculator, multiplierType: MultiplierType): number {
     const validBows = [ItemName.BowOfFaerdhinen, ItemName.CrystalBow];
@@ -11,15 +11,15 @@ export function crystalEquipmentMultiplier(calculator: Calculator, multiplierTyp
     }
 
     const bonuses = [
-        {piece: ItemName.CrystalHelm, damageBonus: 0.025, accuracyBonus: 0.05},
-        {piece: ItemName.CrystalBody, damageBonus: 0.075, accuracyBonus: 0.15},
-        {piece: ItemName.CrystalLegs, damageBonus: 0.05, accuracyBonus: 0.10}
+        { piece: ItemName.CrystalHelm, damageBonus: 0.025, accuracyBonus: 0.05 },
+        { piece: ItemName.CrystalBody, damageBonus: 0.075, accuracyBonus: 0.15 },
+        { piece: ItemName.CrystalLegs, damageBonus: 0.05, accuracyBonus: 0.1 },
     ];
 
     let totalDamageBonus = 0;
     let totalAccuracyBonus = 0;
 
-    bonuses.forEach(bonus => {
+    bonuses.forEach((bonus) => {
         if (calculator.gearSet.hasItemByName(bonus.piece)) {
             totalDamageBonus += bonus.damageBonus;
             totalAccuracyBonus += bonus.accuracyBonus;

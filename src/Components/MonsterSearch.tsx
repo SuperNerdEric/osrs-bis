@@ -1,8 +1,8 @@
-import React from 'react';
-import TextField from '@mui/material/TextField';
-import Autocomplete from '@mui/material/Autocomplete';
+import React from "react";
+import TextField from "@mui/material/TextField";
+import Autocomplete from "@mui/material/Autocomplete";
 import { TargetMonster } from "../Calculator/DataObjects/TargetMonster";
-import {monsters} from "../Calculator/Data/loadMonsters";
+import { monsters } from "../Calculator/Data/loadMonsters";
 
 interface MonsterSearchProps {
     onSelect: (monster: TargetMonster) => void;
@@ -13,12 +13,12 @@ const MonsterSearch: React.FC<MonsterSearchProps> = ({ onSelect }) => {
     console.log("Monsters: " + monsters.size);
 
     return (
-        <div style={{ position: 'relative', width: '230px' }}>
+        <div style={{ position: "relative", width: "230px" }}>
             <Autocomplete
                 options={monsterArray}
                 getOptionLabel={(monster) => monster.title}
                 onInputChange={(event, newValue) => {
-                    const selectedMonster = monsterArray.find(m => m.title === newValue);
+                    const selectedMonster = monsterArray.find((m) => m.title === newValue);
                     if (selectedMonster) {
                         onSelect(selectedMonster);
                     }
@@ -29,11 +29,11 @@ const MonsterSearch: React.FC<MonsterSearchProps> = ({ onSelect }) => {
                         placeholder="Search monsters..."
                         variant="outlined"
                         sx={{
-                            height: '40px',
+                            height: "40px",
                             "& .MuiInputBase-root": {
-                                backgroundColor: '#d8ccb4',
-                                height: '100%',
-                                padding: '0 14px'
+                                backgroundColor: "#d8ccb4",
+                                height: "100%",
+                                padding: "0 14px",
                             },
                             "& .MuiOutlinedInput-notchedOutline": {
                                 borderColor: "#ddd",
@@ -45,36 +45,36 @@ const MonsterSearch: React.FC<MonsterSearchProps> = ({ onSelect }) => {
                                 borderColor: "#ddd",
                             },
                             "& .MuiAutocomplete-popupIndicator": {
-                                color: 'black'
-                            }
+                                color: "black",
+                            },
                         }}
                     />
                 )}
                 sx={{
                     "& .MuiOutlinedInput-root": {
                         "& .MuiOutlinedInput-notchedOutline": {
-                            borderColor: "white"
+                            borderColor: "white",
                         },
                         "&:hover .MuiOutlinedInput-notchedOutline": {
-                            borderColor: "white"
+                            borderColor: "white",
                         },
                         "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                            borderColor: "white"
-                        }
-                    }
+                            borderColor: "white",
+                        },
+                    },
                 }}
                 style={{
-                    width: '100%',
-                    zIndex: 1000
+                    width: "100%",
+                    zIndex: 1000,
                 }}
                 ListboxProps={{
                     style: {
-                        maxHeight: '200px',
-                        overflow: 'auto',
-                        backgroundColor: '#d8ccb4',
-                        border: '1px solid #ddd',
-                        fontSize: '16px',
-                    }
+                        maxHeight: "200px",
+                        overflow: "auto",
+                        backgroundColor: "#d8ccb4",
+                        border: "1px solid #ddd",
+                        fontSize: "16px",
+                    },
                 }}
             />
         </div>

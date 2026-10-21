@@ -1,19 +1,14 @@
-import {TargetMonster} from "./DataObjects/TargetMonster";
-import {CombatClass, StyleType, WeaponStyle} from "./DataObjects/Item";
-import {Player} from "./DataObjects/Player";
-import {GearSet} from "./DataObjects/GearSets";
-import {ItemName} from "./DataObjects/ItemName";
-import {calculateHitChance} from "./HitChanceStrategies";
-import {MultiplierType} from "./Modifiers/Multiplicative/MultiplierType";
-import {v4 as uuidv4} from 'uuid';
-import {SpellBookType} from "./DataObjects/Spell";
-import {getGearAccuracyMultipliers, getGearDamageMultipliers} from "./Modifiers/Multiplicative/MultiplierUtils";
-import {averageDamage, DamageProbability} from "./DamageDistributionStrategies/DamageProbability";
-import {getDamageDistribution} from "./DamageDistributionStrategies/DamageDistributionStrategies";
-import {getMagicMaxHit} from "./MagicMaxHit";
-import {soulreaperMultiplier, voidKnightMultiplier} from "./Modifiers/Multiplicative";
-import {defenceBasedMagicDefMonsters} from "./DefenceBasedMagicDefMonsters";
-
+import { TargetMonster } from "./DataObjects/TargetMonster";
+import { CombatClass, rangedAttackType, RangedAttackType, StyleType, WeaponStyle } from "./DataObjects/Item";
+import { Player } from "./DataObjects/Player";
+import { GearSet } from "./DataObjects/GearSets";
+import { MultiplierType } from "./Modifiers/Multiplicative/MultiplierType";
+import { v4 as uuidv4 } from "uuid";
+import { DamageProbability } from "./DamageDistributionStrategies/DamageProbability";
+import { elementalWeaknessMaxHitBonus, getMagicMaxHit } from "./MagicMaxHit";
+import { soulreaperMultiplier, voidKnightMultiplier } from "./Modifiers/Multiplicative";
+import { defenceBasedMagicDefMonsters } from "./DefenceBasedMagicDefMonsters";
+import { buildContext, evaluateGear, gearRequestFromSet } from "./WikiDps";
 
 export class Calculator {
     dps: number = 0;
@@ -37,36 +32,17 @@ export class Calculator {
     }
 
     calculateDPS(invocationLevel: number = 0) {
-        const attackStyle = this.gearSet.styleType;
-
-        const effectiveStrengthLevel = this.calculateEffectiveStrengthLevel(this.gearSet.combatClass);
-        const effectiveAttackLevel = this.calculateEffectiveAttackLevel(this.gearSet.combatClass);
-
-        const gearDamageMultipliers = getGearDamageMultipliers(this);
-        this.maxHit = this.calculateMaxHit(effectiveStrengthLevel, gearDamageMultipliers, this.gearSet.combatClass);
-
-        const gearAccuracyMultipliers = getGearAccuracyMultipliers(this);
-        this.attackRoll = this.calculateAttackRoll(effectiveAttackLevel, gearAccuracyMultipliers);
-        this.defenceRoll = this.calculateDefenceRoll(invocationLevel, attackStyle);
-
-        this.hitChance = calculateHitChance(this, this.attackRoll, this.defenceRoll);
-        this.damageDistribution = getDamageDistribution(this);
-        this.averageDamagePerHit = averageDamage(this.damageDistribution);
-        this.maxHit = Math.max(...this.damageDistribution.map(prob => prob.dmg));
-
-        this.attackInterval = this.gearSet.getWeapon().speedSeconds;
-        if (this.gearSet.weaponStyle === WeaponStyle.Rapid) {
-            this.attackInterval -= 0.6;
-        }
-        if (this.gearSet.spell) {
-            this.attackInterval = 3;
-            if (this.gearSet.getWeapon().name === ItemName.HarmonisedNightmareStaff
-                && this.gearSet.spell.spellbook === SpellBookType.Standard) {
-                this.attackInterval = 2.4;
-            }
-        }
-
-        this.dps = this.calculateDps(this.averageDamagePerHit, this.attackInterval);
+        const result = evaluateGear(
+            buildContext(this.targetMonster, this.player, invocationLevel),
+            gearRequestFromSet(this.gearSet),
+        );
+        this.dps = result.dps;
+        this.maxHit = result.maxHit;
+        this.hitChance = result.hitChance;
+        this.attackRoll = result.attackRoll;
+        this.defenceRoll = result.defenceRoll;
+        this.averageDamagePerHit = result.averageDamage;
+        this.attackInterval = result.attackInterval;
     }
 
     private calculateEffectiveStrengthLevel(combatClass: CombatClass) {
@@ -77,19 +53,29 @@ export class Calculator {
         if (combatClass === CombatClass.Melee) {
             const soulReaperMultiplier = soulreaperMultiplier(this);
 
-            effectiveLevel = Math.floor((this.player.skills.strength.level + this.player.skills.strength.boost) * (prayerModifiers.strength + soulReaperMultiplier)) + 8;
+            effectiveLevel =
+                Math.floor(
+                    (this.player.skills.strength.level + this.player.skills.strength.boost) *
+                        (prayerModifiers.strength + soulReaperMultiplier),
+                ) + 8;
             if (this.gearSet.weaponStyle === WeaponStyle.Aggressive) {
                 effectiveLevel += 3;
             } else if (this.gearSet.weaponStyle === WeaponStyle.Controlled) {
                 effectiveLevel += 1;
             }
         } else if (combatClass === CombatClass.Ranged) {
-            effectiveLevel = Math.floor((this.player.skills.ranged.level + this.player.skills.ranged.boost) * prayerModifiers.rangedStrength) + 8;
+            effectiveLevel =
+                Math.floor(
+                    (this.player.skills.ranged.level + this.player.skills.ranged.boost) *
+                        prayerModifiers.rangedStrength,
+                ) + 8;
             if (this.gearSet.weaponStyle === WeaponStyle.Accurate) {
                 effectiveLevel += 3;
             }
         } else {
-            effectiveLevel = Math.floor((this.player.skills.magic.level + this.player.skills.magic.boost) * prayerModifiers.magic) + 8;
+            effectiveLevel =
+                Math.floor((this.player.skills.magic.level + this.player.skills.magic.boost) * prayerModifiers.magic) +
+                8;
         }
 
         //According to sources void boosts effective strength level, not our max hit
@@ -108,7 +94,9 @@ export class Calculator {
         const voidMultiplier = voidKnightMultiplier(this, MultiplierType.Accuracy);
 
         if (combatClass === CombatClass.Melee) {
-            effectiveLevel = Math.floor((this.player.skills.attack.level + this.player.skills.attack.boost) * prayerModifiers.attack);
+            effectiveLevel = Math.floor(
+                (this.player.skills.attack.level + this.player.skills.attack.boost) * prayerModifiers.attack,
+            );
             if (this.gearSet.weaponStyle === WeaponStyle.Accurate) {
                 effectiveLevel += 3;
             } else if (this.gearSet.weaponStyle === WeaponStyle.Controlled) {
@@ -117,13 +105,19 @@ export class Calculator {
             effectiveLevel += 8;
             effectiveLevel = Math.floor(effectiveLevel * voidMultiplier);
         } else if (combatClass === CombatClass.Ranged) {
-            effectiveLevel = Math.floor((this.player.skills.ranged.level + this.player.skills.ranged.boost) * prayerModifiers.rangedAccuracy) + 8;
+            effectiveLevel =
+                Math.floor(
+                    (this.player.skills.ranged.level + this.player.skills.ranged.boost) *
+                        prayerModifiers.rangedAccuracy,
+                ) + 8;
             if (this.gearSet.weaponStyle === WeaponStyle.Accurate) {
                 effectiveLevel += 3;
             }
             effectiveLevel = Math.floor(effectiveLevel * voidMultiplier);
         } else {
-            effectiveLevel = Math.floor((this.player.skills.magic.level + this.player.skills.magic.boost) * prayerModifiers.magic);
+            effectiveLevel = Math.floor(
+                (this.player.skills.magic.level + this.player.skills.magic.boost) * prayerModifiers.magic,
+            );
             effectiveLevel = Math.floor(effectiveLevel * voidMultiplier);
             if (this.gearSet.weaponStyle === WeaponStyle.Accurate && !this.gearSet.spell) {
                 effectiveLevel += 2;
@@ -145,6 +139,10 @@ export class Calculator {
 
         for (const gearMultiplier of gearDamageMultipliers) {
             maxHit = Math.floor(maxHit * gearMultiplier);
+        }
+
+        if (combatClass === CombatClass.Magic) {
+            maxHit += elementalWeaknessMaxHitBonus(this);
         }
 
         return maxHit;
@@ -169,7 +167,8 @@ export class Calculator {
             baseDefence += this.targetMonster.magicLevel;
         }
 
-        let defenceRoll = baseDefence * (this.targetMonster.defenceStats[attackStyle] + 64);
+        const defenceBonus = this.defenceBonus(attackStyle);
+        let defenceRoll = baseDefence * (defenceBonus + 64);
 
         if (invocationLevel > 0) {
             // For every 5 raid levels, it increases by 2%
@@ -177,6 +176,23 @@ export class Calculator {
             defenceRoll = Math.floor(defenceRoll * multiplier);
         }
         return defenceRoll;
+    }
+
+    private defenceBonus(attackStyle: StyleType): number {
+        const stats = this.targetMonster.defenceStats;
+        if (attackStyle === StyleType.Ranged) {
+            const type = rangedAttackType(this.gearSet.getWeapon());
+            if (type === RangedAttackType.Light && stats.Light != null) {
+                return stats.Light;
+            }
+            if (type === RangedAttackType.Standard && stats.Standard != null) {
+                return stats.Standard;
+            }
+            if (type === RangedAttackType.Heavy && stats.Heavy != null) {
+                return stats.Heavy;
+            }
+        }
+        return stats[attackStyle];
     }
 
     private calculateDps(averageDamagePerHit: number, weaponSpeed: number) {

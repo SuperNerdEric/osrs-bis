@@ -21,3 +21,6 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Local checkout of the wiki DPS calc used to refresh src/wiki-dps
+/vendor

@@ -5,10 +5,10 @@ import { MultiplierType } from "../MultiplierType";
 
 const AvariceMultiplierTable = {
     [ItemName.AmuletOfAvarice]: {
-        [CombatClass.Melee]: {[MultiplierType.Accuracy]: 1.20, [MultiplierType.Damage]: 1.20},
-        [CombatClass.Ranged]: {[MultiplierType.Accuracy]: 1.20, [MultiplierType.Damage]: 1.20},
-        [CombatClass.Magic]: {[MultiplierType.Accuracy]: 1.20, [MultiplierType.Damage]: 1},
-    }
+        [CombatClass.Melee]: { [MultiplierType.Accuracy]: 1.2, [MultiplierType.Damage]: 1.2 },
+        [CombatClass.Ranged]: { [MultiplierType.Accuracy]: 1.2, [MultiplierType.Damage]: 1.2 },
+        [CombatClass.Magic]: { [MultiplierType.Accuracy]: 1.2, [MultiplierType.Damage]: 1 },
+    },
 };
 
 type AvariceName = keyof typeof AvariceMultiplierTable;
@@ -19,7 +19,7 @@ type AvariceName = keyof typeof AvariceMultiplierTable;
  */
 export function amuletOfAvariceMultiplier(calculator: Calculator, multiplierType: MultiplierType): number {
     const avariceNames = Object.keys(AvariceMultiplierTable) as AvariceName[];
-    const avarice = avariceNames.find(avariceName => calculator.gearSet.hasItemByName(avariceName));
+    const avarice = avariceNames.find((avariceName) => calculator.gearSet.hasItemByName(avariceName));
 
     if (!avarice || !calculator.targetMonster.name.includes("Revenant")) {
         return 1;

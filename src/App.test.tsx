@@ -1,9 +1,12 @@
-import React from 'react';
-import {render, screen} from '@testing-library/react';
-import App from './Components/App';
+import React from "react";
+import { render, screen } from "@testing-library/react";
+import App from "./Components/App";
 
-test('renders learn react link', () => {
-    render(<App/>);
-    const linkElement = screen.getByText(/learn react/i);
-    expect(linkElement).toBeInTheDocument();
+jest.mock("./Calculator/dpsPool", () => ({
+    runDpsJob: () => ({ cancel: () => undefined }),
+}));
+
+test("renders the default fight", () => {
+    render(<App />);
+    expect(screen.getByRole("heading", { name: "Archive Guardian" })).toBeInTheDocument();
 });

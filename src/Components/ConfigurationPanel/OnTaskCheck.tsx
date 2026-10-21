@@ -1,13 +1,15 @@
-import React, {useState} from 'react';
-import {Checkbox, FormControlLabel, Stack} from '@mui/material';
-import slayerIcon from '../../Images/Skills/Slayer_icon.png';
+import React from "react";
+import { Checkbox, FormControlLabel, Stack } from "@mui/material";
+import slayerIcon from "../../Images/Skills/Slayer_icon.png";
 
-
-const OnTaskCheck = (props: { onTask: boolean, handleOnTask: any }) => {
+const OnTaskCheck = (props: {
+    onTask: boolean;
+    handleOnTask: (event: React.ChangeEvent<HTMLInputElement>) => void;
+}) => {
     return (
         <div>
             <Stack direction="row" alignItems="center" gap={2}>
-                <img src={slayerIcon} width="auto" height="45" alt="Slayer Task"/>
+                <img src={slayerIcon} width="auto" height="45" alt="Slayer Task" />
                 <FormControlLabel
                     control={
                         <Checkbox
@@ -16,12 +18,12 @@ const OnTaskCheck = (props: { onTask: boolean, handleOnTask: any }) => {
                             name="On Task"
                             sx={{
                                 color: "#d8ccb4",
-                                '&.Mui-checked': {
-                                    color: '#d8ccb4',
+                                "&.Mui-checked": {
+                                    color: "#d8ccb4",
                                 },
-                                '& .MuiSvgIcon-root': {
-                                    fontSize: 50
-                                }
+                                "& .MuiSvgIcon-root": {
+                                    fontSize: 50,
+                                },
                             }}
                         />
                     }

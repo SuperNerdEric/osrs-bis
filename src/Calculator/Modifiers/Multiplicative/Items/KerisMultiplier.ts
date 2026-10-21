@@ -1,6 +1,6 @@
-import {Calculator} from "../../../Calculator";
-import {MultiplierType} from "../MultiplierType";
-import {ItemName} from "../../../DataObjects/ItemName";
+import { Calculator } from "../../../Calculator";
+import { MultiplierType } from "../MultiplierType";
+import { ItemName } from "../../../DataObjects/ItemName";
 
 export function kerisMultiplier(calculator: Calculator, multiplierType: MultiplierType): number {
     if (multiplierType === MultiplierType.Damage) {
@@ -9,7 +9,10 @@ export function kerisMultiplier(calculator: Calculator, multiplierType: Multipli
             return 1.33;
         }
     } else if (multiplierType === MultiplierType.Accuracy) {
-        if (calculator.gearSet.getWeapon().name === ItemName.KerisPartisanOfBreaching && calculator.targetMonster.isKalphite) {
+        if (
+            calculator.gearSet.getWeapon().name === ItemName.KerisPartisanOfBreaching &&
+            calculator.targetMonster.isKalphite
+        ) {
             // Only breaching partisan gets accuracy bonus
             // assuming accuracy is same as damage
             return 1.33;

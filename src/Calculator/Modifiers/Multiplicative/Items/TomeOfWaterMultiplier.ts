@@ -1,15 +1,15 @@
-import {ItemName} from "../../../DataObjects/ItemName";
-import {SpellName} from "../../../DataObjects/SpellName";
-import {Calculator} from "../../../Calculator";
+import { ItemName } from "../../../DataObjects/ItemName";
+import { SpellName } from "../../../DataObjects/SpellName";
+import { Calculator } from "../../../Calculator";
 
-const WaterSpellMultiplier = 1.20;
+const WaterSpellMultiplier = 1.2;
 
 const EligibleWaterSpells = [
     SpellName.WaterStrike,
     SpellName.WaterBolt,
     SpellName.WaterBlast,
     SpellName.WaterWave,
-    SpellName.WaterSurge
+    SpellName.WaterSurge,
 ];
 
 export function tomeOfWaterMultiplier(calculator: Calculator): number {

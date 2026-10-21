@@ -7,17 +7,33 @@ import {
     StyleType,
     Weapon,
     WeaponCategoryOptions,
-    WeaponStyle
+    WeaponStyle,
 } from "./Item";
-import {items} from "./Items";
-import {ItemName} from "./ItemName";
-import {Raid} from "./Raid";
-import {generateRangedGearSets} from "../../GearSets/RangedGearSets";
-import {generateMeleeGearSets} from "../../GearSets/MeleeGearSets";
-import {generateMageGearsets} from "../../GearSets/MageGearSets";
-import * as _ from "lodash";
-import {ancientSpellbook, arceuusSpellbook, Spell, standardSpellbook} from "./Spell";
-import {SpellName} from "./SpellName";
+import { items } from "./Items";
+import { ItemName } from "./ItemName";
+import { Raid } from "./Raid";
+import { generateRangedGearSets } from "../../GearSets/RangedGearSets";
+import { generateMeleeGearSets } from "../../GearSets/MeleeGearSets";
+import { generateMageGearsets } from "../../GearSets/MageGearSets";
+import { ancientSpellbook, arceuusSpellbook, Spell, standardSpellbook } from "./Spell";
+import { SpellName } from "./SpellName";
+
+function styleBonusKey(styleType: StyleType | undefined): "stab" | "slash" | "crush" | "magic" | "ranged" | undefined {
+    switch (styleType) {
+        case StyleType.Stab:
+            return "stab";
+        case StyleType.Slash:
+            return "slash";
+        case StyleType.Crush:
+            return "crush";
+        case StyleType.Magic:
+            return "magic";
+        case StyleType.Ranged:
+            return "ranged";
+        default:
+            return undefined;
+    }
+}
 
 export enum GearSetType {
     General,
@@ -27,7 +43,7 @@ export enum GearSetType {
     Draconic,
     Undead,
     Leafy,
-    Vampyre
+    Vampyre,
 }
 
 export class GearSet {
@@ -69,9 +85,10 @@ export class GearSet {
     }
 
     setSpellByName(spellName: SpellName): this {
-        const spell = standardSpellbook.getSpell(spellName)
-            || arceuusSpellbook.getSpell(spellName)
-            || ancientSpellbook.getSpell(spellName);
+        const spell =
+            standardSpellbook.getSpell(spellName) ||
+            arceuusSpellbook.getSpell(spellName) ||
+            ancientSpellbook.getSpell(spellName);
         if (!spell) {
             throw new Error(`Spell not found: ${spellName}`);
         }
@@ -88,18 +105,18 @@ export class GearSet {
     getWeapon(): Weapon {
         const mainHand = this.getItemBySlot(Slot.MainHand);
         const twoHand = this.getItemBySlot(Slot.TwoHand);
-        return twoHand as Weapon || mainHand as Weapon;
+        return (twoHand as Weapon) || (mainHand as Weapon);
     }
 
     hasItemByName(itemName: ItemName): boolean {
-        return Array.from(this.items.values()).some(item => item.name === itemName);
+        return Array.from(this.items.values()).some((item) => item.name === itemName);
     }
 
     private recalculateAttributes(): void {
         const weapon = this.items.get(Slot.MainHand) || this.items.get(Slot.TwoHand);
 
         if (weapon) {
-            const {gearItems, styleTypeBonus} = this.getStyleTypeBonus(this.items, this.styleType);
+            const { gearItems, styleTypeBonus } = this.getStyleTypeBonus(this.items, this.styleType);
             const styleStrength = this.getStyleStrengthBonus(this.styleType, gearItems);
 
             this.styleTypeBonus = styleTypeBonus;
@@ -124,12 +141,12 @@ export class GearSet {
             throw new Error(`No weapon options available for category ${weapon.category}.`);
         }
 
-        const matchingOption = weaponOptions.find(option => option.combatStyle === combatStyle);
+        const matchingOption = weaponOptions.find((option) => option.combatStyle === combatStyle);
         if (!matchingOption) {
             throw new Error(`Invalid CombatStyle for the selected weapon.`);
         }
 
-        if(this.spell) {
+        if (this.spell) {
             this.combatClass = CombatClass.Magic;
         } else {
             this.combatClass = StyleToCombatClass[matchingOption.styleType];
@@ -143,13 +160,17 @@ export class GearSet {
 
     private getStyleTypeBonus(items: Map<Slot, Item>, styleType: StyleType | undefined) {
         const gearItems = Array.from(items.values());
-
-        // @ts-ignore
-        const styleTypeBonus = gearItems.reduce((total: number, item: Item) => total + (item[styleType.toLowerCase() as "stab" | "slash" | "crush" | "magic" | "ranged"]), 0);
-        return {gearItems, styleTypeBonus};
+        const bonusKey = styleBonusKey(styleType);
+        const styleTypeBonus = bonusKey
+            ? gearItems.reduce((total: number, item: Item) => total + item[bonusKey], 0)
+            : 0;
+        return { gearItems, styleTypeBonus };
     }
 
-    private getStyleStrengthBonus(styleType: StyleType.Stab | StyleType.Slash | StyleType.Crush | StyleType.Magic | StyleType.Ranged, gearItems: (Weapon | Item)[]) {
+    private getStyleStrengthBonus(
+        styleType: StyleType.Stab | StyleType.Slash | StyleType.Crush | StyleType.Magic | StyleType.Ranged,
+        gearItems: (Weapon | Item)[],
+    ) {
         // Determine the strength attribute to be summed up based on the style type
         let strengthAttribute: "strength" | "rangedStrength" | "mageStrength";
         switch (styleType) {
@@ -184,13 +205,24 @@ generateMeleeGearSets();
 const uniqueGearSets = new Set<string>();
 const newGearSets: GearSet[] = [];
 
-gearSets.forEach(gearSet => {
-    const clonedGearset: GearSet = _.cloneDeep(gearSet);
+const duplicateGearSet = (gearSet: GearSet): GearSet => {
+    const clone = new GearSet([...gearSet.types], gearSet.raid);
+    gearSet.items.forEach((item) => clone.items.set(item.slot, item));
+    clone.combatClass = gearSet.combatClass;
+    clone.combatStyle = gearSet.combatStyle;
+    clone.styleType = gearSet.styleType;
+    clone.weaponStyle = gearSet.weaponStyle;
+    clone.spell = gearSet.spell;
+    return clone;
+};
+
+gearSets.forEach((gearSet) => {
+    const clonedGearset: GearSet = duplicateGearSet(gearSet);
     clonedGearset.addItemByName(ItemName.SalveAmuletEI);
 
     const gearSetString = [
         clonedGearset.combatStyle,
-        ...Array.from(clonedGearset.items.values()).map(item => item.name)
+        ...Array.from(clonedGearset.items.values()).map((item) => item.name),
     ].join();
 
     if (!uniqueGearSets.has(gearSetString)) {
@@ -202,14 +234,13 @@ gearSets.forEach(gearSet => {
 
 gearSets.push(...newGearSets);
 
-
-const gearSetsWithoutSalve = gearSets.filter(gearSet => {
+const gearSetsWithoutSalve = gearSets.filter((gearSet) => {
     const neckItem = gearSet.items.get(Slot.Neck);
     return !neckItem || neckItem.name !== ItemName.SalveAmuletEI;
 });
 
-gearSetsWithoutSalve.map(gearSet => {
-    const clonedGearset: GearSet = _.cloneDeep(gearSet);
+gearSetsWithoutSalve.map((gearSet) => {
+    const clonedGearset: GearSet = duplicateGearSet(gearSet);
     clonedGearset.addItemByName(ItemName.SlayerHelmetI);
     clonedGearset.types = [GearSetType.Slayer];
     gearSets.push(clonedGearset);

@@ -1,42 +1,42 @@
-import React from 'react';
-import {Stack, FormControlLabel, Checkbox} from '@mui/material';
-import {Prayer} from "../../Calculator/DataObjects/Prayer";
-
+import React from "react";
+import { Stack, FormControlLabel, Checkbox } from "@mui/material";
+import { Prayer } from "../../Calculator/DataObjects/Prayer";
 
 interface PrayersProps {
     prayersData: {
-        label: Prayer,
-        displayName: string,
-        icon: string
+        label: Prayer;
+        displayName: string;
+        icon: string;
     }[];
     player: {
-        prayers: Record<Prayer, boolean>
+        prayers: Record<Prayer, boolean>;
     };
     handlePrayerChange: (label: Prayer, isChecked: boolean) => void;
 }
 
-const Prayers: React.FC<PrayersProps> = ({prayersData, player, handlePrayerChange}) => {
+const Prayers: React.FC<PrayersProps> = ({ prayersData, player, handlePrayerChange }) => {
     const iconSize = {
-        width: '25px',
-        height: '25px'
+        width: "25px",
+        height: "25px",
+        objectFit: "contain" as const,
     };
 
     const checkboxStyle = {
         color: "#d8ccb4",
-        '&.Mui-checked': {
-            color: '#d8ccb4',
+        "&.Mui-checked": {
+            color: "#d8ccb4",
         },
-        '& .MuiSvgIcon-root': {
-            fontSize: 25 // Match the iconSize
-        }
+        "& .MuiSvgIcon-root": {
+            fontSize: 25, // Match the iconSize
+        },
     };
 
     return (
-        <div style={{display: 'flex', justifyContent: 'center', flexWrap: 'wrap'}}>
-            <div style={{display: 'flex', flexDirection: 'column', alignItems: 'flex-start'}}>
-                {prayersData.map(({label, displayName, icon}) => (
+        <div style={{ display: "flex", justifyContent: "center", flexWrap: "wrap" }}>
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
+                {prayersData.map(({ label, displayName, icon }) => (
                     <Stack direction="row" alignItems="center" gap={2} key={displayName}>
-                        <img src={icon} alt={displayName} style={iconSize}/>
+                        <img src={icon} alt={displayName} style={iconSize} />
                         <FormControlLabel
                             control={
                                 <Checkbox
@@ -54,6 +54,6 @@ const Prayers: React.FC<PrayersProps> = ({prayersData, player, handlePrayerChang
             </div>
         </div>
     );
-}
+};
 
 export default Prayers;

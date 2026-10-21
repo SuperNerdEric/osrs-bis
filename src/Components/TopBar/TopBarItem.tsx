@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../../App.css";
-import {TargetMonster} from "../../Calculator/DataObjects/TargetMonster";
-import {Button} from "@mui/material";
+import { TargetMonster } from "../../Calculator/DataObjects/TargetMonster";
+import { Button } from "@mui/material";
 
 interface TopBarProps {
     setTargetMonster: (targetMonster: TargetMonster) => void;
@@ -9,16 +9,12 @@ interface TopBarProps {
     sectionName: string;
 }
 
-const TopBarItem: React.FC<TopBarProps> = ({setTargetMonster, monsterList, sectionName}) => {
+const TopBarItem: React.FC<TopBarProps> = ({ setTargetMonster, monsterList, sectionName }) => {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <div
-            className="dropdown"
-            onMouseEnter={() => setIsOpen(true)}
-            onMouseLeave={() => setIsOpen(false)}
-        >
-            <Button style={{ fontSize: '20px' }}>{sectionName}</Button>
+        <div className="dropdown" onMouseEnter={() => setIsOpen(true)} onMouseLeave={() => setIsOpen(false)}>
+            <Button style={{ fontSize: "20px" }}>{sectionName}</Button>
             {isOpen && (
                 <div className="dropdown-content">
                     {monsterList.map((monster, index) => (

@@ -1,5 +1,5 @@
-import {Calculator} from "../Calculator";
-import {DamageProbability, generateUniformDistribution, upsertDamageProbability} from "./DamageProbability";
+import { Calculator } from "../Calculator";
+import { DamageProbability, generateUniformDistribution, upsertDamageProbability } from "./DamageProbability";
 
 export abstract class AbstractDamageDistributionStrategy {
     protected result: Calculator;
@@ -20,7 +20,7 @@ export abstract class AbstractDamageDistributionStrategy {
      */
     protected adjustDistributionForProc(procDistribution: DamageProbability[], procRate: number) {
         for (const dmgProb of this.damageDistribution) {
-            dmgProb.probability *= (1 - procRate);
+            dmgProb.probability *= 1 - procRate;
         }
 
         for (const dmgProb of procDistribution) {
@@ -35,5 +35,4 @@ export abstract class AbstractDamageDistributionStrategy {
      * @returns An array of damage probability distributions.
      */
     abstract getDamageDistributions(): DamageProbability[][];
-
 }

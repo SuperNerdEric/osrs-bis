@@ -1,4 +1,4 @@
-import {ItemName} from "./ItemName";
+import { ItemName } from "./ItemName";
 
 export enum Slot {
     MainHand,
@@ -12,7 +12,7 @@ export enum Slot {
     Boots,
     Neck,
     Cape,
-    Ring
+    Ring,
 }
 
 export enum WeaponCategory {
@@ -42,7 +42,8 @@ export enum WeaponCategory {
     Thrown = "Thrown",
     TwoHandedSword = "TwoHandedSword",
     Unarmed = "Unarmed",
-    Whip = "Whip"
+    Whip = "Whip",
+    Obligator = "Obligator",
 }
 
 export enum CombatStyle {
@@ -77,7 +78,8 @@ export enum CombatStyle {
     Spell = "Spell",
     Spike = "Spike",
     Stab = "Stab",
-    Swipe = "Swipe"
+    Swipe = "Swipe",
+    Thrust = "Thrust",
 }
 
 export enum StyleType {
@@ -86,6 +88,12 @@ export enum StyleType {
     Crush = "Crush",
     Magic = "Magic",
     Ranged = "Ranged",
+}
+
+export enum RangedAttackType {
+    Light = "Light",
+    Standard = "Standard",
+    Heavy = "Heavy",
 }
 
 export enum WeaponStyle {
@@ -104,9 +112,9 @@ export interface AttackOption {
 }
 
 export enum CombatClass {
-    Melee = 'Melee',
-    Ranged = 'Ranged',
-    Magic = 'Magic',
+    Melee = "Melee",
+    Ranged = "Ranged",
+    Magic = "Magic",
 }
 
 export const StyleToCombatClass: { [key in StyleType]: CombatClass } = {
@@ -120,150 +128,153 @@ export const StyleToCombatClass: { [key in StyleType]: CombatClass } = {
 //https://oldschool.runescape.wiki/w/Weapons/Types
 export const WeaponCategoryOptions: { [category in WeaponCategory]?: AttackOption[] } = {
     [WeaponCategory.Axe]: [
-        {combatStyle: CombatStyle.Chop, styleType: StyleType.Slash, weaponStyle: WeaponStyle.Accurate},
-        {combatStyle: CombatStyle.Hack, styleType: StyleType.Slash, weaponStyle: WeaponStyle.Aggressive},
-        {combatStyle: CombatStyle.Smash, styleType: StyleType.Crush, weaponStyle: WeaponStyle.Aggressive},
-        {combatStyle: CombatStyle.Block, styleType: StyleType.Slash, weaponStyle: WeaponStyle.Defensive},
+        { combatStyle: CombatStyle.Chop, styleType: StyleType.Slash, weaponStyle: WeaponStyle.Accurate },
+        { combatStyle: CombatStyle.Hack, styleType: StyleType.Slash, weaponStyle: WeaponStyle.Aggressive },
+        { combatStyle: CombatStyle.Smash, styleType: StyleType.Crush, weaponStyle: WeaponStyle.Aggressive },
+        { combatStyle: CombatStyle.Block, styleType: StyleType.Slash, weaponStyle: WeaponStyle.Defensive },
     ],
     [WeaponCategory.Banner]: [
-        {combatStyle: CombatStyle.Lunge, styleType: StyleType.Stab, weaponStyle: WeaponStyle.Accurate},
-        {combatStyle: CombatStyle.Swipe, styleType: StyleType.Slash, weaponStyle: WeaponStyle.Aggressive},
-        {combatStyle: CombatStyle.Pound, styleType: StyleType.Crush, weaponStyle: WeaponStyle.Aggressive},
-        {combatStyle: CombatStyle.Block, styleType: StyleType.Stab, weaponStyle: WeaponStyle.Defensive},
+        { combatStyle: CombatStyle.Lunge, styleType: StyleType.Stab, weaponStyle: WeaponStyle.Accurate },
+        { combatStyle: CombatStyle.Swipe, styleType: StyleType.Slash, weaponStyle: WeaponStyle.Aggressive },
+        { combatStyle: CombatStyle.Pound, styleType: StyleType.Crush, weaponStyle: WeaponStyle.Aggressive },
+        { combatStyle: CombatStyle.Block, styleType: StyleType.Stab, weaponStyle: WeaponStyle.Defensive },
     ],
     [WeaponCategory.BladedStaff]: [
-        {combatStyle: CombatStyle.Jab, styleType: StyleType.Stab, weaponStyle: WeaponStyle.Accurate},
-        {combatStyle: CombatStyle.Swipe, styleType: StyleType.Slash, weaponStyle: WeaponStyle.Aggressive},
-        {combatStyle: CombatStyle.Fend, styleType: StyleType.Crush, weaponStyle: WeaponStyle.Defensive},
+        { combatStyle: CombatStyle.Jab, styleType: StyleType.Stab, weaponStyle: WeaponStyle.Accurate },
+        { combatStyle: CombatStyle.Swipe, styleType: StyleType.Slash, weaponStyle: WeaponStyle.Aggressive },
+        { combatStyle: CombatStyle.Fend, styleType: StyleType.Crush, weaponStyle: WeaponStyle.Defensive },
     ],
     [WeaponCategory.Blunt]: [
-        {combatStyle: CombatStyle.Pound, styleType: StyleType.Crush, weaponStyle: WeaponStyle.Accurate},
-        {combatStyle: CombatStyle.Pummel, styleType: StyleType.Crush, weaponStyle: WeaponStyle.Aggressive},
-        {combatStyle: CombatStyle.Block, styleType: StyleType.Crush, weaponStyle: WeaponStyle.Defensive},
+        { combatStyle: CombatStyle.Pound, styleType: StyleType.Crush, weaponStyle: WeaponStyle.Accurate },
+        { combatStyle: CombatStyle.Pummel, styleType: StyleType.Crush, weaponStyle: WeaponStyle.Aggressive },
+        { combatStyle: CombatStyle.Block, styleType: StyleType.Crush, weaponStyle: WeaponStyle.Defensive },
     ],
     [WeaponCategory.Bludgeon]: [
-        {combatStyle: CombatStyle.Pound, styleType: StyleType.Crush, weaponStyle: WeaponStyle.Aggressive},
-        {combatStyle: CombatStyle.Pummel, styleType: StyleType.Crush, weaponStyle: WeaponStyle.Aggressive},
-        {combatStyle: CombatStyle.Smash, styleType: StyleType.Crush, weaponStyle: WeaponStyle.Aggressive},
+        { combatStyle: CombatStyle.Pound, styleType: StyleType.Crush, weaponStyle: WeaponStyle.Aggressive },
+        { combatStyle: CombatStyle.Pummel, styleType: StyleType.Crush, weaponStyle: WeaponStyle.Aggressive },
+        { combatStyle: CombatStyle.Smash, styleType: StyleType.Crush, weaponStyle: WeaponStyle.Aggressive },
     ],
     [WeaponCategory.Bow]: [
-        {combatStyle: CombatStyle.Accurate, styleType: StyleType.Ranged, weaponStyle: WeaponStyle.Accurate},
-        {combatStyle: CombatStyle.Rapid, styleType: StyleType.Ranged, weaponStyle: WeaponStyle.Rapid},
-        {combatStyle: CombatStyle.Longrange, styleType: StyleType.Ranged, weaponStyle: WeaponStyle.Longrange},
+        { combatStyle: CombatStyle.Accurate, styleType: StyleType.Ranged, weaponStyle: WeaponStyle.Accurate },
+        { combatStyle: CombatStyle.Rapid, styleType: StyleType.Ranged, weaponStyle: WeaponStyle.Rapid },
+        { combatStyle: CombatStyle.Longrange, styleType: StyleType.Ranged, weaponStyle: WeaponStyle.Longrange },
     ],
     [WeaponCategory.Bulwark]: [
-        {combatStyle: CombatStyle.Pummel, styleType: StyleType.Crush, weaponStyle: WeaponStyle.Accurate}, //Not implementing block because you can't even attack
+        { combatStyle: CombatStyle.Pummel, styleType: StyleType.Crush, weaponStyle: WeaponStyle.Accurate }, //Not implementing block because you can't even attack
     ],
     [WeaponCategory.Chinchompas]: [
-        {combatStyle: CombatStyle.ShortFuse, styleType: StyleType.Ranged, weaponStyle: WeaponStyle.Accurate},
-        {combatStyle: CombatStyle.MediumFuse, styleType: StyleType.Ranged, weaponStyle: WeaponStyle.Rapid},
-        {combatStyle: CombatStyle.LongFuse, styleType: StyleType.Ranged, weaponStyle: WeaponStyle.Longrange},
+        { combatStyle: CombatStyle.ShortFuse, styleType: StyleType.Ranged, weaponStyle: WeaponStyle.Accurate },
+        { combatStyle: CombatStyle.MediumFuse, styleType: StyleType.Ranged, weaponStyle: WeaponStyle.Rapid },
+        { combatStyle: CombatStyle.LongFuse, styleType: StyleType.Ranged, weaponStyle: WeaponStyle.Longrange },
     ],
     [WeaponCategory.Claws]: [
-        {combatStyle: CombatStyle.Chop, styleType: StyleType.Slash, weaponStyle: WeaponStyle.Accurate},
-        {combatStyle: CombatStyle.Slash, styleType: StyleType.Slash, weaponStyle: WeaponStyle.Aggressive},
-        {combatStyle: CombatStyle.Lunge, styleType: StyleType.Stab, weaponStyle: WeaponStyle.Controlled},
-        {combatStyle: CombatStyle.Block, styleType: StyleType.Slash, weaponStyle: WeaponStyle.Defensive},
+        { combatStyle: CombatStyle.Chop, styleType: StyleType.Slash, weaponStyle: WeaponStyle.Accurate },
+        { combatStyle: CombatStyle.Slash, styleType: StyleType.Slash, weaponStyle: WeaponStyle.Aggressive },
+        { combatStyle: CombatStyle.Lunge, styleType: StyleType.Stab, weaponStyle: WeaponStyle.Controlled },
+        { combatStyle: CombatStyle.Block, styleType: StyleType.Slash, weaponStyle: WeaponStyle.Defensive },
     ],
     [WeaponCategory.Crossbow]: [
-        {combatStyle: CombatStyle.Accurate, styleType: StyleType.Ranged, weaponStyle: WeaponStyle.Accurate},
-        {combatStyle: CombatStyle.Rapid, styleType: StyleType.Ranged, weaponStyle: WeaponStyle.Rapid},
-        {combatStyle: CombatStyle.Longrange, styleType: StyleType.Ranged, weaponStyle: WeaponStyle.Longrange},
+        { combatStyle: CombatStyle.Accurate, styleType: StyleType.Ranged, weaponStyle: WeaponStyle.Accurate },
+        { combatStyle: CombatStyle.Rapid, styleType: StyleType.Ranged, weaponStyle: WeaponStyle.Rapid },
+        { combatStyle: CombatStyle.Longrange, styleType: StyleType.Ranged, weaponStyle: WeaponStyle.Longrange },
     ],
     [WeaponCategory.Gun]: [
-        {combatStyle: CombatStyle.Kick, styleType: StyleType.Crush, weaponStyle: WeaponStyle.Aggressive},
+        { combatStyle: CombatStyle.Kick, styleType: StyleType.Crush, weaponStyle: WeaponStyle.Aggressive },
     ],
     [WeaponCategory.Partisan]: [
-        {combatStyle: CombatStyle.Stab, styleType: StyleType.Stab, weaponStyle: WeaponStyle.Accurate},
-        {combatStyle: CombatStyle.Lunge, styleType: StyleType.Stab, weaponStyle: WeaponStyle.Aggressive},
-        {combatStyle: CombatStyle.Pound, styleType: StyleType.Crush, weaponStyle: WeaponStyle.Aggressive},
-        {combatStyle: CombatStyle.Block, styleType: StyleType.Stab, weaponStyle: WeaponStyle.Defensive},
+        { combatStyle: CombatStyle.Stab, styleType: StyleType.Stab, weaponStyle: WeaponStyle.Accurate },
+        { combatStyle: CombatStyle.Lunge, styleType: StyleType.Stab, weaponStyle: WeaponStyle.Aggressive },
+        { combatStyle: CombatStyle.Pound, styleType: StyleType.Crush, weaponStyle: WeaponStyle.Aggressive },
+        { combatStyle: CombatStyle.Block, styleType: StyleType.Stab, weaponStyle: WeaponStyle.Defensive },
     ],
     [WeaponCategory.Pickaxe]: [
-        {combatStyle: CombatStyle.Spike, styleType: StyleType.Stab, weaponStyle: WeaponStyle.Accurate},
-        {combatStyle: CombatStyle.Impale, styleType: StyleType.Stab, weaponStyle: WeaponStyle.Aggressive},
-        {combatStyle: CombatStyle.Smash, styleType: StyleType.Crush, weaponStyle: WeaponStyle.Aggressive},
-        {combatStyle: CombatStyle.Block, styleType: StyleType.Stab, weaponStyle: WeaponStyle.Defensive},
+        { combatStyle: CombatStyle.Spike, styleType: StyleType.Stab, weaponStyle: WeaponStyle.Accurate },
+        { combatStyle: CombatStyle.Impale, styleType: StyleType.Stab, weaponStyle: WeaponStyle.Aggressive },
+        { combatStyle: CombatStyle.Smash, styleType: StyleType.Crush, weaponStyle: WeaponStyle.Aggressive },
+        { combatStyle: CombatStyle.Block, styleType: StyleType.Stab, weaponStyle: WeaponStyle.Defensive },
     ],
     [WeaponCategory.Polearm]: [
-        {combatStyle: CombatStyle.Jab, styleType: StyleType.Stab, weaponStyle: WeaponStyle.Controlled},
-        {combatStyle: CombatStyle.Swipe, styleType: StyleType.Slash, weaponStyle: WeaponStyle.Aggressive},
-        {combatStyle: CombatStyle.Fend, styleType: StyleType.Stab, weaponStyle: WeaponStyle.Defensive},
+        { combatStyle: CombatStyle.Jab, styleType: StyleType.Stab, weaponStyle: WeaponStyle.Controlled },
+        { combatStyle: CombatStyle.Swipe, styleType: StyleType.Slash, weaponStyle: WeaponStyle.Aggressive },
+        { combatStyle: CombatStyle.Fend, styleType: StyleType.Stab, weaponStyle: WeaponStyle.Defensive },
     ],
     [WeaponCategory.Polestaff]: [
-        {combatStyle: CombatStyle.Jab, styleType: StyleType.Stab, weaponStyle: WeaponStyle.Controlled},
-        {combatStyle: CombatStyle.Swipe, styleType: StyleType.Slash, weaponStyle: WeaponStyle.Aggressive},
-        {combatStyle: CombatStyle.Fend, styleType: StyleType.Stab, weaponStyle: WeaponStyle.Defensive},
+        { combatStyle: CombatStyle.Jab, styleType: StyleType.Stab, weaponStyle: WeaponStyle.Controlled },
+        { combatStyle: CombatStyle.Swipe, styleType: StyleType.Slash, weaponStyle: WeaponStyle.Aggressive },
+        { combatStyle: CombatStyle.Fend, styleType: StyleType.Stab, weaponStyle: WeaponStyle.Defensive },
     ],
     [WeaponCategory.PoweredStaff]: [
-        {combatStyle: CombatStyle.Accurate, styleType: StyleType.Magic, weaponStyle: WeaponStyle.Accurate},
-        {combatStyle: CombatStyle.Accurate, styleType: StyleType.Magic, weaponStyle: WeaponStyle.Accurate},
-        {combatStyle: CombatStyle.Longrange, styleType: StyleType.Magic, weaponStyle: WeaponStyle.Longrange},
+        { combatStyle: CombatStyle.Accurate, styleType: StyleType.Magic, weaponStyle: WeaponStyle.Accurate },
+        { combatStyle: CombatStyle.Accurate, styleType: StyleType.Magic, weaponStyle: WeaponStyle.Accurate },
+        { combatStyle: CombatStyle.Longrange, styleType: StyleType.Magic, weaponStyle: WeaponStyle.Longrange },
     ],
     [WeaponCategory.Salamander]: [
-        {combatStyle: CombatStyle.Scorch, styleType: StyleType.Slash, weaponStyle: WeaponStyle.Aggressive},
-        {combatStyle: CombatStyle.Flare, styleType: StyleType.Ranged, weaponStyle: WeaponStyle.Rapid},
-        {combatStyle: CombatStyle.Blaze, styleType: StyleType.Magic, weaponStyle: WeaponStyle.Defensive},
+        { combatStyle: CombatStyle.Scorch, styleType: StyleType.Slash, weaponStyle: WeaponStyle.Aggressive },
+        { combatStyle: CombatStyle.Flare, styleType: StyleType.Ranged, weaponStyle: WeaponStyle.Rapid },
+        { combatStyle: CombatStyle.Blaze, styleType: StyleType.Magic, weaponStyle: WeaponStyle.Defensive },
     ],
     [WeaponCategory.Scythe]: [
-        {combatStyle: CombatStyle.Reap, styleType: StyleType.Slash, weaponStyle: WeaponStyle.Accurate},
-        {combatStyle: CombatStyle.Chop, styleType: StyleType.Slash, weaponStyle: WeaponStyle.Aggressive},
-        {combatStyle: CombatStyle.Jab, styleType: StyleType.Crush, weaponStyle: WeaponStyle.Aggressive},
-        {combatStyle: CombatStyle.Block, styleType: StyleType.Slash, weaponStyle: WeaponStyle.Defensive},
+        { combatStyle: CombatStyle.Reap, styleType: StyleType.Slash, weaponStyle: WeaponStyle.Accurate },
+        { combatStyle: CombatStyle.Chop, styleType: StyleType.Slash, weaponStyle: WeaponStyle.Aggressive },
+        { combatStyle: CombatStyle.Jab, styleType: StyleType.Crush, weaponStyle: WeaponStyle.Aggressive },
+        { combatStyle: CombatStyle.Block, styleType: StyleType.Slash, weaponStyle: WeaponStyle.Defensive },
     ],
     [WeaponCategory.SlashSword]: [
-        {combatStyle: CombatStyle.Chop, styleType: StyleType.Slash, weaponStyle: WeaponStyle.Accurate},
-        {combatStyle: CombatStyle.Slash, styleType: StyleType.Slash, weaponStyle: WeaponStyle.Aggressive},
-        {combatStyle: CombatStyle.Lunge, styleType: StyleType.Stab, weaponStyle: WeaponStyle.Controlled},
-        {combatStyle: CombatStyle.Block, styleType: StyleType.Slash, weaponStyle: WeaponStyle.Defensive},
+        { combatStyle: CombatStyle.Chop, styleType: StyleType.Slash, weaponStyle: WeaponStyle.Accurate },
+        { combatStyle: CombatStyle.Slash, styleType: StyleType.Slash, weaponStyle: WeaponStyle.Aggressive },
+        { combatStyle: CombatStyle.Lunge, styleType: StyleType.Stab, weaponStyle: WeaponStyle.Controlled },
+        { combatStyle: CombatStyle.Block, styleType: StyleType.Slash, weaponStyle: WeaponStyle.Defensive },
     ],
     [WeaponCategory.Spear]: [
-        {combatStyle: CombatStyle.Lunge, styleType: StyleType.Stab, weaponStyle: WeaponStyle.Controlled},
-        {combatStyle: CombatStyle.Swipe, styleType: StyleType.Slash, weaponStyle: WeaponStyle.Controlled},
-        {combatStyle: CombatStyle.Pound, styleType: StyleType.Crush, weaponStyle: WeaponStyle.Controlled},
-        {combatStyle: CombatStyle.Block, styleType: StyleType.Stab, weaponStyle: WeaponStyle.Defensive},
+        { combatStyle: CombatStyle.Lunge, styleType: StyleType.Stab, weaponStyle: WeaponStyle.Controlled },
+        { combatStyle: CombatStyle.Swipe, styleType: StyleType.Slash, weaponStyle: WeaponStyle.Controlled },
+        { combatStyle: CombatStyle.Pound, styleType: StyleType.Crush, weaponStyle: WeaponStyle.Controlled },
+        { combatStyle: CombatStyle.Block, styleType: StyleType.Stab, weaponStyle: WeaponStyle.Defensive },
     ],
     [WeaponCategory.Spiked]: [
-        {combatStyle: CombatStyle.Pound, styleType: StyleType.Crush, weaponStyle: WeaponStyle.Accurate},
-        {combatStyle: CombatStyle.Pummel, styleType: StyleType.Crush, weaponStyle: WeaponStyle.Aggressive},
-        {combatStyle: CombatStyle.Spike, styleType: StyleType.Stab, weaponStyle: WeaponStyle.Controlled},
-        {combatStyle: CombatStyle.Block, styleType: StyleType.Crush, weaponStyle: WeaponStyle.Defensive},
+        { combatStyle: CombatStyle.Pound, styleType: StyleType.Crush, weaponStyle: WeaponStyle.Accurate },
+        { combatStyle: CombatStyle.Pummel, styleType: StyleType.Crush, weaponStyle: WeaponStyle.Aggressive },
+        { combatStyle: CombatStyle.Spike, styleType: StyleType.Stab, weaponStyle: WeaponStyle.Controlled },
+        { combatStyle: CombatStyle.Block, styleType: StyleType.Crush, weaponStyle: WeaponStyle.Defensive },
     ],
     [WeaponCategory.StabSword]: [
-        {combatStyle: CombatStyle.Stab, styleType: StyleType.Stab, weaponStyle: WeaponStyle.Accurate},
-        {combatStyle: CombatStyle.Lunge, styleType: StyleType.Stab, weaponStyle: WeaponStyle.Aggressive},
-        {combatStyle: CombatStyle.Slash, styleType: StyleType.Slash, weaponStyle: WeaponStyle.Aggressive},
-        {combatStyle: CombatStyle.Block, styleType: StyleType.Stab, weaponStyle: WeaponStyle.Defensive},
+        { combatStyle: CombatStyle.Stab, styleType: StyleType.Stab, weaponStyle: WeaponStyle.Accurate },
+        { combatStyle: CombatStyle.Lunge, styleType: StyleType.Stab, weaponStyle: WeaponStyle.Aggressive },
+        { combatStyle: CombatStyle.Slash, styleType: StyleType.Slash, weaponStyle: WeaponStyle.Aggressive },
+        { combatStyle: CombatStyle.Block, styleType: StyleType.Stab, weaponStyle: WeaponStyle.Defensive },
     ],
     [WeaponCategory.Staff]: [
-        {combatStyle: CombatStyle.Bash, styleType: StyleType.Crush, weaponStyle: WeaponStyle.Accurate},
-        {combatStyle: CombatStyle.Pound, styleType: StyleType.Crush, weaponStyle: WeaponStyle.Aggressive},
-        {combatStyle: CombatStyle.Focus, styleType: StyleType.Crush, weaponStyle: WeaponStyle.Defensive},
-        {combatStyle: CombatStyle.Spell, styleType: StyleType.Magic, weaponStyle: WeaponStyle.Defensive},
+        { combatStyle: CombatStyle.Bash, styleType: StyleType.Crush, weaponStyle: WeaponStyle.Accurate },
+        { combatStyle: CombatStyle.Pound, styleType: StyleType.Crush, weaponStyle: WeaponStyle.Aggressive },
+        { combatStyle: CombatStyle.Focus, styleType: StyleType.Crush, weaponStyle: WeaponStyle.Defensive },
+        { combatStyle: CombatStyle.Spell, styleType: StyleType.Magic, weaponStyle: WeaponStyle.Defensive },
     ],
     [WeaponCategory.Thrown]: [
-        {combatStyle: CombatStyle.Accurate, styleType: StyleType.Ranged, weaponStyle: WeaponStyle.Accurate},
-        {combatStyle: CombatStyle.Rapid, styleType: StyleType.Ranged, weaponStyle: WeaponStyle.Rapid},
-        {combatStyle: CombatStyle.Longrange, styleType: StyleType.Ranged, weaponStyle: WeaponStyle.Longrange},
+        { combatStyle: CombatStyle.Accurate, styleType: StyleType.Ranged, weaponStyle: WeaponStyle.Accurate },
+        { combatStyle: CombatStyle.Rapid, styleType: StyleType.Ranged, weaponStyle: WeaponStyle.Rapid },
+        { combatStyle: CombatStyle.Longrange, styleType: StyleType.Ranged, weaponStyle: WeaponStyle.Longrange },
     ],
     [WeaponCategory.TwoHandedSword]: [
-        {combatStyle: CombatStyle.Chop, styleType: StyleType.Slash, weaponStyle: WeaponStyle.Accurate},
-        {combatStyle: CombatStyle.Slash, styleType: StyleType.Slash, weaponStyle: WeaponStyle.Aggressive},
-        {combatStyle: CombatStyle.Smash, styleType: StyleType.Crush, weaponStyle: WeaponStyle.Aggressive},
-        {combatStyle: CombatStyle.Block, styleType: StyleType.Slash, weaponStyle: WeaponStyle.Defensive},
+        { combatStyle: CombatStyle.Chop, styleType: StyleType.Slash, weaponStyle: WeaponStyle.Accurate },
+        { combatStyle: CombatStyle.Slash, styleType: StyleType.Slash, weaponStyle: WeaponStyle.Aggressive },
+        { combatStyle: CombatStyle.Smash, styleType: StyleType.Crush, weaponStyle: WeaponStyle.Aggressive },
+        { combatStyle: CombatStyle.Block, styleType: StyleType.Slash, weaponStyle: WeaponStyle.Defensive },
     ],
     [WeaponCategory.Unarmed]: [
-        {combatStyle: CombatStyle.Punch, styleType: StyleType.Crush, weaponStyle: WeaponStyle.Accurate},
-        {combatStyle: CombatStyle.Kick, styleType: StyleType.Crush, weaponStyle: WeaponStyle.Aggressive},
-        {combatStyle: CombatStyle.Block, styleType: StyleType.Crush, weaponStyle: WeaponStyle.Defensive},
+        { combatStyle: CombatStyle.Punch, styleType: StyleType.Crush, weaponStyle: WeaponStyle.Accurate },
+        { combatStyle: CombatStyle.Kick, styleType: StyleType.Crush, weaponStyle: WeaponStyle.Aggressive },
+        { combatStyle: CombatStyle.Block, styleType: StyleType.Crush, weaponStyle: WeaponStyle.Defensive },
     ],
     [WeaponCategory.Whip]: [
-        {combatStyle: CombatStyle.Flick, styleType: StyleType.Slash, weaponStyle: WeaponStyle.Accurate},
-        {combatStyle: CombatStyle.Lash, styleType: StyleType.Slash, weaponStyle: WeaponStyle.Controlled},
-        {combatStyle: CombatStyle.Deflect, styleType: StyleType.Slash, weaponStyle: WeaponStyle.Defensive},
+        { combatStyle: CombatStyle.Flick, styleType: StyleType.Slash, weaponStyle: WeaponStyle.Accurate },
+        { combatStyle: CombatStyle.Lash, styleType: StyleType.Slash, weaponStyle: WeaponStyle.Controlled },
+        { combatStyle: CombatStyle.Deflect, styleType: StyleType.Slash, weaponStyle: WeaponStyle.Defensive },
+    ],
+    [WeaponCategory.Obligator]: [
+        { combatStyle: CombatStyle.Thrust, styleType: StyleType.Crush, weaponStyle: WeaponStyle.Accurate },
+        { combatStyle: CombatStyle.Smash, styleType: StyleType.Crush, weaponStyle: WeaponStyle.Aggressive },
     ],
 };
-
 
 export class Item {
     name: ItemName;
@@ -288,4 +299,19 @@ export class Weapon extends Item {
     style?: CombatStyle;
     category: WeaponCategory = WeaponCategory.Unarmed;
     speedSeconds: number = 0;
+}
+
+export function rangedAttackType(weapon: Weapon): RangedAttackType | undefined {
+    switch (weapon.category) {
+        case WeaponCategory.Thrown:
+            return RangedAttackType.Light;
+        case WeaponCategory.Bow:
+        case WeaponCategory.Salamander:
+            return RangedAttackType.Standard;
+        case WeaponCategory.Crossbow:
+        case WeaponCategory.Chinchompas:
+            return RangedAttackType.Heavy;
+        default:
+            return undefined;
+    }
 }

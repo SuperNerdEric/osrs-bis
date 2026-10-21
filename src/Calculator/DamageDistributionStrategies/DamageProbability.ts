@@ -1,11 +1,11 @@
-export type DamageProbability = { dmg: number, probability: number };
+export type DamageProbability = { dmg: number; probability: number };
 
 export function generateUniformDistribution(minHit: number, maxHit: number, hitChance: number): DamageProbability[] {
     const distribution: DamageProbability[] = [];
     const probability = 1 / (maxHit - minHit + 1);
 
     const missProbability = 1 - hitChance;
-    distribution.push({dmg: 0, probability: missProbability});
+    distribution.push({ dmg: 0, probability: missProbability });
 
     for (let dmg = minHit; dmg <= maxHit; dmg++) {
         upsertDamageProbability(distribution, dmg, hitChance * probability);
@@ -28,7 +28,7 @@ export function averageDamage(distribution: DamageProbability[]): number {
  * @param probability - The probability to add or insert.
  */
 export function upsertDamageProbability(distribution: DamageProbability[], dmg: number, probability: number) {
-    const dmgIndex = distribution.findIndex(d => d.dmg === dmg);
+    const dmgIndex = distribution.findIndex((d) => d.dmg === dmg);
     if (dmgIndex !== -1) {
         distribution[dmgIndex].probability += probability;
     } else {
@@ -44,7 +44,11 @@ export function upsertDamageProbability(distribution: DamageProbability[], dmg: 
  * @param damageCap - The maximum damage before rerolling occurs.
  * @returns The adjusted damage probabilities distribution.
  */
-export function rerollDamageAboveCap(distribution: DamageProbability[], minReroll: number, damageCap: number): DamageProbability[] {
+export function rerollDamageAboveCap(
+    distribution: DamageProbability[],
+    minReroll: number,
+    damageCap: number,
+): DamageProbability[] {
     const adjustedDistribution: DamageProbability[] = [];
     const rerollRange = damageCap - minReroll + 1;
 
@@ -87,7 +91,11 @@ type CombinerFunction = (a: number, b: number) => number;
  * @param combiner - Function to combine damage values. Defaults to addition.
  * @returns Combined damage probability distribution.
  */
-export function combineTwoDistributions(distribution1: DamageProbability[], distribution2: DamageProbability[], combiner: CombinerFunction = (a, b) => a + b): DamageProbability[] {
+export function combineTwoDistributions(
+    distribution1: DamageProbability[],
+    distribution2: DamageProbability[],
+    combiner: CombinerFunction = (a, b) => a + b,
+): DamageProbability[] {
     const combined: DamageProbability[] = [];
 
     for (const damageProbability1 of distribution1) {

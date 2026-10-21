@@ -1,43 +1,73 @@
 export type DefenceReductionSummary = {
-    dragonWarhammer: number,
-    bandosGodsword: number
+    elderMaul: number;
+    dragonWarhammer: number;
+    tonalzticsOfRalos: number;
+    bandosGodsword: number;
 };
 
+export function ralosReductionPerHit(magicLevel: number): number {
+    return Math.floor(magicLevel / 8);
+}
+
 export function calculateHits(currentDefence: number, baseDefence: number): DefenceReductionSummary {
-    let hitsFromDWH = 0;
-    let bgsDamage = 0;
+    let elderMaul = 0;
+    let dragonWarhammer = 0;
+    let bandosGodsword = 0;
+    let defence = baseDefence;
 
-    while (baseDefence > currentDefence) {
-        const potentialReduction = Math.floor(baseDefence * 0.3);
-        const defenceDifference = baseDefence - currentDefence;
+    while (defence > currentDefence) {
+        const gap = defence - currentDefence;
+        const elderReduction = Math.floor(defence * 0.35);
+        const dwhReduction = Math.floor(defence * 0.3);
 
-        if (defenceDifference <= 50) {
-            bgsDamage = defenceDifference;
+        if (gap <= 50) {
+            bandosGodsword = gap;
             break;
-        } else if (potentialReduction <= defenceDifference) {
-            hitsFromDWH++;
-            baseDefence -= potentialReduction;
+        } else if (elderReduction > 0 && elderReduction <= gap) {
+            elderMaul++;
+            defence -= elderReduction;
+        } else if (dwhReduction > 0 && dwhReduction <= gap) {
+            dragonWarhammer++;
+            defence -= dwhReduction;
         } else {
-            bgsDamage = defenceDifference;
+            bandosGodsword = gap;
             break;
         }
     }
 
     return {
-        dragonWarhammer: hitsFromDWH,
-        bandosGodsword: bgsDamage
+        elderMaul,
+        dragonWarhammer,
+        tonalzticsOfRalos: 0,
+        bandosGodsword,
     };
 }
 
-export function calculateDefenceLevel(baseDefence: number, reductionSummary: DefenceReductionSummary, maxReduction: number): number {
-    const minimumDefence = baseDefence - maxReduction;
+export function calculateDefenceLevel(
+    baseDefence: number,
+    reductionSummary: DefenceReductionSummary,
+    maxReduction: number,
+    magicLevel: number,
+): number {
+    const minimumDefence = Math.max(0, baseDefence - maxReduction);
+    let defence = baseDefence;
 
-    let resultingDefence = baseDefence;
+    const apply = (nextDefence: number) => {
+        defence = Math.max(minimumDefence, nextDefence);
+    };
+
+    for (let i = 0; i < reductionSummary.elderMaul; i++) {
+        apply(defence - Math.floor(defence * 0.35));
+    }
     for (let i = 0; i < reductionSummary.dragonWarhammer; i++) {
-        const reduction = Math.floor(resultingDefence * 0.3);
-        resultingDefence -= reduction;
+        apply(defence - Math.floor(defence * 0.3));
     }
 
-    resultingDefence -= reductionSummary.bandosGodsword;
-    return Math.max(minimumDefence, resultingDefence);
+    const perRalosHit = ralosReductionPerHit(magicLevel);
+    for (let i = 0; i < reductionSummary.tonalzticsOfRalos; i++) {
+        apply(defence - perRalosHit);
+    }
+
+    apply(defence - reductionSummary.bandosGodsword);
+    return defence;
 }

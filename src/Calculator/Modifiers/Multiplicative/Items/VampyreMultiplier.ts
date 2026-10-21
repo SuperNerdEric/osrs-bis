@@ -1,13 +1,13 @@
-import {Calculator} from "../../../Calculator";
-import {ItemName} from "../../../DataObjects/ItemName";
-import {MultiplierType} from "../MultiplierType";
-import {TargetMonster} from "../../../DataObjects/TargetMonster";
+import { Calculator } from "../../../Calculator";
+import { ItemName } from "../../../DataObjects/ItemName";
+import { MultiplierType } from "../MultiplierType";
+import { TargetMonster } from "../../../DataObjects/TargetMonster";
 
 enum VampyreTier {
     TIER1,
     TIER2,
     TIER3,
-    NONE
+    NONE,
 }
 
 function getVampyreTier(targetMonster: TargetMonster): VampyreTier {
@@ -32,10 +32,8 @@ const silverWeapon = [
     ItemName.Darklight,
     ItemName.Arclight,
     ItemName.RodOfIvandis,
-    ItemName.Wolfbane
+    ItemName.Wolfbane,
 ];
-
-const silverAmmo = [ItemName.SilverBolts];
 
 const tier3Weapon = [ItemName.IvandisFlail, ItemName.BlisterwoodSickle, ItemName.BlisterwoodFlail];
 
@@ -43,10 +41,9 @@ export function vampyreMultiplier(calculator: Calculator, multiplierType: Multip
     const weaponName = calculator.gearSet.getWeapon().name;
     const vampyreTier = getVampyreTier(calculator.targetMonster);
 
-
     if (vampyreTier != VampyreTier.NONE) {
         if (weaponName === ItemName.IvandisFlail) {
-            return multiplierType === MultiplierType.Damage ? 1.20 : 1;
+            return multiplierType === MultiplierType.Damage ? 1.2 : 1;
         }
         if (weaponName === ItemName.BlisterwoodSickle) {
             return multiplierType === MultiplierType.Damage ? 1.15 : 1.05;

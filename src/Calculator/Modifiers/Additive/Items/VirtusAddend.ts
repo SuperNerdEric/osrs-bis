@@ -1,13 +1,9 @@
-import {ItemName} from "../../../DataObjects/ItemName";
-import {Calculator} from "../../../Calculator";
-import {SpellBookType} from "../../../DataObjects/Spell";
+import { ItemName } from "../../../DataObjects/ItemName";
+import { Calculator } from "../../../Calculator";
+import { SpellBookType } from "../../../DataObjects/Spell";
 
 export function virtusAddend(calculator: Calculator): number {
-    const virtusItems = [
-        ItemName.VirtusMask,
-        ItemName.VirtusRobeTop,
-        ItemName.VirtusRobeBottom
-    ];
+    const virtusItems = [ItemName.VirtusMask, ItemName.VirtusRobeTop, ItemName.VirtusRobeBottom];
 
     let virtusBonus = 0;
 

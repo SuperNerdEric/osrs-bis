@@ -1,7 +1,6 @@
-import {randomInt} from 'mathjs';
+import { randomInt } from "mathjs";
 
 export class ScytheDPSTest {
-
     getRandomNumber(min: number, max: number): number {
         // The randomInt function from mathjs generates a random integer between min (inclusive) and max (exclusive).
         // To make it inclusive for max, we simply add 1 to max before passing it.
@@ -9,10 +8,10 @@ export class ScytheDPSTest {
     }
 
     simulateScythe(maxHit: number, maxAttackRoll: number, maxDefenceRoll: number, trials = 100_000_000) {
-        let totalDamage = 0;  // total accumulated damage over all trials
+        let totalDamage = 0; // total accumulated damage over all trials
 
         for (let i = 0; i < trials; i++) {
-            let damageThisTrial = 0;  // damage for this specific trial
+            let damageThisTrial = 0; // damage for this specific trial
 
             const attackRoll1 = this.getRandomNumber(0, maxAttackRoll);
             const defenceRoll1 = this.getRandomNumber(0, maxDefenceRoll);
@@ -24,6 +23,7 @@ export class ScytheDPSTest {
 
             const attackRoll2 = this.getRandomNumber(0, maxAttackRoll);
             const defenceRoll2 = this.getRandomNumber(0, maxDefenceRoll);
+            void defenceRoll2;
             if (attackRoll2 > defenceRoll1) {
                 const hit2 = Math.floor(this.getRandomNumber(0, maxHit) / 2);
                 damageThisTrial += hit2;
@@ -31,6 +31,7 @@ export class ScytheDPSTest {
 
             const attackRoll3 = this.getRandomNumber(0, maxAttackRoll);
             const defenceRoll3 = this.getRandomNumber(0, maxDefenceRoll);
+            void defenceRoll3;
             if (attackRoll3 > defenceRoll1) {
                 const hit3 = Math.floor(this.getRandomNumber(0, maxHit) / 4);
                 damageThisTrial += hit3;
@@ -44,11 +45,10 @@ export class ScytheDPSTest {
 
         return averageDamagePerSecond;
     }
-
 }
 
-describe('dps test', () => {
-    it('scythe', () => {
+describe("dps test", () => {
+    it("scythe", () => {
         const instance = new ScytheDPSTest();
 
         //Scythe in max melee
@@ -59,5 +59,4 @@ describe('dps test', () => {
 
         console.log("Simulated: " + instance.simulateScythe(maxHit, maxAttackRoll, maxDefenceRoll));
     });
-
 });

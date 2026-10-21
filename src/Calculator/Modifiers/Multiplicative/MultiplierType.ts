@@ -1,4 +1,4 @@
 export enum MultiplierType {
     Accuracy,
-    Damage
+    Damage,
 }

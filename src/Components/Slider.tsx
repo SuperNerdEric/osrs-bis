@@ -1,4 +1,4 @@
-import {Box, Slider} from "@mui/material";
+import { Box, Slider } from "@mui/material";
 import React from "react";
 
 const marks = [
@@ -60,7 +60,7 @@ function valuetext(value: number) {
     return `${value} Invocation level`;
 }
 
-export function DiscreteSliderMarks(props: { handleChange: (value: number) => void, value: number }) {
+export function DiscreteSliderMarks(props: { handleChange: (value: number) => void; value: number }) {
     const [sliderValue, setSliderValue] = React.useState(props.value);
 
     React.useEffect(() => {
@@ -68,7 +68,7 @@ export function DiscreteSliderMarks(props: { handleChange: (value: number) => vo
     }, [props.value]);
 
     return (
-        <Box sx={{width: "90%", maxWidth: "1000px", mx: "auto"}}>
+        <Box sx={{ width: "90%", maxWidth: "1000px", mx: "auto" }}>
             <Slider
                 aria-label="Custom marks"
                 value={sliderValue}

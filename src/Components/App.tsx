@@ -1,42 +1,40 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from "react";
 
-import '../App.css';
-import {ThemeProvider, Tooltip} from "@mui/material";
-import {getTheme} from "../theme";
-import useUrlState from '@ahooksjs/use-url-state';
-import {Route, Router} from 'react-router';
-import {createBrowserHistory} from 'history';
-import {devLog} from '../utils';
+import "../App.css";
+import { ThemeProvider } from "@mui/material";
+import { getTheme } from "../theme";
+import useUrlState from "@ahooksjs/use-url-state";
+import { Route, Router } from "react-router";
+import { createBrowserHistory } from "history";
+import { devLog } from "../utils";
 import TopBar from "./TopBar/TopBar";
 import MainContent from "../MainContent";
-import {TargetMonster} from "../Calculator/DataObjects/TargetMonster";
-import {Raid} from "../Calculator/DataObjects/Raid";
-import {loadMonstersFromFile, monsters} from "../Calculator/Data/loadMonsters";
-import {UrlStateType} from "../UrlStateType";
+import { TargetMonster } from "../Calculator/DataObjects/TargetMonster";
+import { Raid } from "../Calculator/DataObjects/Raid";
+import { loadMonstersFromFile, monsters } from "../Calculator/Data/loadMonsters";
+import { UrlStateType } from "../UrlStateType";
 import * as _ from "lodash";
-
 
 const history = createBrowserHistory();
 
 function App() {
     const [urlState, setUrlState] = useUrlState({
-        target: "Blue Moon",
+        target: "Archive Guardian",
         invocationLevel: 300,
-        currentDefence: 60,
-        currentHitpoints: 500,
+        currentDefence: 260,
+        currentHitpoints: 550,
         onTask: "false",
-        version: "default",
+        version: "Flying",
     });
     const [onTask, setOnTask] = React.useState(urlState.onTask === "false");
     const [loading, setLoading] = useState(true);
     const [targetMonster, setTargetMonster] = useState<TargetMonster | null>(null);
 
-
     useEffect(() => {
         loadMonstersFromFile();
         let monsterName = urlState.target;
         if (!monsterName) {
-            monsterName = "Ba-Ba";
+            monsterName = "Archive Guardian";
         }
         const monster = monsters.get(monsterName);
         if (monster) {
@@ -57,15 +55,14 @@ function App() {
         }
     }, [urlState.currentDefence, urlState.currentHitpoints, urlState.version]);
 
-
     const handleSetInvocation = (newValue: number) => {
         devLog("Set invocation level: " + newValue);
-        updateUrlState({invocationLevel: newValue});
+        updateUrlState({ invocationLevel: newValue });
     };
 
     const handleOnTask = (checked: boolean) => {
         setOnTask(checked);
-        updateUrlState({onTask: String(checked)});
+        updateUrlState({ onTask: String(checked) });
     };
 
     const theme = getTheme();
@@ -76,11 +73,13 @@ function App() {
 
     const updateUrlState = (newState: Partial<UrlStateType>) => {
         console.log("New state: " + JSON.stringify(newState));
-        const shouldUpdate = Object.keys(newState).some(key => newState[key as keyof UrlStateType] !== urlState[key as keyof UrlStateType]);
+        const shouldUpdate = Object.keys(newState).some(
+            (key) => newState[key as keyof UrlStateType] !== urlState[key as keyof UrlStateType],
+        );
 
         if (shouldUpdate) {
             console.log("Updating url with: ", newState);
-            setUrlState(prevState => ({...prevState, ...newState}));
+            setUrlState((prevState) => ({ ...prevState, ...newState }));
         }
     };
 
@@ -99,7 +98,7 @@ function App() {
     return (
         <ThemeProvider theme={theme}>
             <div className="App">
-                <TopBar urlState={urlState} setTargetMonster={handleSetTargetMonster}/>
+                <TopBar setTargetMonster={handleSetTargetMonster} />
                 {!loading && targetMonster && (
                     <MainContent
                         targetMonster={targetMonster}
@@ -110,7 +109,6 @@ function App() {
                         handleOnTask={handleOnTask}
                     />
                 )}
-
             </div>
         </ThemeProvider>
     );
@@ -119,7 +117,7 @@ function App() {
 const MainApp = () => {
     return (
         <Router history={history}>
-            <Route component={App}/>
+            <Route component={App} />
         </Router>
     );
 };

@@ -1,5 +1,5 @@
-import React from 'react';
-import { Stack, FormControlLabel, Checkbox } from '@mui/material';
+import React from "react";
+import { Stack, FormControlLabel, Checkbox } from "@mui/material";
 import { Raid } from "../../Calculator/DataObjects/Raid";
 
 interface BoostProps {
@@ -21,41 +21,46 @@ type PotionStates = {
 
 type PotionKey = keyof PotionStates;
 
-import SuperCombatPotionIcon from '../../Images/Boosts/Super_combat_potion.png';
-import RangingPotionIcon from '../../Images/Boosts/Ranging_potion.png';
-import ImbuedHeartIcon from '../../Images/Boosts/Imbued_heart.png';
-import SaturatedHeartIcon from '../../Images/Boosts/Saturated_heart.png';
-import OverloadIcon from '../../Images/Boosts/Overload_(+).png';
-import SmellingSaltsIcon from '../../Images/Boosts/Smelling_salts.png';
+import SuperCombatPotionIcon from "../../Images/Boosts/Super_combat_potion.png";
+import RangingPotionIcon from "../../Images/Boosts/Ranging_potion.png";
+import ImbuedHeartIcon from "../../Images/Boosts/Imbued_heart.png";
+import SaturatedHeartIcon from "../../Images/Boosts/Saturated_heart.png";
+import OverloadIcon from "../../Images/Boosts/Overload_(+).png";
+import SmellingSaltsIcon from "../../Images/Boosts/Smelling_salts.png";
 
 const Boosts: React.FC<BoostProps> = ({ potionStates, handlePotionChange, targetMonster }) => {
     const iconSize = {
-        width: '25px',
-        height: '25px'
+        width: "25px",
+        height: "25px",
+        objectFit: "contain" as const,
     };
 
     const checkboxStyle = {
         color: "#d8ccb4",
-        '&.Mui-checked': {
-            color: '#d8ccb4',
+        "&.Mui-checked": {
+            color: "#d8ccb4",
         },
-        '& .MuiSvgIcon-root': {
-            fontSize: 25 // Updated to match the iconSize
-        }
+        "& .MuiSvgIcon-root": {
+            fontSize: 25, // Updated to match the iconSize
+        },
     };
 
     const boostsArray = [
-        { label: 'Super Combat', icon: SuperCombatPotionIcon, potionKey: 'superCombat' },
-        { label: 'Ranging', icon: RangingPotionIcon, potionKey: 'rangingPotion' },
-        { label: 'Imbued Heart', icon: ImbuedHeartIcon, potionKey: 'imbuedHeart' },
-        { label: 'Saturated Heart', icon: SaturatedHeartIcon, potionKey: 'saturatedHeart' },
-        ...(targetMonster.raid === Raid.ChambersOfXeric ? [{ label: 'Overload (+)', icon: OverloadIcon, potionKey: 'overloadPlus' }] : []),
-        ...(targetMonster.raid === Raid.TombsOfAmascut ? [{ label: 'Smelling Salts', icon: SmellingSaltsIcon, potionKey: 'smellingSalts' }] : [])
+        { label: "Super Combat", icon: SuperCombatPotionIcon, potionKey: "superCombat" },
+        { label: "Ranging", icon: RangingPotionIcon, potionKey: "rangingPotion" },
+        { label: "Imbued Heart", icon: ImbuedHeartIcon, potionKey: "imbuedHeart" },
+        { label: "Saturated Heart", icon: SaturatedHeartIcon, potionKey: "saturatedHeart" },
+        ...(targetMonster.raid === Raid.ChambersOfXeric
+            ? [{ label: "Overload (+)", icon: OverloadIcon, potionKey: "overloadPlus" }]
+            : []),
+        ...(targetMonster.raid === Raid.TombsOfAmascut
+            ? [{ label: "Smelling Salts", icon: SmellingSaltsIcon, potionKey: "smellingSalts" }]
+            : []),
     ];
 
     return (
-        <div style={{display: 'flex', justifyContent: 'center', flexWrap: 'wrap'}}>
-            <div style={{display: 'flex', flexDirection: 'column', alignItems: 'flex-start'}}>
+        <div style={{ display: "flex", justifyContent: "center", flexWrap: "wrap" }}>
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
                 {boostsArray.map(({ label, icon, potionKey }) => (
                     <div key={label}>
                         <Stack direction="row" alignItems="center" gap={2}>
@@ -66,7 +71,9 @@ const Boosts: React.FC<BoostProps> = ({ potionStates, handlePotionChange, target
                                         name={label}
                                         color="primary"
                                         checked={potionStates[potionKey as PotionKey]}
-                                        onChange={(event) => handlePotionChange(potionKey as PotionKey, event.target.checked)}
+                                        onChange={(event) =>
+                                            handlePotionChange(potionKey as PotionKey, event.target.checked)
+                                        }
                                         sx={checkboxStyle}
                                     />
                                 }
@@ -77,8 +84,7 @@ const Boosts: React.FC<BoostProps> = ({ potionStates, handlePotionChange, target
                 ))}
             </div>
         </div>
-
     );
-}
+};
 
 export default Boosts;

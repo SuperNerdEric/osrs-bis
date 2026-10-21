@@ -1,4 +1,4 @@
-import {createTheme} from "@mui/material";
+import { createTheme } from "@mui/material";
 
 export function getTheme() {
     return createTheme({
@@ -15,11 +15,11 @@ export function getTheme() {
             MuiTooltip: {
                 styleOverrides: {
                     tooltip: {
-                        backgroundColor: '#d8ccb4',
-                        color: 'black',
-                        fontSize: '18px',
-                        border: '3px solid black',
-                        maxWidth: 'unset !important',
+                        backgroundColor: "#d8ccb4",
+                        color: "black",
+                        fontSize: "18px",
+                        border: "3px solid black",
+                        maxWidth: "unset !important",
                     },
                 },
             },
@@ -30,7 +30,7 @@ export function getTheme() {
                         // Some CSS
                         backgroundColor: "black",
                         color: "white",
-                        fontSize: '22px',
+                        fontSize: "22px",
                     },
                 },
             },
@@ -41,8 +41,8 @@ export function getTheme() {
                         // Some CSS
                         backgroundColor: "black",
                         color: "white",
-                        '&:hover': {
-                            backgroundColor: 'grey',
+                        "&:hover": {
+                            backgroundColor: "grey",
                         },
                     },
                 },
@@ -55,7 +55,7 @@ export function getTheme() {
                         "& .MuiPaper-root": {
                             backgroundColor: "black",
                             minWidth: 175,
-                        }
+                        },
                     },
                 },
             },
@@ -65,11 +65,11 @@ export function getTheme() {
                     root: {
                         // Some CSS
                         color: "white",
-                        fontSize: '22px',
+                        fontSize: "22px",
                     },
                     markLabel: {
-                        color: "white"
-                    }
+                        color: "white",
+                    },
                 },
             },
             MuiSelect: {
@@ -80,10 +80,10 @@ export function getTheme() {
                         "&:hover": {
                             backgroundColor: "#d8ccb4",
                             color: "white",
-                        }
+                        },
                     },
                     icon: {
-                        color: "black",  // adjust as needed
+                        color: "black", // adjust as needed
                     },
                 },
             },
@@ -91,26 +91,26 @@ export function getTheme() {
                 styleOverrides: {
                     root: {
                         color: "#d8ccb4",
-                        '&.Mui-checked': {
-                            color: '#d8ccb4',
+                        "&.Mui-checked": {
+                            color: "#d8ccb4",
                         },
-                        '& .MuiSvgIcon-root': {
-                            fontSize: 25 // Updated to match the iconSize
-                        }
+                        "& .MuiSvgIcon-root": {
+                            fontSize: 25, // Updated to match the iconSize
+                        },
                     },
                 },
                 variants: [
                     {
-                        props: { size: 'small' },
+                        props: { size: "small" },
                         style: {
-                            padding: '0px',
-                            '& .MuiSvgIcon-root': {
-                                fontSize: 25  // reduced font size for the icon
-                            }
-                        }
-                    }
-                ]
-            }
+                            padding: "0px",
+                            "& .MuiSvgIcon-root": {
+                                fontSize: 25, // reduced font size for the icon
+                            },
+                        },
+                    },
+                ],
+            },
         },
     });
 }

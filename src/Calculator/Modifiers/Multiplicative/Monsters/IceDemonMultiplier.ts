@@ -1,5 +1,5 @@
-import {Calculator} from "../../../Calculator";
-import {SpellName} from "../../../DataObjects/SpellName";
+import { Calculator } from "../../../Calculator";
+import { SpellName } from "../../../DataObjects/SpellName";
 
 const EligibleFireSpells = [
     SpellName.FireStrike,
@@ -7,7 +7,7 @@ const EligibleFireSpells = [
     SpellName.FireBlast,
     SpellName.FireWave,
     SpellName.FireSurge,
-    SpellName.FlamesOfZamorak
+    SpellName.FlamesOfZamorak,
 ];
 
 export function iceDemonMultiplier(calculator: Calculator): number {

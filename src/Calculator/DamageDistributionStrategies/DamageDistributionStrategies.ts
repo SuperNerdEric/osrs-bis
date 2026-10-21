@@ -1,14 +1,16 @@
-import {Calculator} from "../Calculator";
-import {CombatClass, Item, Slot} from "../DataObjects/Item";
-import {ItemName} from "../DataObjects/ItemName";
+import { Calculator } from "../Calculator";
+import { CombatClass, Item, Slot } from "../DataObjects/Item";
+import { ItemName } from "../DataObjects/ItemName";
 import {
     upsertDamageProbability,
     DamageProbability,
     generateUniformDistribution,
-    rerollDamageAboveCap, combineMultipleDistributions, combineTwoDistributions
+    rerollDamageAboveCap,
+    combineMultipleDistributions,
+    combineTwoDistributions,
 } from "./DamageProbability";
-import {getBoltActivationRate} from "../BoltActivationRates";
-import {AbstractDamageDistributionStrategy} from "./AbstractDamageDistributionStrategy";
+import { getBoltActivationRate } from "../BoltActivationRates";
+import { AbstractDamageDistributionStrategy } from "./AbstractDamageDistributionStrategy";
 
 export class ScytheOfViturStrategy extends AbstractDamageDistributionStrategy {
     getDamageDistributions() {
@@ -32,7 +34,6 @@ export class OsmumtensFangStrategy extends AbstractDamageDistributionStrategy {
         return [distribution];
     }
 }
-
 
 export class KerisStrategy extends AbstractDamageDistributionStrategy {
     getDamageDistributions() {
@@ -59,7 +60,8 @@ export class KerisStrategy extends AbstractDamageDistributionStrategy {
 
 export class DiamondBoltEnchantedStrategy extends AbstractDamageDistributionStrategy {
     getDamageDistributions() {
-        this.result.procRate = getBoltActivationRate(ItemName.DiamondBoltsE, this.result.player.kandarinHardDiaryComplete) / 100;
+        this.result.procRate =
+            getBoltActivationRate(ItemName.DiamondBoltsE, this.result.player.kandarinHardDiaryComplete) / 100;
 
         let damageMultiplier;
         if (this.result.gearSet.getWeapon().name === ItemName.ZaryteCrossbow) {
@@ -78,11 +80,12 @@ export class DiamondBoltEnchantedStrategy extends AbstractDamageDistributionStra
 
 export class RubyBoltEnchantedStrategy extends AbstractDamageDistributionStrategy {
     getDamageDistributions() {
-        if(this.result.maxHit === 0) {
+        if (this.result.maxHit === 0) {
             //If we have a max hit of 0 right now it's probably because it's immune, and we don't want to override that
             return [this.damageDistribution];
         }
-        this.result.procRate = getBoltActivationRate(ItemName.RubyBoltsE, this.result.player.kandarinHardDiaryComplete) / 100;
+        this.result.procRate =
+            getBoltActivationRate(ItemName.RubyBoltsE, this.result.player.kandarinHardDiaryComplete) / 100;
 
         let procMaxHit;
         if (this.result.gearSet.getWeapon().name === ItemName.ZaryteCrossbow) {
@@ -101,9 +104,10 @@ export class RubyBoltEnchantedStrategy extends AbstractDamageDistributionStrateg
 
 export class OnyxBoltEnchantedStrategy extends AbstractDamageDistributionStrategy {
     getDamageDistributions() {
-        this.result.procRate = getBoltActivationRate(ItemName.OnyxBoltsE, this.result.player.kandarinHardDiaryComplete) / 100;
+        this.result.procRate =
+            getBoltActivationRate(ItemName.OnyxBoltsE, this.result.player.kandarinHardDiaryComplete) / 100;
 
-        let damageMultiplier = 1.20;
+        let damageMultiplier = 1.2;
         if (this.result.gearSet.getWeapon().name === ItemName.ZaryteCrossbow) {
             damageMultiplier = 1.32;
         }
@@ -138,7 +142,7 @@ export function getStrategyFromBolt(calculator: Calculator, boltName: ItemName) 
 export function getDamageDistribution(calculator: Calculator) {
     let strategy: AbstractDamageDistributionStrategy;
     const ammoItem = calculator.gearSet.getItemBySlot(Slot.Ammo) as Item;
-    const bolt = ammoItem?.name.includes('bolt') ? ammoItem : undefined;
+    const bolt = ammoItem?.name.includes("bolt") ? ammoItem : undefined;
     if (calculator.gearSet.getWeapon().name === ItemName.ScytheOfVitur) {
         strategy = new ScytheOfViturStrategy(calculator);
     } else if (calculator.gearSet.getWeapon().name === ItemName.OsmumtensFang) {
@@ -153,28 +157,40 @@ export function getDamageDistribution(calculator: Calculator) {
 
     let distributions = strategy.getDamageDistributions();
     if (calculator.targetMonster.name.includes("Tekton")) {
-        distributions = distributions.map(distribution => adjustForTekton(distribution, calculator));
+        distributions = distributions.map((distribution) => adjustForTekton(distribution, calculator));
     }
 
     if (calculator.targetMonster.name.includes("Zulrah")) {
-        distributions = distributions.map(distribution => adjustForZulrah(distribution, calculator));
+        distributions = distributions.map((distribution) => adjustForZulrah(distribution, calculator));
     }
 
-    if (calculator.targetMonster.name.includes("Verzik") && calculator.targetMonster.activeVariant.variantName.includes("Phase 1")) {
-        distributions = distributions.map(distribution => adjustForVerzikP1(distribution, calculator));
+    if (
+        calculator.targetMonster.name.includes("Verzik") &&
+        calculator.targetMonster.activeVariant.variantName.includes("Phase 1")
+    ) {
+        distributions = distributions.map((distribution) => adjustForVerzikP1(distribution, calculator));
     }
 
     if (calculator.targetMonster.name.includes("Fragment of Seren")) {
-        distributions = distributions.map(distribution => adjustForFragmentOfSeren(distribution));
+        distributions = distributions.map((distribution) => adjustForFragmentOfSeren(distribution));
     }
 
     if (calculator.targetMonster.title.toLowerCase().includes("kraken")) {
-        distributions = distributions.map(distribution => adjustForKraken(distribution, calculator));
+        distributions = distributions.map((distribution) => adjustForKraken(distribution, calculator));
     }
 
-    if (calculator.targetMonster.name.includes("Abyssal portal") || calculator.targetMonster.name.includes("TzKal-Zuk") ) {
-        distributions = distributions.map(distribution => immuneToMelee(distribution, calculator));
+    if (
+        calculator.targetMonster.name.includes("Abyssal portal") ||
+        calculator.targetMonster.name.includes("TzKal-Zuk")
+    ) {
+        distributions = distributions.map((distribution) => immuneToMelee(distribution, calculator));
     }
+
+    if (calculator.targetMonster.meleeImmune) {
+        distributions = distributions.map((distribution) => immuneToMelee(distribution, calculator));
+    }
+
+    distributions = distributions.map((distribution) => applyFlatArmour(distribution, calculator));
 
     const distribution = combineMultipleDistributions(distributions);
     return distribution;
@@ -182,10 +198,10 @@ export function getDamageDistribution(calculator: Calculator) {
 
 export function adjustForTekton(distribution: DamageProbability[], calculator: Calculator): DamageProbability[] {
     if (calculator.gearSet.combatClass === CombatClass.Ranged) {
-        return [{dmg: 0, probability: 1}];
+        return [{ dmg: 0, probability: 1 }];
     } else if (calculator.gearSet.combatClass === CombatClass.Magic) {
-        distribution = distribution.map(d => {
-            d.dmg = Math.floor(d.dmg * 0.20);
+        distribution = distribution.map((d) => {
+            d.dmg = Math.floor(d.dmg * 0.2);
             return d;
         });
     }
@@ -194,15 +210,32 @@ export function adjustForTekton(distribution: DamageProbability[], calculator: C
 
 export function adjustForZulrah(distribution: DamageProbability[], calculator: Calculator): DamageProbability[] {
     if (calculator.gearSet.combatClass === CombatClass.Melee) {
-        return [{dmg: 0, probability: 1}];
+        return [{ dmg: 0, probability: 1 }];
     } else {
         return rerollDamageAboveCap(distribution, 45, 50);
     }
 }
 
+export function applyFlatArmour(distribution: DamageProbability[], calculator: Calculator): DamageProbability[] {
+    const reduction =
+        calculator.gearSet.combatClass === CombatClass.Magic
+            ? calculator.targetMonster.magicResistance
+            : calculator.targetMonster.flatArmour;
+    if (!reduction) {
+        return distribution;
+    }
+
+    const adjusted: DamageProbability[] = [];
+    for (const damage of distribution) {
+        const dmg = damage.dmg > 0 ? Math.max(0, damage.dmg - reduction) : 0;
+        upsertDamageProbability(adjusted, dmg, damage.probability);
+    }
+    return adjusted;
+}
+
 export function immuneToMelee(distribution: DamageProbability[], calculator: Calculator): DamageProbability[] {
     if (calculator.gearSet.combatClass === CombatClass.Melee) {
-        return [{dmg: 0, probability: 1}];
+        return [{ dmg: 0, probability: 1 }];
     }
     return distribution;
 }
@@ -228,7 +261,7 @@ export function adjustForKraken(distribution: DamageProbability[], calculator: C
     if (calculator.gearSet.combatClass === CombatClass.Melee) {
         return [{ dmg: 0, probability: 1 }];
     } else if (calculator.gearSet.combatClass === CombatClass.Ranged) {
-        distribution = distribution.map(dmgProb => {
+        distribution = distribution.map((dmgProb) => {
             if (dmgProb.dmg >= 1) {
                 dmgProb.dmg = Math.max(Math.floor(dmgProb.dmg / 7), 1);
             }

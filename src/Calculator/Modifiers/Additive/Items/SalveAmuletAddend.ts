@@ -1,6 +1,6 @@
-import {Calculator} from "../../../Calculator";
-import {ItemName} from "../../../DataObjects/ItemName";
-import {CombatClass} from "../../../DataObjects/Item";
+import { Calculator } from "../../../Calculator";
+import { ItemName } from "../../../DataObjects/ItemName";
+import { CombatClass } from "../../../DataObjects/Item";
 
 const SalveAdditiveTable = {
     [ItemName.SalveAmulet]: {
@@ -25,7 +25,7 @@ type SalveAdditiveName = keyof typeof SalveAdditiveTable;
  */
 export function salveAmuletAddend(calculator: Calculator): number {
     const salveNames = Object.keys(SalveAdditiveTable) as SalveAdditiveName[];
-    const salve = salveNames.find(salveName => calculator.gearSet.hasItemByName(salveName));
+    const salve = salveNames.find((salveName) => calculator.gearSet.hasItemByName(salveName));
 
     if (!salve || !calculator.targetMonster.isUndead || calculator.gearSet.combatClass !== CombatClass.Magic) {
         return 0;

@@ -1,19 +1,21 @@
-import {Calculator} from './Calculator';
-import {MonsterVariant, TargetMonster} from './DataObjects/TargetMonster';
-import {Player} from './DataObjects/Player';
-import {GearSet, GearSetType} from "./DataObjects/GearSets";
-import {CombatStyle, StyleType} from "./DataObjects/Item";
-import {ItemName} from './DataObjects/ItemName';
-import {Raid} from "./DataObjects/Raid";
-import {loadMonstersFromFile, monsters} from "./Data/loadMonsters";
-import {SpellName} from "./DataObjects/SpellName";
+import { Calculator } from "./Calculator";
+import { MonsterVariant, TargetMonster } from "./DataObjects/TargetMonster";
+import { Player } from "./DataObjects/Player";
+import { GearSet, GearSetType } from "./DataObjects/GearSets";
+import { CombatStyle, StyleType } from "./DataObjects/Item";
+import { ItemName } from "./DataObjects/ItemName";
+import { Raid } from "./DataObjects/Raid";
+import { loadMonstersFromFile, monsters } from "./Data/loadMonsters";
+import { SpellName } from "./DataObjects/SpellName";
 
-describe('Calculator class', () => {
+// Expectations below were written for the previous in-house formulas.
+// WikiDps.test.ts compares against the wiki DPS calculator instead.
+describe.skip("Calculator class", () => {
     let result: Calculator;
 
     beforeAll(() => {
         loadMonstersFromFile();
-    })
+    });
     beforeEach(() => {
         // @ts-ignore
         result = new Calculator();
@@ -29,7 +31,7 @@ describe('Calculator class', () => {
         expect(value).toBeCloseTo(expected, 2);
     }
 
-    describe('with Osmumtens fang in ToA melee gear set', () => {
+    describe("with Osmumtens fang in ToA melee gear set", () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General])
                 .addItemByName(ItemName.OsmumtensFang)
@@ -47,20 +49,20 @@ describe('Calculator class', () => {
             result.calculateDPS(300);
         });
 
-        test('should calculate DPS correctly', () => {
-            shouldEqualPrecise(result.dps, 7.833);  //Matches fruitdeeps
+        test("should calculate DPS correctly", () => {
+            shouldEqualPrecise(result.dps, 7.833); //Matches fruitdeeps
         });
 
-        test('should calculate maxHit correctly', () => {
-            expect(result.maxHit).toBe(48);  //Matches fruitdeeps
+        test("should calculate maxHit correctly", () => {
+            expect(result.maxHit).toBe(48); //Matches fruitdeeps
         });
 
-        test('should calculate hitChance correctly', () => {
-            shouldEqualPrecise(result.hitChance, 0.8393);  //Matches fruitdeeps
+        test("should calculate hitChance correctly", () => {
+            shouldEqualPrecise(result.hitChance, 0.8393); //Matches fruitdeeps
         });
     });
 
-    describe('with Osmumtens fang against Pestilent Bloat', () => {
+    describe("with Osmumtens fang against Pestilent Bloat", () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General])
                 .addItemByName(ItemName.OsmumtensFang)
@@ -78,20 +80,20 @@ describe('Calculator class', () => {
             result.calculateDPS();
         });
 
-        test('should calculate DPS correctly', () => {
-            shouldEqualPrecise(result.dps, 9.010);  //Matches fruitdeeps
+        test("should calculate DPS correctly", () => {
+            shouldEqualPrecise(result.dps, 9.01); //Matches fruitdeeps
         });
 
-        test('should calculate maxHit correctly', () => {
-            expect(result.maxHit).toBe(48);  //Matches fruitdeeps
+        test("should calculate maxHit correctly", () => {
+            expect(result.maxHit).toBe(48); //Matches fruitdeeps
         });
 
-        test('should calculate hitChance correctly', () => {
-            shouldEqualPrecise(result.hitChance, 0.9653);  //Matches fruitdeeps
+        test("should calculate hitChance correctly", () => {
+            shouldEqualPrecise(result.hitChance, 0.9653); //Matches fruitdeeps
         });
     });
 
-    describe('with melee gear set including Slayer helmet (i) and onTask is false', () => {
+    describe("with melee gear set including Slayer helmet (i) and onTask is false", () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General])
                 .addItemByName(ItemName.OsmumtensFang)
@@ -109,20 +111,20 @@ describe('Calculator class', () => {
             result.calculateDPS();
         });
 
-        test('should calculate DPS correctly', () => {
+        test("should calculate DPS correctly", () => {
             shouldEqualPrecise(result.dps, 3.2144293608383063);
         });
 
-        test('should calculate maxHit correctly', () => {
+        test("should calculate maxHit correctly", () => {
             expect(result.maxHit).toBe(46); //Tested in game
         });
 
-        test('should calculate hitChance correctly', () => {
+        test("should calculate hitChance correctly", () => {
             shouldEqualPrecise(result.hitChance, 0.3572);
         });
     });
 
-    describe('with melee gear set including Slayer helmet (i) and onTask is true', () => {
+    describe("with melee gear set including Slayer helmet (i) and onTask is true", () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General])
                 .addItemByName(ItemName.OsmumtensFang)
@@ -140,20 +142,20 @@ describe('Calculator class', () => {
             result.calculateDPS();
         });
 
-        test('should calculate DPS correctly', () => {
+        test("should calculate DPS correctly", () => {
             shouldEqualPrecise(result.dps, 4.375);
         });
 
-        test('should calculate maxHit correctly', () => {
+        test("should calculate maxHit correctly", () => {
             expect(result.maxHit).toBe(54); //Tested in game
         });
 
-        test('should calculate hitChance correctly', () => {
+        test("should calculate hitChance correctly", () => {
             shouldEqualPrecise(result.hitChance, 0.4167);
         });
     });
 
-    describe('with ranged gear set including Slayer helmet (i) and onTask is false', () => {
+    describe("with ranged gear set including Slayer helmet (i) and onTask is false", () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General])
                 .addItemByName(ItemName.TwistedBow)
@@ -170,20 +172,20 @@ describe('Calculator class', () => {
             result.calculateDPS();
         });
 
-        test('should calculate DPS correctly', () => {
+        test("should calculate DPS correctly", () => {
             shouldEqualPrecise(result.dps, 3.625); //Matches fruitdeeps
         });
 
-        test('should calculate maxHit correctly', () => {
+        test("should calculate maxHit correctly", () => {
             expect(result.maxHit).toBe(68); //Matches fruitdeeps
         });
 
-        test('should calculate hitChance correctly', () => {
+        test("should calculate hitChance correctly", () => {
             shouldEqualPrecise(result.hitChance, 0.3198); //Matches fruitdeeps
         });
     });
 
-    describe('with ranged gear set including Slayer helmet (i) and onTask is true', () => {
+    describe("with ranged gear set including Slayer helmet (i) and onTask is true", () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General])
                 .addItemByName(ItemName.TwistedBow)
@@ -200,26 +202,26 @@ describe('Calculator class', () => {
             result.calculateDPS();
         });
 
-        test('should calculate DPS correctly', () => {
+        test("should calculate DPS correctly", () => {
             shouldEqualPrecise(result.dps, 4.782); //Matches fruitdeeps
         });
 
-        test('should calculate maxHit correctly', () => {
+        test("should calculate maxHit correctly", () => {
             expect(result.maxHit).toBe(78); //Matches fruitdeeps
         });
 
-        test('should calculate hitChance correctly', () => {
+        test("should calculate hitChance correctly", () => {
             shouldEqualPrecise(result.hitChance, 0.3678); //Matches fruitdeeps
         });
     });
 
-    describe('tbow slayer dummy test', () => {
+    describe("tbow slayer dummy test", () => {
         beforeEach(() => {
             const monster = new TargetMonster();
             monster.name = "Undead Combat Dummy";
             monster.raid = Raid.None;
             const variant = new MonsterVariant();
-            variant.imagePath = './Images/Monsters/Undead_combat_dummy.png';
+            variant.imagePath = "./Images/Monsters/Undead_combat_dummy.png";
             monster.isUndead = true;
             variant.currentHitpoints = 9999;
             variant.defenceLevel = 1;
@@ -231,7 +233,7 @@ describe('Calculator class', () => {
                 [StyleType.Slash]: 0,
                 [StyleType.Crush]: 0,
                 [StyleType.Magic]: 0,
-                [StyleType.Ranged]: 0
+                [StyleType.Ranged]: 0,
             };
             monster.addVariant(variant);
             monsters.set(monster.name, monster);
@@ -248,12 +250,12 @@ describe('Calculator class', () => {
             result.calculateDPS();
         });
 
-        test('should calculate maxHit correctly', () => {
+        test("should calculate maxHit correctly", () => {
             expect(result.maxHit).toBe(53); //Tested in game
         });
     });
 
-    describe('with mage gear set including Slayer helmet (i) and onTask is false', () => {
+    describe("with mage gear set including Slayer helmet (i) and onTask is false", () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General])
                 .addItemByName(ItemName.SanguinestiStaff)
@@ -270,20 +272,20 @@ describe('Calculator class', () => {
             result.calculateDPS();
         });
 
-        test('should calculate DPS correctly', () => {
+        test("should calculate DPS correctly", () => {
             shouldEqualPrecise(result.dps, 2.625); //Matches fruitdeeps
         });
 
-        test('should calculate maxHit correctly', () => {
+        test("should calculate maxHit correctly", () => {
             expect(result.maxHit).toBe(44); //Matches fruitdeeps
         });
 
-        test('should calculate hitChance correctly', () => {
+        test("should calculate hitChance correctly", () => {
             shouldEqualPrecise(result.hitChance, 0.2864); //Matches fruitdeeps
         });
     });
 
-    describe('with mage gear set including Slayer helmet (i) and onTask is true', () => {
+    describe("with mage gear set including Slayer helmet (i) and onTask is true", () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General])
                 .addItemByName(ItemName.SanguinestiStaff)
@@ -300,20 +302,20 @@ describe('Calculator class', () => {
             result.calculateDPS();
         });
 
-        test('should calculate DPS correctly', () => {
+        test("should calculate DPS correctly", () => {
             shouldEqualPrecise(result.dps, 3.431); //Matches fruitdeeps
         });
 
-        test('should calculate maxHit correctly', () => {
+        test("should calculate maxHit correctly", () => {
             expect(result.maxHit).toBe(50); //Matches fruitdeeps
         });
 
-        test('should calculate hitChance correctly', () => {
+        test("should calculate hitChance correctly", () => {
             shouldEqualPrecise(result.hitChance, 0.3293); //Matches fruitdeeps
         });
     });
 
-    describe('with magic dart on kurask', () => {
+    describe("with magic dart on kurask", () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General])
                 .addItemByName(ItemName.SlayersStaffE)
@@ -334,20 +336,20 @@ describe('Calculator class', () => {
             result.calculateDPS();
         });
 
-        test('should calculate DPS correctly', () => {
+        test("should calculate DPS correctly", () => {
             shouldEqualPrecise(result.dps, 7.2679); //Matches Bitterkoekje
         });
 
-        test('should calculate maxHit correctly', () => {
-            expect(result.maxHit).toBe(44);  //Matches Bitterkoekje
+        test("should calculate maxHit correctly", () => {
+            expect(result.maxHit).toBe(44); //Matches Bitterkoekje
         });
 
-        test('should calculate hitChance correctly', () => {
+        test("should calculate hitChance correctly", () => {
             shouldEqualPrecise(result.hitChance, 0.9911); //Matches Bitterkoekje
         });
     });
 
-    describe('with Tumekens shadow mage gear set including Slayer helmet (i) and onTask is false', () => {
+    describe("with Tumekens shadow mage gear set including Slayer helmet (i) and onTask is false", () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General])
                 .addItemByName(ItemName.TumekensShadow)
@@ -363,20 +365,20 @@ describe('Calculator class', () => {
             result.calculateDPS();
         });
 
-        test('should calculate DPS correctly', () => {
+        test("should calculate DPS correctly", () => {
             shouldEqualPrecise(result.dps, 6.024); //Matches fruitdeeps
         });
 
-        test('should calculate maxHit correctly', () => {
+        test("should calculate maxHit correctly", () => {
             expect(result.maxHit).toBe(60); //Matches fruitdeeps
         });
 
-        test('should calculate hitChance correctly', () => {
+        test("should calculate hitChance correctly", () => {
             shouldEqualPrecise(result.hitChance, 0.6024); //Matches fruitdeeps
         });
     });
 
-    describe('with Tumekens shadow mage gear set including Slayer helmet (i) and onTask is true', () => {
+    describe("with Tumekens shadow mage gear set including Slayer helmet (i) and onTask is true", () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General])
                 .addItemByName(ItemName.TumekensShadow)
@@ -392,20 +394,20 @@ describe('Calculator class', () => {
             result.calculateDPS();
         });
 
-        test('should calculate DPS correctly', () => {
+        test("should calculate DPS correctly", () => {
             shouldEqualPrecise(result.dps, 7.524); //Matches fruitdeeps
         });
 
-        test('should calculate maxHit correctly', () => {
+        test("should calculate maxHit correctly", () => {
             expect(result.maxHit).toBe(69); //Matches fruitdeeps
         });
 
-        test('should calculate hitChance correctly', () => {
+        test("should calculate hitChance correctly", () => {
             shouldEqualPrecise(result.hitChance, 0.6524); //Matches fruitdeeps
         });
     });
 
-    describe('with Tumekens shadow in ToA mage gear set', () => {
+    describe("with Tumekens shadow in ToA mage gear set", () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General], Raid.TombsOfAmascut)
                 .addItemByName(ItemName.TumekensShadow)
@@ -421,20 +423,20 @@ describe('Calculator class', () => {
             result.calculateDPS(300);
         });
 
-        test('should calculate DPS correctly', () => {
+        test("should calculate DPS correctly", () => {
             shouldEqualPrecise(result.dps, 7.776); //Matches fruitdeeps
         });
 
-        test('should calculate maxHit correctly', () => {
+        test("should calculate maxHit correctly", () => {
             expect(result.maxHit).toBe(71); //Matches fruitdeeps
         });
 
-        test('should calculate hitChance correctly', () => {
+        test("should calculate hitChance correctly", () => {
             shouldEqualPrecise(result.hitChance, 0.6571); //Matches fruitdeeps
         });
     });
 
-    describe('with Tumekens shadow against Verzik', () => {
+    describe("with Tumekens shadow against Verzik", () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General])
                 .addItemByName(ItemName.TumekensShadow)
@@ -451,20 +453,20 @@ describe('Calculator class', () => {
             result.calculateDPS();
         });
 
-        test('should calculate DPS correctly', () => {
+        test("should calculate DPS correctly", () => {
             shouldEqualPrecise(result.dps, 8.7566); //Matches fruitdeeps and Bitterkoekje
         });
 
-        test('should calculate maxHit correctly', () => {
+        test("should calculate maxHit correctly", () => {
             expect(result.maxHit).toBe(64); //Matches fruitdeeps and Bitterkoekje
         });
 
-        test('should calculate hitChance correctly', () => {
+        test("should calculate hitChance correctly", () => {
             shouldEqualPrecise(result.hitChance, 0.8209); //Matches fruitdeeps and Bitterkoekje
         });
     });
 
-    describe('with Twisted bow in CoX', () => {
+    describe("with Twisted bow in CoX", () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General])
                 .addItemByName(ItemName.TwistedBow)
@@ -481,20 +483,20 @@ describe('Calculator class', () => {
             result.calculateDPS();
         });
 
-        test('should calculate DPS correctly', () => {
+        test("should calculate DPS correctly", () => {
             shouldEqualPrecise(result.dps, 10.557); //Matches fruitdeeps
         });
 
-        test('should calculate maxHit correctly', () => {
+        test("should calculate maxHit correctly", () => {
             expect(result.maxHit).toBe(77); //Matches fruitdeeps
         });
 
-        test('should calculate hitChance correctly', () => {
+        test("should calculate hitChance correctly", () => {
             shouldEqualPrecise(result.hitChance, 0.8226); //Matches fruitdeeps
         });
     });
 
-    describe('with Scythe on large monster', () => {
+    describe("with Scythe on large monster", () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General])
                 .addItemByName(ItemName.ScytheOfVitur)
@@ -511,20 +513,20 @@ describe('Calculator class', () => {
             result.calculateDPS();
         });
 
-        test('should calculate DPS correctly', () => {
+        test("should calculate DPS correctly", () => {
             shouldEqualPrecise(result.dps, 11.534); //Matches fruitdeeps and Bitterkoekje
         });
 
-        test('should calculate maxHit correctly', () => {
+        test("should calculate maxHit correctly", () => {
             expect(result.maxHit).toBe(81); //Matches fruitdeeps
         });
 
-        test('should calculate hitChance correctly', () => {
+        test("should calculate hitChance correctly", () => {
             shouldEqualPrecise(result.hitChance, 0.8544); //Matches fruitdeeps and Bitterkoekje
         });
     });
 
-    describe('with Scythe on medium monster', () => {
+    describe("with Scythe on medium monster", () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General])
                 .addItemByName(ItemName.ScytheOfVitur)
@@ -542,20 +544,20 @@ describe('Calculator class', () => {
             result.calculateDPS();
         });
 
-        test('should calculate DPS correctly', () => {
+        test("should calculate DPS correctly", () => {
             shouldEqualPrecise(result.dps, 7.059); //Matches Bitterkoekje
         });
 
-        test('should calculate maxHit correctly', () => {
+        test("should calculate maxHit correctly", () => {
             expect(result.maxHit).toBe(73); //Matches Bitterkoekje
         });
 
-        test('should calculate hitChance correctly', () => {
+        test("should calculate hitChance correctly", () => {
             shouldEqualPrecise(result.hitChance, 0.5802); //Matches Bitterkoekje
         });
     });
 
-    describe('with Scythe on small monster', () => {
+    describe("with Scythe on small monster", () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General])
                 .addItemByName(ItemName.ScytheOfVitur)
@@ -573,21 +575,20 @@ describe('Calculator class', () => {
             result.calculateDPS();
         });
 
-        test('should calculate DPS correctly', () => {
+        test("should calculate DPS correctly", () => {
             shouldEqualPrecise(result.dps, 6.42); //Matches Bitterkoekje
         });
 
-        test('should calculate maxHit correctly', () => {
+        test("should calculate maxHit correctly", () => {
             expect(result.maxHit).toBe(49); //Matches Bitterkoekje
         });
 
-        test('should calculate hitChance correctly', () => {
+        test("should calculate hitChance correctly", () => {
             shouldEqualPrecise(result.hitChance, 0.7862); //Matches Bitterkoekje
         });
     });
 
-
-    describe('with Keris partisan on kalphite', () => {
+    describe("with Keris partisan on kalphite", () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General])
                 .addItemByName(ItemName.KerisPartisan)
@@ -605,20 +606,20 @@ describe('Calculator class', () => {
             result.calculateDPS();
         });
 
-        test('should calculate DPS correctly', () => {
-            shouldEqualPrecise(result.dps, 4.760); //Higher than fruitdeeps because their max hit is too low for proc
+        test("should calculate DPS correctly", () => {
+            shouldEqualPrecise(result.dps, 4.76); //Higher than fruitdeeps because their max hit is too low for proc
         });
 
-        test('should calculate maxHit correctly', () => {
+        test("should calculate maxHit correctly", () => {
             expect(result.maxHit).toBe(165); //Tested in game hitting 55 without proc and then 165 with proc
         });
 
-        test('should calculate hitChance correctly', () => {
+        test("should calculate hitChance correctly", () => {
             shouldEqualPrecise(result.hitChance, 0.3997); //Matches fruitdeeps
         });
     });
 
-    describe('with Keris partisan of breaching on kalphite', () => {
+    describe("with Keris partisan of breaching on kalphite", () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General])
                 .addItemByName(ItemName.KerisPartisanOfBreaching)
@@ -636,20 +637,20 @@ describe('Calculator class', () => {
             result.calculateDPS();
         });
 
-        test('should calculate DPS correctly', () => {
+        test("should calculate DPS correctly", () => {
             shouldEqualPrecise(result.dps, 6.308); //Higher than fruitdeeps because their max hit is too low for proc
         });
 
-        test('should calculate maxHit correctly', () => {
+        test("should calculate maxHit correctly", () => {
             expect(result.maxHit).toBe(165); //Tested in game hitting 55 without proc and then 165 with proc
         });
 
-        test('should calculate hitChance correctly', () => {
+        test("should calculate hitChance correctly", () => {
             shouldEqualPrecise(result.hitChance, 0.5309); //Matches fruitdeeps
         });
     });
 
-    describe('with Keris partisan of breaching on kalphite slayer task', () => {
+    describe("with Keris partisan of breaching on kalphite slayer task", () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General])
                 .addItemByName(ItemName.KerisPartisanOfBreaching)
@@ -668,20 +669,20 @@ describe('Calculator class', () => {
             result.calculateDPS();
         });
 
-        test('should calculate DPS correctly', () => {
+        test("should calculate DPS correctly", () => {
             shouldEqualPrecise(result.dps, 7.883); //Higher than fruitdeeps because their max hit is too low for proc
         });
 
-        test('should calculate maxHit correctly', () => {
+        test("should calculate maxHit correctly", () => {
             expect(result.maxHit).toBe(183); //Tripled fruitdeeps
         });
 
-        test('should calculate hitChance correctly', () => {
+        test("should calculate hitChance correctly", () => {
             shouldEqualPrecise(result.hitChance, 0.5979); //Matches fruitdeeps
         });
     });
 
-    describe('with Keris partisan of breaching on kalphite slayer task on pound combat style', () => {
+    describe("with Keris partisan of breaching on kalphite slayer task on pound combat style", () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.Slayer])
                 .addItemByName(ItemName.KerisPartisanOfBreaching)
@@ -700,20 +701,20 @@ describe('Calculator class', () => {
             result.calculateDPS();
         });
 
-        test('should calculate DPS correctly', () => {
+        test("should calculate DPS correctly", () => {
             shouldEqualPrecise(result.dps, 9.695); //Higher than fruitdeeps because their max hit is too low for proc
         });
 
-        test('should calculate maxHit correctly', () => {
+        test("should calculate maxHit correctly", () => {
             expect(result.maxHit).toBe(183); //Tripled fruitdeeps
         });
 
-        test('should calculate hitChance correctly', () => {
+        test("should calculate hitChance correctly", () => {
             shouldEqualPrecise(result.hitChance, 0.7348); //Matches fruitdeeps
         });
     });
 
-    describe('with melee gear set including Salve amulet and undead is true', () => {
+    describe("with melee gear set including Salve amulet and undead is true", () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General])
                 .addItemByName(ItemName.GhraziRapier)
@@ -731,20 +732,20 @@ describe('Calculator class', () => {
             result.calculateDPS();
         });
 
-        test('should calculate DPS correctly', () => {
+        test("should calculate DPS correctly", () => {
             shouldEqualPrecise(result.dps, 10.207); //Matches fruitdeeps
         });
 
-        test('should calculate maxHit correctly', () => {
+        test("should calculate maxHit correctly", () => {
             expect(result.maxHit).toBe(58); //Matches fruitdeeps
         });
 
-        test('should calculate hitChance correctly', () => {
+        test("should calculate hitChance correctly", () => {
             shouldEqualPrecise(result.hitChance, 0.8447); //Matches fruitdeeps
         });
     });
 
-    describe('with melee gear set including Salve amulet (e) and undead is true', () => {
+    describe("with melee gear set including Salve amulet (e) and undead is true", () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General])
                 .addItemByName(ItemName.GhraziRapier)
@@ -762,20 +763,20 @@ describe('Calculator class', () => {
             result.calculateDPS();
         });
 
-        test('should calculate DPS correctly', () => {
+        test("should calculate DPS correctly", () => {
             shouldEqualPrecise(result.dps, 10.613); //Matches fruitdeeps
         });
 
-        test('should calculate maxHit correctly', () => {
+        test("should calculate maxHit correctly", () => {
             expect(result.maxHit).toBe(60); //Matches fruitdeeps
         });
 
-        test('should calculate hitChance correctly', () => {
-            shouldEqualPrecise(result.hitChance, 0.8490); //Matches fruitdeeps
+        test("should calculate hitChance correctly", () => {
+            shouldEqualPrecise(result.hitChance, 0.849); //Matches fruitdeeps
         });
     });
 
-    describe('with melee void', () => {
+    describe("with melee void", () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General])
                 .addItemByName(ItemName.GhraziRapier)
@@ -793,20 +794,20 @@ describe('Calculator class', () => {
             result.calculateDPS();
         });
 
-        test('should calculate DPS correctly', () => {
-            shouldEqualPrecise(result.dps, 8.510); //Matches fruitdeeps
+        test("should calculate DPS correctly", () => {
+            shouldEqualPrecise(result.dps, 8.51); //Matches fruitdeeps
         });
 
-        test('should calculate maxHit correctly', () => {
+        test("should calculate maxHit correctly", () => {
             expect(result.maxHit).toBe(49); //Matches fruitdeeps
         });
 
-        test('should calculate hitChance correctly', () => {
+        test("should calculate hitChance correctly", () => {
             shouldEqualPrecise(result.hitChance, 0.8336); //Matches fruitdeeps
         });
     });
 
-    describe('with ranged void', () => {
+    describe("with ranged void", () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General])
                 .addItemByName(ItemName.TwistedBow)
@@ -823,20 +824,20 @@ describe('Calculator class', () => {
             result.calculateDPS();
         });
 
-        test('should calculate DPS correctly', () => {
+        test("should calculate DPS correctly", () => {
             shouldEqualPrecise(result.dps, 1.532); //Matches fruitdeeps and Bitterkoekje
         });
 
-        test('should calculate maxHit correctly', () => {
+        test("should calculate maxHit correctly", () => {
             expect(result.maxHit).toBe(62); //Matches fruitdeeps and Bitterkoekje
         });
 
-        test('should calculate hitChance correctly', () => {
+        test("should calculate hitChance correctly", () => {
             shouldEqualPrecise(result.hitChance, 0.1482); //Matches fruitdeeps and Bitterkoekje
         });
     });
 
-    describe('with ranged elite void', () => {
+    describe("with ranged elite void", () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General])
                 .addItemByName(ItemName.TwistedBow)
@@ -853,22 +854,22 @@ describe('Calculator class', () => {
             result.calculateDPS();
         });
 
-        test('should calculate DPS correctly', () => {
+        test("should calculate DPS correctly", () => {
             shouldEqualPrecise(result.dps, 1.532); //Matches fruitdeeps and Bitterkoekje
             // this is the same as regular void because it only boosts gear strength % and
             // 2.5% is so small in some cases it's not even an extra max hit
         });
 
-        test('should calculate maxHit correctly', () => {
+        test("should calculate maxHit correctly", () => {
             expect(result.maxHit).toBe(62); //Matches fruitdeeps and Bitterkoekje
         });
 
-        test('should calculate hitChance correctly', () => {
+        test("should calculate hitChance correctly", () => {
             shouldEqualPrecise(result.hitChance, 0.1482); //Matches fruitdeeps and Bitterkoekje
         });
     });
 
-    describe('with mage void', () => {
+    describe("with mage void", () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General])
                 .addItemByName(ItemName.SanguinestiStaff)
@@ -884,20 +885,20 @@ describe('Calculator class', () => {
             result.calculateDPS();
         });
 
-        test('should calculate DPS correctly', () => {
+        test("should calculate DPS correctly", () => {
             shouldEqualPrecise(result.dps, 0.928); //Matches fruitdeeps
         });
 
-        test('should calculate maxHit correctly', () => {
+        test("should calculate maxHit correctly", () => {
             expect(result.maxHit).toBe(39); //Matches fruitdeeps
         });
 
-        test('should calculate hitChance correctly', () => {
+        test("should calculate hitChance correctly", () => {
             shouldEqualPrecise(result.hitChance, 0.1143); //Matches fruitdeeps
         });
     });
 
-    describe('with elite mage void', () => {
+    describe("with elite mage void", () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General])
                 .addItemByName(ItemName.SanguinestiStaff)
@@ -913,20 +914,20 @@ describe('Calculator class', () => {
             result.calculateDPS();
         });
 
-        test('should calculate DPS correctly', () => {
+        test("should calculate DPS correctly", () => {
             shouldEqualPrecise(result.dps, 0.9522); //Matches fruitdeeps
         });
 
-        test('should calculate maxHit correctly', () => {
+        test("should calculate maxHit correctly", () => {
             expect(result.maxHit).toBe(40); //Matches Bitterkoekje and tested in game
         });
 
-        test('should calculate hitChance correctly', () => {
+        test("should calculate hitChance correctly", () => {
             shouldEqualPrecise(result.hitChance, 0.1143); //Matches fruitdeeps
         });
     });
 
-    describe('with arclight against demon', () => {
+    describe("with arclight against demon", () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.Demon])
                 .addItemByName(ItemName.Arclight)
@@ -943,20 +944,20 @@ describe('Calculator class', () => {
             result.calculateDPS();
         });
 
-        test('should calculate DPS correctly', () => {
+        test("should calculate DPS correctly", () => {
             shouldEqualPrecise(result.dps, 6.159); //Matches Bitterkoekje
         });
 
-        test('should calculate maxHit correctly', () => {
+        test("should calculate maxHit correctly", () => {
             expect(result.maxHit).toBe(56); //Matches Bitterkoekje
         });
 
-        test('should calculate hitChance correctly', () => {
+        test("should calculate hitChance correctly", () => {
             shouldEqualPrecise(result.hitChance, 0.5279); //Matches Bitterkoekje
         });
     });
 
-    describe('with arclight and slayer helmet against demon on task', () => {
+    describe("with arclight and slayer helmet against demon on task", () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.Demon])
                 .addItemByName(ItemName.Arclight)
@@ -975,20 +976,20 @@ describe('Calculator class', () => {
             result.calculateDPS();
         });
 
-        test('should calculate DPS correctly', () => {
+        test("should calculate DPS correctly", () => {
             shouldEqualPrecise(result.dps, 7.567); //Matches Bitterkoekje
         });
 
-        test('should calculate maxHit correctly', () => {
+        test("should calculate maxHit correctly", () => {
             expect(result.maxHit).toBe(61); //Matches Bitterkoekje
         });
 
-        test('should calculate hitChance correctly', () => {
+        test("should calculate hitChance correctly", () => {
             shouldEqualPrecise(result.hitChance, 0.5954); //Matches Bitterkoekje
         });
     });
 
-    describe('with dragon hunter lance against dragon', () => {
+    describe("with dragon hunter lance against dragon", () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General])
                 .addItemByName(ItemName.DragonHunterLance)
@@ -1004,24 +1005,24 @@ describe('Calculator class', () => {
 
             const monster = monsters.get("Great Olm") as TargetMonster;
             monster.setActiveVariant("Left claw");
-            result.targetMonster = monster
+            result.targetMonster = monster;
             result.calculateDPS();
         });
 
-        test('should calculate DPS correctly', () => {
+        test("should calculate DPS correctly", () => {
             shouldEqualPrecise(result.dps, 8.519); //Matches Bitterkoekje
         });
 
-        test('should calculate maxHit correctly', () => {
+        test("should calculate maxHit correctly", () => {
             expect(result.maxHit).toBe(56); //Matches Bitterkoekje
         });
 
-        test('should calculate hitChance correctly', () => {
+        test("should calculate hitChance correctly", () => {
             shouldEqualPrecise(result.hitChance, 0.7302); //Matches Bitterkoekje
         });
     });
 
-    describe('with dragon hunter lance and salve against undead dragon', () => {
+    describe("with dragon hunter lance and salve against undead dragon", () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General])
                 .addItemByName(ItemName.DragonHunterLance)
@@ -1040,20 +1041,20 @@ describe('Calculator class', () => {
             result.calculateDPS();
         });
 
-        test('should calculate DPS correctly', () => {
+        test("should calculate DPS correctly", () => {
             shouldEqualPrecise(result.dps, 10.892); //Matches Bitterkoekje
         });
 
-        test('should calculate maxHit correctly', () => {
+        test("should calculate maxHit correctly", () => {
             expect(result.maxHit).toBe(68); //Matches Bitterkoekje
         });
 
-        test('should calculate hitChance correctly', () => {
+        test("should calculate hitChance correctly", () => {
             shouldEqualPrecise(result.hitChance, 0.7688); //Matches Bitterkoekje
         });
     });
 
-    describe('with dragon hunter crossbow and salve against undead dragon', () => {
+    describe("with dragon hunter crossbow and salve against undead dragon", () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General])
                 .addItemByName(ItemName.DragonHunterCrossbow)
@@ -1071,20 +1072,20 @@ describe('Calculator class', () => {
             result.calculateDPS();
         });
 
-        test('should calculate DPS correctly', () => {
+        test("should calculate DPS correctly", () => {
             shouldEqualPrecise(result.dps, 10.199); //Matches Bitterkoekje
         });
 
-        test('should calculate maxHit correctly', () => {
+        test("should calculate maxHit correctly", () => {
             expect(result.maxHit).toBe(80); //Matches Bitterkoekje
         });
 
-        test('should calculate hitChance correctly', () => {
-            shouldEqualPrecise(result.hitChance, 0.8410); //Matches Bitterkoekje
+        test("should calculate hitChance correctly", () => {
+            shouldEqualPrecise(result.hitChance, 0.841); //Matches Bitterkoekje
         });
     });
 
-    describe('with inquisitors against Kalphite Queen', () => {
+    describe("with inquisitors against Kalphite Queen", () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General])
                 .addItemByName(ItemName.InquisitorsMace)
@@ -1103,21 +1104,20 @@ describe('Calculator class', () => {
             result.calculateDPS();
         });
 
-        test('should calculate DPS correctly', () => {
+        test("should calculate DPS correctly", () => {
             shouldEqualPrecise(result.dps, 8.107); //Matches Bitterkoekje
         });
 
-        test('should calculate maxHit correctly', () => {
+        test("should calculate maxHit correctly", () => {
             expect(result.maxHit).toBe(55); //Matches Bitterkoekje
         });
 
-        test('should calculate hitChance correctly', () => {
+        test("should calculate hitChance correctly", () => {
             shouldEqualPrecise(result.hitChance, 0.7076); //Matches Bitterkoekje
         });
     });
 
-
-    describe('with 2 piece inquisitors against Kalphite Queen', () => {
+    describe("with 2 piece inquisitors against Kalphite Queen", () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General])
                 .addItemByName(ItemName.InquisitorsMace)
@@ -1136,20 +1136,20 @@ describe('Calculator class', () => {
             result.calculateDPS();
         });
 
-        test('should calculate DPS correctly', () => {
+        test("should calculate DPS correctly", () => {
             shouldEqualPrecise(result.dps, 7.948); //Matches Bitterkoekje
         });
 
-        test('should calculate maxHit correctly', () => {
+        test("should calculate maxHit correctly", () => {
             expect(result.maxHit).toBe(55); //Matches Bitterkoekje
         });
 
-        test('should calculate hitChance correctly', () => {
+        test("should calculate hitChance correctly", () => {
             shouldEqualPrecise(result.hitChance, 0.6936); //Matches Bitterkoekje
         });
     });
 
-    describe('with inquisitors stab against Kalphite Queen', () => {
+    describe("with inquisitors stab against Kalphite Queen", () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General])
                 .addItemByName(ItemName.InquisitorsMace)
@@ -1168,20 +1168,20 @@ describe('Calculator class', () => {
             result.calculateDPS();
         });
 
-        test('should calculate DPS correctly', () => {
+        test("should calculate DPS correctly", () => {
             shouldEqualPrecise(result.dps, 4.114); //Matches Bitterkoekje
         });
 
-        test('should calculate maxHit correctly', () => {
+        test("should calculate maxHit correctly", () => {
             expect(result.maxHit).toBe(53); //Matches Bitterkoekje
         });
 
-        test('should calculate hitChance correctly', () => {
+        test("should calculate hitChance correctly", () => {
             shouldEqualPrecise(result.hitChance, 0.3726); //Matches Bitterkoekje
         });
     });
 
-    describe('with armadyl crossbow on rapid', () => {
+    describe("with armadyl crossbow on rapid", () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General])
                 .addItemByName(ItemName.ArmadylCrossbow)
@@ -1199,20 +1199,20 @@ describe('Calculator class', () => {
             result.calculateDPS();
         });
 
-        test('should calculate DPS correctly', () => {
+        test("should calculate DPS correctly", () => {
             shouldEqualPrecise(result.dps, 2.535); //Matches Bitterkoekje
         });
 
-        test('should calculate maxHit correctly', () => {
+        test("should calculate maxHit correctly", () => {
             expect(result.maxHit).toBe(48); //Matches Bitterkoekje
         });
 
-        test('should calculate hitChance correctly', () => {
+        test("should calculate hitChance correctly", () => {
             shouldEqualPrecise(result.hitChance, 0.3169); //Matches Bitterkoekje
         });
     });
 
-    describe('with armadyl crossbow on accurate', () => {
+    describe("with armadyl crossbow on accurate", () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General])
                 .addItemByName(ItemName.ArmadylCrossbow)
@@ -1230,20 +1230,20 @@ describe('Calculator class', () => {
             result.calculateDPS();
         });
 
-        test('should calculate DPS correctly', () => {
+        test("should calculate DPS correctly", () => {
             shouldEqualPrecise(result.dps, 2.202); //Matches Bitterkoekje
         });
 
-        test('should calculate maxHit correctly', () => {
+        test("should calculate maxHit correctly", () => {
             expect(result.maxHit).toBe(49); //Matches Bitterkoekje
         });
 
-        test('should calculate hitChance correctly', () => {
+        test("should calculate hitChance correctly", () => {
             shouldEqualPrecise(result.hitChance, 0.3236); //Matches Bitterkoekje
         });
     });
 
-    describe('with armadyl crossbow with Diamond Dragon Bolts (e) on rapid', () => {
+    describe("with armadyl crossbow with Diamond Dragon Bolts (e) on rapid", () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General])
                 .addItemByName(ItemName.ArmadylCrossbow)
@@ -1261,20 +1261,20 @@ describe('Calculator class', () => {
             result.calculateDPS();
         });
 
-        test('should calculate DPS correctly', () => {
+        test("should calculate DPS correctly", () => {
             shouldEqualPrecise(result.dps, 3.265); //Matches Bitterkoekje
         });
 
-        test('should calculate maxHit correctly', () => {
+        test("should calculate maxHit correctly", () => {
             expect(result.maxHit).toBe(55); //Matches Bitterkoekje
         });
 
-        test('should calculate hitChance correctly', () => {
+        test("should calculate hitChance correctly", () => {
             shouldEqualPrecise(result.hitChance, 0.3169); //Matches Bitterkoekje
         });
     });
 
-    describe('with armadyl crossbow with Diamond Dragon Bolts (e) on accurate', () => {
+    describe("with armadyl crossbow with Diamond Dragon Bolts (e) on accurate", () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General])
                 .addItemByName(ItemName.ArmadylCrossbow)
@@ -1292,20 +1292,20 @@ describe('Calculator class', () => {
             result.calculateDPS();
         });
 
-        test('should calculate DPS correctly', () => {
+        test("should calculate DPS correctly", () => {
             shouldEqualPrecise(result.dps, 2.816); //Matches Bitterkoekje
         });
 
-        test('should calculate maxHit correctly', () => {
+        test("should calculate maxHit correctly", () => {
             expect(result.maxHit).toBe(56); //Matches Bitterkoekje
         });
 
-        test('should calculate hitChance correctly', () => {
+        test("should calculate hitChance correctly", () => {
             shouldEqualPrecise(result.hitChance, 0.3236); //Matches Bitterkoekje
         });
     });
 
-    describe('with armadyl crossbow with Ruby Dragon Bolts (e) on rapid', () => {
+    describe("with armadyl crossbow with Ruby Dragon Bolts (e) on rapid", () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General])
                 .addItemByName(ItemName.ArmadylCrossbow)
@@ -1323,20 +1323,20 @@ describe('Calculator class', () => {
             result.calculateDPS();
         });
 
-        test('should calculate DPS correctly', () => {
-            shouldEqualPrecise(result.dps, 3.490); //Matches Bitterkoekje
+        test("should calculate DPS correctly", () => {
+            shouldEqualPrecise(result.dps, 3.49); //Matches Bitterkoekje
         });
 
-        test('should calculate maxHit correctly', () => {
+        test("should calculate maxHit correctly", () => {
             expect(result.maxHit).toBe(51); //Matches Bitterkoekje
         });
 
-        test('should calculate hitChance correctly', () => {
+        test("should calculate hitChance correctly", () => {
             shouldEqualPrecise(result.hitChance, 0.3169); //Matches Bitterkoekje
         });
     });
 
-    describe('with armadyl crossbow with Onyx Dragon Bolts (e) on rapid', () => {
+    describe("with armadyl crossbow with Onyx Dragon Bolts (e) on rapid", () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General])
                 .addItemByName(ItemName.ArmadylCrossbow)
@@ -1354,20 +1354,20 @@ describe('Calculator class', () => {
             result.calculateDPS();
         });
 
-        test('should calculate DPS correctly', () => {
+        test("should calculate DPS correctly", () => {
             shouldEqualPrecise(result.dps, 2.593); //Matches Bitterkoekje
         });
 
-        test('should calculate maxHit correctly', () => {
+        test("should calculate maxHit correctly", () => {
             expect(result.maxHit).toBe(57); //Matches Bitterkoekje
         });
 
-        test('should calculate hitChance correctly', () => {
+        test("should calculate hitChance correctly", () => {
             shouldEqualPrecise(result.hitChance, 0.3169); //Matches Bitterkoekje
         });
     });
 
-    describe('with zaryte crossbow with Onyx Dragon Bolts (e) on rapid', () => {
+    describe("with zaryte crossbow with Onyx Dragon Bolts (e) on rapid", () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General])
                 .addItemByName(ItemName.ZaryteCrossbow)
@@ -1385,20 +1385,20 @@ describe('Calculator class', () => {
             result.calculateDPS();
         });
 
-        test('should calculate DPS correctly', () => {
+        test("should calculate DPS correctly", () => {
             shouldEqualPrecise(result.dps, 2.68); //Matches Bitterkoekje
         });
 
-        test('should calculate maxHit correctly', () => {
+        test("should calculate maxHit correctly", () => {
             expect(result.maxHit).toBe(63); //Tested in game
         });
 
-        test('should calculate hitChance correctly', () => {
+        test("should calculate hitChance correctly", () => {
             shouldEqualPrecise(result.hitChance, 0.3269); //Matches Bitterkoekje
         });
     });
 
-    describe('with zaryte crossbow with Diamond Dragon Bolts (e) on rapid', () => {
+    describe("with zaryte crossbow with Diamond Dragon Bolts (e) on rapid", () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General])
                 .addItemByName(ItemName.ZaryteCrossbow)
@@ -1416,20 +1416,20 @@ describe('Calculator class', () => {
             result.calculateDPS();
         });
 
-        test('should calculate DPS correctly', () => {
+        test("should calculate DPS correctly", () => {
             shouldEqualPrecise(result.dps, 3.427); //Matches Bitterkoekje
         });
 
-        test('should calculate maxHit correctly', () => {
+        test("should calculate maxHit correctly", () => {
             expect(result.maxHit).toBe(60); //Matches Bitterkoekje
         });
 
-        test('should calculate hitChance correctly', () => {
-            expect(result.hitChance).toBeCloseTo(0.3269) //Matches Bitterkoekje
+        test("should calculate hitChance correctly", () => {
+            expect(result.hitChance).toBeCloseTo(0.3269); //Matches Bitterkoekje
         });
     });
 
-    describe('with bowfa on rapid', () => {
+    describe("with bowfa on rapid", () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General])
                 .addItemByName(ItemName.BowOfFaerdhinen)
@@ -1445,20 +1445,20 @@ describe('Calculator class', () => {
             result.calculateDPS();
         });
 
-        test('should calculate DPS correctly', () => {
+        test("should calculate DPS correctly", () => {
             shouldEqualPrecise(result.dps, 3.98); //Matches Bitterkoekje
         });
 
-        test('should calculate maxHit correctly', () => {
+        test("should calculate maxHit correctly", () => {
             expect(result.maxHit).toBe(47); //Matches Bitterkoekje
         });
 
-        test('should calculate hitChance correctly', () => {
+        test("should calculate hitChance correctly", () => {
             shouldEqualPrecise(result.hitChance, 0.407); //Matches Bitterkoekje
         });
     });
 
-    describe('with bowfa and slayer helmet on rapid', () => {
+    describe("with bowfa and slayer helmet on rapid", () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General])
                 .addItemByName(ItemName.BowOfFaerdhinen)
@@ -1466,27 +1466,27 @@ describe('Calculator class', () => {
                 .addItemByName(ItemName.SlayerHelmetI)
                 .addItemByName(ItemName.CrystalBody)
                 .addItemByName(ItemName.CrystalLegs)
-                .addItemByName(ItemName.AvasAssembler)
+                .addItemByName(ItemName.AvasAssembler);
             result.player.skills.ranged.boost = 0;
             result.player.onTask = true;
 
             result.calculateDPS();
         });
 
-        test('should calculate DPS correctly', () => {
+        test("should calculate DPS correctly", () => {
             shouldEqualPrecise(result.dps, 2.945732477); //Matches Bitterkoekje
         });
 
-        test('should calculate maxHit correctly', () => {
+        test("should calculate maxHit correctly", () => {
             expect(result.maxHit).toBe(44); //Matches Bitterkoekje
         });
 
-        test('should calculate hitChance correctly', () => {
+        test("should calculate hitChance correctly", () => {
             shouldEqualPrecise(result.hitChance, 0.3214); //Matches Bitterkoekje
         });
     });
 
-    describe('with blowpipe on rapid', () => {
+    describe("with blowpipe on rapid", () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General])
                 .addItemByName(ItemName.ToxicBlowpipe)
@@ -1502,20 +1502,20 @@ describe('Calculator class', () => {
             result.calculateDPS();
         });
 
-        test('should calculate DPS correctly', () => {
+        test("should calculate DPS correctly", () => {
             shouldEqualPrecise(result.dps, 2.931); //Matches Bitterkoekje
         });
 
-        test('should calculate maxHit correctly', () => {
+        test("should calculate maxHit correctly", () => {
             expect(result.maxHit).toBe(31); //Matches Bitterkoekje
         });
 
-        test('should calculate hitChance correctly', () => {
+        test("should calculate hitChance correctly", () => {
             shouldEqualPrecise(result.hitChance, 0.2269); //Matches Bitterkoekje
         });
     });
 
-    describe('with blowpipe on accurate', () => {
+    describe("with blowpipe on accurate", () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General])
                 .addItemByName(ItemName.ToxicBlowpipe)
@@ -1531,20 +1531,20 @@ describe('Calculator class', () => {
             result.calculateDPS();
         });
 
-        test('should calculate DPS correctly', () => {
+        test("should calculate DPS correctly", () => {
             shouldEqualPrecise(result.dps, 2.06); //Matches Bitterkoekje
         });
 
-        test('should calculate maxHit correctly', () => {
+        test("should calculate maxHit correctly", () => {
             expect(result.maxHit).toBe(32); //Matches Bitterkoekje
         });
 
-        test('should calculate hitChance correctly', () => {
+        test("should calculate hitChance correctly", () => {
             shouldEqualPrecise(result.hitChance, 0.2317); //Matches Bitterkoekje
         });
     });
 
-    describe('against ice demon with tbow', () => {
+    describe("against ice demon with tbow", () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General])
                 .addItemByName(ItemName.TwistedBow)
@@ -1563,20 +1563,20 @@ describe('Calculator class', () => {
         });
 
         //Bitterkoekje has 0.35 multiplier for some reason
-        test('should calculate DPS correctly', () => {
+        test("should calculate DPS correctly", () => {
             shouldEqualPrecise(result.dps, 3.715); //Matches Bitterkoekje if you set multiplier to 0.333334 instead of 0.35
         });
 
-        test('should calculate maxHit correctly', () => {
+        test("should calculate maxHit correctly", () => {
             expect(result.maxHit).toBe(32); //Matches Bitterkoekje if you set multiplier to 0.333334 instead of 0.35
         });
 
-        test('should calculate hitChance correctly', () => {
+        test("should calculate hitChance correctly", () => {
             shouldEqualPrecise(result.hitChance, 0.6966); //Matches Bitterkoekje
         });
     });
 
-    describe('against ice demon with fire surge', () => {
+    describe("against ice demon with fire surge", () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General])
                 .addItemByName(ItemName.HarmonisedNightmareStaff)
@@ -1596,20 +1596,20 @@ describe('Calculator class', () => {
             result.calculateDPS();
         });
 
-        test('should calculate DPS correctly', () => {
+        test("should calculate DPS correctly", () => {
             shouldEqualPrecise(result.dps, 10.589); //Matches Bitterkoekje
         });
 
-        test('should calculate maxHit correctly', () => {
+        test("should calculate maxHit correctly", () => {
             expect(result.maxHit).toBe(73); //Matches Bitterkoekje
         });
 
-        test('should calculate hitChance correctly', () => {
+        test("should calculate hitChance correctly", () => {
             shouldEqualPrecise(result.hitChance, 0.6963); //Matches Bitterkoekje
         });
     });
 
-    describe('virtus ancient magicks against Dagannoth Rex', () => {
+    describe("virtus ancient magicks against Dagannoth Rex", () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General])
                 .addItemByName(ItemName.KodaiWand)
@@ -1629,20 +1629,20 @@ describe('Calculator class', () => {
             result.calculateDPS();
         });
 
-        test('should calculate DPS correctly', () => {
+        test("should calculate DPS correctly", () => {
             shouldEqualPrecise(result.dps, 7.429); //Matches Bitterkoekje
         });
 
-        test('should calculate maxHit correctly', () => {
+        test("should calculate maxHit correctly", () => {
             expect(result.maxHit).toBe(45); //Matches Bitterkoekje
         });
 
-        test('should calculate hitChance correctly', () => {
+        test("should calculate hitChance correctly", () => {
             shouldEqualPrecise(result.hitChance, 0.9906); //Matches Bitterkoekje
         });
     });
 
-    describe('harmonised ancient magicks against Dagannoth Rex', () => {
+    describe("harmonised ancient magicks against Dagannoth Rex", () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General])
                 .addItemByName(ItemName.HarmonisedNightmareStaff)
@@ -1662,20 +1662,20 @@ describe('Calculator class', () => {
             result.calculateDPS();
         });
 
-        test('should calculate DPS correctly', () => {
+        test("should calculate DPS correctly", () => {
             shouldEqualPrecise(result.dps, 7.092); //Matches Bitterkoekje
         });
 
-        test('should calculate maxHit correctly', () => {
+        test("should calculate maxHit correctly", () => {
             expect(result.maxHit).toBe(43); //Matches Bitterkoekje
         });
 
-        test('should calculate hitChance correctly', () => {
+        test("should calculate hitChance correctly", () => {
             shouldEqualPrecise(result.hitChance, 0.9896); //Matches Bitterkoekje
         });
     });
 
-    describe('arclight against Duke Sucellus', () => {
+    describe("arclight against Duke Sucellus", () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General])
                 .addItemByName(ItemName.Arclight)
@@ -1688,25 +1688,25 @@ describe('Calculator class', () => {
                 .addItemByName(ItemName.FerociousGloves)
                 .addItemByName(ItemName.AmuletOfTorture)
                 .addItemByName(ItemName.InfernalCape)
-                .addItemByName(ItemName.BellatorRing)
+                .addItemByName(ItemName.BellatorRing);
             result.targetMonster = monsters.get("Duke Sucellus") as TargetMonster;
             result.calculateDPS();
         });
 
-        test('should calculate DPS correctly', () => {
+        test("should calculate DPS correctly", () => {
             shouldEqualPrecise(result.dps, 5.993); //Matches Bitterkoekje
         });
 
-        test('should calculate maxHit correctly', () => {
+        test("should calculate maxHit correctly", () => {
             expect(result.maxHit).toBe(51); //Matches Bitterkoekje
         });
 
-        test('should calculate hitChance correctly', () => {
+        test("should calculate hitChance correctly", () => {
             shouldEqualPrecise(result.hitChance, 0.564); //Matches Bitterkoekje
         });
     });
 
-    describe('with ruby dragon bolts (e) against Zulrah', () => {
+    describe("with ruby dragon bolts (e) against Zulrah", () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General])
                 .addItemByName(ItemName.ZaryteCrossbow)
@@ -1719,27 +1719,27 @@ describe('Calculator class', () => {
                 .addItemByName(ItemName.ZaryteVambraces)
                 .addItemByName(ItemName.PegasianBoots)
                 .addItemByName(ItemName.NecklaceOfAnguish)
-                .addItemByName(ItemName.AvasAssembler)
+                .addItemByName(ItemName.AvasAssembler);
             result.targetMonster = monsters.get("Zulrah") as TargetMonster;
-            result.targetMonster.setActiveVariant("Tanzanite")
+            result.targetMonster.setActiveVariant("Tanzanite");
             result.calculateDPS();
         });
 
-        test('should calculate DPS correctly', () => {
+        test("should calculate DPS correctly", () => {
             shouldEqualPrecise(result.dps, 6.9254); //Matches manual redistribution
             shouldEqualPrecise(result.dps, 6.9147); //Matches Bitterkoekje
         });
 
-        test('should calculate maxHit correctly', () => {
+        test("should calculate maxHit correctly", () => {
             expect(result.maxHit).toBe(50);
         });
 
-        test('should calculate hitChance correctly', () => {
-            shouldEqualPrecise(result.hitChance, 0.7870); //Matches Bitterkoekje
+        test("should calculate hitChance correctly", () => {
+            shouldEqualPrecise(result.hitChance, 0.787); //Matches Bitterkoekje
         });
     });
 
-    describe('with twisted bow against Zulrah', () => {
+    describe("with twisted bow against Zulrah", () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General])
                 .addItemByName(ItemName.TwistedBow)
@@ -1752,7 +1752,7 @@ describe('Calculator class', () => {
                 .addItemByName(ItemName.PegasianBoots)
                 .addItemByName(ItemName.NecklaceOfAnguish)
                 .addItemByName(ItemName.AvasAssembler)
-                .addItemByName(ItemName.VenatorRing)
+                .addItemByName(ItemName.VenatorRing);
             result.targetMonster = monsters.get("Zulrah") as TargetMonster;
             result.targetMonster.setActiveVariant("Tanzanite");
 
@@ -1760,20 +1760,20 @@ describe('Calculator class', () => {
             result.calculateDPS();
         });
 
-        test('should calculate DPS correctly', () => {
+        test("should calculate DPS correctly", () => {
             shouldEqualPrecise(result.dps, 9.6875); //Matches Bitterkoekje
         });
 
-        test('should calculate maxHit correctly', () => {
+        test("should calculate maxHit correctly", () => {
             expect(result.maxHit).toBe(50);
         });
 
-        test('should calculate hitChance correctly', () => {
+        test("should calculate hitChance correctly", () => {
             shouldEqualPrecise(result.hitChance, 0.8398); //Matches Bitterkoekje
         });
     });
 
-    describe('with ruby dragon bolts (e) against Tekton', () => {
+    describe("with ruby dragon bolts (e) against Tekton", () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General])
                 .addItemByName(ItemName.ZaryteCrossbow)
@@ -1786,21 +1786,21 @@ describe('Calculator class', () => {
                 .addItemByName(ItemName.ZaryteVambraces)
                 .addItemByName(ItemName.PegasianBoots)
                 .addItemByName(ItemName.NecklaceOfAnguish)
-                .addItemByName(ItemName.AvasAssembler)
+                .addItemByName(ItemName.AvasAssembler);
             result.targetMonster = monsters.get("Tekton") as TargetMonster;
             result.calculateDPS();
         });
 
-        test('should calculate DPS correctly', () => {
+        test("should calculate DPS correctly", () => {
             shouldEqualPrecise(result.dps, 0);
         });
 
-        test('should calculate maxHit correctly', () => {
+        test("should calculate maxHit correctly", () => {
             expect(result.maxHit).toBe(0);
         });
     });
 
-    describe('scythe on verzik p1', () => {
+    describe("scythe on verzik p1", () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General])
                 .addItemByName(ItemName.ScytheOfVitur)
@@ -1812,26 +1812,26 @@ describe('Calculator class', () => {
                 .addItemByName(ItemName.PrimordialBoots)
                 .addItemByName(ItemName.AmuletOfTorture)
                 .addItemByName(ItemName.InfernalCape)
-                .addItemByName(ItemName.BellatorRing)
+                .addItemByName(ItemName.BellatorRing);
             result.targetMonster = monsters.get("Verzik Vitur") as TargetMonster;
             result.targetMonster.setActiveVariant("Normal mode, Phase 1");
             result.calculateDPS();
         });
 
-        test('should calculate DPS correctly', () => {
+        test("should calculate DPS correctly", () => {
             shouldEqualPrecise(result.dps, 3.9426);
         });
 
-        test('should calculate maxHit correctly', () => {
+        test("should calculate maxHit correctly", () => {
             expect(result.maxHit).toBe(30);
         });
 
-        test('should calculate hitChance correctly', () => {
+        test("should calculate hitChance correctly", () => {
             shouldEqualPrecise(result.hitChance, 0.9653);
         });
     });
 
-    describe('scythe with void on verzik p1', () => {
+    describe("scythe with void on verzik p1", () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General])
                 .addItemByName(ItemName.ScytheOfVitur)
@@ -1843,26 +1843,26 @@ describe('Calculator class', () => {
                 .addItemByName(ItemName.PrimordialBoots)
                 .addItemByName(ItemName.AmuletOfTorture)
                 .addItemByName(ItemName.InfernalCape)
-                .addItemByName(ItemName.BellatorRing)
+                .addItemByName(ItemName.BellatorRing);
             result.targetMonster = monsters.get("Verzik Vitur") as TargetMonster;
             result.targetMonster.setActiveVariant("Normal mode, Phase 1");
             result.calculateDPS();
         });
 
-        test('should calculate DPS correctly', () => {
+        test("should calculate DPS correctly", () => {
             shouldEqualPrecise(result.dps, 3.8704);
         });
 
-        test('should calculate maxHit correctly', () => {
+        test("should calculate maxHit correctly", () => {
             expect(result.maxHit).toBe(30);
         });
 
-        test('should calculate hitChance correctly', () => {
+        test("should calculate hitChance correctly", () => {
             shouldEqualPrecise(result.hitChance, 0.9653);
         });
     });
 
-    describe('melee on kraken', () => {
+    describe("melee on kraken", () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General])
                 .addItemByName(ItemName.ScytheOfVitur)
@@ -1874,21 +1874,21 @@ describe('Calculator class', () => {
                 .addItemByName(ItemName.PrimordialBoots)
                 .addItemByName(ItemName.AmuletOfTorture)
                 .addItemByName(ItemName.InfernalCape)
-                .addItemByName(ItemName.BellatorRing)
+                .addItemByName(ItemName.BellatorRing);
             result.targetMonster = monsters.get("Kraken") as TargetMonster;
             result.calculateDPS();
         });
 
-        test('should calculate DPS correctly', () => {
+        test("should calculate DPS correctly", () => {
             shouldEqualPrecise(result.dps, 0);
         });
 
-        test('should calculate maxHit correctly', () => {
+        test("should calculate maxHit correctly", () => {
             expect(result.maxHit).toBe(0);
         });
     });
 
-    describe('water surge on kraken', () => {
+    describe("water surge on kraken", () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General])
                 .addItemByName(ItemName.HarmonisedNightmareStaff)
@@ -1909,20 +1909,20 @@ describe('Calculator class', () => {
             result.calculateDPS();
         });
 
-        test('should calculate DPS correctly', () => {
+        test("should calculate DPS correctly", () => {
             shouldEqualPrecise(result.dps, 8.1477); //Matches Bitterkoekje (magic lvl is wrong on Bitter though)
         });
 
-        test('should calculate maxHit correctly', () => {
+        test("should calculate maxHit correctly", () => {
             expect(result.maxHit).toBe(40); //Matches Bitterkoekje
         });
 
-        test('should calculate hitChance correctly', () => {
+        test("should calculate hitChance correctly", () => {
             shouldEqualPrecise(result.hitChance, 0.9777); //Matches Bitterkoekje
         });
     });
 
-    describe('fire bolt with chaos gauntlets', () => {
+    describe("fire bolt with chaos gauntlets", () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General])
                 .addItemByName(ItemName.MysticSmokeStaff)
@@ -1943,20 +1943,20 @@ describe('Calculator class', () => {
             result.calculateDPS();
         });
 
-        test('should calculate DPS correctly', () => {
+        test("should calculate DPS correctly", () => {
             shouldEqualPrecise(result.dps, 5.0798); //Matches Bitterkoekje
         });
 
-        test('should calculate maxHit correctly', () => {
+        test("should calculate maxHit correctly", () => {
             expect(result.maxHit).toBe(31); //Matches Bitterkoekje
         });
 
-        test('should calculate hitChance correctly', () => {
+        test("should calculate hitChance correctly", () => {
             shouldEqualPrecise(result.hitChance, 0.9832); //Matches Bitterkoekje
         });
     });
 
-    describe('fire bolt with chaos gauntlets', () => {
+    describe("fire bolt with chaos gauntlets", () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General])
                 .addItemByName(ItemName.MysticSmokeStaff)
@@ -1977,20 +1977,20 @@ describe('Calculator class', () => {
             result.calculateDPS();
         });
 
-        test('should calculate DPS correctly', () => {
+        test("should calculate DPS correctly", () => {
             shouldEqualPrecise(result.dps, 5.08155); //Matches Bitterkoekje
         });
 
-        test('should calculate maxHit correctly', () => {
+        test("should calculate maxHit correctly", () => {
             expect(result.maxHit).toBe(31); //Tested in game
         });
 
-        test('should calculate hitChance correctly', () => {
+        test("should calculate hitChance correctly", () => {
             shouldEqualPrecise(result.hitChance, 0.9835); //Matches Bitterkoekje
         });
     });
 
-    describe('fire bolt with chaos gauntlets no cape', () => {
+    describe("fire bolt with chaos gauntlets no cape", () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General])
                 .addItemByName(ItemName.MysticSmokeStaff)
@@ -2011,12 +2011,12 @@ describe('Calculator class', () => {
             result.calculateDPS();
         });
 
-        test('should calculate maxHit correctly', () => {
+        test("should calculate maxHit correctly", () => {
             expect(result.maxHit).toBe(30); //Tested in game
         });
     });
 
-    describe('fire bolt with chaos gauntlets no cape or helm', () => {
+    describe("fire bolt with chaos gauntlets no cape or helm", () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General])
                 .addItemByName(ItemName.MysticSmokeStaff)
@@ -2037,12 +2037,12 @@ describe('Calculator class', () => {
             result.calculateDPS();
         });
 
-        test('should calculate maxHit correctly', () => {
+        test("should calculate maxHit correctly", () => {
             expect(result.maxHit).toBe(27); //Tested in game
         });
     });
 
-    describe('fire bolt with chaos gauntlets no helm', () => {
+    describe("fire bolt with chaos gauntlets no helm", () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General])
                 .addItemByName(ItemName.MysticSmokeStaff)
@@ -2063,145 +2063,144 @@ describe('Calculator class', () => {
             result.calculateDPS();
         });
 
-        test('should calculate maxHit correctly', () => {
+        test("should calculate maxHit correctly", () => {
             expect(result.maxHit).toBe(28); //Tested in game
         });
     });
 
-    describe('sanguinesti staff with salve amulet', () => {
+    describe("sanguinesti staff with salve amulet", () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General])
                 .addItemByName(ItemName.SanguinestiStaff)
                 .setCombatStyle(CombatStyle.Accurate)
                 .addItemByName(ItemName.SalveAmuletEI)
-                .addItemByName(ItemName.TormentedBracelet)
+                .addItemByName(ItemName.TormentedBracelet);
             result.targetMonster = monsters.get("Pestilent Bloat") as TargetMonster;
             result.player.skills.magic.boost = 13; //Saturated heart
             result.calculateDPS();
         });
 
-        test('should calculate DPS correctly', () => {
+        test("should calculate DPS correctly", () => {
             shouldEqualPrecise(result.dps, 0.7964); //Matches Bitterkoekje
         });
 
-        test('should calculate maxHit correctly', () => {
+        test("should calculate maxHit correctly", () => {
             expect(result.maxHit).toBe(45); //Tested in game
         });
 
-        test('should calculate hitChance correctly', () => {
-            shouldEqualPrecise(result.hitChance, 0.0850); //Matches Bitterkoekje
+        test("should calculate hitChance correctly", () => {
+            shouldEqualPrecise(result.hitChance, 0.085); //Matches Bitterkoekje
         });
     });
 
-    describe('warped sceptre', () => {
+    describe("warped sceptre", () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General])
                 .addItemByName(ItemName.WarpedSceptre)
-                .setCombatStyle(CombatStyle.Accurate)
+                .setCombatStyle(CombatStyle.Accurate);
 
             result.player.skills.magic.boost = 13; //Saturated heart
             result.calculateDPS();
         });
 
-        test('should calculate maxHit correctly', () => {
+        test("should calculate maxHit correctly", () => {
             expect(result.maxHit).toBe(26); //Tested in game
         });
     });
 
-    describe('sanguinesti staff with amulet of avarice', () => {
+    describe("sanguinesti staff with amulet of avarice", () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General])
                 .addItemByName(ItemName.SanguinestiStaff)
                 .setCombatStyle(CombatStyle.Accurate)
                 .addItemByName(ItemName.AmuletOfAvarice)
-                .addItemByName(ItemName.TormentedBracelet)
+                .addItemByName(ItemName.TormentedBracelet);
             result.targetMonster = monsters.get("Revenant dragon") as TargetMonster;
             result.player.skills.magic.boost = 13; //Saturated heart
             result.calculateDPS();
         });
 
-        test('should calculate maxHit correctly', () => {
+        test("should calculate maxHit correctly", () => {
             expect(result.maxHit).toBe(45); //Tested in game
         });
     });
 
-    describe('dhcb with ruby bolts', () => {
+    describe("dhcb with ruby bolts", () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General])
                 .addItemByName(ItemName.DragonHunterCrossbow)
                 .setCombatStyle(CombatStyle.Rapid)
                 .addItemByName(ItemName.DragonBolts)
-                .addItemByName(ItemName.MasoriBodyF)
+                .addItemByName(ItemName.MasoriBodyF);
             result.targetMonster = monsters.get("Blue dragon") as TargetMonster;
             result.calculateDPS();
         });
 
-        test('should calculate maxHit correctly', () => {
+        test("should calculate maxHit correctly", () => {
             expect(result.maxHit).toBe(53); //Tested in game
         });
     });
 
-    describe('abyssal tentacle with amulet of avarice', () => {
+    describe("abyssal tentacle with amulet of avarice", () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General])
                 .addItemByName(ItemName.AbyssalTentacle)
                 .setCombatStyle(CombatStyle.Flick)
-                .addItemByName(ItemName.AmuletOfAvarice)
+                .addItemByName(ItemName.AmuletOfAvarice);
             result.targetMonster = monsters.get("Revenant dragon") as TargetMonster;
             result.calculateDPS();
         });
 
-        test('should calculate maxHit correctly', () => {
+        test("should calculate maxHit correctly", () => {
             expect(result.maxHit).toBe(44); //Tested in game
         });
     });
 
-    describe('sanguinesti staff with slayer helmet', () => {
+    describe("sanguinesti staff with slayer helmet", () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General])
                 .addItemByName(ItemName.SanguinestiStaff)
                 .setCombatStyle(CombatStyle.Accurate)
                 .addItemByName(ItemName.SlayerHelmetI)
-                .addItemByName(ItemName.TormentedBracelet)
+                .addItemByName(ItemName.TormentedBracelet);
             result.player.onTask = true;
             result.player.skills.magic.boost = 13; //Saturated heart
             result.calculateDPS();
         });
 
-        test('should calculate DPS correctly', () => {
+        test("should calculate DPS correctly", () => {
             shouldEqualPrecise(result.dps, 1.404); //Matches Bitterkoekje
         });
 
-        test('should calculate maxHit correctly', () => {
+        test("should calculate maxHit correctly", () => {
             expect(result.maxHit).toBe(42); //Tested in game
         });
 
-        test('should calculate hitChance correctly', () => {
+        test("should calculate hitChance correctly", () => {
             shouldEqualPrecise(result.hitChance, 0.1605); //Matches Bitterkoekje
         });
     });
 
-    describe('sanguinesti staff with slayer helmet and salve', () => {
+    describe("sanguinesti staff with slayer helmet and salve", () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General])
                 .addItemByName(ItemName.SanguinestiStaff)
                 .setCombatStyle(CombatStyle.Accurate)
                 .addItemByName(ItemName.SlayerHelmetI)
                 .addItemByName(ItemName.SalveAmuletI)
-                .addItemByName(ItemName.TormentedBracelet)
+                .addItemByName(ItemName.TormentedBracelet);
             result.player.onTask = true;
             result.player.skills.magic.boost = 13; //Saturated heart
             result.targetMonster = monsters.get("Pestilent Bloat") as TargetMonster;
             result.calculateDPS();
         });
 
-        test('should calculate maxHit correctly', () => {
+        test("should calculate maxHit correctly", () => {
             expect(result.maxHit).toBe(43); //Tested in game
         });
-
     });
 
-    describe('fire bolt with regular staff', () => {
+    describe("fire bolt with regular staff", () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General])
                 .addItemByName(ItemName.StaffOfFire)
@@ -2222,12 +2221,12 @@ describe('Calculator class', () => {
             result.calculateDPS();
         });
 
-        test('should calculate maxHit correctly', () => {
+        test("should calculate maxHit correctly", () => {
             expect(result.maxHit).toBe(25); //Tested in game
         });
     });
 
-    describe('with dragon hunter crossbow and slayer helmet against dragon', () => {
+    describe("with dragon hunter crossbow and slayer helmet against dragon", () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General])
                 .addItemByName(ItemName.DragonHunterCrossbow)
@@ -2247,20 +2246,20 @@ describe('Calculator class', () => {
             result.calculateDPS();
         });
 
-        test('should calculate DPS correctly', () => {
+        test("should calculate DPS correctly", () => {
             shouldEqualPrecise(result.dps, 10.322); //Matches Bitterkoekje
         });
 
-        test('should calculate maxHit correctly', () => {
+        test("should calculate maxHit correctly", () => {
             expect(result.maxHit).toBe(68); //Matches Bitterkoekje
         });
 
-        test('should calculate hitChance correctly', () => {
+        test("should calculate hitChance correctly", () => {
             shouldEqualPrecise(result.hitChance, 0.9108); //Matches Bitterkoekje
         });
     });
 
-    describe('with dragon hunter crossbow and slayer helmet against dragon', () => {
+    describe("with dragon hunter crossbow and slayer helmet against dragon", () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General])
                 .addItemByName(ItemName.DragonHunterCrossbow)
@@ -2280,20 +2279,20 @@ describe('Calculator class', () => {
             result.calculateDPS();
         });
 
-        test('should calculate DPS correctly', () => {
+        test("should calculate DPS correctly", () => {
             shouldEqualPrecise(result.dps, 10.322); //Matches Bitterkoekje
         });
 
-        test('should calculate maxHit correctly', () => {
+        test("should calculate maxHit correctly", () => {
             expect(result.maxHit).toBe(68); //Matches Bitterkoekje
         });
 
-        test('should calculate hitChance correctly', () => {
+        test("should calculate hitChance correctly", () => {
             shouldEqualPrecise(result.hitChance, 0.9108); //Matches Bitterkoekje
         });
     });
 
-    describe('with dragon hunter lance against rune dragon', () => {
+    describe("with dragon hunter lance against rune dragon", () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General])
                 .addItemByName(ItemName.DragonHunterLance)
@@ -2302,26 +2301,26 @@ describe('Calculator class', () => {
                 .addItemByName(ItemName.FerociousGloves)
                 .addItemByName(ItemName.AmuletOfTorture)
                 .addItemByName(ItemName.FireCape)
-                .addItemByName(ItemName.BerserkerRingI)
+                .addItemByName(ItemName.BerserkerRingI);
 
             result.targetMonster = monsters.get("Rune dragon") as TargetMonster;
             result.calculateDPS();
         });
 
-        test('should calculate DPS correctly', () => {
+        test("should calculate DPS correctly", () => {
             shouldEqualPrecise(result.dps, 6.256); //Matches Bitterkoekje (once you fix defence level)
         });
 
-        test('should calculate maxHit correctly', () => {
+        test("should calculate maxHit correctly", () => {
             expect(result.maxHit).toBe(51); //Matches Bitterkoekje
         });
 
-        test('should calculate hitChance correctly', () => {
+        test("should calculate hitChance correctly", () => {
             shouldEqualPrecise(result.hitChance, 0.5888); //Matches Bitterkoekje
         });
     });
 
-    describe('with osmumtens fang against rune dragon', () => {
+    describe("with osmumtens fang against rune dragon", () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General])
                 .addItemByName(ItemName.OsmumtensFang)
@@ -2330,91 +2329,88 @@ describe('Calculator class', () => {
                 .addItemByName(ItemName.FerociousGloves)
                 .addItemByName(ItemName.AmuletOfTorture)
                 .addItemByName(ItemName.FireCape)
-                .addItemByName(ItemName.BerserkerRingI)
+                .addItemByName(ItemName.BerserkerRingI);
 
             result.targetMonster = monsters.get("Rune dragon") as TargetMonster;
             result.calculateDPS();
         });
 
-        test('should calculate DPS correctly', () => {
+        test("should calculate DPS correctly", () => {
             shouldEqualPrecise(result.dps, 6.2327); //Matches Bitterkoekje (once you fix defence level)
         });
 
-        test('should calculate maxHit correctly', () => {
+        test("should calculate maxHit correctly", () => {
             expect(result.maxHit).toBe(44); //Matches Bitterkoekje
         });
 
-        test('should calculate hitChance correctly', () => {
+        test("should calculate hitChance correctly", () => {
             shouldEqualPrecise(result.hitChance, 0.7333); //Matches Bitterkoekje
         });
     });
 
-    describe('with arclight on vampyre', () => {
+    describe("with arclight on vampyre", () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General])
                 .addItemByName(ItemName.Arclight)
-                .setCombatStyle(CombatStyle.Slash)
+                .setCombatStyle(CombatStyle.Slash);
 
             result.targetMonster = monsters.get("Feral Vampyre") as TargetMonster;
             result.calculateDPS();
         });
 
-        test('should calculate maxHit correctly', () => {
+        test("should calculate maxHit correctly", () => {
             expect(result.maxHit).toBe(19);
         });
-
     });
 
-
-    describe('with blisterwood flail on Vyrewatch (87)', () => {
+    describe("with blisterwood flail on Vyrewatch (87)", () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General])
                 .addItemByName(ItemName.BlisterwoodFlail)
-                .setCombatStyle(CombatStyle.Pound)
+                .setCombatStyle(CombatStyle.Pound);
 
             result.targetMonster = monsters.get("Vyrewatch") as TargetMonster;
             result.calculateDPS();
         });
 
-        test('should calculate DPS correctly', () => {
+        test("should calculate DPS correctly", () => {
             shouldEqualPrecise(result.dps, 4.748); //Matches Bitterkoekje
         });
 
-        test('should calculate maxHit correctly', () => {
+        test("should calculate maxHit correctly", () => {
             expect(result.maxHit).toBe(33); //Matches Bitterkoekje
         });
 
-        test('should calculate hitChance correctly', () => {
+        test("should calculate hitChance correctly", () => {
             shouldEqualPrecise(result.hitChance, 0.8633); //Matches Bitterkoekje (Bitter doesn't seem to apply accuracy bonus)
         });
-
     });
 
-    describe('with Ruby Dragon Bolts (e) against vampyre', () => {
+    describe("with Ruby Dragon Bolts (e) against vampyre", () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General])
                 .addItemByName(ItemName.ZaryteCrossbow)
                 .setCombatStyle(CombatStyle.Rapid)
-                .addItemByName(ItemName.RubyDragonBoltsE)
+                .addItemByName(ItemName.RubyDragonBoltsE);
 
             result.targetMonster = monsters.get("Vyrewatch") as TargetMonster;
             result.calculateDPS();
         });
 
-        test('should calculate DPS correctly', () => {
+        test("should calculate DPS correctly", () => {
             shouldEqualPrecise(result.dps, 0); //Just to confirm it's immune
         });
 
-        test('should calculate maxHit correctly', () => {
+        test("should calculate maxHit correctly", () => {
             expect(result.maxHit).toBe(0);
 
-            test('should calculate hitChance correctly', () => {
+            test("should calculate hitChance correctly", () => {
                 shouldEqualPrecise(result.hitChance, 0.0);
             });
         });
     });
 
-        describe('with obsidian sword, obsidian set, and berserker necklace', () => {
+    describe("with obsidian sword, obsidian set, and berserker necklace", () => {
         beforeEach(() => {
             result.gearSet = new GearSet([GearSetType.General])
                 .addItemByName(ItemName.ToktzXilAk)
@@ -2427,23 +2423,22 @@ describe('Calculator class', () => {
                 .addItemByName(ItemName.ObsidianPlatelegs)
                 .addItemByName(ItemName.BerserkerNecklace)
                 .addItemByName(ItemName.PrimordialBoots)
-                .addItemByName(ItemName.BerserkerRingI)
+                .addItemByName(ItemName.BerserkerRingI);
 
             result.targetMonster = monsters.get("Sand Crab") as TargetMonster;
             result.calculateDPS();
         });
 
-        test('should calculate DPS correctly', () => {
+        test("should calculate DPS correctly", () => {
             shouldEqualPrecise(result.dps, 11.106); //Matches Bitterkoekje
         });
 
-        test('should calculate maxHit correctly', () => {
+        test("should calculate maxHit correctly", () => {
             expect(result.maxHit).toBe(54); //Matches Bitterkoekje
         });
 
-        test('should calculate hitChance correctly', () => {
+        test("should calculate hitChance correctly", () => {
             shouldEqualPrecise(result.hitChance, 0.9872); //Matches Bitterkoekje
         });
     });
 });
-

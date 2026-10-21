@@ -97452,5 +97452,745 @@
                 "Ranged": 36
             }
         }
+    },
+    "Archive Guardian": {
+        "name": "Archive Guardian",
+        "shortName": "",
+        "size": "5x5",
+        "raid": 4,
+        "slayerMonster": false,
+        "slayerCategory": "",
+        "isKalphite": false,
+        "isUndead": false,
+        "isDemon": false,
+        "isDraconic": false,
+        "isFiery": false,
+        "isLeafy": false,
+        "isVampyre1": false,
+        "isVampyre2": false,
+        "isVampyre3": false,
+        "immuneToAncientMagicks": true,
+        "variants": [
+            [
+                "Flying",
+                {
+                    "variantName": "Flying",
+                    "imagePath": "https://oldschool.runescape.wiki/images/Archive_Guardian.png",
+                    "currentHitpoints": 550,
+                    "hitpoints": 550,
+                    "_defenceLevel": 260,
+                    "_currentDefenceLevel": 260,
+                    "maxDefenceReduction": 104,
+                    "magicLevel": 250,
+                    "magicAccuracy": 350,
+                    "flatArmour": 0,
+                    "magicResistance": 0,
+                    "meleeImmune": true,
+                    "defenceStats": {
+                        "Stab": 120,
+                        "Slash": 110,
+                        "Crush": 20,
+                        "Magic": 130,
+                        "Ranged": 120,
+                        "Light": 75,
+                        "Standard": 120,
+                        "Heavy": 50
+                    },
+                    "elementalWeakness": {
+                        "type": "Fire",
+                        "percent": 80
+                    }
+                }
+            ],
+            [
+                "Grounded",
+                {
+                    "variantName": "Grounded",
+                    "imagePath": "https://oldschool.runescape.wiki/images/Archive_Guardian.png",
+                    "currentHitpoints": 550,
+                    "hitpoints": 550,
+                    "_defenceLevel": 260,
+                    "_currentDefenceLevel": 260,
+                    "maxDefenceReduction": 104,
+                    "magicLevel": 250,
+                    "magicAccuracy": 350,
+                    "flatArmour": 0,
+                    "magicResistance": 0,
+                    "meleeImmune": false,
+                    "defenceStats": {
+                        "Stab": 120,
+                        "Slash": 90,
+                        "Crush": 20,
+                        "Magic": 130,
+                        "Ranged": 115,
+                        "Light": 50,
+                        "Standard": 115,
+                        "Heavy": 50
+                    },
+                    "elementalWeakness": {
+                        "type": "Fire",
+                        "percent": 40
+                    }
+                }
+            ]
+        ],
+        "_activeVariant": {
+            "variantName": "Flying",
+            "imagePath": "https://oldschool.runescape.wiki/images/Archive_Guardian.png",
+            "currentHitpoints": 550,
+            "hitpoints": 550,
+            "_defenceLevel": 260,
+            "_currentDefenceLevel": 260,
+            "maxDefenceReduction": 104,
+            "magicLevel": 250,
+            "magicAccuracy": 350,
+            "flatArmour": 0,
+            "magicResistance": 0,
+            "meleeImmune": true,
+            "defenceStats": {
+                "Stab": 120,
+                "Slash": 110,
+                "Crush": 20,
+                "Magic": 130,
+                "Ranged": 120,
+                "Light": 75,
+                "Standard": 120,
+                "Heavy": 50
+            },
+            "elementalWeakness": {
+                "type": "Fire",
+                "percent": 80
+            }
+        }
+    },
+    "Ezekiel": {
+        "name": "Ezekiel",
+        "shortName": "",
+        "size": "3x3",
+        "raid": 4,
+        "slayerMonster": false,
+        "slayerCategory": "",
+        "isKalphite": false,
+        "isUndead": false,
+        "isDemon": false,
+        "isDraconic": false,
+        "isFiery": false,
+        "isLeafy": false,
+        "isVampyre1": false,
+        "isVampyre2": false,
+        "isVampyre3": false,
+        "immuneToAncientMagicks": false,
+        "variants": [
+            [
+                "Normal",
+                {
+                    "variantName": "Normal",
+                    "imagePath": "https://oldschool.runescape.wiki/images/Ezekiel.png",
+                    "currentHitpoints": 3000,
+                    "hitpoints": 3000,
+                    "_defenceLevel": 130,
+                    "_currentDefenceLevel": 130,
+                    "maxDefenceReduction": 52,
+                    "magicLevel": 200,
+                    "magicAccuracy": 250,
+                    "flatArmour": 0,
+                    "magicResistance": 0,
+                    "meleeImmune": false,
+                    "defenceStats": {
+                        "Stab": 150,
+                        "Slash": 90,
+                        "Crush": 35,
+                        "Magic": 200,
+                        "Ranged": 370,
+                        "Light": 445,
+                        "Standard": 370,
+                        "Heavy": 320
+                    },
+                    "elementalWeakness": {
+                        "type": "Earth",
+                        "percent": 25
+                    }
+                }
+            ]
+        ],
+        "_activeVariant": {
+            "variantName": "Normal",
+            "imagePath": "https://oldschool.runescape.wiki/images/Ezekiel.png",
+            "currentHitpoints": 3000,
+            "hitpoints": 3000,
+            "_defenceLevel": 130,
+            "_currentDefenceLevel": 130,
+            "maxDefenceReduction": 52,
+            "magicLevel": 200,
+            "magicAccuracy": 250,
+            "flatArmour": 0,
+            "magicResistance": 0,
+            "meleeImmune": false,
+            "defenceStats": {
+                "Stab": 150,
+                "Slash": 90,
+                "Crush": 35,
+                "Magic": 200,
+                "Ranged": 370,
+                "Light": 445,
+                "Standard": 370,
+                "Heavy": 320
+            },
+            "elementalWeakness": {
+                "type": "Earth",
+                "percent": 25
+            }
+        }
+    },
+    "Bork": {
+        "name": "Bork",
+        "shortName": "",
+        "size": "4x4",
+        "raid": 4,
+        "slayerMonster": false,
+        "slayerCategory": "",
+        "isKalphite": false,
+        "isUndead": false,
+        "isDemon": false,
+        "isDraconic": false,
+        "isFiery": false,
+        "isLeafy": false,
+        "isVampyre1": false,
+        "isVampyre2": false,
+        "isVampyre3": false,
+        "immuneToAncientMagicks": false,
+        "variants": [
+            [
+                "Normal",
+                {
+                    "variantName": "Normal",
+                    "imagePath": "https://oldschool.runescape.wiki/images/Bork.png",
+                    "currentHitpoints": 1500,
+                    "hitpoints": 1500,
+                    "_defenceLevel": 300,
+                    "_currentDefenceLevel": 300,
+                    "maxDefenceReduction": 120,
+                    "magicLevel": 90,
+                    "magicAccuracy": 0,
+                    "flatArmour": 10,
+                    "magicResistance": 2,
+                    "meleeImmune": false,
+                    "defenceStats": {
+                        "Stab": 140,
+                        "Slash": 130,
+                        "Crush": 10,
+                        "Magic": 300,
+                        "Ranged": 50,
+                        "Light": 80,
+                        "Standard": 50,
+                        "Heavy": 5
+                    },
+                    "elementalWeakness": {
+                        "type": "Earth",
+                        "percent": 40
+                    }
+                }
+            ],
+            [
+                "Stunned",
+                {
+                    "variantName": "Stunned",
+                    "imagePath": "https://oldschool.runescape.wiki/images/Bork.png",
+                    "currentHitpoints": 1500,
+                    "hitpoints": 1500,
+                    "_defenceLevel": 300,
+                    "_currentDefenceLevel": 300,
+                    "maxDefenceReduction": 120,
+                    "magicLevel": 90,
+                    "magicAccuracy": 0,
+                    "flatArmour": 0,
+                    "magicResistance": 2,
+                    "meleeImmune": false,
+                    "defenceStats": {
+                        "Stab": 140,
+                        "Slash": 130,
+                        "Crush": 10,
+                        "Magic": 300,
+                        "Ranged": 50,
+                        "Light": 80,
+                        "Standard": 50,
+                        "Heavy": 5
+                    },
+                    "elementalWeakness": {
+                        "type": "Earth",
+                        "percent": 40
+                    }
+                }
+            ]
+        ],
+        "_activeVariant": {
+            "variantName": "Normal",
+            "imagePath": "https://oldschool.runescape.wiki/images/Bork.png",
+            "currentHitpoints": 1500,
+            "hitpoints": 1500,
+            "_defenceLevel": 300,
+            "_currentDefenceLevel": 300,
+            "maxDefenceReduction": 120,
+            "magicLevel": 90,
+            "magicAccuracy": 0,
+            "flatArmour": 10,
+            "magicResistance": 2,
+            "meleeImmune": false,
+            "defenceStats": {
+                "Stab": 140,
+                "Slash": 130,
+                "Crush": 10,
+                "Magic": 300,
+                "Ranged": 50,
+                "Light": 80,
+                "Standard": 50,
+                "Heavy": 5
+            },
+            "elementalWeakness": {
+                "type": "Earth",
+                "percent": 40
+            }
+        }
+    },
+    "The Smorks": {
+        "name": "The Smorks",
+        "shortName": "",
+        "size": "3x3",
+        "raid": 4,
+        "slayerMonster": false,
+        "slayerCategory": "",
+        "isKalphite": false,
+        "isUndead": false,
+        "isDemon": false,
+        "isDraconic": false,
+        "isFiery": false,
+        "isLeafy": false,
+        "isVampyre1": false,
+        "isVampyre2": false,
+        "isVampyre3": false,
+        "immuneToAncientMagicks": false,
+        "variants": [
+            [
+                "Normal",
+                {
+                    "variantName": "Normal",
+                    "imagePath": "https://oldschool.runescape.wiki/images/The_Smorks.png",
+                    "currentHitpoints": 600,
+                    "hitpoints": 600,
+                    "_defenceLevel": 220,
+                    "_currentDefenceLevel": 220,
+                    "maxDefenceReduction": 220,
+                    "magicLevel": 185,
+                    "magicAccuracy": 185,
+                    "flatArmour": 2,
+                    "magicResistance": 0,
+                    "meleeImmune": false,
+                    "defenceStats": {
+                        "Stab": 220,
+                        "Slash": 170,
+                        "Crush": 160,
+                        "Magic": 400,
+                        "Ranged": 150,
+                        "Light": 80,
+                        "Standard": 150,
+                        "Heavy": 80
+                    },
+                    "elementalWeakness": {
+                        "type": "Earth",
+                        "percent": 85
+                    }
+                }
+            ]
+        ],
+        "_activeVariant": {
+            "variantName": "Normal",
+            "imagePath": "https://oldschool.runescape.wiki/images/The_Smorks.png",
+            "currentHitpoints": 600,
+            "hitpoints": 600,
+            "_defenceLevel": 220,
+            "_currentDefenceLevel": 220,
+            "maxDefenceReduction": 220,
+            "magicLevel": 185,
+            "magicAccuracy": 185,
+            "flatArmour": 2,
+            "magicResistance": 0,
+            "meleeImmune": false,
+            "defenceStats": {
+                "Stab": 220,
+                "Slash": 170,
+                "Crush": 160,
+                "Magic": 400,
+                "Ranged": 150,
+                "Light": 80,
+                "Standard": 150,
+                "Heavy": 80
+            },
+            "elementalWeakness": {
+                "type": "Earth",
+                "percent": 85
+            }
+        }
+    },
+    "Moia": {
+        "name": "Moia",
+        "shortName": "",
+        "size": "3x3",
+        "raid": 4,
+        "slayerMonster": false,
+        "slayerCategory": "",
+        "isKalphite": false,
+        "isUndead": false,
+        "isDemon": false,
+        "isDraconic": false,
+        "isFiery": false,
+        "isLeafy": false,
+        "isVampyre1": false,
+        "isVampyre2": false,
+        "isVampyre3": false,
+        "immuneToAncientMagicks": false,
+        "variants": [
+            [
+                "Normal",
+                {
+                    "variantName": "Normal",
+                    "imagePath": "https://oldschool.runescape.wiki/images/Moia.png",
+                    "currentHitpoints": 785,
+                    "hitpoints": 785,
+                    "_defenceLevel": 195,
+                    "_currentDefenceLevel": 195,
+                    "maxDefenceReduction": 78,
+                    "magicLevel": 350,
+                    "magicAccuracy": 300,
+                    "flatArmour": 0,
+                    "magicResistance": 0,
+                    "meleeImmune": false,
+                    "defenceStats": {
+                        "Stab": 20,
+                        "Slash": 110,
+                        "Crush": 15,
+                        "Magic": 30,
+                        "Ranged": 120,
+                        "Light": 60,
+                        "Standard": 120,
+                        "Heavy": 140
+                    },
+                    "elementalWeakness": {
+                        "type": "Air",
+                        "percent": 80
+                    }
+                }
+            ]
+        ],
+        "_activeVariant": {
+            "variantName": "Normal",
+            "imagePath": "https://oldschool.runescape.wiki/images/Moia.png",
+            "currentHitpoints": 785,
+            "hitpoints": 785,
+            "_defenceLevel": 195,
+            "_currentDefenceLevel": 195,
+            "maxDefenceReduction": 78,
+            "magicLevel": 350,
+            "magicAccuracy": 300,
+            "flatArmour": 0,
+            "magicResistance": 0,
+            "meleeImmune": false,
+            "defenceStats": {
+                "Stab": 20,
+                "Slash": 110,
+                "Crush": 15,
+                "Magic": 30,
+                "Ranged": 120,
+                "Light": 60,
+                "Standard": 120,
+                "Heavy": 140
+            },
+            "elementalWeakness": {
+                "type": "Air",
+                "percent": 80
+            }
+        }
+    },
+    "Dreadnoth the Jellied": {
+        "name": "Dreadnoth the Jellied",
+        "shortName": "",
+        "size": "5x5",
+        "raid": 4,
+        "slayerMonster": false,
+        "slayerCategory": "",
+        "isKalphite": false,
+        "isUndead": false,
+        "isDemon": true,
+        "isDraconic": false,
+        "isFiery": false,
+        "isLeafy": false,
+        "isVampyre1": false,
+        "isVampyre2": false,
+        "isVampyre3": false,
+        "immuneToAncientMagicks": false,
+        "variants": [
+            [
+                "Normal",
+                {
+                    "variantName": "Normal",
+                    "imagePath": "https://oldschool.runescape.wiki/images/Dreadnoth_the_Jellied.png",
+                    "currentHitpoints": 2100,
+                    "hitpoints": 2100,
+                    "_defenceLevel": 125,
+                    "_currentDefenceLevel": 125,
+                    "maxDefenceReduction": 125,
+                    "magicLevel": 220,
+                    "magicAccuracy": 0,
+                    "flatArmour": 0,
+                    "magicResistance": 0,
+                    "meleeImmune": false,
+                    "defenceStats": {
+                        "Stab": 15,
+                        "Slash": 20,
+                        "Crush": 5,
+                        "Magic": 20,
+                        "Ranged": 80,
+                        "Light": 100,
+                        "Standard": 80,
+                        "Heavy": 80
+                    },
+                    "elementalWeakness": {
+                        "type": "Fire",
+                        "percent": 85
+                    }
+                }
+            ]
+        ],
+        "_activeVariant": {
+            "variantName": "Normal",
+            "imagePath": "https://oldschool.runescape.wiki/images/Dreadnoth_the_Jellied.png",
+            "currentHitpoints": 2100,
+            "hitpoints": 2100,
+            "_defenceLevel": 125,
+            "_currentDefenceLevel": 125,
+            "maxDefenceReduction": 125,
+            "magicLevel": 220,
+            "magicAccuracy": 0,
+            "flatArmour": 0,
+            "magicResistance": 0,
+            "meleeImmune": false,
+            "defenceStats": {
+                "Stab": 15,
+                "Slash": 20,
+                "Crush": 5,
+                "Magic": 20,
+                "Ranged": 80,
+                "Light": 100,
+                "Standard": 80,
+                "Heavy": 80
+            },
+            "elementalWeakness": {
+                "type": "Fire",
+                "percent": 85
+            }
+        }
+    },
+    "Xarth": {
+        "name": "Xarth",
+        "shortName": "",
+        "size": "3x3",
+        "raid": 4,
+        "slayerMonster": false,
+        "slayerCategory": "",
+        "isKalphite": false,
+        "isUndead": false,
+        "isDemon": true,
+        "isDraconic": false,
+        "isFiery": false,
+        "isLeafy": false,
+        "isVampyre1": false,
+        "isVampyre2": false,
+        "isVampyre3": false,
+        "immuneToAncientMagicks": false,
+        "variants": [
+            [
+                "Normal",
+                {
+                    "variantName": "Normal",
+                    "imagePath": "https://oldschool.runescape.wiki/images/Xarth.png",
+                    "currentHitpoints": 2600,
+                    "hitpoints": 2600,
+                    "_defenceLevel": 170,
+                    "_currentDefenceLevel": 170,
+                    "maxDefenceReduction": 68,
+                    "magicLevel": 350,
+                    "magicAccuracy": 250,
+                    "flatArmour": 0,
+                    "magicResistance": 0,
+                    "meleeImmune": false,
+                    "defenceStats": {
+                        "Stab": 115,
+                        "Slash": 105,
+                        "Crush": 20,
+                        "Magic": 205,
+                        "Ranged": 230,
+                        "Light": 125,
+                        "Standard": 230,
+                        "Heavy": 155
+                    },
+                    "elementalWeakness": {
+                        "type": "Water",
+                        "percent": 85
+                    }
+                }
+            ]
+        ],
+        "_activeVariant": {
+            "variantName": "Normal",
+            "imagePath": "https://oldschool.runescape.wiki/images/Xarth.png",
+            "currentHitpoints": 2600,
+            "hitpoints": 2600,
+            "_defenceLevel": 170,
+            "_currentDefenceLevel": 170,
+            "maxDefenceReduction": 68,
+            "magicLevel": 350,
+            "magicAccuracy": 250,
+            "flatArmour": 0,
+            "magicResistance": 0,
+            "meleeImmune": false,
+            "defenceStats": {
+                "Stab": 115,
+                "Slash": 105,
+                "Crush": 20,
+                "Magic": 205,
+                "Ranged": 230,
+                "Light": 125,
+                "Standard": 230,
+                "Heavy": 155
+            },
+            "elementalWeakness": {
+                "type": "Water",
+                "percent": 85
+            }
+        }
+    },
+    "Ocellus": {
+        "name": "Ocellus",
+        "shortName": "",
+        "size": "3x3",
+        "raid": 4,
+        "slayerMonster": false,
+        "slayerCategory": "",
+        "isKalphite": false,
+        "isUndead": false,
+        "isDemon": true,
+        "isDraconic": false,
+        "isFiery": false,
+        "isLeafy": false,
+        "isVampyre1": false,
+        "isVampyre2": false,
+        "isVampyre3": false,
+        "immuneToAncientMagicks": false,
+        "variants": [
+            [
+                "Phase 1",
+                {
+                    "variantName": "Phase 1",
+                    "imagePath": "https://oldschool.runescape.wiki/images/Ocellus.png",
+                    "currentHitpoints": 2500,
+                    "hitpoints": 2500,
+                    "_defenceLevel": 215,
+                    "_currentDefenceLevel": 215,
+                    "maxDefenceReduction": 86,
+                    "magicLevel": 350,
+                    "magicAccuracy": 150,
+                    "flatArmour": 0,
+                    "magicResistance": 0,
+                    "meleeImmune": false,
+                    "defenceStats": {
+                        "Stab": 150,
+                        "Slash": 95,
+                        "Crush": 60,
+                        "Magic": 100,
+                        "Ranged": 135,
+                        "Light": 50,
+                        "Standard": 135,
+                        "Heavy": 50
+                    }
+                }
+            ],
+            [
+                "Phase 2",
+                {
+                    "variantName": "Phase 2",
+                    "imagePath": "https://oldschool.runescape.wiki/images/Ocellus_%28phase_2%29.png",
+                    "currentHitpoints": 2500,
+                    "hitpoints": 2500,
+                    "_defenceLevel": 250,
+                    "_currentDefenceLevel": 250,
+                    "maxDefenceReduction": 100,
+                    "magicLevel": 220,
+                    "magicAccuracy": 0,
+                    "flatArmour": 0,
+                    "magicResistance": 0,
+                    "meleeImmune": false,
+                    "defenceStats": {
+                        "Stab": 150,
+                        "Slash": 120,
+                        "Crush": 10,
+                        "Magic": 100,
+                        "Ranged": 110,
+                        "Light": 100,
+                        "Standard": 110,
+                        "Heavy": 80
+                    }
+                }
+            ],
+            [
+                "Phase 3",
+                {
+                    "variantName": "Phase 3",
+                    "imagePath": "https://oldschool.runescape.wiki/images/Ocellus_%28phase_3%29.png",
+                    "currentHitpoints": 5250,
+                    "hitpoints": 5250,
+                    "_defenceLevel": 250,
+                    "_currentDefenceLevel": 250,
+                    "maxDefenceReduction": 100,
+                    "magicLevel": 300,
+                    "magicAccuracy": 350,
+                    "flatArmour": 0,
+                    "magicResistance": 0,
+                    "meleeImmune": false,
+                    "defenceStats": {
+                        "Stab": 150,
+                        "Slash": 100,
+                        "Crush": 30,
+                        "Magic": 200,
+                        "Ranged": 250,
+                        "Light": 250,
+                        "Standard": 250,
+                        "Heavy": 250
+                    }
+                }
+            ]
+        ],
+        "_activeVariant": {
+            "variantName": "Phase 1",
+            "imagePath": "https://oldschool.runescape.wiki/images/Ocellus.png",
+            "currentHitpoints": 2500,
+            "hitpoints": 2500,
+            "_defenceLevel": 215,
+            "_currentDefenceLevel": 215,
+            "maxDefenceReduction": 86,
+            "magicLevel": 350,
+            "magicAccuracy": 150,
+            "flatArmour": 0,
+            "magicResistance": 0,
+            "meleeImmune": false,
+            "defenceStats": {
+                "Stab": 150,
+                "Slash": 95,
+                "Crush": 60,
+                "Magic": 100,
+                "Ranged": 135,
+                "Light": 50,
+                "Standard": 135,
+                "Heavy": 50
+            }
+        }
     }
 }

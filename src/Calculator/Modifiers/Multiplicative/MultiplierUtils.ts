@@ -1,5 +1,5 @@
-import {MultiplierType} from "./MultiplierType";
-import {Calculator} from "../../Calculator";
+import { MultiplierType } from "./MultiplierType";
+import { Calculator } from "../../Calculator";
 import {
     amuletOfAvariceMultiplier,
     arclightMultiplier,
@@ -20,9 +20,10 @@ import {
     tomeOfWaterMultiplier,
     twistedBowMultiplier,
 } from "./index";
-import {ItemName} from "../../DataObjects/ItemName";
-import {CombatClass, Slot} from "../../DataObjects/Item";
-import {vampyreMultiplier} from "./Items/VampyreMultiplier";
+import { ItemName } from "../../DataObjects/ItemName";
+import { CombatClass, Slot } from "../../DataObjects/Item";
+import { vampyreMultiplier } from "./Items/VampyreMultiplier";
+import { elementalWeaknessAccuracyMultiplier } from "../../MagicMaxHit";
 
 export function getGearDamageMultipliers(calculator: Calculator): number[] {
     const dhcbMultiplier = dragonHunterCrossbowMultiplier(calculator, MultiplierType.Damage);
@@ -31,7 +32,10 @@ export function getGearDamageMultipliers(calculator: Calculator): number[] {
     const multiplierMapping = {
         [MultiplierSource.Slayer]: () => [sumMultipliers(dhcbMultiplier, slayerHelmetMultiplier(calculator))],
         [MultiplierSource.Salve]: () => [salveAmuletMultiplier(calculator, MultiplierType.Damage), dhcbMultiplier],
-        [MultiplierSource.Avarice]: () => [amuletOfAvariceMultiplier(calculator, MultiplierType.Damage), dhcbMultiplier]
+        [MultiplierSource.Avarice]: () => [
+            amuletOfAvariceMultiplier(calculator, MultiplierType.Damage),
+            dhcbMultiplier,
+        ],
     };
 
     return [
@@ -49,7 +53,7 @@ export function getGearDamageMultipliers(calculator: Calculator): number[] {
         tomeOfFireMultiplier(calculator),
         tomeOfWaterMultiplier(calculator),
         vampyreMultiplier(calculator, MultiplierType.Damage),
-        corporealBeastMultiplier(calculator)
+        corporealBeastMultiplier(calculator),
     ];
 }
 
@@ -60,7 +64,10 @@ export function getGearAccuracyMultipliers(calculator: Calculator): number[] {
     const multiplierMapping = {
         [MultiplierSource.Slayer]: () => [sumMultipliers(dhcbMultiplier, slayerHelmetMultiplier(calculator))],
         [MultiplierSource.Salve]: () => [salveAmuletMultiplier(calculator, MultiplierType.Accuracy), dhcbMultiplier],
-        [MultiplierSource.Avarice]: () => [amuletOfAvariceMultiplier(calculator, MultiplierType.Accuracy), dhcbMultiplier]
+        [MultiplierSource.Avarice]: () => [
+            amuletOfAvariceMultiplier(calculator, MultiplierType.Accuracy),
+            dhcbMultiplier,
+        ],
     };
 
     const gearMultipliers = [
@@ -75,6 +82,7 @@ export function getGearAccuracyMultipliers(calculator: Calculator): number[] {
         inquisitorsMultiplier(calculator),
         tomeOfWaterMultiplier(calculator),
         vampyreMultiplier(calculator, MultiplierType.Accuracy),
+        elementalWeaknessAccuracyMultiplier(calculator),
     ];
 
     return gearMultipliers;
@@ -87,7 +95,7 @@ function sumMultipliers(...multipliers: number[]): number {
 enum MultiplierSource {
     Slayer,
     Salve,
-    Avarice
+    Avarice,
 }
 
 function determineMultiplierSource(calculator: Calculator): MultiplierSource {
@@ -102,7 +110,11 @@ function determineMultiplierSource(calculator: Calculator): MultiplierSource {
     if (isFightingRevenant && isWearingAvarice) {
         return MultiplierSource.Avarice;
     } else if (isUndead && neck && salveAmulets.includes(neck)) {
-        if (neck === ItemName.SalveAmuletI || neck === ItemName.SalveAmuletEI || calculator.gearSet.combatClass === CombatClass.Melee) {
+        if (
+            neck === ItemName.SalveAmuletI ||
+            neck === ItemName.SalveAmuletEI ||
+            calculator.gearSet.combatClass === CombatClass.Melee
+        ) {
             return MultiplierSource.Salve;
         }
     }

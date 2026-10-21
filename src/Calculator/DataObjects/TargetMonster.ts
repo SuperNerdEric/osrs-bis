@@ -1,5 +1,10 @@
-import {StyleType} from "./Item";
-import {Raid} from "./Raid";
+import { StyleType } from "./Item";
+import { Raid } from "./Raid";
+
+export type ElementalWeakness = {
+    type: "Air" | "Water" | "Earth" | "Fire";
+    percent: number;
+};
 
 interface IMonsterStats {
     imagePath: string;
@@ -28,6 +33,10 @@ export class MonsterVariant implements IMonsterStats {
         [StyleType.Magic]: 0,
         [StyleType.Ranged]: 0,
     };
+    flatArmour: number = 0;
+    magicResistance: number = 0;
+    meleeImmune: boolean = false;
+    elementalWeakness?: ElementalWeakness;
 
     get defenceLevel(): number {
         return this._defenceLevel;
@@ -47,7 +56,6 @@ export class MonsterVariant implements IMonsterStats {
     }
 }
 export class TargetMonster implements IMonsterStats {
-
     title: string = "";
     name: string = "";
     shortName: string = "";
@@ -64,6 +72,7 @@ export class TargetMonster implements IMonsterStats {
     isVampyre1: boolean = false;
     isVampyre2: boolean = false;
     isVampyre3: boolean = false;
+    immuneToAncientMagicks: boolean = false;
     variants: Map<string, MonsterVariant> = new Map();
     private _activeVariant!: MonsterVariant;
 
@@ -72,14 +81,13 @@ export class TargetMonster implements IMonsterStats {
     }
     setActiveVariant(variantName: string): void {
         const variant = this.variants.get(variantName);
-        if(variant) {
+        if (variant) {
             this._activeVariant = variant;
         }
     }
     get imagePath(): string {
         return this.activeVariant.imagePath;
     }
-
 
     get currentHitpoints(): number {
         return this.activeVariant.currentHitpoints;
@@ -111,6 +119,22 @@ export class TargetMonster implements IMonsterStats {
 
     get defenceStats(): MonsterDefenceStats {
         return this.activeVariant.defenceStats;
+    }
+
+    get flatArmour(): number {
+        return this.activeVariant.flatArmour;
+    }
+
+    get magicResistance(): number {
+        return this.activeVariant.magicResistance;
+    }
+
+    get meleeImmune(): boolean {
+        return this.activeVariant.meleeImmune;
+    }
+
+    get elementalWeakness(): ElementalWeakness | undefined {
+        return this.activeVariant.elementalWeakness;
     }
 
     get currentDefenceLevel() {
@@ -146,8 +170,9 @@ export class TargetMonster implements IMonsterStats {
             isVampyre1: this.isVampyre1,
             isVampyre2: this.isVampyre2,
             isVampyre3: this.isVampyre3,
+            immuneToAncientMagicks: this.immuneToAncientMagicks,
             variants: Array.from(this.variants.entries()),
-            _activeVariant: this._activeVariant
+            _activeVariant: this._activeVariant,
         };
     }
 }
@@ -158,4 +183,7 @@ interface MonsterDefenceStats {
     [StyleType.Crush]: number;
     [StyleType.Magic]: number;
     [StyleType.Ranged]: number;
+    Light?: number;
+    Standard?: number;
+    Heavy?: number;
 }

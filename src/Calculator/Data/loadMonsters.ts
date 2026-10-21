@@ -1,7 +1,7 @@
 import cleanedData from "./cleaned_monsters.json";
-import {MonsterVariant, TargetMonster} from "../DataObjects/TargetMonster";
+import { MonsterVariant, TargetMonster } from "../DataObjects/TargetMonster";
 
-export const monsters = new Map<string, TargetMonster>;
+export const monsters = new Map<string, TargetMonster>();
 
 export function loadMonstersFromFile() {
     for (const monsterName in cleanedData) {
@@ -25,8 +25,9 @@ export function loadMonstersFromFile() {
         monster.isVampyre1 = monsterData.isVampyre1;
         monster.isVampyre2 = monsterData.isVampyre2;
         monster.isVampyre3 = monsterData.isVampyre3;
+        monster.immuneToAncientMagicks = !!monsterData.immuneToAncientMagicks;
 
-        monsterData.variants.forEach((variantData: any[]) => {
+        monsterData.variants.forEach((variantData: [string, Record<string, unknown>]) => {
             const variant = new MonsterVariant();
             variant.variantName = variantData[0];
             const variantDetails = variantData[1];
@@ -34,7 +35,7 @@ export function loadMonstersFromFile() {
             monster.addVariant(variant);
         });
 
-        monster.setActiveVariant(monsterData._activeVariant.variantName)
+        monster.setActiveVariant(monsterData._activeVariant.variantName);
 
         monsters.set(monster.title, monster);
     }

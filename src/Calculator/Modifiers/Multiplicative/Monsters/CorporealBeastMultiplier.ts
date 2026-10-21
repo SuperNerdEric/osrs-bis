@@ -1,6 +1,6 @@
-import {ItemName} from "../../../DataObjects/ItemName";
-import {StyleType, WeaponCategoryOptions} from "../../../DataObjects/Item";
-import {Calculator} from "../../../Calculator";
+import { ItemName } from "../../../DataObjects/ItemName";
+import { StyleType, WeaponCategoryOptions } from "../../../DataObjects/Item";
+import { Calculator } from "../../../Calculator";
 
 const corpbaneWeapons = [
     ItemName.BronzeSpear,
@@ -26,7 +26,7 @@ const corpbaneWeapons = [
     ItemName.RuneHalberd,
     ItemName.DragonHalberd,
     ItemName.CrystalHalberd,
-    ItemName.OsmumtensFang
+    ItemName.OsmumtensFang,
 ];
 
 export function corporealBeastMultiplier(calculator: Calculator): number {
@@ -38,7 +38,9 @@ export function corporealBeastMultiplier(calculator: Calculator): number {
     const combatStyle = calculator.gearSet.combatStyle;
 
     if (corpbaneWeapons.includes(weapon.name)) {
-        const matchingStyle = WeaponCategoryOptions[weapon.category]?.find(option => option.combatStyle === combatStyle);
+        const matchingStyle = WeaponCategoryOptions[weapon.category]?.find(
+            (option) => option.combatStyle === combatStyle,
+        );
         if (matchingStyle?.styleType === StyleType.Stab) {
             return 1;
         }

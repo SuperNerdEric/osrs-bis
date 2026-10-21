@@ -49,5 +49,4 @@ export enum SpellName {
     ShadowBarrage = "Shadow Barrage",
     BloodBarrage = "Blood Barrage",
     IceBarrage = "Ice Barrage",
-
 }

@@ -53,11 +53,14 @@ grid:hover {
     color: #61dafb;
 }
 
-th, td {
+th,
+td {
     padding: 7px;
 }
 
-table, th, td {
+table,
+th,
+td {
     border: 1px solid white;
     border-spacing: 0px;
 }
@@ -66,7 +69,6 @@ table {
     margin-top: 0px;
     margin-bottom: 20px;
 }
-
 
 @keyframes App-logo-spin {
     from {
@@ -81,8 +83,8 @@ table {
     margin: auto;
     padding: 0px;
 
-    display:flex;
-    flex-direction:row;
+    display: flex;
+    flex-direction: row;
 }
 
 .dropdown {
@@ -148,10 +150,9 @@ table {
 
 .parent {
     display: flex;
-    justify-content: center;  /* Horizontal centering */
-    align-items: center;      /* Vertical centering (if needed) */
+    justify-content: center; /* Horizontal centering */
+    align-items: center; /* Vertical centering (if needed) */
 }
-
 
 .MuiToggleButtonGroup-root {
     background-color: #d8ccb4;
@@ -163,7 +164,9 @@ table {
     background-color: #d8ccb4;
     border: none;
     font-size: calc(7px + 0.5vmin);
-    transition: background-color 0.3s, color 0.3s;
+    transition:
+        background-color 0.3s,
+        color 0.3s;
 }
 
 .MuiToggleButton-root.MuiToggleButton-root:hover {
@@ -180,11 +183,10 @@ table {
     background-color: black;
 }
 
-
 .hitpoints-defence-container {
     display: flex;
     flex-direction: column;
-    align-items: flex-end; /* This will right-align the child elements */
+    align-items: center;
     justify-content: center; /* This will vertically center the items in case there's extra space */
 }
 

@@ -45,6 +45,8 @@ export function createVariantFromJson(entry: any, versionKey: string, smwname?: 
         variant.maxDefenceReduction = 30;
     } else if (["Phosani's Nightmare", "The Nightmare"].includes(entry.name)) {
         variant.maxDefenceReduction = 30;
+    } else if (["Archive Guardian", "Bork", "Ezekiel", "Moia", "Xarth", "Ocellus"].includes(entry.name)) {
+        variant.maxDefenceReduction = Math.floor(parseInt(entry.def, 10) * 0.4);
     } else {
         variant.maxDefenceReduction = parseInt(entry.def, 10);
     }
@@ -121,6 +123,9 @@ export function processJsonAndAddToMonsters() {
 
             if (["Ba-Ba", "Akkha", "Akkha's Shadow", "Kephri", "Zebak", "Obelisk", "Tumeken's Warden"].includes(monster.name)) {
                 monster.raid = Raid.TombsOfAmascut;
+            }
+            if (["Archive Guardian", "Ezekiel", "Bork", "The Smorks", "Moia", "Dreadnoth the Jellied", "Xarth", "Ocellus"].includes(monster.name)) {
+                monster.raid = Raid.TheFracturedArchive;
             }
             monster.slayerMonster = versionData.cat;
             if (monster.slayerMonster) {

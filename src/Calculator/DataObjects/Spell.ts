@@ -1,15 +1,18 @@
-import {SpellName} from "./SpellName";
-
+import { SpellName } from "./SpellName";
 
 export enum SpellBookType {
     Standard,
     Arceuus,
-    Ancient
+    Ancient,
 }
 
 export class Spell {
-    constructor(public spellbook: SpellBookType, public name: SpellName, public maxHit: number, public wikiLink: string) {
-    }
+    constructor(
+        public spellbook: SpellBookType,
+        public name: SpellName,
+        public maxHit: number,
+        public wikiLink: string,
+    ) {}
 }
 
 export class SpellBook {
@@ -88,5 +91,5 @@ ancientSpellbook.addSpell(SpellName.IceBarrage, 30);
 export const spellBookMapping = {
     [SpellBookType.Standard]: standardSpellbook,
     [SpellBookType.Arceuus]: arceuusSpellbook,
-    [SpellBookType.Ancient]: ancientSpellbook
+    [SpellBookType.Ancient]: ancientSpellbook,
 };
