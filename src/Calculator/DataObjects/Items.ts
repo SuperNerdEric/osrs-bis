@@ -1272,31 +1272,29 @@ createWeapon(ItemName.ElderMaul, {
     strength: 147,
 });
 
-const wikiIcon = (file: string) => `https://oldschool.runescape.wiki/images/${file.replace(/ /g, "_")}`;
-
 createItem(ItemName.OathplateHelm, {
-    imagePath: wikiIcon("Oathplate helm.png"),
+    imagePath: "./Images/Items/Oathplate_helm.webp",
     wikiLink: "https://oldschool.runescape.wiki/w/Oathplate_helm",
     slot: Slot.Helm,
     slash: 10,
     strength: 6,
 });
 createItem(ItemName.OathplateChest, {
-    imagePath: wikiIcon("Oathplate chest.png"),
+    imagePath: "./Images/Items/Oathplate_chest.webp",
     wikiLink: "https://oldschool.runescape.wiki/w/Oathplate_chest",
     slot: Slot.Chest,
     slash: 16,
     strength: 4,
 });
 createItem(ItemName.OathplateLegs, {
-    imagePath: wikiIcon("Oathplate legs.png"),
+    imagePath: "./Images/Items/Oathplate_legs.webp",
     wikiLink: "https://oldschool.runescape.wiki/w/Oathplate_legs",
     slot: Slot.Legs,
     slash: 12,
     strength: 2,
 });
 createItem(ItemName.AvernicTreadsMax, {
-    imagePath: wikiIcon("Avernic treads (max).png"),
+    imagePath: "./Images/Items/Avernic_treads_max.webp",
     wikiLink: "https://oldschool.runescape.wiki/w/Avernic_treads",
     slot: Slot.Boots,
     stab: 5,
@@ -1309,7 +1307,7 @@ createItem(ItemName.AvernicTreadsMax, {
     mageStrength: 2,
 });
 createItem(ItemName.AmuletOfRancour, {
-    imagePath: wikiIcon("Amulet of rancour.png"),
+    imagePath: "./Images/Items/Amulet_of_rancour.webp",
     wikiLink: "https://oldschool.runescape.wiki/w/Amulet_of_rancour",
     slot: Slot.Neck,
     stab: 25,
@@ -1318,34 +1316,34 @@ createItem(ItemName.AmuletOfRancour, {
     strength: 12,
 });
 createItem(ItemName.NecklaceOfRupture, {
-    imagePath: wikiIcon("Necklace of rupture.png"),
+    imagePath: "./Images/Items/Necklace_of_rupture.webp",
     wikiLink: "https://oldschool.runescape.wiki/w/Necklace_of_rupture",
     slot: Slot.Neck,
     ranged: 20,
     rangedStrength: 8,
 });
 createItem(ItemName.DizanasQuiver, {
-    imagePath: wikiIcon("Dizana's quiver.png"),
+    imagePath: "./Images/Items/Dizanas_quiver.webp",
     wikiLink: "https://oldschool.runescape.wiki/w/Dizana%27s_quiver",
     slot: Slot.Cape,
     ranged: 18,
     rangedStrength: 3,
 });
 createItem(ItemName.ConflictionGauntlets, {
-    imagePath: wikiIcon("Confliction gauntlets.png"),
+    imagePath: "./Images/Items/Confliction_gauntlets.webp",
     wikiLink: "https://oldschool.runescape.wiki/w/Confliction_gauntlets",
     slot: Slot.Gloves,
     magic: 20,
     mageStrength: 7,
 });
 createItem(ItemName.TomeOfEarth, {
-    imagePath: wikiIcon("Tome of earth.png"),
+    imagePath: "./Images/Items/Tome_of_earth.webp",
     wikiLink: "https://oldschool.runescape.wiki/w/Tome_of_earth",
     slot: Slot.OffHand,
     magic: 20,
 });
 createItem(ItemName.Rondache, {
-    imagePath: wikiIcon("Rondache.png"),
+    imagePath: "./Images/Items/Rondache.webp",
     wikiLink: "https://oldschool.runescape.wiki/w/Rondache",
     slot: Slot.OffHand,
     strength: 8,
@@ -1354,7 +1352,7 @@ createItem(ItemName.Rondache, {
 });
 createWeapon(ItemName.Emberlight, {
     category: WeaponCategory.SlashSword,
-    imagePath: wikiIcon("Emberlight.png"),
+    imagePath: "./Images/Items/Emberlight.webp",
     wikiLink: "https://oldschool.runescape.wiki/w/Emberlight",
     slot: Slot.MainHand,
     speedSeconds: 2.4,
@@ -1363,7 +1361,7 @@ createWeapon(ItemName.Emberlight, {
 });
 createWeapon(ItemName.BurningClaws, {
     category: WeaponCategory.Claws,
-    imagePath: wikiIcon("Burning claws.png"),
+    imagePath: "./Images/Items/Burning_claws.webp",
     wikiLink: "https://oldschool.runescape.wiki/w/Burning_claws",
     slot: Slot.TwoHand,
     speedSeconds: 2.4,
@@ -1373,7 +1371,7 @@ createWeapon(ItemName.BurningClaws, {
 });
 createWeapon(ItemName.NoxiousHalberd, {
     category: WeaponCategory.Polearm,
-    imagePath: wikiIcon("Noxious halberd.png"),
+    imagePath: "./Images/Items/Noxious_halberd.webp",
     wikiLink: "https://oldschool.runescape.wiki/w/Noxious_halberd",
     slot: Slot.TwoHand,
     speedSeconds: 3,
@@ -1383,7 +1381,7 @@ createWeapon(ItemName.NoxiousHalberd, {
 });
 createWeapon(ItemName.Obligator, {
     category: WeaponCategory.Obligator,
-    imagePath: wikiIcon("Obligator.png"),
+    imagePath: "./Images/Items/Obligator.webp",
     wikiLink: "https://oldschool.runescape.wiki/w/Obligator",
     slot: Slot.TwoHand,
     speedSeconds: 3,
@@ -1394,7 +1392,7 @@ createWeapon(ItemName.Obligator, {
 });
 createWeapon(ItemName.ScorchingBow, {
     category: WeaponCategory.Bow,
-    imagePath: wikiIcon("Scorching bow.png"),
+    imagePath: "./Images/Items/Scorching_bow.webp",
     wikiLink: "https://oldschool.runescape.wiki/w/Scorching_bow",
     slot: Slot.TwoHand,
     speedSeconds: 3,
@@ -1403,7 +1401,7 @@ createWeapon(ItemName.ScorchingBow, {
 });
 createWeapon(ItemName.EyeOfAyak, {
     category: WeaponCategory.PoweredStaff,
-    imagePath: wikiIcon("Eye of Ayak.png"),
+    imagePath: "./Images/Items/Eye_of_ayak.webp",
     wikiLink: "https://oldschool.runescape.wiki/w/Eye_of_Ayak",
     slot: Slot.MainHand,
     speedSeconds: 1.8,
@@ -1411,7 +1409,7 @@ createWeapon(ItemName.EyeOfAyak, {
 });
 createWeapon(ItemName.ZoryasTome, {
     category: WeaponCategory.PoweredStaff,
-    imagePath: wikiIcon("Zorya's tome.png"),
+    imagePath: "./Images/Items/Zoryas_tome.webp",
     wikiLink: "https://oldschool.runescape.wiki/w/Zorya%27s_tome",
     slot: Slot.TwoHand,
     speedSeconds: 1.8,
@@ -1420,7 +1418,7 @@ createWeapon(ItemName.ZoryasTome, {
 });
 createWeapon(ItemName.TwinflameStaff, {
     category: WeaponCategory.Staff,
-    imagePath: wikiIcon("Twinflame staff.png"),
+    imagePath: "./Images/Items/Twinflame_staff.webp",
     wikiLink: "https://oldschool.runescape.wiki/w/Twinflame_staff",
     slot: Slot.MainHand,
     speedSeconds: 3.6,
@@ -1429,7 +1427,7 @@ createWeapon(ItemName.TwinflameStaff, {
 });
 createWeapon(ItemName.PurgingStaff, {
     category: WeaponCategory.Staff,
-    imagePath: wikiIcon("Purging staff.png"),
+    imagePath: "./Images/Items/Purging_staff.webp",
     wikiLink: "https://oldschool.runescape.wiki/w/Purging_staff",
     slot: Slot.MainHand,
     speedSeconds: 3,
@@ -1440,32 +1438,32 @@ createWeapon(ItemName.PurgingStaff, {
 });
 createWeapon(ItemName.AscensionCrossbows, {
     category: WeaponCategory.Crossbow,
-    imagePath: wikiIcon("Ascension crossbows.png"),
+    imagePath: "./Images/Items/Ascension_crossbows.webp",
     wikiLink: "https://oldschool.runescape.wiki/w/Ascension_crossbows",
     slot: Slot.TwoHand,
     speedSeconds: 1.8,
     ranged: 34,
 });
 createItem(ItemName.AscensionBolts, {
-    imagePath: wikiIcon("Ascension bolts 5.png"),
+    imagePath: "./Images/Items/Ascension_bolts.webp",
     wikiLink: "https://oldschool.runescape.wiki/w/Ascension_bolts",
     slot: Slot.Ammo,
     rangedStrength: 53,
 });
 createItem(ItemName.DiamondAscensionBoltsE, {
-    imagePath: wikiIcon("Diamond ascension bolts (e) 5.png"),
+    imagePath: "./Images/Items/Diamond_ascension_bolts_e.webp",
     wikiLink: "https://oldschool.runescape.wiki/w/Diamond_ascension_bolts_(e)",
     slot: Slot.Ammo,
     rangedStrength: 58,
 });
 createItem(ItemName.OnyxAscensionBoltsE, {
-    imagePath: wikiIcon("Onyx ascension bolts (e) 5.png"),
+    imagePath: "./Images/Items/Onyx_ascension_bolts_e.webp",
     wikiLink: "https://oldschool.runescape.wiki/w/Onyx_ascension_bolts_(e)",
     slot: Slot.Ammo,
     rangedStrength: 58,
 });
 createItem(ItemName.SeekingDragonArrow, {
-    imagePath: wikiIcon("Seeking dragon arrow 5.png"),
+    imagePath: "./Images/Items/Seeking_dragon_arrow.webp",
     wikiLink: "https://oldschool.runescape.wiki/w/Seeking_dragon_arrow",
     slot: Slot.Ammo,
     rangedStrength: 60,
