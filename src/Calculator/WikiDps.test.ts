@@ -314,4 +314,25 @@ describe("wiki DPS calculator", () => {
         // Kodai is 15% magic damage: trunc(30 * 15%) = 4.
         expect(magic(["Kodai wand"], "Ice Barrage").maxHit).toBe(34);
     });
+
+    test("scorching bow fires dragon arrows against demons", () => {
+        const player = barePlayer();
+        const ocellus = monster("Ocellus", "Phase 1", { defenceLevel: 215, hitpoints: 2500 });
+        ocellus.isDemon = true;
+
+        const bare = new GearSet([GearSetType.Demon]);
+        bare.addItemByName(ItemName.ScorchingBow);
+        bare.setCombatStyle(CombatStyle.Rapid);
+
+        const armed = new GearSet([GearSetType.Demon]);
+        armed.addItemByName(ItemName.ScorchingBow);
+        armed.addItemByName(ItemName.DragonArrow);
+        armed.setCombatStyle(CombatStyle.Rapid);
+
+        const context = buildContext(ocellus, player, 0);
+        expect(evaluateGear(context, gearRequestFromSet(bare)).dps).toBe(0);
+        const withArrows = evaluateGear(context, gearRequestFromSet(armed));
+        expect(withArrows.dps).toBeGreaterThan(0);
+        expect(withArrows.maxHit).toBeGreaterThan(0);
+    });
 });

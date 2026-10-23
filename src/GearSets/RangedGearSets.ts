@@ -104,6 +104,12 @@ export function generateRangedGearSets() {
             offhand: ItemName.TwistedBuckler,
             gearSetType: GearSetType.General,
         },
+        {
+            name: ItemName.ScorchingBow,
+            styles: [CombatStyle.Rapid],
+            ammos: [ItemName.DragonArrow, ItemName.SeekingDragonArrow],
+            gearSetType: GearSetType.Demon,
+        },
     ];
 
     const weaponsWithoutAmmo = [
@@ -111,11 +117,6 @@ export function generateRangedGearSets() {
             name: ItemName.BowOfFaerdhinen,
             styles: [CombatStyle.Accurate, CombatStyle.Rapid],
             gearSetType: GearSetType.General,
-        },
-        {
-            name: ItemName.ScorchingBow,
-            styles: [CombatStyle.Rapid],
-            gearSetType: GearSetType.Demon,
         },
     ];
 
