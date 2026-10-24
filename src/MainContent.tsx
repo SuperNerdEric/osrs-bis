@@ -4,9 +4,9 @@ import { TargetMonster } from "./Calculator/DataObjects/TargetMonster";
 import { GearSet, gearSets, GearSetType } from "./Calculator/DataObjects/GearSets";
 import { DiscreteSliderMarks } from "./Components/Slider";
 import DefenceReduction from "./Components/ConfigurationPanel/DefenceReduction";
-import React, { useEffect, useState } from "react";
+import React, { startTransition, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Raid } from "./Calculator/DataObjects/Raid";
-import { GearTable } from "./Components/Table";
+import { emptyGearFilterState, GearFilterState, GearTable, gearSetMatchesFilters } from "./Components/Table";
 import { ColumnDef } from "@tanstack/react-table";
 import ConfigurationPanel from "./Components/ConfigurationPanel/ConfigurationPanel";
 import { Player } from "./Calculator/DataObjects/Player";
@@ -30,6 +30,50 @@ function spellImage(name: string): string {
     }
 }
 
+function gearSetsForFight(target: TargetMonster, onTask: boolean): GearSet[] {
+    const shown: GearSet[] = [];
+    const include = (type: GearSetType) => {
+        for (const gearSet of gearSets) {
+            if (gearSet.types.includes(type)) {
+                shown.push(gearSet);
+            }
+        }
+    };
+
+    if (target.isKalphite) {
+        include(GearSetType.Kalphites);
+    }
+    if (target.isDemon) {
+        include(GearSetType.Demon);
+    }
+    if (target.isDraconic) {
+        include(GearSetType.Draconic);
+    }
+    if (target.isUndead) {
+        include(GearSetType.Undead);
+    }
+    if (target.isLeafy) {
+        include(GearSetType.Leafy);
+    }
+    if (target.isVampyre1 || target.isVampyre2 || target.isVampyre3) {
+        include(GearSetType.Vampyre);
+    }
+    if (target.slayerMonster && onTask) {
+        include(GearSetType.Slayer);
+    }
+    include(GearSetType.General);
+
+    for (const gearSet of shown) {
+        gearSet.setRaid(target.raid);
+    }
+    return shown;
+}
+
+interface ActiveDpsJob {
+    gearSets: GearSet[];
+    reprioritize: (isPriority: (index: number) => boolean) => void;
+}
+
 interface MainContentProps {
     targetMonster: TargetMonster;
     setTargetMonster: (monster: TargetMonster) => void;
@@ -51,98 +95,141 @@ const MainContent: React.FC<MainContentProps> = ({
     const isToaBoss: boolean = targetMonster.raid === Raid.TombsOfAmascut;
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
     const [player, setPlayer] = useState<Player>(new Player());
+    const filtersRef = useRef<GearFilterState>(emptyGearFilterState());
+    const activeJobRef = useRef<ActiveDpsJob | null>(null);
+
+    const shownGearSets = useMemo(
+        () => gearSetsForFight(targetMonster, player.onTask),
+        [
+            targetMonster.isKalphite,
+            targetMonster.isDemon,
+            targetMonster.isDraconic,
+            targetMonster.isUndead,
+            targetMonster.isLeafy,
+            targetMonster.isVampyre1,
+            targetMonster.isVampyre2,
+            targetMonster.isVampyre3,
+            targetMonster.slayerMonster,
+            targetMonster.raid,
+            player.onTask,
+        ],
+    );
+
+    const onFiltersChange = useCallback((filters: GearFilterState) => {
+        filtersRef.current = filters;
+        const current = activeJobRef.current;
+        if (!current) {
+            return;
+        }
+        current.reprioritize((index) =>
+            gearSetMatchesFilters(current.gearSets[index], filters.selected, filters.modes),
+        );
+    }, []);
 
     useEffect(() => {
         handleOnTask(player.onTask);
     }, [player.onTask]);
 
     useEffect(() => {
-        const shownGearSets: GearSet[] = [];
-
-        if (targetMonster.isKalphite) {
-            const slayerGearSets = gearSets.filter((gearSet) => gearSet.types.includes(GearSetType.Kalphites));
-            shownGearSets.push(...slayerGearSets);
-        }
-
-        if (targetMonster.isDemon) {
-            const slayerGearSets = gearSets.filter((gearSet) => gearSet.types.includes(GearSetType.Demon));
-            shownGearSets.push(...slayerGearSets);
-        }
-
-        if (targetMonster.isDraconic) {
-            const slayerGearSets = gearSets.filter((gearSet) => gearSet.types.includes(GearSetType.Draconic));
-            shownGearSets.push(...slayerGearSets);
-        }
-
-        if (targetMonster.isUndead) {
-            const slayerGearSets = gearSets.filter((gearSet) => gearSet.types.includes(GearSetType.Undead));
-            shownGearSets.push(...slayerGearSets);
-        }
-
-        if (targetMonster.isLeafy) {
-            const slayerGearSets = gearSets.filter((gearSet) => gearSet.types.includes(GearSetType.Leafy));
-            shownGearSets.push(...slayerGearSets);
-        }
-
-        if (targetMonster.isVampyre1 || targetMonster.isVampyre2 || targetMonster.isVampyre3) {
-            const slayerGearSets = gearSets.filter((gearSet) => gearSet.types.includes(GearSetType.Vampyre));
-            shownGearSets.push(...slayerGearSets);
-        }
-
-        if (targetMonster.slayerMonster && player.onTask) {
-            const slayerGearSets = gearSets.filter((gearSet) => gearSet.types.includes(GearSetType.Slayer));
-            shownGearSets.push(...slayerGearSets);
-        }
-
-        const generalGearSets = gearSets.filter((gearSet) => gearSet.types.includes(GearSetType.General));
-        shownGearSets.push(...generalGearSets);
-        shownGearSets.forEach((gearSet) => gearSet.setRaid(targetMonster.raid));
-
         const context = buildContext(targetMonster, player, isToaBoss ? invocationLevel : 0);
         const requests = shownGearSets.map(gearRequestFromSet);
+        const rows: Calculator[] = [];
+        const total = shownGearSets.length;
         let completed = 0;
+        let alive = true;
+        let publishVersion = 0;
+        let publishTimer = 0;
+        let lastPublish = 0;
         setResults([]);
-        setCalcStatus(shownGearSets.length ? `Calculating 0 / ${shownGearSets.length.toLocaleString()}` : "");
+        setCalcStatus(total ? `Calculating 0 / ${total.toLocaleString()}` : "");
 
+        const publish = (final: boolean) => {
+            if (!alive) {
+                return;
+            }
+            const snapshot = rows.slice();
+            const version = ++publishVersion;
+            const status = final ? "" : `Calculating ${completed.toLocaleString()} / ${total.toLocaleString()}`;
+            const apply = () => {
+                if (!alive || version !== publishVersion) {
+                    return;
+                }
+                setResults(snapshot);
+                setCalcStatus(status);
+            };
+            if (final) {
+                apply();
+            } else {
+                startTransition(apply);
+            }
+        };
+
+        const schedulePublish = () => {
+            const elapsed = performance.now() - lastPublish;
+            if (elapsed >= 250) {
+                if (publishTimer) {
+                    window.clearTimeout(publishTimer);
+                    publishTimer = 0;
+                }
+                lastPublish = performance.now();
+                publish(false);
+                return;
+            }
+            if (publishTimer) {
+                return;
+            }
+            publishTimer = window.setTimeout(() => {
+                publishTimer = 0;
+                lastPublish = performance.now();
+                publish(false);
+            }, 250 - elapsed);
+        };
+
+        const filters = filtersRef.current;
+        const filtersActive = Object.values(filters.selected).some((selected) => selected.length > 0);
         const job = runDpsJob(
             context,
             requests,
-            (offset, batch) => {
-                completed += batch.length;
-                setCalcStatus(`Calculating ${completed.toLocaleString()} / ${shownGearSets.length.toLocaleString()}`);
-                setResults((previous) => {
-                    const next = previous.slice();
-                    batch.forEach((result, index) => {
-                        const calculator = new Calculator(shownGearSets[offset + index]);
-                        calculator.targetMonster = targetMonster;
-                        calculator.player = player;
-                        calculator.dps = result.dps;
-                        calculator.maxHit = result.maxHit;
-                        calculator.hitChance = result.hitChance;
-                        calculator.attackRoll = result.attackRoll;
-                        calculator.defenceRoll = result.defenceRoll;
-                        calculator.averageDamagePerHit = result.averageDamage;
-                        calculator.attackInterval = result.attackInterval;
-                        next.push(calculator);
-                    });
-                    return next;
+            (indices, batch) => {
+                indices.forEach((gearIndex, resultIndex) => {
+                    const result = batch[resultIndex];
+                    const calculator = new Calculator(shownGearSets[gearIndex], String(gearIndex));
+                    calculator.targetMonster = targetMonster;
+                    calculator.player = player;
+                    calculator.dps = result.dps;
+                    calculator.maxHit = result.maxHit;
+                    calculator.hitChance = result.hitChance;
+                    calculator.attackRoll = result.attackRoll;
+                    calculator.defenceRoll = result.defenceRoll;
+                    calculator.averageDamagePerHit = result.averageDamage;
+                    calculator.attackInterval = result.attackInterval;
+                    rows.push(calculator);
                 });
+                completed += batch.length;
+                schedulePublish();
             },
-            () => setCalcStatus(""),
+            () => {
+                if (publishTimer) {
+                    window.clearTimeout(publishTimer);
+                    publishTimer = 0;
+                }
+                publish(true);
+            },
+            filtersActive
+                ? (index) => gearSetMatchesFilters(shownGearSets[index], filters.selected, filters.modes)
+                : undefined,
         );
+        activeJobRef.current = { gearSets: shownGearSets, reprioritize: job.reprioritize };
 
-        return () => job.cancel();
-    }, [
-        targetMonster,
-        targetMonster.name,
-        targetMonster.activeVariant,
-        targetMonster.hitpoints,
-        targetMonster.defenceLevel,
-        targetMonster.currentHitpoints,
-        targetMonster.currentDefenceLevel,
-        invocationLevel,
-        player,
-    ]);
+        return () => {
+            alive = false;
+            activeJobRef.current = null;
+            if (publishTimer) {
+                window.clearTimeout(publishTimer);
+            }
+            job.cancel();
+        };
+    }, [shownGearSets, targetMonster, invocationLevel, player, isToaBoss]);
 
     const columns = React.useMemo<ColumnDef<Calculator>[]>(
         () => [
@@ -302,7 +389,13 @@ const MainContent: React.FC<MainContentProps> = ({
                 <ConfigurationPanel player={player} setPlayer={setPlayer} targetMonster={targetMonster} />
             </div>
             {calcStatus && <div className="monsterName">{calcStatus}</div>}
-            <GearTable data={results} columns={columns} />
+            <GearTable
+                data={results}
+                columns={columns}
+                gearSets={shownGearSets}
+                filterStateRef={filtersRef}
+                onFiltersChange={onFiltersChange}
+            />
         </main>
     );
 };

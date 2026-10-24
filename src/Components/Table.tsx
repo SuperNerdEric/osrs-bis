@@ -38,6 +38,9 @@ import { FilterList } from "@mui/icons-material";
 interface GearTableProps {
     data: Calculator[];
     columns: ColumnDef<Calculator>[];
+    gearSets: Array<{ getItemBySlot(slot: Slot): { name: string } | undefined }>;
+    filterStateRef: React.MutableRefObject<GearFilterState>;
+    onFiltersChange: (filters: GearFilterState) => void;
 }
 
 const StyledIconButton = styled(IconButton)`
@@ -78,7 +81,14 @@ const StyledButton = styled(Button)`
     }
 `;
 
-type SlotFilterMode = "include" | "exclude";
+export type SlotFilterMode = "include" | "exclude";
+
+export interface GearFilterState {
+    selected: Record<Slot, string[]>;
+    modes: Record<Slot, SlotFilterMode>;
+}
+
+type OptionType = { label: string; value: string };
 
 const slotKeys = Object.values(Slot).filter((slot): slot is Slot => typeof slot === "number");
 
@@ -100,6 +110,48 @@ function defaultFilterModes(): Record<Slot, SlotFilterMode> {
         },
         {} as Record<Slot, SlotFilterMode>,
     );
+}
+
+export function emptyGearFilterState(): GearFilterState {
+    return { selected: emptySlotSelections(), modes: defaultFilterModes() };
+}
+
+const optionSlots = slotKeys.filter((slot) => slot !== Slot.TwoHand);
+
+export function collectSlotOptions(
+    gearSets: Array<{ getItemBySlot(slot: Slot): { name: string } | undefined }>,
+): Record<Slot, OptionType[]> {
+    const names = {} as Record<Slot, Set<string>>;
+    const hasEmpty = {} as Record<Slot, boolean>;
+    for (const slot of optionSlots) {
+        names[slot] = new Set();
+        hasEmpty[slot] = false;
+    }
+
+    for (const gearSet of gearSets) {
+        for (const slot of optionSlots) {
+            const sourceSlots = slot === Slot.MainHand ? [Slot.MainHand, Slot.TwoHand] : [slot];
+            for (const sourceSlot of sourceSlots) {
+                const item = gearSet.getItemBySlot(sourceSlot);
+                if (!item) {
+                    hasEmpty[slot] = true;
+                } else {
+                    names[slot].add(item.name);
+                }
+            }
+        }
+    }
+
+    const options = {} as Record<Slot, OptionType[]>;
+    for (const slot of slotKeys) {
+        const slotOptions = Array.from(names[slot] || [], (name) => ({ value: name, label: name }));
+        slotOptions.sort((a, b) => a.label.localeCompare(b.label, undefined, { sensitivity: "base" }));
+        if (hasEmpty[slot] && slot !== Slot.MainHand && slot !== Slot.OffHand && slot !== Slot.TwoHand) {
+            slotOptions.unshift({ value: "None", label: "None" });
+        }
+        options[slot] = slotOptions;
+    }
+    return options;
 }
 
 function slotSelectionMatches(selectedItems: string[], itemName: string | undefined): boolean {
@@ -185,7 +237,7 @@ const ClearFiltersButton = styled(StyledButton)`
     white-space: nowrap;
 `;
 
-export function GearTable({ data, columns }: GearTableProps) {
+export function GearTable({ data, columns, gearSets, filterStateRef, onFiltersChange }: GearTableProps) {
     type SortKey = "dps" | "maxHit" | "hitChance";
     const [sortConfig, setSortConfig] = React.useState({ key: "dps" as keyof Calculator, direction: "descending" });
     const [sortedColumn, setSortedColumn] = React.useState<string | null>(null);
@@ -194,18 +246,9 @@ export function GearTable({ data, columns }: GearTableProps) {
     const [filterModeBySlot, setFilterModeBySlot] = React.useState<Record<Slot, SlotFilterMode>>(defaultFilterModes);
 
     const sortedData = React.useMemo(() => {
-        const sortableData = [...data];
-        if (sortConfig !== null) {
-            sortableData.sort((a, b) => {
-                if (a[sortConfig.key] < b[sortConfig.key]) {
-                    return sortConfig.direction === "ascending" ? -1 : 1;
-                }
-                if (a[sortConfig.key] > b[sortConfig.key]) {
-                    return sortConfig.direction === "ascending" ? 1 : -1;
-                }
-                return 0;
-            });
-        }
+        const sortableData = data.slice();
+        const direction = sortConfig.direction === "ascending" ? 1 : -1;
+        sortableData.sort((a, b) => (Number(a[sortConfig.key]) - Number(b[sortConfig.key])) * direction);
         return sortableData;
     }, [data, sortConfig]);
 
@@ -226,7 +269,6 @@ export function GearTable({ data, columns }: GearTableProps) {
         getCoreRowModel: getCoreRowModel(),
         getFilteredRowModel: getFilteredRowModel(),
         getPaginationRowModel: getPaginationRowModel(),
-        debugTable: true,
     });
 
     const requestSort = (key: keyof Calculator) => {
@@ -241,38 +283,27 @@ export function GearTable({ data, columns }: GearTableProps) {
         }
     };
 
-    const slotOptions = (slot: Slot) => {
-        const itemsNamesSet = new Set();
-        let hasEmptySlot = false;
+    const optionsBySlot = React.useMemo(() => collectSlotOptions(gearSets), [gearSets]);
+    filterStateRef.current = { selected: selectedItemsBySlot, modes: filterModeBySlot };
 
-        const sourceSlots = slot === Slot.MainHand ? [Slot.MainHand, Slot.TwoHand] : [slot];
-        const options = data.reduce(
-            (acc, rowData) => {
-                for (const sourceSlot of sourceSlots) {
-                    const item = rowData.gearSet.getItemBySlot(sourceSlot);
-                    if (!item) {
-                        hasEmptySlot = true;
-                    } else if (!itemsNamesSet.has(item.name)) {
-                        itemsNamesSet.add(item.name);
-                        acc.push({ value: item.name, label: item.name });
-                    }
-                }
-                return acc;
-            },
-            [] as Array<{ value: string; label: string }>,
-        );
+    const setFilterMode = React.useCallback((slot: Slot, mode: SlotFilterMode) => {
+        setFilterModeBySlot((previous) => ({
+            ...previous,
+            [slot]: mode,
+        }));
+    }, []);
 
-        options.sort((a, b) => a.label.localeCompare(b.label, undefined, { sensitivity: "base" }));
-
-        if (hasEmptySlot && slot !== Slot.MainHand && slot !== Slot.OffHand && slot !== Slot.TwoHand) {
-            options.unshift({ value: "None", label: "None" });
-        }
-
-        return options;
-    };
+    const setFilterItems = React.useCallback((slot: Slot, selected: OptionType[] | null) => {
+        setSelectedItemsBySlot((previous) => ({
+            ...previous,
+            [slot]: selected?.map((item) => item.value) || [],
+        }));
+    }, []);
 
     React.useEffect(() => {
         table.setGlobalFilter({ selectedItemsBySlot, filterModeBySlot });
+        table.setPageIndex(0);
+        onFiltersChange({ selected: selectedItemsBySlot, modes: filterModeBySlot });
     }, [selectedItemsBySlot, filterModeBySlot]);
 
     const areAnyFiltersApplied = (filters: Record<Slot, string[]>) => {
@@ -346,19 +377,9 @@ export function GearTable({ data, columns }: GearTableProps) {
                                     slot={slot}
                                     mode={filterModeBySlot[slot]}
                                     selectedItems={selectedItemsBySlot[slot]}
-                                    onModeChange={(mode) => {
-                                        setFilterModeBySlot((prev) => ({
-                                            ...prev,
-                                            [slot]: mode,
-                                        }));
-                                    }}
-                                    onItemSelect={(selected) => {
-                                        setSelectedItemsBySlot((prev) => ({
-                                            ...prev,
-                                            [slot]: selected?.map((s) => s.value) || [],
-                                        }));
-                                    }}
-                                    options={slotOptions(slot)}
+                                    onModeChange={setFilterMode}
+                                    onItemSelect={setFilterItems}
+                                    options={optionsBySlot[slot]}
                                 />
                             </div>
                         ))}
@@ -452,8 +473,6 @@ export function GearTable({ data, columns }: GearTableProps) {
     );
 }
 
-type OptionType = { label: string; value: string };
-
 function FilterModeButton({
     active,
     exclude,
@@ -487,7 +506,7 @@ function FilterModeButton({
     );
 }
 
-function SlotDropdown({
+const SlotDropdown = React.memo(function SlotDropdown({
     slot,
     mode,
     selectedItems,
@@ -498,8 +517,8 @@ function SlotDropdown({
     slot: Slot;
     mode: SlotFilterMode;
     selectedItems: string[];
-    onModeChange: (mode: SlotFilterMode) => void;
-    onItemSelect: (selected: OptionType[] | null, actionMeta: unknown) => void;
+    onModeChange: (slot: Slot, mode: SlotFilterMode) => void;
+    onItemSelect: (slot: Slot, selected: OptionType[] | null) => void;
     options: OptionType[];
 }) {
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -557,73 +576,78 @@ function SlotDropdown({
                 </div>
             </ButtonBase>
 
-            <Popper open={open} anchorEl={anchorEl} placement="bottom-start">
-                <ClickAwayListener onClickAway={handleClose}>
-                    <div
-                        style={{
-                            backgroundColor: "#d8ccb4",
-                            border: "1px solid #ccc",
-                            borderRadius: "5px",
-                            boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
-                            marginTop: "5px",
-                            minWidth: "220px",
-                        }}
-                    >
-                        <div style={{ display: "flex", gap: "4px", padding: "6px 6px 0" }}>
-                            <FilterModeButton active={mode === "include"} onClick={() => onModeChange("include")}>
-                                Include
-                            </FilterModeButton>
-                            <FilterModeButton
-                                active={mode === "exclude"}
-                                exclude
-                                onClick={() => onModeChange("exclude")}
-                            >
-                                Exclude
-                            </FilterModeButton>
-                        </div>
-                        <div style={{ padding: "4px 8px 0", color: "black", fontSize: "13px" }}>
-                            {mode === "exclude" ? "Checked items are hidden" : "Only checked items are shown"}
-                        </div>
-                        <input
-                            type="text"
-                            placeholder="Search..."
-                            value={searchTerm}
-                            onChange={handleSearchChange}
-                            style={{ width: "90%", padding: "2px", margin: "6px" }}
-                        />
-                        <div style={{ maxHeight: "320px", overflowY: "auto" }}>
-                            {filteredOptions.map((option) => (
-                                <div
-                                    key={option.value}
-                                    style={{ padding: "5px", display: "flex", alignItems: "center" }}
+            {open ? (
+                <Popper open={open} anchorEl={anchorEl} placement="bottom-start">
+                    <ClickAwayListener onClickAway={handleClose}>
+                        <div
+                            style={{
+                                backgroundColor: "#d8ccb4",
+                                border: "1px solid #ccc",
+                                borderRadius: "5px",
+                                boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
+                                marginTop: "5px",
+                                minWidth: "220px",
+                            }}
+                        >
+                            <div style={{ display: "flex", gap: "4px", padding: "6px 6px 0" }}>
+                                <FilterModeButton
+                                    active={mode === "include"}
+                                    onClick={() => onModeChange(slot, "include")}
                                 >
-                                    <Checkbox
-                                        size="small"
-                                        color="default"
-                                        checked={selectedItems.includes(option.value)}
-                                        onChange={() => {
-                                            const isSelected = selectedItems.includes(option.value);
-                                            const updatedItems = isSelected
-                                                ? selectedItems.filter((item) => item !== option.value)
-                                                : [...selectedItems, option.value];
-                                            onItemSelect(
-                                                updatedItems.map((item) => ({ value: item, label: item })),
-                                                null,
-                                            );
-                                        }}
-                                        style={{ color: "black" }}
-                                    />
+                                    Include
+                                </FilterModeButton>
+                                <FilterModeButton
+                                    active={mode === "exclude"}
+                                    exclude
+                                    onClick={() => onModeChange(slot, "exclude")}
+                                >
+                                    Exclude
+                                </FilterModeButton>
+                            </div>
+                            <div style={{ padding: "4px 8px 0", color: "black", fontSize: "13px" }}>
+                                {mode === "exclude" ? "Checked items are hidden" : "Only checked items are shown"}
+                            </div>
+                            <input
+                                type="text"
+                                placeholder="Search..."
+                                value={searchTerm}
+                                onChange={handleSearchChange}
+                                style={{ width: "90%", padding: "2px", margin: "6px" }}
+                            />
+                            <div style={{ maxHeight: "320px", overflowY: "auto" }}>
+                                {filteredOptions.map((option) => (
+                                    <div
+                                        key={option.value}
+                                        style={{ padding: "5px", display: "flex", alignItems: "center" }}
+                                    >
+                                        <Checkbox
+                                            size="small"
+                                            color="default"
+                                            checked={selectedItems.includes(option.value)}
+                                            onChange={() => {
+                                                const isSelected = selectedItems.includes(option.value);
+                                                const updatedItems = isSelected
+                                                    ? selectedItems.filter((item) => item !== option.value)
+                                                    : [...selectedItems, option.value];
+                                                onItemSelect(
+                                                    slot,
+                                                    updatedItems.map((item) => ({ value: item, label: item })),
+                                                );
+                                            }}
+                                            style={{ color: "black" }}
+                                        />
 
-                                    <span style={{ color: "black", fontSize: "18px" }}>{option.label}</span>
-                                </div>
-                            ))}
+                                        <span style={{ color: "black", fontSize: "18px" }}>{option.label}</span>
+                                    </div>
+                                ))}
+                            </div>
                         </div>
-                    </div>
-                </ClickAwayListener>
-            </Popper>
+                    </ClickAwayListener>
+                </Popper>
+            ) : null}
         </div>
     );
-}
+});
 
 const slotIcons = {
     [Slot.MainHand]: <img src={WeaponIcon} alt="Weapon icon" className="icon-size" />,

@@ -2,14 +2,14 @@ import { evaluateGearBatch, GearCalcRequest, GearCalcResult, SharedCalcContext }
 
 export interface WorkerRequest {
     jobId: number;
-    offset: number;
-    context: SharedCalcContext;
+    indices: number[];
     gear: GearCalcRequest[];
+    context?: SharedCalcContext;
 }
 
 export interface WorkerResponse {
     jobId: number;
-    offset: number;
+    indices: number[];
     results: GearCalcResult[];
 }
 
@@ -18,11 +18,18 @@ const workerScope = self as unknown as {
     postMessage: (message: WorkerResponse) => void;
 };
 
+let context: SharedCalcContext | undefined;
+
 workerScope.onmessage = (event: MessageEvent<WorkerRequest>) => {
-    const { jobId, offset, context, gear } = event.data;
-    workerScope.postMessage({
-        jobId,
-        offset,
-        results: evaluateGearBatch(context, gear),
-    });
+    const { jobId, indices, gear } = event.data;
+    if (event.data.context) {
+        context = event.data.context;
+    }
+
+    let results: GearCalcResult[] = [];
+    if (context) {
+        results = evaluateGearBatch(context, gear);
+    }
+
+    workerScope.postMessage({ jobId, indices, results });
 };

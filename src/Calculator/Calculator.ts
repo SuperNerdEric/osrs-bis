@@ -26,9 +26,9 @@ export class Calculator {
     targetMonster: TargetMonster = new TargetMonster();
     id: string;
 
-    constructor(gearSet: GearSet) {
+    constructor(gearSet: GearSet, id?: string) {
         this.gearSet = gearSet;
-        this.id = uuidv4();
+        this.id = id || uuidv4();
     }
 
     calculateDPS(invocationLevel: number = 0) {

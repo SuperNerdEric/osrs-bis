@@ -1,7 +1,7 @@
 import { GearSet, GearSetType } from "../Calculator/DataObjects/GearSets";
 import { Slot } from "../Calculator/DataObjects/Item";
 import { ItemName } from "../Calculator/DataObjects/ItemName";
-import { gearSetMatchesFilters } from "./Table";
+import { collectSlotOptions, gearSetMatchesFilters } from "./Table";
 
 type FilterMode = "include" | "exclude";
 
@@ -68,5 +68,20 @@ describe("weapon slot filter", () => {
         expect(gearSetMatchesFilters(scythe, selected, filterModes)).toBe(false);
         expect(gearSetMatchesFilters(whipAvernic, selected, filterModes)).toBe(true);
         expect(gearSetMatchesFilters(twistedBow, selected, filterModes)).toBe(true);
+    });
+
+    test("filter choices include every setup, including ones that have no DPS yet", () => {
+        const options = collectSlotOptions([
+            setWith([ItemName.ScorchingBow, ItemName.DragonArrow]),
+            setWith([ItemName.AbyssalWhip, ItemName.AvernicDefender]),
+        ]);
+
+        expect(options[Slot.MainHand].map((option) => option.value)).toEqual([
+            ItemName.AbyssalWhip,
+            ItemName.ScorchingBow,
+        ]);
+        expect(options[Slot.Ammo].map((option) => option.value)).toEqual(["None", ItemName.DragonArrow]);
+        expect(options[Slot.Boots]).toEqual([{ value: "None", label: "None" }]);
+        expect(options[Slot.OffHand].map((option) => option.value)).toEqual([ItemName.AvernicDefender]);
     });
 });

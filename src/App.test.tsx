@@ -3,7 +3,7 @@ import { render, screen } from "@testing-library/react";
 import App from "./Components/App";
 
 jest.mock("./Calculator/dpsPool", () => ({
-    runDpsJob: () => ({ cancel: () => undefined }),
+    runDpsJob: () => ({ cancel: () => undefined, reprioritize: () => undefined }),
 }));
 
 test("renders the default fight", () => {
