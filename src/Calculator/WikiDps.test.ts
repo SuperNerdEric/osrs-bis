@@ -124,7 +124,7 @@ describe("wiki DPS calculator", () => {
         expect(tome.maxHit).toBe(Math.floor(bareSurge.maxHit * 1.1));
     });
 
-    test("zorya's tome base max hit is 18 at 99 magic before gear", () => {
+    test("zorya's tome base max hit is 23 at 99 magic before gear", () => {
         const result = evaluateGear(buildContext(demon, barePlayer(), 0), {
             names: ["Zorya's tome"],
             combatStyle: "Accurate",
@@ -132,8 +132,8 @@ describe("wiki DPS calculator", () => {
             weaponStyle: "Accurate",
             spellName: null,
         });
-        // The tome itself is +15% magic damage, so 18 becomes 20.
-        expect(result.maxHit).toBe(20);
+        // trunc(99 / 3) - 10 = 23, then the tome's 15% magic damage adds 3.
+        expect(result.maxHit).toBe(26);
         expect(result.attackInterval).toBeCloseTo(1.8, 5);
     });
 
@@ -154,7 +154,7 @@ describe("wiki DPS calculator", () => {
         expect(zealHit).toBeGreaterThan(pietyHit);
     });
 
-    test("obligator thrust adds 20% and 40% hits on large monsters", () => {
+    test("obligator thrust hits harder on larger monsters than smash", () => {
         const small = monster("Abyssal demon", "Standard");
         const large = monster("General Graardor", "");
         const request = {

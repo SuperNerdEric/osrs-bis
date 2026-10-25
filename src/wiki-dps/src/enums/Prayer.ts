@@ -33,7 +33,7 @@ export const DEFENSIVE_PRAYERS: Prayer[] = [
 export const OFFENSIVE_PRAYERS: Prayer[] = [
   Prayer.BURST_OF_STRENGTH, Prayer.CLARITY_OF_THOUGHT, Prayer.SHARP_EYE, Prayer.MYSTIC_WILL, Prayer.SUPERHUMAN_STRENGTH,
   Prayer.IMPROVED_REFLEXES, Prayer.HAWK_EYE, Prayer.MYSTIC_LORE, Prayer.ULTIMATE_STRENGTH, Prayer.INCREDIBLE_REFLEXES,
-  Prayer.EAGLE_EYE, Prayer.MYSTIC_MIGHT, Prayer.DEADEYE, Prayer.MYSTIC_VIGOUR, Prayer.CHIVALRY, Prayer.PIETY, Prayer.RIGOUR, Prayer.AUGURY,
+  Prayer.EAGLE_EYE, Prayer.MYSTIC_MIGHT, Prayer.DEADEYE, Prayer.MYSTIC_VIGOUR, Prayer.CHIVALRY, Prayer.PIETY, Prayer.ZEAL, Prayer.RIGOUR, Prayer.AUGURY,
 ];
 
 export const BRAIN_PRAYERS: Prayer[] = [
@@ -193,6 +193,16 @@ export const PrayerMap: { [k in Prayer]: PrayerData } = {
     factorStrength: [123, 100],
     factorDefence: [125, 100],
   },
+  [Prayer.ZEAL]: {
+    renderOrder: 22,
+    name: 'Zeal',
+    image: '',
+    drainRate: 24,
+    combatStyle: 'melee',
+    factorAccuracy: [125, 100],
+    factorStrength: [128, 100],
+    factorDefence: [125, 100],
+  },
   [Prayer.RIGOUR]: {
     renderOrder: 19,
     name: 'Rigour',
@@ -255,17 +265,6 @@ export const PrayerMap: { [k in Prayer]: PrayerData } = {
     factorAccuracy: [118, 100],
     factorDefenceMagic: [118, 100],
     factorDefence: [105, 100],
-  },
-
-  [Prayer.ZEAL]: {
-    renderOrder: 21,
-    name: 'Zeal',
-    image: '',
-    drainRate: 40,
-    combatStyle: 'melee',
-    factorAccuracy: [125, 100],
-    factorStrength: [128, 100],
-    factorDefence: [125, 100],
   },
 };
 

@@ -144,7 +144,6 @@ const ammoForRangedWeapons: { [weapon: number]: number[] } = {
   21012: commonAmmoCategories().cb_t64, // Dragon hunter crossbow
   11785: commonAmmoCategories().cb_t64, // Armadyl crossbow
   26374: commonAmmoCategories().cb_t64, // Zaryte crossbow
-  34681: [34684, 34690, 34691, 34702, 34703], // Ascension crossbows + ascension bolts
   33251: commonAmmoCategories().cb_t64, // King's barrage todo(leagues): replace id from cache
   12924: [], // Toxic blowpipe (empty)
   12926: [], // Toxic blowpipe (charged)
@@ -165,6 +164,7 @@ const ammoForRangedWeapons: { [weapon: number]: number[] } = {
   28869: [28872, 28878], // Hunters' sunlight crossbow
   29000: [28991], // Eclipse atlatl
   33245: commonAmmoCategories().bow_t60, // Nature's recurve
+  34681: [34684, 34690, 34696, 34702, 34708], // Ascension crossbows
 };
 
 export enum AmmoApplicability {
@@ -253,12 +253,10 @@ export const getCanonicalEquipment = (inputEq: PlayerEquipment) => {
 export const calculateAttackSpeed = (player: Player, monster: Monster): number => {
   let attackSpeed = player.equipment.weapon?.speed || DEFAULT_ATTACK_SPEED;
 
-  if (player.equipment.weapon?.name === 'Obligator' && player.style.name === 'Smash') {
-    attackSpeed = 3;
-  }
-
   if (player.style.type === 'ranged' && player.style.stance === 'Rapid') {
     attackSpeed -= 1;
+  } else if (player.equipment.weapon?.name === 'Obligator' && player.style.name === 'Smash') {
+    attackSpeed = 3;
   } else if (CAST_STANCES.includes(player.style.stance)) {
     if (player.equipment.weapon?.name === 'Harmonised Nightmare staff'
       && player.spell?.spellbook === 'standard'
@@ -447,6 +445,7 @@ export const WEAPON_SPEC_COSTS: { [canonicalName: string]: number } = {
   'Eye of Ayak': 50,
   'Crimson kisten': 50,
   'Sunspear': 50,
+  "Zorya's tome": 50,
 
   'Magic shortbow': 55,
   'Dark bow': 55,

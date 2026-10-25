@@ -188,10 +188,10 @@ createWeapon(ItemName.GhraziRapier, {
     wikiLink: "https://oldschool.runescape.wiki/w/Ghrazi_rapier",
     slot: Slot.MainHand,
     speedSeconds: 2.4,
-    stab: 94,
+    stab: 100,
     slash: 55,
     crush: 0,
-    strength: 89,
+    strength: 93,
 });
 
 createWeapon(ItemName.ZamorakianSpear, {
@@ -394,6 +394,7 @@ createWeapon(ItemName.SanguinestiStaff, {
     slot: Slot.MainHand,
     speedSeconds: 2.4,
     magic: 25,
+    ranged: -4,
 });
 
 createItem(ItemName.ElidinisWardF, {
@@ -409,7 +410,8 @@ createItem(ItemName.AncestralHat, {
     wikiLink: "https://oldschool.runescape.wiki/w/Ancestral_hat",
     slot: Slot.Helm,
     magic: 8,
-    mageStrength: 2,
+    ranged: -2,
+    mageStrength: 3,
 });
 
 createItem(ItemName.AncestralRobeTop, {
@@ -417,7 +419,8 @@ createItem(ItemName.AncestralRobeTop, {
     wikiLink: "https://oldschool.runescape.wiki/w/Ancestral_robe_top",
     slot: Slot.Chest,
     magic: 35,
-    mageStrength: 2,
+    ranged: -8,
+    mageStrength: 3,
 });
 
 createItem(ItemName.AncestralRobeBottom, {
@@ -425,7 +428,8 @@ createItem(ItemName.AncestralRobeBottom, {
     wikiLink: "https://oldschool.runescape.wiki/w/Ancestral_robe_bottom",
     slot: Slot.Legs,
     magic: 26,
-    mageStrength: 2,
+    ranged: -7,
+    mageStrength: 3,
 });
 
 createItem(ItemName.TormentedBracelet, {
@@ -441,7 +445,7 @@ createItem(ItemName.OccultNecklace, {
     wikiLink: "https://oldschool.runescape.wiki/w/Occult_necklace",
     slot: Slot.Neck,
     magic: 12,
-    mageStrength: 10,
+    mageStrength: 5,
 });
 
 createItem(ItemName.ImbuedZamorakCape, {
@@ -479,6 +483,7 @@ createItem(ItemName.EternalBoots, {
     wikiLink: "https://oldschool.runescape.wiki/w/Eternal_boots",
     slot: Slot.Boots,
     magic: 8,
+    mageStrength: 1,
 });
 
 createItem(ItemName.BookOfTheDead, {
@@ -497,6 +502,7 @@ createWeapon(ItemName.KerisPartisan, {
     stab: 58,
     slash: -2,
     crush: 57,
+    magic: 2,
     strength: 45,
 });
 
@@ -509,6 +515,7 @@ createWeapon(ItemName.KerisPartisanOfCorruption, {
     stab: 58,
     slash: -2,
     crush: 57,
+    magic: 2,
     strength: 45,
 });
 
@@ -521,6 +528,7 @@ createWeapon(ItemName.KerisPartisanOfTheSun, {
     stab: 58,
     slash: -2,
     crush: 57,
+    magic: 2,
     strength: 45,
 });
 
@@ -533,6 +541,7 @@ createWeapon(ItemName.KerisPartisanOfBreaching, {
     stab: 58,
     slash: -2,
     crush: 57,
+    magic: 2,
     strength: 45,
 });
 
@@ -670,7 +679,7 @@ createWeapon(ItemName.SoulreaperAxe, {
     stab: 28,
     slash: 134,
     crush: 66,
-    strength: 121,
+    strength: 125,
 });
 
 createWeapon(ItemName.Arclight, {
@@ -705,8 +714,8 @@ createWeapon(ItemName.InquisitorsMace, {
     speedSeconds: 2.4,
     stab: 52,
     slash: -4,
-    crush: 95,
-    strength: 89,
+    crush: 102,
+    strength: 96,
 });
 
 createWeapon(ItemName.AbyssalBludgeon, {
@@ -724,21 +733,21 @@ createWeapon(ItemName.AbyssalBludgeon, {
 createItem(ItemName.InquisitorsGreatHelm, {
     imagePath: "./Images/Items/Inquisitors_great_helm.webp",
     wikiLink: "https://oldschool.runescape.wiki/w/Inquisitor%27s_great_helm",
-    stab: -2,
-    slash: -2,
-    crush: 8,
+    stab: 0,
+    slash: 0,
+    crush: 10,
     magic: -5,
     ranged: -5,
-    strength: 4,
+    strength: 6,
     slot: Slot.Helm,
 });
 
 createItem(ItemName.InquisitorsHauberk, {
     imagePath: "./Images/Items/Inquisitors_hauberk.webp",
     wikiLink: "https://oldschool.runescape.wiki/w/Inquisitor%27s_hauberk",
-    stab: -3,
-    slash: -3,
-    crush: 12,
+    stab: 0,
+    slash: 0,
+    crush: 16,
     magic: -11,
     ranged: -10,
     strength: 4,
@@ -748,8 +757,8 @@ createItem(ItemName.InquisitorsHauberk, {
 createItem(ItemName.InquisitorsPlateskirt, {
     imagePath: "./Images/Items/Inquisitors_plateskirt.webp",
     wikiLink: "https://oldschool.runescape.wiki/w/Inquisitor%27s_plateskirt",
-    stab: -3,
-    slash: -3,
+    stab: 0,
+    slash: 0,
     crush: 12,
     magic: -9,
     ranged: -5,
@@ -816,6 +825,7 @@ createItem(ItemName.PegasianBoots, {
     crush: 0,
     magic: -12,
     ranged: 12,
+    rangedStrength: 1,
     slot: Slot.Boots,
 });
 
@@ -973,7 +983,8 @@ createItem(ItemName.VirtusMask, {
     imagePath: "./Images/ItemsOld/Virtus_mask.png",
     wikiLink: "https://oldschool.runescape.wiki/w/Virtus_mask",
     magic: 8,
-    mageStrength: 1,
+    ranged: -3,
+    mageStrength: 2,
     slot: Slot.Helm,
 });
 
@@ -982,7 +993,7 @@ createItem(ItemName.VirtusRobeTop, {
     wikiLink: "https://oldschool.runescape.wiki/w/Virtus_robe_top",
     magic: 35,
     ranged: -11,
-    mageStrength: 1,
+    mageStrength: 2,
     slot: Slot.Chest,
 });
 
@@ -991,7 +1002,7 @@ createItem(ItemName.VirtusRobeBottom, {
     wikiLink: "https://oldschool.runescape.wiki/w/Virtus_robe_bottom",
     magic: 26,
     ranged: -9,
-    mageStrength: 1,
+    mageStrength: 2,
     slot: Slot.Legs,
 });
 
@@ -1026,9 +1037,9 @@ createWeapon(ItemName.BladeOfSaeldor, {
     slot: Slot.MainHand,
     speedSeconds: 2.4,
     stab: 55,
-    slash: 94,
+    slash: 100,
     crush: 0,
-    strength: 89,
+    strength: 93,
 });
 
 createWeapon(ItemName.DragonScimitar, {
@@ -1131,7 +1142,7 @@ createWeapon(ItemName.SmokeBattlestaff, {
     slash: -1,
     crush: 28,
     magic: 12,
-    strength: 50,
+    strength: 35,
 });
 
 createWeapon(ItemName.StaffOfFire, {
@@ -1253,7 +1264,7 @@ createWeapon(ItemName.SlayersStaffE, {
     imagePath: "./Images/ItemsOld/Slayers_staff_(e).png",
     wikiLink: "https://oldschool.runescape.wiki/w/Slayer%27s_staff_(e)",
     slot: Slot.MainHand,
-    speedSeconds: 3.0,
+    speedSeconds: 2.4,
     stab: 7,
     slash: -1,
     crush: 25,
@@ -1268,7 +1279,6 @@ createWeapon(ItemName.ElderMaul, {
     slot: Slot.TwoHand,
     speedSeconds: 3.6,
     crush: 135,
-    magic: -4,
     strength: 147,
 });
 
@@ -1277,6 +1287,8 @@ createItem(ItemName.OathplateHelm, {
     wikiLink: "https://oldschool.runescape.wiki/w/Oathplate_helm",
     slot: Slot.Helm,
     slash: 10,
+    magic: -2,
+    ranged: -7,
     strength: 6,
 });
 createItem(ItemName.OathplateChest, {
@@ -1284,6 +1296,8 @@ createItem(ItemName.OathplateChest, {
     wikiLink: "https://oldschool.runescape.wiki/w/Oathplate_chest",
     slot: Slot.Chest,
     slash: 16,
+    magic: -16,
+    ranged: -18,
     strength: 4,
 });
 createItem(ItemName.OathplateLegs, {
@@ -1291,6 +1305,8 @@ createItem(ItemName.OathplateLegs, {
     wikiLink: "https://oldschool.runescape.wiki/w/Oathplate_legs",
     slot: Slot.Legs,
     slash: 12,
+    magic: -12,
+    ranged: -14,
     strength: 2,
 });
 createItem(ItemName.AvernicTreadsMax, {
@@ -1313,6 +1329,8 @@ createItem(ItemName.AmuletOfRancour, {
     stab: 25,
     slash: 25,
     crush: 25,
+    magic: -6,
+    ranged: -8,
     strength: 12,
 });
 createItem(ItemName.NecklaceOfRupture, {
@@ -1334,13 +1352,14 @@ createItem(ItemName.ConflictionGauntlets, {
     wikiLink: "https://oldschool.runescape.wiki/w/Confliction_gauntlets",
     slot: Slot.Gloves,
     magic: 20,
+    ranged: -4,
     mageStrength: 7,
 });
 createItem(ItemName.TomeOfEarth, {
     imagePath: "./Images/Items/Tome_of_earth.webp",
     wikiLink: "https://oldschool.runescape.wiki/w/Tome_of_earth",
     slot: Slot.OffHand,
-    magic: 20,
+    magic: 8,
 });
 createItem(ItemName.Rondache, {
     imagePath: "./Images/Items/Rondache.webp",
@@ -1422,6 +1441,9 @@ createWeapon(ItemName.TwinflameStaff, {
     wikiLink: "https://oldschool.runescape.wiki/w/Twinflame_staff",
     slot: Slot.MainHand,
     speedSeconds: 3.6,
+    stab: 7,
+    slash: -1,
+    crush: 28,
     magic: 12,
     strength: 22,
 });
@@ -1431,6 +1453,8 @@ createWeapon(ItemName.PurgingStaff, {
     wikiLink: "https://oldschool.runescape.wiki/w/Purging_staff",
     slot: Slot.MainHand,
     speedSeconds: 3,
+    stab: 10,
+    slash: -5,
     magic: 37,
     mageStrength: 10,
     crush: 83,
@@ -1442,6 +1466,7 @@ createWeapon(ItemName.AscensionCrossbows, {
     wikiLink: "https://oldschool.runescape.wiki/w/Ascension_crossbows",
     slot: Slot.TwoHand,
     speedSeconds: 1.8,
+    magic: 3,
     ranged: 34,
 });
 createItem(ItemName.AscensionBolts, {
@@ -1466,5 +1491,6 @@ createItem(ItemName.SeekingDragonArrow, {
     imagePath: "./Images/Items/Seeking_dragon_arrow.webp",
     wikiLink: "https://oldschool.runescape.wiki/w/Seeking_dragon_arrow",
     slot: Slot.Ammo,
+    ranged: 20,
     rangedStrength: 60,
 });

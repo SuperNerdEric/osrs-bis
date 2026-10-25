@@ -140,15 +140,17 @@ export function buildMonster(target: TargetMonster, invocationLevel: number): Mo
             attributes.push(attribute);
         }
     };
-    ensure(target.isDemon, MonsterAttribute.DEMON);
-    ensure(target.isDraconic, MonsterAttribute.DRAGON);
-    ensure(target.isFiery, MonsterAttribute.FIERY);
-    ensure(target.isKalphite, MonsterAttribute.KALPHITE);
-    ensure(target.isLeafy, MonsterAttribute.LEAFY);
-    ensure(target.isUndead, MonsterAttribute.UNDEAD);
-    ensure(target.isVampyre1, MonsterAttribute.VAMPYRE_1);
-    ensure(target.isVampyre2, MonsterAttribute.VAMPYRE_2);
-    ensure(target.isVampyre3, MonsterAttribute.VAMPYRE_3);
+    if (!wiki) {
+        ensure(target.isDemon, MonsterAttribute.DEMON);
+        ensure(target.isDraconic, MonsterAttribute.DRAGON);
+        ensure(target.isFiery, MonsterAttribute.FIERY);
+        ensure(target.isKalphite, MonsterAttribute.KALPHITE);
+        ensure(target.isLeafy, MonsterAttribute.LEAFY);
+        ensure(target.isUndead, MonsterAttribute.UNDEAD);
+        ensure(target.isVampyre1, MonsterAttribute.VAMPYRE_1);
+        ensure(target.isVampyre2, MonsterAttribute.VAMPYRE_2);
+        ensure(target.isVampyre3, MonsterAttribute.VAMPYRE_3);
+    }
     if (target.meleeImmune && !attributes.includes(MonsterAttribute.FLYING)) {
         attributes.push(MonsterAttribute.FLYING);
     }
@@ -176,6 +178,9 @@ export function buildMonster(target: TargetMonster, invocationLevel: number): Mo
           };
     if (!wiki && target.flatArmour) {
         defensive.flat_armour = target.flatArmour;
+    }
+    if (target.magicResistance) {
+        defensive.magic_resistance = target.magicResistance;
     }
 
     return {
@@ -207,7 +212,6 @@ export function buildMonster(target: TargetMonster, invocationLevel: number): Mo
         weakness,
         immunities: wiki?.immunities || { burn: null },
         is_slayer_monster: wiki?.is_slayer_monster || target.slayerMonster,
-        magicResistance: target.magicResistance || undefined,
         meleeImmune: target.meleeImmune || undefined,
         immuneToAncientMagicks: target.immuneToAncientMagicks || undefined,
         inputs: {
@@ -275,7 +279,10 @@ export function buildContext(target: TargetMonster, player: SitePlayer, invocati
             chargeSpell: false,
             markOfDarknessSpell: false,
             usingSunfireRunes: false,
-            elementalFragments: { ...player.elementalFragments },
+            fragmentOfWind: player.elementalFragments.air,
+            fragmentOfWater: player.elementalFragments.water,
+            fragmentOfEarth: player.elementalFragments.earth,
+            fragmentOfFire: player.elementalFragments.fire,
         },
     };
 }

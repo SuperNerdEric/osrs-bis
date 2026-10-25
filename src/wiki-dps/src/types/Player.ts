@@ -142,11 +142,11 @@ export interface Player extends EquipmentStats {
      * @see https://oldschool.runescape.wiki/w/Sunfire_rune
      */
     usingSunfireRunes: boolean;
-    /**
-     * Permanent Fractured Archive fragment unlocks. Each matching fragment adds 2
-     * to the base max hit of standard spells of that element, before magic damage.
-     */
-    elementalFragments?: Partial<Record<'air' | 'water' | 'earth' | 'fire', boolean>>;
+
+    fragmentOfWind: boolean;
+    fragmentOfWater: boolean;
+    fragmentOfEarth: boolean;
+    fragmentOfFire: boolean;
   };
   spell: Spell | null;
 }

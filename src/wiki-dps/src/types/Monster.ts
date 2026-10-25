@@ -39,6 +39,7 @@ export interface Monster {
   }
   defensive: {
     flat_armour: number;
+    magic_resistance?: number;
   } & {
     [k in Exclude<CombatStyleType, null | 'ranged'> | Exclude<RangedDamageType, 'mixed'>]: number;
   }
@@ -56,12 +57,9 @@ export interface Monster {
     burn: BurnImmunity | null;
   }
   is_slayer_monster: boolean;
-  /**
-   * Flat magic damage reduction. Separate from flat armour, which does not apply to magic.
-   */
-  magicResistance?: number;
-  /** Blocks every melee hit, including halberds. */
+  /** Site flag. Flying immunity itself comes from the flying attribute, which still allows polearms and salamanders. */
   meleeImmune?: boolean;
+  /** Ancient Magicks deal no damage. */
   immuneToAncientMagicks?: boolean;
 
   /**

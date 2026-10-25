@@ -7,6 +7,7 @@ import UserIssueType from '../enums/UserIssueType';
 import { MonsterAttribute } from '../enums/MonsterAttribute';
 import {
   CAST_STANCES,
+  DREADNOTH_JELLY_ID,
   ICE_DEMON_IDS,
   IMMUNE_TO_BURN_DAMAGE_NPC_IDS,
   YAMA_IDS,
@@ -446,7 +447,7 @@ export default class BaseCalc {
   }
 
   protected isWearingBloodMoonSet(): boolean {
-    return this.wearingAll(['Dual macuahuitl', 'Blood moon helm', 'Blood moon chestplate', 'Blood moon tassets']);
+    return this.wearingAll(['Dual macuahuitl', 'Blood Moon helm', 'Blood Moon chestplate', 'Blood Moon tassets']);
   }
 
   /**
@@ -566,7 +567,7 @@ export default class BaseCalc {
     }
 
     // https://twitter.com/JagexAsh/status/1777673598099968104
-    if (weapon.name.includes('spear') && weapon.name !== 'Blue moon spear') {
+    if (weapon.name.includes('spear') && weapon.name !== 'Blue Moon spear') {
       return isStab;
     }
 
@@ -725,13 +726,23 @@ export default class BaseCalc {
   protected demonbaneVulnerability(): number {
     if (this.monster.id === -1 && this.monster.inputs.demonbaneVulnerability !== undefined) {
       return this.monster.inputs.demonbaneVulnerability;
-    } if (this.monster.name === 'Duke Sucellus') {
+    }
+    if (this.monster.name === 'Duke Sucellus') {
       return 70;
-    } if (YAMA_IDS.includes(this.monster.id)) {
+    }
+    if (['Ocellus', 'Xarth'].includes(this.monster.name)) {
+      return 80;
+    }
+    if (this.monster.name === 'Dreadnoth the Jellied' || this.monster.id === DREADNOTH_JELLY_ID) {
+      return 25;
+    }
+    if (YAMA_IDS.includes(this.monster.id)) {
       return 120;
-    } if (YAMA_VOID_FLARE_IDS.includes(this.monster.id)) {
+    }
+    if (YAMA_VOID_FLARE_IDS.includes(this.monster.id)) {
       return 200;
-    } if (ICE_DEMON_IDS.includes(this.monster.id)) {
+    }
+    if (ICE_DEMON_IDS.includes(this.monster.id)) {
       return 115;
     }
 
@@ -740,6 +751,13 @@ export default class BaseCalc {
 
   private sanitizeInputs() {
     const eq = this.player.equipment;
+
+    if (this.player.equipment.shield?.name === 'Rondache') {
+      this.addIssue(UserIssueType.EQUIPMENT_SHIELD_EFFECT_UNSUPPORTED, "The Rondache's special attack is not yet implemented.");
+    }
+    if (this.player.equipment.weapon?.name === "Zorya's tome") {
+      this.addIssue(UserIssueType.EQUIPMENT_WEAPON_EFFECT_UNSUPPORTED, "The bonus follow up attacks from Zorya's tome's special attack are not implemented.");
+    }
 
     if (this.monster.attributes.includes(MonsterAttribute.DEMON)) {
       // make sure demonbane effectiveness is set and uses the right value
@@ -804,9 +822,9 @@ export default class BaseCalc {
     if (
       (spellName === 'Iban Blast' && !this.wearing(['Iban\'s staff', 'Iban\'s staff (u)']))
       || (spellName === 'Saradomin Strike' && !this.wearing(['Saradomin staff', 'Staff of Light']))
-      || (spellName === 'Claws of Guthix' && !this.wearing(['Guthix staff', 'Void knight mace', 'Staff of balance']))
-      || (spellName === 'Flames of Zamarok' && !this.wearing(['Zamorak staff', 'Staff of the dead', 'Toxic staff of the dead', 'Thammaron\'s sceptre (a)', 'Accursed sceptre (a)']))
-      || (spellName === 'Magic Dart' && !this.wearing(['Slayer\'s staff', 'Slayer\'s staff (e)', 'Staff of the Dead', 'Toxic staff of the Dead', 'Staff of Light', 'Staff of Balance']))
+      || (spellName === 'Claws of Guthix' && !this.wearing(['Guthix staff', 'Void knight mace', 'Staff of Balance']))
+      || (spellName === 'Flames of Zamarok' && !this.wearing(['Zamorak staff', 'Staff of the Dead', 'Toxic Staff of the Dead', 'Thammaron\'s sceptre (a)', 'Accursed sceptre (a)']))
+      || (spellName === 'Magic Dart' && !this.wearing(['Slayer\'s staff', 'Slayer\'s staff (e)', 'Staff of the Dead', 'Toxic Staff of the Dead', 'Staff of Light', 'Staff of Balance']))
     ) {
       this.player = {
         ...this.player,
@@ -837,8 +855,8 @@ export default class BaseCalc {
 
     // Some set effects are currently not accounted for
     if (
-      this.wearingAll(['Blue moon helm', 'Blue moon chestplate', 'Blue moon tassets', 'Blue moon spear'])
-      || this.wearingAll(['Eclipse moon helm', 'Eclipse moon chestplate', 'Eclipse moon tassets', 'Eclipse atlatl'])
+      this.wearingAll(['Blue Moon helm', 'Blue Moon chestplate', 'Blue Moon tassets', 'Blue Moon spear'])
+      || this.wearingAll(['Eclipse Moon helm', 'Eclipse Moon chestplate', 'Eclipse Moon tassets', 'Eclipse atlatl'])
     ) {
       this.addIssue(UserIssueType.EQUIPMENT_SET_EFFECT_UNSUPPORTED, 'The calculator currently does not account for your equipment set effect.');
     }

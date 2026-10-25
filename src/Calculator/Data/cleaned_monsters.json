@@ -617,11 +617,18 @@
                     "magicLevel": 240,
                     "magicAccuracy": 0,
                     "defenceStats": {
-                        "Stab": 70,
+                        "Stab": 40,
                         "Slash": 90,
                         "Crush": 90,
                         "Magic": 80,
-                        "Ranged": 70
+                        "Ranged": 70,
+                        "Light": 70,
+                        "Standard": 70,
+                        "Heavy": 40
+                    },
+                    "elementalWeakness": {
+                        "type": "Water",
+                        "percent": 50
                     }
                 }
             ]
@@ -637,11 +644,18 @@
             "magicLevel": 240,
             "magicAccuracy": 0,
             "defenceStats": {
-                "Stab": 70,
+                "Stab": 40,
                 "Slash": 90,
                 "Crush": 90,
                 "Magic": 80,
-                "Ranged": 70
+                "Ranged": 70,
+                "Light": 70,
+                "Standard": 70,
+                "Heavy": 40
+            },
+            "elementalWeakness": {
+                "type": "Water",
+                "percent": 50
             }
         }
     },
@@ -5248,7 +5262,14 @@
                         "Slash": 50,
                         "Crush": 10,
                         "Magic": 100,
-                        "Ranged": 100
+                        "Ranged": 100,
+                        "Light": 100,
+                        "Standard": 100,
+                        "Heavy": 100
+                    },
+                    "elementalWeakness": {
+                        "type": "Fire",
+                        "percent": 40
                     }
                 }
             ],
@@ -5269,7 +5290,14 @@
                         "Slash": 100,
                         "Crush": 100,
                         "Magic": 10,
-                        "Ranged": 10
+                        "Ranged": 10,
+                        "Light": 10,
+                        "Standard": 10,
+                        "Heavy": 10
+                    },
+                    "elementalWeakness": {
+                        "type": "Fire",
+                        "percent": 40
                     }
                 }
             ]
@@ -5289,7 +5317,14 @@
                 "Slash": 50,
                 "Crush": 10,
                 "Magic": 100,
-                "Ranged": 100
+                "Ranged": 100,
+                "Light": 100,
+                "Standard": 100,
+                "Heavy": 100
+            },
+            "elementalWeakness": {
+                "type": "Fire",
+                "percent": 40
             }
         }
     },
@@ -9751,7 +9786,14 @@
                         "Slash": 85,
                         "Crush": 117,
                         "Magic": 73,
-                        "Ranged": 0
+                        "Ranged": 0,
+                        "Light": 0,
+                        "Standard": 0,
+                        "Heavy": 0
+                    },
+                    "elementalWeakness": {
+                        "type": "Air",
+                        "percent": 50
                     }
                 }
             ]
@@ -9771,7 +9813,14 @@
                 "Slash": 85,
                 "Crush": 117,
                 "Magic": 73,
-                "Ranged": 0
+                "Ranged": 0,
+                "Light": 0,
+                "Standard": 0,
+                "Heavy": 0
+            },
+            "elementalWeakness": {
+                "type": "Air",
+                "percent": 50
             }
         }
     },
@@ -9809,7 +9858,14 @@
                         "Slash": 250,
                         "Crush": 244,
                         "Magic": -11,
-                        "Ranged": 249
+                        "Ranged": 249,
+                        "Light": 249,
+                        "Standard": 249,
+                        "Heavy": 249
+                    },
+                    "elementalWeakness": {
+                        "type": "Air",
+                        "percent": 50
                     }
                 }
             ]
@@ -9829,7 +9885,14 @@
                 "Slash": 250,
                 "Crush": 244,
                 "Magic": -11,
-                "Ranged": 249
+                "Ranged": 249,
+                "Light": 249,
+                "Standard": 249,
+                "Heavy": 249
+            },
+            "elementalWeakness": {
+                "type": "Air",
+                "percent": 50
             }
         }
     },
@@ -9867,7 +9930,14 @@
                         "Slash": 257,
                         "Crush": 241,
                         "Magic": -11,
-                        "Ranged": 250
+                        "Ranged": 250,
+                        "Light": 250,
+                        "Standard": 250,
+                        "Heavy": 250
+                    },
+                    "elementalWeakness": {
+                        "type": "Air",
+                        "percent": 50
                     }
                 }
             ]
@@ -9887,7 +9957,14 @@
                 "Slash": 257,
                 "Crush": 241,
                 "Magic": -11,
-                "Ranged": 250
+                "Ranged": 250,
+                "Light": 250,
+                "Standard": 250,
+                "Heavy": 250
+            },
+            "elementalWeakness": {
+                "type": "Air",
+                "percent": 50
             }
         }
     },
@@ -9925,7 +10002,15 @@
                         "Slash": 71,
                         "Crush": 90,
                         "Magic": 106,
-                        "Ranged": 100
+                        "Ranged": 100,
+                        "Light": 100,
+                        "Standard": 100,
+                        "Heavy": 100
+                    },
+                    "flatArmour": -2,
+                    "elementalWeakness": {
+                        "type": "Air",
+                        "percent": 50
                     }
                 }
             ]
@@ -9945,7 +10030,15 @@
                 "Slash": 71,
                 "Crush": 90,
                 "Magic": 106,
-                "Ranged": 100
+                "Ranged": 100,
+                "Light": 100,
+                "Standard": 100,
+                "Heavy": 100
+            },
+            "flatArmour": -2,
+            "elementalWeakness": {
+                "type": "Air",
+                "percent": 50
             }
         }
     },
@@ -9983,7 +10076,14 @@
                         "Slash": 235,
                         "Crush": 222,
                         "Magic": 0,
-                        "Ranged": 221
+                        "Ranged": 221,
+                        "Light": 221,
+                        "Standard": 221,
+                        "Heavy": 221
+                    },
+                    "elementalWeakness": {
+                        "type": "Air",
+                        "percent": 50
                     }
                 }
             ]
@@ -10003,7 +10103,14 @@
                 "Slash": 235,
                 "Crush": 222,
                 "Magic": 0,
-                "Ranged": 221
+                "Ranged": 221,
+                "Light": 221,
+                "Standard": 221,
+                "Heavy": 221
+            },
+            "elementalWeakness": {
+                "type": "Air",
+                "percent": 50
             }
         }
     },
@@ -10041,7 +10148,14 @@
                         "Slash": 230,
                         "Crush": 221,
                         "Magic": 0,
-                        "Ranged": 225
+                        "Ranged": 225,
+                        "Light": 225,
+                        "Standard": 225,
+                        "Heavy": 225
+                    },
+                    "elementalWeakness": {
+                        "type": "Air",
+                        "percent": 50
                     }
                 }
             ]
@@ -10061,7 +10175,14 @@
                 "Slash": 230,
                 "Crush": 221,
                 "Magic": 0,
-                "Ranged": 225
+                "Ranged": 225,
+                "Light": 225,
+                "Standard": 225,
+                "Heavy": 225
+            },
+            "elementalWeakness": {
+                "type": "Air",
+                "percent": 50
             }
         }
     },
@@ -13610,7 +13731,14 @@
                         "Slash": 255,
                         "Crush": 255,
                         "Magic": 10,
-                        "Ranged": 255
+                        "Ranged": 255,
+                        "Light": 255,
+                        "Standard": 255,
+                        "Heavy": 255
+                    },
+                    "elementalWeakness": {
+                        "type": "Earth",
+                        "percent": 35
                     }
                 }
             ]
@@ -13630,7 +13758,14 @@
                 "Slash": 255,
                 "Crush": 255,
                 "Magic": 10,
-                "Ranged": 255
+                "Ranged": 255,
+                "Light": 255,
+                "Standard": 255,
+                "Heavy": 255
+            },
+            "elementalWeakness": {
+                "type": "Earth",
+                "percent": 35
             }
         }
     },
@@ -19482,7 +19617,14 @@
                         "Slash": 10,
                         "Crush": 10,
                         "Magic": 255,
-                        "Ranged": 550
+                        "Ranged": 550,
+                        "Light": 550,
+                        "Standard": 550,
+                        "Heavy": 550
+                    },
+                    "elementalWeakness": {
+                        "type": "Earth",
+                        "percent": 35
                     }
                 }
             ]
@@ -19502,7 +19644,14 @@
                 "Slash": 10,
                 "Crush": 10,
                 "Magic": 255,
-                "Ranged": 550
+                "Ranged": 550,
+                "Light": 550,
+                "Standard": 550,
+                "Heavy": 550
+            },
+            "elementalWeakness": {
+                "type": "Earth",
+                "percent": 35
             }
         }
     },
@@ -19540,7 +19689,14 @@
                         "Slash": 255,
                         "Crush": 255,
                         "Magic": 255,
-                        "Ranged": 10
+                        "Ranged": 10,
+                        "Light": 10,
+                        "Standard": 10,
+                        "Heavy": 10
+                    },
+                    "elementalWeakness": {
+                        "type": "Earth",
+                        "percent": 35
                     }
                 }
             ]
@@ -19560,7 +19716,14 @@
                 "Slash": 255,
                 "Crush": 255,
                 "Magic": 255,
-                "Ranged": 10
+                "Ranged": 10,
+                "Light": 10,
+                "Standard": 10,
+                "Heavy": 10
+            },
+            "elementalWeakness": {
+                "type": "Earth",
+                "percent": 35
             }
         }
     },
@@ -26130,11 +26293,18 @@
                     "magicLevel": 200,
                     "magicAccuracy": 0,
                     "defenceStats": {
-                        "Stab": 80,
+                        "Stab": 70,
                         "Slash": 80,
                         "Crush": 80,
-                        "Magic": 130,
-                        "Ranged": 80
+                        "Magic": 80,
+                        "Ranged": 80,
+                        "Light": 80,
+                        "Standard": 80,
+                        "Heavy": 80
+                    },
+                    "elementalWeakness": {
+                        "type": "Water",
+                        "percent": 30
                     }
                 }
             ]
@@ -26150,11 +26320,18 @@
             "magicLevel": 200,
             "magicAccuracy": 0,
             "defenceStats": {
-                "Stab": 80,
+                "Stab": 70,
                 "Slash": 80,
                 "Crush": 80,
-                "Magic": 130,
-                "Ranged": 80
+                "Magic": 80,
+                "Ranged": 80,
+                "Light": 80,
+                "Standard": 80,
+                "Heavy": 80
+            },
+            "elementalWeakness": {
+                "type": "Water",
+                "percent": 30
             }
         }
     },
@@ -27483,7 +27660,10 @@
                         "Slash": 100,
                         "Crush": 100,
                         "Magic": 100,
-                        "Ranged": 100
+                        "Ranged": 100,
+                        "Light": 100,
+                        "Standard": 100,
+                        "Heavy": 75
                     }
                 }
             ]
@@ -27503,7 +27683,10 @@
                 "Slash": 100,
                 "Crush": 100,
                 "Magic": 100,
-                "Ranged": 100
+                "Ranged": 100,
+                "Light": 100,
+                "Standard": 100,
+                "Heavy": 75
             }
         }
     },
@@ -28013,7 +28196,14 @@
                         "Slash": 180,
                         "Crush": 180,
                         "Magic": 200,
-                        "Ranged": 200
+                        "Ranged": 200,
+                        "Light": 200,
+                        "Standard": 200,
+                        "Heavy": 200
+                    },
+                    "elementalWeakness": {
+                        "type": "Air",
+                        "percent": 30
                     }
                 }
             ]
@@ -28033,7 +28223,14 @@
                 "Slash": 180,
                 "Crush": 180,
                 "Magic": 200,
-                "Ranged": 200
+                "Ranged": 200,
+                "Light": 200,
+                "Standard": 200,
+                "Heavy": 200
+            },
+            "elementalWeakness": {
+                "type": "Air",
+                "percent": 30
             }
         }
     },
@@ -28071,7 +28268,14 @@
                         "Slash": 90,
                         "Crush": 90,
                         "Magic": 298,
-                        "Ranged": 90
+                        "Ranged": 90,
+                        "Light": 90,
+                        "Standard": 90,
+                        "Heavy": 90
+                    },
+                    "elementalWeakness": {
+                        "type": "Earth",
+                        "percent": 40
                     }
                 }
             ]
@@ -28091,7 +28295,14 @@
                 "Slash": 90,
                 "Crush": 90,
                 "Magic": 298,
-                "Ranged": 90
+                "Ranged": 90,
+                "Light": 90,
+                "Standard": 90,
+                "Heavy": 90
+            },
+            "elementalWeakness": {
+                "type": "Earth",
+                "percent": 40
             }
         }
     },
@@ -42997,9 +43208,12 @@
                     "defenceStats": {
                         "Stab": 40,
                         "Slash": 140,
-                        "Crush": 60,
+                        "Crush": 35,
                         "Magic": 300,
-                        "Ranged": 190
+                        "Ranged": 190,
+                        "Light": 190,
+                        "Standard": 190,
+                        "Heavy": 150
                     }
                 }
             ]
@@ -43017,9 +43231,12 @@
             "defenceStats": {
                 "Stab": 40,
                 "Slash": 140,
-                "Crush": 60,
+                "Crush": 35,
                 "Magic": 300,
-                "Ranged": 190
+                "Ranged": 190,
+                "Light": 190,
+                "Standard": 190,
+                "Heavy": 150
             }
         }
     },
@@ -45083,7 +45300,14 @@
                         "Slash": 200,
                         "Crush": 100,
                         "Magic": 150,
-                        "Ranged": 230
+                        "Ranged": 230,
+                        "Light": 230,
+                        "Standard": 230,
+                        "Heavy": 100
+                    },
+                    "elementalWeakness": {
+                        "type": "Earth",
+                        "percent": 10
                     }
                 }
             ]
@@ -45103,7 +45327,14 @@
                 "Slash": 200,
                 "Crush": 100,
                 "Magic": 150,
-                "Ranged": 230
+                "Ranged": 230,
+                "Light": 230,
+                "Standard": 230,
+                "Heavy": 100
+            },
+            "elementalWeakness": {
+                "type": "Earth",
+                "percent": 10
             }
         }
     },
@@ -46705,7 +46936,14 @@
                         "Slash": 0,
                         "Crush": 0,
                         "Magic": -45,
-                        "Ranged": 50
+                        "Ranged": 50,
+                        "Light": 50,
+                        "Standard": 50,
+                        "Heavy": 50
+                    },
+                    "elementalWeakness": {
+                        "type": "Fire",
+                        "percent": 50
                     }
                 }
             ],
@@ -46726,7 +46964,14 @@
                         "Slash": 0,
                         "Crush": 0,
                         "Magic": 0,
-                        "Ranged": 300
+                        "Ranged": 300,
+                        "Light": 300,
+                        "Standard": 300,
+                        "Heavy": 300
+                    },
+                    "elementalWeakness": {
+                        "type": "Fire",
+                        "percent": 50
                     }
                 }
             ],
@@ -46747,7 +46992,14 @@
                         "Slash": 0,
                         "Crush": 0,
                         "Magic": 300,
-                        "Ranged": 0
+                        "Ranged": 0,
+                        "Light": 0,
+                        "Standard": 0,
+                        "Heavy": 0
+                    },
+                    "elementalWeakness": {
+                        "type": "Fire",
+                        "percent": 50
                     }
                 }
             ]
@@ -46767,7 +47019,14 @@
                 "Slash": 0,
                 "Crush": 0,
                 "Magic": -45,
-                "Ranged": 50
+                "Ranged": 50,
+                "Light": 50,
+                "Standard": 50,
+                "Heavy": 50
+            },
+            "elementalWeakness": {
+                "type": "Fire",
+                "percent": 50
             }
         }
     },
@@ -59340,7 +59599,14 @@
                         "Slash": 200,
                         "Crush": 200,
                         "Magic": 200,
-                        "Ranged": 50
+                        "Ranged": 50,
+                        "Light": 50,
+                        "Standard": 50,
+                        "Heavy": 50
+                    },
+                    "elementalWeakness": {
+                        "type": "Earth",
+                        "percent": 50
                     }
                 }
             ],
@@ -59361,7 +59627,14 @@
                         "Slash": 50,
                         "Crush": 50,
                         "Magic": 200,
-                        "Ranged": 200
+                        "Ranged": 200,
+                        "Light": 200,
+                        "Standard": 200,
+                        "Heavy": 200
+                    },
+                    "elementalWeakness": {
+                        "type": "Earth",
+                        "percent": 50
                     }
                 }
             ],
@@ -59382,7 +59655,14 @@
                         "Slash": 200,
                         "Crush": 200,
                         "Magic": 50,
-                        "Ranged": 200
+                        "Ranged": 200,
+                        "Light": 200,
+                        "Standard": 200,
+                        "Heavy": 200
+                    },
+                    "elementalWeakness": {
+                        "type": "Earth",
+                        "percent": 50
                     }
                 }
             ],
@@ -59465,7 +59745,14 @@
                 "Slash": 200,
                 "Crush": 200,
                 "Magic": 200,
-                "Ranged": 50
+                "Ranged": 50,
+                "Light": 50,
+                "Standard": 50,
+                "Heavy": 50
+            },
+            "elementalWeakness": {
+                "type": "Earth",
+                "percent": 50
             }
         }
     },
@@ -59502,7 +59789,14 @@
                         "Slash": 165,
                         "Crush": 105,
                         "Magic": 0,
-                        "Ranged": 0
+                        "Ranged": 0,
+                        "Light": 0,
+                        "Standard": 0,
+                        "Heavy": 0
+                    },
+                    "elementalWeakness": {
+                        "type": "Water",
+                        "percent": 20
                     }
                 }
             ],
@@ -59523,7 +59817,14 @@
                         "Slash": 290,
                         "Crush": 180,
                         "Magic": 0,
-                        "Ranged": 0
+                        "Ranged": 0,
+                        "Light": 0,
+                        "Standard": 0,
+                        "Heavy": 0
+                    },
+                    "elementalWeakness": {
+                        "type": "Water",
+                        "percent": 20
                     }
                 }
             ],
@@ -59585,7 +59886,14 @@
                 "Slash": 165,
                 "Crush": 105,
                 "Magic": 0,
-                "Ranged": 0
+                "Ranged": 0,
+                "Light": 0,
+                "Standard": 0,
+                "Heavy": 0
+            },
+            "elementalWeakness": {
+                "type": "Water",
+                "percent": 20
             }
         }
     },
@@ -59620,9 +59928,12 @@
                     "defenceStats": {
                         "Stab": 170,
                         "Slash": 190,
-                        "Crush": 50,
+                        "Crush": 40,
                         "Magic": 400,
-                        "Ranged": 40
+                        "Ranged": 40,
+                        "Light": 40,
+                        "Standard": 40,
+                        "Heavy": 30
                     }
                 }
             ],
@@ -59661,9 +59972,12 @@
             "defenceStats": {
                 "Stab": 170,
                 "Slash": 190,
-                "Crush": 50,
+                "Crush": 40,
                 "Magic": 400,
-                "Ranged": 40
+                "Ranged": 40,
+                "Light": 40,
+                "Standard": 40,
+                "Heavy": 30
             }
         }
     },
@@ -59700,7 +60014,14 @@
                         "Slash": 0,
                         "Crush": 0,
                         "Magic": 70,
-                        "Ranged": 60
+                        "Ranged": 60,
+                        "Light": 20,
+                        "Standard": 60,
+                        "Heavy": 60
+                    },
+                    "elementalWeakness": {
+                        "type": "Fire",
+                        "percent": 50
                     }
                 }
             ],
@@ -59741,7 +60062,14 @@
                 "Slash": 0,
                 "Crush": 0,
                 "Magic": 70,
-                "Ranged": 60
+                "Ranged": 60,
+                "Light": 20,
+                "Standard": 60,
+                "Heavy": 60
+            },
+            "elementalWeakness": {
+                "type": "Fire",
+                "percent": 50
             }
         }
     },
@@ -59778,7 +60106,14 @@
                         "Slash": 70,
                         "Crush": 110,
                         "Magic": 40,
-                        "Ranged": 140
+                        "Ranged": 140,
+                        "Light": 140,
+                        "Standard": 140,
+                        "Heavy": 140
+                    },
+                    "elementalWeakness": {
+                        "type": "Fire",
+                        "percent": 150
                     }
                 }
             ],
@@ -59819,7 +60154,14 @@
                 "Slash": 70,
                 "Crush": 110,
                 "Magic": 40,
-                "Ranged": 140
+                "Ranged": 140,
+                "Light": 140,
+                "Standard": 140,
+                "Heavy": 140
+            },
+            "elementalWeakness": {
+                "type": "Fire",
+                "percent": 150
             }
         }
     },
@@ -59856,7 +60198,14 @@
                         "Slash": 72,
                         "Crush": 50,
                         "Magic": 60,
-                        "Ranged": 0
+                        "Ranged": 0,
+                        "Light": 0,
+                        "Standard": 0,
+                        "Heavy": 0
+                    },
+                    "elementalWeakness": {
+                        "type": "Earth",
+                        "percent": 40
                     }
                 }
             ],
@@ -59877,7 +60226,14 @@
                         "Slash": 82,
                         "Crush": 60,
                         "Magic": 75,
-                        "Ranged": 0
+                        "Ranged": 0,
+                        "Light": 0,
+                        "Standard": 0,
+                        "Heavy": 0
+                    },
+                    "elementalWeakness": {
+                        "type": "Earth",
+                        "percent": 40
                     }
                 }
             ],
@@ -59939,7 +60295,14 @@
                 "Slash": 72,
                 "Crush": 50,
                 "Magic": 60,
-                "Ranged": 0
+                "Ranged": 0,
+                "Light": 0,
+                "Standard": 0,
+                "Heavy": 0
+            },
+            "elementalWeakness": {
+                "type": "Earth",
+                "percent": 40
             }
         }
     },
@@ -59976,7 +60339,10 @@
                         "Slash": 340,
                         "Crush": 400,
                         "Magic": 110,
-                        "Ranged": 50
+                        "Ranged": 50,
+                        "Light": 50,
+                        "Standard": 50,
+                        "Heavy": 50
                     }
                 }
             ],
@@ -59997,7 +60363,10 @@
                         "Slash": 150,
                         "Crush": 150,
                         "Magic": 20,
-                        "Ranged": 400
+                        "Ranged": 400,
+                        "Light": 400,
+                        "Standard": 400,
+                        "Heavy": 400
                     }
                 }
             ],
@@ -60018,7 +60387,10 @@
                         "Slash": 60,
                         "Crush": 100,
                         "Magic": 400,
-                        "Ranged": 300
+                        "Ranged": 300,
+                        "Light": 300,
+                        "Standard": 300,
+                        "Heavy": 300
                     }
                 }
             ],
@@ -60101,7 +60473,10 @@
                 "Slash": 340,
                 "Crush": 400,
                 "Magic": 110,
-                "Ranged": 50
+                "Ranged": 50,
+                "Light": 50,
+                "Standard": 50,
+                "Heavy": 50
             }
         }
     },
@@ -66474,7 +66849,14 @@
                         "Slash": 108,
                         "Crush": 108,
                         "Magic": 240,
-                        "Ranged": 26
+                        "Ranged": 26,
+                        "Light": 26,
+                        "Standard": 26,
+                        "Heavy": 26
+                    },
+                    "elementalWeakness": {
+                        "type": "Fire",
+                        "percent": 40
                     }
                 }
             ],
@@ -66495,7 +66877,14 @@
                         "Slash": 126,
                         "Crush": 126,
                         "Magic": 204,
-                        "Ranged": 80
+                        "Ranged": 80,
+                        "Light": 80,
+                        "Standard": 80,
+                        "Heavy": 80
+                    },
+                    "elementalWeakness": {
+                        "type": "Fire",
+                        "percent": 40
                     }
                 }
             ]
@@ -66515,7 +66904,14 @@
                 "Slash": 108,
                 "Crush": 108,
                 "Magic": 240,
-                "Ranged": 26
+                "Ranged": 26,
+                "Light": 26,
+                "Standard": 26,
+                "Heavy": 26
+            },
+            "elementalWeakness": {
+                "type": "Fire",
+                "percent": 40
             }
         }
     },
@@ -68151,7 +68547,10 @@
                         "Slash": 10,
                         "Crush": 10,
                         "Magic": 10,
-                        "Ranged": 10
+                        "Ranged": 10,
+                        "Light": 10,
+                        "Standard": 10,
+                        "Heavy": 10
                     }
                 }
             ],
@@ -68172,7 +68571,10 @@
                         "Slash": 20,
                         "Crush": 40,
                         "Magic": 40,
-                        "Ranged": 180
+                        "Ranged": 180,
+                        "Light": 180,
+                        "Standard": 180,
+                        "Heavy": 180
                     }
                 }
             ],
@@ -68193,7 +68595,14 @@
                         "Slash": 10,
                         "Crush": 30,
                         "Magic": 60,
-                        "Ranged": 100
+                        "Ranged": 100,
+                        "Light": 100,
+                        "Standard": 100,
+                        "Heavy": 100
+                    },
+                    "elementalWeakness": {
+                        "type": "Fire",
+                        "percent": 50
                     }
                 }
             ],
@@ -68214,7 +68623,10 @@
                         "Slash": 20,
                         "Crush": 20,
                         "Magic": 20,
-                        "Ranged": 20
+                        "Ranged": 20,
+                        "Light": 20,
+                        "Standard": 20,
+                        "Heavy": 20
                     }
                 }
             ],
@@ -68223,8 +68635,8 @@
                 {
                     "variantName": "Normal mode, Phase 2",
                     "imagePath": "https://oldschool.runescape.wiki/images/Verzik_Vitur_(flying).png",
-                    "currentHitpoints": 3250,
-                    "hitpoints": 3250,
+                    "currentHitpoints": 3500,
+                    "hitpoints": 3500,
                     "_defenceLevel": 200,
                     "_currentDefenceLevel": 200,
                     "maxDefenceReduction": 0,
@@ -68235,7 +68647,10 @@
                         "Slash": 60,
                         "Crush": 100,
                         "Magic": 70,
-                        "Ranged": 250
+                        "Ranged": 250,
+                        "Light": 250,
+                        "Standard": 250,
+                        "Heavy": 250
                     }
                 }
             ],
@@ -68244,8 +68659,8 @@
                 {
                     "variantName": "Normal mode, Phase 3",
                     "imagePath": "https://oldschool.runescape.wiki/images/Verzik_Vitur_(final_form).png",
-                    "currentHitpoints": 3250,
-                    "hitpoints": 3250,
+                    "currentHitpoints": 3500,
+                    "hitpoints": 3500,
                     "_defenceLevel": 150,
                     "_currentDefenceLevel": 150,
                     "maxDefenceReduction": 0,
@@ -68256,7 +68671,14 @@
                         "Slash": 30,
                         "Crush": 70,
                         "Magic": 100,
-                        "Ranged": 230
+                        "Ranged": 230,
+                        "Light": 230,
+                        "Standard": 230,
+                        "Heavy": 230
+                    },
+                    "elementalWeakness": {
+                        "type": "Fire",
+                        "percent": 50
                     }
                 }
             ],
@@ -68277,7 +68699,10 @@
                         "Slash": 20,
                         "Crush": 20,
                         "Magic": 20,
-                        "Ranged": 20
+                        "Ranged": 20,
+                        "Light": 20,
+                        "Standard": 20,
+                        "Heavy": 20
                     }
                 }
             ],
@@ -68286,8 +68711,8 @@
                 {
                     "variantName": "Hard mode, Phase 2",
                     "imagePath": "https://oldschool.runescape.wiki/images/Verzik_Vitur_(flying).png",
-                    "currentHitpoints": 3250,
-                    "hitpoints": 3250,
+                    "currentHitpoints": 3500,
+                    "hitpoints": 3500,
                     "_defenceLevel": 200,
                     "_currentDefenceLevel": 200,
                     "maxDefenceReduction": 0,
@@ -68298,7 +68723,10 @@
                         "Slash": 60,
                         "Crush": 100,
                         "Magic": 70,
-                        "Ranged": 250
+                        "Ranged": 250,
+                        "Light": 250,
+                        "Standard": 250,
+                        "Heavy": 250
                     }
                 }
             ],
@@ -68307,8 +68735,8 @@
                 {
                     "variantName": "Hard mode, Phase 3",
                     "imagePath": "https://oldschool.runescape.wiki/images/Verzik_Vitur_(final_form).png",
-                    "currentHitpoints": 3250,
-                    "hitpoints": 3250,
+                    "currentHitpoints": 3500,
+                    "hitpoints": 3500,
                     "_defenceLevel": 150,
                     "_currentDefenceLevel": 150,
                     "maxDefenceReduction": 0,
@@ -68319,7 +68747,14 @@
                         "Slash": 30,
                         "Crush": 70,
                         "Magic": 100,
-                        "Ranged": 230
+                        "Ranged": 230,
+                        "Light": 230,
+                        "Standard": 230,
+                        "Heavy": 230
+                    },
+                    "elementalWeakness": {
+                        "type": "Fire",
+                        "percent": 50
                     }
                 }
             ]
@@ -68327,8 +68762,8 @@
         "_activeVariant": {
             "variantName": "Normal mode, Phase 2",
             "imagePath": "https://oldschool.runescape.wiki/images/Verzik_Vitur_(flying).png",
-            "currentHitpoints": 3250,
-            "hitpoints": 3250,
+            "currentHitpoints": 3500,
+            "hitpoints": 3500,
             "_defenceLevel": 200,
             "_currentDefenceLevel": 200,
             "maxDefenceReduction": 0,
@@ -68339,7 +68774,10 @@
                 "Slash": 60,
                 "Crush": 100,
                 "Magic": 70,
-                "Ranged": 250
+                "Ranged": 250,
+                "Light": 250,
+                "Standard": 250,
+                "Heavy": 250
             }
         }
     },
@@ -68492,7 +68930,10 @@
                         "Slash": 30,
                         "Crush": 30,
                         "Magic": 10,
-                        "Ranged": 120
+                        "Ranged": 120,
+                        "Light": 120,
+                        "Standard": 120,
+                        "Heavy": 120
                     }
                 }
             ],
@@ -68513,7 +68954,10 @@
                         "Slash": 70,
                         "Crush": 70,
                         "Magic": 30,
-                        "Ranged": 150
+                        "Ranged": 150,
+                        "Light": 150,
+                        "Standard": 150,
+                        "Heavy": 150
                     }
                 }
             ],
@@ -68534,7 +68978,10 @@
                         "Slash": 70,
                         "Crush": 70,
                         "Magic": 30,
-                        "Ranged": 150
+                        "Ranged": 150,
+                        "Light": 150,
+                        "Standard": 150,
+                        "Heavy": 150
                     }
                 }
             ]
@@ -68554,7 +69001,10 @@
                 "Slash": 70,
                 "Crush": 70,
                 "Magic": 30,
-                "Ranged": 150
+                "Ranged": 150,
+                "Light": 150,
+                "Standard": 150,
+                "Heavy": 150
             }
         }
     },
@@ -68591,7 +69041,10 @@
                         "Slash": 0,
                         "Crush": 0,
                         "Magic": 0,
-                        "Ranged": 0
+                        "Ranged": 0,
+                        "Light": 0,
+                        "Standard": 0,
+                        "Heavy": 0
                     }
                 }
             ],
@@ -68612,7 +69065,10 @@
                         "Slash": 0,
                         "Crush": 0,
                         "Magic": 0,
-                        "Ranged": 0
+                        "Ranged": 0,
+                        "Light": 0,
+                        "Standard": 0,
+                        "Heavy": 0
                     }
                 }
             ],
@@ -68633,7 +69089,10 @@
                         "Slash": 0,
                         "Crush": 0,
                         "Magic": 0,
-                        "Ranged": 0
+                        "Ranged": 0,
+                        "Light": 0,
+                        "Standard": 0,
+                        "Heavy": 0
                     }
                 }
             ],
@@ -68654,7 +69113,10 @@
                         "Slash": 0,
                         "Crush": 0,
                         "Magic": 0,
-                        "Ranged": 0
+                        "Ranged": 0,
+                        "Light": 0,
+                        "Standard": 0,
+                        "Heavy": 0
                     }
                 }
             ],
@@ -68675,7 +69137,10 @@
                         "Slash": 0,
                         "Crush": 0,
                         "Magic": 0,
-                        "Ranged": 0
+                        "Ranged": 0,
+                        "Light": 0,
+                        "Standard": 0,
+                        "Heavy": 0
                     }
                 }
             ],
@@ -68696,7 +69161,10 @@
                         "Slash": 0,
                         "Crush": 0,
                         "Magic": 0,
-                        "Ranged": 0
+                        "Ranged": 0,
+                        "Light": 0,
+                        "Standard": 0,
+                        "Heavy": 0
                     }
                 }
             ]
@@ -68716,7 +69184,10 @@
                 "Slash": 0,
                 "Crush": 0,
                 "Magic": 0,
-                "Ranged": 0
+                "Ranged": 0,
+                "Light": 0,
+                "Standard": 0,
+                "Heavy": 0
             }
         }
     },
@@ -68753,7 +69224,10 @@
                         "Slash": 5,
                         "Crush": 10,
                         "Magic": 600,
-                        "Ranged": 800
+                        "Ranged": 800,
+                        "Light": 800,
+                        "Standard": 800,
+                        "Heavy": 800
                     }
                 }
             ],
@@ -68774,7 +69248,10 @@
                         "Slash": 20,
                         "Crush": 40,
                         "Magic": 600,
-                        "Ranged": 800
+                        "Ranged": 800,
+                        "Light": 800,
+                        "Standard": 800,
+                        "Heavy": 800
                     }
                 }
             ],
@@ -68795,7 +69272,10 @@
                         "Slash": 20,
                         "Crush": 40,
                         "Magic": 600,
-                        "Ranged": 800
+                        "Ranged": 800,
+                        "Light": 800,
+                        "Standard": 800,
+                        "Heavy": 800
                     }
                 }
             ]
@@ -68815,7 +69295,10 @@
                 "Slash": 20,
                 "Crush": 40,
                 "Magic": 600,
-                "Ranged": 800
+                "Ranged": 800,
+                "Light": 800,
+                "Standard": 800,
+                "Heavy": 800
             }
         }
     },
@@ -68852,7 +69335,14 @@
                         "Slash": 0,
                         "Crush": 0,
                         "Magic": 0,
-                        "Ranged": 0
+                        "Ranged": 0,
+                        "Light": 0,
+                        "Standard": 0,
+                        "Heavy": 0
+                    },
+                    "elementalWeakness": {
+                        "type": "Fire",
+                        "percent": 15
                     }
                 }
             ],
@@ -68873,7 +69363,14 @@
                         "Slash": 0,
                         "Crush": 0,
                         "Magic": 0,
-                        "Ranged": 0
+                        "Ranged": 0,
+                        "Light": 0,
+                        "Standard": 0,
+                        "Heavy": 0
+                    },
+                    "elementalWeakness": {
+                        "type": "Fire",
+                        "percent": 15
                     }
                 }
             ],
@@ -68894,7 +69391,14 @@
                         "Slash": 0,
                         "Crush": 0,
                         "Magic": 0,
-                        "Ranged": 0
+                        "Ranged": 0,
+                        "Light": 0,
+                        "Standard": 0,
+                        "Heavy": 0
+                    },
+                    "elementalWeakness": {
+                        "type": "Fire",
+                        "percent": 15
                     }
                 }
             ]
@@ -68914,7 +69418,14 @@
                 "Slash": 0,
                 "Crush": 0,
                 "Magic": 0,
-                "Ranged": 0
+                "Ranged": 0,
+                "Light": 0,
+                "Standard": 0,
+                "Heavy": 0
+            },
+            "elementalWeakness": {
+                "type": "Fire",
+                "percent": 15
             }
         }
     },
@@ -68951,7 +69462,14 @@
                         "Slash": 0,
                         "Crush": 0,
                         "Magic": 0,
-                        "Ranged": 100
+                        "Ranged": 100,
+                        "Light": 100,
+                        "Standard": 100,
+                        "Heavy": 100
+                    },
+                    "elementalWeakness": {
+                        "type": "Air",
+                        "percent": 50
                     }
                 }
             ],
@@ -68972,7 +69490,14 @@
                         "Slash": 0,
                         "Crush": 0,
                         "Magic": 0,
-                        "Ranged": 160
+                        "Ranged": 160,
+                        "Light": 160,
+                        "Standard": 160,
+                        "Heavy": 160
+                    },
+                    "elementalWeakness": {
+                        "type": "Air",
+                        "percent": 50
                     }
                 }
             ],
@@ -68993,7 +69518,14 @@
                         "Slash": 0,
                         "Crush": 0,
                         "Magic": 0,
-                        "Ranged": 160
+                        "Ranged": 160,
+                        "Light": 160,
+                        "Standard": 160,
+                        "Heavy": 160
+                    },
+                    "elementalWeakness": {
+                        "type": "Air",
+                        "percent": 50
                     }
                 }
             ]
@@ -69013,7 +69545,14 @@
                 "Slash": 0,
                 "Crush": 0,
                 "Magic": 0,
-                "Ranged": 160
+                "Ranged": 160,
+                "Light": 160,
+                "Standard": 160,
+                "Heavy": 160
+            },
+            "elementalWeakness": {
+                "type": "Air",
+                "percent": 50
             }
         }
     },
@@ -81446,9 +81985,9 @@
                     "imagePath": "https://oldschool.runescape.wiki/images/Vardorvis.png",
                     "currentHitpoints": 700,
                     "hitpoints": 700,
-                    "_defenceLevel": 215,
-                    "_currentDefenceLevel": 215,
-                    "maxDefenceReduction": 215,
+                    "_defenceLevel": 0,
+                    "_currentDefenceLevel": 0,
+                    "maxDefenceReduction": 0,
                     "magicLevel": 215,
                     "magicAccuracy": 0,
                     "defenceStats": {
@@ -81456,7 +81995,14 @@
                         "Slash": 65,
                         "Crush": 85,
                         "Magic": 580,
-                        "Ranged": 580
+                        "Ranged": 580,
+                        "Light": 580,
+                        "Standard": 580,
+                        "Heavy": 580
+                    },
+                    "elementalWeakness": {
+                        "type": "Fire",
+                        "percent": 35
                     }
                 }
             ],
@@ -81467,9 +82013,9 @@
                     "imagePath": "https://oldschool.runescape.wiki/images/Vardorvis.png",
                     "currentHitpoints": 1400,
                     "hitpoints": 1400,
-                    "_defenceLevel": 268,
-                    "_currentDefenceLevel": 268,
-                    "maxDefenceReduction": 268,
+                    "_defenceLevel": 0,
+                    "_currentDefenceLevel": 0,
+                    "maxDefenceReduction": 0,
                     "magicLevel": 215,
                     "magicAccuracy": 0,
                     "defenceStats": {
@@ -81477,7 +82023,14 @@
                         "Slash": 65,
                         "Crush": 85,
                         "Magic": 580,
-                        "Ranged": 580
+                        "Ranged": 580,
+                        "Light": 580,
+                        "Standard": 580,
+                        "Heavy": 580
+                    },
+                    "elementalWeakness": {
+                        "type": "Fire",
+                        "percent": 35
                     }
                 }
             ],
@@ -81488,9 +82041,9 @@
                     "imagePath": "https://oldschool.runescape.wiki/images/Vardorvis.png",
                     "currentHitpoints": 500,
                     "hitpoints": 500,
-                    "_defenceLevel": 180,
-                    "_currentDefenceLevel": 180,
-                    "maxDefenceReduction": 180,
+                    "_defenceLevel": 0,
+                    "_currentDefenceLevel": 0,
+                    "maxDefenceReduction": 0,
                     "magicLevel": 180,
                     "magicAccuracy": 0,
                     "defenceStats": {
@@ -81498,7 +82051,14 @@
                         "Slash": 25,
                         "Crush": 50,
                         "Magic": 560,
-                        "Ranged": 560
+                        "Ranged": 560,
+                        "Light": 560,
+                        "Standard": 560,
+                        "Heavy": 560
+                    },
+                    "elementalWeakness": {
+                        "type": "Fire",
+                        "percent": 35
                     }
                 }
             ]
@@ -81508,9 +82068,9 @@
             "imagePath": "https://oldschool.runescape.wiki/images/Vardorvis.png",
             "currentHitpoints": 700,
             "hitpoints": 700,
-            "_defenceLevel": 215,
-            "_currentDefenceLevel": 215,
-            "maxDefenceReduction": 215,
+            "_defenceLevel": 0,
+            "_currentDefenceLevel": 0,
+            "maxDefenceReduction": 0,
             "magicLevel": 215,
             "magicAccuracy": 0,
             "defenceStats": {
@@ -81518,7 +82078,14 @@
                 "Slash": 65,
                 "Crush": 85,
                 "Magic": 580,
-                "Ranged": 580
+                "Ranged": 580,
+                "Light": 580,
+                "Standard": 580,
+                "Heavy": 580
+            },
+            "elementalWeakness": {
+                "type": "Fire",
+                "percent": 35
             }
         }
     },
@@ -84855,7 +85422,10 @@
                         "Slash": 160,
                         "Crush": 240,
                         "Magic": 280,
-                        "Ranged": 200
+                        "Ranged": 200,
+                        "Light": 200,
+                        "Standard": 200,
+                        "Heavy": 120
                     }
                 }
             ]
@@ -84875,7 +85445,10 @@
                 "Slash": 160,
                 "Crush": 240,
                 "Magic": 280,
-                "Ranged": 200
+                "Ranged": 200,
+                "Light": 200,
+                "Standard": 200,
+                "Heavy": 120
             }
         }
     },
@@ -84912,7 +85485,10 @@
                         "Slash": 160,
                         "Crush": 260,
                         "Magic": 200,
-                        "Ranged": 110
+                        "Ranged": 110,
+                        "Light": 110,
+                        "Standard": 110,
+                        "Heavy": 110
                     }
                 }
             ]
@@ -84932,7 +85508,10 @@
                 "Slash": 160,
                 "Crush": 260,
                 "Magic": 200,
-                "Ranged": 110
+                "Ranged": 110,
+                "Light": 110,
+                "Standard": 110,
+                "Heavy": 110
             }
         }
     },
@@ -85026,7 +85605,10 @@
                         "Slash": 120,
                         "Crush": 120,
                         "Magic": 10,
-                        "Ranged": 60
+                        "Ranged": 60,
+                        "Light": 60,
+                        "Standard": 60,
+                        "Heavy": 60
                     }
                 }
             ]
@@ -85046,7 +85628,10 @@
                 "Slash": 120,
                 "Crush": 120,
                 "Magic": 10,
-                "Ranged": 60
+                "Ranged": 60,
+                "Light": 60,
+                "Standard": 60,
+                "Heavy": 60
             }
         }
     },
@@ -85887,7 +86472,14 @@
                         "Slash": 120,
                         "Crush": 120,
                         "Magic": 10,
-                        "Ranged": 60
+                        "Ranged": 60,
+                        "Light": 60,
+                        "Standard": 60,
+                        "Heavy": 60
+                    },
+                    "elementalWeakness": {
+                        "type": "Air",
+                        "percent": 60
                     }
                 }
             ]
@@ -85907,7 +86499,14 @@
                 "Slash": 120,
                 "Crush": 120,
                 "Magic": 10,
-                "Ranged": 60
+                "Ranged": 60,
+                "Light": 60,
+                "Standard": 60,
+                "Heavy": 60
+            },
+            "elementalWeakness": {
+                "type": "Air",
+                "percent": 60
             }
         }
     },
@@ -86058,7 +86657,14 @@
                         "Slash": 70,
                         "Crush": 70,
                         "Magic": -30,
-                        "Ranged": 70
+                        "Ranged": 70,
+                        "Light": 70,
+                        "Standard": 70,
+                        "Heavy": 70
+                    },
+                    "elementalWeakness": {
+                        "type": "Earth",
+                        "percent": 50
                     }
                 }
             ],
@@ -86067,8 +86673,8 @@
                 {
                     "variantName": "Core-ejected",
                     "imagePath": "https://oldschool.runescape.wiki/images/Tumeken's_Warden_(level-489%2C_core-ejected).png",
-                    "currentHitpoints": 140,
-                    "hitpoints": 140,
+                    "currentHitpoints": 4500,
+                    "hitpoints": 4500,
                     "_defenceLevel": 100,
                     "_currentDefenceLevel": 100,
                     "maxDefenceReduction": 30,
@@ -86079,7 +86685,14 @@
                         "Slash": 70,
                         "Crush": 70,
                         "Magic": -30,
-                        "Ranged": 70
+                        "Ranged": 70,
+                        "Light": 70,
+                        "Standard": 70,
+                        "Heavy": 70
+                    },
+                    "elementalWeakness": {
+                        "type": "Earth",
+                        "percent": 50
                     }
                 }
             ],
@@ -86100,7 +86713,14 @@
                         "Slash": 40,
                         "Crush": 20,
                         "Magic": 20,
-                        "Ranged": 20
+                        "Ranged": 20,
+                        "Light": 20,
+                        "Standard": 20,
+                        "Heavy": 20
+                    },
+                    "elementalWeakness": {
+                        "type": "Earth",
+                        "percent": 50
                     }
                 }
             ],
@@ -86121,7 +86741,14 @@
                         "Slash": 40,
                         "Crush": 20,
                         "Magic": 20,
-                        "Ranged": 20
+                        "Ranged": 20,
+                        "Light": 20,
+                        "Standard": 20,
+                        "Heavy": 20
+                    },
+                    "elementalWeakness": {
+                        "type": "Earth",
+                        "percent": 50
                     }
                 }
             ]
@@ -86141,7 +86768,14 @@
                 "Slash": 40,
                 "Crush": 20,
                 "Magic": 20,
-                "Ranged": 20
+                "Ranged": 20,
+                "Light": 20,
+                "Standard": 20,
+                "Heavy": 20
+            },
+            "elementalWeakness": {
+                "type": "Earth",
+                "percent": 50
             }
         }
     },
@@ -86298,7 +86932,10 @@
                         "Slash": 70,
                         "Crush": 70,
                         "Magic": 50,
-                        "Ranged": 60
+                        "Ranged": 20,
+                        "Light": 60,
+                        "Standard": 20,
+                        "Heavy": 60
                     }
                 }
             ]
@@ -86318,7 +86955,10 @@
                 "Slash": 70,
                 "Crush": 70,
                 "Magic": 50,
-                "Ranged": 60
+                "Ranged": 20,
+                "Light": 60,
+                "Standard": 20,
+                "Heavy": 60
             }
         }
     },
@@ -86891,8 +87531,8 @@
                 {
                     "variantName": "Post-Quest, Awake",
                     "imagePath": "https://oldschool.runescape.wiki/images/Duke_Sucellus.png",
-                    "currentHitpoints": 440,
-                    "hitpoints": 440,
+                    "currentHitpoints": 485,
+                    "hitpoints": 485,
                     "_defenceLevel": 275,
                     "_currentDefenceLevel": 275,
                     "maxDefenceReduction": 275,
@@ -86900,10 +87540,13 @@
                     "magicAccuracy": 150,
                     "defenceStats": {
                         "Stab": 255,
-                        "Slash": 65,
+                        "Slash": 45,
                         "Crush": 190,
                         "Magic": 440,
-                        "Ranged": 320
+                        "Ranged": 320,
+                        "Light": 320,
+                        "Standard": 320,
+                        "Heavy": 320
                     }
                 }
             ],
@@ -86954,8 +87597,8 @@
                 {
                     "variantName": "Awakened, Awake",
                     "imagePath": "https://oldschool.runescape.wiki/images/Duke_Sucellus.png",
-                    "currentHitpoints": 1540,
-                    "hitpoints": 1540,
+                    "currentHitpoints": 1697,
+                    "hitpoints": 1697,
                     "_defenceLevel": 316,
                     "_currentDefenceLevel": 316,
                     "maxDefenceReduction": 316,
@@ -86966,7 +87609,10 @@
                         "Slash": 65,
                         "Crush": 190,
                         "Magic": 440,
-                        "Ranged": 320
+                        "Ranged": 320,
+                        "Light": 320,
+                        "Standard": 320,
+                        "Heavy": 320
                     }
                 }
             ],
@@ -87017,8 +87663,8 @@
                 {
                     "variantName": "Quest, Awake",
                     "imagePath": "https://oldschool.runescape.wiki/images/Duke_Sucellus.png",
-                    "currentHitpoints": 200,
-                    "hitpoints": 200,
+                    "currentHitpoints": 330,
+                    "hitpoints": 330,
                     "_defenceLevel": 215,
                     "_currentDefenceLevel": 215,
                     "maxDefenceReduction": 215,
@@ -87029,7 +87675,10 @@
                         "Slash": 30,
                         "Crush": 160,
                         "Magic": 400,
-                        "Ranged": 300
+                        "Ranged": 300,
+                        "Light": 300,
+                        "Standard": 300,
+                        "Heavy": 300
                     }
                 }
             ],
@@ -87079,8 +87728,8 @@
         "_activeVariant": {
             "variantName": "Post-Quest, Awake",
             "imagePath": "https://oldschool.runescape.wiki/images/Duke_Sucellus.png",
-            "currentHitpoints": 440,
-            "hitpoints": 440,
+            "currentHitpoints": 485,
+            "hitpoints": 485,
             "_defenceLevel": 275,
             "_currentDefenceLevel": 275,
             "maxDefenceReduction": 275,
@@ -87088,10 +87737,13 @@
             "magicAccuracy": 150,
             "defenceStats": {
                 "Stab": 255,
-                "Slash": 65,
+                "Slash": 45,
                 "Crush": 190,
                 "Magic": 440,
-                "Ranged": 320
+                "Ranged": 320,
+                "Light": 320,
+                "Standard": 320,
+                "Heavy": 320
             }
         }
     },
@@ -87129,7 +87781,14 @@
                         "Slash": 300,
                         "Crush": 220,
                         "Magic": 10,
-                        "Ranged": 300
+                        "Ranged": 300,
+                        "Light": 300,
+                        "Standard": 300,
+                        "Heavy": 300
+                    },
+                    "elementalWeakness": {
+                        "type": "Earth",
+                        "percent": 60
                     }
                 }
             ],
@@ -87150,7 +87809,14 @@
                         "Slash": 300,
                         "Crush": 220,
                         "Magic": 10,
-                        "Ranged": 300
+                        "Ranged": 300,
+                        "Light": 300,
+                        "Standard": 300,
+                        "Heavy": 300
+                    },
+                    "elementalWeakness": {
+                        "type": "Earth",
+                        "percent": 60
                     }
                 }
             ],
@@ -87167,11 +87833,18 @@
                     "magicLevel": 130,
                     "magicAccuracy": 180,
                     "defenceStats": {
-                        "Stab": 180,
-                        "Slash": 300,
-                        "Crush": 220,
-                        "Magic": 10,
-                        "Ranged": 300
+                        "Stab": 150,
+                        "Slash": 250,
+                        "Crush": 180,
+                        "Magic": -10,
+                        "Ranged": 250,
+                        "Light": 250,
+                        "Standard": 250,
+                        "Heavy": 250
+                    },
+                    "elementalWeakness": {
+                        "type": "Earth",
+                        "percent": 60
                     }
                 }
             ]
@@ -87191,7 +87864,14 @@
                 "Slash": 300,
                 "Crush": 220,
                 "Magic": 10,
-                "Ranged": 300
+                "Ranged": 300,
+                "Light": 300,
+                "Standard": 300,
+                "Heavy": 300
+            },
+            "elementalWeakness": {
+                "type": "Earth",
+                "percent": 60
             }
         }
     },
@@ -87229,7 +87909,10 @@
                         "Slash": 190,
                         "Crush": 230,
                         "Magic": 280,
-                        "Ranged": 50
+                        "Ranged": 50,
+                        "Light": 50,
+                        "Standard": 50,
+                        "Heavy": 25
                     }
                 }
             ],
@@ -87250,7 +87933,10 @@
                         "Slash": 190,
                         "Crush": 230,
                         "Magic": 280,
-                        "Ranged": 50
+                        "Ranged": 50,
+                        "Light": 50,
+                        "Standard": 50,
+                        "Heavy": 25
                     }
                 }
             ],
@@ -87271,7 +87957,10 @@
                         "Slash": 150,
                         "Crush": 180,
                         "Magic": 220,
-                        "Ranged": 30
+                        "Ranged": 50,
+                        "Light": 50,
+                        "Standard": 50,
+                        "Heavy": 25
                     }
                 }
             ]
@@ -87291,7 +87980,10 @@
                 "Slash": 190,
                 "Crush": 230,
                 "Magic": 280,
-                "Ranged": 50
+                "Ranged": 50,
+                "Light": 50,
+                "Standard": 50,
+                "Heavy": 25
             }
         }
     },
@@ -95344,7 +96036,10 @@
                         "Slash": 20,
                         "Crush": 20,
                         "Magic": 10,
-                        "Ranged": 20
+                        "Ranged": 20,
+                        "Light": 20,
+                        "Standard": 20,
+                        "Heavy": 20
                     }
                 }
             ],
@@ -95365,7 +96060,10 @@
                         "Slash": 20,
                         "Crush": 20,
                         "Magic": 10,
-                        "Ranged": 20
+                        "Ranged": 20,
+                        "Light": 20,
+                        "Standard": 20,
+                        "Heavy": 20
                     }
                 }
             ]
@@ -95385,7 +96083,10 @@
                 "Slash": 20,
                 "Crush": 20,
                 "Magic": 10,
-                "Ranged": 20
+                "Ranged": 20,
+                "Light": 20,
+                "Standard": 20,
+                "Heavy": 20
             }
         }
     },
@@ -96442,7 +97143,15 @@
                         "Slash": 100,
                         "Crush": 0,
                         "Magic": 500,
-                        "Ranged": 500
+                        "Ranged": 500,
+                        "Light": 500,
+                        "Standard": 500,
+                        "Heavy": 500
+                    },
+                    "flatArmour": -5,
+                    "elementalWeakness": {
+                        "type": "Air",
+                        "percent": 15
                     }
                 }
             ]
@@ -96462,7 +97171,15 @@
                 "Slash": 100,
                 "Crush": 0,
                 "Magic": 500,
-                "Ranged": 500
+                "Ranged": 500,
+                "Light": 500,
+                "Standard": 500,
+                "Heavy": 500
+            },
+            "flatArmour": -5,
+            "elementalWeakness": {
+                "type": "Air",
+                "percent": 15
             }
         }
     },
@@ -96499,7 +97216,15 @@
                         "Slash": 100,
                         "Crush": 100,
                         "Magic": 500,
-                        "Ranged": 500
+                        "Ranged": 500,
+                        "Light": 500,
+                        "Standard": 500,
+                        "Heavy": 500
+                    },
+                    "flatArmour": 6,
+                    "elementalWeakness": {
+                        "type": "Air",
+                        "percent": 15
                     }
                 }
             ]
@@ -96519,7 +97244,15 @@
                 "Slash": 100,
                 "Crush": 100,
                 "Magic": 500,
-                "Ranged": 500
+                "Ranged": 500,
+                "Light": 500,
+                "Standard": 500,
+                "Heavy": 500
+            },
+            "flatArmour": 6,
+            "elementalWeakness": {
+                "type": "Air",
+                "percent": 15
             }
         }
     },
@@ -96556,7 +97289,15 @@
                         "Slash": 0,
                         "Crush": 100,
                         "Magic": 500,
-                        "Ranged": 500
+                        "Ranged": 500,
+                        "Light": 500,
+                        "Standard": 500,
+                        "Heavy": 500
+                    },
+                    "flatArmour": -2,
+                    "elementalWeakness": {
+                        "type": "Air",
+                        "percent": 15
                     }
                 }
             ]
@@ -96576,7 +97317,15 @@
                 "Slash": 0,
                 "Crush": 100,
                 "Magic": 500,
-                "Ranged": 500
+                "Ranged": 500,
+                "Light": 500,
+                "Standard": 500,
+                "Heavy": 500
+            },
+            "flatArmour": -2,
+            "elementalWeakness": {
+                "type": "Air",
+                "percent": 15
             }
         }
     },
@@ -97672,8 +98421,8 @@
                     "maxDefenceReduction": 120,
                     "magicLevel": 90,
                     "magicAccuracy": 0,
-                    "flatArmour": 10,
-                    "magicResistance": 2,
+                    "flatArmour": 0,
+                    "magicResistance": 0,
                     "meleeImmune": false,
                     "defenceStats": {
                         "Stab": 140,
@@ -97704,7 +98453,7 @@
                     "magicLevel": 90,
                     "magicAccuracy": 0,
                     "flatArmour": 0,
-                    "magicResistance": 2,
+                    "magicResistance": 0,
                     "meleeImmune": false,
                     "defenceStats": {
                         "Stab": 140,
@@ -97733,8 +98482,8 @@
             "maxDefenceReduction": 120,
             "magicLevel": 90,
             "magicAccuracy": 0,
-            "flatArmour": 10,
-            "magicResistance": 2,
+            "flatArmour": 0,
+            "magicResistance": 0,
             "meleeImmune": false,
             "defenceStats": {
                 "Stab": 140,
@@ -98118,8 +98867,8 @@
                 {
                     "variantName": "Phase 2",
                     "imagePath": "https://oldschool.runescape.wiki/images/Ocellus_%28phase_2%29.png",
-                    "currentHitpoints": 2500,
-                    "hitpoints": 2500,
+                    "currentHitpoints": 1000,
+                    "hitpoints": 1000,
                     "_defenceLevel": 250,
                     "_currentDefenceLevel": 250,
                     "maxDefenceReduction": 100,
