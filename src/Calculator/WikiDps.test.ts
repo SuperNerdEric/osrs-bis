@@ -191,6 +191,23 @@ describe("wiki DPS calculator", () => {
         expect(result.dps).toBeGreaterThan(0);
     });
 
+    test("onyx ascension bolts use life leech rather than dragon's breath", () => {
+        const request = {
+            combatStyle: "Rapid",
+            styleType: "Ranged",
+            weaponStyle: "Rapid",
+            spellName: null,
+        };
+        const context = buildContext(demon, barePlayer(), 0);
+        const plain = evaluateGear(context, { ...request, names: ["Ascension crossbows", "Onyx ascension bolts"] });
+        const enchanted = evaluateGear(context, {
+            ...request,
+            names: ["Ascension crossbows", "Onyx ascension bolts (e)"],
+        });
+        expect(enchanted.maxHit).toBe(Math.trunc((plain.maxHit * 120) / 100));
+        expect(enchanted.dps).toBeGreaterThan(plain.dps);
+    });
+
     test("ancient magicks do nothing to an ancient-immune monster and flat armour lowers the hit", () => {
         const target = monster("Archive Guardian", "Flying", {
             defenceLevel: 260,
