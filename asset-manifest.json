@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/static/css/main.45003458.css",
-    "main.js": "/static/js/main.9b0433d6.js",
-    "static/js/451.301c380b.chunk.js": "/static/js/451.301c380b.chunk.js",
+    "main.js": "/static/js/main.eb6b5e6c.js",
+    "static/js/451.dc2a17b5.chunk.js": "/static/js/451.dc2a17b5.chunk.js",
     "static/js/787.98701412.chunk.js": "/static/js/787.98701412.chunk.js",
     "static/media/Mystic_smoke_staff.gif": "/static/media/Mystic_smoke_staff.1db57e9780287ca950ce.gif",
     "static/media/Smoke_battlestaff.gif": "/static/media/Smoke_battlestaff.1db57e9780287ca950ce.gif",
@@ -337,12 +337,12 @@
     "static/media/Zamorakian_hasta.webp": "/static/media/Zamorakian_hasta.be62bb7cec7ec3005a5e.webp",
     "index.html": "/index.html",
     "main.45003458.css.map": "/static/css/main.45003458.css.map",
-    "main.9b0433d6.js.map": "/static/js/main.9b0433d6.js.map",
-    "451.301c380b.chunk.js.map": "/static/js/451.301c380b.chunk.js.map",
+    "main.eb6b5e6c.js.map": "/static/js/main.eb6b5e6c.js.map",
+    "451.dc2a17b5.chunk.js.map": "/static/js/451.dc2a17b5.chunk.js.map",
     "787.98701412.chunk.js.map": "/static/js/787.98701412.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.45003458.css",
-    "static/js/main.9b0433d6.js"
+    "static/js/main.eb6b5e6c.js"
   ]
 }
