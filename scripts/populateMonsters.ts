@@ -1,6 +1,6 @@
-import {StyleType} from "../src/Calculator/DataObjects/Item";
-import {MonsterVariant, TargetMonster} from "../src/Calculator/DataObjects/TargetMonster";
-import {Raid} from "../src/Calculator/DataObjects/Raid";
+import { StyleType } from "../src/Calculator/DataObjects/Item";
+import { MonsterVariant, TargetMonster } from "../src/Calculator/DataObjects/TargetMonster";
+import { Raid } from "../src/Calculator/DataObjects/Raid";
 import monstersData from "./wiki_monster_data.json";
 import * as fs from "fs";
 
@@ -10,14 +10,14 @@ function extractFirstImageUrl(imageField: string): string {
         filename = filename.replace("[[File:", "");
         filename = filename.replace("]]", "");
         filename = filename.split("|")[0];
-        filename = filename.trim().replace(/ /g, '_');
+        filename = filename.trim().replace(/ /g, "_");
         return `https://oldschool.runescape.wiki/images/${encodeURIComponent(filename)}`;
     }
-    return ''; // Default to an empty string if no match is found
+    return ""; // Default to an empty string if no match is found
 }
 
 export function createVariantFromJson(entry: any, versionKey: string, smwname?: string): MonsterVariant {
-    const monsters = new Map<string, TargetMonster>;
+    const monsters = new Map<string, TargetMonster>();
     const variant = new MonsterVariant();
 
     if (smwname) {
@@ -45,6 +45,9 @@ export function createVariantFromJson(entry: any, versionKey: string, smwname?: 
         variant.maxDefenceReduction = 30;
     } else if (["Phosani's Nightmare", "The Nightmare"].includes(entry.name)) {
         variant.maxDefenceReduction = 30;
+    } else if (entry.name === "Ocellus" && versionKey === "Phase 2") {
+        // Phase 2 is The Blade, which has no Defence reduction cap, unlike the other Ocellus phases.
+        variant.maxDefenceReduction = parseInt(entry.def, 10);
     } else if (["Archive Guardian", "Bork", "Ezekiel", "Moia", "Xarth", "Ocellus"].includes(entry.name)) {
         variant.maxDefenceReduction = Math.floor(parseInt(entry.def, 10) * 0.4);
     } else {
@@ -57,14 +60,14 @@ export function createVariantFromJson(entry: any, versionKey: string, smwname?: 
         [StyleType.Slash]: parseInt(entry.dslash, 10),
         [StyleType.Crush]: parseInt(entry.dcrush, 10),
         [StyleType.Magic]: parseInt(entry.dmagic, 10),
-        [StyleType.Ranged]: parseInt(entry.drange, 10)
+        [StyleType.Ranged]: parseInt(entry.drange, 10),
     };
 
     return variant;
 }
 
 export function processJsonAndAddToMonsters() {
-    const monsters = new Map<string, TargetMonster>;
+    const monsters = new Map<string, TargetMonster>();
 
     const data: any[] = monstersData;
 
@@ -121,10 +124,25 @@ export function processJsonAndAddToMonsters() {
                 }
             }
 
-            if (["Ba-Ba", "Akkha", "Akkha's Shadow", "Kephri", "Zebak", "Obelisk", "Tumeken's Warden"].includes(monster.name)) {
+            if (
+                ["Ba-Ba", "Akkha", "Akkha's Shadow", "Kephri", "Zebak", "Obelisk", "Tumeken's Warden"].includes(
+                    monster.name,
+                )
+            ) {
                 monster.raid = Raid.TombsOfAmascut;
             }
-            if (["Archive Guardian", "Ezekiel", "Bork", "The Smorks", "Moia", "Dreadnoth the Jellied", "Xarth", "Ocellus"].includes(monster.name)) {
+            if (
+                [
+                    "Archive Guardian",
+                    "Ezekiel",
+                    "Bork",
+                    "The Smorks",
+                    "Moia",
+                    "Dreadnoth the Jellied",
+                    "Xarth",
+                    "Ocellus",
+                ].includes(monster.name)
+            ) {
                 monster.raid = Raid.TheFracturedArchive;
             }
             monster.slayerMonster = versionData.cat;
@@ -164,7 +182,7 @@ export function processJsonAndAddToMonsters() {
             serializedMonsters[key] = value.serialize();
         });
 
-        fs.writeFileSync('./cleaned_monsters.json', JSON.stringify(serializedMonsters, null, 4));
+        fs.writeFileSync("./cleaned_monsters.json", JSON.stringify(serializedMonsters, null, 4));
     }
 }
 

@@ -234,6 +234,7 @@ function zeroSkills(): PlayerSkills {
         str: 0,
         mining: 0,
         herblore: 0,
+        farming: 0,
     };
 }
 
@@ -258,6 +259,7 @@ export function buildContext(target: TargetMonster, player: SitePlayer, invocati
             prayer: 99,
             mining: 99,
             herblore: 99,
+            farming: 99,
         },
         boosts: {
             ...zeroSkills(),
@@ -330,6 +332,7 @@ export function evaluateGear(context: SharedCalcContext, request: GearCalcReques
     const stance = request.spellName ? "Autocast" : request.weaponStyle;
     const player: Player = {
         name: "osrs-bis",
+        uuid: "osrs-bis",
         style: {
             name: request.spellName ? "Spell" : request.combatStyle,
             type: styleType as Player["style"]["type"],

@@ -48,6 +48,7 @@ export enum DetailKey {
   DAMAGE_EFFECTIVE_LEVEL_HOLY_WATER = 'Damage effective level holy water',
   DAMAGE_EFFECTIVE_LEVEL_VOID = 'Damage void effective level',
   DAMAGE_GEAR_BONUS = 'Damage gear bonus',
+  DAMAGE_GEAR_BONUS_FARMING = 'Damage gear bonus farming',
   MAX_HIT_BASE = 'Base max hit',
   MAX_HIT_FORINTHRY_SURGE = 'Max hit forinthry surge',
   MAX_HIT_SALVE = 'Max hit salve amulet',
@@ -76,6 +77,7 @@ export enum DetailKey {
   MAX_HIT_MAGIC_DMG = 'Max hit magic damage bonus',
   MAX_HIT_NEZIKCHENED = 'Max hit Nezikchened',
   MAX_HIT_WARDENS = 'Max hit wardens',
+  MAX_HIT_TANGLEFOOT = 'Max hit Tanglefoot',
   MAX_HIT_FINAL = 'Max hit',
   MIN_HIT_SUNFIRE = 'Min hit sunfire runes',
   MIN_HIT_FANG = 'Min hit fang',
@@ -111,7 +113,6 @@ export enum DetailKey {
   NPC_ACCURACY_ROLL_BONUS = 'NPC accuracy bonus',
   NPC_ACCURACY_ROLL_FINAL = 'NPC accuracy roll',
   REPIRATORY_SYSTEM_MIN_HIT = 'Respiratory system minimum hit',
-  MAX_HIT_MAGGOT_MELEE_PUNISH = 'Max hit maggot king melee punish',
 }
 
 export interface DetailEntry {

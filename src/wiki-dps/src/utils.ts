@@ -115,11 +115,14 @@ export const getCombatStylesForCategory = (style: EquipmentCategory): PlayerComb
         { name: 'Fend', type: 'stab', stance: 'Defensive' },
       ];
       break;
+    case EquipmentCategory.POWERED_BOOK:
     case EquipmentCategory.POWERED_STAFF:
     case EquipmentCategory.POWERED_WAND:
       ret = [
         { name: 'Accurate', type: 'magic', stance: 'Accurate' },
-        { name: 'Accurate', type: 'magic', stance: 'Accurate' },
+        {
+          name: 'Accurate2', displayNameOverride: 'Accurate', type: 'magic', stance: 'Accurate',
+        },
         { name: 'Longrange', type: 'magic', stance: 'Longrange' },
       ];
       break;
@@ -245,6 +248,17 @@ export const getCombatStylesForCategory = (style: EquipmentCategory): PlayerComb
         { name: 'Block', type: 'slash', stance: 'Defensive' },
       ];
       break;
+    case EquipmentCategory.CHAIN_MACE:
+      ret = [
+        {
+          name: 'Thrust-Acc', displayNameOverride: 'Thrust', type: 'crush', stance: 'Accurate',
+        },
+        {
+          name: 'Thrust-Agg', displayNameOverride: 'Thrust', type: 'crush', stance: 'Aggressive',
+        },
+        { name: 'Smash', type: 'crush', stance: 'Aggressive' },
+      ];
+      break;
     default:
       ret = [];
       break;
@@ -255,5 +269,19 @@ export const getCombatStylesForCategory = (style: EquipmentCategory): PlayerComb
     { name: 'Spell', type: 'magic', stance: 'Manual Cast' },
   );
   return ret;
+};
+
+/**
+ * Returns true if the user is on macOS.
+ */
+export const isMac = typeof window !== 'undefined' && /Mac OS X/i.test(navigator.userAgent);
+
+export const getDefaultCombatStyle = (category: EquipmentCategory): PlayerCombatStyle => {
+  const styles = getCombatStylesForCategory(category);
+
+  // Default to rapid or aggressive if available, or the first available style if not
+  return styles.find((s) => s.stance === 'Rapid')
+    ?? styles.find((s) => s.stance === 'Aggressive')
+    ?? styles[0];
 };
 

@@ -4,6 +4,9 @@ import Potion from '../enums/Potion';
 import { Spell } from './Spell';
 import { PlayerCombatStyle } from './PlayerCombatStyle';
 
+// uuidv7
+export type LoadoutId = string;
+
 export interface PlayerSkills {
   atk: number;
   def: number;
@@ -14,6 +17,7 @@ export interface PlayerSkills {
   str: number;
   mining: number;
   herblore: number;
+  farming: number;
 }
 
 export interface EquipmentPiece extends EquipmentStats {
@@ -80,6 +84,7 @@ export interface EquipmentStats {
 }
 
 export interface Player extends EquipmentStats {
+  uuid: LoadoutId;
   name: string;
   style: PlayerCombatStyle;
   /**

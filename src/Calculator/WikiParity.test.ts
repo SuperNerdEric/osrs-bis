@@ -16,6 +16,8 @@ import { calculateEquipmentBonusesFromGear } from "../wiki-dps/src/lib/Equipment
 import { getMonsters, INITIAL_MONSTER_INPUTS } from "../wiki-dps/src/lib/Monsters";
 import PlayerVsNPCCalc from "../wiki-dps/src/lib/PlayerVsNPCCalc";
 import { BLOWPIPE_IDS } from "../wiki-dps/src/lib/constants";
+import { getDefenceFloor } from "../wiki-dps/src/lib/scaling/DefenceReduction";
+import { calculateDefenceLevel } from "./DefenceCalculator";
 import { Monster } from "../wiki-dps/src/types/Monster";
 import { Player } from "../wiki-dps/src/types/Player";
 import { spellByName } from "../wiki-dps/src/types/Spell";
@@ -135,6 +137,7 @@ function directResult(monster: Monster, context: SharedCalcContext, request: Gea
 
     const player: Player = {
         name: "wiki",
+        uuid: "wiki",
         style: {
             name: request.spellName ? "Spell" : request.combatStyle,
             type: styleType as Player["style"]["type"],
@@ -178,6 +181,48 @@ function same(left: number, right: number): boolean {
 
 describe("wiki DPS parity", () => {
     jest.setTimeout(600000);
+
+    test("the Obligator uses the charged version that has the wiki passive", () => {
+        expect(findEquipment("Obligator").version).toBe("Charged");
+    });
+
+    test("Fractured Archive defence floors match the wiki calculator", () => {
+        const section = getSections().find((candidate) => candidate.name === "The Fractured Archive");
+        if (!section) {
+            throw new Error("The Fractured Archive section is missing");
+        }
+
+        const floors = new Map<string, number>();
+        for (const monster of section.monsters) {
+            for (const variant of Array.from(monster.variants.values())) {
+                const raw = findWikiMonster(monster.name, variant.variantName);
+                expect(raw).toBeDefined();
+                if (!raw) {
+                    continue;
+                }
+                expect(`${monster.name} ${variant.variantName}: ${variant.defenceLevel}/${variant.hitpoints}`).toBe(
+                    `${monster.name} ${variant.variantName}: ${raw.skills.def}/${raw.skills.hp}`,
+                );
+                const floor = variant.defenceLevel - variant.maxDefenceReduction;
+                floors.set(`${monster.name}|${variant.variantName}`, floor);
+                expect(`${monster.name} ${variant.variantName}: ${floor}`).toBe(
+                    `${monster.name} ${variant.variantName}: ${getDefenceFloor(wikiMonster(raw))}`,
+                );
+            }
+        }
+
+        expect(floors.get("Ocellus|Phase 1")).toBe(129);
+        expect(floors.get("Ocellus|Phase 2")).toBe(0);
+        expect(floors.get("Ocellus|Phase 3")).toBe(150);
+
+        // The wiki's strategy table reaches 0 on The Blade with 2 elder maul and 4 Tonalztics specs.
+        const blade = monsters.get("Ocellus")?.variants.get("Phase 2");
+        if (!blade) {
+            throw new Error("Ocellus phase 2 is missing");
+        }
+        const summary = { elderMaul: 2, dragonWarhammer: 0, tonalzticsOfRalos: 4, bandosGodsword: 0 };
+        expect(calculateDefenceLevel(blade.defenceLevel, summary, blade.maxDefenceReduction, blade.magicLevel)).toBe(0);
+    });
 
     test("each weapon matches the wiki calculator on every homepage boss", () => {
         const weapons = oneSetPerWeapon();
